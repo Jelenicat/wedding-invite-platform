@@ -2022,7 +2022,7 @@ width: 100%;
 
 .minimal-rsvp-section {
   position: relative;
-  width: 100vw;
+  width: 100%;
  background: #fffaf8;
   margin-top: -38px;
   padding: 82px 16px 28px;
