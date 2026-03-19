@@ -5,7 +5,7 @@
 .floral-invitation-card {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   
   overflow: hidden;
   background: url("../assets/floral.png") center/cover no-repeat;
@@ -400,7 +400,7 @@
 .minimal-invitation-card {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   
   overflow: hidden;
   display: flex;
@@ -685,7 +685,7 @@
 .photo-card-invitation {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   
   overflow: hidden;
   display: flex;
@@ -1214,7 +1214,7 @@
 
 .split-image-invitation {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   
   overflow: hidden;
@@ -1462,7 +1462,7 @@
 
 .split-video-invitation {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
  
   overflow: hidden;
@@ -1727,7 +1727,7 @@
 
 .video-band-invitation {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   
   overflow: hidden;
