@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import FloralInvitationCard from "../components/FloralInvitationCard";
 import FloralIntro from "../components/FloralIntro";
@@ -30,6 +30,12 @@ function WeddingPage() {
     return demoWedding.find((item) => item.slug === slug) || demoWedding[0];
   }, [slug]);
 
+  useEffect(() => {
+    if (!invitation) return;
+
+    document.title = `${invitation.brideName} & ${invitation.groomName} | Pozivnica`;
+  }, [invitation]);
+
   const handleEnvelopeOpen = () => {
     setIsEnvelopeOpen(true);
 
@@ -47,12 +53,12 @@ function WeddingPage() {
       {!showInvitation && (
         <>
           {invitation.introType === "floral" ? (
-        <FloralIntro
-  brideName={invitation.brideName}
-  groomName={invitation.groomName}
-  backgroundImage={invitation.backgroundImage}
-  onEnter={handleIntroEnter}
-/>
+            <FloralIntro
+              brideName={invitation.brideName}
+              groomName={invitation.groomName}
+              backgroundImage={invitation.backgroundImage}
+              onEnter={handleIntroEnter}
+            />
           ) : invitation.introType === "minimal" ? (
             <MinimalIntro
               brideName={invitation.brideName}
