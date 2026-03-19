@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import floralFallback from "../assets/floral.png";
 
 function FloralIntro({ brideName, groomName, onEnter, backgroundImage }) {
-  const brideInitial = brideName?.[0] || "A";
-  const groomInitial = groomName?.[0] || "M";
+  const safeBrideName = brideName || "Bride";
+  const safeGroomName = groomName || "Groom";
+  const brideInitial = safeBrideName[0];
+  const groomInitial = safeGroomName[0];
   const finalBackground = backgroundImage || floralFallback;
 
   return (
@@ -27,7 +29,7 @@ function FloralIntro({ brideName, groomName, onEnter, backgroundImage }) {
         </div>
 
         <h1 className="floral-names">
-          {brideName} <span>&</span> {groomName}
+          {safeBrideName} <span>&</span> {safeGroomName}
         </h1>
 
         <button className="floral-button" onClick={onEnter}>

@@ -14,12 +14,13 @@ html {
 }
 
 .wedding-page {
+  width: 100%;
   min-height: 100vh;
-  padding: 40px 20px 80px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 36px;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
 }
 
 /* =========================
@@ -28,11 +29,8 @@ html {
 
 .invite-hero {
   position: relative;
-  width: 112%;
-  
-  margin-top: -40px;
-  min-height: 105vh;
-  margin-bottom: -80px;
+  width: 100%;
+  min-height: 100vh;
   padding-bottom: 0px;
   border-radius: 0px;
   overflow: hidden;
@@ -297,8 +295,8 @@ html {
   bottom: 18px;
   transform: translate(-50%, 88px) scale(0.98) rotateX(8deg);
   transform-origin: center bottom;
-  width: 360px;
-  height: 215px;
+  width:100%;
+  height: 100%;
   z-index: 6;
   overflow: hidden;
   border-radius: 12px;
@@ -437,6 +435,7 @@ html {
 
 .invite-open-text {
   margin: 26px 0 0;
+  width: 80%;
   font-size: 20px;
   color: #fff0e4;
   text-shadow: 0 2px 10px rgba(60, 39, 28, 0.15);
@@ -952,16 +951,12 @@ html {
   }
 
 }
-/* =========================
-   FLORAL INTRO FULLSCREEN
-========================= */
-
 .floral-intro {
   position: relative;
-  width: 112%;
-  
-  margin-top: -40px;
-  margin-bottom: -80px;
+  width: 100vw;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -980,6 +975,7 @@ html {
     radial-gradient(rgba(0, 0, 0, 0.018) 0.7px, transparent 0.9px);
   background-size: 8px 8px, 12px 12px;
   background-position: 0 0, 4px 6px;
+  z-index: 1;
 }
 
 .floral-bg {
@@ -990,37 +986,30 @@ html {
   object-fit: cover;
 }
 
-@keyframes floralFloat {
-  0% {
-    transform: scale(1) translateY(0);
-  }
-  100% {
-    transform: scale(1.015) translateY(-4px);
-  }
-}
-
 .floral-overlay {
   position: absolute;
   inset: 0;
-  
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 20, 20, 0.18) 0%,
+    rgba(20, 20, 20, 0.08) 40%,
+    rgba(20, 20, 20, 0.22) 100%
+  );
 }
 
 .floral-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
-
-/* =========================
-   MONOGRAM
-========================= */
 
 .floral-monogram {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   font-style: italic;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(54px, 10vw, 92px);
@@ -1060,10 +1049,6 @@ html {
   transform: translateY(-1px);
 }
 
-/* =========================
-   NAMES
-========================= */
-
 .floral-names {
   position: absolute;
   left: 50%;
@@ -1072,9 +1057,9 @@ html {
   margin: 0;
   width: 100%;
   padding: 0 20px;
-  font-style: italic;
   text-align: center;
   font-family: "Cormorant Garamond", serif;
+  font-style: italic;
   font-size: clamp(28px, 5vw, 44px);
   line-height: 1.1;
   font-weight: 500;
@@ -1084,13 +1069,8 @@ html {
 
 .floral-names span {
   margin: 0 8px;
-  font-style: italic;
   color: #c19a6b;
 }
-
-/* =========================
-   BUTTON
-========================= */
 
 .floral-button {
   position: absolute;
@@ -1119,17 +1099,9 @@ html {
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 640px) {
-  .floral-content {
-    height: 100vh;
-  }
-
   .floral-monogram {
-    top: 46%;
+    top: 48%;
     font-size: 58px;
   }
 
@@ -1297,15 +1269,15 @@ html {
 .minimal-intro-v2 {
   position: relative;
   min-height: 100vh;
-  width: 112%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -40px;
+  
   padding: 14px;
   overflow: hidden;
   background: #f3f0eb;
-  margin-bottom: -90px;
+  
 }
 
 .minimal-intro-v2-bg {
@@ -1547,8 +1519,7 @@ html {
   padding: 0;
   overflow: hidden;
   background: #111;
-  margin-top: -40px;
-  margin-bottom: -80px;
+ 
 }
 
 .photo-script-bg-video {
@@ -1656,24 +1627,22 @@ font-weight: 100;
   }
 }
 
-
 .photo-card-intro {
-  min-height: 100vh;
-
- background:
-  linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
-  url("/ruze.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 600px, cover;
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 105%;
-  margin-top: -40px;
-  margin-bottom: -80px;
-   
+
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url("/ruze.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover, cover;
 }
 .photo-card {
   width: 100%;
@@ -1886,8 +1855,8 @@ font-weight: 100;
 .video-band-intro {
   position: relative;
   min-height: 100vh;
-  margin-top: -40px;
-  width: 112%;
+  
+  width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -2027,11 +1996,11 @@ font-weight: 100;
 .split-video-intro {
   position: relative;
   min-height: 100vh;
-  width: 112%;
-  margin-top: -40px;
+  width: 100%;
+  
   overflow: hidden;
   background: #e9e4de;
-  margin-bottom: -80px;
+  
 }
 
 .split-video-bg {
@@ -2141,8 +2110,8 @@ font-weight: 100;
 .split-image-intro {
   position: relative;
   min-height: 100vh;
-  width: 112%;
-  margin-top: -40px;
+  width: 100%;
+  
   overflow: hidden;
 margin-bottom: -80px;
   background-size: cover;

@@ -10,6 +10,9 @@ function VideoBandInvitationCard({
   videoSrc,
   details = {},
 }) {
+  const safeBrideName = brideName || "Bride";
+  const safeGroomName = groomName || "Groom";
+
   const infoItems = [
     { label: "Okupljanje gostiju", value: details.gatheringTime },
     { label: "Početak venčanja", value: details.ceremonyTime },
@@ -29,7 +32,7 @@ function VideoBandInvitationCard({
       >
         <video
           className="video-band-invitation-bg"
-          src={videoSrc}
+          src={videoSrc || "/videos/wedding2.mp4"}
           autoPlay
           muted
           loop
@@ -42,9 +45,9 @@ function VideoBandInvitationCard({
           <p className="video-band-kicker">Pozivnica</p>
 
           <h1 className="video-band-invitation-names">
-            <span>{brideName}</span>
+            <span>{safeBrideName}</span>
             <span className="video-band-invitation-and">&</span>
-            <span>{groomName}</span>
+            <span>{safeGroomName}</span>
           </h1>
 
           {details.date && <p className="video-band-date">{details.date}</p>}
@@ -62,8 +65,12 @@ function VideoBandInvitationCard({
                   className="video-band-program-row"
                   key={`${item.label}-${index}`}
                 >
-                  <span className="video-band-program-label">{item.label}</span>
-                  <span className="video-band-program-value">{item.value}</span>
+                  <span className="video-band-program-label">
+                    {item.label}
+                  </span>
+                  <span className="video-band-program-value">
+                    {item.value}
+                  </span>
                 </div>
               ))}
             </div>
@@ -113,7 +120,11 @@ function VideoBandInvitationCard({
         </div>
       </motion.section>
 
-      <VideoBandRSVP />
+      <VideoBandRSVP
+        brideName={safeBrideName}
+        groomName={safeGroomName}
+        details={details}
+      />
 
       {details.dateISO && (
         <VideoBandCountdown targetDate={details.dateISO} />

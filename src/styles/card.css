@@ -4,9 +4,9 @@
 
 .floral-invitation-card {
   position: relative;
-  width: 110%;
+  width: 100%;
   min-height: 100vh;
-  margin-top: -40px;
+  
   overflow: hidden;
   background: url("../assets/floral.png") center/cover no-repeat;
   display: flex;
@@ -228,8 +228,8 @@
 
 @media (max-width: 640px) {
   .floral-invitation-card {
-    width: 110%;
-    padding: 30px 12px;
+    width: 100%;
+    
   }
 
   .floral-paper {
@@ -399,9 +399,9 @@
 
 .minimal-invitation-card {
   position: relative;
-  width: 110%;
+  width: 100%;
   min-height: 100vh;
-  margin-top: -40px;
+  
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -684,9 +684,9 @@
 
 .photo-card-invitation {
   position: relative;
-  width: 105%;
+  width: 100%;
   min-height: 100vh;
-  margin-top: -40px;
+  
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -957,14 +957,14 @@
 
 .photo-script-invitation {
   position: relative;
-  width: 96vw;
-  min-height: 100vh;
-  margin-top: -40px;
+  width: 100%;
+  min-height: 100dvh;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 36px 16px;
+  padding: 34px 14px;
+  box-sizing: border-box;
   background: #111;
 }
 
@@ -1215,8 +1215,8 @@
 .split-image-invitation {
   position: relative;
   min-height: 100vh;
-  width: 112%;
-  margin-top: -40px;
+  width: 100%;
+  
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1463,8 +1463,8 @@
 .split-video-invitation {
   position: relative;
   min-height: 100vh;
-  width: 112%;
-  margin-top: -40px;
+  width: 100%;
+ 
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1728,8 +1728,8 @@
 .video-band-invitation {
   position: relative;
   min-height: 100vh;
-  width: 112%;
-  margin-top: -40px;
+  width: 100%;
+  
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1983,8 +1983,8 @@
 
 .envelope-invitation-card {
   position: relative;
-  width: 110%;
-  margin-top: -40px;
+  width: 100%;
+  
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -2226,7 +2226,8 @@
 
 @media (max-width: 480px) {
   .envelope-invitation-card {
-    padding: 28px 12px;
+    width: 100%;
+    
   }
 
   .envelope-paper {
