@@ -263,6 +263,7 @@
     #eee6df 40%,
     #eee5de 100%
   );
+    margin-bottom: -80px;
 }
 
 .video-band-countdown-inner {
@@ -678,11 +679,17 @@ margin-bottom: 2px;
 
 .split-video-countdown-section {
   width: 100vw;
- 
   padding: 18px 16px 62px;
-  background:url('minimal-bg.jpg');  
   margin-top: -40px;
-  margin-bottom: -0px;
+  margin-bottom: -80px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(56, 56, 56, 0.9) 30%,
+    rgba(56, 56, 56, 0.89)16%,
+     rgba(56, 56, 56, 0.88) 38%,
+     rgba(56, 56, 56, 0.987)100%
+  );
 }
 .split-video-countdown-inner {
   max-width: 560px;
@@ -1090,7 +1097,7 @@ width: 100vw;
          rgba(0, 0, 0, 0.9)100%
     );
   margin-top: -40px;
-  margin-bottom: -0px;
+  margin-bottom: -80px;
 }
 
 .split-image-countdown-inner {
@@ -1493,7 +1500,7 @@ width: 100vw;
          rgba(0, 0, 0, 0.9)100%
     );
   margin-top: -40px;
-  margin-bottom: -0px;
+  margin-bottom: -80px;
 }
 
 .photo-script-countdown-inner {
@@ -1874,6 +1881,7 @@ width: 100vw;
       #f4ece5 40%,
       #f8f2ec 100%
     );
+    margin-bottom: -40px;
 }
 
 .photo-card-countdown-inner {
@@ -2228,6 +2236,7 @@ margin-bottom: 2px;
       #f5f0ea 45%,
       #f7f3ee 100%
     );
+    margin-bottom: -60px;
 }
 
 .minimal-countdown-inner {
@@ -2608,6 +2617,7 @@ margin-bottom: 2px;
 .floral-countdown-section {
   width: 100%;
   padding: 18px 16px 56px;
+  margin-bottom: -40px;
   background:
     linear-gradient(
       180deg,
@@ -3026,7 +3036,8 @@ margin-bottom: 2px;
 
 .envelope-countdown-section {
   width: 100%;
-  padding: 18px 16px 56px;
+  padding: 8px 6px 0px;
+  margin-bottom: -40px;
   background:
     linear-gradient(
       180deg,

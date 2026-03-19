@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
-import floralImage from "../assets/floral.png";
+import floralFallback from "../assets/floral.png";
 
-function FloralIntro({ brideName, groomName, onEnter }) {
+function FloralIntro({ brideName, groomName, onEnter, backgroundImage }) {
   const brideInitial = brideName?.[0] || "A";
   const groomInitial = groomName?.[0] || "M";
+  const finalBackground = backgroundImage || floralFallback;
 
   return (
     <section className="floral-intro">
       <img
-        src={floralImage}
+        src={finalBackground}
         alt="Wedding floral background"
         className="floral-bg"
       />
@@ -22,8 +23,7 @@ function FloralIntro({ brideName, groomName, onEnter }) {
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
         <div className="floral-monogram">
-          {brideInitial} <span>&
-            </span> {groomInitial}
+          {brideInitial} <span>&</span> {groomInitial}
         </div>
 
         <h1 className="floral-names">
