@@ -50,63 +50,84 @@ function VideoBandInvitationCard({
           },
         ].filter((item) => item.value);
 
-  const revealUp = {
+  const heroFade = {
     hidden: {
       opacity: 0,
-      y: 70,
-      scale: 0.96,
-      filter: "blur(14px)",
-    },
-    visible: (delay = 0) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: {
-        duration: 1.15,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    }),
-  };
-
-  const revealSoft = {
-    hidden: {
-      opacity: 0,
-      y: 40,
-      scale: 0.985,
+      scale: 1.03,
       filter: "blur(10px)",
     },
-    visible: (delay = 0) => ({
+    visible: {
       opacity: 1,
-      y: 0,
       scale: 1,
       filter: "blur(0px)",
       transition: {
-        duration: 1,
-        delay,
+        duration: 1.1,
         ease: [0.22, 1, 0.36, 1],
       },
-    }),
+    },
   };
 
   const staggerWrap = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.16,
+        staggerChildren: 0.14,
+      },
+    },
+  };
+
+  const revealUp = {
+    hidden: {
+      opacity: 0,
+      y: 56,
+      scale: 0.97,
+      filter: "blur(10px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.95,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const revealSoft = {
+    hidden: {
+      opacity: 0,
+      y: 28,
+      scale: 0.99,
+      filter: "blur(8px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.85,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   };
 
   const timelineReveal = {
-    hidden: { opacity: 0, y: 34, filter: "blur(8px)" },
+    hidden: {
+      opacity: 0,
+      x: -18,
+      y: 18,
+      filter: "blur(6px)",
+    },
     visible: {
       opacity: 1,
+      x: 0,
       y: 0,
       filter: "blur(0px)",
       transition: {
-        duration: 0.9,
+        duration: 0.75,
         ease: [0.22, 1, 0.36, 1],
       },
     },
@@ -117,9 +138,9 @@ function VideoBandInvitationCard({
       <section className="video-band-editorial">
         <motion.div
           className="video-band-editorial-hero"
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+          initial="hidden"
+          animate="visible"
+          variants={heroFade}
         >
           <video
             className="video-band-editorial-video"
@@ -129,6 +150,7 @@ function VideoBandInvitationCard({
             loop
             playsInline
           />
+
           <div className="video-band-editorial-overlay" />
           <div className="video-band-editorial-glow" />
           <div className="video-band-editorial-grain" />
@@ -142,7 +164,6 @@ function VideoBandInvitationCard({
             <motion.p
               className="video-band-editorial-kicker"
               variants={revealSoft}
-              custom={0.15}
             >
               Wedding day
             </motion.p>
@@ -150,7 +171,6 @@ function VideoBandInvitationCard({
             <motion.h1
               className="video-band-editorial-names"
               variants={revealUp}
-              custom={0.28}
             >
               <span>{safeBrideName}</span>
               <span className="video-band-editorial-and">&</span>
@@ -161,7 +181,6 @@ function VideoBandInvitationCard({
               <motion.p
                 className="video-band-editorial-date"
                 variants={revealSoft}
-                custom={0.42}
               >
                 {details.date}
               </motion.p>
@@ -173,23 +192,19 @@ function VideoBandInvitationCard({
           <motion.div
             className="video-band-magazine-grid"
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.18 }}
+            animate="visible"
             variants={revealUp}
-            custom={0.08}
           >
             <motion.div
               className="video-band-magazine-col video-band-magazine-col-left"
-              variants={staggerWrap}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.18 }}
+              animate="visible"
+              variants={staggerWrap}
             >
               {details.welcomeText && (
                 <motion.section
                   className="video-band-mag-block video-band-mag-block-soft"
                   variants={revealSoft}
-                  custom={0.1}
                 >
                   <p className="video-band-mag-text">{details.welcomeText}</p>
                 </motion.section>
@@ -199,7 +214,6 @@ function VideoBandInvitationCard({
                 <motion.section
                   className="video-band-mag-block"
                   variants={revealSoft}
-                  custom={0.18}
                 >
                   <p className="video-band-mag-label">Datum</p>
                   <h3 className="video-band-mag-date">{details.date}</h3>
@@ -210,7 +224,6 @@ function VideoBandInvitationCard({
                 <motion.section
                   className="video-band-mag-block"
                   variants={revealSoft}
-                  custom={0.28}
                 >
                   <p className="video-band-mag-label">Lokacija</p>
                   <h3 className="video-band-mag-heading">{details.venue}</h3>
@@ -222,14 +235,16 @@ function VideoBandInvitationCard({
                   )}
 
                   {details.mapLink && (
-                    <a
+                    <motion.a
                       href={details.mapLink}
                       target="_blank"
                       rel="noreferrer"
                       className="video-band-mag-link"
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      transition={{ duration: 0.25 }}
                     >
                       Otvori mapu
-                    </a>
+                    </motion.a>
                   )}
                 </motion.section>
               )}
@@ -237,21 +252,21 @@ function VideoBandInvitationCard({
 
             <motion.div
               className="video-band-magazine-col video-band-magazine-col-right"
-              variants={staggerWrap}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.18 }}
+              animate="visible"
+              variants={staggerWrap}
             >
               {timelineItems.length > 0 && (
                 <motion.section
                   className="video-band-mag-block"
                   variants={revealSoft}
-                  custom={0.16}
                 >
                   <p className="video-band-mag-label">Raspored</p>
 
                   <motion.div
                     className="video-band-elegant-timeline"
+                    initial="hidden"
+                    animate="visible"
                     variants={staggerWrap}
                   >
                     {timelineItems.map((item, index) => (
@@ -282,7 +297,6 @@ function VideoBandInvitationCard({
                 <motion.section
                   className="video-band-mag-block"
                   variants={revealSoft}
-                  custom={0.28}
                 >
                   <p className="video-band-mag-label">
                     {details.dressCodeTitle || "Dress code"}
@@ -295,17 +309,21 @@ function VideoBandInvitationCard({
                         className="video-band-mag-palette-dot"
                         style={{ backgroundColor: color }}
                         aria-label={`dress code color ${index + 1}`}
-                        initial={{ opacity: 0, y: 16, scale: 0.82, filter: "blur(6px)" }}
-                        whileInView={{
+                        initial={{
+                          opacity: 0,
+                          y: 14,
+                          scale: 0.88,
+                          filter: "blur(4px)",
+                        }}
+                        animate={{
                           opacity: 1,
                           y: 0,
                           scale: 1,
                           filter: "blur(0px)",
                         }}
-                        viewport={{ once: true }}
                         transition={{
-                          duration: 0.8,
-                          delay: 0.18 + index * 0.12,
+                          duration: 0.7,
+                          delay: 0.55 + index * 0.1,
                           ease: [0.22, 1, 0.36, 1],
                         }}
                       />
@@ -324,7 +342,6 @@ function VideoBandInvitationCard({
                 <motion.section
                   className="video-band-mag-block video-band-mag-block-soft"
                   variants={revealSoft}
-                  custom={0.38}
                 >
                   <p className="video-band-mag-label">Napomena</p>
                   <p className="video-band-mag-text">{details.note}</p>
@@ -335,14 +352,26 @@ function VideoBandInvitationCard({
         </div>
       </section>
 
-      <div className="video-band-scroll-section">
+      <motion.div
+        className="video-band-scroll-section"
+        initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+      >
         <VideoBandRSVP />
-      </div>
+      </motion.div>
 
       {details.dateISO && (
-        <div className="video-band-scroll-section">
+        <motion.div
+          className="video-band-scroll-section"
+          initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.12 }}
+          transition={{ duration: 0.95, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+        >
           <VideoBandCountdown targetDate={details.dateISO} />
-        </div>
+        </motion.div>
       )}
     </>
   );
