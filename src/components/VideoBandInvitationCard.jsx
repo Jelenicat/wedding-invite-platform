@@ -142,14 +142,16 @@ function VideoBandInvitationCard({
           animate="visible"
           variants={heroFade}
         >
-          <video
-            className="video-band-editorial-video"
-            src={videoSrc || "/videos/wedding2.mp4"}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+       <video
+  className="video-band-editorial-video"
+  src={videoSrc || "/videos/wedding2.mp4"}
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  poster="/images/video-poster.jpg"
+/>
 
           <div className="video-band-editorial-overlay" />
           <div className="video-band-editorial-glow" />
