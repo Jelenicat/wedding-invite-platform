@@ -13,118 +13,184 @@ function VideoBandInvitationCard({
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
-  const infoItems = [
-    { label: "Okupljanje gostiju", value: details.gatheringTime },
-    { label: "Početak venčanja", value: details.ceremonyTime },
-    { label: "Crkveno venčanje", value: details.churchTime },
-    { label: "Lokacija", value: details.venue },
-    { label: "Crkva", value: details.churchVenue },
-    { label: "Proslava", value: details.dinnerTime },
-  ].filter((item) => item.value);
+ const iconMap = {
+  gathering: "/icons/gathering.svg",
+  church: "/icons/church.svg",
+  restaurant: "/icons/restaurant.svg",
+  civil: "/icons/civil.svg",
+};
+
+const timelineItems =
+  details.events?.length > 0
+    ? details.events.map((item) => ({
+        label: item.label,
+        value: item.time,
+        iconSrc: iconMap[item.icon],
+      }))
+    : [
+        {
+          label: "Skup svatova",
+          value: details.gatheringTime,
+          iconSrc: "/icons/gathering.svg",
+        },
+        {
+          label: "Crkveno venčanje",
+          value: details.churchTime,
+          iconSrc: "/icons/church.svg",
+        },
+        {
+          label: "Svečani ručak",
+          value: details.dinnerTime,
+          iconSrc: "/icons/restaurant.svg",
+        },
+        {
+          label: "Građansko venčanje",
+          value: details.ceremonyTime,
+          iconSrc: "/icons/civil.svg",
+        },
+      ].filter((item) => item.value);
 
   return (
     <>
       <motion.section
-        className="video-band-invitation"
+        className="video-band-editorial"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <video
-          className="video-band-invitation-bg"
-          src={videoSrc || "/videos/wedding2.mp4"}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        <div className="video-band-editorial-hero">
+          <video
+            className="video-band-editorial-video"
+            src={videoSrc || "/videos/wedding2.mp4"}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="video-band-editorial-overlay" />
 
-        <div className="video-band-invitation-overlay" />
+          <div className="video-band-editorial-names-wrap">
+            <p className="video-band-editorial-kicker">Wedding day</p>
 
-        <div className="video-band-paper">
-          <p className="video-band-kicker">Pozivnica</p>
+            <h1 className="video-band-editorial-names">
+              <span>{safeBrideName}</span>
+              <span className="video-band-editorial-and">&</span>
+              <span>{safeGroomName}</span>
+            </h1>
 
-          <h1 className="video-band-invitation-names">
-            <span>{safeBrideName}</span>
-            <span className="video-band-invitation-and">&</span>
-            <span>{safeGroomName}</span>
-          </h1>
+            {details.date && (
+              <p className="video-band-editorial-date">{details.date}</p>
+            )}
+          </div>
+        </div>
 
-          {details.date && <p className="video-band-date">{details.date}</p>}
+        <div className="video-band-editorial-sheet">
+          <div className="video-band-magazine-grid">
+            <div className="video-band-magazine-col video-band-magazine-col-left">
+              {details.welcomeText && (
+                <section className="video-band-mag-block video-band-mag-block-soft video-band-animate-up video-band-delay-1">
+                  <p className="video-band-mag-text">{details.welcomeText}</p>
+                </section>
+              )}
 
-          <div className="video-band-divider" />
+              {details.date && (
+                <section className="video-band-mag-block video-band-animate-up video-band-delay-2">
+                  <p className="video-band-mag-label">Datum</p>
+                  <h3 className="video-band-mag-date">{details.date}</h3>
+                </section>
+              )}
 
-          {details.welcomeText && (
-            <p className="video-band-text">{details.welcomeText}</p>
-          )}
+              {details.venue && (
+                <section className="video-band-mag-block video-band-animate-up video-band-delay-3">
+                  <p className="video-band-mag-label">Lokacija</p>
+                  <h3 className="video-band-mag-heading">{details.venue}</h3>
 
-          {infoItems.length > 0 && (
-            <div className="video-band-program">
-              {infoItems.map((item, index) => (
-                <div
-                  className="video-band-program-row"
-                  key={`${item.label}-${index}`}
-                >
-                  <span className="video-band-program-label">
-                    {item.label}
-                  </span>
-                  <span className="video-band-program-value">
-                    {item.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
+                  {details.churchVenue && (
+                    <p className="video-band-mag-subtext">
+                      Crkva: {details.churchVenue}
+                    </p>
+                  )}
 
-          {details.dressCodePalette?.length > 0 && (
-            <div className="video-band-extra">
-              <h3 className="video-band-section-title">
-                {details.dressCodeTitle || "Dress code"}
-              </h3>
-
-              <div className="video-band-palette">
-                {details.dressCodePalette.map((color, index) => (
-                  <span
-                    key={`${color}-${index}`}
-                    className="video-band-palette-dot"
-                    style={{ backgroundColor: color }}
-                    aria-label={`dress code color ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              {details.dressCodeNote && (
-                <p className="video-band-section-note">
-                  {details.dressCodeNote}
-                </p>
+                  {details.mapLink && (
+                    <a
+                      href={details.mapLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="video-band-mag-link"
+                    >
+                      Otvori mapu
+                    </a>
+                  )}
+                </section>
               )}
             </div>
-          )}
 
-          {details.mapLink && (
-            <div className="video-band-extra">
-              <h3 className="video-band-section-title">Lokacija</h3>
+            <div className="video-band-magazine-col video-band-magazine-col-right">
+              {timelineItems.length > 0 && (
+                <section className="video-band-mag-block video-band-animate-up video-band-delay-2">
+                  <p className="video-band-mag-label">Raspored</p>
 
-              <a
-                href={details.mapLink}
-                target="_blank"
-                rel="noreferrer"
-                className="video-band-map-link"
-              >
-                Otvori mapu
-              </a>
+                  <div className="video-band-elegant-timeline">
+                    {timelineItems.map((item, index) => (
+                      <div
+                        key={`${item.label}-${index}`}
+                        className="video-band-elegant-row"
+                      >
+                        <div className="video-band-elegant-icon">
+                          {item.iconSrc && <img src={item.iconSrc} alt="" />}
+                        </div>
+
+                        <div className="video-band-elegant-content">
+                          <div className="video-band-elegant-time">
+                            {item.value}
+                          </div>
+                          <div className="video-band-elegant-title">
+                            {item.label}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {details.dressCodePalette?.length > 0 && (
+                <section className="video-band-mag-block video-band-animate-up video-band-delay-3">
+                  <p className="video-band-mag-label">
+                    {details.dressCodeTitle || "Dress code"}
+                  </p>
+
+                  <div className="video-band-mag-palette">
+                    {details.dressCodePalette.map((color, index) => (
+                      <span
+                        key={`${color}-${index}`}
+                        className="video-band-mag-palette-dot"
+                        style={{ backgroundColor: color }}
+                        aria-label={`dress code color ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  {details.dressCodeNote && (
+                    <p className="video-band-mag-subtext">
+                      {details.dressCodeNote}
+                    </p>
+                  )}
+                </section>
+              )}
+
+              {details.note && (
+                <section className="video-band-mag-block video-band-mag-block-soft video-band-animate-up video-band-delay-4">
+                  <p className="video-band-mag-label">Napomena</p>
+                  <p className="video-band-mag-text">{details.note}</p>
+                </section>
+              )}
             </div>
-          )}
-
-          {details.note && <p className="video-band-note">{details.note}</p>}
+          </div>
         </div>
       </motion.section>
 
-      <VideoBandRSVP
-        brideName={safeBrideName}
-        groomName={safeGroomName}
-        details={details}
-      />
+      <VideoBandRSVP />
 
       {details.dateISO && (
         <VideoBandCountdown targetDate={details.dateISO} />

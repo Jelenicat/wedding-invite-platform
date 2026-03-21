@@ -1,43 +1,108 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import FloralInvitationCard from "../components/FloralInvitationCard";
+
 import FloralIntro from "../components/FloralIntro";
+import FloralInvitationCard from "../components/FloralInvitationCard";
+
 import EnvelopeIntro from "../components/EnvelopeIntro";
 import EnvelopeInvitationCard from "../components/EnvelopeInvitationCard";
+
 import MinimalIntro from "../components/MinimalIntro";
 import MinimalInvitationCard from "../components/MinimalInvitationCard";
+
 import PhotoScriptIntro from "../components/PhotoScriptIntro";
 import PhotoScriptInvitationCard from "../components/PhotoScriptInvitationCard";
+
 import PhotoCardIntro from "../components/PhotoCardIntro";
 import PhotoCardInvitationCard from "../components/PhotoCardInvitationCard";
+
 import VideoBandIntro from "../components/VideoBandIntro";
 import VideoBandInvitationCard from "../components/VideoBandInvitationCard";
+
 import SplitVideoIntro from "../components/SplitVideoIntro";
 import SplitVideoInvitationCard from "../components/SplitVideoInvitationCard";
+
 import SplitImageIntro from "../components/SplitImageIntro";
 import SplitImageInvitationCard from "../components/SplitImageInvitationCard";
+
+import BlackWhiteIntro from "../components/BlackWhiteIntro";
+
 import demoWedding from "../data/demoWedding";
-import "../styles/wedding.css";
 import "../styles/intro.css";
+
+const TEMPLATE_COMPONENTS = {
+  floral: {
+    Intro: FloralIntro,
+    Invitation: FloralInvitationCard,
+  },
+  envelope: {
+    Intro: EnvelopeIntro,
+    Invitation: EnvelopeInvitationCard,
+  },
+  minimal: {
+    Intro: MinimalIntro,
+    Invitation: MinimalInvitationCard,
+  },
+  "photo-script": {
+    Intro: PhotoScriptIntro,
+    Invitation: PhotoScriptInvitationCard,
+  },
+  "photo-card": {
+    Intro: PhotoCardIntro,
+    Invitation: PhotoCardInvitationCard,
+  },
+  "video-band": {
+    Intro: VideoBandIntro,
+    Invitation: VideoBandInvitationCard,
+  },
+  "split-video": {
+    Intro: SplitVideoIntro,
+    Invitation: SplitVideoInvitationCard,
+  },
+  "split-image": {
+    Intro: SplitImageIntro,
+    Invitation: SplitImageInvitationCard,
+  },
+  "black-white-intro": {
+    Intro: BlackWhiteIntro,
+    Invitation: EnvelopeInvitationCard,
+  },
+};
 
 function WeddingPage() {
   const { slug } = useParams();
 
-  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+  const [isIntroOpen, setIsIntroOpen] = useState(false);
   const [showInvitation, setShowInvitation] = useState(false);
 
   const invitation = useMemo(() => {
-    return demoWedding.find((item) => item.slug === slug) || demoWedding[0];
+    return demoWedding.find((item) => item.slug === slug);
   }, [slug]);
 
   useEffect(() => {
     if (!invitation) return;
 
-    document.title = `${invitation.brideName} & ${invitation.groomName} | Pozivnica`;
+    document.title =
+      invitation.type === "birthday"
+        ? `${invitation.brideName} | Pozivnica`
+        : `${invitation.brideName} & ${invitation.groomName} | Pozivnica`;
+
+    setIsIntroOpen(false);
+    setShowInvitation(false);
   }, [invitation]);
 
-  const handleEnvelopeOpen = () => {
-    setIsEnvelopeOpen(true);
+  if (!invitation) {
+    return <div className="wedding-page">Pozivnica nije pronađena.</div>;
+  }
+
+  const templateKey = invitation.template || "envelope";
+  const template = TEMPLATE_COMPONENTS[templateKey] || TEMPLATE_COMPONENTS.envelope;
+
+  const IntroComponent = template.Intro;
+  const InvitationComponent = template.Invitation;
+
+  const handleIntroOpen = () => {
+    setIsIntroOpen(true);
 
     setTimeout(() => {
       setShowInvitation(true);
@@ -48,132 +113,37 @@ function WeddingPage() {
     setShowInvitation(true);
   };
 
+  const introProps = {
+    brideName: invitation.brideName,
+    groomName: invitation.groomName,
+    backgroundImage: invitation.backgroundImage,
+    weddingDate: invitation.weddingDate,
+    weddingTime: invitation.weddingTime,
+    venue: invitation.venue,
+    introText: invitation.introText,
+    videoSrc: invitation.videoSrc,
+    image: invitation.image,
+    imageSrc: invitation.image,
+    onEnter: handleIntroEnter,
+    isOpen: isIntroOpen,
+    onOpen: handleIntroOpen,
+  };
+
+  const invitationProps = {
+    brideName: invitation.brideName,
+    groomName: invitation.groomName,
+    details: invitation.details,
+    image: invitation.image,
+    imageSrc: invitation.image,
+    videoSrc: invitation.videoSrc,
+  };
+
   return (
     <div className="wedding-page">
-      {!showInvitation && (
-        <>
-          {invitation.introType === "floral" ? (
-            <FloralIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              backgroundImage={invitation.backgroundImage}
-              onEnter={handleIntroEnter}
-            />
-          ) : invitation.introType === "minimal" ? (
-            <MinimalIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              weddingDate={invitation.weddingDate}
-              weddingTime={invitation.weddingTime}
-              venue={invitation.venue}
-              introText={invitation.introText}
-              onEnter={handleIntroEnter}
-            />
-          ) : invitation.introType === "photo-script" ? (
-            <PhotoScriptIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              videoSrc={invitation.videoSrc}
-              onEnter={handleIntroEnter}
-            />
-          ) : invitation.introType === "photo-card" ? (
-            <PhotoCardIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              weddingDate={invitation.weddingDate}
-              location={invitation.venue}
-              image={invitation.image}
-              onEnter={handleIntroEnter}
-            />
-          ) : invitation.introType === "video-band" ? (
-            <VideoBandIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              videoSrc={invitation.videoSrc}
-              onEnter={handleIntroEnter}
-            />
-          ) : invitation.introType === "split-video" ? (
-            <SplitVideoIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              videoSrc={invitation.videoSrc}
-              onEnter={handleIntroEnter}
-            />
-          ) : invitation.introType === "split-image" ? (
-            <SplitImageIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              imageSrc={invitation.image}
-              onEnter={handleIntroEnter}
-            />
-          ) : (
-            <EnvelopeIntro
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              isOpen={isEnvelopeOpen}
-              onOpen={handleEnvelopeOpen}
-            />
-          )}
-        </>
-      )}
-
-      {showInvitation && (
-        <>
-          {invitation.introType === "floral" ? (
-            <FloralInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              details={invitation.details}
-            />
-          ) : invitation.introType === "minimal" ? (
-            <MinimalInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              details={invitation.details}
-            />
-          ) : invitation.introType === "photo-card" ? (
-            <PhotoCardInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              image={invitation.image}
-              details={invitation.details}
-            />
-          ) : invitation.introType === "photo-script" ? (
-            <PhotoScriptInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              videoSrc={invitation.videoSrc}
-              details={invitation.details}
-            />
-          ) : invitation.introType === "video-band" ? (
-            <VideoBandInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              videoSrc={invitation.videoSrc}
-              details={invitation.details}
-            />
-          ) : invitation.introType === "split-video" ? (
-            <SplitVideoInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              videoSrc={invitation.videoSrc}
-              details={invitation.details}
-            />
-          ) : invitation.introType === "split-image" ? (
-            <SplitImageInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              imageSrc={invitation.image}
-              details={invitation.details}
-            />
-          ) : (
-            <EnvelopeInvitationCard
-              brideName={invitation.brideName}
-              groomName={invitation.groomName}
-              details={invitation.details}
-            />
-          )}
-        </>
+      {!showInvitation ? (
+        <IntroComponent {...introProps} />
+      ) : (
+        <InvitationComponent {...invitationProps} />
       )}
     </div>
   );
