@@ -13,52 +13,135 @@ function VideoBandInvitationCard({
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
- const iconMap = {
-  gathering: "/icons/gathering.svg",
-  church: "/icons/church.svg",
-  restaurant: "/icons/restaurant.svg",
-  civil: "/icons/civil.svg",
-};
+  const iconMap = {
+    gathering: "/icons/gathering.svg",
+    church: "/icons/church.svg",
+    restaurant: "/icons/restaurant.svg",
+    civil: "/icons/civil.svg",
+  };
 
-const timelineItems =
-  details.events?.length > 0
-    ? details.events.map((item) => ({
-        label: item.label,
-        value: item.time,
-        iconSrc: iconMap[item.icon],
-      }))
-    : [
-        {
-          label: "Skup svatova",
-          value: details.gatheringTime,
-          iconSrc: "/icons/gathering.svg",
-        },
-        {
-          label: "Crkveno venčanje",
-          value: details.churchTime,
-          iconSrc: "/icons/church.svg",
-        },
-        {
-          label: "Svečani ručak",
-          value: details.dinnerTime,
-          iconSrc: "/icons/restaurant.svg",
-        },
-        {
-          label: "Građansko venčanje",
-          value: details.ceremonyTime,
-          iconSrc: "/icons/civil.svg",
-        },
-      ].filter((item) => item.value);
+  const timelineItems =
+    details.events?.length > 0
+      ? details.events.map((item) => ({
+          label: item.label,
+          value: item.time,
+          iconSrc: iconMap[item.icon],
+        }))
+      : [
+          {
+            label: "Skup svatova",
+            value: details.gatheringTime,
+            iconSrc: "/icons/gathering.svg",
+          },
+          {
+            label: "Crkveno venčanje",
+            value: details.churchTime,
+            iconSrc: "/icons/church.svg",
+          },
+          {
+            label: "Svečani ručak",
+            value: details.dinnerTime,
+            iconSrc: "/icons/restaurant.svg",
+          },
+          {
+            label: "Građansko venčanje",
+            value: details.ceremonyTime,
+            iconSrc: "/icons/civil.svg",
+          },
+        ].filter((item) => item.value);
+
+  const heroFade = {
+    hidden: {
+      opacity: 0,
+      scale: 1.04,
+      filter: "blur(10px)",
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const staggerWrap = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.16,
+      },
+    },
+  };
+
+  const revealUp = {
+    hidden: {
+      opacity: 0,
+      y: 70,
+      scale: 0.96,
+      filter: "blur(12px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 1.05,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const revealSoft = {
+    hidden: {
+      opacity: 0,
+      y: 38,
+      scale: 0.985,
+      filter: "blur(8px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const timelineReveal = {
+    hidden: {
+      opacity: 0,
+      x: -24,
+      y: 24,
+      filter: "blur(8px)",
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.85,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
   return (
     <>
-      <motion.section
-        className="video-band-editorial"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        <div className="video-band-editorial-hero">
+      <section className="video-band-editorial">
+        <motion.div
+          className="video-band-editorial-hero"
+          variants={heroFade}
+          initial="hidden"
+          animate="visible"
+        >
           <video
             className="video-band-editorial-video"
             src={videoSrc || "/videos/wedding2.mp4"}
@@ -67,41 +150,80 @@ const timelineItems =
             loop
             playsInline
           />
+
           <div className="video-band-editorial-overlay" />
+          <div className="video-band-editorial-glow" />
+          <div className="video-band-editorial-grain" />
 
-          <div className="video-band-editorial-names-wrap">
-            <p className="video-band-editorial-kicker">Wedding day</p>
+          <motion.div
+            className="video-band-editorial-names-wrap"
+            variants={staggerWrap}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.p
+              className="video-band-editorial-kicker"
+              variants={revealSoft}
+            >
+              Wedding day
+            </motion.p>
 
-            <h1 className="video-band-editorial-names">
+            <motion.h1
+              className="video-band-editorial-names"
+              variants={revealUp}
+            >
               <span>{safeBrideName}</span>
               <span className="video-band-editorial-and">&</span>
               <span>{safeGroomName}</span>
-            </h1>
+            </motion.h1>
 
             {details.date && (
-              <p className="video-band-editorial-date">{details.date}</p>
+              <motion.p
+                className="video-band-editorial-date"
+                variants={revealSoft}
+              >
+                {details.date}
+              </motion.p>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <div className="video-band-editorial-sheet">
-          <div className="video-band-magazine-grid">
-            <div className="video-band-magazine-col video-band-magazine-col-left">
+          <motion.div
+            className="video-band-magazine-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.16 }}
+            variants={revealUp}
+          >
+            <motion.div
+              className="video-band-magazine-col video-band-magazine-col-left"
+              variants={staggerWrap}
+            >
               {details.welcomeText && (
-                <section className="video-band-mag-block video-band-mag-block-soft video-band-animate-up video-band-delay-1">
+                <motion.section
+                  className="video-band-mag-block video-band-mag-block-soft"
+                  variants={revealSoft}
+                >
                   <p className="video-band-mag-text">{details.welcomeText}</p>
-                </section>
+                </motion.section>
               )}
 
               {details.date && (
-                <section className="video-band-mag-block video-band-animate-up video-band-delay-2">
+                <motion.section
+                  className="video-band-mag-block"
+                  variants={revealSoft}
+                >
                   <p className="video-band-mag-label">Datum</p>
                   <h3 className="video-band-mag-date">{details.date}</h3>
-                </section>
+                </motion.section>
               )}
 
               {details.venue && (
-                <section className="video-band-mag-block video-band-animate-up video-band-delay-3">
+                <motion.section
+                  className="video-band-mag-block"
+                  variants={revealSoft}
+                >
                   <p className="video-band-mag-label">Lokacija</p>
                   <h3 className="video-band-mag-heading">{details.venue}</h3>
 
@@ -112,29 +234,44 @@ const timelineItems =
                   )}
 
                   {details.mapLink && (
-                    <a
+                    <motion.a
                       href={details.mapLink}
                       target="_blank"
                       rel="noreferrer"
                       className="video-band-mag-link"
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      transition={{ duration: 0.25 }}
                     >
                       Otvori mapu
-                    </a>
+                    </motion.a>
                   )}
-                </section>
+                </motion.section>
               )}
-            </div>
+            </motion.div>
 
-            <div className="video-band-magazine-col video-band-magazine-col-right">
+            <motion.div
+              className="video-band-magazine-col video-band-magazine-col-right"
+              variants={staggerWrap}
+            >
               {timelineItems.length > 0 && (
-                <section className="video-band-mag-block video-band-animate-up video-band-delay-2">
+                <motion.section
+                  className="video-band-mag-block"
+                  variants={revealSoft}
+                >
                   <p className="video-band-mag-label">Raspored</p>
 
-                  <div className="video-band-elegant-timeline">
+                  <motion.div
+                    className="video-band-elegant-timeline"
+                    variants={staggerWrap}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                  >
                     {timelineItems.map((item, index) => (
-                      <div
+                      <motion.div
                         key={`${item.label}-${index}`}
                         className="video-band-elegant-row"
+                        variants={timelineReveal}
                       >
                         <div className="video-band-elegant-icon">
                           {item.iconSrc && <img src={item.iconSrc} alt="" />}
@@ -148,25 +285,46 @@ const timelineItems =
                             {item.label}
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
-                  </div>
-                </section>
+                  </motion.div>
+                </motion.section>
               )}
 
               {details.dressCodePalette?.length > 0 && (
-                <section className="video-band-mag-block video-band-animate-up video-band-delay-3">
+                <motion.section
+                  className="video-band-mag-block"
+                  variants={revealSoft}
+                >
                   <p className="video-band-mag-label">
                     {details.dressCodeTitle || "Dress code"}
                   </p>
 
                   <div className="video-band-mag-palette">
                     {details.dressCodePalette.map((color, index) => (
-                      <span
+                      <motion.span
                         key={`${color}-${index}`}
                         className="video-band-mag-palette-dot"
                         style={{ backgroundColor: color }}
                         aria-label={`dress code color ${index + 1}`}
+                        initial={{
+                          opacity: 0,
+                          y: 18,
+                          scale: 0.82,
+                          filter: "blur(6px)",
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          y: 0,
+                          scale: 1,
+                          filter: "blur(0px)",
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.8,
+                          delay: index * 0.12,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
                       />
                     ))}
                   </div>
@@ -176,24 +334,43 @@ const timelineItems =
                       {details.dressCodeNote}
                     </p>
                   )}
-                </section>
+                </motion.section>
               )}
 
               {details.note && (
-                <section className="video-band-mag-block video-band-mag-block-soft video-band-animate-up video-band-delay-4">
+                <motion.section
+                  className="video-band-mag-block video-band-mag-block-soft"
+                  variants={revealSoft}
+                >
                   <p className="video-band-mag-label">Napomena</p>
                   <p className="video-band-mag-text">{details.note}</p>
-                </section>
+                </motion.section>
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
-      <VideoBandRSVP />
+      <motion.div
+        className="video-band-scroll-section"
+        initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.18 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <VideoBandRSVP />
+      </motion.div>
 
       {details.dateISO && (
-        <VideoBandCountdown targetDate={details.dateISO} />
+        <motion.div
+          className="video-band-scroll-section"
+          initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 1, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <VideoBandCountdown targetDate={details.dateISO} />
+        </motion.div>
       )}
     </>
   );
