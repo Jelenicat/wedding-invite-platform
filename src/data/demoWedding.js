@@ -82,24 +82,49 @@ const demoWedding = [
     weddingDate: "12 SEP 2026",
     weddingTime: "17:00",
     venue: "Topčider, Beograd",
-    details: createDetails({
-      welcomeText:
-        "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
-      date: "12 SEP 2026",
-      dateISO: "2026-09-12T17:00:00",
-      gatheringTime: "16:30",
-      ceremonyTime: "17:00",
-      churchTime: "15:30",
-      venue: "Topčider, Beograd",
-      churchVenue: "Crkva Svetog Marka, Beograd",
-      dinnerTime: "18:30",
-      dressCodeTitle: "Dress code",
-      dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
-      dressCodeNote:
-        "Molimo vas da birate nežne, zemljane i puderaste tonove.",
-      mapLink: "https://maps.google.com/?q=Topcider+Beograd",
-      note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
-    }),
+details: createDetails({
+  welcomeText:
+    "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
+
+  date: "12 SEP 2026",
+  dateISO: "2026-09-12T17:00:00",
+events: [
+  {
+    label: "Okupljanje gostiju",
+    time: "16:30",
+    icon: "gathering",
+    location: "Topčider, Beograd",
+  },
+  {
+    label: "Crkveno venčanje",
+    time: "15:30",
+    icon: "church",
+    location: "Crkva Svetog Marka",
+  },
+  {
+    label: "Građansko venčanje",
+    time: "17:00",
+    icon: "civil",
+    location: "Topčider, Beograd",
+  },
+  {
+    label: "Svečani ručak",
+    time: "18:30",
+    icon: "restaurant",
+    location: "Restoran Topčiderac",
+  },
+],
+  venue: "Topčider, Beograd",
+  churchVenue: "Crkva Svetog Marka, Beograd",
+
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
+  dressCodeNote:
+    "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+
+  mapLink: "https://maps.google.com/?q=Topcider+Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+})
   },
 
   {
@@ -112,24 +137,51 @@ const demoWedding = [
     weddingDate: "12 SEP 2026",
     weddingTime: "17:00",
     venue: "Topčider, Beograd",
-    details: createDetails({
-      welcomeText:
-        "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
-      date: "12 SEP 2026",
-      dateISO: "2026-09-12T17:00:00",
-      gatheringTime: "16:30",
-      ceremonyTime: "17:00",
-      churchTime: "15:30",
-      venue: "Topčider, Beograd",
-      churchVenue: "Crkva Svetog Marka, Beograd",
-      dinnerTime: "18:30",
-      dressCodeTitle: "Dress code",
-      dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
-      dressCodeNote:
-        "Molimo vas da birate nežne, zemljane i puderaste tonove.",
-      mapLink: "https://maps.google.com/?q=Topcider+Beograd",
-      note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
-    }),
+details: createDetails({
+  welcomeText:
+    "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
+
+  date: "12 SEP 2026",
+  dateISO: "2026-09-12T17:00:00",
+
+events: [
+  {
+    label: "Okupljanje gostiju",
+    time: "16:30",
+    icon: "gathering",
+    location: "Topčider, Beograd",
+  },
+  {
+    label: "Crkveno venčanje",
+    time: "15:30",
+    icon: "church",
+    location: "Crkva Svetog Marka",
+  },
+  {
+    label: "Građansko venčanje",
+    time: "17:00",
+    icon: "civil",
+    location: "Topčider, Beograd",
+  },
+  {
+    label: "Svečani ručak",
+    time: "18:30",
+    icon: "restaurant",
+    location: "Restoran Topčiderac",
+  },
+],
+
+  venue: "Topčider, Beograd",
+  churchVenue: "Crkva Svetog Marka, Beograd",
+
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
+  dressCodeNote:
+    "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+
+  mapLink: "https://maps.google.com/?q=Topcider+Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+})
   },
 
   {
@@ -142,55 +194,106 @@ const demoWedding = [
     weddingDate: "12 SEP 2026",
     weddingTime: "17:00",
     venue: "Topčider, Beograd",
-    details: createDetails({
-      welcomeText:
-        "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
-      date: "12 SEP 2026",
-      dateISO: "2026-09-12T17:00:00",
-      gatheringTime: "16:30",
-      ceremonyTime: "17:00",
-      churchTime: "15:30",
-      venue: "Topčider, Beograd",
-      churchVenue: "Crkva Svetog Marka, Beograd",
-      dinnerTime: "18:30",
-      dressCodeTitle: "Dress code",
-      dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
-      dressCodeNote:
-        "Molimo vas da birate nežne, zemljane i puderaste tonove.",
-      mapLink: "https://maps.google.com/?q=Topcider+Beograd",
-      note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
-    }),
+details: createDetails({
+  welcomeText:
+    "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
+
+  date: "12 SEP 2026",
+  dateISO: "2026-09-12T17:00:00",
+events: [
+  {
+    label: "Okupljanje gostiju",
+    time: "16:30",
+    icon: "gathering",
+    location: "Topčider, Beograd",
+  },
+  {
+    label: "Crkveno venčanje",
+    time: "15:30",
+    icon: "church",
+    location: "Crkva Svetog Marka",
+  },
+  {
+    label: "Građansko venčanje",
+    time: "17:00",
+    icon: "civil",
+    location: "Topčider, Beograd",
+  },
+  {
+    label: "Svečani ručak",
+    time: "18:30",
+    icon: "restaurant",
+    location: "Restoran Topčiderac",
+  },
+],
+
+  venue: "Topčider, Beograd",
+  churchVenue: "Crkva Svetog Marka, Beograd",
+
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
+  dressCodeNote:
+    "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+
+  mapLink: "https://maps.google.com/?q=Topcider+Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+})
   },
 
+{
+  slug: "milica-ognjen",
+  type: "wedding",
+  template: "minimal",
+  brideName: "Milica",
+  groomName: "Ognjen",
+  weddingDate: "05 OKT 2026",
+  weddingTime: "15:30",
+  venue: "Beli dvor, Beograd",
+  introText:
+    "Pozivamo vas da zajedno sa nama proslavite ljubav, radost i početak novog poglavlja.",
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "05 OKT 2026",
+    dateISO: "2026-10-05T15:30:00",
+
+    events: [
   {
-    slug: "milica-ognjen",
-    type: "wedding",
-    template: "minimal",
-    brideName: "Milica",
-    groomName: "Ognjen",
-    weddingDate: "05 OKT 2026",
-    weddingTime: "15:30",
-    venue: "Beli dvor, Beograd",
-    introText:
-      "Pozivamo vas da zajedno sa nama proslavite ljubav, radost i početak novog poglavlja.",
-    details: createDetails({
-      welcomeText:
-        "Pozivamo vas da zajedno sa nama proslavite ljubav, radost i početak novog poglavlja.",
-      date: "05 OKT 2026",
-      dateISO: "2026-10-05T15:30:00",
-      gatheringTime: "15:00",
-      ceremonyTime: "15:30",
-      churchTime: "14:30",
-      venue: "Beli dvor, Beograd",
-      churchVenue: "Crkva Svetog Save, Beograd",
-      dinnerTime: "18:00",
-      dressCodeTitle: "Dress code",
-      dressCodePalette: ["#d8d2c8", "#b8b0a4", "#8d8b82", "#efe7dd"],
-      dressCodeNote: "Molimo vas da birate neutralne i elegantne tonove.",
-      mapLink: "https://maps.google.com/?q=Beli+dvor+Beograd",
-      note: "Biće nam čast da budete deo našeg dana.",
-    }),
+    label: "Crkveno venčanje",
+    time: "14:30",
+    icon: "church",
+    location: "Crkva Svetog Save, Beograd",
   },
+  {
+    label: "Ceremonija",
+    time: "15:30",
+    icon: "civil",
+    location: "Beli dvor, Beograd",
+  },
+  {
+    label: "Banket",
+    time: "18:00",
+    icon: "restaurant",
+    location: "Beli dvor, Beograd",
+  },
+  {
+    label: "Završetak večeri",
+    time: "23:00",
+    icon: "party",
+    location: "Beli dvor, Beograd",
+  },
+],
+dressCodeWomen: "večernje ili koktel haljine",
+dressCodeMen: "klasično odelo i košulja",
+dressCodeNote:
+  "Nam bude prijatno, ako svojim outfitom podržite stilsku notu našeg venčanja.",
+dressCodePalette: ["#f0c9d2", "#dfb6ca", "#eed8df", "#f2e5ea"],
+
+    mapLink: "https://maps.google.com/?q=Beli+dvor+Beograd",
+    note: "Biće nam čast da budete deo našeg dana.",
+  }),
+},
 
   {
     slug: "anja-marko",
@@ -350,7 +453,7 @@ const demoWedding = [
     weddingTime: "17:00",
     
    details: createDetails({
-  welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+ 
   date: "18 SEP 2026",
   dateISO: "2026-09-18T17:00:00",
 

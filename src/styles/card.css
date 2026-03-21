@@ -1,12 +1,11 @@
 /* =========================
-   FLORAL INVITATION CARD
+   FLORAL INVITATION CARD - EDITORIAL
 ========================= */
 
 .floral-invitation-card {
   position: relative;
   width: 100%;
   min-height: 100dvh;
-  
   overflow: hidden;
   background: url("../assets/floral.png") center/cover no-repeat;
   display: flex;
@@ -21,8 +20,8 @@
   background:
     linear-gradient(
       180deg,
-      rgba(248, 244, 239, 0.78),
-      rgba(248, 244, 239, 0.88)
+      rgba(248, 244, 239, 0.8),
+      rgba(248, 244, 239, 0.9)
     );
 }
 
@@ -59,8 +58,8 @@
   max-width: 560px;
   background: linear-gradient(
     180deg,
-    rgba(255, 250, 246, 0.96),
-    rgba(252, 247, 242, 0.94)
+    rgba(255, 250, 246, 0.97),
+    rgba(252, 247, 242, 0.95)
   );
   border: 1px solid rgba(140, 111, 96, 0.14);
   box-shadow:
@@ -68,7 +67,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  padding: 34px 24px 30px;
+  padding: 38px 24px 34px;
   text-align: center;
   overflow: hidden;
 }
@@ -87,7 +86,6 @@
   height: 88px;
   margin: 0 auto 20px;
   border-radius: 50%;
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,7 +93,6 @@
   color: #8c6f60;
   font-family: "Cormorant Garamond", serif;
   font-size: 28px;
-  
 }
 
 .floral-monogram-and {
@@ -117,7 +114,7 @@
 .floral-invitation-names span {
   font-style: italic;
   font-weight: 400;
-  color: #cb7474; /* tvoja roze nijansa */
+  color: #cb7474;
 }
 
 .floral-divider {
@@ -147,42 +144,144 @@
   color: #6d5b52;
 }
 
-.floral-date-block {
-  margin: 0 0 22px;
+.floral-editorial-text {
+  max-width: 390px;
 }
-.floral-date-block::after {
-  content: "";
-  display: block;
-  width: 70px;
-  height: 1px;
-  margin: 18px auto 0;
-  background: linear-gradient(
-    90deg,
-    rgba(140, 111, 96, 0),
-    rgba(140, 111, 96, 0.65),
-    rgba(140, 111, 96, 0)
-  );
+
+/* =========================
+   CALENDAR
+========================= */
+
+.floral-calendar-card {
+  margin: 28px auto 34px;
+  max-width: 330px;
+  text-align: center;
 }
-.floral-date {
+
+.floral-calendar-month {
+  margin: 0 0 14px;
+  font-family: "Allura", "Great Vibes", cursive;
+  font-size: 2rem;
+  color: #9b8678;
+}
+
+.floral-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.floral-calendar-weekdays span {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9f9086;
+}
+
+.floral-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px 6px;
+}
+
+.floral-calendar-day {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #7e7066;
+  border-radius: 50%;
+}
+
+.floral-calendar-day.is-empty {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floral-calendar-day.is-active {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  background: rgba(203, 116, 116, 0.12);
+  color: #b86e6e;
+  font-weight: 600;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 8px 16px rgba(120, 80, 70, 0.08);
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.floral-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  margin: 6px auto 0;
+  max-width: 360px;
+}
+
+.floral-timeline-item {
+  text-align: center;
+}
+
+.floral-timeline-icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floral-timeline-icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  opacity: 0.72;
+  filter: grayscale(18%);
+}
+
+.floral-timeline-title {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.05;
+  color: #5f5047;
+}
+
+.floral-timeline-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.floral-timeline-time {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
- font-size: clamp(2.3rem, 4vw, 3.1rem);
-  letter-spacing: 0.08em;
-  color: #7d6457;
+  font-size: 2rem;
+  line-height: 1;
+  color: #5f5047;
 }
-.floral-program-card,
+
+.floral-timeline-location {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #867870;
+}
+
+/* =========================
+   EXTRA CARD
+========================= */
+
 .floral-extra-card {
-  padding: 24px 22px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.52);
-  border: 1px solid rgba(140, 111, 96, 0.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.58),
-    0 8px 18px rgba(80, 60, 48, 0.04);
-}
-.floral-program-card {
-  margin: 0 auto;
-  padding: 20px 18px;
+  margin: 28px auto 0;
+  padding: 24px 18px;
   max-width: 430px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.42);
@@ -190,29 +289,96 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-.floral-program-row {
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(140, 111, 96, 0.1);
+.floral-section-title {
+  margin: 0 0 14px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #6d5b52;
 }
 
-.floral-program-row:last-child {
-  border-bottom: none;
+.floral-section-note {
+  margin: 14px auto 0;
+  max-width: 320px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #7a665a;
 }
 
-.floral-program-label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #9a8172;
+.floral-dresscode-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding-top: 8px;
 }
 
-.floral-program-value {
-  display: block;
-  font-size: 17px;
-  line-height: 1.65;
-  color: #5a4a42;
+.floral-dresscode-icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floral-dresscode-icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  opacity: 0.72;
+}
+
+.floral-dresscode-note {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.floral-palette {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.floral-palette-dot {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 6px 14px rgba(80, 60, 48, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  border-radius: 50%;
+}
+
+.floral-dresscode-palette {
+  margin-top: 8px;
+}
+
+.floral-map-card {
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.floral-map-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  padding: 12px 18px;
+  margin-top: 2px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(140, 111, 96, 0.16);
+  background: #b4baa8;
+  color: #f8f7f2;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+}
+
+.floral-map-link:hover {
+  transform: translateY(-2px);
+  background: #a6ad9a;
+  box-shadow: 0 10px 18px rgba(80, 60, 48, 0.08);
 }
 
 .floral-invitation-note {
@@ -223,18 +389,30 @@
   color: #7a665a;
   font-style: italic;
 }
+.floral-timeline-time {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  color: #5f5047;
+}
 
-/* MOBILE */
+.floral-timeline-location-inline {
+  font-size: 1.25rem;
+  color: #8b7e75;
+  margin-left: 4px;
+}
+
+.floral-timeline-separator {
+  margin: 0 6px;
+  color: #b7a79d;
+}
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 640px) {
-  .floral-invitation-card {
-    width: 100%;
-    
-  }
-
   .floral-paper {
     max-width: 360px;
-    padding: 26px 16px 24px;
+    padding: 28px 16px 26px;
     border-radius: 28px;
   }
 
@@ -260,121 +438,57 @@
     max-width: 290px;
   }
 
-  .floral-date {
-    font-size: 2rem;
+  .floral-calendar-card {
+    max-width: 290px;
   }
 
-  .floral-program-card {
-    padding: 16px 14px;
-    border-radius: 20px;
+  .floral-calendar-month {
+    font-size: 1.85rem;
   }
 
-  .floral-program-label {
-    font-size: 10px;
+  .floral-calendar-day {
+    font-size: 14px;
+    min-height: 24px;
   }
 
-  .floral-program-value {
-    font-size: 15px;
+  .floral-calendar-day.is-active {
+    width: 28px;
+    height: 28px;
+  }
+
+  .floral-timeline {
+    gap: 28px;
+    max-width: 300px;
+  }
+
+  .floral-timeline-icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .floral-timeline-icon img,
+  .floral-dresscode-icon img {
+    width: 58px;
+    height: 58px;
+  }
+
+  .floral-timeline-title,
+  .floral-section-title {
+    font-size: 1.7rem;
+  }
+
+  .floral-timeline-time {
+    font-size: 1.8rem;
+  }
+
+  .floral-timeline-location {
+    font-size: 14px;
     line-height: 1.55;
   }
 
-  .floral-invitation-note {
-    font-size: 13px;
-    max-width: 290px;
-  }
-}
-.floral-extra-card {
-  margin: 18px auto 0;
-  padding: 20px 18px;
-  max-width: 430px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.42);
-  border: 1px solid rgba(140, 111, 96, 0.12);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.floral-section-title {
-  margin: 0 0 14px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #7d6457;
-}
-
-.floral-section-note {
-  margin: 14px auto 0;
-  max-width: 320px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #7a665a;
-}
-
-.floral-palette {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.floral-palette-dot {
-  width: 32px;
-  height: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.55);
-  box-shadow:
-    0 6px 14px rgba(80, 60, 48, 0.08),
-    inset 0 1px 0 rgba(255,255,255,0.4);
-      border-radius: 50%;
-}
-
-
-
-.floral-map-wrap {
-  width: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  border: 1px solid rgba(140, 111, 96, 0.1);
-}
-
-.floral-map-wrap iframe {
-  width: 100%;
-  height: 240px;
-  border: 0;
-  display: block;
-}
-
-.floral-map-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 170px;
-  padding: 11px 18px;
-  margin-top: 4px;
-  border-radius: 999px;
-  text-decoration: none;
-  border: 1px solid rgba(140, 111, 96, 0.18);
-  background: rgba(255, 255, 255, 0.42);
-  color: #7d6457;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: all 0.25s ease;
-}
-
-.floral-map-link:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.58);
-  box-shadow: 0 10px 18px rgba(80, 60, 48, 0.08);
-}
-
-@media (max-width: 640px) {
   .floral-extra-card {
-    padding: 16px 14px;
+    padding: 18px 14px;
     border-radius: 20px;
-  }
-
-  .floral-section-title {
-    font-size: 1.3rem;
   }
 
   .floral-palette-dot {
@@ -382,11 +496,8 @@
     height: 30px;
   }
 
-  .floral-map-wrap iframe {
-    height: 210px;
-  }
-
-  .floral-section-note {
+  .floral-section-note,
+  .floral-invitation-note {
     font-size: 13px;
   }
 }
@@ -398,7 +509,6 @@
   position: relative;
   width: 100%;
   min-height: 100dvh;
-  
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -447,7 +557,7 @@
 }
 
 .minimal-invitation-kicker {
-  margin: 18px 0 18px;
+   margin: 18px 0 18px;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1rem;
   letter-spacing: 0.24em;
@@ -626,6 +736,170 @@
   font-style: italic;
 }
 
+/* =========================
+   NOVO - PLAN VENCANJA
+========================= */
+
+.minimal-script-title {
+  margin-bottom: 18px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #302f2e;
+}
+
+.minimal-program-editorial {
+  max-width: 300px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.minimal-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.minimal-timeline-row {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 12px;
+  align-items: start;
+  text-align: left;
+}
+
+.minimal-timeline-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.minimal-timeline-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minimal-timeline-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  opacity: 0.72;
+}
+
+.minimal-timeline-line {
+  width: 1px;
+  height: 26px;
+  margin-top: 4px;
+  background: rgba(110, 100, 92, 0.24);
+}
+
+.minimal-timeline-right {
+  padding-top: 0;
+}
+
+.minimal-timeline-time {
+  margin: 0 0 3px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #7c736d;
+  font-weight: 600;
+}
+
+.minimal-timeline-separator {
+  color: #b2a7a0;
+  margin: 0 4px;
+}
+
+.minimal-timeline-location-inline {
+  font-size: 0.72rem;
+  color: #8f857d;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.minimal-timeline-title {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  font-weight: 500;
+  color: #4f4843;
+}
+
+/* =========================
+   NOVO - DRESS CODE
+========================= */
+
+.minimal-dresscode-editorial {
+  max-width: 300px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.minimal-dresscode-note-editorial {
+  max-width: 250px;
+  margin: 0 auto 14px;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.minimal-dresscode-role {
+  max-width: 230px;
+  margin: 0 auto 12px;
+  text-align: left;
+}
+
+.minimal-dresscode-role-title {
+  margin: 0 0 4px;
+  font-family: "Allura", "Great Vibes", cursive;
+  font-size: 1.5rem;
+  color: #8e8178;
+}
+
+.minimal-dresscode-role-text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #4f4843;
+}
+
+.minimal-palette-box {
+  max-width: 210px;
+  margin: 10px auto 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(110, 100, 92, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.minimal-palette-editorial {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.minimal-palette-dot-editorial {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(62, 48, 40, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.minimal-dresscode-role-men {
+  margin-top: 8px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 480px) {
   .minimal-invitation-paper {
     width: min(360px, 92vw);
@@ -673,6 +947,40 @@
   .minimal-section-note,
   .minimal-invitation-note {
     font-size: 0.8rem;
+  }
+
+  .minimal-script-title {
+    font-size: 1.8rem;
+  }
+
+  .minimal-timeline-row {
+    grid-template-columns: 30px 1fr;
+    gap: 10px;
+  }
+
+  .minimal-timeline-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .minimal-timeline-icon img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .minimal-timeline-title {
+    font-size: 0.9rem;
+  }
+
+  .minimal-timeline-time,
+  .minimal-timeline-location-inline,
+  .minimal-dresscode-role-text {
+    font-size: 0.8rem;
+  }
+
+  .minimal-palette-dot-editorial {
+    width: 24px;
+    height: 24px;
   }
 }
 /* =========================

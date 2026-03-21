@@ -13,20 +13,18 @@ function MinimalInvitationCard({
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
-
-  const brideInitial = safeBrideName[0];
-  const groomInitial = safeGroomName[0];
-
   const finalBg = backgroundImage || minimalBg;
 
-  const infoItems = [
-    { label: "Okupljanje gostiju", value: details.gatheringTime },
-    { label: "Početak venčanja", value: details.ceremonyTime },
-    { label: "Crkveno venčanje", value: details.churchTime },
-    { label: "Lokacija", value: details.venue },
-    { label: "Crkva", value: details.churchVenue },
-    { label: "Proslava", value: details.dinnerTime },
-  ].filter((item) => item.value);
+  const iconMap = {
+    gathering: "/icons/guests.svg",
+    church: "/icons/rings.svg",
+    civil: "/icons/ceremony.svg",
+    restaurant: "/icons/dinner.svg",
+    party: "/icons/party.svg",
+  };
+
+  const timelineItems =
+    details.events?.filter((item) => item.label || item.time) || [];
 
   return (
     <>
@@ -45,34 +43,36 @@ function MinimalInvitationCard({
         <div className="minimal-invitation-paper">
           <div className="minimal-invitation-frame" />
 
-          <p className="minimal-invitation-kicker">POZIVNICA</p>
+          <p className="minimal-invitation-kicker">Wedding Invitation</p>
 
           <div className="minimal-invitation-monogram">
-            <span>{brideInitial}</span>
+            <span>{safeBrideName[0]}</span>
             <span className="minimal-invitation-monogram-and">&</span>
-            <span>{groomInitial}</span>
+            <span>{safeGroomName[0]}</span>
           </div>
 
           <h1 className="minimal-invitation-names">
             <span>{safeBrideName}</span>
+
             <span className="minimal-invitation-amp">
               <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 20
-                         c-6-4.5-9-7.5-9-11
-                         c0-2.5 2-4.5 4.5-4.5
-                         c1.5 0 3 .8 4.5 2.3
-                         c1.5-1.5 3-2.3 4.5-2.3
-                         C19 4.5 21 6.5 21 9
-                         c0 3.5-3 6.5-9 11z" />
-              </svg>
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  strokeWidth="1"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  <path d="M12 20
+           c-6-4.5-9-7.5-9-11
+           c0-2.5 2-4.5 4.5-4.5
+           c1.5 0 3 .8 4.5 2.3
+           c1.5-1.5 3-2.3 4.5-2.3
+           C19 4.5 21 6.5 21 9
+           c0 3.5-3 6.5-9 11z" />
+</svg>
             </span>
+
             <span>{safeGroomName}</span>
           </h1>
 
@@ -87,63 +87,113 @@ function MinimalInvitationCard({
             </div>
           )}
 
-          {infoItems.length > 0 && (
-            <div className="minimal-program-card">
-              <h3 className="minimal-section-title">Plan venčanja</h3>
+          {timelineItems.length > 0 && (
+            <div className="minimal-program-card minimal-program-editorial">
+              <h3 className="minimal-section-title minimal-script-title">
+                Plan venčanja
+              </h3>
 
-              <div className="minimal-program-list">
-                {infoItems.map((item, index) => (
-                  <div
-                    className="minimal-program-row"
-                    key={`${item.label}-${index}`}
+              <div className="minimal-timeline">
+                {timelineItems.map((event, index) => (
+                  <motion.div
+                    key={`${event.label}-${index}`}
+                    className="minimal-timeline-row"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay: index * 0.06 }}
                   >
-                    <span className="minimal-program-row-label">
-                      {item.label}
-                    </span>
-                    <span className="minimal-program-row-value">
-                      {item.value}
-                    </span>
-                  </div>
+                    <div className="minimal-timeline-left">
+                      <div className="minimal-timeline-icon">
+                        <img
+                          src={iconMap[event.icon] || "/icons/guests.svg"}
+                          alt={event.label}
+                        />
+                      </div>
+
+                      {index !== timelineItems.length - 1 && (
+                        <span className="minimal-timeline-line" />
+                      )}
+                    </div>
+
+                    <div className="minimal-timeline-right">
+                      <p className="minimal-timeline-time">
+                        {event.time}
+                        {event.location && (
+                          <>
+                            <span className="minimal-timeline-separator">
+                              {" "}
+                              |{" "}
+                            </span>
+                            <span className="minimal-timeline-location-inline">
+                              {event.location}
+                            </span>
+                          </>
+                        )}
+                      </p>
+
+                      <h4 className="minimal-timeline-title">{event.label}</h4>
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
           )}
 
           {details.dressCodePalette?.length > 0 && (
-            <div className="minimal-extra-card">
-              <h3 className="minimal-section-title">
-                {details.dressCodeTitle || "Dress Code"}
+            <div className="minimal-extra-card minimal-dresscode-editorial">
+              <h3 className="minimal-section-title minimal-script-title">
+                {details.dressCodeTitle || "Dress code"}
               </h3>
 
-              <div className="minimal-palette">
-                {details.dressCodePalette.map((color, index) => (
-                  <span
-                    key={`${color}-${index}`}
-                    className="minimal-palette-dot"
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-
               {details.dressCodeNote && (
-                <p className="minimal-section-note">
+                <p className="minimal-section-note minimal-dresscode-note-editorial">
                   {details.dressCodeNote}
                 </p>
+              )}
+
+              {details.dressCodeWomen && (
+                <div className="minimal-dresscode-role">
+                  <p className="minimal-dresscode-role-title">Dame:</p>
+                  <p className="minimal-dresscode-role-text">
+                    {details.dressCodeWomen}
+                  </p>
+                </div>
+              )}
+
+              <div className="minimal-palette-box">
+                <div className="minimal-palette minimal-palette-editorial">
+                  {details.dressCodePalette.map((color, index) => (
+                    <span
+                      key={`${color}-${index}`}
+                      className="minimal-palette-dot minimal-palette-dot-editorial"
+                      style={{ backgroundColor: color }}
+                      aria-label={`dress code color ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {details.dressCodeMen && (
+                <div className="minimal-dresscode-role minimal-dresscode-role-men">
+                  <p className="minimal-dresscode-role-title">Muškarci:</p>
+                  <p className="minimal-dresscode-role-text">
+                    {details.dressCodeMen}
+                  </p>
+                </div>
               )}
             </div>
           )}
 
           {details.mapLink && (
-            <div className="minimal-extra-card">
-              <h3 className="minimal-section-title">Lokacija</h3>
-
+            <div className="minimal-location-section">
               <a
                 href={details.mapLink}
                 target="_blank"
                 rel="noreferrer"
                 className="minimal-map-link"
               >
-                Otvori mapu
+                Pogledaj lokaciju
               </a>
             </div>
           )}
@@ -160,9 +210,7 @@ function MinimalInvitationCard({
         details={details}
       />
 
-      {details.dateISO && (
-        <MinimalCountdown targetDate={details.dateISO} />
-      )}
+      {details.dateISO && <MinimalCountdown targetDate={details.dateISO} />}
     </>
   );
 }
