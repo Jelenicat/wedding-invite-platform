@@ -4,22 +4,70 @@ import EnvelopeCountdown from "./EnvelopeCountdown";
 import "../styles/card.css";
 import "../styles/rsvp.css";
 
-function EnvelopeInvitationCard({
-  brideName,
-  groomName,
-  details = {},
-}) {
+function EnvelopeInvitationCard({ brideName, groomName, details = {} }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
-  const infoItems = [
-    { label: "Okupljanje gostiju", value: details.gatheringTime },
-    { label: "Početak venčanja", value: details.ceremonyTime },
-    { label: "Crkveno venčanje", value: details.churchTime },
-    { label: "Lokacija", value: details.venue },
-    { label: "Crkva", value: details.churchVenue },
-    { label: "Proslava", value: details.dinnerTime },
-  ].filter((item) => item.value);
+  const timelineItems =
+    details.events?.filter((item) => item.label || item.time) || [];
+
+  const renderCalendar = (dateString) => {
+    if (!dateString) return null;
+
+    const date = new Date(dateString);
+    if (Number.isNaN(date.getTime())) return null;
+
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const selectedDay = date.getDate();
+
+    const firstDay = new Date(year, month, 1);
+    const lastDate = new Date(year, month + 1, 0).getDate();
+
+    let startDay = firstDay.getDay();
+    startDay = startDay === 0 ? 6 : startDay - 1;
+
+    const cells = [];
+
+    for (let i = 0; i < startDay; i++) cells.push(null);
+    for (let day = 1; day <= lastDate; day++) cells.push(day);
+
+    const monthNames = [
+      "Januar",
+      "Februar",
+      "Mart",
+      "April",
+      "Maj",
+      "Jun",
+      "Jul",
+      "Avgust",
+      "Septembar",
+      "Oktobar",
+      "Novembar",
+      "Decembar",
+    ];
+
+    return (
+      <div className="envelope-editorial-calendar">
+        <p className="envelope-editorial-calendar-month">
+          {monthNames[month]}
+        </p>
+
+        <div className="envelope-editorial-calendar-grid">
+          {cells.map((day, index) => (
+            <span
+              key={`${day ?? "empty"}-${index}`}
+              className={`envelope-editorial-calendar-day ${
+                day === null ? "is-empty" : ""
+              } ${day === selectedDay ? "is-active" : ""}`}
+            >
+              {day ?? ""}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -50,52 +98,88 @@ function EnvelopeInvitationCard({
             <p className="envelope-text">{details.welcomeText}</p>
           )}
 
-          {infoItems.length > 0 && (
-            <div className="envelope-program">
-              {infoItems.map((item, index) => (
-                <div
-                  className="envelope-program-row"
-                  key={`${item.label}-${index}`}
-                >
-                  <span className="envelope-program-label">
-                    {item.label}
-                  </span>
-                  <span className="envelope-program-value">
-                    {item.value}
-                  </span>
-                </div>
-              ))}
+          {renderCalendar(details.dateISO)}
+
+          {timelineItems.length > 0 && (
+            <div className="envelope-editorial-program">
+              <h3 className="envelope-editorial-title">Timing</h3>
+
+              <div className="envelope-editorial-timeline">
+                {timelineItems.map((event, index) => (
+                  <motion.div
+                    key={`${event.label}-${index}`}
+                    className="envelope-editorial-row"
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay: index * 0.06 }}
+                  >
+                    <div className="envelope-editorial-time">
+                      {event.time}
+                    </div>
+
+                    <div className="envelope-editorial-line-wrap">
+                      <span className="envelope-editorial-dot" />
+                      {index !== timelineItems.length - 1 && (
+                        <span className="envelope-editorial-line" />
+                      )}
+                    </div>
+
+                    <div className="envelope-editorial-content">
+                      <h4 className="envelope-editorial-event-title">
+                        {event.label}
+                      </h4>
+
+                      {event.location &&
+                        (event.mapLink ? (
+                          <a
+                            href={event.mapLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="envelope-editorial-location is-link"
+                          >
+                            {event.location}
+                          </a>
+                        ) : (
+                          <p className="envelope-editorial-location">
+                            {event.location}
+                          </p>
+                        ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           )}
 
           {details.dressCodePalette?.length > 0 && (
-            <div className="envelope-extra">
-              <h3 className="envelope-section-title">
+            <div className="envelope-editorial-dresscode">
+              <h3 className="envelope-editorial-title">
                 {details.dressCodeTitle || "Dress code"}
               </h3>
 
-              <div className="envelope-palette">
-                {details.dressCodePalette.map((color, index) => (
-                  <span
-                    key={`${color}-${index}`}
-                    className="envelope-palette-dot"
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-
               {details.dressCodeNote && (
-                <p className="envelope-section-note">
+                <p className="envelope-editorial-note">
                   {details.dressCodeNote}
                 </p>
               )}
+
+              <div className="envelope-editorial-palette-shell">
+                <div className="envelope-palette envelope-editorial-palette">
+                  {details.dressCodePalette.map((color, index) => (
+                    <span
+                      key={`${color}-${index}`}
+                      className="envelope-palette-dot envelope-editorial-palette-dot"
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
           {details.mapLink && (
-            <div className="envelope-extra">
-              <h3 className="envelope-section-title">Lokacija</h3>
-
+            <div className="envelope-editorial-map">
               <a
                 href={details.mapLink}
                 target="_blank"
@@ -117,9 +201,7 @@ function EnvelopeInvitationCard({
         details={details}
       />
 
-      {details.dateISO && (
-        <EnvelopeCountdown targetDate={details.dateISO} />
-      )}
+      {details.dateISO && <EnvelopeCountdown targetDate={details.dateISO} />}
     </>
   );
 }

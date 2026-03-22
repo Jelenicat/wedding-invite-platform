@@ -49,10 +49,10 @@ function MinimalCountdown({ targetDate }) {
   return (
     <motion.section
       className="minimal-countdown-section"
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="minimal-countdown-inner">
         <p className="minimal-countdown-kicker">Do venčanja je ostalo</p>
@@ -60,22 +60,29 @@ function MinimalCountdown({ targetDate }) {
         <div className="minimal-countdown-divider" />
 
         <div className="minimal-countdown">
-          {items.map((item) => (
-            <div key={item.label} className="minimal-countdown-item">
+          {items.map((item, index) => (
+            <motion.div
+              key={item.label}
+              className="minimal-countdown-item"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              viewport={{ once: true }}
+            >
               <AnimatePresence mode="wait">
                 <motion.span
                   key={item.value}
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 7 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
+                  exit={{ opacity: 0, y: -7 }}
+                  transition={{ duration: 0.22 }}
                 >
                   {item.value}
                 </motion.span>
               </AnimatePresence>
 
               <small>{item.label}</small>
-            </div>
+            </motion.div>
           ))}
         </div>
 

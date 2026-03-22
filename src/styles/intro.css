@@ -1062,7 +1062,7 @@ font-weight: 100;
   justify-content: center;
 
   background:
-    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
     url("/ruze.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -1109,7 +1109,7 @@ font-weight: 100;
   font-size: 13px;
   letter-spacing: 0.38em;
   text-transform: uppercase;
-  color: #4f4843;
+  color: #000000;
 }
 
 /* FRAME */
@@ -1141,7 +1141,7 @@ font-weight: 100;
   font-family: "Allura", cursive;
   font-size: 32px;
   line-height: 0.95;
-  color: #5b534d;
+  color: #000000;
   margin: 4px 0 6px;
   font-weight: 100;
 }
@@ -1168,7 +1168,7 @@ font-weight: 100;
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #867b73;
+  color: #000000;
 }
 
 /* DIVIDER */

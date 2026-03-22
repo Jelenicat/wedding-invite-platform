@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "../styles/rsvp.css";
 
 function MinimalRSVP() {
@@ -40,13 +40,19 @@ function MinimalRSVP() {
   return (
     <motion.section
       className="minimal-rsvp-section"
-      initial={{ opacity: 0, y: 26 }}
+      initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="minimal-rsvp-shell">
-        <div className="minimal-rsvp-box">
+        <motion.div
+          className="minimal-rsvp-box"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          viewport={{ once: true }}
+        >
           <p className="minimal-rsvp-kicker">RSVP</p>
 
           <h2 className="minimal-rsvp-title">Potvrdite dolazak</h2>
@@ -111,27 +117,35 @@ function MinimalRSVP() {
               required
             />
 
-            {formData.attending === "da" && (
-              <div className="minimal-rsvp-field">
-                <label htmlFor="minimal-guests">Broj osoba</label>
-                <input
-                  id="minimal-guests"
-                  type="number"
-                  name="guests"
-                  min="1"
-                  max="10"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            )}
+            <AnimatePresence initial={false}>
+              {formData.attending === "da" && (
+                <motion.div
+                  className="minimal-rsvp-field"
+                  initial={{ opacity: 0, height: 0, y: 6 }}
+                  animate={{ opacity: 1, height: "auto", y: 0 }}
+                  exit={{ opacity: 0, height: 0, y: -4 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <label htmlFor="minimal-guests">Broj osoba</label>
+                  <input
+                    id="minimal-guests"
+                    type="number"
+                    name="guests"
+                    min="1"
+                    max="10"
+                    value={formData.guests}
+                    onChange={handleChange}
+                    required
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <button type="submit" className="minimal-rsvp-button">
               Pošalji potvrdu
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );

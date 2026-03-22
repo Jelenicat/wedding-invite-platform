@@ -7,35 +7,28 @@ import "../styles/rsvp.css";
 function SplitImageInvitationCard({
   brideName,
   groomName,
-  imageSrc,
+  image,
   details = {},
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
+  const finalImage = image || "/images/wedding4.jpg";
 
-  const infoItems = [
-    { label: "Okupljanje gostiju", value: details.gatheringTime },
-    { label: "Početak venčanja", value: details.ceremonyTime },
-    { label: "Crkveno venčanje", value: details.churchTime },
-    { label: "Lokacija", value: details.venue },
-    { label: "Crkva", value: details.churchVenue },
-    { label: "Proslava", value: details.dinnerTime },
-  ].filter((item) => item.value);
+  const timelineItems =
+    details.events?.filter((item) => item.label || item.time) || [];
 
   return (
     <>
       <motion.section
         className="split-image-invitation"
-        style={{
-          backgroundImage: `url(${imageSrc || "/images/wedding4.jpg"})`,
-        }}
+        style={{ backgroundImage: `url(${finalImage})` }}
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
         <div className="split-image-invitation-overlay" />
 
-        <div className="split-image-paper">
+        <div className="split-image-paper split-image-soft-paper">
           <p className="split-image-kicker">Pozivnica</p>
 
           <h1 className="split-image-invitation-names">
@@ -52,61 +45,96 @@ function SplitImageInvitationCard({
             <p className="split-image-text">{details.welcomeText}</p>
           )}
 
-          {infoItems.length > 0 && (
-            <div className="split-image-program">
-              {infoItems.map((item, index) => (
-                <div
-                  className="split-image-program-row"
-                  key={`${item.label}-${index}`}
-                >
-                  <span className="split-image-program-label">
-                    {item.label}
-                  </span>
-                  <span className="split-image-program-value">
-                    {item.value}
-                  </span>
-                </div>
-              ))}
+          {timelineItems.length > 0 && (
+            <div className="split-image-editorial-block split-image-editorial-block-timeline">
+              <div className="split-image-heart-divider top">
+                <span>♡</span>
+              </div>
+
+              <h3 className="split-image-editorial-title">Plan dana</h3>
+
+              <div className="split-image-editorial-timeline">
+                {timelineItems.map((event, index) => (
+                  <motion.div
+                    key={`${event.label}-${index}`}
+                    className="split-image-editorial-row"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay: index * 0.08 }}
+                  >
+                    <div className="split-image-editorial-time">
+                      {event.time}
+                    </div>
+
+                    <div className="split-image-editorial-center">
+                      <span className="split-image-editorial-dot" />
+                      {index !== timelineItems.length - 1 && (
+                        <span className="split-image-editorial-line" />
+                      )}
+                    </div>
+
+                    <div className="split-image-editorial-content">
+                      <h4 className="split-image-editorial-event-title">
+                        {event.label}
+                      </h4>
+
+                      {event.location &&
+                        (event.mapLink ? (
+                          <a
+                            href={event.mapLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="split-image-editorial-location is-link"
+                          >
+                            {event.location}
+                          </a>
+                        ) : (
+                          <p className="split-image-editorial-location">
+                            {event.location}
+                          </p>
+                        ))}
+
+                      {event.note && (
+                        <p className="split-image-editorial-note">
+                          {event.note}
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="split-image-heart-divider bottom">
+                <span>♡</span>
+              </div>
             </div>
           )}
 
           {details.dressCodePalette?.length > 0 && (
-            <div className="split-image-extra">
-              <h3 className="split-image-section-title">
+            <div className="split-image-extra split-image-dresscode-editorial">
+              <h3 className="split-image-editorial-title dresscode">
                 {details.dressCodeTitle || "Dress code"}
               </h3>
 
-              <div className="split-image-palette">
+              {details.dressCodeNote && (
+                <p className="split-image-section-note split-image-dresscode-note">
+                  {details.dressCodeNote}
+                </p>
+              )}
+
+           
+
+              <div className="split-image-palette split-image-palette-editorial">
                 {details.dressCodePalette.map((color, index) => (
                   <span
                     key={`${color}-${index}`}
-                    className="split-image-palette-dot"
+                    className="split-image-palette-dot split-image-palette-dot-editorial"
                     style={{ backgroundColor: color }}
                     aria-label={`dress code color ${index + 1}`}
                   />
                 ))}
               </div>
-
-              {details.dressCodeNote && (
-                <p className="split-image-section-note">
-                  {details.dressCodeNote}
-                </p>
-              )}
-            </div>
-          )}
-
-          {details.mapLink && (
-            <div className="split-image-extra">
-              <h3 className="split-image-section-title">Lokacija</h3>
-
-              <a
-                href={details.mapLink}
-                target="_blank"
-                rel="noreferrer"
-                className="split-image-map-link"
-              >
-                Otvori mapu
-              </a>
             </div>
           )}
 
@@ -114,11 +142,7 @@ function SplitImageInvitationCard({
         </div>
       </motion.section>
 
-      <SplitImageRSVP
-        brideName={safeBrideName}
-        groomName={safeGroomName}
-        details={details}
-      />
+      <SplitImageRSVP />
 
       {details.dateISO && (
         <SplitImageCountdown targetDate={details.dateISO} />
