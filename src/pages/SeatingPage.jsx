@@ -29,7 +29,7 @@ function SeatingPage() {
 
   const [tableForm, setTableForm] = useState({
     name: "",
-    capacity: 8,
+    capacity: "8",
   });
   const [addingTable, setAddingTable] = useState(false);
 
@@ -40,7 +40,7 @@ function SeatingPage() {
 
   const [confirmModal, setConfirmModal] = useState({
     isOpen: false,
-    type: null, // "moveGuest" | "removeGuest" | "deleteTable"
+    type: null,
     title: "",
     text: "",
     confirmText: "",
@@ -189,7 +189,7 @@ function SeatingPage() {
 
     setTableForm((prev) => ({
       ...prev,
-      [name]: name === "capacity" ? Number(value) : value,
+      [name]: value,
     }));
   };
 
@@ -204,7 +204,9 @@ function SeatingPage() {
       return;
     }
 
-    if (!tableForm.capacity || tableForm.capacity < 1) {
+    const capacityCount = Number(tableForm.capacity);
+
+    if (!tableForm.capacity || Number.isNaN(capacityCount) || capacityCount < 1) {
       openMessageModal({
         title: "Neispravan kapacitet",
         text: "Kapacitet mora biti veći od 0.",
@@ -218,13 +220,13 @@ function SeatingPage() {
       await addDoc(collection(db, "tables"), {
         slug,
         name: tableForm.name.trim(),
-        capacity: Number(tableForm.capacity),
+        capacity: capacityCount,
         createdAt: serverTimestamp(),
       });
 
       setTableForm({
         name: "",
-        capacity: 8,
+        capacity: "8",
       });
 
       await fetchData();
@@ -259,9 +261,21 @@ function SeatingPage() {
     return table?.name || "Nepoznat sto";
   };
 
-  const unassignedGuestsCount = useMemo(() => {
-    return comingGuests.filter((guest) => !getGuestAssignment(guest.id)).length;
+  const totalComingPeople = useMemo(() => {
+    return comingGuests.reduce((sum, guest) => {
+      return sum + (Number(guest.guests) || 0);
+    }, 0);
+  }, [comingGuests]);
+
+  const unassignedGuests = useMemo(() => {
+    return comingGuests.filter((guest) => !getGuestAssignment(guest.id));
   }, [comingGuests, tableGuests]);
+
+  const unassignedGuestsCount = useMemo(() => {
+    return unassignedGuests.reduce((sum, guest) => {
+      return sum + (Number(guest.guests) || 0);
+    }, 0);
+  }, [unassignedGuests]);
 
   const escapeCsvValue = (value) => {
     const stringValue = value == null ? "" : String(value);
@@ -289,7 +303,7 @@ function SeatingPage() {
       return assignments.map((item) => [
         table.name,
         item.fullName || "",
-        item.guests || 0,
+        Number(item.guests) || 0,
       ]);
     });
 
@@ -345,7 +359,6 @@ function SeatingPage() {
       return;
     }
 
-    let occupiedSeats = getOccupiedSeats(table.id);
     const guestSeats = Number(guest.guests) || 0;
 
     try {
@@ -366,6 +379,7 @@ function SeatingPage() {
         return;
       }
 
+      const occupiedSeats = getOccupiedSeats(table.id);
       const freeSeats = Number(table.capacity) - occupiedSeats;
 
       if (guestSeats > freeSeats) {
@@ -384,7 +398,7 @@ function SeatingPage() {
         tableName: table.name,
         guestId: guest.id,
         fullName: guest.fullName,
-        guests: Number(guest.guests) || 0,
+        guests: guestSeats,
         createdAt: serverTimestamp(),
       });
 
@@ -481,7 +495,7 @@ function SeatingPage() {
           tableName: table.name,
           guestId: guest.id,
           fullName: guest.fullName,
-          guests: Number(guest.guests) || 0,
+          guests: guestSeats,
           createdAt: serverTimestamp(),
         });
 
@@ -621,7 +635,7 @@ function SeatingPage() {
           </div>
 
           <div style={styles.statBox}>
-            <span style={styles.statNumber}>{comingGuests.length}</span>
+            <span style={styles.statNumber}>{totalComingPeople}</span>
             <span style={styles.statLabel}>Gostiju koji dolaze</span>
           </div>
 
@@ -753,6 +767,7 @@ function SeatingPage() {
                             const isAssignedToCurrentTable =
                               assignment?.tableId === table.id;
                             const isSelected = selectedGuestId === guest.id;
+                            const guestCount = Number(guest.guests) || 0;
 
                             return (
                               <button
@@ -778,26 +793,26 @@ function SeatingPage() {
                                     {guest.fullName}
                                   </span>
                                   <span style={styles.guestOptionCount}>
-                                    {guest.guests || 0}
+                                    {guestCount}
                                   </span>
                                 </div>
 
                                 <div style={styles.guestOptionBottom}>
                                   {!isAssigned && (
                                     <span style={styles.guestBadgeFree}>
-                                      Neraspoređen
+                                      Neraspoređen ({guestCount})
                                     </span>
                                   )}
 
                                   {isAssigned && !isAssignedToCurrentTable && (
                                     <span style={styles.guestBadgeAssigned}>
-                                      {assignedTableName}
+                                      {assignedTableName} ({guestCount})
                                     </span>
                                   )}
 
                                   {isAssignedToCurrentTable && (
                                     <span style={styles.guestBadgeCurrent}>
-                                      Već za ovim stolom
+                                      Već za ovim stolom ({guestCount})
                                     </span>
                                   )}
                                 </div>
@@ -814,7 +829,7 @@ function SeatingPage() {
                               Izabran gost: {selectedGuest.fullName}
                             </p>
                             <p style={styles.selectedGuestMeta}>
-                              Broj osoba: {selectedGuest.guests || 0}
+                              Broj osoba: {Number(selectedGuest.guests) || 0}
                             </p>
                           </div>
                         </div>
@@ -858,7 +873,9 @@ function SeatingPage() {
                       <div key={item.id} style={styles.guestRow}>
                         <div>
                           <p style={styles.guestName}>{item.fullName}</p>
-                          <p style={styles.guestMeta}>Broj osoba: {item.guests}</p>
+                          <p style={styles.guestMeta}>
+                            Broj osoba: {Number(item.guests) || 0}
+                          </p>
                         </div>
 
                         <button
