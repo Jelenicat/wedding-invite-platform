@@ -27,8 +27,9 @@ function AdminPage() {
 
   const [manualGuest, setManualGuest] = useState({
     fullName: "",
-    guests: 1,
+    guests: "1",
   });
+
   const [addingGuest, setAddingGuest] = useState(false);
 
   const expectedPassword = adminAccess[slug];
@@ -96,7 +97,7 @@ function AdminPage() {
 
     setManualGuest((prev) => ({
       ...prev,
-      [name]: name === "guests" ? Number(value) : value,
+      [name]: value,
     }));
   };
 
@@ -105,6 +106,13 @@ function AdminPage() {
 
     if (!manualGuest.fullName.trim()) {
       alert("Unesite ime i prezime gosta.");
+      return;
+    }
+
+    const guestsCount = Number(manualGuest.guests);
+
+    if (!manualGuest.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+      alert("Unesite ispravan broj osoba.");
       return;
     }
 
@@ -121,14 +129,14 @@ function AdminPage() {
         eventType: "manual",
         fullName: manualGuest.fullName.trim(),
         attending: "da",
-        guests: Number(manualGuest.guests) || 1,
+        guests: guestsCount,
         source: "admin",
         createdAt: serverTimestamp(),
       });
 
       setManualGuest({
         fullName: "",
-        guests: 1,
+        guests: "1",
       });
 
       await fetchGuests();
@@ -311,11 +319,19 @@ function AdminPage() {
               Napravi raspored
             </button>
 
-            <button type="button" onClick={handleExportCSV} style={styles.exportButton}>
+            <button
+              type="button"
+              onClick={handleExportCSV}
+              style={styles.exportButton}
+            >
               Eksport dolazaka
             </button>
 
-            <button type="button" onClick={handleLogout} style={styles.logoutButton}>
+            <button
+              type="button"
+              onClick={handleLogout}
+              style={styles.logoutButton}
+            >
               Odjavi se
             </button>
           </div>

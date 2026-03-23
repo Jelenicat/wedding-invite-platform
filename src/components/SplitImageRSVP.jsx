@@ -8,7 +8,7 @@ function SplitImageRSVP({ slug, eventType }) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
-    guests: 1,
+    guests: "1", // 🔥 STRING
   });
 
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ function SplitImageRSVP({ slug, eventType }) {
 
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "guests" ? Number(value) : value,
+      [name]: value, // 🔥 nema Number
     }));
   };
 
@@ -26,7 +26,7 @@ function SplitImageRSVP({ slug, eventType }) {
     setFormData((prev) => ({
       ...prev,
       attending: value,
-      guests: value === "da" ? prev.guests || 1 : 0,
+      guests: value === "da" ? prev.guests || "1" : "",
     }));
   };
 
@@ -38,6 +38,20 @@ function SplitImageRSVP({ slug, eventType }) {
       return;
     }
 
+    if (!formData.fullName.trim()) {
+      alert("Unesite ime i prezime.");
+      return;
+    }
+
+    const guestsCount = Number(formData.guests);
+
+    if (formData.attending === "da") {
+      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+        alert("Unesite ispravan broj osoba.");
+        return;
+      }
+    }
+
     setLoading(true);
 
     try {
@@ -46,7 +60,7 @@ function SplitImageRSVP({ slug, eventType }) {
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
-        guests: formData.attending === "da" ? formData.guests : 0,
+        guests: formData.attending === "da" ? guestsCount : 0,
         createdAt: serverTimestamp(),
       };
 
@@ -57,7 +71,7 @@ function SplitImageRSVP({ slug, eventType }) {
       setFormData({
         fullName: "",
         attending: "",
-        guests: 1,
+        guests: "1", // 🔥 STRING reset
       });
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);
