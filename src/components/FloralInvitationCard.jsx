@@ -4,7 +4,7 @@ import FloralCountdown from "./FloralCountdown";
 import "../styles/card.css";
 import "../styles/rsvp.css";
 
-function FloralInvitationCard({ brideName, groomName, details = {} }) {
+function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }) {
   const brideInitial = brideName?.[0] || "A";
   const groomInitial = groomName?.[0] || "M";
 
@@ -221,7 +221,7 @@ function FloralInvitationCard({ brideName, groomName, details = {} }) {
         </div>
       </motion.section>
 
-      <FloralRSVP />
+      <FloralRSVP slug={slug} eventType={type} />
 
       {details.dateISO && <FloralCountdown targetDate={details.dateISO} />}
     </>

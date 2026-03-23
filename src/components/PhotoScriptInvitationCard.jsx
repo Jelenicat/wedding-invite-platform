@@ -7,9 +7,11 @@ import "../styles/rsvp.css";
 function PhotoScriptInvitationCard({
   brideName,
   groomName,
-  videoSrc,
   details = {},
-}) {
+  image,
+  slug,
+  type,
+})  {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
@@ -160,11 +162,7 @@ function PhotoScriptInvitationCard({
         </div>
       </motion.section>
 
-      <PhotoScriptRSVP
-        brideName={safeBrideName}
-        groomName={safeGroomName}
-        details={details}
-      />
+    <PhotoScriptRSVP slug={slug} eventType={type} />
 
       {details.dateISO && (
         <PhotoScriptCountdown targetDate={details.dateISO} />

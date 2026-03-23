@@ -7,8 +7,10 @@ import "../styles/rsvp.css";
 function VideoBandInvitationCard({
   brideName,
   groomName,
-  videoSrc,
   details = {},
+  videoSrc,
+  slug,
+  type,
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
@@ -361,7 +363,7 @@ function VideoBandInvitationCard({
         viewport={{ once: true, amount: 0.12 }}
         transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
       >
-        <VideoBandRSVP />
+        <VideoBandRSVP slug={slug} eventType={type} />
       </motion.div>
 
       {details.dateISO && (

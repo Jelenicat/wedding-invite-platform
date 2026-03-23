@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase";
 import "../styles/rsvp.css";
 
-function FloralRSVP() {
+function FloralRSVP({ slug, eventType }) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
     guests: 1,
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,15 +30,41 @@ function FloralRSVP() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
-      ...formData,
-      guests: formData.attending === "da" ? formData.guests : 0,
-    };
+    if (!slug || !eventType) {
+      alert("Nedostaje slug ili tip događaja.");
+      return;
+    }
 
-    console.log("Floral RSVP:", payload);
+    setLoading(true);
+
+    try {
+      const payload = {
+        slug,
+        eventType,
+        fullName: formData.fullName.trim(),
+        attending: formData.attending,
+        guests: formData.attending === "da" ? formData.guests : 0,
+        createdAt: serverTimestamp(),
+      };
+
+      await addDoc(collection(db, "rsvps"), payload);
+
+      alert("Uspešno poslato!");
+
+      setFormData({
+        fullName: "",
+        attending: "",
+        guests: 1,
+      });
+    } catch (error) {
+      console.error("Greška pri slanju RSVP:", error);
+      alert("Došlo je do greške pri slanju.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -127,8 +157,12 @@ function FloralRSVP() {
               </div>
             )}
 
-            <button type="submit" className="floral-rsvp-button">
-              Pošalji potvrdu
+            <button
+              type="submit"
+              className="floral-rsvp-button"
+              disabled={loading}
+            >
+              {loading ? "Slanje..." : "Pošalji potvrdu"}
             </button>
           </form>
         </div>

@@ -7,8 +7,10 @@ import "../styles/rsvp.css";
 function SplitImageInvitationCard({
   brideName,
   groomName,
-  image,
   details = {},
+  image,
+  slug,
+  type,
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
@@ -142,7 +144,7 @@ function SplitImageInvitationCard({
         </div>
       </motion.section>
 
-      <SplitImageRSVP />
+    <SplitImageRSVP slug={slug} eventType={type} />
 
       {details.dateISO && (
         <SplitImageCountdown targetDate={details.dateISO} />

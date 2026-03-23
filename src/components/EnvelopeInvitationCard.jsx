@@ -4,7 +4,7 @@ import EnvelopeCountdown from "./EnvelopeCountdown";
 import "../styles/card.css";
 import "../styles/rsvp.css";
 
-function EnvelopeInvitationCard({ brideName, groomName, details = {} }) {
+function EnvelopeInvitationCard({ brideName, groomName, details = {}, slug, type }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
@@ -196,10 +196,9 @@ function EnvelopeInvitationCard({ brideName, groomName, details = {} }) {
       </motion.section>
 
       <EnvelopeRSVP
-        brideName={safeBrideName}
-        groomName={safeGroomName}
-        details={details}
-      />
+  slug={slug}
+  eventType={type}
+/>
 
       {details.dateISO && <EnvelopeCountdown targetDate={details.dateISO} />}
     </>

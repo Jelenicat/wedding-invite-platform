@@ -7,8 +7,10 @@ import "../styles/rsvp.css";
 function SplitVideoInvitationCard({
   brideName,
   groomName,
-  videoSrc,
   details = {},
+  videoSrc,
+  slug,
+  type,
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
@@ -149,7 +151,7 @@ function SplitVideoInvitationCard({
         </div>
       </motion.section>
 
-      <SplitVideoRSVP />
+    <SplitVideoRSVP slug={slug} eventType={type} />
 
       {details.dateISO && (
         <SplitVideoCountdown targetDate={details.dateISO} />

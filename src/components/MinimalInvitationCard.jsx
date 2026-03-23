@@ -10,7 +10,9 @@ function MinimalInvitationCard({
   groomName,
   details = {},
   backgroundImage,
-}) {
+  slug,
+  type,
+}){
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
   const finalBg = backgroundImage || minimalBg;
@@ -204,11 +206,7 @@ function MinimalInvitationCard({
         </div>
       </motion.section>
 
-      <MinimalRSVP
-        brideName={safeBrideName}
-        groomName={safeGroomName}
-        details={details}
-      />
+     <MinimalRSVP slug={slug} eventType={type} />
 
       {details.dateISO && <MinimalCountdown targetDate={details.dateISO} />}
     </>

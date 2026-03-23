@@ -9,6 +9,8 @@ function PhotoCardInvitationCard({
   groomName,
   image,
   details = {},
+  slug,
+  type,
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
@@ -232,11 +234,7 @@ function PhotoCardInvitationCard({
         </div>
       </motion.section>
 
-      <PhotoCardRSVP
-        brideName={safeBrideName}
-        groomName={safeGroomName}
-        details={details}
-      />
+  <PhotoCardRSVP slug={slug} eventType={type} />
 
       {details.dateISO && <PhotoCardCountdown targetDate={details.dateISO} />}
     </>

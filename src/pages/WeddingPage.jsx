@@ -129,14 +129,18 @@ function WeddingPage() {
     onOpen: handleIntroOpen,
   };
 
-  const invitationProps = {
-    brideName: invitation.brideName,
-    groomName: invitation.groomName,
-    details: invitation.details,
-    image: invitation.image,
-    imageSrc: invitation.image,
-    videoSrc: invitation.videoSrc,
-  };
+const invitationProps = {
+  brideName: invitation.brideName,
+  groomName: invitation.groomName,
+  details: invitation.details,
+  image: invitation.image,
+  imageSrc: invitation.image,
+  videoSrc: invitation.videoSrc,
+
+  // 🔥 DODAJ OVO:
+  slug: invitation.slug,
+  type: invitation.type,
+};
 
   return (
     <div className="wedding-page">
