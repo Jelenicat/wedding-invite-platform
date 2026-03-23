@@ -3859,3 +3859,107 @@
     font-size: 1rem;
   }
 }
+/* =========================
+   RETRO INVITATION
+========================= */
+
+.retro-invitation {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+/* VIDEO */
+.retro-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* OVERLAY */
+.retro-overlay {
+  position: absolute;
+  inset: 0;
+ 
+}
+
+/* CENTER */
+.retro-center {
+  position: absolute;   /* 🔥 KLJUČNO */
+  inset: 0;             /* top:0 right:0 bottom:0 left:0 */
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+/* CARD */
+.retro-card {
+  max-width: 420px;
+  width: 100%;
+
+  padding: 32px 24px;
+
+  background: rgba(198, 193, 193, 0.9);
+  backdrop-filter: blur(1px);
+
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.4);
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* TEXT */
+.retro-card-name {
+  font-family: "Great Vibes", cursive;
+  font-size: 56px;
+  color: #c92f20;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.retro-card-title {
+  font-family: "Bodoni Moda", serif;
+  font-size: 28px;
+  margin-top: 8px;
+  opacity: 0.85;
+}
+
+.retro-card-text {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.retro-info {
+  margin-top: 24px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .retro-card {
+    padding: 28px 20px;
+  }
+
+  .retro-card-name {
+    font-size: 48px;
+  }
+
+  .retro-card-title {
+    font-size: 24px;
+  }
+}

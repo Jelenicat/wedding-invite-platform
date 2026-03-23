@@ -28,6 +28,9 @@ import SplitImageInvitationCard from "../components/SplitImageInvitationCard";
 import BlackWhiteIntro from "../components/BlackWhiteIntro";
 import BlackWhiteInvitationCard from "../components/BlackWhiteInvitationCard";
 
+import RetroIntro from "../components/RetroIntro";
+import RetroInvitationCard from "../components/RetroInvitationCard";
+
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -68,6 +71,10 @@ const TEMPLATE_COMPONENTS = {
     Intro: BlackWhiteIntro,
     Invitation: BlackWhiteInvitationCard,
   },
+retro: {
+  Intro: RetroIntro,
+  Invitation: RetroInvitationCard,
+},
 };
 
 function WeddingPage() {
@@ -131,19 +138,20 @@ function WeddingPage() {
     onOpen: handleIntroOpen,
   };
 
-  const invitationProps = {
-    brideName: invitation.brideName,
-    groomName: invitation.groomName,
-    weddingDate: invitation.weddingDate,
-    weddingTime: invitation.weddingTime,
-    venue: invitation.venue,
-    details: invitation.details,
-    image: invitation.image,
-    imageSrc: invitation.image,
-    videoSrc: invitation.videoSrc,
-    slug: invitation.slug,
-    type: invitation.type,
-  };
+const invitationProps = {
+  brideName: invitation.brideName,
+  groomName: invitation.groomName,
+  weddingDate: invitation.weddingDate,
+  weddingTime: invitation.weddingTime,
+  venue: invitation.venue,
+  details: invitation.details,
+  image: invitation.image,
+  imageSrc: invitation.image,
+  videoSrc: invitation.videoSrc,
+  rsvpVideoSrc: invitation.rsvpVideoSrc,
+  slug: invitation.slug,
+  type: invitation.type,
+};
 
   return (
     <div className="wedding-page">

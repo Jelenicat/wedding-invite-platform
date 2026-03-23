@@ -632,6 +632,31 @@ events: [
     note: "Potvrdi dolazak na vreme.",
   }),
 },
+{
+  slug: "jelena-retro",
+  type: "birthday",
+  template: "retro",
+  backgroundImage: "/images/jelena-retro.png",
+  videoSrc: "/videos/jelena-retro.mp4",
+  rsvpVideoSrc: "/videos/jelena-retro-rsvp.mp4",
+  weddingDate: "15 NOV 2026",
+  weddingTime: "20:00",
+  venue: "Beograd",
+  details: createDetails({
+    welcomeText: "Pozivam te da zajedno proslavimo moj 18. rođendan.",
+    date: "15 NOV 2026",
+    dateISO: "2026-11-15T20:00:00",
+    gatheringTime: "19:30",
+    ceremonyTime: "20:00",
+    venue: "Club XYZ, Beograd",
+    dinnerTime: "20:30",
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#000000", "#ffffff", "#d31717"],
+    dressCodeNote: "Crno-beli outfit sa crvenim detaljem je dobrodošao.",
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Potvrdi dolazak na vreme.",
+  }),
+},
 ];
 
 export default demoWedding;
