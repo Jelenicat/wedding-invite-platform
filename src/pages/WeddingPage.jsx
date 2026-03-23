@@ -26,6 +26,7 @@ import SplitImageIntro from "../components/SplitImageIntro";
 import SplitImageInvitationCard from "../components/SplitImageInvitationCard";
 
 import BlackWhiteIntro from "../components/BlackWhiteIntro";
+import BlackWhiteInvitationCard from "../components/BlackWhiteInvitationCard";
 
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
@@ -65,7 +66,7 @@ const TEMPLATE_COMPONENTS = {
   },
   "black-white-intro": {
     Intro: BlackWhiteIntro,
-    Invitation: EnvelopeInvitationCard,
+    Invitation: BlackWhiteInvitationCard,
   },
 };
 
@@ -96,7 +97,8 @@ function WeddingPage() {
   }
 
   const templateKey = invitation.template || "envelope";
-  const template = TEMPLATE_COMPONENTS[templateKey] || TEMPLATE_COMPONENTS.envelope;
+  const template =
+    TEMPLATE_COMPONENTS[templateKey] || TEMPLATE_COMPONENTS.envelope;
 
   const IntroComponent = template.Intro;
   const InvitationComponent = template.Invitation;
@@ -129,18 +131,19 @@ function WeddingPage() {
     onOpen: handleIntroOpen,
   };
 
-const invitationProps = {
-  brideName: invitation.brideName,
-  groomName: invitation.groomName,
-  details: invitation.details,
-  image: invitation.image,
-  imageSrc: invitation.image,
-  videoSrc: invitation.videoSrc,
-
-  // 🔥 DODAJ OVO:
-  slug: invitation.slug,
-  type: invitation.type,
-};
+  const invitationProps = {
+    brideName: invitation.brideName,
+    groomName: invitation.groomName,
+    weddingDate: invitation.weddingDate,
+    weddingTime: invitation.weddingTime,
+    venue: invitation.venue,
+    details: invitation.details,
+    image: invitation.image,
+    imageSrc: invitation.image,
+    videoSrc: invitation.videoSrc,
+    slug: invitation.slug,
+    type: invitation.type,
+  };
 
   return (
     <div className="wedding-page">
