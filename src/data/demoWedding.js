@@ -755,7 +755,60 @@ events: [
   note: "Molimo vas da svoj dolazak potvrdite na vreme.",
 }),
   },
+  {
+    slug: "nina-janko",
+    type: "wedding",
+    template: "split-video",
+    brideName: "Nina",
+    groomName: "Janko",
+    videoSrc: "/videos/nina-janko.mp4",
+    weddingDate: "18 SEP 2026",
+    weddingTime: "17:00",
+    venue: "Beograd",
+    introText: "Radujemo se da ovaj dan podelimo sa vama.",
+    details: createDetails({
+  welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+  date: "18 SEP 2026",
+  dateISO: "2026-09-18T17:00:00",
 
+  events: [
+    {
+      label: "Ceremonija",
+      time: "15:30",
+      location: "Hotel Hyatt, Beograd",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Prisustvo na ceremoniji nam puno znači.",
+    },
+    {
+      label: "Svadbeni ručak",
+      time: "17:30",
+      location: "Svečana sala Hyatt",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Ukusni zalogaji i opuštena atmosfera.",
+    },
+    {
+      label: "Torta",
+      time: "21:30",
+      location: "Glavna sala",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Sečenje torte uz muziku i osmeh.",
+    },
+    {
+      label: "Okončanje",
+      time: "23:30",
+      location: "Hotel Hyatt, Beograd",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Lepo nam je zajedno i želimo nezaboravno veče.",
+    },
+  ],
+
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#bdbdbd", "#7f807d", "#e7c0cf", "#8f1d33", "#050505"],
+  dressCodeNote:
+    "Poželjno je da izaberete elegantne komade koji odgovaraju tonu proslave.",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+}),
+  },
 {
   slug: "draga-stefan",
   type: "wedding",
@@ -815,7 +868,174 @@ events: [
 }),
 },
 
-  
+  {
+  slug: "vesna-mitar",
+  type: "wedding",
+  template: "split-image",
+  brideName: "Vesna",
+  groomName: "Mitar",
+  image: "/images/vesna-mitar.jpg",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+ details: createDetails({
+  welcomeText:
+    "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+  date: "18 SEP 2026",
+  dateISO: "2026-09-18T17:00:00",
+
+  events: [
+    {
+      label: "Okupljanje gostiju",
+      time: "16:00",
+      location: "Hotel Hyatt, Beograd",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Doček i prvi zajednički trenuci.",
+    },
+    {
+      label: "Crkveno venčanje",
+      time: "17:00",
+      location: "Crkva Svetog Marka, Beograd",
+      mapLink: "https://maps.google.com/?q=Crkva+Svetog+Marka+Beograd",
+      note: "Svečani obred u krugu najbližih.",
+    },
+    {
+      label: "Svečani ručak",
+      time: "18:30",
+      location: "Svečana sala, Hyatt",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Proslava, muzika i nezaboravno veče.",
+    },
+    {
+      label: "After party",
+      time: "22:30",
+      location: "Lounge bar Hyatt",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Nastavljamo slavlje uz opušteniju atmosferu.",
+    },
+  ],
+
+  editorialImage1: "/images/wedding4.jpg",
+  editorialImage2: "/images/wedding4.jpg",
+  editorialImage3: "/images/wedding4.jpg",
+
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#2f2c2c", "#726767", "#b1a19d", "#e2d8d2"],
+  dressCodeNote:
+    "Elegantni tonovi i zagasite nijanse savršeno će se uklopiti.",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+}),
+},
+
+  {
+  slug: "iva-vuk",
+  type: "wedding",
+  template: "split-image",
+  brideName: "Iva`",
+  groomName: "Vuk",
+  image: "/images/iva-vuk.jpg",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+ details: createDetails({
+  welcomeText:
+    "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+  date: "18 SEP 2026",
+  dateISO: "2026-09-18T17:00:00",
+
+  events: [
+    {
+      label: "Okupljanje gostiju",
+      time: "16:00",
+      location: "Hotel Hyatt, Beograd",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Doček i prvi zajednički trenuci.",
+    },
+    {
+      label: "Crkveno venčanje",
+      time: "17:00",
+      location: "Crkva Svetog Marka, Beograd",
+      mapLink: "https://maps.google.com/?q=Crkva+Svetog+Marka+Beograd",
+      note: "Svečani obred u krugu najbližih.",
+    },
+    {
+      label: "Svečani ručak",
+      time: "18:30",
+      location: "Svečana sala, Hyatt",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Proslava, muzika i nezaboravno veče.",
+    },
+    {
+      label: "After party",
+      time: "22:30",
+      location: "Lounge bar Hyatt",
+      mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      note: "Nastavljamo slavlje uz opušteniju atmosferu.",
+    },
+  ],
+
+  editorialImage1: "/images/wedding4.jpg",
+  editorialImage2: "/images/wedding4.jpg",
+  editorialImage3: "/images/wedding4.jpg",
+
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#2f2c2c", "#726767", "#b1a19d", "#e2d8d2"],
+  dressCodeNote:
+    "Elegantni tonovi i zagasite nijanse savršeno će se uklopiti.",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+}),
+},
+
+  {
+    slug: "iva-pedja",
+    type: "wedding",
+    template: "video-band",
+    brideName: "Iva",
+    groomName: "Pedja",
+    videoSrc: "/videos/iva-pedja2.mp4",
+    weddingDate: "18 SEP 2026",
+    weddingTime: "17:00",
+    
+   details: createDetails({
+ 
+  date: "18 SEP 2026",
+  dateISO: "2026-09-18T17:00:00",
+
+  events: [
+    {
+      label: "Skup svatova",
+      time: "16:00",
+      icon: "gathering",
+    },
+    {
+      label: "Crkveno venčanje",
+      time: "15:00",
+      icon: "church",
+    },
+    {
+      label: "Građansko venčanje",
+      time: "17:00",
+      icon: "civil",
+    },
+    {
+      label: "Svečani ručak",
+      time: "18:30",
+      icon: "restaurant",
+    },
+  ],
+
+  venue: "Topčiderac, Beograd",
+  churchVenue: "Crkva Svetog Marka, Beograd",
+
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
+  dressCodeNote:
+    "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+
+  mapLink: "https://maps.google.com/?q=Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+}),
+  },
   {
     slug: "katarina-milos",
     type: "wedding",
