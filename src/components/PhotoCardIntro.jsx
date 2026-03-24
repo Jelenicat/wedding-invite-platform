@@ -6,24 +6,28 @@ function PhotoCardIntro({
   weddingDate,
   location,
   image,
+  backgroundImage,
   onEnter,
 }) {
+  const finalBg = backgroundImage || "/images/photo-card-bg.jpg";
+  const finalImage = image || "/images/couple.jpg";
+
   return (
-    <section className="photo-card-intro">
-
-    <motion.div
-  layoutId="card"
-  className="photo-card"
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
->
-
-        <p className="photo-card-title">Sačuvaj datum
-        </p>
+    <section
+      className="photo-card-intro"
+      style={{ backgroundImage: `url(${finalBg})` }}
+    >
+      <motion.div
+        layoutId="card"
+        className="photo-card"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <p className="photo-card-title">Sačuvaj datum</p>
 
         <div className="photo-frame">
-          <img src={image} alt="couple" />
+          <img src={finalImage} alt="couple" />
         </div>
 
         <p className="photo-card-names">
@@ -39,9 +43,7 @@ function PhotoCardIntro({
         <button className="photo-card-btn" onClick={onEnter}>
           Pogledaj pozivnicu
         </button>
-
       </motion.div>
-
     </section>
   );
 }

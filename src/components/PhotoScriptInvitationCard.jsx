@@ -11,7 +11,8 @@ function PhotoScriptInvitationCard({
   image,
   slug,
   type,
-})  {
+  videoSrc,
+}) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
@@ -94,8 +95,8 @@ function PhotoScriptInvitationCard({
                         {event.label}
                       </h4>
 
-                      {event.location && (
-                        event.mapLink ? (
+                      {event.location &&
+                        (event.mapLink ? (
                           <a
                             href={event.mapLink}
                             target="_blank"
@@ -108,8 +109,7 @@ function PhotoScriptInvitationCard({
                           <p className="photo-script-editorial-location">
                             {event.location}
                           </p>
-                        )
-                      )}
+                        ))}
                     </div>
                   </motion.div>
                 ))}
@@ -162,7 +162,7 @@ function PhotoScriptInvitationCard({
         </div>
       </motion.section>
 
-    <PhotoScriptRSVP slug={slug} eventType={type} />
+      <PhotoScriptRSVP slug={slug} eventType={type} />
 
       {details.dateISO && (
         <PhotoScriptCountdown targetDate={details.dateISO} />

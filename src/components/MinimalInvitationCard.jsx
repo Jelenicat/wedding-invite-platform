@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import MinimalRSVP from "./MinimalRSVP";
 import MinimalCountdown from "./MinimalCountdown";
-import minimalBg from "../assets/minimal-bg.jpg";
+
 import "../styles/card.css";
 import "../styles/rsvp.css";
 
@@ -15,7 +15,7 @@ function MinimalInvitationCard({
 }){
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
-  const finalBg = backgroundImage || minimalBg;
+  const finalBg = backgroundImage || "/images/minimal-bg.jpg";
 
   const iconMap = {
     gathering: "/icons/guests.svg",
