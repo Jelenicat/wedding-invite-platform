@@ -72,7 +72,7 @@ function BirthdayGalleryIntro({
             {weddingDate} u {weddingTime}
           </p>
           <p className="birthday-one-location">{venue}</p>
-          <p className="birthday-one-rsvp"> Upotmunite moj veliki dan</p>
+          <p className="birthday-one-rsvp"> Upotpunite moj veliki dan</p>
         </motion.div>
 
         <motion.button
