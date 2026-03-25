@@ -32,6 +32,7 @@ import RetroIntro from "../components/RetroIntro";
 import RetroInvitationCard from "../components/RetroInvitationCard";
 
 import BirthdayGalleryIntro from "../components/BirthdayGalleryIntro";
+import BirthdayGalleryInvitationCard from "../components/BirthdayGalleryInvitationCard";
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -76,10 +77,10 @@ retro: {
   Intro: RetroIntro,
   Invitation: RetroInvitationCard,
 },
- "birthday-gallery": {
-    Intro: BirthdayGalleryIntro,
-    Invitation: FloralInvitationCard,
-  },
+"birthday-gallery": {
+  Intro: BirthdayGalleryIntro,
+  Invitation: BirthdayGalleryInvitationCard,
+},
 };
 
 function WeddingPage() {
@@ -160,6 +161,9 @@ const invitationProps = {
   rsvpVideoSrc: invitation.rsvpVideoSrc,
   slug: invitation.slug,
   type: invitation.type,
+    image1: invitation.image1,
+  image2: invitation.image2,
+  image3: invitation.image3,
 };
 
   return (

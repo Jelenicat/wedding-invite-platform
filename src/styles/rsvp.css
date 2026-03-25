@@ -3945,3 +3945,445 @@ margin-bottom: 2px;
     font-size: 30px;
   }
 }
+/* =========================================
+   BIRTHDAY RSVP (FINAL)
+========================================= */
+
+.birthday-rsvp-section {
+  --birthday-rsvp-bg: none;
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 16px;
+  background: linear-gradient(180deg, #f8f4ee 0%, #f2ece4 48%, #efe7dd 100%);
+}
+
+.birthday-rsvp-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: var(--birthday-rsvp-bg);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+}
+
+.birthday-rsvp-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(248,244,238,0.88) 0%, rgba(248,244,238,0.72) 40%, rgba(239,231,221,0.82) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(130,107,90,0.03) 0,
+      rgba(130,107,90,0.03) 1px,
+      transparent 1px,
+      transparent 42px
+    );
+}
+
+/* SHELL */
+.birthday-rsvp-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD */
+.birthday-rsvp-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  padding: 36px 24px 30px;
+  border-radius: 30px;
+  text-align: center;
+
+  background: rgba(255, 251, 247, 0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(122, 100, 84, 0.14);
+
+  box-shadow:
+    0 18px 60px rgba(79, 58, 42, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* TEXT */
+.birthday-rsvp-kicker {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond";
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #7d6655;
+}
+
+.birthday-rsvp-title {
+  margin: 0;
+  font-family: "Great Vibes";
+  font-size: clamp(28px, 8vw, 70px);
+  font-weight: 300;
+  color: #2d221c;
+}
+
+.birthday-rsvp-subtitle {
+  margin: 14px auto 18px;
+  font-family: "Cormorant Garamond";
+  font-size: 21px;
+  color: #6c5648;
+}
+
+/* NOTE */
+.birthday-rsvp-note {
+  margin: 0 auto 18px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(124, 99, 84, 0.1);
+  font-family: "Cormorant Garamond";
+  font-size: 18px;
+  color: #6e584a;
+}
+
+/* DIVIDER */
+.birthday-rsvp-divider {
+  height: 1px;
+  margin: 18px 0 20px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(143,115,96,0.3),
+    transparent
+  );
+}
+
+/* FORM */
+.birthday-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.birthday-rsvp-field {
+  text-align: left;
+}
+
+.birthday-rsvp-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Cormorant Garamond";
+  font-size: 14px;
+  font-weight: 500;
+  color: #5e4a3d;
+}
+
+.birthday-rsvp-field input {
+  width: 100%;
+  border: 1px solid rgba(124, 99, 84, 0.14);
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 17px;
+  background: rgba(255,255,255,0.8);
+  outline: none;
+}
+
+.birthday-rsvp-field input:focus {
+  border-color: rgba(143,115,96,0.4);
+  box-shadow: 0 0 0 3px rgba(143,115,96,0.08);
+}
+
+/* CHOICE BLOCK */
+.birthday-rsvp-choice-block {
+  text-align: left;
+}
+
+.birthday-rsvp-choice-label {
+  font-family: "Cormorant Garamond";
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #5e4a3d;
+}
+
+/* GRID */
+.birthday-rsvp-choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* CHOICE CARD */
+.birthday-choice-card {
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid rgba(124, 99, 84, 0.14);
+  background: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.birthday-choice-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ACTIVE */
+.birthday-choice-card.is-active {
+  background: linear-gradient(180deg, #8f7360, #6f5848);
+  color: white;
+  border: none;
+  box-shadow: 0 12px 22px rgba(70,50,35,0.18);
+}
+
+.birthday-choice-title {
+  display: block;
+  font-family: "Cormorant Garamond";
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.birthday-choice-text {
+  display: block;
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* BUTTON */
+.birthday-rsvp-button {
+  margin-top: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #2f241d, #1f1813);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.birthday-rsvp-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.birthday-rsvp-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}/* =========================================
+   BIRTHDAY GALLERY COUNTDOWN
+========================================= */
+.birthday-countdown-section {
+  --birthday-countdown-bg: none;
+  position: relative;
+  min-height: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px 36px;
+  margin-top: -18px;
+  background: linear-gradient(180deg, #f8f4ee 0%, #f2ece4 48%, #efe7dd 100%);
+}
+
+.birthday-countdown-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: var(--birthday-countdown-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+}
+
+.birthday-countdown-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(248, 244, 238, 0.86) 0%, rgba(248, 244, 238, 0.72) 42%, rgba(239, 231, 221, 0.82) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(130, 107, 90, 0.03) 0,
+      rgba(130, 107, 90, 0.03) 1px,
+      transparent 1px,
+      transparent 42px
+    );
+}
+
+.birthday-countdown-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.birthday-countdown-glow-one {
+  width: 220px;
+  height: 220px;
+  background: rgba(235, 214, 196, 0.85);
+  top: 30px;
+  left: -40px;
+}
+
+.birthday-countdown-glow-two {
+  width: 250px;
+  height: 250px;
+  background: rgba(202, 174, 150, 0.32);
+  bottom: 0;
+  right: -60px;
+}
+
+.birthday-countdown-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 760px;
+  padding: 38px 22px 34px;
+  border-radius: 34px;
+  text-align: center;
+  background: rgba(255, 251, 247, 0.66);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(122, 100, 84, 0.14);
+  box-shadow:
+    0 18px 60px rgba(79, 58, 42, 0.11),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+.birthday-countdown-kicker {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7d6655;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.birthday-countdown-title {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+      font-size: clamp(28px, 8vw, 70px);
+  
+  font-weight: 100;
+ 
+  
+  color: #2d221c;
+}
+
+.birthday-countdown-subtitle {
+  margin: 14px auto 28px;
+  max-width: 520px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  line-height: 1.35;
+  color: #6c5648;
+}
+
+.birthday-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.birthday-countdown-unit {
+  padding: 22px 12px 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(124, 99, 84, 0.1);
+  box-shadow: 0 10px 24px rgba(69, 50, 36, 0.05);
+}
+
+.birthday-countdown-number {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1;
+  font-weight: 700;
+  color: #2d221c;
+}
+
+.birthday-countdown-label {
+  display: block;
+  margin-top: 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a705f;
+}
+
+.birthday-countdown-finished {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 18px 22px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(124, 99, 84, 0.1);
+  box-shadow: 0 10px 24px rgba(69, 50, 36, 0.05);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 28px;
+  color: #5f493d;
+}
+
+@media (max-width: 768px) {
+  .birthday-countdown-card {
+    max-width: 560px;
+    padding: 32px 16px 28px;
+    border-radius: 28px;
+  }
+
+  .birthday-countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .birthday-countdown-subtitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .birthday-countdown-section {
+    padding: 22px 10px;
+  }
+
+  .birthday-countdown-card {
+    border-radius: 24px;
+    padding: 28px 14px 22px;
+  }
+
+  .birthday-countdown-title {
+    font-size: 38px;
+  }
+
+  .birthday-countdown-subtitle {
+    font-size: 18px;
+    margin-bottom: 22px;
+  }
+
+  .birthday-countdown-grid {
+    gap: 10px;
+  }
+
+  .birthday-countdown-unit {
+    border-radius: 18px;
+    padding: 18px 8px 14px;
+  }
+
+  .birthday-countdown-number {
+    font-size: 34px;
+  }
+
+  .birthday-countdown-label {
+    font-size: 12px;
+  }
+
+  .birthday-countdown-finished {
+    font-size: 24px;
+    border-radius: 18px;
+  }
+}

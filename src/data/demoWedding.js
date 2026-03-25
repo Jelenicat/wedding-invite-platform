@@ -1182,7 +1182,8 @@ events: [
   brideName: "Viktor",
   weddingDate: "10 SEP 2026",
   weddingTime: "11:00",
- venue: "Topčiderac, Beograd",
+  venue: "Topčiderac, Beograd",
+  backgroundImage: "/images/viktor-1-bg.jpg",
   image1: "/images/viktor-1-1.jpg",
   image2: "/images/viktor-1-2.jpg",
   image3: "/images/viktor-1-3.jpg",
@@ -1191,7 +1192,7 @@ events: [
     date: "10 SEP 2026",
     dateISO: "2026-09-10T11:00:00",
     venue: "Topčiderac, Beograd",
-    note: "RSVP by 25 Aug",
+    note: "Potvrdite do 25. avgusta",
   }),
 },
 {
