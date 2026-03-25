@@ -840,6 +840,9 @@ events: [
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
+// =========================
+// SPLIT IMAGE TEMPLATE
+// =========================
 {
   slug: "draga-stefan",
   type: "wedding",
@@ -1016,7 +1019,9 @@ events: [
   note: "Molimo vas da svoj dolazak potvrdite na vreme.",
 }),
 },
-
+// =========================
+// VIDEO BAND TEMPLATE
+// =========================
   {
     slug: "iva-pedja",
     type: "wedding",
@@ -1117,6 +1122,9 @@ events: [
   note: "Molimo vas da svoj dolazak potvrdite na vreme.",
 }),
   },
+  // =========================
+  // BIRTHDAY TEMPLATES
+  // =========================
   {
   slug: "jelena-18",
   type: "birthday",
@@ -1165,6 +1173,44 @@ events: [
     dressCodeNote: "Crno-beli outfit sa crvenim detaljem je dobrodošao.",
     mapLink: "https://maps.google.com/?q=Beograd",
     note: "Potvrdi dolazak na vreme.",
+  }),
+},
+{
+  slug: "viktor-1",
+  type: "birthday",
+  template: "birthday-gallery",
+  brideName: "Viktor",
+  weddingDate: "10 SEP 2026",
+  weddingTime: "11:00",
+  venue: "123 Garden Avenue, New York",
+  image1: "/images/viktor-1-1.jpg",
+  image2: "/images/viktor-1-2.jpg",
+  image3: "/images/viktor-1-3.jpg",
+  details: createDetails({
+    welcomeText: "Join us for a very special first birthday celebration.",
+    date: "10 SEP 2026",
+    dateISO: "2026-09-10T11:00:00",
+    venue: "123 Garden Avenue, New York",
+    note: "RSVP by 25 Aug",
+  }),
+},
+{
+  slug: "aleksa-1",
+  type: "birthday",
+  template: "birthday-gallery",
+  brideName: "Aleksa",
+  weddingDate: "18 OCT 2026",
+  weddingTime: "12:00",
+  venue: "Sunset Hall, Chicago",
+  image1: "/images/aleksa-1-1.jpg",
+  image2: "/images/aleksa-1-2.jpg",
+  image3: "/images/aleksa-1-3.jpg",
+  details: createDetails({
+    welcomeText: "Come celebrate Noah's first birthday with us.",
+    date: "18 OCT 2026",
+    dateISO: "2026-10-18T12:00:00",
+    venue: "Sunset Hall, Chicago",
+    note: "RSVP by 1 Oct",
   }),
 },
 ];

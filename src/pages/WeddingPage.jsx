@@ -31,6 +31,7 @@ import BlackWhiteInvitationCard from "../components/BlackWhiteInvitationCard";
 import RetroIntro from "../components/RetroIntro";
 import RetroInvitationCard from "../components/RetroInvitationCard";
 
+import BirthdayGalleryIntro from "../components/BirthdayGalleryIntro";
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -75,6 +76,10 @@ retro: {
   Intro: RetroIntro,
   Invitation: RetroInvitationCard,
 },
+ "birthday-gallery": {
+    Intro: BirthdayGalleryIntro,
+    Invitation: FloralInvitationCard,
+  },
 };
 
 function WeddingPage() {
@@ -122,21 +127,24 @@ function WeddingPage() {
     setShowInvitation(true);
   };
 
-  const introProps = {
-    brideName: invitation.brideName,
-    groomName: invitation.groomName,
-    backgroundImage: invitation.backgroundImage,
-    weddingDate: invitation.weddingDate,
-    weddingTime: invitation.weddingTime,
-    venue: invitation.venue,
-    introText: invitation.introText,
-    videoSrc: invitation.videoSrc,
-    image: invitation.image,
-    imageSrc: invitation.image,
-    onEnter: handleIntroEnter,
-    isOpen: isIntroOpen,
-    onOpen: handleIntroOpen,
-  };
+const introProps = {
+  brideName: invitation.brideName,
+  groomName: invitation.groomName,
+  backgroundImage: invitation.backgroundImage,
+  weddingDate: invitation.weddingDate,
+  weddingTime: invitation.weddingTime,
+  venue: invitation.venue,
+  introText: invitation.introText,
+  videoSrc: invitation.videoSrc,
+  image: invitation.image,
+  imageSrc: invitation.image,
+  image1: invitation.image1,
+  image2: invitation.image2,
+  image3: invitation.image3,
+  onEnter: handleIntroEnter,
+  isOpen: isIntroOpen,
+  onOpen: handleIntroOpen,
+};
 
 const invitationProps = {
   brideName: invitation.brideName,

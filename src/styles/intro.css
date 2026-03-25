@@ -1959,3 +1959,238 @@ font-weight: 100;
   width: min(260px, 80vw);
 }
 }
+.birthday-one-intro {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f4ee;
+  padding: 20px 16px;
+}
+
+.birthday-one-card {
+  width: 100%;
+  max-width: 330px;
+  text-align: center;
+  padding: 18px 0;
+}
+
+/* Ime i tekst */
+.birthday-one-name {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(54px, 11vw, 76px);
+  line-height: 0.9;
+  font-weight: 400;
+  color: #2e251f;
+}
+
+.birthday-one-subtitle {
+  margin: 2px 0 20px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  line-height: 1;
+  color: #3a3029;
+  text-transform: lowercase;
+}
+
+/* ==================== BROJ 1 OD SLIKA ==================== */
+.birthday-one-intro {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f4ee;
+  padding: 20px 16px;
+}
+
+.birthday-one-card {
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  padding: 18px 0;
+}
+
+/* Ime i tekst */
+.birthday-one-name {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(54px, 11vw, 76px);
+  line-height: 0.9;
+  font-weight: 400;
+  color: #2e251f;
+}
+
+.birthday-one-subtitle {
+  margin: 2px 0 22px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  line-height: 1;
+  color: #3a3029;
+  text-transform: lowercase;
+}
+
+/* ==================== BROJ 1 OD SLIKA ==================== */
+
+.birthday-one-shape {
+  width: 190px;
+  margin: 0 auto 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.birthday-one-collage {
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.birthday-one-photo {
+  width: 190px;
+  height: 128px;
+  overflow: hidden;
+  background: #e7e0d7;
+  position: relative;
+}
+
+.birthday-one-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TOP - kosi vrh, ali desna ivica ostaje ista */
+.birthday-one-photo-top {
+  clip-path: polygon(
+    18% 0%,
+    92% 0%,
+    92% 100%,
+    0% 100%,
+    0% 30%
+  );
+}
+
+/* MIDDLE - isečeno samo sa LEVE strane */
+.birthday-one-photo-middle {
+  clip-path: polygon(
+    15% 0%,
+    92% 0%,
+    92% 100%,
+    15% 100%
+  );
+}
+
+/* BOTTOM - gore stub, dole širina */
+.birthday-one-photo-bottom {
+  clip-path: polygon(
+    15% 0%,
+    92% 0%,
+    92% 65%,
+    100% 65%,
+    100% 100%,
+    0% 100%,
+    0% 65%,
+    15% 65%
+  );
+}
+
+/* Donja braon baza */
+.birthday-one-base {
+  width: 150px;
+  height: 20px;
+  background: #c7b19b;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+/* INFO */
+.birthday-one-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.birthday-one-date {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #2f251f;
+}
+
+.birthday-one-location {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 24px;
+  line-height: 1.05;
+  color: #9f948a;
+}
+
+.birthday-one-rsvp {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+  color: #2f251f;
+}
+
+/* Dugme */
+.birthday-one-button {
+  border: none;
+  background: #2f241d;
+  color: #fff;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.birthday-one-button:hover {
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 420px) {
+  .birthday-one-card {
+    max-width: 300px;
+  }
+
+  .birthday-one-name {
+    font-size: 62px;
+  }
+
+  .birthday-one-shape {
+    width: 162px;
+    margin-bottom: 30px;
+  }
+
+  .birthday-one-collage {
+    width: 162px;
+    gap: 7px;
+  }
+
+  .birthday-one-photo {
+    width: 162px;
+    height: 108px;
+  }
+
+  .birthday-one-base {
+    width: 128px;
+    height: 17px;
+    margin-top: 7px;
+  }
+
+  .birthday-one-location {
+    font-size: 22px;
+  }
+}
