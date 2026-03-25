@@ -3967,14 +3967,14 @@ margin-bottom: 2px;
   background-image: var(--birthday-rsvp-bg);
   background-size: cover;
   background-position: center;
-  transform: scale(1.04);
+  transform: scale(2.04);
 }
 
 .birthday-rsvp-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(248,244,238,0.88) 0%, rgba(248,244,238,0.72) 40%, rgba(239,231,221,0.82) 100%),
+    linear-gradient(180deg, rgba(248,244,238,0.6) 0%, rgba(248,244,238,0.4) 40%, rgba(239,231,221,0.3) 100%),
     repeating-linear-gradient(
       90deg,
       rgba(130,107,90,0.03) 0,
@@ -4141,6 +4141,7 @@ margin-bottom: 2px;
   font-family: "Cormorant Garamond";
   font-size: 20px;
   font-weight: 700;
+    color: #5e4a3d;
 }
 
 .birthday-choice-text {
@@ -4148,6 +4149,7 @@ margin-bottom: 2px;
   font-size: 13px;
   opacity: 0.8;
   margin-top: 4px;
+  color: #5e4a3d;
 }
 
 /* BUTTON */
