@@ -403,79 +403,93 @@
 .split-video-rsvp-section {
   position: relative;
   width: 100%;
- background: linear-gradient(
-        180deg,
-        rgba(81, 81, 80, 0.9) 20%,
-        rgba(81, 81, 80, 0.89)16%,
-        rgba(81, 81, 80, 0.85) 38%,
-        rgba(59, 59, 58, 0.922)100%
-    );
-  margin-top: -38px;
-  padding: 82px 16px 28px;
-margin-bottom: 2px;
+  background: #f3ece6;
+  margin-top: 0;
+  padding: 0;
+  margin-bottom: 0;
 }
 
 .split-video-rsvp-section::before {
   content: "";
   position: absolute;
-  top: -20px;
-  left: 0;
-  right: 0;
-  height: 160px;
-  
+  inset: 0;
   pointer-events: none;
 }
 
 .split-video-rsvp-shell {
-  max-width: 760px;
+  position: relative;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 8px;
+  padding: 0;
 }
 
 .split-video-rsvp-box {
   position: relative;
-  max-width: 560px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 42px 30px 34px;
+  padding: 70px 20px 60px;
   text-align: center;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.09),
-      rgba(255,248,244,0.04)
-    );
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255,255,255,0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background-image: url("/images/paper-texture1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   overflow: hidden;
 }
 
 .split-video-rsvp-box::before {
   content: "";
   position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 238, 233, 0.95),
+    rgba(243, 231, 225, 0.96)
+  );
+  z-index: 0;
+}
+
+.split-video-rsvp-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 52%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  z-index: 0;
+}
+
+.split-video-rsvp-kicker,
+.split-video-rsvp-title,
+.split-video-rsvp-subtitle,
+.split-video-rsvp-divider,
+.split-video-rsvp-form,
+.split-video-rsvp-field,
+.split-video-rsvp-choice-block {
+  position: relative;
+  z-index: 1;
 }
 
 .split-video-rsvp-kicker {
   margin: 0 0 10px;
   font-size: 10px;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: #8c7a6f;
 }
 
 .split-video-rsvp-title {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-size: clamp(2.4rem, 5vw, 3rem);
   line-height: 1.02;
   font-weight: 500;
-  color: #ffffff;
+  color: #6f5b4f;
 }
 
 .split-video-rsvp-subtitle {
@@ -484,42 +498,24 @@ margin-bottom: 2px;
   font-size: 14px;
   line-height: 1.9;
   font-style: italic;
-  color: rgba(255, 244, 238, 0.72);
+  color: #87756a;
 }
 
-.split-video-rsvp-field label,
-.split-video-rsvp-choice-label {
-  color: rgba(255, 240, 232, 0.58);
-}
-
-.split-video-choice-text {
-  color: rgba(255, 238, 228, 0.56);
-}
-
-.split-video-countdown-kicker {
-  color: rgba(255, 240, 232, 0.6);
-}
-
-.split-video-countdown-item small {
-  color: rgba(255, 235, 226, 0.5);
-}
-
-.split-video-countdown-note {
-  color: rgba(255, 236, 228, 0.54);
-}
 .split-video-rsvp-divider {
   width: 72px;
   height: 1px;
   margin: 24px auto 28px;
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,0),
-    rgba(255,255,255,0.34),
-    rgba(255,255,255,0)
+    rgba(145, 122, 108, 0),
+    rgba(145, 122, 108, 0.35),
+    rgba(145, 122, 108, 0)
   );
 }
 
 .split-video-rsvp-form {
+  max-width: 420px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -536,33 +532,38 @@ margin-bottom: 2px;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  
+  color: #8d7a70;
 }
 
 .split-video-rsvp-field input[type="text"],
 .split-video-rsvp-field input[type="number"] {
   width: 100%;
   height: 56px;
-  padding: 0 18px;
+  padding: 0 6px 0 2px;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.16);
-  background: rgba(255,255,255,0.05);
-  color: #ffffff;
+  border-bottom: 1px solid rgba(145, 122, 108, 0.35);
+  background: transparent;
+  color: #6f5b4f;
   font-size: 15px;
   outline: none;
-  transition: all 0.28s ease;
+  transition: border-color 0.25s ease, opacity 0.25s ease;
 }
 
 .split-video-rsvp-field input[type="text"]::placeholder,
 .split-video-rsvp-field input[type="number"]::placeholder {
-  color: rgba(255,255,255,0.42);
+  color: rgba(120, 100, 90, 0.5);
+}
+
+.split-video-rsvp-field input[type="text"]:hover,
+.split-video-rsvp-field input[type="number"]:hover {
+  border-bottom-color: rgba(145, 122, 108, 0.5);
 }
 
 .split-video-rsvp-field input[type="text"]:focus,
 .split-video-rsvp-field input[type="number"]:focus {
-  background: rgba(255,255,255,0.08);
-  border-bottom-color: rgba(255,255,255,0.3);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+  border-bottom-color: rgba(145, 122, 108, 0.6);
+  box-shadow: none;
+  background: transparent;
 }
 
 .split-video-rsvp-choice-block {
@@ -577,190 +578,121 @@ margin-bottom: 2px;
 
 .split-video-choice-card {
   appearance: none;
-  border: 1px solid rgba(255,255,255,0.1);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.06),
-      rgba(255,255,255,0.03)
-    );
-  padding: 18px 16px;
-  text-align: center;
-  cursor: pointer;
-  transition:
-    transform 0.28s ease,
-    box-shadow 0.28s ease,
-    border-color 0.28s ease,
-    background 0.28s ease;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.04),
-    0 10px 24px rgba(0, 0, 0, 0.14);
-}
 
-.split-video-choice-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.18);
+  border: 1px solid rgba(145,122,108,0.18);
+  background: rgba(255,255,255,0.35);
+
+  padding: 20px 16px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  font-style: italic;
+
+  color: #6f5b4f;
+
+  cursor: pointer;
+
+  transition: all 0.28s ease;
+
   box-shadow:
-    0 16px 32px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255,255,255,0.08);
+    0 8px 18px rgba(88,71,60,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+
+  position: relative;
+}
+.split-video-choice-card::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  margin: 10px auto 0;
+
+  background: rgba(145,122,108,0.25);
+}
+.split-video-choice-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 30px rgba(88,71,60,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.55);
+
+  border-color: rgba(145,122,108,0.35);
 }
 
 .split-video-choice-card.is-active {
-  border-color: rgba(255,255,255,0.26);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.12),
-      rgba(255,255,255,0.06)
-    );
-  box-shadow:
-    0 16px 34px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255,255,255,0.1);
-}
+  background: rgba(143,138,100,0.22);
 
+  border-color: rgba(143,138,100,0.5);
+
+  color: #5c4a3f;
+
+  box-shadow:
+    0 14px 30px rgba(88,71,60,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.split-video-choice-card:active {
+  transform: scale(0.96);
+}
 .split-video-choice-title {
   display: block;
   margin-bottom: 6px;
   font-family: "Cormorant Garamond", serif;
   font-size: 1.45rem;
-  color: #ffffff;
+  color: #6f5b4f;
 }
 
 .split-video-choice-text {
   display: block;
   font-size: 12px;
   line-height: 1.6;
-  color: rgba(255,255,255,0.6);
+  color: #7e6d63;
 }
 
 .split-video-rsvp-button {
   align-self: center;
   min-width: 240px;
   min-height: 54px;
-  margin-top: 4px;
+  margin-top: 10px;
   padding: 14px 24px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.16),
-      rgba(255,255,255,0.08)
-    );
-  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  background: #8f8a64;
+  color: #fffaf5;
   font-size: 11px;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255,255,255,0.08);
-  transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+    0 12px 26px rgba(88, 71, 60, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .split-video-rsvp-button:hover {
   transform: translateY(-2px);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.2),
-      rgba(255,255,255,0.1)
-    );
+  opacity: 0.92;
   box-shadow:
-    0 18px 36px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255,255,255,0.1);
+    0 16px 30px rgba(88, 71, 60, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
-/* =========================
-   SPLIT VIDEO COUNTDOWN
-========================= */
-
-.split-video-countdown-section {
-  width: 100%;
-  padding: 18px 16px 62px;
-  margin-top: -20px;
-  margin-bottom: -80px;
-
-  background: linear-gradient(
-    180deg,
-    rgba(56, 56, 56, 0.9) 30%,
-    rgba(56, 56, 56, 0.89)16%,
-     rgba(56, 56, 56, 0.88) 38%,
-     rgba(56, 56, 56, 0.987)100%
-  );
-}
-.split-video-countdown-inner {
-  max-width: 560px;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 20px;
+.split-video-rsvp-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
-.split-video-countdown-kicker {
-  margin: 0;
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.62);
-}
-
-.split-video-countdown-divider {
-  width: 68px;
-  height: 1px;
-  margin: 16px auto 24px;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0),
-    rgba(255,255,255,0.28),
-    rgba(255,255,255,0)
-  );
-}
-
-.split-video-countdown {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 18px;
-  flex-wrap: nowrap;
-}
-
-.split-video-countdown-item {
-  min-width: 64px;
-  text-align: center;
-}
-
-.split-video-countdown-item span {
-  display: block;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.9rem;
-  line-height: 1;
-  color: #ffffff;
-}
-
-.split-video-countdown-item small {
-  display: block;
-  margin-top: 8px;
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.56);
-}
-
-.split-video-countdown-note {
-  max-width: 280px;
-  margin: 26px auto 0;
-  font-size: 13px;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.58);
-  font-style: italic;
-}
-
-@media (max-width: 480px) {
-  .split-video-rsvp-section {
-    padding: 24px 12px 16px;
+@media (max-width: 640px) {
+  .split-video-rsvp-box {
+    padding: 54px 16px 44px;
   }
 
-  .split-video-rsvp-box {
-    padding: 28px 16px 24px;
+  .split-video-rsvp-form {
+    max-width: 360px;
+    gap: 18px;
   }
 
   .split-video-rsvp-subtitle {
@@ -774,8 +706,7 @@ margin-bottom: 2px;
 
   .split-video-rsvp-field input[type="text"],
   .split-video-rsvp-field input[type="number"] {
-    height: 52px;
-    padding: 0 14px;
+    height: 50px;
     font-size: 14px;
   }
 
@@ -791,21 +722,161 @@ margin-bottom: 2px;
     width: 100%;
     min-width: 100%;
   }
+}
+/* =========================
+   SPLIT VIDEO COUNTDOWN - NUDE EDITORIAL
+========================= */
 
-  .split-video-countdown-section {
-    padding: 22px 12px 56px;
+.split-video-countdown-section {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #f3ece6;
+}
+
+.split-video-countdown-paper {
+  position: relative;
+  width: 100%;
+  min-height: 58dvh;
+  background-image: url("/images/paper-texture1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.split-video-countdown-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 238, 233, 0.95),
+    rgba(243, 231, 225, 0.96)
+  );
+  z-index: 0;
+}
+
+.split-video-countdown-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 52%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  z-index: 0;
+}
+
+.split-video-countdown-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 56px 20px 70px;
+  text-align: center;
+}
+
+.split-video-countdown-kicker {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #8c7a6f;
+}
+
+.split-video-countdown-divider {
+  width: 74px;
+  height: 1px;
+  margin: 18px auto 28px;
+  background: linear-gradient(
+    90deg,
+    rgba(145, 122, 108, 0),
+    rgba(145, 122, 108, 0.38),
+    rgba(145, 122, 108, 0)
+  );
+  transform-origin: center;
+}
+
+.split-video-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(72px, 1fr));
+  gap: 14px;
+}
+
+.split-video-countdown-item {
+  padding: 18px 8px 16px;
+  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(145, 122, 108, 0.1);
+  box-shadow:
+    0 12px 26px rgba(88, 71, 60, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.split-video-countdown-item:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 30px rgba(88, 71, 60, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.split-video-countdown-item span {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 6vw, 3.4rem);
+  line-height: 1;
+  color: #6f5b4f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.split-video-countdown-item small {
+  display: block;
+  margin-top: 10px;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #97857a;
+}
+
+.split-video-countdown-note {
+  max-width: 320px;
+  margin: 28px auto 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #87756a;
+  font-style: italic;
+}
+
+.split-video-countdown-finished {
+  margin: 8px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-style: italic;
+  font-weight: 500;
+  color: #6f5b4f;
+}
+
+@media (max-width: 640px) {
+  .split-video-countdown-inner {
+    max-width: 380px;
+    padding: 44px 16px 54px;
   }
 
   .split-video-countdown {
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
   .split-video-countdown-item {
-    min-width: 54px;
+    padding: 16px 8px 14px;
   }
 
   .split-video-countdown-item span {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
   }
 
   .split-video-countdown-item small {
@@ -815,7 +886,7 @@ margin-bottom: 2px;
 
   .split-video-countdown-note {
     font-size: 12px;
-    margin-top: 20px;
+    margin-top: 22px;
   }
 }
 /* =========================

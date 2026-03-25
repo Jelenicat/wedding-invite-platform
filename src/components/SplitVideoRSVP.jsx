@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
@@ -8,17 +8,18 @@ function SplitVideoRSVP({ slug, eventType }) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
-    guests: "1", // 🔥 STRING
+    guests: "1",
   });
 
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormData((prev) => ({
       ...prev,
-      [name]: value, // 🔥 nema Number
+      [name]: value,
     }));
   };
 
@@ -33,21 +34,14 @@ function SplitVideoRSVP({ slug, eventType }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!slug || !eventType) {
-      alert("Nedostaje slug ili tip događaja.");
-      return;
-    }
+    if (!slug || !eventType) return;
 
-    if (!formData.fullName.trim()) {
-      alert("Unesite ime i prezime.");
-      return;
-    }
+    if (!formData.fullName.trim()) return;
 
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
       if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
-        alert("Unesite ispravan broj osoba.");
         return;
       }
     }
@@ -55,27 +49,18 @@ function SplitVideoRSVP({ slug, eventType }) {
     setLoading(true);
 
     try {
-      const payload = {
+      await addDoc(collection(db, "rsvps"), {
         slug,
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
         guests: formData.attending === "da" ? guestsCount : 0,
         createdAt: serverTimestamp(),
-      };
-
-      await addDoc(collection(db, "rsvps"), payload);
-
-      alert("Uspešno poslato!");
-
-      setFormData({
-        fullName: "",
-        attending: "",
-        guests: "1", // 🔥 reset string
       });
+
+      setSubmitted(true);
     } catch (error) {
-      console.error("Greška pri slanju RSVP:", error);
-      alert("Došlo je do greške pri slanju.");
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -91,94 +76,135 @@ function SplitVideoRSVP({ slug, eventType }) {
     >
       <div className="split-video-rsvp-shell">
         <div className="split-video-rsvp-box">
-          <p className="split-video-rsvp-kicker">RSVP</p>
-
-          <h2 className="split-video-rsvp-title">Potvrdite dolazak</h2>
-
-          <p className="split-video-rsvp-subtitle">
-            Biće nam izuzetna čast da svojim prisustvom budete deo našeg
-            posebnog dana.
-          </p>
-
-          <div className="split-video-rsvp-divider" />
-
-          <form className="split-video-rsvp-form" onSubmit={handleSubmit}>
-            <div className="split-video-rsvp-field">
-              <label htmlFor="split-video-fullName">Ime i prezime</label>
-              <input
-                id="split-video-fullName"
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Unesite ime i prezime"
-                required
-              />
-            </div>
-
-            <div className="split-video-rsvp-choice-block">
-              <p className="split-video-rsvp-choice-label">Da li dolazite?</p>
-
-              <div className="split-video-rsvp-choice-grid">
-                <button
-                  type="button"
-                  className={`split-video-choice-card ${
-                    formData.attending === "da" ? "is-active" : ""
-                  }`}
-                  onClick={() => handleAttendanceSelect("da")}
+          
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div
+                key="success"
+                className="split-video-success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2>Hvala 💌</h2>
+                <p>Vaša potvrda je uspešno poslata.</p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="form"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <motion.p
+                  className="split-video-rsvp-kicker"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                 >
-                  <span className="split-video-choice-title">Dolazim</span>
-                  <span className="split-video-choice-text">
-                    Radujem se što slavim sa vama
-                  </span>
-                </button>
+                  RSVP
+                </motion.p>
 
-                <button
-                  type="button"
-                  className={`split-video-choice-card ${
-                    formData.attending === "ne" ? "is-active" : ""
-                  }`}
-                  onClick={() => handleAttendanceSelect("ne")}
+                <motion.h2
+                  className="split-video-rsvp-title"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
                 >
-                  <span className="split-video-choice-title">Ne dolazim</span>
-                  <span className="split-video-choice-text">
-                    Nažalost nisam u mogućnosti
-                  </span>
-                </button>
-              </div>
-            </div>
+                  Potvrdite dolazak
+                </motion.h2>
 
-            <input
-              type="hidden"
-              name="attending"
-              value={formData.attending}
-              required
-            />
+                <motion.p
+                  className="split-video-rsvp-subtitle"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  Biće nam izuzetna čast da budete deo našeg dana.
+                </motion.p>
 
-            {formData.attending === "da" && (
-              <div className="split-video-rsvp-field">
-                <label htmlFor="split-video-guests">Broj osoba</label>
-                <input
-                  id="split-video-guests"
-                  type="number"
-                  name="guests"
-                  min="1"
-                  max="10"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+                <div className="split-video-rsvp-divider" />
+
+                <form className="split-video-rsvp-form" onSubmit={handleSubmit}>
+                  
+                  <motion.div
+                    className="split-video-rsvp-field"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <label>Ime i prezime</label>
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      placeholder="Unesite ime i prezime"
+                      required
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    className="split-video-rsvp-choice-block"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <p className="split-video-rsvp-choice-label">
+                      Da li dolazite?
+                    </p>
+
+                    <div className="split-video-rsvp-choice-grid">
+                      <button
+                        type="button"
+                        className={`split-video-choice-card ${
+                          formData.attending === "da" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("da")}
+                      >
+                        Dolazim
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`split-video-choice-card ${
+                          formData.attending === "ne" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("ne")}
+                      >
+                        Ne dolazim
+                      </button>
+                    </div>
+                  </motion.div>
+
+                  {formData.attending === "da" && (
+                    <motion.div
+                      className="split-video-rsvp-field"
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      <label>Broj osoba</label>
+                      <input
+                        type="number"
+                        name="guests"
+                        min="1"
+                        max="10"
+                        value={formData.guests}
+                        onChange={handleChange}
+                        required
+                      />
+                    </motion.div>
+                  )}
+
+                  <motion.button
+                    type="submit"
+                    className="split-video-rsvp-button"
+                    disabled={loading}
+                    whileTap={{ scale: 0.96 }}
+                  >
+                    {loading ? "Slanje..." : "Pošalji potvrdu"}
+                  </motion.button>
+                </form>
+              </motion.div>
             )}
+          </AnimatePresence>
 
-            <button
-              type="submit"
-              className="split-video-rsvp-button"
-              disabled={loading}
-            >
-              {loading ? "Slanje..." : "Pošalji potvrdu"}
-            </button>
-          </form>
         </div>
       </div>
     </motion.section>

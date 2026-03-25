@@ -501,6 +501,30 @@
     font-size: 13px;
   }
 }
+.floral-timeline-location-link {
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.25s ease;
+}
+
+.floral-timeline-location-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.floral-timeline-location-link:hover {
+  opacity: 0.85;
+}
+
+.floral-timeline-location-link:hover::after {
+  width: 100%;
+}
 /* =========================
    MINIMAL INVITATION CARD
 ========================= */
@@ -522,8 +546,18 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: grayscale(100%) brightness(1.08) contrast(0.82);
-  transform: scale(1.03);
+  filter: brightness(0.95) contrast(1.03) saturate(1.03);
+  transform: scale(1.04);
+  animation: minimalBgZoom 16s ease-in-out infinite alternate;
+}
+
+@keyframes minimalBgZoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.08);
+  }
 }
 
 .minimal-invitation-overlay {
@@ -532,10 +566,10 @@
   background:
     linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.78) 0%,
-      rgba(255, 255, 255, 0.58) 22%,
-      rgba(255, 255, 255, 0.68) 55%,
-      rgba(255, 255, 255, 0.86) 100%
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.25) 30%,
+      rgba(255, 255, 255, 0.35) 60%,
+      rgba(255, 255, 255, 0.55) 100%
     );
 }
 
@@ -544,9 +578,13 @@
   z-index: 2;
   width: min(420px, 92vw);
   padding: 40px 24px 30px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
   text-align: center;
   overflow: hidden;
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .minimal-invitation-frame {
@@ -557,7 +595,7 @@
 }
 
 .minimal-invitation-kicker {
-   margin: 18px 0 18px;
+  margin: 18px 0 18px;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1rem;
   letter-spacing: 0.24em;
@@ -584,13 +622,22 @@
   justify-content: center;
   align-items: center;
   gap: 14px;
-  font-family: "Great Vibes", "Allura", cursive;
-  font-size: clamp(2.3rem, 7vw, 3.4rem);
-  font-weight: 400;
-  color: #3e3028;
-  line-height: 1.1;
-}
 
+  font-family: "Italianno", cursive;
+  font-weight: 200;
+
+  font-size: clamp(5rem, 11vw, 6.6rem);
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+
+  color: #3b3029;
+
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.minimal-invitation-amp {
+  transform: scale(0.85);
+  opacity: 0.6;
+}
 .minimal-invitation-amp {
   display: inline-flex;
   align-items: center;
@@ -737,7 +784,7 @@
 }
 
 /* =========================
-   NOVO - PLAN VENCANJA
+   PLAN VENČANJA
 ========================= */
 
 .minimal-script-title {
@@ -823,6 +870,32 @@
   letter-spacing: 0;
 }
 
+.minimal-timeline-location-link {
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.minimal-timeline-location-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.minimal-timeline-location-link:hover {
+  opacity: 0.85;
+}
+
+.minimal-timeline-location-link:hover::after {
+  width: 100%;
+}
+
 .minimal-timeline-title {
   margin: 0;
   font-size: 0.95rem;
@@ -832,7 +905,7 @@
 }
 
 /* =========================
-   NOVO - DRESS CODE
+   DRESS CODE
 ========================= */
 
 .minimal-dresscode-editorial {
@@ -889,7 +962,7 @@
   height: 26px;
   border-radius: 8px;
   border: 1px solid rgba(62, 48, 40, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .minimal-dresscode-role-men {
@@ -913,7 +986,7 @@
 
   .minimal-invitation-names {
     gap: 10px;
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
 
   .minimal-invitation-amp svg {
@@ -1079,10 +1152,11 @@
 
 .photo-card-invitation-names {
   margin: 0 0 8px;
-  font-family: "Allura", cursive;
-  font-size: 38px;
-  line-height: 0.95;
-  font-weight: 400;
+ font-family: "Italianno", cursive;
+ letter-spacing: 0.8px;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 500;
   color: #b11c3f;
 }
 
@@ -1416,7 +1490,7 @@
   }
 
   .photo-card-invitation-names {
-    font-size: 32px;
+    font-size: 39px;
   }
 
   .photo-card-invitation-text {
@@ -2262,410 +2336,498 @@
   }
 }
 /* =========================
-   SPLIT VIDEO INVITATION
+   SPLIT VIDEO INVITATION - NUDE EDITORIAL
 ========================= */
 
 .split-video-invitation {
   position: relative;
+  width: 100%;
   min-height: 100dvh;
-  width: 100%;
-  overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 38px 14px;
-  background: #e9e4de;
-}
-
-.split-video-invitation-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0.2) 28%,
-      rgba(58, 54, 52, 0.42) 68%,
-      rgba(43, 39, 37, 0.74) 100%
-    );
-}
-
-.split-video-invitation-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  align-items: stretch;
+  padding: 0;
+  background: #f3ece6;
+  overflow: hidden;
 }
 
 .split-video-paper {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 470px;
-  padding: 34px 22px 30px;
-  text-align: center;
-  background: rgba(18, 18, 18, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 24px 50px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  min-height: 100dvh;
+  background-image: url("/images/paper-texture1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  overflow: hidden;
 }
 
 .split-video-paper::before {
   content: "";
   position: absolute;
-  inset: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 238, 233, 0.3),
+    rgba(243, 231, 225, 0.3)
+  );
+  z-index: 0;
+}
+
+.split-video-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  z-index: 0;
+}
+
+.split-video-paper-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+.split-video-paper-inner::before {
+  content: "";
+  position: absolute;
+  inset: 16px 10px;
+  border: 1px solid rgba(145, 122, 108, 0.15);
   pointer-events: none;
 }
 
-.split-video-kicker {
-  margin: 0 0 18px;
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
-}
+.split-video-invitation-names.top {
+  margin: 0 0 12px;
 
-.split-video-invitation-names {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0 14px;
-  text-align: center;
   font-family: "Italianno", cursive;
-  font-size: clamp(4.6rem, 12vw, 7.2rem);
-  line-height: 0.92;
-  letter-spacing: 1px;
-  font-weight: 400;
-  color: #ffffff;
-  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-}
+  font-size: clamp(2.6rem, 8vw, 4.8rem);
 
+  line-height: 0.9;
+  letter-spacing: 0.1px; /* 👈 smanji */
+
+  color: #827167;
+
+  text-shadow: none; /* 👈 ovo je ključno */
+}
 .split-video-invitation-and {
-  font-size: 0.8em;
-  margin: 2px 0;
+  opacity: 0.6;
 }
 
-.split-video-date {
-  margin: 0 0 18px;
-  font-size: 11px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.split-video-divider {
-  width: 76px;
-  height: 1px;
-  margin: 0 auto 20px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0)
-  );
+.split-video-kicker {
+  margin: 0 0 14px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: #7f6b5f;
 }
 
 .split-video-text {
-  max-width: 330px;
+  max-width: 250px;
   margin: 0 auto 24px;
-  font-size: 15px;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  line-height: 1.7;
+  color: #8a776c;
   font-style: italic;
 }
 
-/* =========================
-   EDITORIAL PLAN
-========================= */
-
-.split-video-editorial-block {
-  max-width: 320px;
-  margin: 0 auto 26px;
+.split-video-calendar {
+  max-width: 290px;
+  margin: 0 auto 18px;
 }
 
-.split-video-heart-divider {
-  position: relative;
-  margin: 0 auto 12px;
+.split-video-calendar-line {
   width: 100%;
-  height: 26px;
-}
-
-.split-video-heart-divider.bottom {
-  margin: 16px auto 0;
-}
-
-.split-video-heart-divider::before,
-.split-video-heart-divider::after {
-  content: "";
-  position: absolute;
-  top: 12px;
-  width: calc(50% - 18px);
   height: 1px;
-  background: rgba(203, 116, 116, 0.34);
-}
-
-.split-video-heart-divider::before {
-  left: 0;
-}
-
-.split-video-heart-divider::after {
-  right: 0;
-}
-
-.split-video-heart-divider span {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 26px;
-  font-size: 20px;
-  color: #cb7474;
-  background: transparent;
-}
-
-.split-video-editorial-title {
-  margin: 0 0 18px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.25rem;
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #cb7474;
-}
-
-.split-video-editorial-title.dresscode {
   margin-bottom: 14px;
-}
-
-.split-video-editorial-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.split-video-editorial-row {
-  display: grid;
-  grid-template-columns: 56px 18px 1fr;
-  gap: 12px;
-  align-items: start;
-  min-height: 94px;
-  text-align: left;
-}
-
-.split-video-editorial-time {
-  padding-top: 1px;
-  font-size: 0.95rem;
-  line-height: 1.2;
-  color: #cb7474;
-  font-weight: 500;
-}
-
-.split-video-editorial-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 94px;
-}
-
-.split-video-editorial-dot {
-  width: 8px;
-  height: 8px;
-  margin-top: 5px;
-  border-radius: 50%;
-  background: #cb7474;
-  box-shadow: 0 0 0 4px rgba(203, 116, 116, 0.12);
-}
-
-.split-video-editorial-line {
-  width: 1px;
-  flex: 1;
-  margin-top: 8px;
   background: linear-gradient(
-    180deg,
-    rgba(203, 116, 116, 0.5),
-    rgba(203, 116, 116, 0.08)
+    90deg,
+    rgba(145, 122, 108, 0),
+    rgba(145, 122, 108, 0.4),
+    rgba(145, 122, 108, 0)
   );
 }
 
-.split-video-editorial-content {
-  padding-bottom: 18px;
+.split-video-calendar-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
 }
 
-.split-video-editorial-event-title {
-  margin: 0 0 5px;
+.split-video-calendar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.split-video-calendar-col-center {
+  min-width: 78px;
+}
+
+.split-video-calendar-label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9a877a;
+  margin-bottom: 6px;
+}
+
+.split-video-calendar-value {
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.55rem;
+  font-size: 2.3rem;
   line-height: 1;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.96);
+  color: #6e5a4e;
 }
 
-.split-video-editorial-location {
+.split-video-calendar-heart {
   display: block;
-  margin: 0 0 4px;
-  font-size: 0.82rem;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 18px;
+  color: #8f8a64;
+  margin-bottom: 2px;
+}
+
+.split-video-calendar-month {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  color: #7a675c;
+}
+
+.split-video-love-mark {
+  margin: 6px auto 12px;
+  font-size: 22px;
+  line-height: 1;
+  color: #8c8b62;
+}
+
+.split-video-flow {
+  position: relative;
+  max-width: 280px;
+  margin: 0 auto 28px;
+  padding: 4px 0;
+}
+
+.split-video-flow-item {
+  position: relative;
+  padding: 0 0 22px 0;
+}
+
+.split-video-flow-item:last-child {
+  padding-bottom: 8px;
+}
+
+.split-video-flow-node {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: #8f8a64;
+  box-shadow: 0 0 0 6px rgba(143, 138, 100, 0.12);
+}
+
+.split-video-flow-curve {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 90px;
+  height: 88px;
+  transform: translateX(-50%);
+  border-left: 1.5px solid rgba(145, 122, 108, 0.55);
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 60px;
+  opacity: 0.72;
+}
+
+.split-video-flow-item:nth-child(even) .split-video-flow-curve {
+  transform: translateX(-50%) scaleX(-1);
+}
+
+.split-video-flow-content {
+  padding-top: 34px;
+  text-align: center;
+}
+
+.split-video-flow-title {
+  margin: 0 0 2px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.75rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #7a6357;
+}
+
+.split-video-flow-time {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9a877a;
+}
+
+.split-video-flow-location {
+  display: block;
+  margin: 0 auto 4px;
+  max-width: 220px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #7f6d63;
   text-decoration: none;
 }
 
-.split-video-editorial-location.is-link {
-  color: rgba(255, 255, 255, 0.78);
-  transition: opacity 0.2s ease;
-}
-
-.split-video-editorial-location.is-link:hover {
+.split-video-flow-location.is-link:hover {
   opacity: 0.75;
 }
 
-.split-video-editorial-note {
-  margin: 0;
-  font-size: 0.76rem;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.58);
+.split-video-flow-note {
+  margin: 0 auto;
+  max-width: 220px;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #a08f84;
+  font-style: italic;
 }
 
-/* =========================
-   DRESS CODE
-========================= */
-
-.split-video-extra {
-  max-width: 340px;
-  margin: 0 auto 16px;
-  padding: 20px 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.split-video-location-box,
+.split-video-dresscode-box {
+  max-width: 290px;
+  margin: 0 auto 24px;
+  padding: 18px 16px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(145, 122, 108, 0.12);
 }
 
-.split-video-dresscode-editorial {
-  background: rgba(255, 255, 255, 0.05);
+.split-video-section-script {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #7b6558;
+}
+
+.split-video-location-text {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #837267;
+}
+
+.split-video-location-link {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  background: #8f8a64;
+  color: #fffaf5;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.split-video-location-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
 }
 
 .split-video-section-note {
-  max-width: 280px;
-  margin: 12px auto 0;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.split-video-dresscode-note {
-  margin-top: 0;
-}
-
-.split-video-dresscode-subnote {
-  max-width: 270px;
-  margin: 12px auto 16px;
+  max-width: 220px;
+  margin: 0 auto 14px;
   font-size: 12px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.65;
+  color: #8d7a6f;
 }
 
 .split-video-palette {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-}
-
-.split-video-palette-editorial {
   gap: 10px;
 }
 
 .split-video-palette-dot {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.22),
-    0 4px 10px rgba(0, 0, 0, 0.18);
-}
-
-.split-video-palette-dot-editorial {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(145, 122, 108, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
 }
 
 .split-video-note {
-  max-width: 300px;
-  margin: 20px auto 0;
-  font-size: 13px;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.74);
+  max-width: 240px;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8d7a70;
   font-style: italic;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* hide old classes that više ne koristimo */
+.split-video-divider,
+.split-video-editorial-block,
+.split-video-extra {
+  all: unset;
+}
 
 @media (max-width: 480px) {
   .split-video-invitation {
-    padding: 28px 12px;
+    padding: 0;
   }
 
-  .split-video-paper {
-    max-width: 360px;
-    padding: 26px 16px 24px;
+  .split-video-paper-inner {
+    max-width: 350px;
+    padding: 56px 18px 42px;
   }
 
-  .split-video-paper::before {
-    inset: 8px;
-  }
-
-  .split-video-invitation-names {
-    font-size: clamp(4rem, 18vw, 6rem);
+  .split-video-kicker {
+    font-size: 1.5rem;
   }
 
   .split-video-text {
-    font-size: 14px;
-    max-width: 280px;
-  }
-
-  .split-video-editorial-title {
-    font-size: 1.9rem;
-  }
-
-  .split-video-editorial-row {
-    grid-template-columns: 48px 16px 1fr;
-    gap: 10px;
-    min-height: 86px;
-  }
-
-  .split-video-editorial-center {
-    min-height: 86px;
-  }
-
-  .split-video-editorial-time {
-    font-size: 0.82rem;
-  }
-
-  .split-video-editorial-event-title {
-    font-size: 1.3rem;
-  }
-
-  .split-video-editorial-location,
-  .split-video-editorial-note,
-  .split-video-section-note,
-  .split-video-dresscode-subnote,
-  .split-video-note {
     font-size: 12px;
+    margin-bottom: 20px;
   }
 
-  .split-video-palette-dot-editorial {
-    width: 28px;
-    height: 28px;
+  .split-video-calendar-grid {
+    gap: 10px;
   }
+
+  .split-video-calendar-value {
+    font-size: 2rem;
+  }
+
+  .split-video-flow {
+    max-width: 250px;
+  }
+
+  .split-video-flow-curve {
+    width: 74px;
+    height: 78px;
+  }
+
+  .split-video-flow-title {
+    font-size: 1.55rem;
+  }
+
+  .split-video-flow-location,
+  .split-video-flow-note,
+  .split-video-location-text,
+  .split-video-section-note,
+  .split-video-note {
+    font-size: 11px;
+  }
+
+  .split-video-section-script {
+    font-size: 1.8rem;
+  }
+
+  .split-video-palette-dot {
+    width: 24px;
+    height: 24px;
+  }
+
+  .split-video-invitation-names.top {
+    font-size: 55px;
+  }
+}
+.split-video-paper {
+  animation: splitPaperFade 0.9s ease;
+}
+
+@keyframes splitPaperFade {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.split-video-paper-inner {
+  animation: splitInnerFloat 7s ease-in-out infinite;
+}
+
+@keyframes splitInnerFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.split-video-invitation-names.top {
+  animation: splitNamesGlow 4.5s ease-in-out infinite;
+}
+
+@keyframes splitNamesGlow {
+  0% {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  }
+  50% {
+    text-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+  }
+  100% {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  }
+}
+
+.split-video-calendar-heart,
+.split-video-love-mark {
+  animation: splitHeartPulse 3.2s ease-in-out infinite;
+}
+
+@keyframes splitHeartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.split-video-location-link,
+.split-video-flow-location.is-link {
+  transition: transform 0.25s ease, opacity 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.split-video-location-link:hover,
+.split-video-flow-location.is-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.split-video-palette-dot {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.split-video-palette-dot:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow:
+    0 8px 16px rgba(88, 71, 60, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 /* =========================
    ENVELOPE INVITATION CARD

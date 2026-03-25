@@ -45,7 +45,7 @@ function MinimalInvitationCard({
         <div className="minimal-invitation-paper">
           <div className="minimal-invitation-frame" />
 
-          <p className="minimal-invitation-kicker">Wedding Invitation</p>
+          <p className="minimal-invitation-kicker">Pozivnica</p>
 
           <div className="minimal-invitation-monogram">
             <span>{safeBrideName[0]}</span>
@@ -127,9 +127,14 @@ function MinimalInvitationCard({
                               {" "}
                               |{" "}
                             </span>
-                            <span className="minimal-timeline-location-inline">
-                              {event.location}
-                            </span>
+                            <a
+  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="minimal-timeline-location-inline minimal-timeline-location-link"
+>
+  {event.location}
+</a>
                           </>
                         )}
                       </p>

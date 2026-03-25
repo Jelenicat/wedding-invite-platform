@@ -4,7 +4,7 @@ function PhotoCardIntro({
   brideName,
   groomName,
   weddingDate,
-  location,
+  venue,
   image,
   backgroundImage,
   onEnter,
@@ -38,7 +38,7 @@ function PhotoCardIntro({
 
         <div className="photo-divider" />
 
-        <p className="photo-location">{location}</p>
+       <p className="photo-location">{venue}</p>
 
         <button className="photo-card-btn" onClick={onEnter}>
           Pogledaj pozivnicu

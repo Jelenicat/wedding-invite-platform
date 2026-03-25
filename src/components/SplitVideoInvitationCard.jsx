@@ -8,7 +8,6 @@ function SplitVideoInvitationCard({
   brideName,
   groomName,
   details = {},
-  videoSrc,
   slug,
   type,
 }) {
@@ -18,75 +17,128 @@ function SplitVideoInvitationCard({
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
 
+  const dateParts = details.date
+    ? details.date.split(" ")
+    : ["18", "SEP", "2026"];
+
+  const [day = "18", month = "SEP", year = "2026"] = dateParts;
+
+  const fadeUp = {
+    initial: { opacity: 0, y: 22 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 },
+  };
+
   return (
     <>
       <motion.section
         className="split-video-invitation"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        <video
-          className="split-video-invitation-bg"
-          src={videoSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-
-        <div className="split-video-invitation-overlay" />
-
         <div className="split-video-paper">
-          <p className="split-video-kicker">Pozivnica</p>
+          <div className="split-video-paper-inner">
+            <motion.h1
+              className="split-video-invitation-names top"
+              initial={{ opacity: 0, y: 18, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {safeBrideName}{" "}
+              <span className="split-video-invitation-and">&</span>{" "}
+              {safeGroomName}
+            </motion.h1>
 
-          <h1 className="split-video-invitation-names">
-            <span>{safeBrideName}</span>
-            <span className="split-video-invitation-and">&</span>
-            <span>{safeGroomName}</span>
-          </h1>
+            <motion.p
+              className="split-video-kicker"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.12 }}
+            >
+              Dobrodošli
+            </motion.p>
 
-          {details.date && <p className="split-video-date">{details.date}</p>}
+            {details.welcomeText && (
+              <motion.p
+                className="split-video-text"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.2 }}
+              >
+                {details.welcomeText}
+              </motion.p>
+            )}
 
-          <div className="split-video-divider" />
+            <motion.div
+              className="split-video-calendar"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.28 }}
+            >
+              <div className="split-video-calendar-line" />
 
-          {details.welcomeText && (
-            <p className="split-video-text">{details.welcomeText}</p>
-          )}
+              <div className="split-video-calendar-grid">
+                <div className="split-video-calendar-col">
+                  <span className="split-video-calendar-label">Dan</span>
+                  <span className="split-video-calendar-value">{day}</span>
+                </div>
 
-          {timelineItems.length > 0 && (
-            <div className="split-video-editorial-block">
-              <div className="split-video-heart-divider top">
-                <span>♡</span>
+                <div className="split-video-calendar-col split-video-calendar-col-center">
+                  <motion.span
+                    className="split-video-calendar-heart"
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.45 }}
+                  >
+                    ♡
+                  </motion.span>
+                  <span className="split-video-calendar-month">{month}</span>
+                </div>
+
+                <div className="split-video-calendar-col">
+                  <span className="split-video-calendar-label">Godina</span>
+                  <span className="split-video-calendar-value">{year}</span>
+                </div>
               </div>
+            </motion.div>
 
-              <h3 className="split-video-editorial-title">Plan dana</h3>
+            <motion.div
+              className="split-video-love-mark"
+              initial={{ opacity: 0, scale: 0.8, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.5 }}
+            >
+              ♥
+            </motion.div>
 
-              <div className="split-video-editorial-timeline">
+            {timelineItems.length > 0 && (
+              <motion.div
+                className="split-video-flow"
+                {...fadeUp}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
                 {timelineItems.map((event, index) => (
                   <motion.div
                     key={`${event.label}-${index}`}
-                    className="split-video-editorial-row"
-                    initial={{ opacity: 0, y: 20 }}
+                    className="split-video-flow-item"
+                    initial={{ opacity: 0, y: 18 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.45, delay: index * 0.08 }}
                   >
-                    <div className="split-video-editorial-time">
-                      {event.time}
-                    </div>
+                    <motion.div
+                      className="split-video-flow-node"
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.35, delay: index * 0.08 + 0.08 }}
+                    />
+                    <div className="split-video-flow-curve" />
 
-                    <div className="split-video-editorial-center">
-                      <span className="split-video-editorial-dot" />
-                      {index !== timelineItems.length - 1 && (
-                        <span className="split-video-editorial-line" />
-                      )}
-                    </div>
-
-                    <div className="split-video-editorial-content">
-                      <h4 className="split-video-editorial-event-title">
-                        {event.label}
-                      </h4>
+                    <div className="split-video-flow-content">
+                      <h4 className="split-video-flow-title">{event.label}</h4>
+                      <p className="split-video-flow-time">{event.time}</p>
 
                       {event.location &&
                         (event.mapLink ? (
@@ -94,68 +146,95 @@ function SplitVideoInvitationCard({
                             href={event.mapLink}
                             target="_blank"
                             rel="noreferrer"
-                            className="split-video-editorial-location is-link"
+                            className="split-video-flow-location is-link"
                           >
                             {event.location}
                           </a>
                         ) : (
-                          <p className="split-video-editorial-location">
+                          <p className="split-video-flow-location">
                             {event.location}
                           </p>
                         ))}
 
                       {event.note && (
-                        <p className="split-video-editorial-note">
-                          {event.note}
-                        </p>
+                        <p className="split-video-flow-note">{event.note}</p>
                       )}
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
+            )}
 
-              <div className="split-video-heart-divider bottom">
-                <span>♡</span>
-              </div>
-            </div>
-          )}
+            {(details.mapLink || details.venue) && (
+              <motion.div
+                className="split-video-location-box"
+                {...fadeUp}
+                transition={{ duration: 0.65 }}
+              >
+                <h3 className="split-video-section-script">Lokacija</h3>
 
-          {details.dressCodePalette?.length > 0 && (
-            <div className="split-video-extra split-video-dresscode-editorial">
-              <h3 className="split-video-editorial-title dresscode">
-                Dress-kod
-              </h3>
+                {details.venue && (
+                  <p className="split-video-location-text">{details.venue}</p>
+                )}
 
-              {details.dressCodeNote && (
-                <p className="split-video-section-note split-video-dresscode-note">
-                  {details.dressCodeNote}
-                </p>
-              )}
+                {details.mapLink && (
+                  <a
+                    href={details.mapLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="split-video-location-link"
+                  >
+                    Pogledaj mapu
+                  </a>
+                )}
+              </motion.div>
+            )}
 
-            
+            {details.dressCodePalette?.length > 0 && (
+              <motion.div
+                className="split-video-dresscode-box"
+                {...fadeUp}
+                transition={{ duration: 0.65 }}
+              >
+                <h3 className="split-video-section-script">Dress code</h3>
 
-              <div className="split-video-palette split-video-palette-editorial">
-                {details.dressCodePalette.map((color, index) => (
-                  <span
-                    key={`${color}-${index}`}
-                    className="split-video-palette-dot split-video-palette-dot-editorial"
-                    style={{ backgroundColor: color }}
-                    aria-label={`dress code color ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
+                {details.dressCodeNote && (
+                  <p className="split-video-section-note">
+                    {details.dressCodeNote}
+                  </p>
+                )}
 
-          {details.note && <p className="split-video-note">{details.note}</p>}
+                <div className="split-video-palette">
+                  {details.dressCodePalette.map((color, index) => (
+                    <motion.span
+                      key={index}
+                      className="split-video-palette-dot"
+                      style={{ backgroundColor: color }}
+                      initial={{ opacity: 0, scale: 0.7, y: 8 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.35, delay: index * 0.06 }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {details.note && (
+              <motion.p
+                className="split-video-note"
+                {...fadeUp}
+                transition={{ duration: 0.6 }}
+              >
+                {details.note}
+              </motion.p>
+            )}
+          </div>
         </div>
       </motion.section>
 
-    <SplitVideoRSVP slug={slug} eventType={type} />
-
-      {details.dateISO && (
-        <SplitVideoCountdown targetDate={details.dateISO} />
-      )}
+      <SplitVideoRSVP slug={slug} eventType={type} />
+      {details.dateISO && <SplitVideoCountdown targetDate={details.dateISO} />}
     </>
   );
 }

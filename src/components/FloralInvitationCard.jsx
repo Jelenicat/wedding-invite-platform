@@ -146,11 +146,22 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
   {event.location && (
     <span className="floral-timeline-separator"> • </span>
   )}
-  {event.location && (
+{event.location && (
+  event.mapLink ? (
+    <a
+      href={event.mapLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="floral-timeline-location-inline floral-timeline-location-link"
+    >
+      {event.location}
+    </a>
+  ) : (
     <span className="floral-timeline-location-inline">
       {event.location}
     </span>
-  )}
+  )
+)}
 </p>
                     )}
                   </div>

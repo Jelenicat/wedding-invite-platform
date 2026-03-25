@@ -537,7 +537,19 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f4eee6;
+  background: #f6eee6;
+  color: #fffaf5;
+}
+
+.floral-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(193, 154, 107, 0.05) 0%, transparent 65%),
+    radial-gradient(circle at center, transparent 54%, rgba(0, 0, 0, 0.14) 100%);
 }
 
 .floral-intro::after {
@@ -545,13 +557,13 @@ html {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.16;
+  opacity: 0.08;
   background:
-    radial-gradient(rgba(120, 94, 70, 0.035) 0.8px, transparent 1px),
-    radial-gradient(rgba(0, 0, 0, 0.018) 0.7px, transparent 0.9px);
-  background-size: 8px 8px, 12px 12px;
-  background-position: 0 0, 4px 6px;
-  z-index: 1;
+    radial-gradient(rgba(193, 154, 107, 0.03) 0.6px, transparent 1.2px),
+    radial-gradient(rgba(255, 245, 232, 0.02) 0.5px, transparent 1px);
+  background-size: 7px 7px, 13px 13px;
+  background-position: 0 0, 5px 7px;
+  z-index: 2;
 }
 
 .floral-bg {
@@ -560,42 +572,56 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.99) contrast(1.03) saturate(1.04);
+  animation: floralBgZoom 18s ease-in-out infinite alternate;
+  transform: scale(1.02);
+}
+
+@keyframes floralBgZoom {
+  from { transform: scale(1.02); }
+  to   { transform: scale(1.05); }
 }
 
 .floral-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 20, 20, 0.18) 0%,
-    rgba(20, 20, 20, 0.08) 40%,
-    rgba(20, 20, 20, 0.22) 100%
-  );
+  z-index: 3;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 248, 240, 0.04) 0%,
+      rgba(255, 248, 240, 0.02) 42%,
+      rgba(60, 20, 20, 0.10) 100%
+    ),
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(255, 238, 216, 0.04) 0%,
+      transparent 58%
+    );
 }
 
 .floral-content {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   width: 100%;
   height: 100%;
 }
 
 .floral-monogram {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-style: italic;
   font-family: "Cormorant Garamond", serif;
+  font-style: italic;
   font-size: clamp(54px, 10vw, 92px);
   line-height: 1;
   font-weight: 500;
   letter-spacing: -5px;
-  color: #c19a6b;
+  color: #cfa46f;
   text-shadow:
-    0 2px 10px rgba(193, 154, 107, 0.18),
-    0 8px 28px rgba(193, 154, 107, 0.1);
+    0 1px 0 rgba(255, 255, 255, 0.2),
+    0 6px 18px rgba(0, 0, 0, 0.12);
   white-space: nowrap;
 }
 
@@ -604,31 +630,30 @@ html {
   position: absolute;
   left: 50%;
   top: 52%;
-  width: 140%;
-  height: 140%;
+  width: 128%;
+  height: 128%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(193, 154, 107, 0.12) 0%,
-    rgba(193, 154, 107, 0.05) 8%,
+    rgba(232, 213, 184, 0.08) 0%,
+    rgba(193, 154, 107, 0.03) 18%,
     transparent 72%
   );
   z-index: -1;
-  filter: blur(5px);
+  filter: blur(8px);
 }
 
 .floral-monogram span {
-  display: inline-block;
-  margin: 0 2px;
+  margin: 0 3px;
   font-style: italic;
-  transform: translateY(-1px);
+  color: #c89a63;
 }
 
 .floral-names {
   position: absolute;
   left: 50%;
-  bottom: 120px;
+  bottom: 148px;
   transform: translateX(-50%);
   margin: 0;
   width: 100%;
@@ -636,61 +661,82 @@ html {
   text-align: center;
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  font-size: clamp(28px, 5vw, 44px);
-  line-height: 1.1;
+  font-size: clamp(28px, 5.5vw, 42px);
+  line-height: 1.12;
   font-weight: 500;
-  color: #c19a6b;
-  text-shadow: 0 3px 12px rgba(255, 255, 255, 0.22);
+  color: #d2aa77;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-.floral-names span {
-  margin: 0 8px;
-  color: #c19a6b;
+.floral-names::before,
+.floral-names::after {
+  content: "";
+  display: inline-block;
+  width: clamp(34px, 7vw, 72px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(210, 170, 119, 0.55),
+    transparent
+  );
+  vertical-align: middle;
+  margin: 0 12px;
 }
 
 .floral-button {
   position: absolute;
   left: 50%;
-  bottom: 56px;
+  bottom: 92px;
   transform: translateX(-50%);
-  border: 1px solid rgba(255, 250, 245, 0.35);
-  border-radius: 999px;
-  padding: 14px 28px;
-  background: linear-gradient(180deg, #c19a6b 0%, #b89264 100%);
-  color: #fffaf5;
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  border: 1px solid rgba(255, 248, 238, 0.28);
+  border-radius: 1px;
+  padding: 14px 32px;
+  min-width: 178px;
+  background: linear-gradient(180deg, #e3bc8a 0%, #cfa06a 100%);
+  color:  #5d331dcd;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  
   cursor: pointer;
   box-shadow:
-    0 12px 28px rgba(75, 52, 40, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.22);
-  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .floral-button:hover {
-  transform: translateX(-50%) translateY(-3px);
-  filter: brightness(1.05);
+  transform: translateX(-50%) translateY(-4px);
   box-shadow:
-    0 18px 34px rgba(75, 52, 40, 0.22),
+    0 16px 30px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  filter: brightness(1.04);
 }
 
 @media (max-width: 640px) {
   .floral-monogram {
-    top: 48%;
-    font-size: 58px;
+    top: 46%;
+    font-size: 56px;
+    letter-spacing: -4px;
   }
 
   .floral-names {
-    bottom: 128px;
+    bottom: 138px;
     font-size: 24px;
-    padding: 0 20px;
+  }
+
+  .floral-names::before,
+  .floral-names::after {
+    width: 26px;
+    margin: 2px 8px;
   }
 
   .floral-button {
-    bottom: 72px;
-    padding: 12px 22px;
-    font-size: 13px;
+    bottom: 78px;
+    padding: 12px 26px;
+    font-size: 11.5px;
+    min-width: 164px;
   }
 }
 .minimal-intro-v2 {
@@ -770,26 +816,37 @@ html {
 }
 
 .minimal-script-names {
-  margin: -140px 0 60px;
+  
 
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
 
-  font-family: "Great Vibes", "Allura", cursive;
-  font-size: 2rem;
-  font-weight: 400;
+  font-family: "Italianno", cursive;
+  font-size: clamp(5.6rem, 12vw, 7.4rem);
+  font-weight: 200;
 
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+
   color: #3e3028;
 
-  line-height: 1.4;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+}
+.minimal-script-names {
+  animation: fadeInNames 1.2s ease forwards;
 }
 
-.minimal-amp {
-  font-size: 1.4rem;
-  opacity: 0.8;
+@keyframes fadeInNames {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .minimal-date-row {
@@ -913,7 +970,7 @@ html {
 
   .minimal-script-names {
     margin-top: -155px;
-    font-size: 2rem;
+    font-size: 3rem;
     gap: 8px;
   }
 
@@ -1138,7 +1195,9 @@ font-weight: 100;
   align-items: center;
   justify-content: center;
 
-  font-family: "Allura", cursive;
+  font-family: "Italianno", cursive;
+  font-style: italic;
+ letter-spacing: 0.8px;
   font-size: 32px;
   line-height: 0.95;
   color: #000000;
@@ -1242,7 +1301,7 @@ font-weight: 100;
   }
 
   .photo-card-names {
-    font-size: 28px;
+    font-size: 48px;
   }
 
   .photo-card-and {
@@ -1435,7 +1494,7 @@ font-weight: 100;
   width: 74px;
   height: 74px;
   border-radius: 50%;
-  background: rgba(20, 20, 20, 0.34);
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
   display: flex;
   align-items: center;

@@ -32,8 +32,13 @@ function SplitVideoCountdown({ targetDate }) {
   if (!timeLeft) {
     return (
       <section className="split-video-countdown-section">
-        <div className="split-video-countdown-inner">
-          <p className="split-video-countdown-kicker">Dan venčanja je stigao</p>
+        <div className="split-video-countdown-paper">
+          <div className="split-video-countdown-inner">
+            <p className="split-video-countdown-kicker">Naš dan je stigao</p>
+            <h3 className="split-video-countdown-finished">
+              Dan venčanja je stigao
+            </h3>
+          </div>
         </div>
       </section>
     );
@@ -49,39 +54,68 @@ function SplitVideoCountdown({ targetDate }) {
   return (
     <motion.section
       className="split-video-countdown-section"
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="split-video-countdown-inner">
-        <p className="split-video-countdown-kicker">Do venčanja je ostalo</p>
+      <div className="split-video-countdown-paper">
+        <div className="split-video-countdown-inner">
+          <motion.p
+            className="split-video-countdown-kicker"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Do venčanja je ostalo
+          </motion.p>
 
-        <div className="split-video-countdown-divider" />
+          <motion.div
+            className="split-video-countdown-divider"
+            initial={{ opacity: 0, scaleX: 0.7 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+          />
 
-        <div className="split-video-countdown">
-          {items.map((item) => (
-            <div key={item.label} className="split-video-countdown-item">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={item.value}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  {item.value}
-                </motion.span>
-              </AnimatePresence>
+          <div className="split-video-countdown">
+            {items.map((item, index) => (
+              <motion.div
+                key={item.label}
+                className="split-video-countdown-item"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={item.value}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.22 }}
+                  >
+                    {item.value}
+                  </motion.span>
+                </AnimatePresence>
 
-              <small>{item.label}</small>
-            </div>
-          ))}
+                <small>{item.label}</small>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p
+            className="split-video-countdown-note"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+          >
+            Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
+          </motion.p>
         </div>
-
-        <p className="split-video-countdown-note">
-          Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
-        </p>
       </div>
     </motion.section>
   );

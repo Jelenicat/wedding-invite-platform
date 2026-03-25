@@ -145,6 +145,7 @@ const invitationProps = {
   weddingTime: invitation.weddingTime,
   venue: invitation.venue,
   details: invitation.details,
+  backgroundImage: invitation.backgroundImage,
   image: invitation.image,
   imageSrc: invitation.image,
   videoSrc: invitation.videoSrc,
