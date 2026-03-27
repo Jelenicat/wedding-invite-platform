@@ -1337,7 +1337,7 @@ font-weight: 100;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: #e9e4de;
+  
   
 }
 
@@ -1353,16 +1353,15 @@ font-weight: 100;
 .video-band-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 252, 248, 0.08);
+ 
 }
 
 .video-band-strip {
   position: relative;
   z-index: 2;
   width: min(100%, 520px);
-  background: rgba(255, 252, 246, 0.58);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  
+
   padding: 34px 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(62, 48, 40, 0.08);
@@ -1380,7 +1379,8 @@ font-weight: 100;
   line-height: 0.88;
   letter-spacing: 1px;
 font-weight: 100;
-  color: #cb7474;
+  color: #ffd2d2;
+  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.9);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -1411,11 +1411,11 @@ font-weight: 100;
 
   padding: 12px 22px;
 
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(59, 59, 59, 0.4);
+  background: rgba(42, 42, 42, 0.8);
   backdrop-filter: blur(6px);
 
-  color: #ffffff;
+  color: #747171;
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -1427,9 +1427,9 @@ font-weight: 100;
   z-index: 3;
 }
 .video-band-btn-bottom {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(71, 71, 71, 0.5);
+  background: rgba(93, 93, 93, 0.1);
+ color: #3e3e3e;
 }
 .video-band-btn-bottom:hover {
   transform: translateX(-50%) translateY(-2px);
@@ -1536,10 +1536,10 @@ font-weight: 100;
   transform: translateX(-50%);
   min-width: 210px;
   padding: 12px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(20, 20, 20, 0.28);
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(6px);
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(7, 7, 7, 0.92);
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -2193,4 +2193,394 @@ font-weight: 100;
   .birthday-one-location {
     font-size: 22px;
   }
+}
+/* =========================
+   BIRTHDAY ONE WORD INTRO
+   inspired by editorial "ONE" layout
+========================= */
+
+.birthday-one-word-intro {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f2ed;
+  padding: 26px 18px;
+}
+
+.birthday-one-word-card {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.birthday-one-word-script {
+  margin: 0 0 10px;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(28px, 6vw, 40px);
+  line-height: 1;
+  color: #8e7f73;
+}
+
+.birthday-one-word-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 24px;
+}
+
+.birthday-one-letter {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.birthday-one-letter img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.02) contrast(1.02) brightness(0.98);
+}
+
+.birthday-one-letter span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 0;
+  mix-blend-mode: normal;
+}
+
+/* O */
+.birthday-one-letter-o {
+  width: 140px;
+  height: 200px;
+  border-radius: 999px;
+-webkit-mask-image: radial-gradient(circle at center, transparent 18%, #000 19%);
+mask-image: radial-gradient(circle at center, transparent 18%, #000 19%);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.birthday-one-letter-o span {
+  font-size: 118px;
+  font-weight: 700;
+}
+
+/* N */
+.birthday-one-letter-n {
+  clip-path: polygon(
+    0 0,
+    34% 0,
+    66% 70%,
+    66% 0,
+    100% 0,
+    100% 100%,
+    66% 100%,
+    34% 30%,
+    34% 100%,
+    0 100%
+  );
+}
+
+.birthday-one-letter-n span {
+  font-size: 118px;
+  font-weight: 700;
+}
+
+/* E */
+.birthday-one-letter-e {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 22%,
+    36% 22%,
+    36% 44%,
+    88% 44%,
+    88% 56%,
+    36% 56%,
+    36% 78%,
+    100% 78%,
+    100% 100%,
+    0 100%
+  );
+}
+
+.birthday-one-letter-e span {
+  font-size: 118px;
+  font-weight: 700;
+}
+
+.birthday-one-word-invite {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8e7f73;
+}
+
+.birthday-one-word-date {
+  margin: 0 0 22px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #473b34;
+}
+
+.birthday-one-word-btn {
+  border: none;
+  background: transparent;
+color: #8e7f73;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.birthday-one-word-btn::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 8px;
+  background: rgba(47, 37, 31, 0.45);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+.birthday-one-word-btn:hover::after {
+  transform: scaleX(1.08);
+}
+
+@media (max-width: 480px) {
+  .birthday-one-word-card {
+    max-width: 340px;
+  }
+
+  .birthday-one-word-script {
+    font-size: 46px;
+    margin-bottom: 0px;
+  }
+
+  .birthday-one-word-title {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .birthday-one-letter-o {
+    width: 120px;
+    height: 150px;
+  }
+
+  .birthday-one-letter-n,
+  .birthday-one-letter-e {
+    width: 120px;
+    height: 130px;
+  }
+
+  .birthday-one-letter-o span,
+  .birthday-one-letter-n span,
+  .birthday-one-letter-e span {
+    font-size: 96px;
+  }
+
+  .birthday-one-word-date {
+    font-size: 16px;
+    letter-spacing: 0.16em;
+  }
+}
+.birthday-one-word-intro {
+  position: relative; /* 🔥 ključ */
+}
+.birthday-bottom-svg {
+  width: 100%;
+  height: 180px; /* 👈 povećaj ovo */
+  object-fit: cover;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  pointer-events: none;
+
+  opacity: 0.8;
+}
+/* =========================
+   SPLIT INTRO
+========================= */
+
+.birthday-split-intro {
+  display: flex;
+  height: 100dvh;
+  background: #f7f3ee;
+}
+
+/* LEFT SIDE */
+
+.birthday-split-left {
+  width: 45%;
+  overflow: hidden;
+}
+
+.birthday-split-track {
+  display: flex;
+  flex-direction: column;
+  animation: verticalScroll 18s linear infinite;
+}
+
+.birthday-split-slide {
+  height: 33.33vh;
+}
+
+.birthday-split-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* RIGHT SIDE */
+
+.birthday-split-right {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+/* =========================
+   HEADING (1 + ONE)
+========================= */
+
+.birthday-split-heading {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  margin-bottom: 20px;
+}
+
+/* BIG 1 */
+
+.birthday-split-one {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 160px;
+  font-weight: 700;
+  line-height: 1;
+  color: #b89a6a;
+
+  z-index: 1;
+
+  animation: luxuryFloat 6s ease-in-out infinite;
+}
+
+/* ONE text (NA DNU) */
+
+.birthday-split-title {
+  position: absolute;
+  bottom: 0;            /* 👈 ključ */
+  
+  left: 10%;
+  transform: translateX(-10%); /* 🔥 ključ */
+
+  z-index: 2;
+
+  font-family: "Great Vibes", cursive;
+  font-size: 70px;
+  color: #3e3028;
+}
+
+/* subtitle */
+
+.birthday-split-subtitle {
+  font-size: 18px;
+  color: #a89b90;
+  margin-top: 10px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.birthday-split-btn {
+  margin-top: 32px;
+  padding: 14px 28px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(62, 48, 40, 0.2);
+
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+
+  color: #3e3028;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.35s ease;
+}
+
+.birthday-split-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(184,154,106,0.25),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.birthday-split-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.birthday-split-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(184,154,106,0.5);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes verticalScroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes luxuryFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }

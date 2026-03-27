@@ -33,6 +33,12 @@ import RetroInvitationCard from "../components/RetroInvitationCard";
 
 import BirthdayGalleryIntro from "../components/BirthdayGalleryIntro";
 import BirthdayGalleryInvitationCard from "../components/BirthdayGalleryInvitationCard";
+
+import BirthdayOneWordIntro from "../components/BirthdayOneWordIntro";
+import BirthdayOneWordInvitationCard from "../components/BirthdayOneWordInvitationCard";
+
+import BirthdaySplitIntro from "../components/BirthdaySplitIntro";
+import BirthdaySplitInvitationCard from "../components/BirthdaySplitInvitationCard";
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -80,6 +86,14 @@ retro: {
 "birthday-gallery": {
   Intro: BirthdayGalleryIntro,
   Invitation: BirthdayGalleryInvitationCard,
+},
+"birthday-one-word": {
+  Intro: BirthdayOneWordIntro,
+  Invitation: BirthdayOneWordInvitationCard,
+},
+"birthday-split": {
+  Intro: BirthdaySplitIntro,
+  Invitation: BirthdaySplitInvitationCard,
 },
 };
 
@@ -145,6 +159,7 @@ const introProps = {
   onEnter: handleIntroEnter,
   isOpen: isIntroOpen,
   onOpen: handleIntroOpen,
+  slug: invitation.slug,
 };
 
 const invitationProps = {

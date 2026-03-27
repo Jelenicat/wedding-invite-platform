@@ -3250,8 +3250,14 @@
   }
 }
 /* =========================
-   HERO - jos luksuznije
+   HERO - elegantnije, u tvom stilu
 ========================= */
+
+.video-band-editorial {
+  position: relative;
+  background: linear-gradient(180deg, #f6f0eb 0%, #f8f4f0 100%);
+  overflow: hidden;
+}
 
 .video-band-editorial-hero {
   position: relative;
@@ -3260,7 +3266,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 70px 24px 92px;
+  padding: 70px 24px 110px;
   isolation: isolate;
 }
 
@@ -3270,8 +3276,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.02);
-  filter: brightness(0.96);
+  transform: scale(1.03);
+  filter: saturate(0.78) brightness(1.02);
 }
 
 .video-band-editorial-overlay {
@@ -3280,24 +3286,24 @@
   background:
     linear-gradient(
       to bottom,
-      rgba(255, 248, 243, 0.08) 0%,
-      rgba(255, 244, 238, 0.04) 20%,
-      rgba(64, 33, 33, 0.14) 48%,
-      rgba(24, 14, 14, 0.72) 100%
+      rgba(248, 243, 239, 0.28) 0%,
+      rgba(248, 243, 239, 0.22) 22%,
+      rgba(248, 243, 239, 0.46) 56%,
+      rgba(248, 243, 239, 0.86) 100%
     );
 }
 
 .video-band-editorial-glow {
   position: absolute;
   inset: auto 0 0 0;
-  height: 240px;
+  height: 220px;
   background: radial-gradient(
     ellipse at center,
-    rgba(183, 71, 71, 0.24) 0%,
-    rgba(183, 71, 71, 0.1) 38%,
+    rgba(198, 164, 164, 0.24) 0%,
+    rgba(198, 164, 164, 0.1) 40%,
     transparent 78%
   );
-  filter: blur(28px);
+  filter: blur(26px);
   z-index: 1;
   pointer-events: none;
 }
@@ -3305,7 +3311,7 @@
 .video-band-editorial-grain {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.08) 0.5px, transparent 0.5px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.5px, transparent 0.5px);
   background-size: 4px 4px;
   opacity: 0.08;
   mix-blend-mode: soft-light;
@@ -3316,55 +3322,36 @@
 .video-band-editorial-names-wrap {
   position: relative;
   z-index: 2;
-  width: min(92%, 980px);
+  width: min(92%, 920px);
   text-align: center;
-  padding: 42px 34px 28px;
-  border: 1px solid rgba(255,255,255,0.14);
+  padding: 40px 34px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.10),
-    rgba(255,255,255,0.025)
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.08)
   );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
   box-shadow:
-    0 38px 90px rgba(18, 10, 10, 0.34),
-    inset 0 1px 0 rgba(255,255,255,0.16);
+    0 30px 70px rgba(65, 45, 45, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.44);
 }
 
 .video-band-editorial-names-wrap::before {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   pointer-events: none;
-}
-
-.video-band-editorial-names-wrap::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -18px;
-  transform: translateX(-50%);
-  width: 320px;
-  height: 90px;
-  background: radial-gradient(
-    ellipse,
-    rgba(183, 71, 71, 0.26) 0%,
-    rgba(183, 71, 71, 0.10) 42%,
-    transparent 78%
-  );
-  filter: blur(10px);
-  pointer-events: none;
-  z-index: -1;
 }
 
 .video-band-editorial-kicker {
   margin: 0 0 14px;
   font-size: 11px;
-  letter-spacing: 0.48em;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: rgba(255, 241, 236, 0.9);
+  color: #b49494;
 }
 
 .video-band-editorial-names {
@@ -3374,61 +3361,67 @@
   gap: 2px;
   margin: 0;
   font-family: "Italianno", cursive;
-  font-size: clamp(5.6rem, 12vw, 8.7rem);
+  font-size: clamp(5.6rem, 12vw, 8.5rem);
   line-height: 0.82;
   font-weight: 100;
-  color: #bd1010;
+  color: #7f6161;
   text-shadow:
-    0 14px 34px rgba(58, 16, 16, 0.58),
-    0 2px 10px rgba(255,255,255,0.14);
+    0 8px 24px rgba(75, 55, 55, 0.14),
+    0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .video-band-editorial-names span:first-child,
 .video-band-editorial-names span:last-child {
-  background: none;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: #b32222;
-  color: #b74747;
+  color: #7b5e5e;
+  -webkit-text-fill-color: #7b5e5e;
 }
 
 .video-band-editorial-and {
   font-size: 0.62em;
-  margin: -2px 0;
-  color:  #b32222;
-  -webkit-text-fill-color: #b32222;
+  margin: -4px 0;
+  color: #b49494;
+  -webkit-text-fill-color: #b49494;
+}
+
+.video-band-editorial-welcome {
+  max-width: 620px;
+  margin: 18px auto 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #6f5d5d;
 }
 
 .video-band-editorial-date {
   margin: 18px 0 0;
   font-size: 11px;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255, 236, 231, 0.92);
+  color: #8f7878;
 }
 
 .video-band-editorial-date::after {
   content: "";
   display: block;
-  width: 140px;
+  width: 120px;
   height: 1px;
-  margin: 18px auto 0;
+  margin: 16px auto 0;
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,0),
-    rgba(183, 71, 71, 0.7),
-    rgba(255,255,255,0)
+    rgba(180, 148, 148, 0),
+    rgba(180, 148, 148, 0.8),
+    rgba(180, 148, 148, 0)
   );
 }
 
 /* =========================
-   SHEET - premium feel
+   SHEET
 ========================= */
 
 .video-band-editorial-sheet {
   position: relative;
   z-index: 3;
-  max-width: 1240px;
-  margin: -96px auto 0;
+  max-width: 1180px;
+  margin: -92px auto 0;
   padding: 0 22px 86px;
 }
 
@@ -3437,15 +3430,12 @@
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: 0;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,248,244,0.68));
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(185, 116, 116, 0.14);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(250,246,242,0.96));
+  border: 1px solid rgba(173, 146, 146, 0.14);
   box-shadow:
-    0 34px 90px rgba(82, 44, 44, 0.12),
-    0 12px 34px rgba(82, 44, 44, 0.08),
-    inset 0 1px 0 rgba(255,255,255,0.74);
+    0 26px 70px rgba(83, 58, 58, 0.10),
+    0 8px 20px rgba(83, 58, 58, 0.05),
+    inset 0 1px 0 rgba(255,255,255,0.78);
   overflow: hidden;
 }
 
@@ -3454,7 +3444,15 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(255,255,255,0.2), transparent 32%, transparent 70%, rgba(201,109,109,0.05));
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 18%,
+      rgba(201, 167, 167, 0.055) 18%,
+      rgba(201, 167, 167, 0.055) 18.8%,
+      transparent 18.8%,
+      transparent 100%
+    );
   pointer-events: none;
 }
 
@@ -3464,39 +3462,37 @@
 }
 
 .video-band-magazine-col-left {
-  border-right: 1px solid rgba(185, 116, 116, 0.12);
+  border-right: 1px solid rgba(185, 162, 162, 0.14);
 }
 
 .video-band-mag-block,
 .video-band-mag-block-soft {
   position: relative;
   overflow: hidden;
-  padding: 30px 28px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(183, 111, 111, 0.08);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.64), rgba(255,250,246,0.45));
+  padding: 28px 26px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(183, 163, 163, 0.10);
+  background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(252,247,244,0.56));
   box-shadow:
-    0 18px 40px rgba(82, 44, 44, 0.06),
-    inset 0 1px 0 rgba(255,255,255,0.52);
+    0 14px 32px rgba(82, 61, 61, 0.05),
+    inset 0 1px 0 rgba(255,255,255,0.62);
   transition:
-    transform 0.45s ease,
-    box-shadow 0.45s ease,
-    border-color 0.45s ease;
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .video-band-mag-block-soft {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.74), rgba(255,245,241,0.48));
+  background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(252,247,244,0.62));
 }
 
 .video-band-mag-block:hover,
 .video-band-mag-block-soft:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   box-shadow:
-    0 26px 58px rgba(82, 44, 44, 0.10),
-    inset 0 1px 0 rgba(255,255,255,0.62);
-  border-color: rgba(183, 111, 111, 0.18);
+    0 20px 38px rgba(82, 61, 61, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+  border-color: rgba(183, 163, 163, 0.16);
 }
 
 .video-band-mag-block:last-child,
@@ -3514,39 +3510,30 @@
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(201, 109, 109, 0),
-    rgba(201, 109, 109, 0.34),
-    rgba(201, 109, 109, 0)
+    rgba(201, 167, 167, 0),
+    rgba(201, 167, 167, 0.40),
+    rgba(201, 167, 167, 0)
   );
-}
-
-.video-band-mag-block::after,
-.video-band-mag-block-soft::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(255,255,255,0.32), transparent 28%);
-  pointer-events: none;
 }
 
 .video-band-mag-label {
   margin: 0 0 16px;
   font-size: 10px;
-  letter-spacing: 0.38em;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: rgba(150, 77, 77, 0.74);
+  color: #b08f8f;
 }
 
 .video-band-mag-date,
 .video-band-mag-heading,
 .video-band-elegant-time {
-  color: #b74747;
+  color: #7b5e5e;
 }
 
 .video-band-mag-date {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
   font-weight: 500;
   line-height: 0.95;
 }
@@ -3554,7 +3541,7 @@
 .video-band-mag-heading {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2rem, 3vw, 2.55rem);
+  font-size: clamp(2rem, 3vw, 2.5rem);
   line-height: 1.06;
   font-weight: 500;
 }
@@ -3562,19 +3549,99 @@
 .video-band-mag-text {
   margin: 0;
   font-size: 15px;
-  line-height: 2;
-  color: #6d4f4f;
+  line-height: 1.95;
+  color: #6d5a5a;
 }
 
 .video-band-mag-subtext {
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   font-size: 14px;
-  line-height: 1.9;
-  color: #7d6060;
+  line-height: 1.85;
+  color: #7d6969;
+}
+
+.video-band-mag-heading-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.video-band-mag-script {
+  margin: 0;
+  font-family: "Italianno", cursive;
+  font-size: 2rem;
+  color: #c2a0a0;
 }
 
 /* =========================
-   LINK / DUGME
+   DATUM / KALENDAR
+========================= */
+
+.video-band-mag-calendar-block {
+  padding-bottom: 30px;
+}
+
+.video-band-date-layout {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 22px;
+  align-items: center;
+}
+
+.video-band-calendar-card {
+  width: 96px;
+  height: 112px;
+  background: #fff;
+  border: 1px solid rgba(138, 112, 112, 0.12);
+  box-shadow: 0 12px 24px rgba(70, 50, 50, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+}
+
+.video-band-calendar-card::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  height: 1px;
+  background: rgba(138, 112, 112, 0.10);
+}
+
+.video-band-calendar-month {
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #b08f8f;
+}
+
+.video-band-calendar-day {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  line-height: 1;
+  color: #3f3232;
+}
+
+.video-band-calendar-year {
+  font-size: 11px;
+  color: #8e7a7a;
+}
+
+.video-band-date-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* =========================
+   LINK
 ========================= */
 
 .video-band-mag-link {
@@ -3583,118 +3650,110 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 210px;
-  margin-top: 18px;
-  padding: 15px 22px;
+  width: fit-content;
+  margin-top: 16px;
+  padding: 13px 18px;
   text-decoration: none;
-  border: 1px solid rgba(183, 71, 71, 0.18);
+  border: 1px solid rgba(188, 158, 158, 0.24);
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.78),
-    rgba(255,246,242,0.58)
+    rgba(255,255,255,0.82),
+    rgba(250,245,241,0.72)
   );
-  color: #b74747;
+  color: #9c7d7d;
   font-size: 11px;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   box-shadow:
-    0 12px 28px rgba(120, 42, 42, 0.08),
-    inset 0 1px 0 rgba(255,255,255,0.66);
+    0 10px 20px rgba(90, 65, 65, 0.05),
+    inset 0 1px 0 rgba(255,255,255,0.68);
   transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .video-band-mag-link:hover {
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-2px);
   box-shadow:
-    0 20px 38px rgba(120, 42, 42, 0.14),
+    0 14px 24px rgba(90, 65, 65, 0.08),
     inset 0 1px 0 rgba(255,255,255,0.74);
-  border-color: rgba(183, 71, 71, 0.28);
+  border-color: rgba(188, 158, 158, 0.36);
 }
 
 /* =========================
-   TIMELINE - bez boxa oko ikonica
+   PROGRAM DANA
 ========================= */
 
-.video-band-elegant-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  margin-top: 14px;
+.video-band-program-timeline {
+  gap: 24px;
+  margin-top: 16px;
 }
 
-.video-band-elegant-row {
-  position: relative;
+.video-band-program-row {
   display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 22px;
-  align-items: center;
-  padding: 12px 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  grid-template-columns: 72px 34px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 6px 0;
 }
 
-.video-band-elegant-row:hover {
-  transform: translateX(6px);
-}
-
-.video-band-elegant-row::after {
-  content: "";
-  position: absolute;
-  left: 35px;
-  bottom: -18px;
-  width: 1px;
-  height: 22px;
-  background: linear-gradient(
-    180deg,
-    rgba(183, 71, 71, 0.34),
-    rgba(183, 71, 71, 0.05)
-  );
-}
-
-.video-band-elegant-row:last-child::after {
+.video-band-program-row::after {
   display: none;
 }
 
-.video-band-elegant-icon {
-  width: 72px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 0;
+.video-band-program-time {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: #4a3b3b;
+  padding-top: 2px;
 }
 
-.video-band-elegant-icon img {
-  width: 68px;
-  height: 68px;
-  object-fit: contain;
-  opacity: 1;
-  filter: drop-shadow(0 8px 14px rgba(120, 42, 42, 0.16));
+.video-band-program-line-wrap {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.video-band-program-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8a2a2;
+  flex-shrink: 0;
+}
+
+.video-band-program-line {
+  width: 100%;
+  height: 1px;
+  margin-left: 8px;
+  background: linear-gradient(
+    to right,
+    rgba(200, 162, 162, 0.9),
+    rgba(200, 162, 162, 0.14)
+  );
+}
+
+.video-band-program-location {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #8a7777;
 }
 
 .video-band-elegant-content {
   display: flex;
   flex-direction: column;
-  gap: 9px;
-}
-
-.video-band-elegant-time {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.3rem;
-  line-height: 0.95;
+  gap: 3px;
 }
 
 .video-band-elegant-title {
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #7f5f5f;
+  color: #6f5d5d;
 }
 
 /* =========================
@@ -3704,30 +3763,42 @@
 .video-band-mag-palette {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
   margin-top: 6px;
 }
 
+.video-band-mag-palette-centered {
+  justify-content: center;
+}
+
 .video-band-mag-palette-dot {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.86);
+  border: 2px solid rgba(255,255,255,0.9);
   box-shadow:
-    0 14px 28px rgba(82, 44, 44, 0.10),
+    0 10px 22px rgba(82, 60, 60, 0.10),
     inset 0 1px 0 rgba(255,255,255,0.56);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .video-band-mag-palette-dot:hover {
-  transform: translateY(-4px) scale(1.06);
+  transform: translateY(-3px) scale(1.04);
   box-shadow:
-    0 20px 34px rgba(82, 44, 44, 0.14),
+    0 14px 24px rgba(82, 60, 60, 0.14),
     inset 0 1px 0 rgba(255,255,255,0.56);
 }
 
+.video-band-dress-note {
+  text-align: center;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+}
+
 /* =========================
-   LUKSUZNI SCROLL REVEAL
+   SCROLL REVEAL
 ========================= */
 
 .video-band-scroll-section,
@@ -3735,6 +3806,11 @@
 .video-band-mag-block-soft,
 .video-band-elegant-row {
   will-change: transform, opacity;
+}
+
+.video-band-mag-block,
+.video-band-mag-block-soft {
+  transform-origin: center bottom;
 }
 
 /* =========================
@@ -3757,26 +3833,28 @@
 
   .video-band-magazine-col-left {
     border-right: none;
-    border-bottom: 1px solid rgba(185, 116, 116, 0.12);
+    border-bottom: 1px solid rgba(185, 162, 162, 0.14);
   }
 
-  .video-band-elegant-row {
-    grid-template-columns: 62px 1fr;
-    gap: 18px;
+  .video-band-date-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
   }
 
-  .video-band-elegant-row::after {
-    left: 30px;
+  .video-band-date-copy {
+    align-items: center;
   }
 
-  .video-band-elegant-icon {
-    width: 62px;
-    height: 62px;
+  .video-band-mag-heading-wrap {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .video-band-elegant-icon img {
-    width: 58px;
-    height: 58px;
+  .video-band-program-row {
+    grid-template-columns: 62px 26px 1fr;
+    gap: 12px;
   }
 }
 
@@ -3793,6 +3871,11 @@
 
   .video-band-editorial-names {
     font-size: clamp(4.4rem, 17vw, 6.3rem);
+  }
+
+  .video-band-editorial-welcome {
+    font-size: 14px;
+    line-height: 1.8;
   }
 
   .video-band-editorial-date::after {
@@ -3814,33 +3897,27 @@
     padding: 22px 18px;
   }
 
-  .video-band-elegant-row {
-    grid-template-columns: 52px 1fr;
-    gap: 14px;
+  .video-band-calendar-card {
+    width: 86px;
+    height: 102px;
   }
 
-  .video-band-elegant-row::after {
-    left: 25px;
-    height: 18px;
+  .video-band-calendar-day {
+    font-size: 34px;
   }
 
-  .video-band-elegant-icon {
-    width: 52px;
-    height: 52px;
+  .video-band-program-row {
+    grid-template-columns: 54px 20px 1fr;
+    gap: 10px;
   }
 
-  .video-band-elegant-icon img {
-    width: 46px;
-    height: 46px;
-  }
-
-  .video-band-elegant-time {
-    font-size: 1.75rem;
+  .video-band-program-time {
+    font-size: 1.6rem;
   }
 
   .video-band-mag-palette-dot {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
 
   .video-band-mag-link {
@@ -3848,6 +3925,7 @@
     min-width: unset;
   }
 }
+
 .video-band-mag-block,
 .video-band-mag-block-soft,
 .video-band-elegant-row,
@@ -3855,24 +3933,6 @@
 .video-band-mag-link,
 .video-band-scroll-section {
   will-change: transform, opacity, filter;
-}
-
-.video-band-mag-block,
-.video-band-mag-block-soft {
-  transform-origin: center bottom;
-}
-
-.video-band-elegant-icon img {
-  transition: transform 0.35s ease, filter 0.35s ease;
-}
-
-.video-band-elegant-row:hover .video-band-elegant-icon img {
-  transform: scale(1.08);
-  filter: drop-shadow(0 10px 18px rgba(120, 42, 42, 0.2));
-}
-
-.video-band-mag-palette-dot {
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 /* =========================
    BLACK WHITE INVITATION
@@ -4513,4 +4573,540 @@
   .birthday-gallery-footer {
     font-size: 18px;
   }
+}
+/* =========================
+   ONE WORD INVITATION CARD
+========================= */
+
+.birthday-one-word-card-wrapper {
+  position: relative;
+  min-height: 100dvh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.birthday-one-word-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.birthday-one-word-card-inner {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px 20px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+  animation: birthdayCardFadeUp 0.9s ease both;
+}
+
+/* TITLE */
+
+.birthday-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #797069;
+  margin-bottom: 10px;
+  animation: birthdayItemFade 0.8s ease both;
+  animation-delay: 0.08s;
+}
+
+.birthday-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(168, 155, 144, 0.4);
+  margin: 8px auto 0;
+}
+
+/* DATE */
+
+.birthday-date {
+  margin-bottom: 20px;
+  animation: birthdayItemFade 0.8s ease both;
+  animation-delay: 0.18s;
+}
+
+.birthday-date-month {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #8e7f73;
+}
+
+.birthday-date-day {
+  position: relative;
+  font-size: 42px;
+  font-weight: 700;
+  color: #3e3028;
+  line-height: 1;
+}
+
+.birthday-date-day .heart {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px;
+  color: #e9b7b0;
+  z-index: -1;
+  animation: heartFloat 3.2s ease-in-out infinite;
+}
+
+.birthday-date-year {
+  font-size: 12px;
+  color: #a89b90;
+}
+
+/* INFO */
+
+.birthday-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+  animation: birthdayItemFade 0.8s ease both;
+  animation-delay: 0.3s;
+}
+
+.birthday-info-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #7c6c60;
+  font-size: 14px;
+  line-height: 1.4;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.birthday-info-item:hover {
+  opacity: 0.75;
+  transform: translateY(-1px);
+}
+
+.birthday-info-note {
+  font-size: 13px;
+  color: #a89b90;
+  margin-top: 4px;
+}
+
+.birthday-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: #9a8b80;
+  flex: 0 0 16px;
+}
+
+.birthday-info-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =========================
+   SLIDER STRIP (HORIZONTAL)
+========================= */
+
+.birthday-slider-strip {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+  animation: birthdayItemFade 0.9s ease both;
+  animation-delay: 0.42s;
+}
+
+.birthday-slider-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: birthdaySliderMove 18s linear infinite;
+}
+
+.birthday-slider-slide {
+  flex: 0 0 220px;
+  width: 220px;
+  height: 180px;
+  margin-right: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.birthday-slider-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  animation: birthdayImageSoftZoom 6s ease-in-out infinite alternate;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes birthdayCardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes birthdayItemFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes birthdaySliderMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes birthdayImageSoftZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-2px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .birthday-one-word-card-inner {
+    width: 92%;
+    padding: 26px 16px;
+    border-radius: 22px;
+  }
+
+  .birthday-title {
+    font-size: 22px;
+    letter-spacing: 0.18em;
+  }
+
+  .birthday-date-day {
+    font-size: 38px;
+  }
+
+  .birthday-date-day .heart {
+    font-size: 42px;
+  }
+
+  .birthday-info-item {
+    font-size: 13px;
+  }
+
+  .birthday-info-note {
+    font-size: 12px;
+  }
+
+  .birthday-slider-slide {
+    flex: 0 0 190px;
+    width: 190px;
+    height: 160px;
+  }
+}
+/* =========================
+   VIDEO INVITATION (SPLIT)
+========================= */
+
+.birthday-video-invitation {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* VIDEO */
+
+.birthday-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* OVERLAY */
+
+.birthday-video-overlay {
+  position: absolute;
+  inset: 0;
+
+}
+
+/* =========================
+   CARD
+========================= */
+
+.birthday-video-card {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 360px;
+
+  padding: 30px 20px;
+  border-radius: 26px;
+
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 50px rgba(60,40,30,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.birthday-video-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #7c6c60;
+  margin-bottom: 14px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.birthday-video-calendar {
+  margin-bottom: 20px;
+}
+
+.birthday-video-calendar .month {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #a89b90;
+}
+
+.birthday-video-calendar .day {
+  position: relative;
+  font-size: 44px;
+  font-weight: 700;
+  color: #3e3028;
+}
+
+.birthday-video-calendar .heart {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 52px;
+  color: #e9b7b0;
+  z-index: -1;
+}
+
+.birthday-video-calendar .year {
+  font-size: 12px;
+  color: #a89b90;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.birthday-video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* item */
+
+.birthday-video-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  text-decoration: none;
+  color: #6b5a4f;
+  font-size: 14px;
+
+  transition: all 0.2s ease;
+}
+
+.birthday-video-item:hover {
+  transform: translateY(-1px);
+  opacity: 0.75;
+}
+
+/* icon */
+
+.birthday-video-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: #9a8b80;
+  flex: 0 0 16px;
+}
+
+.birthday-video-item-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* NOTE */
+
+.birthday-video-note {
+  font-size: 13px;
+  color: #a89b90;
+  margin-top: 4px;
+}
+/* =========================
+   MINI CALENDAR
+========================= */
+
+.birthday-video-calendar {
+  margin-bottom: 20px;
+}
+
+/* month */
+
+.calendar-month {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #8e7f73;
+  margin-bottom: 8px;
+}
+
+/* days header */
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 10px;
+  color: #a89b90;
+}
+
+/* grid */
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 6px;
+}
+
+/* cell */
+
+.calendar-cell {
+  font-size: 11px;
+  padding: 6px;
+  border-radius: 50%;
+  color: #6b5a4f;
+}
+
+/* ACTIVE DAY */
+
+.calendar-cell.active {
+  border: 1px solid #3e3028;
+  font-weight: 600;
+  color: #3e3028;
+}
+/* =========================
+   MINI CALENDAR
+========================= */
+
+.birthday-video-calendar {
+  margin-bottom: 20px;
+}
+
+/* month */
+
+.calendar-month {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #8e7f73;
+  margin-bottom: 8px;
+}
+
+/* days header */
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 10px;
+  color: #a89b90;
+}
+
+/* grid */
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 6px;
+}
+
+/* cell */
+
+.calendar-cell {
+  font-size: 11px;
+  padding: 6px;
+  border-radius: 50%;
+  color: #6b5a4f;
+}
+
+/* ACTIVE DAY */
+
+.calendar-cell.active {
+  border: 1px solid #3e3028;
+  font-weight: 600;
+  color: #3e3028;
 }

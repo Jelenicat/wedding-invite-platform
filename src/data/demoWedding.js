@@ -1022,106 +1022,110 @@ events: [
 // =========================
 // VIDEO BAND TEMPLATE
 // =========================
-  {
-    slug: "iva-pedja",
-    type: "wedding",
-    template: "video-band",
-    brideName: "Iva",
-    groomName: "Pedja",
-    videoSrc: "/videos/iva-pedja2.mp4",
-    weddingDate: "18 SEP 2026",
-    weddingTime: "17:00",
-    
-   details: createDetails({
- 
-  date: "18 SEP 2026",
-  dateISO: "2026-09-18T17:00:00",
+{
+  slug: "iva-pedja",
+  type: "wedding",
+  template: "video-band",
+  brideName: "Iva",
+  groomName: "Pedja",
+  videoSrc: "/videos/iva-pedja2.mp4",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
 
-  events: [
-    {
-      label: "Skup svatova",
-      time: "16:00",
-      icon: "gathering",
-    },
-    {
-      label: "Crkveno venčanje",
-      time: "15:00",
-      icon: "church",
-    },
-    {
-      label: "Građansko venčanje",
-      time: "17:00",
-      icon: "civil",
-    },
-    {
-      label: "Svečani ručak",
-      time: "18:30",
-      icon: "restaurant",
-    },
-  ],
+  details: createDetails({
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da ovaj poseban dan podelimo sa vama.",
 
-  venue: "Topčiderac, Beograd",
-  churchVenue: "Crkva Svetog Marka, Beograd",
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00",
 
-  dressCodeTitle: "Dress code",
-  dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
-  dressCodeNote:
-    "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "14:30",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        location: "Crkva Svetog Marka, Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Svečani ručak",
+        time: "18:30",
+        location: "Topčiderac, Beograd",
+      },
+    ],
 
-  mapLink: "https://maps.google.com/?q=Beograd",
-  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
-}),
-  },
-  {
-    slug: "katarina-milos",
-    type: "wedding",
-    template: "video-band",
-    brideName: "Katarina",
-    groomName: "Milos",
-    videoSrc: "/videos/wedding2.mp4",
-    weddingDate: "18 SEP 2026",
-    weddingTime: "17:00",
-    
-   details: createDetails({
- 
-  date: "18 SEP 2026",
-  dateISO: "2026-09-18T17:00:00",
+    venue: "Topčiderac, Beograd",
+    churchVenue: "Crkva Svetog Marka, Beograd",
 
-  events: [
-    {
-      label: "Skup svatova",
-      time: "16:00",
-      icon: "gathering",
-    },
-    {
-      label: "Crkveno venčanje",
-      time: "15:00",
-      icon: "church",
-    },
-    {
-      label: "Građansko venčanje",
-      time: "17:00",
-      icon: "civil",
-    },
-    {
-      label: "Svečani ručak",
-      time: "18:30",
-      icon: "restaurant",
-    },
-  ],
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c7c2", "#e9ddd6", "#bfa8a0", "#cbb7ae", "#f2ebe6"],
+    dressCodeNote:
+      "Molimo vas da birate elegantne, nežne i puderaste tonove.",
 
-  venue: "Topčiderac, Beograd",
-  churchVenue: "Crkva Svetog Marka, Beograd",
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "katarina-milos",
+  type: "wedding",
+  template: "video-band",
+  brideName: "Katarina",
+  groomName: "Milos",
+  videoSrc: "/videos/wedding2222.mp4",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
 
-  dressCodeTitle: "Dress code",
-  dressCodePalette: ["#b8b1a4", "#d8d0c2", "#7f8173", "#cab7a4", "#e7d9cf"],
-  dressCodeNote:
-    "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+  details: createDetails({
+    welcomeText:
+      "Radujemo se da zajedno sa vama proslavimo ljubav i početak našeg novog poglavlja.",
 
-  mapLink: "https://maps.google.com/?q=Beograd",
-  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
-}),
-  },
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00",
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "14:30",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        location: "Crkva Svetog Marka, Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Svečani ručak",
+        time: "18:30",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    venue: "Topčiderac, Beograd",
+    churchVenue: "Crkva Svetog Marka, Beograd",
+
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c7c2", "#e9ddd6", "#bfa8a0", "#cbb7ae", "#f2ebe6"],
+    dressCodeNote:
+      "Molimo vas da birate elegantne, nežne i puderaste tonove.",
+
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
@@ -1212,6 +1216,52 @@ events: [
     dateISO: "2026-10-18T12:00:00",
     venue: "Sunset Hall, Chicago",
     note: "RSVP by 1 Oct",
+  }),
+},
+{
+  slug: "nina-1",
+  type: "birthday",
+  template: "birthday-one-word",
+  brideName: "Nina",
+  title: "Nina slavi rođendan",
+  weddingDate: "24 SEP 2026",
+  weddingTime: "15:00",
+  venue: "Igraonica Sunce, Beograd",
+  backgroundImage: "/images/nina-1-bg.jpg",
+  image1: "/images/nina-1-1.jpg",
+  image2: "/images/nina-1-2.jpg",
+  image3: "/images/nina-1-3.jpg",
+  details: createDetails({
+    welcomeText: "Join us to celebrate Nina's first birthday.",
+    date: "24 SEP 2026",
+    dateISO: "2026-09-24T15:00:00+02:00",
+    venue: "Igraonica Sunce, Beograd",
+    note: "RSVP do 10. septembra",
+    rsvpTitle: "Potvrdite dolazak",
+    rsvpText: "Radovaćemo se da zajedno proslavimo Ninin rođendan.",
+  }),
+},
+{
+  slug: "vuk-1",
+  type: "birthday",
+  template: "birthday-split",
+  brideName: "Vuk",
+  title: "Vuk slavi rođendan",
+  weddingDate: "24 SEP 2026",
+  weddingTime: "15:00",
+  venue: "Igraonica Sunce, Beograd",
+  backgroundImage: "/images/vuk-1-bg.jpg",
+  image1: "/images/vuk-1-1.jpg",
+  image2: "/images/vuk-1-2.jpg",
+  image3: "/images/vuk-1-3.jpg",
+  details: createDetails({
+    welcomeText: "Join us to celebrate Vuk's first birthday.",
+    date: "24 SEP 2026",
+    dateISO: "2026-09-24T15:00:00+02:00",
+    venue: "Igraonica Sunce, Beograd",
+    note: "RSVP do 10. septembra",
+    rsvpTitle: "Potvrdite dolazak",
+    rsvpText: "Radovaćemo se da zajedno proslavimo Ninin rođendan.",
   }),
 },
 ];
