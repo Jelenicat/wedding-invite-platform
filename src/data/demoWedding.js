@@ -840,6 +840,63 @@ events: [
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
+{
+  slug: "vanja-aleksa",
+  type: "wedding",
+  template: "split-video",
+  brideName: "Vanja",
+  groomName: "Aleksa",
+  videoSrc: "/videos/vanja-aleksa2.mp4",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+  details: createDetails({
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        location: "Bašta hotela, Beograd",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Početak okupljanja i dragi susreti pre ceremonije.",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        location: "Svečana sala",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Trenutak kada počinje naše novo poglavlje.",
+      },
+      {
+        label: "Večera",
+        time: "18:30",
+        location: "Restoranski salon",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Veče uz muziku, nazdravljanje i slavlje.",
+      },
+      {
+        label: "Torta",
+        time: "21:30",
+        location: "Glavna sala",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Slatki trenutak koji ćemo podeliti sa svima vama.",
+      },
+    ],
+
+    venue: "Beograd",
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
+    dressCodeNote:
+      "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
+    mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
 // =========================
 // SPLIT IMAGE TEMPLATE
 // =========================
@@ -960,6 +1017,7 @@ events: [
   note: "Molimo vas da svoj dolazak potvrdite na vreme.",
 }),
 },
+
 
   {
   slug: "iva-vuk",
