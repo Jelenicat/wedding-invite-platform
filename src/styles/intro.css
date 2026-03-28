@@ -1415,7 +1415,7 @@ font-weight: 100;
   background: rgba(42, 42, 42, 0.8);
   backdrop-filter: blur(6px);
 
-  color: #747171;
+  color: #ffffff;
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -1429,7 +1429,7 @@ font-weight: 100;
 .video-band-btn-bottom {
   border: 1px solid rgba(71, 71, 71, 0.5);
   background: rgba(93, 93, 93, 0.1);
- color: #3e3e3e;
+ color: #ffffff;
 }
 .video-band-btn-bottom:hover {
   transform: translateX(-50%) translateY(-2px);
