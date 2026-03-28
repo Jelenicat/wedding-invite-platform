@@ -61,7 +61,11 @@ function BirthdayOneWordInvitationCard({
             <div className="birthday-date-month">{month}</div>
 
             <div className="birthday-date-day">
-              <span className="heart">❤</span>
+              <span className="heart" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 21s-6.5-5.2-9.5-9A5.5 5.5 0 0 1 12 4.5 5.5 5.5 0 0 1 21.5 12c-3 3.8-9.5 9-9.5 9Z" />
+  </svg>
+</span>
               {day}
             </div>
 

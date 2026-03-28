@@ -5,84 +5,125 @@
 .video-band-rsvp-section {
   position: relative;
   width: 100%;
-  margin-top: -30px;
-  padding: 72px 16px 28px;
+  margin-top: -18px;
+  padding: 54px 16px 22px;
   background: linear-gradient(
     180deg,
-    rgba(236, 230, 223, 0.78) 0%,
-    rgba(236, 230, 223, 0.9) 34%,
-    #eee6df 32%,
-    #f5eeea 60%,
-    #eee5de 10%
+    #efe8e2 0%,
+    #ede6df 35%,
+    #ece4dd 68%,
+    #efe8e2 100%
   );
+  overflow: hidden;
+}
+
+.video-band-rsvp-paper {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.24), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,0.12), transparent 100%);
+  pointer-events: none;
 }
 
 .video-band-rsvp-section::before {
   content: "";
   position: absolute;
-  top: -20px;
-  left: 0;
-  right: 0;
-  height: 160px;
-  background: linear-gradient(
-    180deg,
-    rgba(236, 230, 223, 0.95) 0%,
-    rgba(236, 230, 223, 0.6) 40%,
-    rgba(236, 230, 223, 0) 100%
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(90, 72, 64, 0.05) 0.5px,
+    transparent 0.5px
   );
+  background-size: 5px 5px;
+  opacity: 0.12;
   pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.video-band-rsvp-section::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.16) 45%,
+    transparent 60%
+  );
+  transform: translateX(-60%);
+  animation: videoBandRsvpShine 9s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.42;
 }
 
 .video-band-rsvp-shell {
+  position: relative;
+  z-index: 2;
   max-width: 760px;
   margin: 0 auto;
   padding: 0 8px;
 }
 
-.video-band-rsvp-box {
-  position: relative;
+.video-band-rsvp-frame {
   max-width: 560px;
   margin: 0 auto;
-  transform: translateY(-6px);
-  padding: 42px 30px 34px;
-  text-align: center;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 251, 247, 0.82),
-    rgba(255, 248, 243, 0.68)
-  );
-  border: 1px solid rgba(172, 88, 88, 0.12);
+  padding: 14px;
+  border: 1px solid rgba(116, 98, 88, 0.08);
+  background: rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 24px 60px rgba(90, 38, 38, 0.07),
-    inset 0 1px 0 rgba(255,255,255,0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  overflow: hidden;
+    0 16px 38px rgba(70, 56, 49, 0.05),
+    inset 0 1px 0 rgba(255,255,255,0.22);
 }
 
-.video-band-rsvp-box::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(172, 88, 88, 0.07);
-  pointer-events: none;
+.video-band-rsvp-box {
+  position: relative;
+  padding: 34px 24px 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(116, 98, 88, 0.08);
+  box-shadow:
+    0 18px 42px rgba(70, 56, 49, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.42);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.video-band-rsvp-box:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 24px 54px rgba(70, 56, 49, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.46);
+  border-color: rgba(116, 98, 88, 0.12);
 }
 
 .video-band-rsvp-kicker {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 10px;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(166, 83, 83, 0.72);
+  color: rgba(108, 91, 82, 0.74);
 }
 
 .video-band-rsvp-title {
-  margin: 0;
+  margin: 10px 0 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 2.8rem);
   line-height: 1.02;
   font-weight: 500;
-  color: #9a4b4b;
+  color: #5f514a;
+}
+
+.video-band-rsvp-script {
+  margin: 8px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  font-style: italic;
+  color: #7a6960;
 }
 
 .video-band-rsvp-subtitle {
@@ -90,19 +131,19 @@
   margin: 14px auto 0;
   font-size: 14px;
   line-height: 1.9;
-  color: rgba(130, 88, 88, 0.82);
+  color: rgba(110, 94, 86, 0.82);
   font-style: italic;
 }
 
 .video-band-rsvp-divider {
   width: 72px;
   height: 1px;
-  margin: 24px auto 28px;
+  margin: 22px auto 28px;
   background: linear-gradient(
     90deg,
-    rgba(180, 45, 45, 0),
-    rgba(180, 45, 45, 0.38),
-    rgba(180, 45, 45, 0)
+    rgba(120, 102, 92, 0),
+    rgba(120, 102, 92, 0.34),
+    rgba(120, 102, 92, 0)
   );
 }
 
@@ -123,33 +164,37 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(154, 70, 70, 0.78);
+  color: rgba(102, 87, 79, 0.78);
 }
 
 .video-band-rsvp-field input[type="text"],
 .video-band-rsvp-field input[type="number"] {
   width: 100%;
-  height: 56px;
+  height: 54px;
   padding: 0 18px;
   border: none;
-  border-bottom: 1px solid rgba(186, 112, 112, 0.24);
-  background: rgba(255, 255, 255, 0.36);
-  color: #8f4b4b;
+  border-bottom: 1px solid rgba(130, 112, 102, 0.18);
+  background: rgba(255, 255, 255, 0.38);
+  color: #5f514a;
   font-size: 15px;
   outline: none;
-  transition: all 0.28s ease;
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    transform 0.28s ease;
 }
 
 .video-band-rsvp-field input[type="text"]::placeholder,
 .video-band-rsvp-field input[type="number"]::placeholder {
-  color: rgba(154, 105, 105, 0.58);
+  color: rgba(120, 104, 96, 0.58);
 }
 
 .video-band-rsvp-field input[type="text"]:focus,
 .video-band-rsvp-field input[type="number"]:focus {
-  background: rgba(255, 255, 255, 0.6);
-  border-bottom-color: rgba(180, 45, 45, 0.42);
-  box-shadow: 0 10px 28px rgba(130, 70, 70, 0.05);
+  background: rgba(255, 255, 255, 0.58);
+  border-bottom-color: rgba(120, 102, 92, 0.34);
+  box-shadow: 0 10px 28px rgba(70, 56, 49, 0.04);
 }
 
 .video-band-rsvp-choice-block {
@@ -164,11 +209,11 @@
 
 .video-band-choice-card {
   appearance: none;
-  border: 1px solid rgba(182, 105, 105, 0.16);
+  border: 1px solid rgba(130, 112, 102, 0.12);
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.6),
-    rgba(255,249,245,0.48)
+    rgba(255,255,255,0.56),
+    rgba(248,244,240,0.44)
   );
   padding: 18px 16px;
   text-align: center;
@@ -180,97 +225,241 @@
     background 0.28s ease;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.5),
-    0 10px 24px rgba(90, 38, 38, 0.03);
+    0 10px 24px rgba(70, 56, 49, 0.03);
 }
 
 .video-band-choice-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(180, 45, 45, 0.24);
+  border-color: rgba(120, 102, 92, 0.22);
   box-shadow:
-    0 16px 32px rgba(90, 38, 38, 0.06),
+    0 16px 32px rgba(70, 56, 49, 0.05),
     inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 .video-band-choice-card.is-active {
-  border-color: rgba(180, 45, 45, 0.34);
+  border-color: rgba(120, 102, 92, 0.3);
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.9),
-    rgba(252,241,241,0.82)
+    rgba(255,255,255,0.88),
+    rgba(244,239,234,0.86)
   );
   box-shadow:
-    0 16px 34px rgba(120, 42, 42, 0.08),
-    inset 0 1px 0 rgba(255,255,255,0.7);
+    0 16px 34px rgba(70, 56, 49, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.72);
 }
 
 .video-band-choice-title {
   display: block;
   margin-bottom: 6px;
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.45rem;
-  color: #9a4b4b;
+  font-size: 1.42rem;
+  color: #5f514a;
 }
 
 .video-band-choice-text {
   display: block;
   font-size: 12px;
   line-height: 1.6;
-  color: rgba(139, 95, 95, 0.8);
+  color: rgba(110, 94, 86, 0.82);
 }
 
 .video-band-rsvp-button {
   align-self: center;
   min-width: 240px;
-  min-height: 54px;
+  min-height: 52px;
   margin-top: 4px;
   padding: 14px 24px;
-  border: none;
+  border: 1px solid rgba(110, 94, 86, 0.18);
   background: linear-gradient(
     180deg,
-    #c96d6d 0%,
-    #b75252 45%,
-    #9f4040 100%
+    rgba(255,255,255,0.86),
+    rgba(241,235,229,0.92)
   );
-  color: #fffaf8;
-  font-size: 11px;
+  color: #5c4f49;
+  font-size: 10px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow:
-    0 14px 30px rgba(150, 48, 48, 0.18),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-  transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+    0 14px 30px rgba(70, 56, 49, 0.07),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease;
 }
 
 .video-band-rsvp-button:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 18px 36px rgba(150, 48, 48, 0.22),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-  filter: saturate(1.04);
+    0 18px 36px rgba(70, 56, 49, 0.09),
+    inset 0 1px 0 rgba(255,255,255,0.64);
+  border-color: rgba(110, 94, 86, 0.24);
 }
 
+.video-band-rsvp-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes videoBandRsvpShine {
+  0% {
+    transform: translateX(-60%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.28;
+  }
+  50% {
+    transform: translateX(8%);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(70%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-band-rsvp-section {
+    margin-top: -10px;
+    padding: 40px 12px 18px;
+  }
+
+  .video-band-rsvp-frame {
+    padding: 10px;
+  }
+
+  .video-band-rsvp-box {
+    padding: 26px 14px 22px;
+  }
+
+  .video-band-rsvp-title {
+    font-size: 2rem;
+  }
+
+  .video-band-rsvp-script {
+    font-size: 1.2rem;
+  }
+
+  .video-band-rsvp-subtitle {
+    font-size: 13px;
+  }
+
+  .video-band-rsvp-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-band-choice-title {
+    font-size: 1.25rem;
+  }
+
+  .video-band-rsvp-button {
+    width: 100%;
+    min-width: unset;
+  }
+}
 /* =========================
    VIDEO BAND COUNTDOWN
 ========================= */
 
 .video-band-countdown-section {
+  position: relative;
   width: 100%;
-  padding: 12px 16px 62px;
+  padding: 8px 16px 70px;
+  margin-top: -6px;
   background: linear-gradient(
     180deg,
-    #f5eeea 0%,
-    #eee6df 40%,
-    #eee5de 100%
+    #f1ece7 0%,
+    #efe9e4 45%,
+    #ece5de 100%
   );
-    margin-bottom: -80px;
+  overflow: hidden;
+}
+
+.video-band-countdown-paper {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.24), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,0.16), transparent 100%);
+  pointer-events: none;
+}
+
+.video-band-countdown-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(90, 72, 64, 0.05) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 5px 5px;
+  opacity: 0.12;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.video-band-countdown-section::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.16) 45%,
+    transparent 60%
+  );
+  transform: translateX(-60%);
+  animation: videoBandCountdownShine 9s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.video-band-countdown-shell {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.video-band-countdown-frame {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 14px;
+  border: 1px solid rgba(116, 98, 88, 0.08);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 16px 38px rgba(70, 56, 49, 0.05),
+    inset 0 1px 0 rgba(255,255,255,0.22);
 }
 
 .video-band-countdown-inner {
-  max-width: 560px;
-  margin: 0 auto;
-  padding-top: 8px;
+  position: relative;
+  padding: 34px 24px 32px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(116, 98, 88, 0.08);
+  box-shadow:
+    0 18px 42px rgba(70, 56, 49, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.42);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.video-band-countdown-inner:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 24px 54px rgba(70, 56, 49, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.46);
+  border-color: rgba(116, 98, 88, 0.12);
 }
 
 .video-band-countdown-kicker {
@@ -278,18 +467,27 @@
   font-size: 10px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(166, 83, 83, 0.7);
+  color: rgba(108, 91, 82, 0.74);
+}
+
+.video-band-countdown-script {
+  margin: 8px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  font-style: italic;
+  color: #6b5b53;
 }
 
 .video-band-countdown-divider {
   width: 68px;
   height: 1px;
-  margin: 16px auto 24px;
+  margin: 18px auto 26px;
   background: linear-gradient(
     90deg,
-    rgba(180, 45, 45, 0),
-    rgba(180, 45, 45, 0.34),
-    rgba(180, 45, 45, 0)
+    rgba(120, 102, 92, 0),
+    rgba(120, 102, 92, 0.34),
+    rgba(120, 102, 92, 0)
   );
 }
 
@@ -297,21 +495,22 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: nowrap;
 }
 
 .video-band-countdown-item {
-  min-width: 64px;
+  min-width: 72px;
   text-align: center;
 }
 
 .video-band-countdown-item span {
   display: block;
   font-family: "Cormorant Garamond", serif;
-  font-size: 2.9rem;
+  font-size: 3rem;
   line-height: 1;
-  color: #a24d4d;
+  color: #4f423c;
+  text-shadow: 0 4px 14px rgba(70, 56, 49, 0.05);
 }
 
 .video-band-countdown-item small {
@@ -320,66 +519,85 @@
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(146, 92, 92, 0.74);
+  color: rgba(113, 96, 87, 0.78);
 }
 
 .video-band-countdown-note {
-  max-width: 280px;
+  max-width: 320px;
   margin: 26px auto 0;
   font-size: 13px;
-  line-height: 1.8;
-  color: rgba(138, 92, 92, 0.78);
+  line-height: 1.85;
+  color: rgba(110, 94, 86, 0.82);
   font-style: italic;
 }
 
+.video-band-countdown-inner-finished {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 42px 24px;
+  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(116, 98, 88, 0.08);
+  box-shadow:
+    0 18px 42px rgba(70, 56, 49, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.42);
+  text-align: center;
+}
+
+.video-band-countdown-finished-script {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  line-height: 1.15;
+  font-style: italic;
+  color: #63554e;
+}
+
+.video-band-countdown-finished-ring {
+  margin: 10px 0 0;
+  font-size: 1.6rem;
+}
+
+@keyframes videoBandCountdownShine {
+  0% {
+    transform: translateX(-60%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.28;
+  }
+  50% {
+    transform: translateX(8%);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(70%);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 480px) {
-  .video-band-rsvp-section {
-    padding: 24px 12px 14px;
+  .video-band-countdown-section {
+    padding: 8px 12px 56px;
   }
 
-  .video-band-rsvp-box {
-    padding: 28px 16px 24px;
+  .video-band-countdown-frame {
+    padding: 10px;
   }
 
-  .video-band-rsvp-subtitle {
-    font-size: 13px;
-    line-height: 1.8;
+  .video-band-countdown-inner {
+    padding: 26px 14px 24px;
   }
 
-  .video-band-rsvp-choice-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .video-band-rsvp-field input[type="text"],
-  .video-band-rsvp-field input[type="number"] {
-    height: 52px;
-    padding: 0 14px;
-    font-size: 14px;
-  }
-
-  .video-band-choice-card {
-    padding: 16px 14px;
-  }
-
-  .video-band-choice-title {
+  .video-band-countdown-script {
     font-size: 1.3rem;
   }
 
-  .video-band-rsvp-button {
-    width: 100%;
-    min-width: 100%;
-  }
-
-  .video-band-countdown-section {
-    padding: 22px 12px 56px;
-  }
-
   .video-band-countdown {
-    gap: 12px;
+    gap: 10px;
   }
 
   .video-band-countdown-item {
-    min-width: 54px;
+    min-width: 56px;
   }
 
   .video-band-countdown-item span {
@@ -394,6 +612,10 @@
   .video-band-countdown-note {
     font-size: 12px;
     margin-top: 20px;
+  }
+
+  .video-band-countdown-finished-script {
+    font-size: 1.55rem;
   }
 }
 /* =========================
@@ -4130,7 +4352,7 @@ margin-bottom: 2px;
 
 /* ACTIVE */
 .birthday-choice-card.is-active {
-  background: linear-gradient(180deg, #8f7360, #6f5848);
+  background: rgba(124, 99, 64, 0.4);
   color: white;
   border: none;
   box-shadow: 0 12px 22px rgba(70,50,35,0.18);

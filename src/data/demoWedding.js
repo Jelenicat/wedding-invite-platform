@@ -1023,7 +1023,7 @@ events: [
   slug: "iva-vuk",
   type: "wedding",
   template: "split-image",
-  brideName: "Iva`",
+  brideName: "Iva",
   groomName: "Vuk",
   image: "/images/iva-vuk.jpg",
   weddingDate: "18 SEP 2026",
@@ -1086,7 +1086,7 @@ events: [
   template: "video-band",
   brideName: "Iva",
   groomName: "Pedja",
-  videoSrc: "/videos/iva-pedja2.mp4",
+  videoSrc: "/videos/iva-pedja5.mp4",
   weddingDate: "18 SEP 2026",
   weddingTime: "17:00",
 

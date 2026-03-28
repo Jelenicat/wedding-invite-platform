@@ -22,7 +22,7 @@ function VideoBandCountdown({ targetDate }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
-    }, 1000); // 🔥 svake sekunde
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [targetDate]);
@@ -32,9 +32,20 @@ function VideoBandCountdown({ targetDate }) {
   if (!timeLeft) {
     return (
       <section className="video-band-countdown-section">
-        <p className="video-band-countdown-kicker">
-          Dan venčanja je stigao 💍
-        </p>
+        <div className="video-band-countdown-paper" />
+
+        <motion.div
+          className="video-band-countdown-inner video-band-countdown-inner-finished"
+          initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="video-band-countdown-finished-script">
+            Dan venčanja je stigao
+          </p>
+          <p className="video-band-countdown-finished-ring">💍</p>
+        </motion.div>
       </section>
     );
   }
@@ -47,46 +58,52 @@ function VideoBandCountdown({ targetDate }) {
   ];
 
   return (
-     
-   <motion.section
-  className="video-band-countdown-section"
-  initial={{ opacity: 0, y: 24 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
->
-  <div className="video-band-countdown-inner">
-    <p className="video-band-countdown-kicker">Do venčanja je ostalo</p>
+    <motion.section
+      className="video-band-countdown-section"
+      initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true }}
+    >
+      <div className="video-band-countdown-paper" />
 
-    <div className="video-band-countdown-divider" />
+      <div className="video-band-countdown-shell">
+        <div className="video-band-countdown-frame">
+          <div className="video-band-countdown-inner">
+            <p className="video-band-countdown-kicker">Do venčanja je ostalo</p>
 
-    <div className="video-band-countdown">
-      {items.map((item) => (
-        <div key={item.label} className="video-band-countdown-item">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={item.value}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25 }}
-            >
-              {item.value}
-            </motion.span>
-          </AnimatePresence>
+            <p className="video-band-countdown-script">Odbrojavamo nade!</p>
 
-          <small>{item.label}</small>
+            <div className="video-band-countdown-divider" />
+
+            <div className="video-band-countdown">
+              {items.map((item) => (
+                <div key={item.label} className="video-band-countdown-item">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={item.value}
+                      initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+                      transition={{ duration: 0.24 }}
+                    >
+                      {item.value}
+                    </motion.span>
+                  </AnimatePresence>
+
+                  <small>{item.label}</small>
+                </div>
+              ))}
+            </div>
+
+            <p className="video-band-countdown-note">
+              Jedva čekamo da zajedno obeležimo ovaj poseban dan.
+            </p>
+          </div>
         </div>
-      ))}
-    </div>
-
-    <p className="video-band-countdown-note">
-      Jedva čekamo da zajedno obeležimo ovaj poseban dan.
-    </p>
-  </div>
-</motion.section>
+      </div>
+    </motion.section>
   );
-  
 }
 
 export default VideoBandCountdown;
