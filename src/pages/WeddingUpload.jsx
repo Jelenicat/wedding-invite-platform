@@ -172,7 +172,7 @@ function WeddingUpload() {
             </button>
 
             <p className="upload-hero-meta">
-              Do 10 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici
+              Do 20 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici
             </p>
           </div>
         </div>
