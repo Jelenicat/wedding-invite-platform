@@ -468,6 +468,7 @@ events: [
   weddingDate: "12 MAY 2026",
   weddingTime: "17:00",
   venue: "ul. Novosadska, Novi Sad",
+  uploadCoverImage: "/images/upload/anja-marko-upload.jpg",
   details: createDetails({
     welcomeText:
       "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
