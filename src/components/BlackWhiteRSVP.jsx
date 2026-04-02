@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   collection,
   addDoc,
@@ -22,9 +22,25 @@ function BlackWhiteRSVP({
   });
 
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const celebrantName = brideName || "Jelena";
   const rsvpVideoPath = `/videos/rsvp/${slug}.mp4`;
+
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          fullName: "",
+          attending: "",
+          guests: "1",
+        });
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [submitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,26 +62,14 @@ function BlackWhiteRSVP({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!slug || !eventType) {
-      alert("Nedostaje slug ili tip događaja.");
-      return;
-    }
-
-    if (!formData.fullName.trim()) {
-      alert("Unesite ime i prezime.");
-      return;
-    }
-
-    if (!formData.attending) {
-      alert("Izaberite da li dolazite.");
-      return;
-    }
+    if (!slug || !eventType) return;
+    if (!formData.fullName.trim()) return;
+    if (!formData.attending) return;
 
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
       if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
-        alert("Unesite ispravan broj osoba.");
         return;
       }
     }
@@ -73,7 +77,6 @@ function BlackWhiteRSVP({
     setLoading(true);
 
     try {
-      // 🔥 kreira event doc ako ne postoji
       await setDoc(
         doc(db, "events", slug),
         {
@@ -84,7 +87,6 @@ function BlackWhiteRSVP({
         { merge: true }
       );
 
-      // 🔥 upis u novu kolekciju
       await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
@@ -93,132 +95,127 @@ function BlackWhiteRSVP({
         createdAt: serverTimestamp(),
       });
 
-      alert("Uspešno poslato!");
-
-      setFormData({
-        fullName: "",
-        attending: "",
-        guests: "1",
-      });
+      setSubmitted(true);
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);
-      alert("Došlo je do greške pri slanju.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <motion.section
-      className="bw-rsvp-section"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <motion.section className="bw-rsvp-section">
       <div className="bw-rsvp-video-wrap">
-        <video
-          className="bw-rsvp-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
+        <video className="bw-rsvp-video" autoPlay muted loop playsInline>
           <source src={rsvpVideoPath} type="video/mp4" />
         </video>
 
         <div className="bw-rsvp-overlay" />
 
         <div className="bw-rsvp-inner">
-          <motion.div
-            className="bw-rsvp-card"
-            initial={{ opacity: 0, y: 40, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="bw-rsvp-kicker">RSVP</p>
-
-            <h2 className="bw-rsvp-title">Potvrdi dolazak</h2>
-
-            <p className="bw-rsvp-subtitle">
-              {details.note ||
-                `Potvrdi dolazak na proslavu za ${celebrantName}.`}
-            </p>
-
-            <form className="bw-rsvp-form" onSubmit={handleSubmit}>
-              <div className="bw-rsvp-field">
-                <label htmlFor="bw-fullName">Ime i prezime</label>
-                <input
-                  id="bw-fullName"
-                  name="fullName"
-                  type="text"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="Unesite ime i prezime"
-                  required
-                />
-              </div>
-
-              <div className="bw-rsvp-field">
-                <span className="bw-rsvp-label">Dolazite li?</span>
-
-                <div className="bw-rsvp-choice-row">
-                  <button
-                    type="button"
-                    className={`bw-rsvp-choice ${
-                      formData.attending === "da" ? "active" : ""
-                    }`}
-                    onClick={() => handleAttendanceSelect("da")}
+          <div className="bw-rsvp-card">
+            <AnimatePresence mode="wait">
+              {submitted ? (
+                <motion.div
+                  key="success"
+                  className="bw-rsvp-success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <motion.div
+                    className="bw-rsvp-success-heart"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: [0, 1.2, 1] }}
                   >
-                    Dolazim
-                  </button>
+                    💌
+                  </motion.div>
 
-                  <button
-                    type="button"
-                    className={`bw-rsvp-choice ${
-                      formData.attending === "ne" ? "active" : ""
-                    }`}
-                    onClick={() => handleAttendanceSelect("ne")}
-                  >
-                    Ne dolazim
-                  </button>
-                </div>
-              </div>
+                  <h3>Hvala!</h3>
+                  <p>Vaša potvrda je uspešno poslata.</p>
 
-              <input
-                type="hidden"
-                name="attending"
-                value={formData.attending}
-                required
-              />
+                  <div className="bw-confetti-wrap">
+                    {Array.from({ length: 18 }).map((_, i) => (
+                      <motion.span
+                        key={i}
+                        className="bw-confetti"
+                        initial={{ opacity: 0 }}
+                        animate={{
+                          opacity: [0, 1, 1, 0],
+                          y: 110,
+                          x: (i - 9) * 10,
+                        }}
+                        transition={{
+                          duration: 1.6,
+                          delay: i * 0.04,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              ) : (
+                <>
+                  <p className="bw-rsvp-kicker">RSVP</p>
 
-              {formData.attending === "da" && (
-                <div className="bw-rsvp-field">
-                  <label htmlFor="bw-guests">Broj osoba</label>
-                  <input
-                    id="bw-guests"
-                    name="guests"
-                    type="number"
-                    min="1"
-                    max="10"
-                    value={formData.guests}
-                    onChange={handleChange}
-                    placeholder="1"
-                    required
-                  />
-                </div>
+                  <h2 className="bw-rsvp-title">Potvrdi dolazak</h2>
+
+                  <p className="bw-rsvp-subtitle">
+                    {details.note ||
+                      `Potvrdi dolazak na proslavu za ${celebrantName}.`}
+                  </p>
+
+                  <form className="bw-rsvp-form" onSubmit={handleSubmit}>
+                    <input
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      placeholder="Ime i prezime"
+                    />
+
+                    <div className="bw-rsvp-choice-row">
+                      <button
+                        type="button"
+                        className={`bw-rsvp-choice ${
+                          formData.attending === "da" ? "active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("da")}
+                      >
+                        Dolazim
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`bw-rsvp-choice ${
+                          formData.attending === "ne" ? "active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("ne")}
+                      >
+                        Ne dolazim
+                      </button>
+                    </div>
+
+                    {formData.attending === "da" && (
+                      <input
+                        type="number"
+                        name="guests"
+                        value={formData.guests}
+                        onChange={handleChange}
+                        placeholder="Broj osoba"
+                      />
+                    )}
+
+                    <button
+                      type="submit"
+                      className="bw-rsvp-submit"
+                      disabled={loading}
+                    >
+                      {loading ? "Slanje..." : "Potvrdi"}
+                    </button>
+                  </form>
+                </>
               )}
-
-              <button
-                type="submit"
-                className="bw-rsvp-submit"
-                disabled={loading}
-              >
-                {loading ? "Slanje..." : "Potvrdi"}
-              </button>
-            </form>
-          </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </motion.section>

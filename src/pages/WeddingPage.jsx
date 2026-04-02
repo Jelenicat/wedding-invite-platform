@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import FloralIntro from "../components/FloralIntro";
@@ -42,6 +42,7 @@ import BirthdaySplitInvitationCard from "../components/BirthdaySplitInvitationCa
 
 import AngelIntro from "../components/AngelIntro";
 import AngelInvitationCard from "../components/AngelInvitationCard";
+
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -82,26 +83,26 @@ const TEMPLATE_COMPONENTS = {
     Intro: BlackWhiteIntro,
     Invitation: BlackWhiteInvitationCard,
   },
-retro: {
-  Intro: RetroIntro,
-  Invitation: RetroInvitationCard,
-},
-"birthday-gallery": {
-  Intro: BirthdayGalleryIntro,
-  Invitation: BirthdayGalleryInvitationCard,
-},
-"birthday-one-word": {
-  Intro: BirthdayOneWordIntro,
-  Invitation: BirthdayOneWordInvitationCard,
-},
-"birthday-split": {
-  Intro: BirthdaySplitIntro,
-  Invitation: BirthdaySplitInvitationCard,
-},
-angel: {
-  Intro: AngelIntro,
-  Invitation: AngelInvitationCard,
-},
+  retro: {
+    Intro: RetroIntro,
+    Invitation: RetroInvitationCard,
+  },
+  "birthday-gallery": {
+    Intro: BirthdayGalleryIntro,
+    Invitation: BirthdayGalleryInvitationCard,
+  },
+  "birthday-one-word": {
+    Intro: BirthdayOneWordIntro,
+    Invitation: BirthdayOneWordInvitationCard,
+  },
+  "birthday-split": {
+    Intro: BirthdaySplitIntro,
+    Invitation: BirthdaySplitInvitationCard,
+  },
+  angel: {
+    Intro: AngelIntro,
+    Invitation: AngelInvitationCard,
+  },
 };
 
 function WeddingPage() {
@@ -110,9 +111,19 @@ function WeddingPage() {
   const [isIntroOpen, setIsIntroOpen] = useState(false);
   const [showInvitation, setShowInvitation] = useState(false);
 
+  const introTimeoutRef = useRef(null);
+
   const invitation = useMemo(() => {
     return demoWedding.find((item) => item.slug === slug);
   }, [slug]);
+
+  useEffect(() => {
+    return () => {
+      if (introTimeoutRef.current) {
+        clearTimeout(introTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!invitation) return;
@@ -124,6 +135,10 @@ function WeddingPage() {
 
     setIsIntroOpen(false);
     setShowInvitation(false);
+
+    if (introTimeoutRef.current) {
+      clearTimeout(introTimeoutRef.current);
+    }
   }, [invitation]);
 
   if (!invitation) {
@@ -140,53 +155,61 @@ function WeddingPage() {
   const handleIntroOpen = () => {
     setIsIntroOpen(true);
 
-    setTimeout(() => {
+    if (introTimeoutRef.current) {
+      clearTimeout(introTimeoutRef.current);
+    }
+
+    introTimeoutRef.current = setTimeout(() => {
       setShowInvitation(true);
     }, 1600);
   };
 
   const handleIntroEnter = () => {
+    if (introTimeoutRef.current) {
+      clearTimeout(introTimeoutRef.current);
+    }
+
     setShowInvitation(true);
   };
 
-const introProps = {
-  brideName: invitation.brideName,
-  groomName: invitation.groomName,
-  backgroundImage: invitation.backgroundImage,
-  weddingDate: invitation.weddingDate,
-  weddingTime: invitation.weddingTime,
-  venue: invitation.venue,
-  introText: invitation.introText,
-  videoSrc: invitation.videoSrc,
-  image: invitation.image,
-  imageSrc: invitation.image,
-  image1: invitation.image1,
-  image2: invitation.image2,
-  image3: invitation.image3,
-  onEnter: handleIntroEnter,
-  isOpen: isIntroOpen,
-  onOpen: handleIntroOpen,
-  slug: invitation.slug,
-};
-
-const invitationProps = {
-  brideName: invitation.brideName,
-  groomName: invitation.groomName,
-  weddingDate: invitation.weddingDate,
-  weddingTime: invitation.weddingTime,
-  venue: invitation.venue,
-  details: invitation.details,
-  backgroundImage: invitation.backgroundImage,
-  image: invitation.image,
-  imageSrc: invitation.image,
-  videoSrc: invitation.videoSrc,
-  rsvpVideoSrc: invitation.rsvpVideoSrc,
-  slug: invitation.slug,
-  type: invitation.type,
+  const introProps = {
+    brideName: invitation.brideName,
+    groomName: invitation.groomName,
+    backgroundImage: invitation.backgroundImage,
+    weddingDate: invitation.weddingDate,
+    weddingTime: invitation.weddingTime,
+    venue: invitation.venue,
+    introText: invitation.introText,
+    videoSrc: invitation.videoSrc,
+    image: invitation.image,
+    imageSrc: invitation.image,
     image1: invitation.image1,
-  image2: invitation.image2,
-  image3: invitation.image3,
-};
+    image2: invitation.image2,
+    image3: invitation.image3,
+    onEnter: handleIntroEnter,
+    isOpen: isIntroOpen,
+    onOpen: handleIntroOpen,
+    slug: invitation.slug,
+  };
+
+  const invitationProps = {
+    brideName: invitation.brideName,
+    groomName: invitation.groomName,
+    weddingDate: invitation.weddingDate,
+    weddingTime: invitation.weddingTime,
+    venue: invitation.venue,
+    details: invitation.details,
+    backgroundImage: invitation.backgroundImage,
+    image: invitation.image,
+    imageSrc: invitation.image,
+    videoSrc: invitation.videoSrc,
+    rsvpVideoSrc: invitation.rsvpVideoSrc,
+    slug: invitation.slug,
+    type: invitation.type,
+    image1: invitation.image1,
+    image2: invitation.image2,
+    image3: invitation.image3,
+  };
 
   if (templateKey === "angel") {
     return (

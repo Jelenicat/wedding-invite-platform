@@ -1,14 +1,23 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  doc,
-  setDoc,
-} from "firebase/firestore";
+import { useEffect, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
+
+const normalizeFullName = (value = "") =>
+  value.trim().replace(/\s+/g, " ");
+
+const isValidFullName = (value = "") => {
+  const normalized = normalizeFullName(value);
+  const parts = normalized.split(" ").filter(Boolean);
+  return normalized.length >= 4 && parts.length >= 2;
+};
+
+const createGuestId = (fullName = "") =>
+  normalizeFullName(fullName)
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9а-шА-ШćčžšđĆČŽŠĐ\s-]/g, "")
+    .replace(/\s+/g, "-");
 
 function VideoBandRSVP({ slug, eventType }) {
   const [formData, setFormData] = useState({
@@ -18,9 +27,70 @@ function VideoBandRSVP({ slug, eventType }) {
   });
 
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        setSubmitted(false);
+        setErrorMessage("");
+        setFormData({
+          fullName: "",
+          attending: "",
+          guests: "1",
+        });
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [submitted]);
+
+  const normalizedFullName = useMemo(
+    () => normalizeFullName(formData.fullName),
+    [formData.fullName]
+  );
+
+  const guestsCount = Number(formData.guests);
+
+  const isFormValid = useMemo(() => {
+    if (!isValidFullName(formData.fullName)) return false;
+    if (!formData.attending) return false;
+
+    if (formData.attending === "da") {
+      return (
+        formData.guests !== "" &&
+        !Number.isNaN(guestsCount) &&
+        guestsCount >= 1 &&
+        guestsCount <= 10
+      );
+    }
+
+    return true;
+  }, [formData.fullName, formData.attending, formData.guests, guestsCount]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "guests") {
+      if (value === "") {
+        setFormData((prev) => ({
+          ...prev,
+          guests: "",
+        }));
+        return;
+      }
+
+      const numericValue = Number(value);
+
+      if (Number.isNaN(numericValue)) return;
+
+      setFormData((prev) => ({
+        ...prev,
+        guests: String(Math.max(1, Math.min(10, numericValue))),
+      }));
+      return;
+    }
 
     setFormData((prev) => ({
       ...prev,
@@ -29,6 +99,8 @@ function VideoBandRSVP({ slug, eventType }) {
   };
 
   const handleAttendanceSelect = (value) => {
+    setErrorMessage("");
+
     setFormData((prev) => ({
       ...prev,
       attending: value,
@@ -38,27 +110,31 @@ function VideoBandRSVP({ slug, eventType }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
 
     if (!slug || !eventType) {
-      alert("Nedostaje slug ili tip događaja.");
+      setErrorMessage("Nedostaje slug ili tip događaja.");
       return;
     }
 
-    if (!formData.fullName.trim()) {
-      alert("Unesite ime i prezime.");
+    if (!isValidFullName(formData.fullName)) {
+      setErrorMessage("Unesite ime i prezime.");
       return;
     }
 
     if (!formData.attending) {
-      alert("Izaberite da li dolazite.");
+      setErrorMessage("Izaberite da li dolazite.");
       return;
     }
 
-    const guestsCount = Number(formData.guests);
-
     if (formData.attending === "da") {
-      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
-        alert("Unesite ispravan broj osoba.");
+      if (
+        !formData.guests ||
+        Number.isNaN(guestsCount) ||
+        guestsCount < 1 ||
+        guestsCount > 10
+      ) {
+        setErrorMessage("Unesite ispravan broj osoba.");
         return;
       }
     }
@@ -78,24 +154,22 @@ function VideoBandRSVP({ slug, eventType }) {
 
       const payload = {
         eventType,
-        fullName: formData.fullName.trim(),
+        fullName: normalizedFullName,
         attending: formData.attending,
         guests: formData.attending === "da" ? guestsCount : 0,
-        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
       };
 
-      await addDoc(collection(db, "events", slug, "rsvps"), payload);
+      const guestId = createGuestId(normalizedFullName);
 
-      alert("Uspešno poslato!");
-
-      setFormData({
-        fullName: "",
-        attending: "",
-        guests: "1",
+      await setDoc(doc(db, "events", slug, "rsvps", guestId), payload, {
+        merge: true,
       });
+
+      setSubmitted(true);
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);
-      alert("Došlo je do greške pri slanju.");
+      setErrorMessage("Došlo je do greške pri slanju. Pokušajte ponovo.");
     } finally {
       setLoading(false);
     }
@@ -125,93 +199,170 @@ function VideoBandRSVP({ slug, eventType }) {
             <h2 className="video-band-rsvp-title">Potvrdite dolazak</h2>
 
             <p className="video-band-rsvp-subtitle">
-              Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.
+              Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš
+              poseban dan.
             </p>
 
             <div className="video-band-rsvp-divider" />
 
-            <form className="video-band-rsvp-form" onSubmit={handleSubmit}>
-              <div className="video-band-rsvp-field">
-                <label htmlFor="video-band-fullName">Ime i prezime</label>
-                <input
-                  id="video-band-fullName"
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="Unesite ime i prezime"
-                  required
-                />
-              </div>
-
-              <div className="video-band-rsvp-choice-block">
-                <p className="video-band-rsvp-choice-label">Da li dolazite?</p>
-
-                <div className="video-band-rsvp-choice-grid">
-                  <button
-                    type="button"
-                    className={`video-band-choice-card ${
-                      formData.attending === "da" ? "is-active" : ""
-                    }`}
-                    onClick={() => handleAttendanceSelect("da")}
-                  >
-                    <span className="video-band-choice-title">Dolazim</span>
-                    <span className="video-band-choice-text">
-                      Radujem se proslavi sa vama
-                    </span>
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`video-band-choice-card ${
-                      formData.attending === "ne" ? "is-active" : ""
-                    }`}
-                    onClick={() => handleAttendanceSelect("ne")}
-                  >
-                    <span className="video-band-choice-title">Ne dolazim</span>
-                    <span className="video-band-choice-text">
-                      Nažalost nisam u mogućnosti
-                    </span>
-                  </button>
-                </div>
-              </div>
-
-              <input
-                type="hidden"
-                name="attending"
-                value={formData.attending}
-                required
-              />
-
-              {formData.attending === "da" && (
+            <AnimatePresence mode="wait">
+              {submitted ? (
                 <motion.div
-                  className="video-band-rsvp-field"
-                  initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.35 }}
+                  key="success"
+                  className="video-band-rsvp-success"
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.55 }}
                 >
-                  <label htmlFor="video-band-guests">Broj osoba</label>
+                  <motion.div
+                    className="video-band-success-heart"
+                    initial={{ scale: 0, rotate: -15 }}
+                    animate={{ scale: [0, 1.2, 1], rotate: [0, 8, -8, 0] }}
+                    transition={{ duration: 0.9 }}
+                  >
+                    💌
+                  </motion.div>
+
+                  <motion.h3
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15, duration: 0.45 }}
+                  >
+                    Hvala!
+                  </motion.h3>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.28, duration: 0.45 }}
+                  >
+                    Vaša potvrda je uspešno poslata.
+                  </motion.p>
+
+                  <div className="video-band-confetti-wrap">
+                    {Array.from({ length: 18 }).map((_, i) => (
+                      <motion.span
+                        key={i}
+                        className="video-band-confetti"
+                        initial={{
+                          opacity: 0,
+                          y: 0,
+                          x: 0,
+                          scale: 0.6,
+                        }}
+                        animate={{
+                          opacity: [0, 1, 1, 0],
+                          y: 110 + (i % 4) * 8,
+                          x: (i - 9) * 10,
+                          scale: [0.6, 1, 0.9],
+                          rotate: [0, 120, 240],
+                        }}
+                        transition={{
+                          duration: 1.6,
+                          delay: i * 0.04,
+                          ease: "easeOut",
+                        }}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              ) : (
+                <form className="video-band-rsvp-form" onSubmit={handleSubmit}>
+                  <div className="video-band-rsvp-field">
+                    <label htmlFor="video-band-fullName">Ime i prezime</label>
+                    <input
+                      id="video-band-fullName"
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      placeholder="Unesite ime i prezime"
+                      autoComplete="name"
+                      required
+                    />
+                  </div>
+
+                  <div className="video-band-rsvp-choice-block">
+                    <p className="video-band-rsvp-choice-label">
+                      Da li dolazite?
+                    </p>
+
+                    <div className="video-band-rsvp-choice-grid">
+                      <button
+                        type="button"
+                        className={`video-band-choice-card ${
+                          formData.attending === "da" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("da")}
+                      >
+                        <span className="video-band-choice-title">Dolazim</span>
+                        <span className="video-band-choice-text">
+                          Radujem se proslavi sa vama
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`video-band-choice-card ${
+                          formData.attending === "ne" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("ne")}
+                      >
+                        <span className="video-band-choice-title">
+                          Ne dolazim
+                        </span>
+                        <span className="video-band-choice-text">
+                          Nažalost nisam u mogućnosti
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+
                   <input
-                    id="video-band-guests"
-                    type="number"
-                    name="guests"
-                    min="1"
-                    max="10"
-                    value={formData.guests}
-                    onChange={handleChange}
+                    type="hidden"
+                    name="attending"
+                    value={formData.attending}
                     required
                   />
-                </motion.div>
-              )}
 
-              <button
-                type="submit"
-                className="video-band-rsvp-button"
-                disabled={loading}
-              >
-                {loading ? "Slanje..." : "Pošalji potvrdu"}
-              </button>
-            </form>
+                  {formData.attending === "da" && (
+                    <motion.div
+                      className="video-band-rsvp-field"
+                      initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      <label htmlFor="video-band-guests">Broj osoba</label>
+                      <input
+                        id="video-band-guests"
+                        type="number"
+                        name="guests"
+                        min="1"
+                        max="10"
+                        value={formData.guests}
+                        onChange={handleChange}
+                        required
+                      />
+                    </motion.div>
+                  )}
+
+                  {errorMessage && (
+                    <div className="video-band-rsvp-error" role="alert">
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="video-band-rsvp-button"
+                    disabled={loading || !isFormValid}
+                  >
+                    {loading ? "Slanje..." : "Pošalji potvrdu"}
+                  </button>
+                </form>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>

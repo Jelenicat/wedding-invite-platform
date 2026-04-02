@@ -4,18 +4,111 @@ import VideoBandCountdown from "./VideoBandCountdown";
 import "../styles/card.css";
 import "../styles/rsvp.css";
 
+const WEEKDAY_LABELS = ["PN", "UT", "SR", "ČT", "PT", "SB", "NV"];
+
+const MONTH_MAP = {
+  JAN: 0,
+  FEB: 1,
+  MAR: 2,
+  APR: 3,
+  MAJ: 4,
+  MAY: 4,
+  JUN: 5,
+  JUL: 6,
+  AVG: 7,
+  AUG: 7,
+  SEP: 8,
+  OKT: 9,
+  OCT: 9,
+  NOV: 10,
+  DEC: 11,
+  DECEMBER: 11,
+};
+
+function parseDateParts(dateString) {
+  if (!dateString) {
+    return { day: "08", month: "AVG", year: "2026" };
+  }
+
+  const parts = dateString.trim().split(/\s+/);
+
+  return {
+    day: parts[0] || "08",
+    month: (parts[1] || "AVG").toUpperCase(),
+    year: parts[2] || "2026",
+  };
+}
+
+function buildCalendarDays(day, month, year) {
+  const numericDay = Number.parseInt(day, 10);
+  const numericYear = Number.parseInt(year, 10);
+  const monthIndex = MONTH_MAP[month];
+
+  if (
+    Number.isNaN(numericDay) ||
+    Number.isNaN(numericYear) ||
+    monthIndex === undefined
+  ) {
+    return Array.from({ length: 35 }, (_, i) => ({
+      key: `fallback-${i}`,
+      label: "",
+      isActive: false,
+      isEmpty: true,
+    }));
+  }
+
+  const firstDay = new Date(numericYear, monthIndex, 1);
+  const daysInMonth = new Date(numericYear, monthIndex + 1, 0).getDate();
+
+  let startOffset = firstDay.getDay() - 1;
+  if (startOffset < 0) startOffset = 6;
+
+  const cells = [];
+
+  for (let i = 0; i < startOffset; i += 1) {
+    cells.push({
+      key: `empty-start-${i}`,
+      label: "",
+      isActive: false,
+      isEmpty: true,
+    });
+  }
+
+  for (let i = 1; i <= daysInMonth; i += 1) {
+    cells.push({
+      key: `day-${i}`,
+      label: i,
+      isActive: i === numericDay,
+      isEmpty: false,
+    });
+  }
+
+  while (cells.length % 7 !== 0) {
+    cells.push({
+      key: `empty-end-${cells.length}`,
+      label: "",
+      isActive: false,
+      isEmpty: true,
+    });
+  }
+
+  return cells;
+}
+
 function VideoBandInvitationCard({
   brideName,
   groomName,
   details = {},
-  videoSrc,
   slug,
   type,
+  image,
+  image1,
+  image2,
+  image3,
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
-  // 🔴 BITNO: više NEMA getMapUrl
   const timelineItems =
     details.events?.length > 0
       ? details.events.map((item) => ({
@@ -23,7 +116,7 @@ function VideoBandInvitationCard({
           value: item.time,
           location: item.location,
           icon: item.icon,
-          mapLink: item.mapLink, // 👉 samo ono što postoji
+          mapLink: item.mapLink,
         }))
       : [
           {
@@ -56,21 +149,17 @@ function VideoBandInvitationCard({
           },
         ].filter((item) => item.value);
 
-  const formatDateParts = (dateString) => {
-    if (!dateString) {
-      return { day: "08", month: "AVG", year: "2026" };
-    }
+  const { day, month, year } = parseDateParts(details.date);
 
-    const parts = dateString.split(" ");
-    return {
-      day: parts[0] || "08",
-      month: parts[1] || "AVG",
-      year: parts[2] || "2026",
-    };
-  };
+  const calendarDays = buildCalendarDays(day, month, year);
 
-  const { day, month, year } = formatDateParts(details.date);
-  const editorialImage = `/images/${slug}.jpg`;
+  const editorialImage =
+    details.editorialImage1 ||
+    image1 ||
+    image2 ||
+    image3 ||
+    image ||
+    `/images/${slug}.jpg`;
 
   const sheetReveal = {
     hidden: {
@@ -151,6 +240,9 @@ function VideoBandInvitationCard({
             <motion.img
               src={editorialImage}
               alt={`${safeBrideName} ${safeGroomName}`}
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
               animate={{
                 y: [0, -4, 0],
                 scale: [1, 1.01, 1],
@@ -185,13 +277,10 @@ function VideoBandInvitationCard({
                 </div>
 
                 <div className="video-band-program-side video-band-program-side-right">
-                  <div className="video-band-elegant-title">
-                    {item.label}
-                  </div>
+                  <div className="video-band-elegant-title">{item.label}</div>
 
-                  {/* 🔥 KLJUČNI DEO */}
-                  {item.location && (
-                    item.mapLink ? (
+                  {item.location &&
+                    (item.mapLink ? (
                       <a
                         href={item.mapLink}
                         target="_blank"
@@ -204,8 +293,7 @@ function VideoBandInvitationCard({
                       <div className="video-band-program-location">
                         {item.location}
                       </div>
-                    )
-                  )}
+                    ))}
                 </div>
               </motion.div>
             ))}
@@ -215,9 +303,7 @@ function VideoBandInvitationCard({
             className="video-band-editorial-calendar-wrap"
             variants={softReveal}
           >
-            <p className="video-band-editorial-calendar-title">
-              Dragi gosti!
-            </p>
+            <p className="video-band-editorial-calendar-title">Dragi gosti!</p>
 
             {details.note && (
               <p className="video-band-editorial-note">{details.note}</p>
@@ -227,31 +313,24 @@ function VideoBandInvitationCard({
               <div className="video-band-editorial-calendar-month">{month}</div>
 
               <div className="video-band-editorial-calendar-grid">
-                <span>PN</span>
-                <span>UT</span>
-                <span>SR</span>
-                <span>ČT</span>
-                <span>PT</span>
-                <span>SB</span>
-                <span>NV</span>
+                {WEEKDAY_LABELS.map((label) => (
+                  <span key={label}>{label}</span>
+                ))}
 
-                {[...Array(31)].map((_, i) => {
-                  const num = i + 1;
-                  const isActive = String(num) === String(parseInt(day, 10));
-
-                  return (
-                    <span
-                      key={num}
-                      className={
-                        isActive
-                          ? "video-band-editorial-calendar-day is-active"
-                          : "video-band-editorial-calendar-day"
-                      }
-                    >
-                      {num}
-                    </span>
-                  );
-                })}
+                {calendarDays.map((cell) => (
+                  <span
+                    key={cell.key}
+                    className={[
+                      "video-band-editorial-calendar-day",
+                      cell.isActive ? "is-active" : "",
+                      cell.isEmpty ? "is-empty" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
+                    {cell.label}
+                  </span>
+                ))}
               </div>
 
               <div className="video-band-editorial-calendar-year">{year}</div>

@@ -16,6 +16,22 @@
   );
   overflow: hidden;
 }
+.video-band-rsvp-error {
+  width: 100%;
+  margin-top: 2px;
+  padding: 12px 14px;
+  border: 1px solid rgba(181, 120, 120, 0.22);
+  background: rgba(255, 248, 247, 0.92);
+  color: #8a5c58;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+.video-band-rsvp-success {
+  text-align: center;
+  padding: 30px 20px;
+}
 .confetti-wrapper {
   position: relative;
   width: 100%;
@@ -26,10 +42,26 @@
   position: absolute;
   width: 6px;
   height: 10px;
-  background: #d4af7f;
+  background: #d47f7f;
   top: 0;
   left: 50%;
   border-radius: 2px;
+}
+.video-band-rsvp-success h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  color: #5f514a;
+  margin-bottom: 8px;
+}
+
+.video-band-rsvp-success p {
+  font-size: 14px;
+  color: rgba(110, 94, 86, 0.8);
+}
+
+.video-band-success-heart {
+  font-size: 42px;
+  margin-bottom: 10px;
 }
 .video-band-rsvp-paper {
   position: absolute;
@@ -374,6 +406,74 @@
     width: 100%;
     min-width: unset;
   }
+}
+/* =========================
+   VIDEO BAND SUCCESS UPGRADE
+========================= */
+
+.video-band-rsvp-box {
+  overflow: hidden;
+}
+
+.video-band-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 10px auto 0;
+  padding: 34px 22px 42px;
+  text-align: center;
+}
+
+.video-band-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(212, 127, 127, 0.22));
+}
+
+.video-band-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #5f514a;
+}
+
+.video-band-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-style: italic;
+  color: rgba(110, 94, 86, 0.82);
+}
+
+.video-band-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.video-band-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.video-band-confetti:nth-child(3n) {
+  background: #d8b4a0;
+}
+
+.video-band-confetti:nth-child(3n + 1) {
+  background: #e6cfc3;
+}
+
+.video-band-confetti:nth-child(3n + 2) {
+  background: #c98d7d;
 }
 /* =========================
    VIDEO BAND COUNTDOWN
@@ -1126,6 +1226,70 @@
   }
 }
 /* =========================
+   SPLIT VIDEO SUCCESS UPGRADE
+========================= */
+
+.split-video-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 10px auto 0;
+  padding: 34px 22px 42px;
+  text-align: center;
+}
+
+.split-video-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(143, 138, 100, 0.22));
+}
+
+.split-video-success h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #6f5b4f;
+}
+
+.split-video-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-style: italic;
+  color: #87756a;
+}
+
+.split-video-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.split-video-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.split-video-confetti:nth-child(3n) {
+  background: #8f8a64;
+}
+
+.split-video-confetti:nth-child(3n + 1) {
+  background: #d9cdb8;
+}
+
+.split-video-confetti:nth-child(3n + 2) {
+  background: #b8a48e;
+}
+/* =========================
    SPLIT IMAGE RSVP
 ========================= */
 
@@ -1385,7 +1549,74 @@ margin-bottom: 2px;
     0 18px 36px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(255,255,255,0.1);
 }
+/* =========================
+   SPLIT IMAGE SUCCESS UPGRADE
+========================= */
 
+.split-image-rsvp-box {
+  overflow: hidden;
+}
+
+.split-image-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 10px auto 0;
+  padding: 34px 22px 42px;
+  text-align: center;
+}
+
+.split-image-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.12));
+}
+
+.split-image-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.split-image-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.split-image-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.split-image-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.split-image-confetti:nth-child(3n) {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.split-image-confetti:nth-child(3n + 1) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.split-image-confetti:nth-child(3n + 2) {
+  background: rgba(255, 255, 255, 0.35);
+}
 /* =========================
    SPLIT IMAGE COUNTDOWN
 ========================= */
@@ -1789,7 +2020,74 @@ width: 100%;
     inset 0 1px 0 rgba(255,255,255,0.16);
   filter: saturate(1.04);
 }
+/* =========================
+   PHOTO SCRIPT SUCCESS UPGRADE
+========================= */
 
+.photo-script-rsvp-box {
+  overflow: hidden;
+}
+
+.photo-script-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 10px auto 0;
+  padding: 34px 22px 42px;
+  text-align: center;
+}
+
+.photo-script-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(203, 116, 116, 0.2));
+}
+
+.photo-script-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #f2e8e6;
+}
+
+.photo-script-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.photo-script-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.photo-script-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.photo-script-confetti:nth-child(3n) {
+  background: #cb7474;
+}
+
+.photo-script-confetti:nth-child(3n + 1) {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.photo-script-confetti:nth-child(3n + 2) {
+  background: rgba(255, 255, 255, 0.45);
+}
 /* =========================
    PHOTO SCRIPT COUNTDOWN
 ========================= */
@@ -2256,7 +2554,46 @@ width: 100%;
     0 20px 38px rgba(62, 48, 40, 0.11),
     inset 0 1px 0 rgba(255,255,255,0.78);
 }
+/* =========================
+   PHOTO CARD SUCCESS
+========================= */
 
+.photo-card-rsvp-success {
+  position: relative;
+  text-align: center;
+  padding: 30px;
+}
+
+.photo-card-success-heart {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.photo-card-rsvp-success h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  color: #4f4640;
+}
+
+.photo-card-rsvp-success p {
+  color: #7c7068;
+}
+
+.photo-card-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.photo-card-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 6px;
+  height: 10px;
+  background: #d8b4a0;
+  border-radius: 999px;
+}
 /* =========================
    PHOTO CARD COUNTDOWN
 ========================= */
@@ -2656,7 +2993,74 @@ margin-bottom: 2px;
   background: rgba(255, 255, 255, 0.34);
   transform: translateY(-1px);
 }
+/* =========================
+   MINIMAL SUCCESS UPGRADE
+========================= */
 
+.minimal-rsvp-box {
+  overflow: hidden;
+}
+
+.minimal-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 10px auto 0;
+  padding: 34px 22px 42px;
+  text-align: center;
+}
+
+.minimal-rsvp-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(56, 47, 42, 0.1));
+}
+
+.minimal-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2f241d;
+}
+
+.minimal-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-style: italic;
+  color: #6a5b51;
+}
+
+.minimal-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.minimal-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.minimal-confetti:nth-child(3n) {
+  background: #b7a79b;
+}
+
+.minimal-confetti:nth-child(3n + 1) {
+  background: #e7ddd6;
+}
+
+.minimal-confetti:nth-child(3n + 2) {
+  background: #8c7a6e;
+}
 /* =========================
    MINIMAL COUNTDOWN
 ========================= */
@@ -3050,7 +3454,46 @@ margin-bottom: 2px;
     inset 0 1px 0 rgba(255,255,255,0.72);
   background: rgba(255,255,255,0.98);
 }
+/* =========================
+   FLORAL SUCCESS
+========================= */
 
+.floral-rsvp-success {
+  position: relative;
+  text-align: center;
+  padding: 30px;
+}
+
+.floral-rsvp-success-heart {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.floral-rsvp-success h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  color: #5c4a40;
+}
+
+.floral-rsvp-success p {
+  color: #7a665a;
+}
+
+.floral-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floral-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 6px;
+  height: 10px;
+  background: #c37474;
+  border-radius: 999px;
+}
 /* =========================
    FLORAL COUNTDOWN
 ========================= */
@@ -3867,7 +4310,73 @@ margin-bottom: 2px;
 /* =========================
    RETRO RSVP
 ========================= */
+/* =========================
+   RETRO SUCCESS UPGRADE
+========================= */
 
+.retro-rsvp-card {
+  overflow: hidden;
+}
+
+.retro-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 26px 18px 34px;
+  text-align: center;
+}
+
+.retro-rsvp-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 22px rgba(201, 47, 32, 0.18));
+}
+
+.retro-rsvp-success h3 {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 46px;
+  line-height: 1;
+  color: #c92f20;
+}
+
+.retro-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(60, 48, 43, 0.82);
+}
+
+.retro-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.retro-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.retro-confetti:nth-child(3n) {
+  background: #c92f20;
+}
+
+.retro-confetti:nth-child(3n + 1) {
+  background: #f1d3ca;
+}
+
+.retro-confetti:nth-child(3n + 2) {
+  background: #ffffff;
+}
 .retro-rsvp-section {
   position: relative;
   min-height: 100dvh;
@@ -4057,6 +4566,50 @@ margin-bottom: 2px;
   .retro-rsvp-choice-row {
     grid-template-columns: 1fr;
   }
+}
+/* =========================
+   BLACK WHITE SUCCESS
+========================= */
+
+.bw-rsvp-card {
+  overflow: hidden;
+}
+
+.bw-rsvp-success {
+  position: relative;
+  text-align: center;
+  padding: 28px;
+}
+
+.bw-rsvp-success-heart {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.bw-rsvp-success h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: #ffffff;
+}
+
+.bw-rsvp-success p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.bw-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bw-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 6px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 999px;
 }
 /* =========================
    RETRO COUNTDOWN
@@ -4411,7 +4964,76 @@ margin-bottom: 2px;
 .birthday-rsvp-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}/* =========================================
+}
+/* =========================================
+   BIRTHDAY GALLERY SUCCESS
+========================================= */
+
+.birthday-rsvp-card {
+  overflow: hidden;
+}
+
+.birthday-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 30px 18px 38px;
+  text-align: center;
+}
+
+.birthday-rsvp-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(111, 88, 72, 0.18));
+}
+
+.birthday-rsvp-success h3 {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(34px, 7vw, 56px);
+  line-height: 1;
+  font-weight: 400;
+  color: #2d221c;
+}
+
+.birthday-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6c5648;
+}
+
+.birthday-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.birthday-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.birthday-confetti:nth-child(3n) {
+  background: #8f7360;
+}
+
+.birthday-confetti:nth-child(3n + 1) {
+  background: #d9c9bc;
+}
+
+.birthday-confetti:nth-child(3n + 2) {
+  background: #6f5848;
+}
+/* =========================================
    BIRTHDAY GALLERY COUNTDOWN
 ========================================= */
 .birthday-countdown-section {
@@ -4846,6 +5468,74 @@ margin-bottom: 2px;
   opacity: 0.5;
   cursor: not-allowed;
 }
+/* =========================================
+   BIRTHDAY ONE WORD SUCCESS
+========================================= */
+
+.birthday-one-word-rsvp-card {
+  overflow: hidden;
+}
+
+.birthday-one-word-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 30px 18px 38px;
+  text-align: center;
+}
+
+.birthday-one-word-rsvp-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(111, 88, 72, 0.18));
+}
+
+.birthday-one-word-rsvp-success h3 {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(34px, 7vw, 56px);
+  line-height: 1;
+  font-weight: 400;
+  color: #2d221c;
+}
+
+.birthday-one-word-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6c5648;
+}
+
+.birthday-one-word-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.birthday-one-word-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.birthday-one-word-confetti:nth-child(3n) {
+  background: #8f7360;
+}
+
+.birthday-one-word-confetti:nth-child(3n + 1) {
+  background: #d9c9bc;
+}
+
+.birthday-one-word-confetti:nth-child(3n + 2) {
+  background: #6f5848;
+}
 
 /* =========================================
    BIRTHDAY ONE WORD COUNTDOWN
@@ -5168,7 +5858,73 @@ margin-bottom: 2px;
   border-color: rgba(143,115,96,0.4);
   box-shadow: 0 0 0 3px rgba(143,115,96,0.08);
 }
+/* =========================================
+   BIRTHDAY SPLIT SUCCESS
+========================================= */
 
+.birthday-split-rsvp-card {
+  overflow: hidden;
+}
+
+.birthday-split-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 30px 18px 38px;
+  text-align: center;
+}
+
+.birthday-split-rsvp-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(111, 88, 72, 0.18));
+}
+
+.birthday-split-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #3e3028;
+}
+
+.birthday-split-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6c5648;
+}
+
+.birthday-split-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.birthday-split-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.birthday-split-confetti:nth-child(3n) {
+  background: #8f7360;
+}
+
+.birthday-split-confetti:nth-child(3n + 1) {
+  background: #d9c9bc;
+}
+
+.birthday-split-confetti:nth-child(3n + 2) {
+  background: #6f5848;
+}
 .birthday-split-rsvp-choice-block {
   text-align: left;
 }
@@ -5434,7 +6190,78 @@ margin-bottom: 2px;
 /* =========================
    ANGEL RSVP
 ========================= */
+/* =========================
+   ANGEL SUCCESS (VideoBand style)
+========================= */
 
+.angel-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 20px auto 0;
+  padding: 34px 22px 42px;
+  text-align: center;
+}
+
+/* 💌 srce animacija */
+.angel-rsvp-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(186, 125, 115, 0.25));
+}
+
+/* naslov */
+.angel-rsvp-success h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #6b5850;
+}
+
+/* tekst */
+.angel-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(111, 92, 84, 0.82);
+  font-style: italic;
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.angel-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.angel-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+/* različite boje konfeta */
+.angel-confetti:nth-child(3n) {
+  background: #d8b4a0;
+}
+
+.angel-confetti:nth-child(3n+1) {
+  background: #e6cfc3;
+}
+
+.angel-confetti:nth-child(3n+2) {
+  background: #c98d7d;
+}
 .angel-rsvp-section {
   position: relative;
   width: 80%;
@@ -6085,6 +6912,33 @@ margin-bottom: 2px;
   font-style: italic;
 }
 
+
+.angel-rsvp-success {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 12px auto 0;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.angel-rsvp-success-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.angel-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  color: #5f514a;
+}
+
+.angel-rsvp-success p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(110, 94, 86, 0.8);
+}
 /* =========================
    ANGEL COUNTDOWN
 ========================= */

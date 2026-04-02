@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   collection,
   addDoc,
@@ -18,6 +18,22 @@ function SplitImageRSVP({ slug, eventType }) {
   });
 
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          fullName: "",
+          attending: "",
+          guests: "1",
+        });
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [submitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +82,6 @@ function SplitImageRSVP({ slug, eventType }) {
     setLoading(true);
 
     try {
-      // 🔥 kreira parent event ako ne postoji
       await setDoc(
         doc(db, "events", slug),
         {
@@ -77,7 +92,6 @@ function SplitImageRSVP({ slug, eventType }) {
         { merge: true }
       );
 
-      // 🔥 upis u novu strukturu
       await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
@@ -86,13 +100,7 @@ function SplitImageRSVP({ slug, eventType }) {
         createdAt: serverTimestamp(),
       });
 
-      alert("Uspešno poslato!");
-
-      setFormData({
-        fullName: "",
-        attending: "",
-        guests: "1",
-      });
+      setSubmitted(true);
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);
       alert("Došlo je do greške pri slanju.");
@@ -111,94 +119,171 @@ function SplitImageRSVP({ slug, eventType }) {
     >
       <div className="split-image-rsvp-shell">
         <div className="split-image-rsvp-box">
-          <p className="split-image-rsvp-kicker">RSVP</p>
-
-          <h2 className="split-image-rsvp-title">Potvrdite dolazak</h2>
-
-          <p className="split-image-rsvp-subtitle">
-            Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš
-            poseban dan.
-          </p>
-
-          <div className="split-image-rsvp-divider" />
-
-          <form className="split-image-rsvp-form" onSubmit={handleSubmit}>
-            <div className="split-image-rsvp-field">
-              <label htmlFor="split-image-fullName">Ime i prezime</label>
-              <input
-                id="split-image-fullName"
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Unesite ime i prezime"
-                required
-              />
-            </div>
-
-            <div className="split-image-rsvp-choice-block">
-              <p className="split-image-rsvp-choice-label">Da li dolazite?</p>
-
-              <div className="split-image-rsvp-choice-grid">
-                <button
-                  type="button"
-                  className={`split-image-choice-card ${
-                    formData.attending === "da" ? "is-active" : ""
-                  }`}
-                  onClick={() => handleAttendanceSelect("da")}
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div
+                key="success"
+                className="split-image-rsvp-success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  className="split-image-success-heart"
+                  initial={{ scale: 0, rotate: -15 }}
+                  animate={{ scale: [0, 1.2, 1], rotate: [0, 8, -8, 0] }}
+                  transition={{ duration: 0.9 }}
                 >
-                  <span className="split-image-choice-title">Dolazim</span>
-                  <span className="split-image-choice-text">
-                    Radujem se što slavim sa vama
-                  </span>
-                </button>
+                  💌
+                </motion.div>
 
-                <button
-                  type="button"
-                  className={`split-image-choice-card ${
-                    formData.attending === "ne" ? "is-active" : ""
-                  }`}
-                  onClick={() => handleAttendanceSelect("ne")}
+                <motion.h3
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.45 }}
                 >
-                  <span className="split-image-choice-title">Ne dolazim</span>
-                  <span className="split-image-choice-text">
-                    Nažalost nisam u mogućnosti
-                  </span>
-                </button>
-              </div>
-            </div>
+                  Hvala!
+                </motion.h3>
 
-            <input
-              type="hidden"
-              name="attending"
-              value={formData.attending}
-              required
-            />
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.28, duration: 0.45 }}
+                >
+                  Vaša potvrda je uspešno poslata.
+                </motion.p>
 
-            {formData.attending === "da" && (
-              <div className="split-image-rsvp-field">
-                <label htmlFor="split-image-guests">Broj osoba</label>
-                <input
-                  id="split-image-guests"
-                  type="number"
-                  name="guests"
-                  min="1"
-                  max="10"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+                <div className="split-image-confetti-wrap">
+                  {Array.from({ length: 18 }).map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="split-image-confetti"
+                      initial={{
+                        opacity: 0,
+                        y: 0,
+                        x: 0,
+                        scale: 0.6,
+                      }}
+                      animate={{
+                        opacity: [0, 1, 1, 0],
+                        y: 110 + (i % 4) * 8,
+                        x: (i - 9) * 10,
+                        scale: [0.6, 1, 0.9],
+                        rotate: [0, 120, 240],
+                      }}
+                      transition={{
+                        duration: 1.6,
+                        delay: i * 0.04,
+                        ease: "easeOut",
+                      }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="form"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <p className="split-image-rsvp-kicker">RSVP</p>
+
+                <h2 className="split-image-rsvp-title">Potvrdite dolazak</h2>
+
+                <p className="split-image-rsvp-subtitle">
+                  Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš
+                  poseban dan.
+                </p>
+
+                <div className="split-image-rsvp-divider" />
+
+                <form className="split-image-rsvp-form" onSubmit={handleSubmit}>
+                  <div className="split-image-rsvp-field">
+                    <label htmlFor="split-image-fullName">Ime i prezime</label>
+                    <input
+                      id="split-image-fullName"
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      placeholder="Unesite ime i prezime"
+                      required
+                    />
+                  </div>
+
+                  <div className="split-image-rsvp-choice-block">
+                    <p className="split-image-rsvp-choice-label">Da li dolazite?</p>
+
+                    <div className="split-image-rsvp-choice-grid">
+                      <button
+                        type="button"
+                        className={`split-image-choice-card ${
+                          formData.attending === "da" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("da")}
+                      >
+                        <span className="split-image-choice-title">Dolazim</span>
+                        <span className="split-image-choice-text">
+                          Radujem se što slavim sa vama
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`split-image-choice-card ${
+                          formData.attending === "ne" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleAttendanceSelect("ne")}
+                      >
+                        <span className="split-image-choice-title">Ne dolazim</span>
+                        <span className="split-image-choice-text">
+                          Nažalost nisam u mogućnosti
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <input
+                    type="hidden"
+                    name="attending"
+                    value={formData.attending}
+                    required
+                  />
+
+                  {formData.attending === "da" && (
+                    <motion.div
+                      className="split-image-rsvp-field"
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      <label htmlFor="split-image-guests">Broj osoba</label>
+                      <input
+                        id="split-image-guests"
+                        type="number"
+                        name="guests"
+                        min="1"
+                        max="10"
+                        value={formData.guests}
+                        onChange={handleChange}
+                        required
+                      />
+                    </motion.div>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="split-image-rsvp-button"
+                    disabled={loading}
+                  >
+                    {loading ? "Slanje..." : "Pošalji potvrdu"}
+                  </button>
+                </form>
+              </motion.div>
             )}
-
-            <button
-              type="submit"
-              className="split-image-rsvp-button"
-              disabled={loading}
-            >
-              {loading ? "Slanje..." : "Pošalji potvrdu"}
-            </button>
-          </form>
+          </AnimatePresence>
         </div>
       </div>
     </motion.section>

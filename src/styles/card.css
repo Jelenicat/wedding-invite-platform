@@ -3256,7 +3256,10 @@
   overflow: hidden;
   padding: 32px 14px 48px;
 }
-
+.video-band-editorial-calendar-day.is-empty {
+  opacity: 0;
+  pointer-events: none;
+}
 .video-band-editorial-paper {
   position: absolute;
   inset: 0;

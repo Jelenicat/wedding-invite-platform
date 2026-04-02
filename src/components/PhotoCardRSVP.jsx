@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   collection,
   addDoc,
@@ -18,6 +18,22 @@ function PhotoCardRSVP({ slug, eventType }) {
   });
 
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          fullName: "",
+          attending: "",
+          guests: "1",
+        });
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [submitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,26 +55,14 @@ function PhotoCardRSVP({ slug, eventType }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!slug || !eventType) {
-      alert("Nedostaje slug ili tip događaja.");
-      return;
-    }
-
-    if (!formData.fullName.trim()) {
-      alert("Unesite ime i prezime.");
-      return;
-    }
-
-    if (!formData.attending) {
-      alert("Izaberite da li dolazite.");
-      return;
-    }
+    if (!slug || !eventType) return;
+    if (!formData.fullName.trim()) return;
+    if (!formData.attending) return;
 
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
       if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
-        alert("Unesite ispravan broj osoba.");
         return;
       }
     }
@@ -66,7 +70,6 @@ function PhotoCardRSVP({ slug, eventType }) {
     setLoading(true);
 
     try {
-      // 🔥 kreira event doc ako ne postoji
       await setDoc(
         doc(db, "events", slug),
         {
@@ -77,7 +80,6 @@ function PhotoCardRSVP({ slug, eventType }) {
         { merge: true }
       );
 
-      // 🔥 pravi RSVP u pravoj kolekciji
       await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
@@ -86,16 +88,9 @@ function PhotoCardRSVP({ slug, eventType }) {
         createdAt: serverTimestamp(),
       });
 
-      alert("Uspešno poslato!");
-
-      setFormData({
-        fullName: "",
-        attending: "",
-        guests: "1",
-      });
+      setSubmitted(true);
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);
-      alert("Došlo je do greške pri slanju.");
     } finally {
       setLoading(false);
     }
@@ -111,96 +106,115 @@ function PhotoCardRSVP({ slug, eventType }) {
     >
       <div className="photo-card-rsvp-shell">
         <div className="photo-card-rsvp-box">
-          <p className="photo-card-rsvp-kicker">RSVP</p>
-
-          <h2 className="photo-card-rsvp-title">Potvrdite dolazak</h2>
-
-          <p className="photo-card-rsvp-subtitle">
-            Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš
-            poseban dan.
-          </p>
-
-          <div className="photo-card-rsvp-divider" />
-
-          <form className="photo-card-rsvp-form" onSubmit={handleSubmit}>
-            <div className="photo-card-rsvp-field">
-              <label htmlFor="photo-card-fullName">Ime i prezime</label>
-              <input
-                id="photo-card-fullName"
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Unesite ime i prezime"
-                required
-              />
-            </div>
-
-            <div className="photo-card-rsvp-choice-block">
-              <p className="photo-card-rsvp-choice-label">
-                Da li dolazite?
-              </p>
-
-              <div className="photo-card-rsvp-choice-grid">
-                <button
-                  type="button"
-                  className={`photo-card-choice-card ${
-                    formData.attending === "da" ? "is-active" : ""
-                  }`}
-                  onClick={() => handleAttendanceSelect("da")}
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div
+                key="success"
+                className="photo-card-rsvp-success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <motion.div
+                  className="photo-card-success-heart"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: [0, 1.2, 1] }}
+                  transition={{ duration: 0.8 }}
                 >
-                  <span className="photo-card-choice-title">Dolazim</span>
-                  <span className="photo-card-choice-text">
-                    Radujem se što slavim sa vama
-                  </span>
-                </button>
+                  💌
+                </motion.div>
 
-                <button
-                  type="button"
-                  className={`photo-card-choice-card ${
-                    formData.attending === "ne" ? "is-active" : ""
-                  }`}
-                  onClick={() => handleAttendanceSelect("ne")}
+                <h3>Hvala 💌</h3>
+                <p>Vaša potvrda je uspešno poslata.</p>
+
+                <div className="photo-card-confetti-wrap">
+                  {Array.from({ length: 18 }).map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="photo-card-confetti"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: [0, 1, 1, 0],
+                        y: 110,
+                        x: (i - 9) * 10,
+                      }}
+                      transition={{
+                        duration: 1.6,
+                        delay: i * 0.04,
+                      }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            ) : (
+              <>
+                <p className="photo-card-rsvp-kicker">RSVP</p>
+                <h2 className="photo-card-rsvp-title">Potvrdite dolazak</h2>
+
+                <p className="photo-card-rsvp-subtitle">
+                  Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš
+                  poseban dan.
+                </p>
+
+                <div className="photo-card-rsvp-divider" />
+
+                <form
+                  className="photo-card-rsvp-form"
+                  onSubmit={handleSubmit}
                 >
-                  <span className="photo-card-choice-title">Ne dolazim</span>
-                  <span className="photo-card-choice-text">
-                    Nažalost nisam u mogućnosti
-                  </span>
-                </button>
-              </div>
-            </div>
+                  <div className="photo-card-rsvp-field">
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      placeholder="Ime i prezime"
+                    />
+                  </div>
 
-            <input
-              type="hidden"
-              name="attending"
-              value={formData.attending}
-              required
-            />
+                  <div className="photo-card-rsvp-choice-grid">
+                    <button
+                      type="button"
+                      className={`photo-card-choice-card ${
+                        formData.attending === "da" ? "is-active" : ""
+                      }`}
+                      onClick={() => handleAttendanceSelect("da")}
+                    >
+                      Dolazim
+                    </button>
 
-            {formData.attending === "da" && (
-              <div className="photo-card-rsvp-field">
-                <label htmlFor="photo-card-guests">Broj osoba</label>
-                <input
-                  id="photo-card-guests"
-                  type="number"
-                  name="guests"
-                  min="1"
-                  max="10"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+                    <button
+                      type="button"
+                      className={`photo-card-choice-card ${
+                        formData.attending === "ne" ? "is-active" : ""
+                      }`}
+                      onClick={() => handleAttendanceSelect("ne")}
+                    >
+                      Ne dolazim
+                    </button>
+                  </div>
+
+                  {formData.attending === "da" && (
+                    <input
+                      type="number"
+                      name="guests"
+                      value={formData.guests}
+                      onChange={handleChange}
+                      placeholder="Broj osoba"
+                    />
+                  )}
+
+                  <button
+                    type="submit"
+                    className="photo-card-rsvp-button"
+                    disabled={loading}
+                  >
+                    {loading ? "Slanje..." : "Pošalji"}
+                  </button>
+                </form>
+              </>
             )}
-
-            <button
-              type="submit"
-              className="photo-card-rsvp-button"
-              disabled={loading}
-            >
-              {loading ? "Slanje..." : "Pošalji potvrdu"}
-            </button>
-          </form>
+          </AnimatePresence>
         </div>
       </div>
     </motion.section>

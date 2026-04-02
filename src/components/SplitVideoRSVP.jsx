@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   collection,
@@ -19,6 +19,21 @@ function SplitVideoRSVP({ slug, eventType }) {
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          fullName: "",
+          attending: "",
+          guests: "1",
+        });
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [submitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -101,8 +116,52 @@ function SplitVideoRSVP({ slug, eventType }) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h2>Hvala 💌</h2>
-                <p>Vaša potvrda je uspešno poslata.</p>
+                <motion.div
+                  className="split-video-success-heart"
+                  initial={{ scale: 0, rotate: -15 }}
+                  animate={{ scale: [0, 1.2, 1], rotate: [0, 8, -8, 0] }}
+                  transition={{ duration: 0.9 }}
+                >
+                  💌
+                </motion.div>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                >
+                  Hvala!
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  Vaša potvrda je uspešno poslata.
+                </motion.p>
+
+                <div className="split-video-confetti-wrap">
+                  {Array.from({ length: 18 }).map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="split-video-confetti"
+                      initial={{ opacity: 0, y: 0, x: 0, scale: 0.6 }}
+                      animate={{
+                        opacity: [0, 1, 1, 0],
+                        y: 110 + (i % 4) * 8,
+                        x: (i - 9) * 10,
+                        scale: [0.6, 1, 0.9],
+                        rotate: [0, 120, 240],
+                      }}
+                      transition={{
+                        duration: 1.6,
+                        delay: i * 0.04,
+                        ease: "easeOut",
+                      }}
+                    />
+                  ))}
+                </div>
               </motion.div>
             ) : (
               <motion.div
