@@ -104,7 +104,7 @@ function VideoBandRSVP({ slug, eventType }) {
 
             <h2 className="video-band-rsvp-title">Potvrdite dolazak</h2>
 
-            <p className="video-band-rsvp-script">We would love to celebrate with you</p>
+            
 
             <p className="video-band-rsvp-subtitle">
               Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.

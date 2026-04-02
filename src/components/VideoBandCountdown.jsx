@@ -72,7 +72,7 @@ function VideoBandCountdown({ targetDate }) {
           <div className="video-band-countdown-inner">
             <p className="video-band-countdown-kicker">Do venčanja je ostalo</p>
 
-            <p className="video-band-countdown-script">Odbrojavamo nade!</p>
+            <p className="video-band-countdown-script">Odbrojavamo dane!</p>
 
             <div className="video-band-countdown-divider" />
 

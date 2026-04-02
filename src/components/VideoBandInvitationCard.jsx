@@ -15,6 +15,7 @@ function VideoBandInvitationCard({
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
+  // 🔴 BITNO: više NEMA getMapUrl
   const timelineItems =
     details.events?.length > 0
       ? details.events.map((item) => ({
@@ -22,31 +23,36 @@ function VideoBandInvitationCard({
           value: item.time,
           location: item.location,
           icon: item.icon,
+          mapLink: item.mapLink, // 👉 samo ono što postoji
         }))
       : [
           {
             label: "Skup gostiju",
             value: details.gatheringTime,
-            location: "",
+            location: details.venue || "",
             icon: "gathering",
+            mapLink: details.mapLink,
           },
           {
             label: "Crkveno venčanje",
             value: details.churchTime,
             location: details.churchVenue || "",
             icon: "church",
+            mapLink: details.churchMapLink,
           },
           {
             label: "Građansko venčanje",
             value: details.ceremonyTime,
             location: details.venue || "",
             icon: "civil",
+            mapLink: details.mapLink,
           },
           {
             label: "Proslava",
             value: details.dinnerTime,
             location: details.venue || "",
             icon: "dinner",
+            mapLink: details.mapLink,
           },
         ].filter((item) => item.value);
 
@@ -179,11 +185,26 @@ function VideoBandInvitationCard({
                 </div>
 
                 <div className="video-band-program-side video-band-program-side-right">
-                  <div className="video-band-elegant-title">{item.label}</div>
+                  <div className="video-band-elegant-title">
+                    {item.label}
+                  </div>
+
+                  {/* 🔥 KLJUČNI DEO */}
                   {item.location && (
-                    <div className="video-band-program-location">
-                      {item.location}
-                    </div>
+                    item.mapLink ? (
+                      <a
+                        href={item.mapLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="video-band-program-location video-band-program-location-link"
+                      >
+                        {item.location}
+                      </a>
+                    ) : (
+                      <div className="video-band-program-location">
+                        {item.location}
+                      </div>
+                    )
                   )}
                 </div>
               </motion.div>
@@ -239,28 +260,12 @@ function VideoBandInvitationCard({
         </motion.div>
       </section>
 
-      <motion.div
-        className="video-band-scroll-section"
-        initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: true, amount: 0.12 }}
-        transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <motion.div className="video-band-scroll-section">
         <VideoBandRSVP slug={slug} eventType={type} />
       </motion.div>
 
       {details.dateISO && (
-        <motion.div
-          className="video-band-scroll-section"
-          initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.12 }}
-          transition={{
-            duration: 0.95,
-            delay: 0.08,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
+        <motion.div className="video-band-scroll-section">
           <VideoBandCountdown targetDate={details.dateISO} />
         </motion.div>
       )}

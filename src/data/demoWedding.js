@@ -1194,6 +1194,66 @@ events: [
   }),
 },
 {
+  slug: "dijana-stefan",
+  type: "wedding",
+  template: "video-band",
+  brideName: "Dijana",
+  groomName: "Stefan",
+  videoSrc: "/videos/iva-pedja5.mp4",
+  weddingDate: "16 OKT 2026",
+  weddingTime: "17:00",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da ovaj poseban dan podelimo sa vama.",
+
+    date: "16 OKT 2026",
+    dateISO: "2026-10-16T17:00:00",
+    rsvpDeadline: "01 OKT 2026",
+
+    events: [
+      {
+        label: "Skup svatova kod mladoženje",
+        time: "10:00",
+        location: "Dom porodice Vuksa, Borča",
+      },
+      {
+        label: "Skup svatova kod mlade",
+        time: "11:00",
+        location: "Dom porodice Zarić, Krnjača",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        location: "Crkva Sveta Petka, put za Ovču",
+        mapLink: "https://maps.google.com/?q=Crkva+Sveta+Petka,+put+za+Ovču",
+      },
+      {
+        label: "Svečani ručak",
+        time: "16:00",
+        location: "Sala Anđelina, put za Ovču",
+        mapLink: "https://maps.google.com/?q=Sala+Anđelina,+put+za+Ovču",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        location: "Sala Anđelina, put za Ovču",
+      },
+    ],
+
+    venue: "Sala Anđelina, put za Ovču",
+    churchVenue: "Crkva Sveta Petka, put za Ovču",
+
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c7c2", "#e9ddd6", "#bfa8a0", "#cbb7ae", "#f2ebe6"],
+    dressCodeNote:
+      "Molimo vas da birate elegantne, nežne i puderaste tonove.",
+
+    mapLink: "https://maps.google.com/?q=Sala+Anđelina,+put+za+Ovču",
+    note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra",
+  }),
+},
+{
   slug: "katarina-milos",
   type: "wedding",
   template: "video-band",
@@ -1242,7 +1302,7 @@ events: [
       "Molimo vas da birate elegantne, nežne i puderaste tonove.",
 
     mapLink: "https://maps.google.com/?q=Beograd",
-    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+    note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra.",
   }),
 },
   // =========================
