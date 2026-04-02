@@ -47,6 +47,24 @@ function AdminPage() {
 
   const [guestSearch, setGuestSearch] = useState("");
 
+  const [messageModal, setMessageModal] = useState({
+    isOpen: false,
+    title: "",
+    text: "",
+    variant: "default",
+  });
+
+  const [confirmModal, setConfirmModal] = useState({
+    isOpen: false,
+    title: "",
+    text: "",
+    confirmText: "Potvrdi",
+    variant: "danger",
+    actionType: "",
+    payload: null,
+    loading: false,
+  });
+
   const expectedPassword = adminAccess[slug];
 
   const sanitizeNumberInput = (value) => {
@@ -56,6 +74,61 @@ function AdminPage() {
   const formatNumberForDisplay = (value) => {
     if (!value) return "";
     return new Intl.NumberFormat("sr-RS").format(Number(value));
+  };
+
+  const openMessageModal = ({
+    title,
+    text,
+    variant = "default",
+  }) => {
+    setMessageModal({
+      isOpen: true,
+      title,
+      text,
+      variant,
+    });
+  };
+
+  const closeMessageModal = () => {
+    setMessageModal({
+      isOpen: false,
+      title: "",
+      text: "",
+      variant: "default",
+    });
+  };
+
+  const openConfirmModal = ({
+    title,
+    text,
+    confirmText = "Potvrdi",
+    variant = "danger",
+    actionType,
+    payload = null,
+  }) => {
+    setConfirmModal({
+      isOpen: true,
+      title,
+      text,
+      confirmText,
+      variant,
+      actionType,
+      payload,
+      loading: false,
+    });
+  };
+
+  const closeConfirmModal = () => {
+    setConfirmModal({
+      isOpen: false,
+      title: "",
+      text: "",
+      confirmText: "Potvrdi",
+      variant: "danger",
+      actionType: "",
+      payload: null,
+      loading: false,
+    });
   };
 
   useEffect(() => {
@@ -77,9 +150,10 @@ function AdminPage() {
 
     let guestsLoaded = false;
     let expensesLoaded = false;
+    let budgetLoaded = false;
 
     const stopLoadingIfReady = () => {
-      if (guestsLoaded && expensesLoaded) {
+      if (guestsLoaded && expensesLoaded && budgetLoaded) {
         setLoading(false);
       }
     };
@@ -131,9 +205,14 @@ function AdminPage() {
         } else {
           setBudget(null);
         }
+
+        budgetLoaded = true;
+        stopLoadingIfReady();
       },
       (err) => {
         console.error("Greška pri realtime učitavanju budžeta:", err);
+        budgetLoaded = true;
+        stopLoadingIfReady();
       }
     );
 
@@ -221,19 +300,31 @@ function AdminPage() {
     e.preventDefault();
 
     if (!manualGuest.fullName.trim()) {
-      alert("Unesite ime i prezime gosta.");
+      openMessageModal({
+        title: "Nedostaje ime gosta",
+        text: "Unesi ime i prezime gosta pre čuvanja.",
+        variant: "warning",
+      });
       return;
     }
 
     const guestsCount = Number(manualGuest.guests);
 
     if (!manualGuest.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
-      alert("Unesite ispravan broj osoba.");
+      openMessageModal({
+        title: "Neispravan broj osoba",
+        text: "Broj osoba mora biti veći od 0.",
+        variant: "warning",
+      });
       return;
     }
 
     if (!slug) {
-      alert("Nedostaje slug događaja.");
+      openMessageModal({
+        title: "Nedostaje događaj",
+        text: "Slug događaja nije pronađen.",
+        variant: "danger",
+      });
       return;
     }
 
@@ -263,32 +354,42 @@ function AdminPage() {
         fullName: "",
         guests: "1",
       });
+
+      openMessageModal({
+        title: "Gost je dodat",
+        text: "Gost je uspešno dodat u listu dolazaka.",
+        variant: "success",
+      });
     } catch (err) {
       console.error("Greška pri ručnom dodavanju gosta:", err);
-      alert("Došlo je do greške pri dodavanju gosta.");
+      openMessageModal({
+        title: "Dodavanje nije uspelo",
+        text: "Došlo je do greške pri dodavanju gosta.",
+        variant: "danger",
+      });
     } finally {
       setAddingGuest(false);
     }
   };
 
-  const handleDeleteGuest = async (guestId, guestName) => {
-    const confirmed = window.confirm(
-      `Da li ste sigurni da želite da obrišete gosta "${guestName}"?`
-    );
-
-    if (!confirmed) return;
-
-    try {
-      await deleteDoc(doc(db, "events", slug, "rsvps", guestId));
-    } catch (err) {
-      console.error("Greška pri brisanju gosta:", err);
-      alert("Došlo je do greške pri brisanju gosta.");
-    }
+  const requestDeleteGuest = (guestId, guestName) => {
+    openConfirmModal({
+      title: "Obriši gosta?",
+      text: `Gost "${guestName}" biće trajno uklonjen iz odgovora za ovaj događaj.`,
+      confirmText: "Obriši gosta",
+      variant: "danger",
+      actionType: "deleteGuest",
+      payload: { guestId },
+    });
   };
 
   const handleSaveBudget = async () => {
     if (!slug) {
-      alert("Nedostaje slug događaja.");
+      openMessageModal({
+        title: "Nedostaje događaj",
+        text: "Slug događaja nije pronađen.",
+        variant: "danger",
+      });
       return;
     }
 
@@ -307,11 +408,22 @@ function AdminPage() {
           { merge: true }
         );
 
+        setBudget(null);
+        setBudgetInput("");
         setIsEditingBudget(false);
-        alert("Budžet je obrisan.");
+
+        openMessageModal({
+          title: "Budžet je obrisan",
+          text: "Budžet više nije postavljen za ovaj događaj.",
+          variant: "success",
+        });
       } catch (err) {
         console.error("Greška pri čuvanju budžeta:", err);
-        alert("Došlo je do greške pri čuvanju budžeta.");
+        openMessageModal({
+          title: "Čuvanje nije uspelo",
+          text: "Došlo je do greške pri čuvanju budžeta.",
+          variant: "danger",
+        });
       } finally {
         setSavingBudget(false);
       }
@@ -321,7 +433,11 @@ function AdminPage() {
     const parsedBudget = Number(rawBudgetValue);
 
     if (Number.isNaN(parsedBudget) || parsedBudget < 0) {
-      alert("Unesite ispravan budžet.");
+      openMessageModal({
+        title: "Neispravan budžet",
+        text: "Unesi ispravan iznos budžeta.",
+        variant: "warning",
+      });
       return;
     }
 
@@ -338,11 +454,22 @@ function AdminPage() {
         { merge: true }
       );
 
+      setBudget(parsedBudget);
+      setBudgetInput(formatNumberForDisplay(String(parsedBudget)));
       setIsEditingBudget(false);
-      alert("Budžet je sačuvan.");
+
+      openMessageModal({
+        title: "Budžet je sačuvan",
+        text: `Novi budžet je ${formatCurrency(parsedBudget)}.`,
+        variant: "success",
+      });
     } catch (err) {
       console.error("Greška pri čuvanju budžeta:", err);
-      alert("Došlo je do greške pri čuvanju budžeta.");
+      openMessageModal({
+        title: "Čuvanje nije uspelo",
+        text: "Došlo je do greške pri čuvanju budžeta.",
+        variant: "danger",
+      });
     } finally {
       setSavingBudget(false);
     }
@@ -371,14 +498,22 @@ function AdminPage() {
     e.preventDefault();
 
     if (!expenseForm.title.trim()) {
-      alert("Unesite naziv troška.");
+      openMessageModal({
+        title: "Nedostaje naziv troška",
+        text: "Unesi naziv troška pre čuvanja.",
+        variant: "warning",
+      });
       return;
     }
 
     const amount = Number(expenseForm.amount);
 
     if (!expenseForm.amount || Number.isNaN(amount) || amount <= 0) {
-      alert("Unesite ispravan iznos.");
+      openMessageModal({
+        title: "Neispravan iznos",
+        text: "Iznos troška mora biti veći od 0.",
+        variant: "warning",
+      });
       return;
     }
 
@@ -398,26 +533,74 @@ function AdminPage() {
         category: "",
       });
       setExpenseAmountInput("");
+
+      openMessageModal({
+        title: "Trošak je dodat",
+        text: `${expenseForm.title.trim()} je uspešno dodat u listu troškova.`,
+        variant: "success",
+      });
     } catch (err) {
       console.error("Greška pri dodavanju troška:", err);
-      alert("Došlo je do greške pri dodavanju troška.");
+      openMessageModal({
+        title: "Dodavanje nije uspelo",
+        text: "Došlo je do greške pri dodavanju troška.",
+        variant: "danger",
+      });
     } finally {
       setAddingExpense(false);
     }
   };
 
-  const handleDeleteExpense = async (expenseId, expenseTitle) => {
-    const confirmed = window.confirm(
-      `Da li ste sigurni da želite da obrišete trošak "${expenseTitle}"?`
-    );
+  const requestDeleteExpense = (expenseId, expenseTitle) => {
+    openConfirmModal({
+      title: "Obriši trošak?",
+      text: `Trošak "${expenseTitle}" biće trajno uklonjen iz liste troškova.`,
+      confirmText: "Obriši trošak",
+      variant: "danger",
+      actionType: "deleteExpense",
+      payload: { expenseId },
+    });
+  };
 
-    if (!confirmed) return;
+  const handleConfirmAction = async () => {
+    const { actionType, payload } = confirmModal;
 
     try {
-      await deleteDoc(doc(db, "events", slug, "expenses", expenseId));
+      setConfirmModal((prev) => ({ ...prev, loading: true }));
+
+      if (actionType === "deleteGuest") {
+        await deleteDoc(doc(db, "events", slug, "rsvps", payload.guestId));
+
+        closeConfirmModal();
+        openMessageModal({
+          title: "Gost je obrisan",
+          text: "Izabrani gost je uspešno uklonjen.",
+          variant: "success",
+        });
+        return;
+      }
+
+      if (actionType === "deleteExpense") {
+        await deleteDoc(doc(db, "events", slug, "expenses", payload.expenseId));
+
+        closeConfirmModal();
+        openMessageModal({
+          title: "Trošak je obrisan",
+          text: "Izabrani trošak je uspešno uklonjen.",
+          variant: "success",
+        });
+        return;
+      }
+
+      closeConfirmModal();
     } catch (err) {
-      console.error("Greška pri brisanju troška:", err);
-      alert("Došlo je do greške pri brisanju troška.");
+      console.error("Greška pri potvrdi akcije:", err);
+      closeConfirmModal();
+      openMessageModal({
+        title: "Akcija nije uspela",
+        text: "Došlo je do greške pri izvršavanju izabrane akcije.",
+        variant: "danger",
+      });
     }
   };
 
@@ -443,8 +626,6 @@ function AdminPage() {
       maximumFractionDigits: 0,
     }).format(Number(value) || 0);
   };
-
-
 
   const normalizedSearch = guestSearch.trim().toLowerCase();
 
@@ -493,353 +674,310 @@ function AdminPage() {
     return budget - totalExpenses;
   }, [budget, totalExpenses]);
 
-const handleExportPDF = () => {
-  const exportGuests = guests.filter((guest) => guest.attending === "da");
+  const handleExportPDF = () => {
+    const exportGuests = guests.filter((guest) => guest.attending === "da");
 
-  if (!exportGuests.length) {
-    alert("Nema gostiju koji dolaze za eksport.");
-    return;
-  }
+    if (!exportGuests.length) {
+      openMessageModal({
+        title: "Nema podataka za eksport",
+        text: "Trenutno nema gostiju koji dolaze.",
+        variant: "warning",
+      });
+      return;
+    }
 
-  const totalConfirmed = exportGuests.reduce((sum, guest) => {
-    return sum + (Number(guest.guests) || 0);
-  }, 0);
+    const totalConfirmed = exportGuests.reduce((sum, guest) => {
+      return sum + (Number(guest.guests) || 0);
+    }, 0);
 
-  const formattedDate = new Date().toLocaleString("sr-RS", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+    const formattedDate = new Date().toLocaleString("sr-RS", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
-  const guestRows = exportGuests
-    .map(
-      (guest, index) => `
-        <tr>
-          <td class="col-index">${index + 1}.</td>
-          <td class="col-name">${guest.fullName || ""}</td>
-          <td class="col-count">${Number(guest.guests) || 0}</td>
-          <td class="col-source">
-            ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
-          </td>
-          <td class="col-date">${formatDate(guest.createdAt) || "—"}</td>
-        </tr>
-      `
-    )
-    .join("");
+    const guestRows = exportGuests
+      .map(
+        (guest, index) => `
+          <tr>
+            <td class="col-index">${index + 1}.</td>
+            <td class="col-name">${guest.fullName || ""}</td>
+            <td class="col-count">${Number(guest.guests) || 0}</td>
+            <td class="col-source">
+              ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
+            </td>
+            <td class="col-date">${formatDate(guest.createdAt) || "—"}</td>
+          </tr>
+        `
+      )
+      .join("");
 
-  const printWindow = window.open("", "_blank", "width=1200,height=900");
+    const printWindow = window.open("", "_blank", "width=1200,height=900");
 
-  if (!printWindow) {
-    alert("Dozvoli popup prozor kako bi PDF/štampa radili.");
-    return;
-  }
+    if (!printWindow) {
+      openMessageModal({
+        title: "Popup je blokiran",
+        text: "Dozvoli popup prozor kako bi PDF/štampa radili.",
+        variant: "warning",
+      });
+      return;
+    }
 
-  printWindow.document.write(`
-    <!DOCTYPE html>
-    <html lang="sr">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Spisak dolazaka - ${slug}</title>
-        <style>
-          :root {
-            --bg: #f7f1eb;
-            --paper: #fffdf9;
-            --line: #e7dbcf;
-            --line-strong: #d8c7b7;
-            --text: #2f241f;
-            --muted: #7b675b;
-            --accent: #a87361;
-            --accent-soft: #f4e8e1;
-          }
-
-          * {
-            box-sizing: border-box;
-          }
-
-          html, body {
-            margin: 0;
-            padding: 0;
-            background: #ffffff;
-            color: var(--text);
-            font-family: "Georgia", "Times New Roman", serif;
-          }
-
-          body {
-            padding: 26px;
-          }
-
-          .sheet {
-            max-width: 1100px;
-            margin: 0 auto;
-          }
-
-          .hero {
-            position: relative;
-            overflow: hidden;
-            background:
-              radial-gradient(circle at top right, rgba(168,115,97,0.08), transparent 32%),
-              linear-gradient(180deg, #fffdfb 0%, #fbf6f1 100%);
-            border: 1px solid var(--line);
-            border-radius: 28px;
-            padding: 34px 34px 28px;
-            margin-bottom: 22px;
-          }
-
-          .hero-topline {
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            font-size: 11px;
-            color: var(--accent);
-            margin-bottom: 14px;
-          }
-
-          .hero h1 {
-            margin: 0;
-            font-size: 38px;
-            line-height: 1.08;
-            font-weight: 700;
-            color: var(--text);
-          }
-
-          .hero-subtitle {
-            margin-top: 10px;
-            font-size: 15px;
-            color: var(--muted);
-          }
-
-          .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 24px;
-          }
-
-          .summary-card {
-            background: rgba(255,255,255,0.78);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 16px 18px;
-          }
-
-          .summary-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            color: var(--muted);
-            margin-bottom: 8px;
-          }
-
-          .summary-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text);
-            line-height: 1;
-          }
-
-          .summary-note {
-            margin-top: 6px;
-            font-size: 13px;
-            color: var(--muted);
-          }
-
-          .section-title-wrap {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin: 28px 2px 18px;
-          }
-
-          .section-title-wrap::before,
-          .section-title-wrap::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: var(--line-strong);
-          }
-
-          .section-title {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-            white-space: nowrap;
-          }
-
-          .table-wrap {
-            background: var(--paper);
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 10px 28px rgba(63, 48, 40, 0.06);
-          }
-
-          table {
-            width: 100%;
-            border-collapse: collapse;
-          }
-
-          thead th {
-            padding: 12px 8px 14px;
-            text-align: left;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-            border-bottom: 1px solid var(--line);
-          }
-
-          tbody td {
-            padding: 12px 8px;
-            border-bottom: 1px solid #f0e7df;
-            font-size: 14px;
-            vertical-align: top;
-          }
-
-          tbody tr:last-child td {
-            border-bottom: none;
-          }
-
-          .col-index {
-            width: 54px;
-            color: var(--muted);
-          }
-
-          .col-name {
-            font-weight: 600;
-            color: var(--text);
-          }
-
-          .col-count {
-            width: 110px;
-            text-align: right;
-            font-weight: 700;
-          }
-
-          .col-source {
-            width: 170px;
-            color: var(--muted);
-          }
-
-          .col-date {
-            width: 190px;
-            color: var(--muted);
-          }
-
-          .footer-note {
-            margin-top: 24px;
-            padding-top: 16px;
-            border-top: 1px solid var(--line);
-            text-align: center;
-            color: var(--muted);
-            font-size: 12px;
-            letter-spacing: 0.04em;
-          }
-
-          @page {
-            size: A4;
-            margin: 14mm;
-          }
-
-          @media print {
-            body {
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html lang="sr">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Spisak dolazaka - ${slug}</title>
+          <style>
+            :root {
+              --bg: #f7f1eb;
+              --paper: #fffdf9;
+              --line: #e7dbcf;
+              --line-strong: #d8c7b7;
+              --text: #2f241f;
+              --muted: #7b675b;
+              --accent: #a87361;
+            }
+            * { box-sizing: border-box; }
+            html, body {
+              margin: 0;
               padding: 0;
-              background: #fff;
+              background: #ffffff;
+              color: var(--text);
+              font-family: Georgia, "Times New Roman", serif;
             }
-
-            .sheet {
-              max-width: 100%;
+            body { padding: 26px; }
+            .sheet { max-width: 1100px; margin: 0 auto; }
+            .hero {
+              background: linear-gradient(180deg, #fffdfb 0%, #fbf6f1 100%);
+              border: 1px solid var(--line);
+              border-radius: 28px;
+              padding: 34px 34px 28px;
+              margin-bottom: 22px;
             }
-
-            .hero,
-            .table-wrap {
-              box-shadow: none;
+            .hero-topline {
+              letter-spacing: 0.22em;
+              text-transform: uppercase;
+              font-size: 11px;
+              color: var(--accent);
+              margin-bottom: 14px;
             }
-          }
-
-          @media (max-width: 900px) {
+            .hero h1 {
+              margin: 0;
+              font-size: 38px;
+              line-height: 1.08;
+              font-weight: 700;
+              color: var(--text);
+            }
+            .hero-subtitle {
+              margin-top: 10px;
+              font-size: 15px;
+              color: var(--muted);
+            }
             .summary-grid {
-              grid-template-columns: 1fr;
+              display: grid;
+              grid-template-columns: repeat(3, minmax(0, 1fr));
+              gap: 14px;
+              margin-top: 24px;
             }
-
-            .col-date,
-            .col-source {
-              width: auto;
+            .summary-card {
+              background: rgba(255,255,255,0.78);
+              border: 1px solid var(--line);
+              border-radius: 20px;
+              padding: 16px 18px;
             }
-          }
-        </style>
-      </head>
-      <body>
-        <div class="sheet">
-          <section class="hero">
-            <div class="hero-topline">Wedding Guest Report</div>
-            <h1>Spisak potvrđenih dolazaka</h1>
-            <div class="hero-subtitle">
-              Događaj: <strong>${slug}</strong><br />
-              Generisano: ${formattedDate}
-            </div>
-
-            <div class="summary-grid">
-              <div class="summary-card">
-                <div class="summary-label">Broj prijava</div>
-                <div class="summary-value">${exportGuests.length}</div>
-                <div class="summary-note">Broj potvrđenih odgovora</div>
+            .summary-label {
+              font-size: 11px;
+              text-transform: uppercase;
+              letter-spacing: 0.14em;
+              color: var(--muted);
+              margin-bottom: 8px;
+            }
+            .summary-value {
+              font-size: 28px;
+              font-weight: 700;
+              color: var(--text);
+              line-height: 1;
+            }
+            .summary-note {
+              margin-top: 6px;
+              font-size: 13px;
+              color: var(--muted);
+            }
+            .section-title-wrap {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              margin: 28px 2px 18px;
+            }
+            .section-title-wrap::before,
+            .section-title-wrap::after {
+              content: "";
+              flex: 1;
+              height: 1px;
+              background: var(--line-strong);
+            }
+            .section-title {
+              font-size: 13px;
+              text-transform: uppercase;
+              letter-spacing: 0.2em;
+              color: var(--accent);
+              white-space: nowrap;
+            }
+            .table-wrap {
+              background: var(--paper);
+              border: 1px solid var(--line);
+              border-radius: 24px;
+              padding: 20px;
+              box-shadow: 0 10px 28px rgba(63, 48, 40, 0.06);
+            }
+            table { width: 100%; border-collapse: collapse; }
+            thead th {
+              padding: 12px 8px 14px;
+              text-align: left;
+              font-size: 11px;
+              text-transform: uppercase;
+              letter-spacing: 0.12em;
+              color: var(--muted);
+              border-bottom: 1px solid var(--line);
+            }
+            tbody td {
+              padding: 12px 8px;
+              border-bottom: 1px solid #f0e7df;
+              font-size: 14px;
+              vertical-align: top;
+            }
+            tbody tr:last-child td { border-bottom: none; }
+            .col-index { width: 54px; color: var(--muted); }
+            .col-name { font-weight: 600; color: var(--text); }
+            .col-count { width: 110px; text-align: right; font-weight: 700; }
+            .col-source { width: 170px; color: var(--muted); }
+            .col-date { width: 190px; color: var(--muted); }
+            .footer-note {
+              margin-top: 24px;
+              padding-top: 16px;
+              border-top: 1px solid var(--line);
+              text-align: center;
+              color: var(--muted);
+              font-size: 12px;
+              letter-spacing: 0.04em;
+            }
+            @page { size: A4; margin: 14mm; }
+            @media print {
+              body { padding: 0; background: #fff; }
+              .sheet { max-width: 100%; }
+              .hero, .table-wrap { box-shadow: none; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="sheet">
+            <section class="hero">
+              <div class="hero-topline">Wedding Guest Report</div>
+              <h1>Spisak potvrđenih dolazaka</h1>
+              <div class="hero-subtitle">
+                Događaj: <strong>${slug}</strong><br />
+                Generisano: ${formattedDate}
               </div>
 
-              <div class="summary-card">
-                <div class="summary-label">Ukupno osoba</div>
-                <div class="summary-value">${totalConfirmed}</div>
-                <div class="summary-note">Zbir svih prijavljenih gostiju</div>
-              </div>
-
-              <div class="summary-card">
-                <div class="summary-label">Negativni odgovori</div>
-                <div class="summary-value">
-                  ${guests.filter((guest) => guest.attending === "ne").length}
+              <div class="summary-grid">
+                <div class="summary-card">
+                  <div class="summary-label">Broj prijava</div>
+                  <div class="summary-value">${exportGuests.length}</div>
+                  <div class="summary-note">Broj potvrđenih odgovora</div>
                 </div>
-                <div class="summary-note">Gosti koji ne dolaze</div>
+
+                <div class="summary-card">
+                  <div class="summary-label">Ukupno osoba</div>
+                  <div class="summary-value">${totalConfirmed}</div>
+                  <div class="summary-note">Zbir svih prijavljenih gostiju</div>
+                </div>
+
+                <div class="summary-card">
+                  <div class="summary-label">Negativni odgovori</div>
+                  <div class="summary-value">
+                    ${guests.filter((guest) => guest.attending === "ne").length}
+                  </div>
+                  <div class="summary-note">Gosti koji ne dolaze</div>
+                </div>
               </div>
+            </section>
+
+            <div class="section-title-wrap">
+              <div class="section-title">Lista gostiju</div>
             </div>
-          </section>
 
-          <div class="section-title-wrap">
-            <div class="section-title">Lista gostiju</div>
+            <section class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Ime i prezime</th>
+                    <th style="text-align:right;">Broj osoba</th>
+                    <th>Izvor</th>
+                    <th>Datum odgovora</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${guestRows}
+                </tbody>
+              </table>
+            </section>
+
+            <div class="footer-note">
+              Dokument je pripremljen za štampu ili čuvanje kao PDF.
+            </div>
           </div>
+        </body>
+      </html>
+    `);
 
-          <section class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Ime i prezime</th>
-                  <th style="text-align:right;">Broj osoba</th>
-                  <th>Izvor</th>
-                  <th>Datum odgovora</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${guestRows}
-              </tbody>
-            </table>
-          </section>
+    printWindow.document.close();
+    printWindow.focus();
 
-          <div class="footer-note">
-            Dokument je pripremljen za štampu ili čuvanje kao PDF.
-          </div>
-        </div>
-      </body>
-    </html>
-  `);
+    setTimeout(() => {
+      printWindow.print();
+    }, 300);
+  };
 
-  printWindow.document.close();
-  printWindow.focus();
+  const getModalAccentStyle = (variant) => {
+    if (variant === "success") {
+      return {
+        badgeBg: "#e7f5ec",
+        badgeColor: "#287a4b",
+        buttonBg: "#287a4b",
+      };
+    }
 
-  setTimeout(() => {
-    printWindow.print();
-  }, 300);
-};
+    if (variant === "warning") {
+      return {
+        badgeBg: "#fbf3d7",
+        badgeColor: "#8a6a12",
+        buttonBg: "#8a6a12",
+      };
+    }
+
+    if (variant === "danger") {
+      return {
+        badgeBg: "#fbeaea",
+        badgeColor: "#a53030",
+        buttonBg: "#b42318",
+      };
+    }
+
+    return {
+      badgeBg: "#f3ece5",
+      badgeColor: "#9a7b67",
+      buttonBg: "#b8826f",
+    };
+  };
+
+  const messageAccent = getModalAccentStyle(messageModal.variant);
+  const confirmAccent = getModalAccentStyle(confirmModal.variant);
 
   if (!isAuthorized) {
     return (
@@ -899,379 +1037,472 @@ const handleExportPDF = () => {
   }
 
   return (
-    <div style={styles.page}>
-      <div style={styles.headerCard}>
-        <div style={styles.headerTop}>
-          <div>
-            <p style={styles.kicker}>Admin panel</p>
-            <h1 style={styles.title}>Pregled odgovora</h1>
-            <p style={styles.slug}>Događaj: {slug}</p>
+    <>
+      <div style={styles.page}>
+        <div style={styles.headerCard}>
+          <div style={styles.headerTop}>
+            <div>
+              <p style={styles.kicker}>Admin panel</p>
+              <h1 style={styles.title}>Pregled odgovora</h1>
+              <p style={styles.slug}>Događaj: {slug}</p>
+            </div>
+
+            <div style={styles.actions}>
+              <button
+                type="button"
+                onClick={() => navigate(`/admin/${slug}/seating`)}
+                style={styles.secondaryButton}
+              >
+                Napravi raspored
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowExpenses((prev) => !prev)}
+                style={styles.secondaryButton}
+              >
+                {showExpenses ? "Zatvori troškove" : "Troškovi"}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleExportPDF}
+                style={styles.exportButton}
+              >
+                Preuzmi PDF
+              </button>
+
+              <button
+                type="button"
+                onClick={handleLogout}
+                style={styles.logoutButton}
+              >
+                Odjavi se
+              </button>
+            </div>
           </div>
 
-          <div style={styles.actions}>
-            <button
-              type="button"
-              onClick={() => navigate(`/admin/${slug}/seating`)}
-              style={styles.secondaryButton}
-            >
-              Napravi raspored
-            </button>
+          <div style={styles.statsRow}>
+            <div style={styles.statBox}>
+              <span style={styles.statNumber}>
+                {guests.filter((guest) => guest.attending === "da").length}
+              </span>
+              <span style={styles.statLabel}>Potvrdilo dolazak</span>
+            </div>
 
-            <button
-              type="button"
-              onClick={() => setShowExpenses((prev) => !prev)}
-              style={styles.secondaryButton}
-            >
-              {showExpenses ? "Zatvori troškove" : "Troškovi"}
-            </button>
+            <div style={styles.statBox}>
+              <span style={styles.statNumber}>
+                {guests.filter((guest) => guest.attending === "ne").length}
+              </span>
+              <span style={styles.statLabel}>Ne dolazi</span>
+            </div>
 
-      <button
-  type="button"
-  onClick={handleExportPDF}
-  style={styles.exportButton}
->
-  Preuzmi PDF
-</button>
-
-            <button
-              type="button"
-              onClick={handleLogout}
-              style={styles.logoutButton}
-            >
-              Odjavi se
-            </button>
+            <div style={styles.statBox}>
+              <span style={styles.statNumber}>{totalConfirmedPeople}</span>
+              <span style={styles.statLabel}>Ukupno osoba</span>
+            </div>
           </div>
         </div>
 
-        <div style={styles.statsRow}>
-          <div style={styles.statBox}>
-            <span style={styles.statNumber}>
-              {guests.filter((guest) => guest.attending === "da").length}
-            </span>
-            <span style={styles.statLabel}>Potvrdilo dolazak</span>
-          </div>
+        {showExpenses && (
+          <div style={styles.expensesCard}>
+            <div style={styles.expensesTop}>
+              <div>
+                <p style={styles.manualKicker}>Planiranje</p>
+                <h2 style={styles.sectionTitle}>Budžet i troškovi</h2>
+              </div>
+            </div>
 
-          <div style={styles.statBox}>
-            <span style={styles.statNumber}>
-              {guests.filter((guest) => guest.attending === "ne").length}
-            </span>
-            <span style={styles.statLabel}>Ne dolazi</span>
-          </div>
+            <div style={styles.budgetBlock}>
+              <div style={styles.field}>
+                <label htmlFor="budget-input" style={styles.label}>
+                  Budžet (opciono)
+                </label>
+                <input
+                  id="budget-input"
+                  type="text"
+                  inputMode="numeric"
+                  value={budgetInput}
+                  onChange={(e) => {
+                    const cleaned = sanitizeNumberInput(e.target.value);
+                    setBudgetInput(formatNumberForDisplay(cleaned));
+                  }}
+                  onFocus={() => setIsEditingBudget(true)}
+                  onBlur={() => setIsEditingBudget(false)}
+                  placeholder="Na primer 500.000"
+                  style={styles.input}
+                />
+              </div>
 
-          <div style={styles.statBox}>
-            <span style={styles.statNumber}>{totalConfirmedPeople}</span>
-            <span style={styles.statLabel}>Ukupno osoba</span>
+              <button
+                type="button"
+                onClick={handleSaveBudget}
+                style={styles.button}
+                disabled={savingBudget}
+              >
+                {savingBudget ? "Čuvanje..." : "Sačuvaj budžet"}
+              </button>
+            </div>
+
+            <div style={styles.expenseStatsRow}>
+              <div style={styles.statBox}>
+                <span style={styles.statNumber}>
+                  {typeof budget === "number" ? formatCurrency(budget) : "—"}
+                </span>
+                <span style={styles.statLabel}>Budžet</span>
+              </div>
+
+              <div style={styles.statBox}>
+                <span style={styles.statNumber}>
+                  {formatCurrency(totalExpenses)}
+                </span>
+                <span style={styles.statLabel}>Ukupni troškovi</span>
+              </div>
+
+              <div style={styles.statBox}>
+                <span
+                  style={{
+                    ...styles.statNumber,
+                    color:
+                      remainingBudget == null
+                        ? "#3f3028"
+                        : remainingBudget < 0
+                        ? "#b42318"
+                        : "#3f3028",
+                  }}
+                >
+                  {remainingBudget == null
+                    ? "—"
+                    : formatCurrency(remainingBudget)}
+                </span>
+                <span style={styles.statLabel}>Preostalo</span>
+              </div>
+            </div>
+
+            <form onSubmit={handleAddExpense} style={styles.expenseForm}>
+              <div style={styles.field}>
+                <label htmlFor="expense-title" style={styles.label}>
+                  Naziv troška
+                </label>
+                <input
+                  id="expense-title"
+                  type="text"
+                  name="title"
+                  value={expenseForm.title}
+                  onChange={handleExpenseChange}
+                  placeholder="Na primer restoran"
+                  style={styles.input}
+                  required
+                />
+              </div>
+
+              <div style={styles.field}>
+                <label htmlFor="expense-amount" style={styles.label}>
+                  Iznos
+                </label>
+                <input
+                  id="expense-amount"
+                  type="text"
+                  inputMode="numeric"
+                  name="amount"
+                  value={expenseAmountInput}
+                  onChange={handleExpenseChange}
+                  placeholder="Na primer 120.000"
+                  style={styles.input}
+                  required
+                />
+              </div>
+
+              <div style={styles.field}>
+                <label htmlFor="expense-category" style={styles.label}>
+                  Kategorija
+                </label>
+                <input
+                  id="expense-category"
+                  type="text"
+                  name="category"
+                  value={expenseForm.category}
+                  onChange={handleExpenseChange}
+                  placeholder="Na primer hrana, muzika, dekoracija"
+                  style={styles.input}
+                />
+              </div>
+
+              <button
+                type="submit"
+                style={styles.button}
+                disabled={addingExpense}
+              >
+                {addingExpense ? "Dodavanje..." : "Dodaj trošak"}
+              </button>
+            </form>
+
+            <div style={styles.cardInner}>
+              <h3 style={styles.subTitle}>Lista troškova</h3>
+
+              {expenses.length === 0 ? (
+                <p style={styles.emptyText}>Još nema unetih troškova.</p>
+              ) : (
+                <div style={styles.list}>
+                  {expenses.map((expense) => (
+                    <div key={expense.id} style={styles.guestRow}>
+                      <div style={styles.guestRowTop}>
+                        <div>
+                          <p style={styles.guestName}>{expense.title}</p>
+                          <p style={styles.guestMeta}>
+                            Iznos: {formatCurrency(expense.amount)}
+                          </p>
+                          {expense.category && (
+                            <p style={styles.guestMeta}>
+                              Kategorija: {expense.category}
+                            </p>
+                          )}
+                          <p style={styles.guestMeta}>
+                            Datum: {formatDate(expense.createdAt)}
+                          </p>
+                        </div>
+
+                        <button
+                          type="button"
+                          style={styles.deleteButton}
+                          onClick={() =>
+                            requestDeleteExpense(expense.id, expense.title)
+                          }
+                        >
+                          Obriši
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
+        )}
+
+        <div style={styles.manualCard}>
+          <p style={styles.manualKicker}>Ručni unos</p>
+          <h2 style={styles.sectionTitle}>Dodaj gosta koji dolazi</h2>
+
+          <form onSubmit={handleAddGuest} style={styles.manualForm}>
+            <div style={styles.field}>
+              <label htmlFor="manual-fullName" style={styles.label}>
+                Ime i prezime
+              </label>
+              <input
+                id="manual-fullName"
+                type="text"
+                name="fullName"
+                value={manualGuest.fullName}
+                onChange={handleManualGuestChange}
+                placeholder="Unesite ime i prezime"
+                style={styles.input}
+                required
+              />
+            </div>
+
+            <div style={styles.field}>
+              <label htmlFor="manual-guests" style={styles.label}>
+                Broj osoba
+              </label>
+              <input
+                id="manual-guests"
+                type="number"
+                name="guests"
+                min="1"
+                max="20"
+                value={manualGuest.guests}
+                onChange={handleManualGuestChange}
+                style={styles.input}
+                required
+              />
+            </div>
+
+            <button type="submit" style={styles.button} disabled={addingGuest}>
+              {addingGuest ? "Dodavanje..." : "Dodaj gosta"}
+            </button>
+          </form>
+        </div>
+
+        <div style={styles.searchCard}>
+          <div style={styles.searchField}>
+            <label htmlFor="guest-search" style={styles.label}>
+              Pretraga gostiju
+            </label>
+            <input
+              id="guest-search"
+              type="text"
+              value={guestSearch}
+              onChange={(e) => setGuestSearch(e.target.value)}
+              placeholder="Pretraži po imenu i prezimenu"
+              style={styles.input}
+            />
+          </div>
+        </div>
+
+        <div style={styles.columns}>
+          <section style={styles.card}>
+            <h2 style={styles.sectionTitle}>Dolaze</h2>
+
+            {comingGuests.length === 0 ? (
+              <p style={styles.emptyText}>
+                {guestSearch.trim()
+                  ? "Nema rezultata za ovu pretragu."
+                  : "Još nema potvrđenih dolazaka."}
+              </p>
+            ) : (
+              <div style={styles.scrollList}>
+                <div style={styles.list}>
+                  {comingGuests.map((guest) => (
+                    <div key={guest.id} style={styles.guestRow}>
+                      <div style={styles.guestRowTop}>
+                        <div>
+                          <p style={styles.guestName}>{guest.fullName}</p>
+                          <p style={styles.guestMeta}>
+                            Broj osoba: {guest.guests || 0}
+                          </p>
+                          {guest.source === "admin" && (
+                            <p style={styles.manualBadge}>Ručno dodat</p>
+                          )}
+                        </div>
+
+                        <button
+                          type="button"
+                          style={styles.deleteButton}
+                          onClick={() =>
+                            requestDeleteGuest(guest.id, guest.fullName)
+                          }
+                        >
+                          Obriši
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+
+          <section style={styles.card}>
+            <h2 style={styles.sectionTitle}>Ne dolaze</h2>
+
+            {notComingGuests.length === 0 ? (
+              <p style={styles.emptyText}>
+                {guestSearch.trim()
+                  ? "Nema rezultata za ovu pretragu."
+                  : "Još nema negativnih odgovora."}
+              </p>
+            ) : (
+              <div style={styles.scrollList}>
+                <div style={styles.list}>
+                  {notComingGuests.map((guest) => (
+                    <div key={guest.id} style={styles.guestRow}>
+                      <div style={styles.guestRowTop}>
+                        <div>
+                          <p style={styles.guestName}>{guest.fullName}</p>
+                          <p style={styles.guestMeta}>
+                            Nije u mogućnosti da dođe
+                          </p>
+                        </div>
+
+                        <button
+                          type="button"
+                          style={styles.deleteButton}
+                          onClick={() =>
+                            requestDeleteGuest(guest.id, guest.fullName)
+                          }
+                        >
+                          Obriši
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
         </div>
       </div>
 
-      {showExpenses && (
-        <div style={styles.expensesCard}>
-          <div style={styles.expensesTop}>
-            <div>
-              <p style={styles.manualKicker}>Planiranje</p>
-              <h2 style={styles.sectionTitle}>Budžet i troškovi</h2>
-            </div>
-          </div>
-
-          <div style={styles.budgetBlock}>
-            <div style={styles.field}>
-              <label htmlFor="budget-input" style={styles.label}>
-                Budžet (opciono)
-              </label>
-              <input
-                id="budget-input"
-                type="text"
-                inputMode="numeric"
-                value={budgetInput}
-                onChange={(e) => {
-                  const cleaned = sanitizeNumberInput(e.target.value);
-                  setBudgetInput(formatNumberForDisplay(cleaned));
-                }}
-                onFocus={() => setIsEditingBudget(true)}
-                onBlur={() => setIsEditingBudget(false)}
-                placeholder="Na primer 500.000"
-                style={styles.input}
-              />
-            </div>
-
-            <button
-              type="button"
-              onClick={handleSaveBudget}
-              style={styles.button}
-              disabled={savingBudget}
+      {messageModal.isOpen && (
+        <div style={styles.modalOverlay}>
+          <div style={styles.modalCard}>
+            <div
+              style={{
+                ...styles.modalBadge,
+                background: messageAccent.badgeBg,
+                color: messageAccent.badgeColor,
+              }}
             >
-              {savingBudget ? "Čuvanje..." : "Sačuvaj budžet"}
-            </button>
-          </div>
-
-          <div style={styles.expenseStatsRow}>
-            <div style={styles.statBox}>
-              <span style={styles.statNumber}>
-                {typeof budget === "number" ? formatCurrency(budget) : "—"}
-              </span>
-              <span style={styles.statLabel}>Budžet</span>
+              {messageModal.variant === "success" && "Uspešno"}
+              {messageModal.variant === "warning" && "Pažnja"}
+              {messageModal.variant === "danger" && "Greška"}
+              {messageModal.variant === "default" && "Obaveštenje"}
             </div>
 
-            <div style={styles.statBox}>
-              <span style={styles.statNumber}>
-                {formatCurrency(totalExpenses)}
-              </span>
-              <span style={styles.statLabel}>Ukupni troškovi</span>
-            </div>
+            <h3 style={styles.modalTitle}>{messageModal.title}</h3>
+            <p style={styles.modalText}>{messageModal.text}</p>
 
-            <div style={styles.statBox}>
-              <span
+            <div style={styles.modalActions}>
+              <button
+                type="button"
+                onClick={closeMessageModal}
                 style={{
-                  ...styles.statNumber,
-                  color:
-                    remainingBudget == null
-                      ? "#3f3028"
-                      : remainingBudget < 0
-                      ? "#b42318"
-                      : "#3f3028",
+                  ...styles.modalPrimaryButton,
+                  background: messageAccent.buttonBg,
                 }}
               >
-                {remainingBudget == null ? "—" : formatCurrency(remainingBudget)}
-              </span>
-              <span style={styles.statLabel}>Preostalo</span>
+                U redu
+              </button>
             </div>
-          </div>
-
-          <form onSubmit={handleAddExpense} style={styles.expenseForm}>
-            <div style={styles.field}>
-              <label htmlFor="expense-title" style={styles.label}>
-                Naziv troška
-              </label>
-              <input
-                id="expense-title"
-                type="text"
-                name="title"
-                value={expenseForm.title}
-                onChange={handleExpenseChange}
-                placeholder="Na primer restoran"
-                style={styles.input}
-                required
-              />
-            </div>
-
-            <div style={styles.field}>
-              <label htmlFor="expense-amount" style={styles.label}>
-                Iznos
-              </label>
-              <input
-                id="expense-amount"
-                type="text"
-                inputMode="numeric"
-                name="amount"
-                value={expenseAmountInput}
-                onChange={handleExpenseChange}
-                placeholder="Na primer 120.000"
-                style={styles.input}
-                required
-              />
-            </div>
-
-            <div style={styles.field}>
-              <label htmlFor="expense-category" style={styles.label}>
-                Kategorija
-              </label>
-              <input
-                id="expense-category"
-                type="text"
-                name="category"
-                value={expenseForm.category}
-                onChange={handleExpenseChange}
-                placeholder="Na primer hrana, muzika, dekoracija"
-                style={styles.input}
-              />
-            </div>
-
-            <button type="submit" style={styles.button} disabled={addingExpense}>
-              {addingExpense ? "Dodavanje..." : "Dodaj trošak"}
-            </button>
-          </form>
-
-          <div style={styles.cardInner}>
-            <h3 style={styles.subTitle}>Lista troškova</h3>
-
-            {expenses.length === 0 ? (
-              <p style={styles.emptyText}>Još nema unetih troškova.</p>
-            ) : (
-              <div style={styles.list}>
-                {expenses.map((expense) => (
-                  <div key={expense.id} style={styles.guestRow}>
-                    <div style={styles.guestRowTop}>
-                      <div>
-                        <p style={styles.guestName}>{expense.title}</p>
-                        <p style={styles.guestMeta}>
-                          Iznos: {formatCurrency(expense.amount)}
-                        </p>
-                        {expense.category && (
-                          <p style={styles.guestMeta}>
-                            Kategorija: {expense.category}
-                          </p>
-                        )}
-                        <p style={styles.guestMeta}>
-                          Datum: {formatDate(expense.createdAt)}
-                        </p>
-                      </div>
-
-                      <button
-                        type="button"
-                        style={styles.deleteButton}
-                        onClick={() =>
-                          handleDeleteExpense(expense.id, expense.title)
-                        }
-                      >
-                        Obriši
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       )}
 
-      <div style={styles.manualCard}>
-        <p style={styles.manualKicker}>Ručni unos</p>
-        <h2 style={styles.sectionTitle}>Dodaj gosta koji dolazi</h2>
+      {confirmModal.isOpen && (
+        <div style={styles.modalOverlay}>
+          <div style={styles.modalCard}>
+            <div
+              style={{
+                ...styles.modalBadge,
+                background: confirmAccent.badgeBg,
+                color: confirmAccent.badgeColor,
+              }}
+            >
+              Potvrda
+            </div>
 
-        <form onSubmit={handleAddGuest} style={styles.manualForm}>
-          <div style={styles.field}>
-            <label htmlFor="manual-fullName" style={styles.label}>
-              Ime i prezime
-            </label>
-            <input
-              id="manual-fullName"
-              type="text"
-              name="fullName"
-              value={manualGuest.fullName}
-              onChange={handleManualGuestChange}
-              placeholder="Unesite ime i prezime"
-              style={styles.input}
-              required
-            />
+            <h3 style={styles.modalTitle}>{confirmModal.title}</h3>
+            <p style={styles.modalText}>{confirmModal.text}</p>
+
+            <div style={styles.modalActions}>
+              <button
+                type="button"
+                onClick={closeConfirmModal}
+                style={styles.modalSecondaryButton}
+                disabled={confirmModal.loading}
+              >
+                Otkaži
+              </button>
+
+              <button
+                type="button"
+                onClick={handleConfirmAction}
+                style={{
+                  ...styles.modalPrimaryButton,
+                  background: confirmAccent.buttonBg,
+                }}
+                disabled={confirmModal.loading}
+              >
+                {confirmModal.loading
+                  ? "Sačekaj..."
+                  : confirmModal.confirmText}
+              </button>
+            </div>
           </div>
-
-          <div style={styles.field}>
-            <label htmlFor="manual-guests" style={styles.label}>
-              Broj osoba
-            </label>
-            <input
-              id="manual-guests"
-              type="number"
-              name="guests"
-              min="1"
-              max="20"
-              value={manualGuest.guests}
-              onChange={handleManualGuestChange}
-              style={styles.input}
-              required
-            />
-          </div>
-
-          <button type="submit" style={styles.button} disabled={addingGuest}>
-            {addingGuest ? "Dodavanje..." : "Dodaj gosta"}
-          </button>
-        </form>
-      </div>
-
-      <div style={styles.searchCard}>
-        <div style={styles.searchField}>
-          <label htmlFor="guest-search" style={styles.label}>
-            Pretraga gostiju
-          </label>
-          <input
-            id="guest-search"
-            type="text"
-            value={guestSearch}
-            onChange={(e) => setGuestSearch(e.target.value)}
-            placeholder="Pretraži po imenu i prezimenu"
-            style={styles.input}
-          />
         </div>
-      </div>
-
-      <div style={styles.columns}>
-        <section style={styles.card}>
-          <h2 style={styles.sectionTitle}>Dolaze</h2>
-
-          {comingGuests.length === 0 ? (
-            <p style={styles.emptyText}>
-              {guestSearch.trim()
-                ? "Nema rezultata za ovu pretragu."
-                : "Još nema potvrđenih dolazaka."}
-            </p>
-          ) : (
-            <div style={styles.scrollList}>
-              <div style={styles.list}>
-                {comingGuests.map((guest) => (
-                  <div key={guest.id} style={styles.guestRow}>
-                    <div style={styles.guestRowTop}>
-                      <div>
-                        <p style={styles.guestName}>{guest.fullName}</p>
-                        <p style={styles.guestMeta}>
-                          Broj osoba: {guest.guests || 0}
-                        </p>
-                        {guest.source === "admin" && (
-                          <p style={styles.manualBadge}>Ručno dodat</p>
-                        )}
-                      </div>
-
-                      <button
-                        type="button"
-                        style={styles.deleteButton}
-                        onClick={() => handleDeleteGuest(guest.id, guest.fullName)}
-                      >
-                        Obriši
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-
-        <section style={styles.card}>
-          <h2 style={styles.sectionTitle}>Ne dolaze</h2>
-
-          {notComingGuests.length === 0 ? (
-            <p style={styles.emptyText}>
-              {guestSearch.trim()
-                ? "Nema rezultata za ovu pretragu."
-                : "Još nema negativnih odgovora."}
-            </p>
-          ) : (
-            <div style={styles.scrollList}>
-              <div style={styles.list}>
-                {notComingGuests.map((guest) => (
-                  <div key={guest.id} style={styles.guestRow}>
-                    <div style={styles.guestRowTop}>
-                      <div>
-                        <p style={styles.guestName}>{guest.fullName}</p>
-                        <p style={styles.guestMeta}>Nije u mogućnosti da dođe</p>
-                      </div>
-
-                      <button
-                        type="button"
-                        style={styles.deleteButton}
-                        onClick={() => handleDeleteGuest(guest.id, guest.fullName)}
-                      >
-                        Obriši
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
@@ -1585,6 +1816,79 @@ const styles = {
     letterSpacing: "0.06em",
     textTransform: "uppercase",
     flexShrink: 0,
+  },
+  modalOverlay: {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(34, 27, 22, 0.38)",
+    backdropFilter: "blur(6px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "20px",
+    zIndex: 9999,
+  },
+  modalCard: {
+    width: "100%",
+    maxWidth: "480px",
+    background: "#fffdf9",
+    borderRadius: "28px",
+    padding: "28px",
+    boxShadow: "0 24px 70px rgba(63, 48, 40, 0.18)",
+    border: "1px solid rgba(120, 90, 70, 0.12)",
+  },
+  modalBadge: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "6px 12px",
+    borderRadius: "999px",
+    fontSize: "12px",
+    fontWeight: 700,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    marginBottom: "14px",
+  },
+  modalTitle: {
+    margin: "0 0 10px",
+    fontSize: "30px",
+    lineHeight: 1.1,
+    color: "#3f3028",
+  },
+  modalText: {
+    margin: 0,
+    fontSize: "16px",
+    lineHeight: 1.6,
+    color: "#6b584c",
+  },
+  modalActions: {
+    marginTop: "26px",
+    display: "flex",
+    justifyContent: "flex-end",
+    gap: "12px",
+    flexWrap: "wrap",
+  },
+  modalPrimaryButton: {
+    height: "46px",
+    padding: "0 20px",
+    borderRadius: "999px",
+    border: "none",
+    color: "#fff",
+    cursor: "pointer",
+    fontSize: "14px",
+    fontWeight: 600,
+    letterSpacing: "0.05em",
+    textTransform: "uppercase",
+  },
+  modalSecondaryButton: {
+    height: "46px",
+    padding: "0 18px",
+    borderRadius: "999px",
+    border: "1px solid rgba(120, 90, 70, 0.16)",
+    background: "#fff",
+    color: "#6c5a4f",
+    cursor: "pointer",
+    fontSize: "14px",
   },
 };
 
