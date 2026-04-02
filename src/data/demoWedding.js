@@ -266,7 +266,67 @@ events: [
     note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
   }),
 },
+// =========================
+// ANGEL TEMPLATES
+// =========================
+{
+  slug: "ivana-pedja",
+  type: "wedding",
+  template: "angel",
+  brideName: "Ivana",
+  groomName: "Pedja",
 
+  backgroundImage: "/images/angel-bg.jpg",
+  image: "/images/ivana-pedja/couple.jpg",
+
+  weddingDate: "25 JUN 2026",
+  weddingTime: "13:00",
+
+  details: createDetails({
+   
+    date: "25 JUN 2026",
+    dateISO: "2026-06-25T13:00:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "12:30",
+        note: "Dolazak i okupljanje gostiju",
+        iconType: "gathering",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "13:00",
+        note: "Početak ceremonije",
+        iconType: "church",
+      },
+      {
+        label: "Proslava",
+        time: "15:00",
+        note: "Ručak, muzika i slavlje",
+        iconType: "dinner",
+      },
+    ],
+
+    dressCodeNote: "Molimo vas da svojim outfitom ispratite nežne i elegantne tonove.",
+
+    dressCodeWomen: [
+      "#E7D7D1",
+      "#D8B7AE",
+      "#C79A92",
+      "#F3EAE5",
+    ],
+
+    dressCodeMen: [
+      "#2F3136",
+      "#5C4A4A",
+      "#8B7A74",
+      "#CBBDB6",
+    ],
+
+    note: "Radujemo se da ovaj poseban dan podelimo sa vama.",
+  }),
+},
 // =========================
 // MINIMAL TEMPLATES
 // =========================

@@ -39,6 +39,9 @@ import BirthdayOneWordInvitationCard from "../components/BirthdayOneWordInvitati
 
 import BirthdaySplitIntro from "../components/BirthdaySplitIntro";
 import BirthdaySplitInvitationCard from "../components/BirthdaySplitInvitationCard";
+
+import AngelIntro from "../components/AngelIntro";
+import AngelInvitationCard from "../components/AngelInvitationCard";
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -94,6 +97,10 @@ retro: {
 "birthday-split": {
   Intro: BirthdaySplitIntro,
   Invitation: BirthdaySplitInvitationCard,
+},
+angel: {
+  Intro: AngelIntro,
+  Invitation: AngelInvitationCard,
 },
 };
 
@@ -180,6 +187,15 @@ const invitationProps = {
   image2: invitation.image2,
   image3: invitation.image3,
 };
+
+  if (templateKey === "angel") {
+    return (
+      <div className="wedding-page">
+        <IntroComponent {...introProps} />
+        <InvitationComponent {...invitationProps} />
+      </div>
+    );
+  }
 
   return (
     <div className="wedding-page">

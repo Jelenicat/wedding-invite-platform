@@ -4770,3 +4770,821 @@
   font-weight: 600;
   color: #3e3028;
 }
+/* =========================
+   ANGEL INVITATION CARD
+========================= */
+
+.angel-card-page {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(247, 242, 237, 0.08) 0%,
+      rgba(247, 242, 237, 0.52) 18%,
+      rgba(243, 236, 229, 0.82) 48%,
+      rgba(243, 236, 229, 0.96) 100%
+    ),
+    url("/images/angel.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding: 0 20px 38px;
+  margin-top: -200px;
+
+  z-index: 5;
+}
+
+.angel-card-page-connected {
+  position: relative;
+}
+
+.angel-card-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top center,
+    rgba(255, 248, 243, 0.18) 0%,
+    rgba(255, 244, 238, 0.08) 28%,
+    rgba(243, 236, 229, 0.38) 62%,
+    rgba(243, 236, 229, 0.72) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.angel-card-top-fade {
+  position: absolute;
+  top: -120px;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 242, 237, 0) 0%,
+    rgba(247, 242, 237, 0.52) 34%,
+    rgba(247, 242, 237, 0.86) 72%,
+    #f7f2ed 100%
+  );
+  z-index: 1;
+}
+
+.angel-card-top-glow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90vw, 980px);
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 250, 247, 0.95) 0%,
+    rgba(255, 246, 241, 0.6) 34%,
+    rgba(255, 246, 241, 0) 72%
+  );
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.angel-card-shell {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.angel-card-main {
+  position: relative;
+  width: 100%;
+  border-radius: 34px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 253, 250, 0.15) 0%,
+    rgba(255, 249, 244, 0.05) 100%
+  );
+
+  border: 1px solid rgba(186, 151, 141, 0.2);
+
+  box-shadow:
+    0 55px 120px rgba(92, 66, 56, 0.22),
+    0 26px 60px rgba(108, 81, 69, 0.16),
+    0 10px 24px rgba(108, 81, 69, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -10px 24px rgba(187, 145, 132, 0.08);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  padding: 54px 34px 40px;
+  overflow: hidden;
+  transform: translateY(-10px);
+}
+.angel-card-inner-frame {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(188, 151, 141, 0.12);
+  border-radius: 26px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.angel-card-inner-frame-second {
+  inset: 24px;
+  border-color: rgba(198, 165, 156, 0.08);
+  border-radius: 22px;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.angel-card-heading {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.angel-card-names {
+  margin: 0;
+  font-family: "Italianno", cursive;
+  font-size: clamp(62px, 8vw, 108px);
+  line-height: 0.92;
+  font-weight: 400;
+  color: #b87772;
+  letter-spacing: 0.01em;
+  text-shadow: 0 8px 24px rgba(183, 119, 114, 0.12);
+}
+
+.angel-card-names span {
+  display: inline-block;
+  margin: 0 14px;
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.angel-card-invite-text {
+  max-width: 620px;
+  margin: 10px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.1;
+  color: #9d6a63;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.angel-card-subtext {
+  max-width: 700px;
+  margin: 16px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 2.3vw, 24px);
+  line-height: 1.6;
+  color: #9c7c74;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.angel-card-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.28fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.angel-card-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* =========================
+   BLOCKS
+========================= */
+
+.angel-info-block {
+  position: relative;
+  min-height: 100%;
+  border-radius: 26px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 250, 246, 0.96) 0%,
+    rgba(255, 247, 242, 0.93) 100%
+  );
+  border: 1px solid rgba(189, 156, 146, 0.13);
+  box-shadow:
+    0 16px 34px rgba(105, 79, 68, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  padding: 26px 24px;
+}
+
+.angel-block-title {
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  color: #b46863;
+  margin-bottom: 22px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.angel-calendar-block {
+  position: relative;
+}
+
+.angel-calendar {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.angel-calendar-month {
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  color: #9f7068;
+  margin-bottom: 16px;
+}
+
+.angel-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.angel-calendar-weekdays span {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #b38a80;
+}
+
+.angel-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px 6px;
+}
+
+.angel-calendar-day {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 16px;
+  color: #7e6a65;
+  border-radius: 999px;
+}
+
+.angel-calendar-day.is-empty {
+  opacity: 0;
+}
+
+.angel-calendar-day.is-selected {
+  color: #b86260;
+  font-weight: 600;
+  background: rgba(188, 109, 104, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(188, 109, 104, 0.12);
+}
+
+.angel-calendar-heart {
+  position: absolute;
+  top: -8px;
+  font-size: 18px;
+  color: #cf6e70;
+  line-height: 1;
+}
+
+/* =========================
+   PROGRAM
+========================= */
+
+.angel-program-block {
+  position: relative;
+    background:
+    linear-gradient(
+      180deg,
+      rgba(247, 242, 237, 0.08) 0%,
+      rgba(247, 242, 237, 0.52) 18%,
+      rgba(243, 236, 229, 0.82) 48%,
+      rgba(243, 236, 229, 0.96) 100%
+    ),
+    url("/images/angel.jpg");
+}
+
+.angel-program-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.angel-program-item {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(193, 164, 155, 0.12);
+}
+
+.angel-program-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.angel-program-icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2px;
+}
+
+.angel-program-icon-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+}
+
+.angel-program-icon-svg {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+  opacity: 0.92;
+  filter: sepia(18%) saturate(70%) hue-rotate(-8deg);
+}
+
+.angel-program-content {
+  min-width: 0;
+}
+
+.angel-program-time {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 29px;
+  line-height: 1;
+  color: #6f615d;
+  margin-bottom: 6px;
+}
+
+.angel-program-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  line-height: 1.14;
+  color: #6d5f5b;
+}
+
+.angel-program-location {
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #987f77;
+}
+
+.angel-program-location-link {
+  text-decoration: none;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.angel-program-location-link:hover {
+  opacity: 0.88;
+  color: #b06762;
+}
+
+.angel-program-note {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #ad9189;
+}
+
+/* =========================
+   LOCATION
+========================= */
+
+.angel-location-block {
+  position: relative;
+}
+
+.angel-location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.angel-location-item {
+  text-align: center;
+  padding: 14px 10px 16px;
+  border-radius: 20px;
+  background: rgba(255, 252, 249, 0.56);
+  border: 1px solid rgba(192, 160, 150, 0.12);
+}
+
+.angel-location-time-small {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  color: #b76561;
+  margin-bottom: 6px;
+}
+
+.angel-location-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  color: #6f625d;
+  margin-bottom: 6px;
+}
+
+.angel-location-link {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #997e75;
+  text-decoration: none;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.angel-location-link:hover {
+  opacity: 0.84;
+  color: #b06762;
+}
+
+.angel-location-link-static {
+  cursor: default;
+}
+
+/* =========================
+   DRESS CODE
+========================= */
+
+.angel-dress-block {
+  position: relative;
+  background: rgba(255, 250, 247, 0.4);
+  border: 1px solid rgba(192, 161, 151, 0.1);
+    
+   
+}
+
+.angel-dress-text {
+  max-width: 430px;
+  margin: 0 auto 18px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #9a8178;
+}
+
+.angel-dress-palette {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.angel-dress-swatch {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 10px 20px rgba(85, 62, 51, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.angel-dress-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.angel-dress-image {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #efe5dd;
+  box-shadow: 0 10px 26px rgba(92, 68, 56, 0.08);
+}
+
+.angel-dress-image img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.angel-dress-image:hover img {
+  transform: scale(1.04);
+}
+
+/* =========================
+   NOTE
+========================= */
+
+.angel-card-note {
+  max-width: 760px;
+  margin: 30px auto 0;
+  padding: 18px 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #927870;
+  font-style: italic;
+  border-radius: 20px;
+  background: rgba(255, 250, 247, 0.4);
+  border: 1px solid rgba(192, 161, 151, 0.1);
+}
+
+/* =========================
+   RSVP / COUNTDOWN CONNECT
+========================= */
+
+.angel-rsvp-connected {
+  margin-top: -8px;
+  position: relative;
+  z-index: 4;
+}
+
+.angel-countdown-connected {
+  margin-top: -10px;
+  position: relative;
+  z-index: 4;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .angel-card-page {
+    margin-top: -120px;
+    padding: 0 16px 30px;
+    background-position: center top;
+  }
+
+  .angel-card-grid,
+  .angel-card-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .angel-card-main {
+    padding: 36px 20px 28px;
+    border-radius: 28px;
+  }
+
+  .angel-info-block {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+
+  .angel-dress-image img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .angel-card-page {
+    padding: 0 10px 24px;
+    margin-top: -135px;
+    background-position: center top;
+  }
+
+  .angel-card-top-fade {
+    top: -100px;
+    height: 190px;
+  }
+
+  .angel-card-top-glow {
+    top: -50px;
+    width: 92vw;
+    height: 150px;
+  }
+
+  .angel-card-main {
+    padding: 24px 12px 20px;
+    border-radius: 24px;
+    transform: translateY(-8px);
+    box-shadow:
+      0 38px 70px rgba(92, 66, 56, 0.2),
+      0 16px 34px rgba(108, 81, 69, 0.12),
+      0 8px 18px rgba(108, 81, 69, 0.08),
+      0 0 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .angel-card-main::before {
+    inset: -14px 20px auto 20px;
+    height: 74px;
+  }
+
+  .angel-card-main::after {
+    left: 8%;
+    right: 8%;
+    bottom: -24px;
+    height: 42px;
+  }
+
+  .angel-card-inner-frame {
+    inset: 7px;
+    border-radius: 20px;
+  }
+
+  .angel-card-inner-frame-second {
+    inset: 14px;
+    border-radius: 16px;
+  }
+
+  .angel-card-heading {
+    margin-bottom: 24px;
+  }
+
+  .angel-card-names {
+    font-size: 56px;
+    line-height: 0.94;
+  }
+
+  .angel-card-names span {
+    margin: 0 8px;
+  }
+
+  .angel-card-invite-text {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+
+  .angel-card-subtext {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .angel-card-grid,
+  .angel-card-bottom-grid {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .angel-info-block {
+    padding: 16px 12px;
+    border-radius: 18px;
+  }
+
+  .angel-block-title {
+    font-size: 27px;
+    margin-bottom: 14px;
+  }
+
+  .angel-calendar-month {
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+
+  .angel-calendar-weekdays {
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  .angel-calendar-weekdays span {
+    font-size: 10px;
+  }
+
+  .angel-calendar-days {
+    gap: 4px 2px;
+  }
+
+  .angel-calendar-day {
+    min-height: 28px;
+    font-size: 12px;
+  }
+
+  .angel-calendar-heart {
+    top: -6px;
+    font-size: 13px;
+  }
+
+  .angel-program-list {
+    gap: 10px;
+  }
+
+  .angel-program-item {
+    grid-template-columns: 44px 1fr;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .angel-program-icon-badge {
+    width: 34px;
+    height: 34px;
+  }
+
+  .angel-program-icon-svg {
+    width: 46px;
+    height: 46px;
+  }
+
+  .angel-program-time {
+    font-size: 21px;
+    margin-bottom: 3px;
+  }
+
+  .angel-program-label {
+    font-size: 18px;
+  }
+
+  .angel-program-location,
+  .angel-program-note {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .angel-location-list {
+    gap: 10px;
+  }
+
+  .angel-location-item {
+    padding: 12px 10px 13px;
+    border-radius: 16px;
+  }
+
+  .angel-location-time-small {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .angel-location-label {
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+
+  .angel-location-link {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .angel-dress-text {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .angel-dress-palette {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .angel-dress-swatch {
+    width: 24px;
+    height: 24px;
+  }
+
+  .angel-dress-images {
+    gap: 6px;
+  }
+
+  .angel-dress-image {
+    border-radius: 12px;
+  }
+
+  .angel-dress-image img {
+    height: 86px;
+  }
+
+  .angel-card-note {
+    margin-top: 18px;
+    padding: 14px 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    border-radius: 16px;
+  }
+}
+.angel-card-bottom-grid-single {
+  grid-template-columns: 1fr;
+}
+
+.angel-dress-group {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.angel-dress-group-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  color: #b46863;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
