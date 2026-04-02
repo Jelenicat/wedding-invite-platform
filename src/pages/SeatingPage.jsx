@@ -6,9 +6,8 @@ import {
   deleteDoc,
   doc,
   getDocs,
-  query,
   serverTimestamp,
-  where,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
@@ -129,37 +128,45 @@ function SeatingPage() {
     try {
       setLoading(true);
 
-      const tablesQuery = query(
-        collection(db, "tables"),
-        where("slug", "==", slug)
-      );
-
-      const guestsQuery = query(
-        collection(db, "rsvps"),
-        where("slug", "==", slug),
-        where("attending", "==", "da")
-      );
-
-      const tableGuestsQuery = query(
-        collection(db, "tableGuests"),
-        where("slug", "==", slug)
-      );
+      const tablesRef = collection(db, "events", slug, "tables");
+      const guestsRef = collection(db, "events", slug, "rsvps");
+      const tableGuestsRef = collection(db, "events", slug, "tableGuests");
 
       const [tablesSnap, guestsSnap, tableGuestsSnap] = await Promise.all([
-        getDocs(tablesQuery),
-        getDocs(guestsQuery),
-        getDocs(tableGuestsQuery),
+        getDocs(tablesRef),
+        getDocs(guestsRef),
+        getDocs(tableGuestsRef),
       ]);
 
-      const tablesData = tablesSnap.docs.map((d) => ({
-        id: d.id,
-        ...d.data(),
-      }));
+      const tablesData = tablesSnap.docs
+        .map((d) => ({
+          id: d.id,
+          ...d.data(),
+        }))
+        .sort((a, b) => {
+          const aMs =
+            typeof a?.createdAt?.toMillis === "function"
+              ? a.createdAt.toMillis()
+              : 0;
+          const bMs =
+            typeof b?.createdAt?.toMillis === "function"
+              ? b.createdAt.toMillis()
+              : 0;
 
-      const guestsData = guestsSnap.docs.map((d) => ({
-        id: d.id,
-        ...d.data(),
-      }));
+          return aMs - bMs;
+        });
+
+      const guestsData = guestsSnap.docs
+        .map((d) => ({
+          id: d.id,
+          ...d.data(),
+        }))
+        .filter((guest) => guest.attending === "da")
+        .sort((a, b) => {
+          const aName = (a.fullName || "").toLowerCase();
+          const bName = (b.fullName || "").toLowerCase();
+          return aName.localeCompare(bName, "sr");
+        });
 
       const tableGuestsData = tableGuestsSnap.docs.map((d) => ({
         id: d.id,
@@ -217,8 +224,16 @@ function SeatingPage() {
     try {
       setAddingTable(true);
 
-      await addDoc(collection(db, "tables"), {
-        slug,
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      await addDoc(collection(db, "events", slug, "tables"), {
         name: tableForm.name.trim(),
         capacity: capacityCount,
         createdAt: serverTimestamp(),
@@ -392,8 +407,7 @@ function SeatingPage() {
 
       setAssigningGuest(true);
 
-      await addDoc(collection(db, "tableGuests"), {
-        slug,
+      await addDoc(collection(db, "events", slug, "tableGuests"), {
         tableId: table.id,
         tableName: table.name,
         guestId: guest.id,
@@ -465,7 +479,9 @@ function SeatingPage() {
       if (type === "moveGuest") {
         const { guest, table, existingAssignmentId } = payload;
 
-        await deleteDoc(doc(db, "tableGuests", existingAssignmentId));
+        await deleteDoc(
+          doc(db, "events", slug, "tableGuests", existingAssignmentId)
+        );
 
         const refreshedAssignments = tableGuests.filter(
           (item) => item.id !== existingAssignmentId
@@ -489,8 +505,7 @@ function SeatingPage() {
           return;
         }
 
-        await addDoc(collection(db, "tableGuests"), {
-          slug,
+        await addDoc(collection(db, "events", slug, "tableGuests"), {
           tableId: table.id,
           tableName: table.name,
           guestId: guest.id,
@@ -514,12 +529,12 @@ function SeatingPage() {
 
       if (type === "removeGuest") {
         const { assignmentId } = payload;
-        await deleteDoc(doc(db, "tableGuests", assignmentId));
+        await deleteDoc(doc(db, "events", slug, "tableGuests", assignmentId));
       }
 
       if (type === "deleteTable") {
         const { tableId } = payload;
-        await deleteDoc(doc(db, "tables", tableId));
+        await deleteDoc(doc(db, "events", slug, "tables", tableId));
       }
 
       closeConfirmModal();

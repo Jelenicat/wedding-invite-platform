@@ -1,26 +1,79 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../firebase";
 import "../styles/rsvp.css";
 
 function AngelRSVP({ slug, eventType }) {
   const [fullName, setFullName] = useState("");
   const [attending, setAttending] = useState("");
-  const [guests, setGuests] = useState(1);
+  const [guests, setGuests] = useState("1");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
-      slug,
-      eventType,
-      fullName,
-      attending,
-      guests: attending === "da" ? Number(guests) : 0,
-    };
+    if (!slug || !eventType) {
+      alert("Nedostaje slug ili tip događaja.");
+      return;
+    }
 
-    console.log("Angel RSVP:", payload);
-    setSubmitted(true);
+    if (!fullName.trim()) {
+      alert("Unesite ime i prezime.");
+      return;
+    }
+
+    if (!attending) {
+      alert("Izaberite da li dolazite.");
+      return;
+    }
+
+    const guestsCount = Number(guests);
+
+    if (attending === "da") {
+      if (!guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+        alert("Unesite ispravan broj gostiju.");
+        return;
+      }
+    }
+
+    setLoading(true);
+
+    try {
+      // 🔥 kreira event doc ako ne postoji
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      // 🔥 upis u novu strukturu
+      await addDoc(collection(db, "events", slug, "rsvps"), {
+        eventType,
+        fullName: fullName.trim(),
+        attending,
+        guests: attending === "da" ? guestsCount : 0,
+        createdAt: serverTimestamp(),
+      });
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Greška pri slanju RSVP:", error);
+      alert("Došlo je do greške.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -125,9 +178,9 @@ function AngelRSVP({ slug, eventType }) {
                 <button
                   type="submit"
                   className="angel-rsvp-submit"
-                  disabled={!fullName || !attending}
+                  disabled={!fullName || !attending || loading}
                 >
-                  Pošalji odgovor
+                  {loading ? "Slanje..." : "Pošalji odgovor"}
                 </button>
               </form>
             )}

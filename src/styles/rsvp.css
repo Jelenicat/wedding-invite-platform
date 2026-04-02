@@ -16,7 +16,21 @@
   );
   overflow: hidden;
 }
+.confetti-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+}
 
+.confetti {
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  background: #d4af7f;
+  top: 0;
+  left: 50%;
+  border-radius: 2px;
+}
 .video-band-rsvp-paper {
   position: absolute;
   inset: 0;

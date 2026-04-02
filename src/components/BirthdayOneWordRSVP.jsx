@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
@@ -68,8 +74,19 @@ function BirthdayOneWordRSVP({
     setLoading(true);
 
     try {
-      await addDoc(collection(db, "rsvps"), {
-        slug,
+      // 🔥 kreira parent event doc
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      // 🔥 pravi RSVP na pravoj lokaciji
+      await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
@@ -112,21 +129,30 @@ function BirthdayOneWordRSVP({
         <div className="birthday-one-word-rsvp-card">
           <p className="birthday-one-word-rsvp-kicker">RSVP</p>
 
-          <h2 className="birthday-one-word-rsvp-title">Potvrdite dolazak</h2>
+          <h2 className="birthday-one-word-rsvp-title">
+            Potvrdite dolazak
+          </h2>
 
           <p className="birthday-one-word-rsvp-subtitle">
             Radovaćemo se da zajedno proslavimo {name}in rođendan.
           </p>
 
           {details?.note && (
-            <div className="birthday-one-word-rsvp-note">{details.note}</div>
+            <div className="birthday-one-word-rsvp-note">
+              {details.note}
+            </div>
           )}
 
           <div className="birthday-one-word-rsvp-divider" />
 
-          <form className="birthday-one-word-rsvp-form" onSubmit={handleSubmit}>
+          <form
+            className="birthday-one-word-rsvp-form"
+            onSubmit={handleSubmit}
+          >
             <div className="birthday-one-word-rsvp-field">
-              <label htmlFor="birthday-one-word-fullName">Ime i prezime</label>
+              <label htmlFor="birthday-one-word-fullName">
+                Ime i prezime
+              </label>
               <input
                 id="birthday-one-word-fullName"
                 type="text"
@@ -151,7 +177,9 @@ function BirthdayOneWordRSVP({
                   }`}
                   onClick={() => handleAttendanceSelect("da")}
                 >
-                  <span className="birthday-one-word-choice-title">Dolazim</span>
+                  <span className="birthday-one-word-choice-title">
+                    Dolazim
+                  </span>
                   <span className="birthday-one-word-choice-text">
                     Biće mi zadovoljstvo
                   </span>
@@ -183,7 +211,9 @@ function BirthdayOneWordRSVP({
 
             {formData.attending === "da" && (
               <div className="birthday-one-word-rsvp-field">
-                <label htmlFor="birthday-one-word-guests">Broj osoba</label>
+                <label htmlFor="birthday-one-word-guests">
+                  Broj osoba
+                </label>
                 <input
                   id="birthday-one-word-guests"
                   type="number"

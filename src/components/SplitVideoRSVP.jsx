@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
@@ -35,8 +41,8 @@ function SplitVideoRSVP({ slug, eventType }) {
     e.preventDefault();
 
     if (!slug || !eventType) return;
-
     if (!formData.fullName.trim()) return;
+    if (!formData.attending) return;
 
     const guestsCount = Number(formData.guests);
 
@@ -49,8 +55,17 @@ function SplitVideoRSVP({ slug, eventType }) {
     setLoading(true);
 
     try {
-      await addDoc(collection(db, "rsvps"), {
-        slug,
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
@@ -60,7 +75,7 @@ function SplitVideoRSVP({ slug, eventType }) {
 
       setSubmitted(true);
     } catch (error) {
-      console.error(error);
+      console.error("Greška pri slanju RSVP:", error);
     } finally {
       setLoading(false);
     }
@@ -76,7 +91,6 @@ function SplitVideoRSVP({ slug, eventType }) {
     >
       <div className="split-video-rsvp-shell">
         <div className="split-video-rsvp-box">
-          
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div
@@ -124,7 +138,6 @@ function SplitVideoRSVP({ slug, eventType }) {
                 <div className="split-video-rsvp-divider" />
 
                 <form className="split-video-rsvp-form" onSubmit={handleSubmit}>
-                  
                   <motion.div
                     className="split-video-rsvp-field"
                     initial={{ opacity: 0, y: 14 }}
@@ -204,7 +217,6 @@ function SplitVideoRSVP({ slug, eventType }) {
               </motion.div>
             )}
           </AnimatePresence>
-
         </div>
       </div>
     </motion.section>

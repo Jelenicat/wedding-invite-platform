@@ -1,22 +1,32 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../firebase";
 import "../styles/rsvp.css";
 
-function RetroRSVP({ brideName, details = {}, rsvpVideoSrc }) {
+function RetroRSVP({ slug, eventType, brideName, details = {}, rsvpVideoSrc }) {
   const name = brideName || "Jelena";
 
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
-    guests: 1,
+    guests: "1",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "guests" ? value : value,
+      [name]: value,
     }));
   };
 
@@ -24,19 +34,71 @@ function RetroRSVP({ brideName, details = {}, rsvpVideoSrc }) {
     setFormData((prev) => ({
       ...prev,
       attending: value,
-      guests: value === "da" ? prev.guests || 1 : 0,
+      guests: value === "da" ? prev.guests || "1" : "",
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
-      ...formData,
-      guests: formData.attending === "da" ? Number(formData.guests || 1) : 0,
-    };
+    if (!slug || !eventType) {
+      alert("Nedostaje slug ili tip događaja.");
+      return;
+    }
 
-    console.log("Retro RSVP:", payload);
+    if (!formData.fullName.trim()) {
+      alert("Unesite ime i prezime.");
+      return;
+    }
+
+    if (!formData.attending) {
+      alert("Izaberite da li dolazite.");
+      return;
+    }
+
+    const guestsCount = Number(formData.guests);
+
+    if (formData.attending === "da") {
+      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+        alert("Unesite ispravan broj osoba.");
+        return;
+      }
+    }
+
+    setLoading(true);
+
+    try {
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      await addDoc(collection(db, "events", slug, "rsvps"), {
+        eventType,
+        fullName: formData.fullName.trim(),
+        attending: formData.attending,
+        guests: formData.attending === "da" ? guestsCount : 0,
+        createdAt: serverTimestamp(),
+      });
+
+      alert("Uspešno poslato!");
+
+      setFormData({
+        fullName: "",
+        attending: "",
+        guests: "1",
+      });
+    } catch (error) {
+      console.error("Greška pri slanju RSVP:", error);
+      alert("Došlo je do greške pri slanju.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -94,6 +156,13 @@ function RetroRSVP({ brideName, details = {}, rsvpVideoSrc }) {
               </button>
             </div>
 
+            <input
+              type="hidden"
+              name="attending"
+              value={formData.attending}
+              required
+            />
+
             {formData.attending === "da" && (
               <input
                 type="number"
@@ -107,8 +176,12 @@ function RetroRSVP({ brideName, details = {}, rsvpVideoSrc }) {
               />
             )}
 
-            <button type="submit" className="retro-rsvp-submit">
-              Potvrdi
+            <button
+              type="submit"
+              className="retro-rsvp-submit"
+              disabled={loading}
+            >
+              {loading ? "Slanje..." : "Potvrdi"}
             </button>
           </form>
 

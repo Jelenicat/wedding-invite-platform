@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
@@ -68,8 +74,19 @@ function BirthdaySplitRSVP({
     setLoading(true);
 
     try {
-      await addDoc(collection(db, "rsvps"), {
-        slug,
+      // 🔥 kreira event doc ako ne postoji
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      // 🔥 upis u novu kolekciju
+      await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
@@ -119,12 +136,16 @@ function BirthdaySplitRSVP({
           </p>
 
           {details?.note && (
-            <div className="birthday-split-rsvp-note">{details.note}</div>
+            <div className="birthday-split-rsvp-note">
+              {details.note}
+            </div>
           )}
 
           <form className="birthday-split-rsvp-form" onSubmit={handleSubmit}>
             <div className="birthday-split-rsvp-field">
-              <label htmlFor="birthday-split-fullName">Ime i prezime</label>
+              <label htmlFor="birthday-split-fullName">
+                Ime i prezime
+              </label>
               <input
                 id="birthday-split-fullName"
                 type="text"
@@ -149,7 +170,9 @@ function BirthdaySplitRSVP({
                   }`}
                   onClick={() => handleAttendanceSelect("da")}
                 >
-                  <span className="birthday-split-choice-title">Dolazim</span>
+                  <span className="birthday-split-choice-title">
+                    Dolazim
+                  </span>
                   <span className="birthday-split-choice-text">
                     Biće mi zadovoljstvo
                   </span>
@@ -181,7 +204,9 @@ function BirthdaySplitRSVP({
 
             {formData.attending === "da" && (
               <div className="birthday-split-rsvp-field">
-                <label htmlFor="birthday-split-guests">Broj osoba</label>
+                <label htmlFor="birthday-split-guests">
+                  Broj osoba
+                </label>
                 <input
                   id="birthday-split-guests"
                   type="number"

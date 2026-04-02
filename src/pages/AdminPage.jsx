@@ -3,12 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   collection,
   getDocs,
-  query,
-  where,
   addDoc,
   serverTimestamp,
   deleteDoc,
   doc,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
@@ -48,13 +47,25 @@ function AdminPage() {
       setLoading(true);
       setError("");
 
-      const q = query(collection(db, "rsvps"), where("slug", "==", slug));
-      const snapshot = await getDocs(q);
+      const snapshot = await getDocs(collection(db, "events", slug, "rsvps"));
 
-      const data = snapshot.docs.map((docItem) => ({
-        id: docItem.id,
-        ...docItem.data(),
-      }));
+      const data = snapshot.docs
+        .map((docItem) => ({
+          id: docItem.id,
+          ...docItem.data(),
+        }))
+        .sort((a, b) => {
+          const aMs =
+            typeof a?.createdAt?.toMillis === "function"
+              ? a.createdAt.toMillis()
+              : 0;
+          const bMs =
+            typeof b?.createdAt?.toMillis === "function"
+              ? b.createdAt.toMillis()
+              : 0;
+
+          return bMs - aMs;
+        });
 
       setGuests(data);
     } catch (err) {
@@ -124,7 +135,16 @@ function AdminPage() {
     try {
       setAddingGuest(true);
 
-      await addDoc(collection(db, "rsvps"), {
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      await addDoc(collection(db, "events", slug, "rsvps"), {
         slug,
         eventType: "manual",
         fullName: manualGuest.fullName.trim(),
@@ -156,7 +176,7 @@ function AdminPage() {
     if (!confirmed) return;
 
     try {
-      await deleteDoc(doc(db, "rsvps", guestId));
+      await deleteDoc(doc(db, "events", slug, "rsvps", guestId));
       await fetchGuests();
     } catch (err) {
       console.error("Greška pri brisanju gosta:", err);

@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
@@ -8,7 +14,7 @@ function PhotoScriptRSVP({ slug, eventType }) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
-    guests: "1", // 🔥 STRING
+    guests: "1",
   });
 
   const [loading, setLoading] = useState(false);
@@ -18,7 +24,7 @@ function PhotoScriptRSVP({ slug, eventType }) {
 
     setFormData((prev) => ({
       ...prev,
-      [name]: value, // 🔥 nema Number
+      [name]: value,
     }));
   };
 
@@ -43,6 +49,11 @@ function PhotoScriptRSVP({ slug, eventType }) {
       return;
     }
 
+    if (!formData.attending) {
+      alert("Izaberite da li dolazite.");
+      return;
+    }
+
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
@@ -55,23 +66,32 @@ function PhotoScriptRSVP({ slug, eventType }) {
     setLoading(true);
 
     try {
-      const payload = {
-        slug,
+      // 🔥 kreira parent event doc ako ne postoji
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      // 🔥 pravi RSVP u pravoj putanji
+      await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
         guests: formData.attending === "da" ? guestsCount : 0,
         createdAt: serverTimestamp(),
-      };
-
-      await addDoc(collection(db, "rsvps"), payload);
+      });
 
       alert("Uspešno poslato!");
 
       setFormData({
         fullName: "",
         attending: "",
-        guests: "1", // 🔥 reset string
+        guests: "1",
       });
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);

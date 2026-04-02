@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 
 function BlackWhiteRSVP({
@@ -67,16 +73,25 @@ function BlackWhiteRSVP({
     setLoading(true);
 
     try {
-      const payload = {
-        slug,
+      // 🔥 kreira event doc ako ne postoji
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      // 🔥 upis u novu kolekciju
+      await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
         guests: formData.attending === "da" ? guestsCount : 0,
         createdAt: serverTimestamp(),
-      };
-
-      await addDoc(collection(db, "rsvps"), payload);
+      });
 
       alert("Uspešno poslato!");
 

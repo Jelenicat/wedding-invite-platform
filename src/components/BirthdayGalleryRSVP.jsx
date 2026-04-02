@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
@@ -68,16 +74,25 @@ function BirthdayGalleryRSVP({
     setLoading(true);
 
     try {
-      const payload = {
-        slug,
+      // 🔥 kreira parent event doc
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      // 🔥 upis u novu strukturu
+      await addDoc(collection(db, "events", slug, "rsvps"), {
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
         guests: formData.attending === "da" ? guestsCount : 0,
         createdAt: serverTimestamp(),
-      };
-
-      await addDoc(collection(db, "rsvps"), payload);
+      });
 
       alert("Uspešno poslato!");
 
@@ -120,7 +135,9 @@ function BirthdayGalleryRSVP({
             Biće nam veliko zadovoljstvo da zajedno proslavimo {name} rođendan.
           </p>
 
-          {details?.note && <div className="birthday-rsvp-note">{details.note}</div>}
+          {details?.note && (
+            <div className="birthday-rsvp-note">{details.note}</div>
+          )}
 
           <div className="birthday-rsvp-divider" />
 
@@ -139,7 +156,9 @@ function BirthdayGalleryRSVP({
             </div>
 
             <div className="birthday-rsvp-choice-block">
-              <p className="birthday-rsvp-choice-label">Da li dolazite?</p>
+              <p className="birthday-rsvp-choice-label">
+                Da li dolazite?
+              </p>
 
               <div className="birthday-rsvp-choice-grid">
                 <button
@@ -162,7 +181,9 @@ function BirthdayGalleryRSVP({
                   }`}
                   onClick={() => handleAttendanceSelect("ne")}
                 >
-                  <span className="birthday-choice-title">Ne dolazim</span>
+                  <span className="birthday-choice-title">
+                    Ne dolazim
+                  </span>
                   <span className="birthday-choice-text">
                     Nažalost nisam u mogućnosti
                   </span>

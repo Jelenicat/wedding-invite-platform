@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
@@ -43,6 +49,11 @@ function VideoBandRSVP({ slug, eventType }) {
       return;
     }
 
+    if (!formData.attending) {
+      alert("Izaberite da li dolazite.");
+      return;
+    }
+
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
@@ -55,8 +66,17 @@ function VideoBandRSVP({ slug, eventType }) {
     setLoading(true);
 
     try {
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
       const payload = {
-        slug,
         eventType,
         fullName: formData.fullName.trim(),
         attending: formData.attending,
@@ -64,7 +84,7 @@ function VideoBandRSVP({ slug, eventType }) {
         createdAt: serverTimestamp(),
       };
 
-      await addDoc(collection(db, "rsvps"), payload);
+      await addDoc(collection(db, "events", slug, "rsvps"), payload);
 
       alert("Uspešno poslato!");
 
@@ -103,8 +123,6 @@ function VideoBandRSVP({ slug, eventType }) {
             <p className="video-band-rsvp-kicker">RSVP</p>
 
             <h2 className="video-band-rsvp-title">Potvrdite dolazak</h2>
-
-            
 
             <p className="video-band-rsvp-subtitle">
               Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.
