@@ -34,7 +34,6 @@ function AdminPage() {
   const [budgetInput, setBudgetInput] = useState("");
   const [budget, setBudget] = useState(null);
   const [savingBudget, setSavingBudget] = useState(false);
-  const [isEditingBudget, setIsEditingBudget] = useState(false);
 
   const [expenses, setExpenses] = useState([]);
   const [addingExpense, setAddingExpense] = useState(false);
@@ -255,14 +254,12 @@ function AdminPage() {
   }, [slug, isAuthorized]);
 
   useEffect(() => {
-    if (isEditingBudget) return;
-
     if (budget === null) {
       setBudgetInput("");
     } else {
       setBudgetInput(formatNumberForDisplay(String(budget)));
     }
-  }, [budget, isEditingBudget]);
+  }, [budget]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -410,7 +407,6 @@ function AdminPage() {
 
         setBudget(null);
         setBudgetInput("");
-        setIsEditingBudget(false);
 
         openMessageModal({
           title: "Budžet je obrisan",
@@ -456,7 +452,6 @@ function AdminPage() {
 
       setBudget(parsedBudget);
       setBudgetInput(formatNumberForDisplay(String(parsedBudget)));
-      setIsEditingBudget(false);
 
       openMessageModal({
         title: "Budžet je sačuvan",
@@ -1127,8 +1122,6 @@ function AdminPage() {
                     const cleaned = sanitizeNumberInput(e.target.value);
                     setBudgetInput(formatNumberForDisplay(cleaned));
                   }}
-                  onFocus={() => setIsEditingBudget(true)}
-                  onBlur={() => setIsEditingBudget(false)}
                   placeholder="Na primer 500.000"
                   style={styles.input}
                 />
