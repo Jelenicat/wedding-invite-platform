@@ -4790,8 +4790,8 @@
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  padding: 0 20px 38px;
-  margin-top: -20px;
+  padding: 10px 20px 38px;
+  margin-top: -10px;
 
   z-index: 5;
 }
