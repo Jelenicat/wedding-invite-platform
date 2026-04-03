@@ -8,11 +8,14 @@ import "../styles/gallery.css";
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const UPLOAD_BATCH_SIZE = 3;
 
 function WeddingUpload() {
   const { slug } = useParams();
   const wedding = demoWedding.find((item) => item.slug === slug);
   const fileInputRef = useRef(null);
+  const selectedPanelRef = useRef(null);
+  const successCardRef = useRef(null);
 
   const [files, setFiles] = useState([]);
   const [error, setError] = useState("");
@@ -32,6 +35,32 @@ function WeddingUpload() {
     };
   }, [previewUrls]);
 
+  useEffect(() => {
+    if (files.length > 0 && selectedPanelRef.current) {
+      const timeout = setTimeout(() => {
+        selectedPanelRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
+      }, 150);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [files]);
+
+  useEffect(() => {
+    if (success && successCardRef.current) {
+      const timeout = setTimeout(() => {
+        successCardRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 120);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [success]);
+
   const validateFiles = (selectedFiles) => {
     const fileArray = Array.from(selectedFiles || []);
 
@@ -40,7 +69,7 @@ function WeddingUpload() {
     }
 
     if (fileArray.length > MAX_FILES) {
-      return "Možete poslati najviše 10 slika odjednom.";
+      return `Možete poslati najviše ${MAX_FILES} slika odjednom.`;
     }
 
     for (const file of fileArray) {
@@ -70,10 +99,34 @@ function WeddingUpload() {
     if (validationError) {
       setError(validationError);
       setFiles([]);
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
       return;
     }
 
     setFiles(Array.from(selectedFiles));
+  };
+
+  const uploadBatch = async (batchFiles) => {
+    const uploadPromises = batchFiles.map((file) => {
+      const uniqueName = `${Date.now()}-${Math.random()
+        .toString(36)
+        .slice(2)}-${file.name}`;
+
+      const storageRef = ref(storage, `wedding-uploads/${slug}/${uniqueName}`);
+      return uploadBytes(storageRef, file);
+    });
+
+    await Promise.all(uploadPromises);
+  };
+
+  const uploadInBatches = async (filesToUpload, batchSize = UPLOAD_BATCH_SIZE) => {
+    for (let i = 0; i < filesToUpload.length; i += batchSize) {
+      const batch = filesToUpload.slice(i, i + batchSize);
+      await uploadBatch(batch);
+    }
   };
 
   const handleUpload = async () => {
@@ -88,15 +141,7 @@ function WeddingUpload() {
 
     try {
       setUploading(true);
-
-      for (const file of files) {
-        const uniqueName = `${Date.now()}-${Math.random()
-          .toString(36)
-          .slice(2)}-${file.name}`;
-
-        const storageRef = ref(storage, `wedding-uploads/${slug}/${uniqueName}`);
-        await uploadBytes(storageRef, file);
-      }
+      await uploadInBatches(files, UPLOAD_BATCH_SIZE);
 
       setSuccess(true);
       setFiles([]);
@@ -167,18 +212,19 @@ function WeddingUpload() {
               type="button"
               className="upload-choose-button"
               onClick={handleChooseFiles}
+              disabled={uploading}
             >
               Izaberite fotografije
             </button>
 
             <p className="upload-hero-meta">
-              Do 20 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici
+              Do 10 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici
             </p>
           </div>
         </div>
 
         {files.length > 0 && (
-          <div className="upload-selected-panel">
+          <div className="upload-selected-panel" ref={selectedPanelRef}>
             <div className="upload-selected-header">
               <p className="upload-selected-title">Izabrane fotografije</p>
               <span className="upload-selected-count">
@@ -211,34 +257,36 @@ function WeddingUpload() {
 
         {error ? <p className="upload-error-text">{error}</p> : null}
 
-     {success ? (
-  <div className="upload-success-card">
-    <div className="upload-success-icon">
-      <svg
-        width="22"
-        height="22"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M20 7L9 18L4 13"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
+        {success ? (
+          <div className="upload-success-card" ref={successCardRef}>
+            <div className="upload-success-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 7L9 18L4 13"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
 
-    <div>
-      <p className="upload-success-title">Fotografije su uspešno uploadovane</p>
-      <p className="upload-success-description">
-        Hvala vam što ste podelili uspomene sa ovog posebnog dana.
-      </p>
-    </div>
-  </div>
-) : null}
+            <div>
+              <p className="upload-success-title">
+                Fotografije su uspešno uploadovane
+              </p>
+              <p className="upload-success-description">
+                Hvala vam što ste podelili uspomene sa ovog posebnog dana.
+              </p>
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );
