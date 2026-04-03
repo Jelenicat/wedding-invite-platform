@@ -1232,7 +1232,7 @@ events: [
         label: "Svečani proslava",
         time: "16:00",
         location: "Sala Anđelina, put za Ovču",
-        mapLink: "https://maps.google.com/?q=Sala+Anđelina,+Put+za+Ovču+43",
+        mapLink: "https://www.google.com/maps/place/Sve%C4%8Dana+sala+%22An%C4%91elina%22/@44.882065,20.4690897,17z/data=!3m1!4b1!4m6!3m5!1s0x475a6300269fa3d3:0xab5b9f3580141e95!8m2!3d44.882065!4d20.4716646!16s%2Fg%2F11lmdpxcmw?entry=ttu&g_ep=EgoyMDI2MDMzMS4wIKXMDSoASAFQAw%3D%3D",
       },
       {
         label: "Građansko venčanje",
