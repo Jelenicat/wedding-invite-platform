@@ -1201,15 +1201,15 @@ events: [
   groomName: "Stefan",
   videoSrc: "/videos/dijana-stefan.mp4",
   weddingDate: "16 OKT 2026",
-  weddingTime: "17:00",
+  weddingTime: "16:00",
 
   details: createDetails({
     welcomeText:
       "Biće nam veliko zadovoljstvo da ovaj poseban dan podelimo sa vama.",
 
     date: "16 OKT 2026",
-    dateISO: "2026-10-16T17:00:00",
-    rsvpDeadline: "01 OKT 2026",
+    dateISO: "2026-10-16T16:00:00",
+    rsvpDeadline: "20 SEP 2026",
 
     events: [
       {
@@ -1229,7 +1229,7 @@ events: [
         mapLink: "https://maps.google.com/?q=Crkva+Sveta+Petka,+put+za+Ovču",
       },
       {
-        label: "Svečana proslava",
+        label: "Skup gostiju",
         time: "16:00",
         location: "Sala Anđelina, put za Ovču",
         mapLink: "https://www.google.com/maps/place/Sve%C4%8Dana+sala+%22An%C4%91elina%22/@44.882065,20.4690897,17z/data=!3m1!4b1!4m6!3m5!1s0x475a6300269fa3d3:0xab5b9f3580141e95!8m2!3d44.882065!4d20.4716646!16s%2Fg%2F11lmdpxcmw?entry=ttu&g_ep=EgoyMDI2MDMzMS4wIKXMDSoASAFQAw%3D%3D",
