@@ -10,6 +10,11 @@ const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const UPLOAD_BATCH_SIZE = 3;
 
+const MAX_WIDTH = 1600;
+const MAX_HEIGHT = 1600;
+const JPEG_QUALITY = 0.82;
+const WEBP_QUALITY = 0.82;
+
 function WeddingUpload() {
   const { slug } = useParams();
   const wedding = demoWedding.find((item) => item.slug === slug);
@@ -21,6 +26,7 @@ function WeddingUpload() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [processing, setProcessing] = useState(false);
 
   const previewUrls = useMemo(() => {
     return files.map((file) => ({
@@ -86,10 +92,113 @@ function WeddingUpload() {
   };
 
   const handleChooseFiles = () => {
+    if (uploading || processing) return;
     fileInputRef.current?.click();
   };
 
-  const handleFileChange = (e) => {
+  const loadImageFromFile = (file) =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      const objectUrl = URL.createObjectURL(file);
+
+      img.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+        resolve(img);
+      };
+
+      img.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        reject(new Error("Neuspešno učitavanje slike."));
+      };
+
+      img.src = objectUrl;
+    });
+
+  const canvasToBlob = (canvas, mimeType, quality) =>
+    new Promise((resolve, reject) => {
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) {
+            reject(new Error("Neuspešna kompresija slike."));
+            return;
+          }
+          resolve(blob);
+        },
+        mimeType,
+        quality
+      );
+    });
+
+  const compressImage = async (file) => {
+    if (!file.type.startsWith("image/")) {
+      return file;
+    }
+
+    const image = await loadImageFromFile(file);
+
+    let { width, height } = image;
+
+    const widthRatio = MAX_WIDTH / width;
+    const heightRatio = MAX_HEIGHT / height;
+    const ratio = Math.min(widthRatio, heightRatio, 1);
+
+    const targetWidth = Math.round(width * ratio);
+    const targetHeight = Math.round(height * ratio);
+
+    const canvas = document.createElement("canvas");
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      return file;
+    }
+
+    ctx.drawImage(image, 0, 0, targetWidth, targetHeight);
+
+    const outputType =
+      file.type === "image/png" ? "image/png" : "image/jpeg";
+
+    const quality =
+      outputType === "image/png" ? undefined : outputType === "image/jpeg"
+        ? JPEG_QUALITY
+        : WEBP_QUALITY;
+
+    const compressedBlob = await canvasToBlob(canvas, outputType, quality);
+
+    if (compressedBlob.size >= file.size) {
+      return file;
+    }
+
+    let nextName = file.name;
+
+    if (outputType === "image/jpeg" && !nextName.toLowerCase().match(/\.jpe?g$/)) {
+      nextName = nextName.replace(/\.[^/.]+$/, "");
+      nextName = `${nextName || "photo"}.jpg`;
+    }
+
+    return new File([compressedBlob], nextName, {
+      type: outputType,
+      lastModified: Date.now(),
+    });
+  };
+
+  const prepareFilesForUpload = async (selectedFiles) => {
+    const prepared = await Promise.all(
+      selectedFiles.map(async (file) => {
+        try {
+          return await compressImage(file);
+        } catch (err) {
+          console.error("Greška pri kompresiji slike:", err);
+          return file;
+        }
+      })
+    );
+
+    return prepared;
+  };
+
+  const handleFileChange = async (e) => {
     setError("");
     setSuccess(false);
 
@@ -106,7 +215,20 @@ function WeddingUpload() {
       return;
     }
 
-    setFiles(Array.from(selectedFiles));
+    try {
+      setProcessing(true);
+
+      const originalFiles = Array.from(selectedFiles);
+      const preparedFiles = await prepareFilesForUpload(originalFiles);
+
+      setFiles(preparedFiles);
+    } catch (err) {
+      console.error("Greška pri obradi slika:", err);
+      setError("Došlo je do greške prilikom obrade fotografija.");
+      setFiles([]);
+    } finally {
+      setProcessing(false);
+    }
   };
 
   const uploadBatch = async (batchFiles) => {
@@ -212,9 +334,9 @@ function WeddingUpload() {
               type="button"
               className="upload-choose-button"
               onClick={handleChooseFiles}
-              disabled={uploading}
+              disabled={uploading || processing}
             >
-              Izaberite fotografije
+              {processing ? "Priprema fotografija..." : "Izaberite fotografije"}
             </button>
 
             <p className="upload-hero-meta">
@@ -248,7 +370,7 @@ function WeddingUpload() {
               type="button"
               className="upload-submit-button"
               onClick={handleUpload}
-              disabled={uploading}
+              disabled={uploading || processing}
             >
               {uploading ? "Slanje..." : "Pošalji fotografije"}
             </button>
