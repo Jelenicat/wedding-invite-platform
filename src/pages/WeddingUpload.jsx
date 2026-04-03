@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase";
 import demoWedding from "../data/demoWedding";
 import "../styles/gallery.css";
@@ -13,11 +13,11 @@ const UPLOAD_BATCH_SIZE = 3;
 const MAX_WIDTH = 1600;
 const MAX_HEIGHT = 1600;
 const JPEG_QUALITY = 0.82;
-const WEBP_QUALITY = 0.82;
 
 function WeddingUpload() {
   const { slug } = useParams();
   const wedding = demoWedding.find((item) => item.slug === slug);
+
   const fileInputRef = useRef(null);
   const selectedPanelRef = useRef(null);
   const successCardRef = useRef(null);
@@ -27,6 +27,7 @@ function WeddingUpload() {
   const [success, setSuccess] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [processing, setProcessing] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const previewUrls = useMemo(() => {
     return files.map((file) => ({
@@ -156,13 +157,8 @@ function WeddingUpload() {
 
     ctx.drawImage(image, 0, 0, targetWidth, targetHeight);
 
-    const outputType =
-      file.type === "image/png" ? "image/png" : "image/jpeg";
-
-    const quality =
-      outputType === "image/png" ? undefined : outputType === "image/jpeg"
-        ? JPEG_QUALITY
-        : WEBP_QUALITY;
+    const outputType = file.type === "image/png" ? "image/png" : "image/jpeg";
+    const quality = outputType === "image/png" ? undefined : JPEG_QUALITY;
 
     const compressedBlob = await canvasToBlob(canvas, outputType, quality);
 
@@ -201,6 +197,7 @@ function WeddingUpload() {
   const handleFileChange = async (e) => {
     setError("");
     setSuccess(false);
+    setUploadProgress(0);
 
     const selectedFiles = e.target.files;
     const validationError = validateFiles(selectedFiles);
@@ -231,24 +228,66 @@ function WeddingUpload() {
     }
   };
 
-  const uploadBatch = async (batchFiles) => {
-    const uploadPromises = batchFiles.map((file) => {
+  const uploadSingleFileWithProgress = (file, onProgress) =>
+    new Promise((resolve, reject) => {
       const uniqueName = `${Date.now()}-${Math.random()
         .toString(36)
         .slice(2)}-${file.name}`;
 
       const storageRef = ref(storage, `wedding-uploads/${slug}/${uniqueName}`);
-      return uploadBytes(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          onProgress(snapshot.bytesTransferred, snapshot.totalBytes);
+        },
+        (err) => reject(err),
+        () => resolve()
+      );
     });
 
-    await Promise.all(uploadPromises);
-  };
+  const uploadInBatchesWithProgress = async (
+    filesToUpload,
+    batchSize = UPLOAD_BATCH_SIZE
+  ) => {
+    const fileProgressMap = new Map();
 
-  const uploadInBatches = async (filesToUpload, batchSize = UPLOAD_BATCH_SIZE) => {
+    const recalculateTotalProgress = () => {
+      let transferred = 0;
+      let total = 0;
+
+      filesToUpload.forEach((file) => {
+        const current = fileProgressMap.get(file.name) || {
+          transferred: 0,
+          total: file.size,
+        };
+
+        transferred += current.transferred;
+        total += current.total;
+      });
+
+      const percent = total > 0 ? Math.round((transferred / total) * 100) : 0;
+      setUploadProgress(percent);
+    };
+
     for (let i = 0; i < filesToUpload.length; i += batchSize) {
       const batch = filesToUpload.slice(i, i + batchSize);
-      await uploadBatch(batch);
+
+      await Promise.all(
+        batch.map((file) =>
+          uploadSingleFileWithProgress(file, (bytesTransferred, totalBytes) => {
+            fileProgressMap.set(file.name, {
+              transferred: bytesTransferred,
+              total: totalBytes,
+            });
+            recalculateTotalProgress();
+          })
+        )
+      );
     }
+
+    setUploadProgress(100);
   };
 
   const handleUpload = async () => {
@@ -263,7 +302,9 @@ function WeddingUpload() {
 
     try {
       setUploading(true);
-      await uploadInBatches(files, UPLOAD_BATCH_SIZE);
+      setUploadProgress(0);
+
+      await uploadInBatchesWithProgress(files, UPLOAD_BATCH_SIZE);
 
       setSuccess(true);
       setFiles([]);
@@ -366,13 +407,29 @@ function WeddingUpload() {
               ))}
             </div>
 
+            {uploading && (
+              <div className="upload-progress-wrap">
+                <div className="upload-progress-top">
+                  <span className="upload-progress-label">Upload u toku</span>
+                  <span className="upload-progress-value">{uploadProgress}%</span>
+                </div>
+
+                <div className="upload-progress-bar">
+                  <div
+                    className="upload-progress-bar-fill"
+                    style={{ width: `${uploadProgress}%` }}
+                  />
+                </div>
+              </div>
+            )}
+
             <button
               type="button"
               className="upload-submit-button"
               onClick={handleUpload}
               disabled={uploading || processing}
             >
-              {uploading ? "Slanje..." : "Pošalji fotografije"}
+              {uploading ? `Slanje... ${uploadProgress}%` : "Pošalji fotografije"}
             </button>
           </div>
         )}
