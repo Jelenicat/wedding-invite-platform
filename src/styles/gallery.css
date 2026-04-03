@@ -909,46 +909,92 @@
   border-color: #0f172a;
 }
 .upload-progress-wrap {
-  margin-top: 18px;
-  margin-bottom: 18px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(120, 98, 82, 0.12);
-  box-shadow: 0 10px 30px rgba(66, 43, 30, 0.08);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(249, 243, 237, 0.78) 100%
+  );
+
+  border: 1px solid rgba(200, 170, 143, 0.25);
+
+  box-shadow:
+    0 12px 40px rgba(120, 90, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .upload-progress-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .upload-progress-label {
-  font-size: 0.95rem;
-  color: #6f5a4d;
-  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: #8a6f5c;
 }
 
 .upload-progress-value {
-  font-size: 0.95rem;
-  color: #3f3128;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a372c;
 }
 
 .upload-progress-bar {
   width: 100%;
-  height: 10px;
+  height: 8px;
   border-radius: 999px;
   overflow: hidden;
-  background: rgba(111, 90, 77, 0.14);
+
+  background: rgba(170, 140, 110, 0.12);
 }
 
 .upload-progress-bar-fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #c9aa8f 0%, #a97f66 100%);
-  transition: width 0.25s ease;
+
+  background: linear-gradient(
+    90deg,
+    #e7d3c3 0%,
+    #c9aa8f 50%,
+    #a97f66 100%
+  );
+
+  box-shadow: 0 0 10px rgba(201, 170, 143, 0.6);
+
+  transition: width 0.3s ease;
+}
+.upload-progress-bar-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+
+  animation: progressShine 1.8s infinite;
+}
+
+@keyframes progressShine {
+  100% {
+    left: 140%;
+  }
 }

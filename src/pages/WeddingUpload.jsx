@@ -6,7 +6,8 @@ import demoWedding from "../data/demoWedding";
 import "../styles/gallery.css";
 
 const MAX_FILES = 10;
-const MAX_FILE_SIZE = 8 * 1024 * 1024;
+const MAX_COMPRESSED_FILE_SIZE = 8 * 1024 * 1024;
+const MAX_ORIGINAL_FILE_SIZE = 20 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const UPLOAD_BATCH_SIZE = 3;
 
@@ -28,11 +29,13 @@ function WeddingUpload() {
   const [uploading, setUploading] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadedCount, setUploadedCount] = useState(0);
 
   const previewUrls = useMemo(() => {
-    return files.map((file) => ({
-      name: file.name,
-      url: URL.createObjectURL(file),
+    return files.map((item) => ({
+      id: item.id,
+      name: item.file.name,
+      url: URL.createObjectURL(item.file),
     }));
   }, [files]);
 
@@ -68,7 +71,7 @@ function WeddingUpload() {
     }
   }, [success]);
 
-  const validateFiles = (selectedFiles) => {
+  const validateSelectedFiles = (selectedFiles) => {
     const fileArray = Array.from(selectedFiles || []);
 
     if (fileArray.length === 0) {
@@ -84,8 +87,30 @@ function WeddingUpload() {
         return "Dozvoljene su samo JPG, PNG i WEBP slike.";
       }
 
-      if (file.size > MAX_FILE_SIZE) {
-        return "Jedna ili više slika prelazi 8 MB.";
+      if (file.size > MAX_ORIGINAL_FILE_SIZE) {
+        return "Jedna ili više originalnih slika prelazi 20 MB.";
+      }
+    }
+
+    return "";
+  };
+
+  const validatePreparedFiles = (preparedItems) => {
+    if (!preparedItems.length) {
+      return "Izaberite bar jednu fotografiju.";
+    }
+
+    if (preparedItems.length > MAX_FILES) {
+      return `Možete poslati najviše ${MAX_FILES} slika odjednom.`;
+    }
+
+    for (const item of preparedItems) {
+      if (!ALLOWED_TYPES.includes(item.file.type)) {
+        return "Dozvoljene su samo JPG, PNG i WEBP slike.";
+      }
+
+      if (item.file.size > MAX_COMPRESSED_FILE_SIZE) {
+        return "Jedna ili više slika i nakon obrade prelazi 8 MB.";
       }
     }
 
@@ -95,6 +120,16 @@ function WeddingUpload() {
   const handleChooseFiles = () => {
     if (uploading || processing) return;
     fileInputRef.current?.click();
+  };
+
+  const resetFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const buildFileId = (file, index) => {
+    return `${file.name}-${file.size}-${file.lastModified}-${index}-${crypto.randomUUID()}`;
   };
 
   const loadImageFromFile = (file) =>
@@ -138,7 +173,6 @@ function WeddingUpload() {
     const image = await loadImageFromFile(file);
 
     let { width, height } = image;
-
     const widthRatio = MAX_WIDTH / width;
     const heightRatio = MAX_HEIGHT / height;
     const ratio = Math.min(widthRatio, heightRatio, 1);
@@ -181,12 +215,21 @@ function WeddingUpload() {
 
   const prepareFilesForUpload = async (selectedFiles) => {
     const prepared = await Promise.all(
-      selectedFiles.map(async (file) => {
+      selectedFiles.map(async (item) => {
         try {
-          return await compressImage(file);
+          const compressedFile = await compressImage(item.originalFile);
+          return {
+            id: item.id,
+            originalFile: item.originalFile,
+            file: compressedFile,
+          };
         } catch (err) {
           console.error("Greška pri kompresiji slike:", err);
-          return file;
+          return {
+            id: item.id,
+            originalFile: item.originalFile,
+            file: item.originalFile,
+          };
         }
       })
     );
@@ -198,52 +241,85 @@ function WeddingUpload() {
     setError("");
     setSuccess(false);
     setUploadProgress(0);
+    setUploadedCount(0);
 
     const selectedFiles = e.target.files;
-    const validationError = validateFiles(selectedFiles);
+    const validationError = validateSelectedFiles(selectedFiles);
 
     if (validationError) {
       setError(validationError);
       setFiles([]);
-
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
+      resetFileInput();
       return;
     }
 
     try {
       setProcessing(true);
 
-      const originalFiles = Array.from(selectedFiles);
-      const preparedFiles = await prepareFilesForUpload(originalFiles);
+      const originalItems = Array.from(selectedFiles).map((file, index) => ({
+        id: buildFileId(file, index),
+        originalFile: file,
+      }));
+
+      const preparedFiles = await prepareFilesForUpload(originalItems);
+      const preparedValidationError = validatePreparedFiles(preparedFiles);
+
+      if (preparedValidationError) {
+        setError(preparedValidationError);
+        setFiles([]);
+        resetFileInput();
+        return;
+      }
 
       setFiles(preparedFiles);
     } catch (err) {
       console.error("Greška pri obradi slika:", err);
       setError("Došlo je do greške prilikom obrade fotografija.");
       setFiles([]);
+      resetFileInput();
     } finally {
       setProcessing(false);
     }
   };
 
-  const uploadSingleFileWithProgress = (file, onProgress) =>
+  const removeSingleFile = (id) => {
+    if (uploading || processing) return;
+
+    setFiles((prev) => prev.filter((item) => item.id !== id));
+    setError("");
+    setSuccess(false);
+    setUploadProgress(0);
+    setUploadedCount(0);
+  };
+
+  const handleResetAfterSuccess = () => {
+    setSuccess(false);
+    setError("");
+    setFiles([]);
+    setUploadProgress(0);
+    setUploadedCount(0);
+    resetFileInput();
+  };
+
+  const uploadSingleFileWithProgress = (item, onProgress, onComplete) =>
     new Promise((resolve, reject) => {
       const uniqueName = `${Date.now()}-${Math.random()
         .toString(36)
-        .slice(2)}-${file.name}`;
+        .slice(2)}-${item.file.name}`;
 
       const storageRef = ref(storage, `wedding-uploads/${slug}/${uniqueName}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef, item.file);
 
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          onProgress(snapshot.bytesTransferred, snapshot.totalBytes);
+          onProgress(item.id, snapshot.bytesTransferred, snapshot.totalBytes);
         },
         (err) => reject(err),
-        () => resolve()
+        () => {
+          onComplete(item.id);
+          resolve();
+        }
       );
     });
 
@@ -252,15 +328,16 @@ function WeddingUpload() {
     batchSize = UPLOAD_BATCH_SIZE
   ) => {
     const fileProgressMap = new Map();
+    const completedSet = new Set();
 
     const recalculateTotalProgress = () => {
       let transferred = 0;
       let total = 0;
 
-      filesToUpload.forEach((file) => {
-        const current = fileProgressMap.get(file.name) || {
+      filesToUpload.forEach((item) => {
+        const current = fileProgressMap.get(item.id) || {
           transferred: 0,
-          total: file.size,
+          total: item.file.size,
         };
 
         transferred += current.transferred;
@@ -269,32 +346,49 @@ function WeddingUpload() {
 
       const percent = total > 0 ? Math.round((transferred / total) * 100) : 0;
       setUploadProgress(percent);
+      setUploadedCount(completedSet.size);
     };
 
     for (let i = 0; i < filesToUpload.length; i += batchSize) {
       const batch = filesToUpload.slice(i, i + batchSize);
 
       await Promise.all(
-        batch.map((file) =>
-          uploadSingleFileWithProgress(file, (bytesTransferred, totalBytes) => {
-            fileProgressMap.set(file.name, {
-              transferred: bytesTransferred,
-              total: totalBytes,
-            });
-            recalculateTotalProgress();
-          })
+        batch.map((item) =>
+          uploadSingleFileWithProgress(
+            item,
+            (id, bytesTransferred, totalBytes) => {
+              fileProgressMap.set(id, {
+                transferred: bytesTransferred,
+                total: totalBytes,
+              });
+              recalculateTotalProgress();
+            },
+            (id) => {
+              const existing = fileProgressMap.get(id);
+              const targetItem = filesToUpload.find((entry) => entry.id === id);
+
+              fileProgressMap.set(id, {
+                transferred: existing?.total || targetItem?.file.size || 0,
+                total: existing?.total || targetItem?.file.size || 0,
+              });
+
+              completedSet.add(id);
+              recalculateTotalProgress();
+            }
+          )
         )
       );
     }
 
     setUploadProgress(100);
+    setUploadedCount(filesToUpload.length);
   };
 
   const handleUpload = async () => {
     setError("");
     setSuccess(false);
 
-    const validationError = validateFiles(files);
+    const validationError = validatePreparedFiles(files);
     if (validationError) {
       setError(validationError);
       return;
@@ -303,15 +397,13 @@ function WeddingUpload() {
     try {
       setUploading(true);
       setUploadProgress(0);
+      setUploadedCount(0);
 
       await uploadInBatchesWithProgress(files, UPLOAD_BATCH_SIZE);
 
       setSuccess(true);
       setFiles([]);
-
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
+      resetFileInput();
     } catch (err) {
       console.error("Greška pri upload-u:", err);
       setError("Došlo je do greške prilikom slanja fotografija.");
@@ -381,8 +473,14 @@ function WeddingUpload() {
             </button>
 
             <p className="upload-hero-meta">
-              Do 10 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici
+              Do 10 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici nakon obrade
             </p>
+
+            {processing && (
+              <p className="upload-processing-note">
+                Obrada većih fotografija može potrajati nekoliko sekundi.
+              </p>
+            )}
           </div>
         </div>
 
@@ -397,7 +495,18 @@ function WeddingUpload() {
 
             <div className="upload-selected-grid">
               {previewUrls.map((item) => (
-                <div key={item.name} className="upload-selected-item">
+                <div key={item.id} className="upload-selected-item">
+                  <button
+                    type="button"
+                    className="upload-remove-button"
+                    onClick={() => removeSingleFile(item.id)}
+                    disabled={uploading || processing}
+                    aria-label={`Ukloni ${item.name}`}
+                    title="Ukloni fotografiju"
+                  >
+                    ×
+                  </button>
+
                   <img
                     src={item.url}
                     alt={item.name}
@@ -420,6 +529,10 @@ function WeddingUpload() {
                     style={{ width: `${uploadProgress}%` }}
                   />
                 </div>
+
+                <p className="upload-progress-count">
+                  Poslato {uploadedCount} / {files.length} fotografija
+                </p>
               </div>
             )}
 
@@ -427,7 +540,7 @@ function WeddingUpload() {
               type="button"
               className="upload-submit-button"
               onClick={handleUpload}
-              disabled={uploading || processing}
+              disabled={uploading || processing || files.length === 0}
             >
               {uploading ? `Slanje... ${uploadProgress}%` : "Pošalji fotografije"}
             </button>
@@ -464,6 +577,14 @@ function WeddingUpload() {
                 Hvala vam što ste podelili uspomene sa ovog posebnog dana.
               </p>
             </div>
+
+            <button
+              type="button"
+              className="upload-submit-button upload-submit-button-secondary"
+              onClick={handleResetAfterSuccess}
+            >
+              Pošalji još fotografija
+            </button>
           </div>
         ) : null}
       </div>
