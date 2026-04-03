@@ -63,7 +63,18 @@ function AdminPage() {
     payload: null,
     loading: false,
   });
+const [isMobile, setIsMobile] = useState(
+  typeof window !== "undefined" ? window.innerWidth <= 640 : false
+);
 
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 640);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   const expectedPassword = adminAccess[slug];
 
   const sanitizeNumberInput = (value) => {
@@ -669,6 +680,11 @@ function AdminPage() {
     return budget - totalExpenses;
   }, [budget, totalExpenses]);
 
+  const budgetUsagePercent = useMemo(() => {
+    if (typeof budget !== "number" || budget <= 0) return 0;
+    return Math.min((totalExpenses / budget) * 100, 100);
+  }, [budget, totalExpenses]);
+
   const handleExportPDF = () => {
     const exportGuests = guests.filter((guest) => guest.attending === "da");
 
@@ -867,12 +883,108 @@ function AdminPage() {
               .sheet { max-width: 100%; }
               .hero, .table-wrap { box-shadow: none; }
             }
+              @media screen and (max-width: 700px) {
+  body {
+    padding: 14px;
+  }
+
+  .hero {
+    padding: 20px 18px 18px;
+    border-radius: 20px;
+  }
+thead th {
+  position: sticky;
+  top: 0;
+  background: #fffdf9;
+  z-index: 2;
+}
+  .hero-topline {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.12;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .summary-card {
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  .summary-value {
+    font-size: 22px;
+  }
+
+  .section-title-wrap {
+    margin: 20px 0 14px;
+    gap: 10px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-align: center;
+  }
+
+  .table-wrap {
+    padding: 12px;
+    border-radius: 18px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+ table {
+  width: 100%;
+  min-width: 600px;
+}
+
+  thead th,
+  tbody td {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  .col-index {
+    width: 44px;
+  }
+
+  .col-count {
+    width: 90px;
+  }
+
+  .col-source {
+    width: 130px;
+  }
+
+  .col-date {
+    width: 140px;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 18px;
+  }
+}
           </style>
         </head>
         <body>
           <div class="sheet">
             <section class="hero">
-              <div class="hero-topline">Wedding Guest Report</div>
+             <div class="hero-topline">Pregled gostiju</div>
               <h1>Spisak potvrđenih dolazaka</h1>
               <div class="hero-subtitle">
                 Događaj: <strong>${slug}</strong><br />
@@ -934,9 +1046,10 @@ function AdminPage() {
     printWindow.document.close();
     printWindow.focus();
 
-    setTimeout(() => {
-      printWindow.print();
-    }, 300);
+   printWindow.onload = () => {
+  printWindow.focus();
+  printWindow.print();
+};
   };
 
   const getModalAccentStyle = (variant) => {
@@ -974,10 +1087,32 @@ function AdminPage() {
   const messageAccent = getModalAccentStyle(messageModal.variant);
   const confirmAccent = getModalAccentStyle(confirmModal.variant);
 
+  const getPressableProps = (baseStyle, extraStyle = {}) => ({
+    style: {
+      ...baseStyle,
+      ...extraStyle,
+    },
+    onMouseDown: (e) => {
+      e.currentTarget.style.transform = "translateY(1px) scale(0.98)";
+    },
+    onMouseUp: (e) => {
+      e.currentTarget.style.transform = "translateY(0) scale(1)";
+    },
+    onMouseLeave: (e) => {
+      e.currentTarget.style.transform = "translateY(0) scale(1)";
+    },
+    onTouchStart: (e) => {
+      e.currentTarget.style.transform = "translateY(1px) scale(0.985)";
+    },
+    onTouchEnd: (e) => {
+      e.currentTarget.style.transform = "translateY(0) scale(1)";
+    },
+  });
+
   if (!isAuthorized) {
     return (
-      <div style={styles.page}>
-        <div style={styles.loginCard}>
+      <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
+        <div style={{ ...styles.loginCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
           <p style={styles.kicker}>Admin pristup</p>
           <h1 style={styles.title}>Prijava</h1>
           <p style={styles.slug}>Događaj: {slug}</p>
@@ -1000,7 +1135,7 @@ function AdminPage() {
 
             {authError && <p style={styles.error}>{authError}</p>}
 
-            <button type="submit" style={styles.button}>
+            <button type="submit" {...getPressableProps(styles.button)}>
               Uloguj se
             </button>
           </form>
@@ -1011,8 +1146,8 @@ function AdminPage() {
 
   if (loading) {
     return (
-      <div style={styles.page}>
-        <div style={styles.headerCard}>
+      <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
+        <div style={{ ...styles.headerCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
           <h1 style={styles.title}>Admin panel</h1>
           <p>Učitavanje...</p>
         </div>
@@ -1022,8 +1157,8 @@ function AdminPage() {
 
   if (error) {
     return (
-      <div style={styles.page}>
-        <div style={styles.headerCard}>
+      <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
+        <div style={{ ...styles.headerCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
           <h1 style={styles.title}>Admin panel</h1>
           <p style={styles.error}>{error}</p>
         </div>
@@ -1033,20 +1168,23 @@ function AdminPage() {
 
   return (
     <>
-      <div style={styles.page}>
-        <div style={styles.headerCard}>
-          <div style={styles.headerTop}>
+      <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
+        <div style={{ ...styles.headerCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
+          <div style={{ ...styles.headerTop, ...(isMobile ? styles.headerTopMobile : {}) }}>
             <div>
               <p style={styles.kicker}>Admin panel</p>
               <h1 style={styles.title}>Pregled odgovora</h1>
               <p style={styles.slug}>Događaj: {slug}</p>
             </div>
 
-            <div style={styles.actions}>
+            <div style={{ ...styles.actions, ...(isMobile ? styles.actionsMobile : {}) }}>
               <button
                 type="button"
                 onClick={() => navigate(`/admin/${slug}/seating`)}
-                style={styles.secondaryButton}
+                {...getPressableProps(
+                  styles.secondaryButton,
+                  isMobile ? styles.topButtonMobile : {}
+                )}
               >
                 Napravi raspored
               </button>
@@ -1054,7 +1192,10 @@ function AdminPage() {
               <button
                 type="button"
                 onClick={() => setShowExpenses((prev) => !prev)}
-                style={styles.secondaryButton}
+                {...getPressableProps(
+                  styles.secondaryButton,
+                  isMobile ? styles.topButtonMobile : {}
+                )}
               >
                 {showExpenses ? "Zatvori troškove" : "Troškovi"}
               </button>
@@ -1062,7 +1203,10 @@ function AdminPage() {
               <button
                 type="button"
                 onClick={handleExportPDF}
-                style={styles.exportButton}
+                {...getPressableProps(
+                  styles.exportButton,
+                  isMobile ? styles.topButtonMobile : {}
+                )}
               >
                 Preuzmi PDF
               </button>
@@ -1070,7 +1214,10 @@ function AdminPage() {
               <button
                 type="button"
                 onClick={handleLogout}
-                style={styles.logoutButton}
+                {...getPressableProps(
+                  styles.logoutButton,
+                  isMobile ? styles.topButtonMobile : {}
+                )}
               >
                 Odjavi se
               </button>
@@ -1093,14 +1240,14 @@ function AdminPage() {
             </div>
 
             <div style={styles.statBox}>
-              <span style={styles.statNumber}>{totalConfirmedPeople}</span>
+              <span style={{ ...styles.statNumber, fontSize: isMobile ? "32px" : "38px", color: "#2f241f" }}>{totalConfirmedPeople}</span>
               <span style={styles.statLabel}>Ukupno osoba</span>
             </div>
           </div>
         </div>
 
         {showExpenses && (
-          <div style={styles.expensesCard}>
+          <div style={{ ...styles.expensesCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
             <div style={styles.expensesTop}>
               <div>
                 <p style={styles.manualKicker}>Planiranje</p>
@@ -1108,7 +1255,12 @@ function AdminPage() {
               </div>
             </div>
 
-            <div style={styles.budgetBlock}>
+           <div
+  style={{
+    ...styles.budgetBlock,
+    ...(isMobile ? styles.budgetBlockMobile : {}),
+  }}
+>
               <div style={styles.field}>
                 <label htmlFor="budget-input" style={styles.label}>
                   Budžet (opciono)
@@ -1130,7 +1282,10 @@ function AdminPage() {
               <button
                 type="button"
                 onClick={handleSaveBudget}
-                style={styles.button}
+                {...getPressableProps(
+                  styles.button,
+                  isMobile ? styles.fullWidthButton : {}
+                )}
                 disabled={savingBudget}
               >
                 {savingBudget ? "Čuvanje..." : "Sačuvaj budžet"}
@@ -1156,12 +1311,13 @@ function AdminPage() {
                 <span
                   style={{
                     ...styles.statNumber,
+                    fontSize: isMobile ? "28px" : "34px",
                     color:
                       remainingBudget == null
                         ? "#3f3028"
                         : remainingBudget < 0
                         ? "#b42318"
-                        : "#3f3028",
+                        : "#2f241f",
                   }}
                 >
                   {remainingBudget == null
@@ -1170,6 +1326,61 @@ function AdminPage() {
                 </span>
                 <span style={styles.statLabel}>Preostalo</span>
               </div>
+            </div>
+
+            <div style={styles.budgetProgressCard}>
+              <div style={styles.budgetProgressTop}>
+                <div>
+                  <p style={styles.progressKicker}>Praćenje budžeta</p>
+                  <h3 style={styles.progressTitle}>Potrošnja u odnosu na plan</h3>
+                </div>
+                <div
+                  style={{
+                    ...styles.progressBadge,
+                    ...(typeof budget !== "number"
+                      ? styles.progressBadgeNeutral
+                      : remainingBudget < 0
+                      ? styles.progressBadgeDanger
+                      : budgetUsagePercent >= 80
+                      ? styles.progressBadgeWarning
+                      : styles.progressBadgeSuccess),
+                  }}
+                >
+                  {typeof budget !== "number"
+                    ? "Dodaj budžet"
+                    : remainingBudget < 0
+                    ? "Prekoračeno"
+                    : `${Math.round(budgetUsagePercent)}% iskorišćeno`}
+                </div>
+              </div>
+
+              <div style={styles.progressTrack}>
+                <div
+                  style={{
+                    ...styles.progressFill,
+                    width:
+                      typeof budget !== "number"
+                        ? "0%"
+                        : `${budgetUsagePercent}%`,
+                    background:
+                      typeof budget !== "number"
+                        ? "linear-gradient(135deg, #d8c7b7, #ceb8a6)"
+                        : remainingBudget < 0
+                        ? "linear-gradient(135deg, #d95c51, #b42318)"
+                        : budgetUsagePercent >= 80
+                        ? "linear-gradient(135deg, #d2a04a, #b98118)"
+                        : "linear-gradient(135deg, #b8826f, #a06a57)",
+                  }}
+                />
+              </div>
+
+              <p style={styles.progressNote}>
+                {typeof budget !== "number"
+                  ? "Postavi budžet da bi odmah videla koliko je već potrošeno i koliko je ostalo."
+                  : remainingBudget < 0
+                  ? `Troškovi su premašili plan za ${formatCurrency(Math.abs(remainingBudget))}.`
+                  : `Do sada je potrošeno ${formatCurrency(totalExpenses)}, a ostalo je još ${formatCurrency(remainingBudget)}.`}
+              </p>
             </div>
 
             <form onSubmit={handleAddExpense} style={styles.expenseForm}>
@@ -1223,7 +1434,10 @@ function AdminPage() {
 
               <button
                 type="submit"
-                style={styles.button}
+                {...getPressableProps(
+                  styles.button,
+                  isMobile ? styles.fullWidthButton : {}
+                )}
                 disabled={addingExpense}
               >
                 {addingExpense ? "Dodavanje..." : "Dodaj trošak"}
@@ -1234,7 +1448,11 @@ function AdminPage() {
               <h3 style={styles.subTitle}>Lista troškova</h3>
 
               {expenses.length === 0 ? (
-                <p style={styles.emptyText}>Još nema unetih troškova.</p>
+                <p style={styles.emptyText}>
+                  Još nema unetih troškova.
+                  <br />
+                  Dodaj prvi trošak da odmah vidiš kako se menja budžet.
+                </p>
               ) : (
                 <div style={styles.list}>
                   {expenses.map((expense) => (
@@ -1273,7 +1491,7 @@ function AdminPage() {
           </div>
         )}
 
-        <div style={styles.manualCard}>
+        <div style={{ ...styles.manualCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
           <p style={styles.manualKicker}>Ručni unos</p>
           <h2 style={styles.sectionTitle}>Dodaj gosta koji dolazi</h2>
 
@@ -1311,13 +1529,20 @@ function AdminPage() {
               />
             </div>
 
-            <button type="submit" style={styles.button} disabled={addingGuest}>
+            <button
+              type="submit"
+              {...getPressableProps(
+                styles.button,
+                isMobile ? styles.fullWidthButton : {}
+              )}
+              disabled={addingGuest}
+            >
               {addingGuest ? "Dodavanje..." : "Dodaj gosta"}
             </button>
           </form>
         </div>
 
-        <div style={styles.searchCard}>
+        <div style={{ ...styles.searchCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
           <div style={styles.searchField}>
             <label htmlFor="guest-search" style={styles.label}>
               Pretraga gostiju
@@ -1341,7 +1566,7 @@ function AdminPage() {
               <p style={styles.emptyText}>
                 {guestSearch.trim()
                   ? "Nema rezultata za ovu pretragu."
-                  : "Još nema potvrđenih dolazaka."}
+                  : "Još nema potvrđenih dolazaka. Kada gosti krenu da potvrđuju prisustvo, ovde ćeš ih videti."}
               </p>
             ) : (
               <div style={styles.scrollList}>
@@ -1383,7 +1608,7 @@ function AdminPage() {
               <p style={styles.emptyText}>
                 {guestSearch.trim()
                   ? "Nema rezultata za ovu pretragu."
-                  : "Još nema negativnih odgovora."}
+                  : "Još nema negativnih odgovora. Ako neko odbije poziv, pojaviće se ovde."}
               </p>
             ) : (
               <div style={styles.scrollList}>
@@ -1507,6 +1732,9 @@ const styles = {
     color: "#3f3028",
     fontFamily: "Georgia, serif",
   },
+  pageMobile: {
+    padding: "24px 14px",
+  },
   loginCard: {
     maxWidth: "480px",
     margin: "80px auto",
@@ -1552,6 +1780,11 @@ const styles = {
     boxShadow: "0 10px 30px rgba(63, 48, 40, 0.08)",
     border: "1px solid rgba(120, 90, 70, 0.12)",
   },
+  sectionCardMobile: {
+    borderRadius: "20px",
+    padding: "18px",
+    marginBottom: "18px",
+  },
   searchField: {
     maxWidth: "420px",
     display: "flex",
@@ -1583,6 +1816,20 @@ const styles = {
     display: "flex",
     gap: "12px",
     flexWrap: "wrap",
+  },
+  headerTopMobile: {
+    flexDirection: "column",
+    alignItems: "stretch",
+  },
+  actionsMobile: {
+    width: "100%",
+    flexDirection: "column",
+    gap: "10px",
+  },
+  topButtonMobile: {
+    width: "100%",
+    minWidth: "100%",
+    justifyContent: "center",
   },
   kicker: {
     margin: 0,
@@ -1631,13 +1878,22 @@ const styles = {
     gap: "16px",
     alignItems: "end",
   },
-  budgetBlock: {
-    marginTop: "18px",
-    display: "grid",
-    gridTemplateColumns: "minmax(220px, 320px) auto",
-    gap: "16px",
-    alignItems: "end",
-  },
+budgetBlock: {
+  marginTop: "18px",
+  display: "grid",
+  gridTemplateColumns: "minmax(220px, 320px) auto",
+  gap: "16px",
+  alignItems: "end",
+},
+budgetBlockMobile: {
+  gridTemplateColumns: "1fr",
+  alignItems: "stretch",
+},
+fullWidthButton: {
+  width: "100%",
+  minWidth: "100%",
+  padding: "0 18px",
+},
   field: {
     display: "flex",
     flexDirection: "column",
@@ -1656,18 +1912,26 @@ const styles = {
     outline: "none",
     background: "#fff",
   },
-  button: {
-    height: "52px",
-    borderRadius: "999px",
-    border: "none",
-    background: "#b8826f",
-    color: "#fff",
-    fontSize: "15px",
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
-    cursor: "pointer",
-    padding: "0 22px",
-  },
+button: {
+  height: "52px",
+  borderRadius: "999px",
+  border: "none",
+  background: "linear-gradient(135deg, #b8826f, #a06a57)",
+  color: "#fff",
+  fontSize: "14px",
+  fontWeight: 600,
+  letterSpacing: "0.08em",
+  textTransform: "uppercase",
+  cursor: "pointer",
+  padding: "0 22px",
+  whiteSpace: "normal",
+  textAlign: "center",
+  boxShadow: "0 8px 18px rgba(184,130,111,0.25)",
+  transition: "transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+},
   secondaryButton: {
     height: "44px",
     padding: "0 18px",
@@ -1676,6 +1940,9 @@ const styles = {
     background: "#fff",
     color: "#6c5a4f",
     cursor: "pointer",
+    transition: "transform 0.18s ease, box-shadow 0.18s ease",
+    display: "inline-flex",
+    alignItems: "center",
   },
   exportButton: {
     height: "44px",
@@ -1688,6 +1955,10 @@ const styles = {
     fontSize: "14px",
     letterSpacing: "0.08em",
     textTransform: "uppercase",
+    transition: "transform 0.18s ease, box-shadow 0.18s ease",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   logoutButton: {
     height: "44px",
@@ -1697,6 +1968,10 @@ const styles = {
     background: "#fff",
     color: "#6c5a4f",
     cursor: "pointer",
+    transition: "transform 0.18s ease, box-shadow 0.18s ease",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   statsRow: {
     display: "grid",
@@ -1809,6 +2084,78 @@ const styles = {
     letterSpacing: "0.06em",
     textTransform: "uppercase",
     flexShrink: 0,
+    transition: "transform 0.18s ease, box-shadow 0.18s ease",
+  },
+  budgetProgressCard: {
+    marginTop: "18px",
+    padding: "18px",
+    borderRadius: "20px",
+    background: "linear-gradient(180deg, #fffdfb 0%, #fbf6f1 100%)",
+    border: "1px solid rgba(120, 90, 70, 0.12)",
+  },
+  budgetProgressTop: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "12px",
+    flexWrap: "wrap",
+  },
+  progressKicker: {
+    margin: 0,
+    fontSize: "11px",
+    letterSpacing: "0.16em",
+    textTransform: "uppercase",
+    color: "#9a7b67",
+  },
+  progressTitle: {
+    margin: "6px 0 0",
+    fontSize: "20px",
+    lineHeight: 1.2,
+    color: "#2f241f",
+  },
+  progressBadge: {
+    padding: "8px 12px",
+    borderRadius: "999px",
+    fontSize: "12px",
+    fontWeight: 700,
+    letterSpacing: "0.05em",
+    whiteSpace: "nowrap",
+  },
+  progressBadgeSuccess: {
+    background: "#efe7dd",
+    color: "#8d5f50",
+  },
+  progressBadgeWarning: {
+    background: "#fbf3d7",
+    color: "#8a6a12",
+  },
+  progressBadgeDanger: {
+    background: "#fbeaea",
+    color: "#b42318",
+  },
+  progressBadgeNeutral: {
+    background: "#f3ece5",
+    color: "#8d7364",
+  },
+  progressTrack: {
+    marginTop: "16px",
+    width: "100%",
+    height: "12px",
+    borderRadius: "999px",
+    background: "#efe4da",
+    overflow: "hidden",
+  },
+  progressFill: {
+    height: "100%",
+    borderRadius: "999px",
+    transition: "width 0.35s ease",
+    boxShadow: "0 8px 18px rgba(184,130,111,0.18)",
+  },
+  progressNote: {
+    margin: "12px 0 0",
+    fontSize: "14px",
+    lineHeight: 1.6,
+    color: "#6c5a4f",
   },
   modalOverlay: {
     position: "fixed",
@@ -1872,6 +2219,7 @@ const styles = {
     fontWeight: 600,
     letterSpacing: "0.05em",
     textTransform: "uppercase",
+    transition: "transform 0.18s ease, box-shadow 0.18s ease",
   },
   modalSecondaryButton: {
     height: "46px",
@@ -1882,6 +2230,7 @@ const styles = {
     color: "#6c5a4f",
     cursor: "pointer",
     fontSize: "14px",
+    transition: "transform 0.18s ease, box-shadow 0.18s ease",
   },
 };
 

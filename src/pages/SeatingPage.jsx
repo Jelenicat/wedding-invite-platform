@@ -1409,48 +1409,80 @@ const handlePrintSeatingPlan = () => {
         </div>
       </div>
 
-      <div style={styles.addTableCard}>
-        <p style={styles.kicker}>Dodavanje stolova</p>
-        <h2 style={styles.sectionTitle}>Dodaj novi sto</h2>
+<div style={styles.topCardsGrid}>
+  <div style={styles.addTableCard}>
+    <p style={styles.kicker}>Dodavanje stolova</p>
+    <h2 style={styles.sectionTitle}>Dodaj novi sto</h2>
 
-        <form onSubmit={handleAddTable} style={styles.addTableForm}>
-          <div style={styles.field}>
-            <label htmlFor="table-name" style={styles.label}>
-              Naziv stola
-            </label>
-            <input
-              id="table-name"
-              type="text"
-              name="name"
-              value={tableForm.name}
-              onChange={handleTableInputChange}
-              placeholder="npr. Sto 1"
-              style={styles.input}
-              required
-            />
-          </div>
-
-          <div style={styles.field}>
-            <label htmlFor="table-capacity" style={styles.label}>
-              Broj mesta
-            </label>
-            <input
-              id="table-capacity"
-              type="number"
-              name="capacity"
-              min="1"
-              value={tableForm.capacity}
-              onChange={handleTableInputChange}
-              style={styles.input}
-              required
-            />
-          </div>
-
-          <button type="submit" style={styles.button} disabled={addingTable}>
-            {addingTable ? "Dodavanje..." : "Dodaj sto"}
-          </button>
-        </form>
+    <form onSubmit={handleAddTable} style={styles.addTableForm}>
+      <div style={styles.field}>
+        <label htmlFor="table-name" style={styles.label}>
+          Naziv stola
+        </label>
+        <input
+          id="table-name"
+          type="text"
+          name="name"
+          value={tableForm.name}
+          onChange={handleTableInputChange}
+          placeholder="npr. Sto 1"
+          style={styles.input}
+          required
+        />
       </div>
+
+      <div style={styles.field}>
+        <label htmlFor="table-capacity" style={styles.label}>
+          Broj mesta
+        </label>
+        <input
+          id="table-capacity"
+          type="number"
+          name="capacity"
+          min="1"
+          value={tableForm.capacity}
+          onChange={handleTableInputChange}
+          style={styles.input}
+          required
+        />
+      </div>
+
+      <button type="submit" style={styles.button} disabled={addingTable}>
+        {addingTable ? "Dodavanje..." : "Dodaj sto"}
+      </button>
+    </form>
+  </div>
+
+  <div style={styles.unassignedCard}>
+    <div style={styles.unassignedHeader}>
+      <div>
+        <p style={styles.kicker}>Pregled gostiju</p>
+        <h2 style={styles.sectionTitle}>Neraspoređeni gosti</h2>
+      </div>
+
+      <span style={styles.unassignedCount}>
+        {unassignedGuestsCount} osoba
+      </span>
+    </div>
+
+    {unassignedGuests.length === 0 ? (
+      <p style={styles.emptyText}>Svi gosti su raspoređeni 🎉</p>
+    ) : (
+      <div style={styles.unassignedList}>
+        {unassignedGuests.map((guest) => (
+          <div key={guest.id} style={styles.unassignedGuestRow}>
+            <div>
+              <p style={styles.guestName}>{guest.fullName}</p>
+              <p style={styles.guestMeta}>
+                Broj osoba: {Number(guest.guests) || 0}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
 
       <div style={styles.tablesGrid}>
         {tables.length === 0 ? (
@@ -1829,15 +1861,14 @@ const styles = {
     boxShadow: "0 10px 30px rgba(63, 48, 40, 0.08)",
     border: "1px solid rgba(120, 90, 70, 0.12)",
   },
-  addTableCard: {
-    maxWidth: "1100px",
-    margin: "0 auto 24px",
-    background: "#fffdf9",
-    borderRadius: "24px",
-    padding: "24px",
-    boxShadow: "0 10px 30px rgba(63, 48, 40, 0.08)",
-    border: "1px solid rgba(120, 90, 70, 0.12)",
-  },
+addTableCard: {
+  background: "#fffdf9",
+  borderRadius: "24px",
+  padding: "24px",
+  boxShadow: "0 10px 30px rgba(63, 48, 40, 0.08)",
+  border: "1px solid rgba(120, 90, 70, 0.12)",
+  minWidth: 0,
+},
   tablesGrid: {
     maxWidth: "1100px",
     margin: "0 auto",
@@ -2377,6 +2408,61 @@ const styles = {
     boxShadow: "0 6px 16px rgba(196, 72, 54, 0.08)",
     transition: "all 0.2s ease",
   },
+topCardsGrid: {
+  maxWidth: "1100px",
+  margin: "0 auto 24px",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+  gap: "20px",
+},
+
+unassignedCard: {
+  background: "#fffdf9",
+  borderRadius: "24px",
+  padding: "24px",
+  boxShadow: "0 10px 30px rgba(63, 48, 40, 0.08)",
+  border: "1px solid rgba(120, 90, 70, 0.12)",
+  minWidth: 0,
+},
+
+unassignedHeader: {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  gap: "12px",
+  flexWrap: "wrap",
+  marginBottom: "16px",
+},
+
+unassignedCount: {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "36px",
+  padding: "6px 14px",
+  borderRadius: "999px",
+  background: "#f3ece5",
+  color: "#6c5a4f",
+  fontSize: "14px",
+  fontWeight: 600,
+  whiteSpace: "nowrap",
+},
+
+unassignedList: {
+  maxHeight: "300px",
+  overflowY: "auto",
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+  paddingRight: "4px",
+},
+
+unassignedGuestRow: {
+  padding: "14px 16px",
+  borderRadius: "16px",
+  background: "#faf5ef",
+  border: "1px solid rgba(120, 90, 70, 0.1)",
+},
 };
 
 export default SeatingPage;

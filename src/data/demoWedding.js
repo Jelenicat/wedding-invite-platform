@@ -1199,7 +1199,7 @@ events: [
   template: "video-band",
   brideName: "Dijana",
   groomName: "Stefan",
-  videoSrc: "/videos/iva-pedja5.mp4",
+  videoSrc: "/videos/dijana-stefan.mp4",
   weddingDate: "16 OKT 2026",
   weddingTime: "17:00",
 
@@ -1215,7 +1215,7 @@ events: [
       {
         label: "Skup svatova kod mladoženje",
         time: "10:00",
-        location: "Dom porodice Vuksa, Borča",
+        location: "Dom porodice Vukša, Borča",
       },
       {
         label: "Skup svatova kod mlade",
@@ -1229,10 +1229,10 @@ events: [
         mapLink: "https://maps.google.com/?q=Crkva+Sveta+Petka,+put+za+Ovču",
       },
       {
-        label: "Svečani ručak",
+        label: "Svečani proslava",
         time: "16:00",
         location: "Sala Anđelina, put za Ovču",
-        mapLink: "https://maps.google.com/?q=Sala+Anđelina,+put+za+Ovču",
+        mapLink: "https://maps.google.com/?q=Sala+Anđelina,+Put+za+Ovču+43",
       },
       {
         label: "Građansko venčanje",
@@ -1243,13 +1243,7 @@ events: [
 
     venue: "Sala Anđelina, put za Ovču",
     churchVenue: "Crkva Sveta Petka, put za Ovču",
-
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#d8c7c2", "#e9ddd6", "#bfa8a0", "#cbb7ae", "#f2ebe6"],
-    dressCodeNote:
-      "Molimo vas da birate elegantne, nežne i puderaste tonove.",
-
-    mapLink: "https://maps.google.com/?q=Sala+Anđelina,+put+za+Ovču",
+     mapLink: "https://maps.google.com/?q=Sala+Anđelina,+Put+za+Ovču+43",
     note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra",
   }),
 },
