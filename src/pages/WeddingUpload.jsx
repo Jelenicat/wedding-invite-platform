@@ -26,6 +26,7 @@ function WeddingUpload() {
   const [files, setFiles] = useState([]);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [successCount, setSuccessCount] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -84,7 +85,7 @@ function WeddingUpload() {
 
     for (const file of fileArray) {
       if (!ALLOWED_TYPES.includes(file.type)) {
-        return "Dozvoljene su samo JPG, PNG i WEBP slike.";
+        return "Dozvoljene su JPG, PNG i WEBP slike. Ako koristite iPhone i slika ne prolazi, sačuvajte je kao JPG pa pokušajte ponovo.";
       }
 
       if (file.size > MAX_ORIGINAL_FILE_SIZE) {
@@ -106,7 +107,7 @@ function WeddingUpload() {
 
     for (const item of preparedItems) {
       if (!ALLOWED_TYPES.includes(item.file.type)) {
-        return "Dozvoljene su samo JPG, PNG i WEBP slike.";
+        return "Dozvoljene su JPG, PNG i WEBP slike.";
       }
 
       if (item.file.size > MAX_COMPRESSED_FILE_SIZE) {
@@ -129,7 +130,7 @@ function WeddingUpload() {
   };
 
   const buildFileId = (file, index) => {
-    return `${file.name}-${file.size}-${file.lastModified}-${index}-${crypto.randomUUID()}`;
+    return `${file.name}-${file.size}-${file.lastModified}-${index}`;
   };
 
   const loadImageFromFile = (file) =>
@@ -172,7 +173,7 @@ function WeddingUpload() {
 
     const image = await loadImageFromFile(file);
 
-    let { width, height } = image;
+    const { width, height } = image;
     const widthRatio = MAX_WIDTH / width;
     const heightRatio = MAX_HEIGHT / height;
     const ratio = Math.min(widthRatio, heightRatio, 1);
@@ -240,6 +241,7 @@ function WeddingUpload() {
   const handleFileChange = async (e) => {
     setError("");
     setSuccess(false);
+    setSuccessCount(0);
     setUploadProgress(0);
     setUploadedCount(0);
 
@@ -285,15 +287,26 @@ function WeddingUpload() {
   const removeSingleFile = (id) => {
     if (uploading || processing) return;
 
-    setFiles((prev) => prev.filter((item) => item.id !== id));
+    setFiles((prev) => {
+      const nextFiles = prev.filter((item) => item.id !== id);
+
+      if (nextFiles.length === 0) {
+        resetFileInput();
+      }
+
+      return nextFiles;
+    });
+
     setError("");
     setSuccess(false);
+    setSuccessCount(0);
     setUploadProgress(0);
     setUploadedCount(0);
   };
 
   const handleResetAfterSuccess = () => {
     setSuccess(false);
+    setSuccessCount(0);
     setError("");
     setFiles([]);
     setUploadProgress(0);
@@ -329,6 +342,7 @@ function WeddingUpload() {
   ) => {
     const fileProgressMap = new Map();
     const completedSet = new Set();
+    const fileLookup = new Map(filesToUpload.map((item) => [item.id, item]));
 
     const recalculateTotalProgress = () => {
       let transferred = 0;
@@ -365,7 +379,7 @@ function WeddingUpload() {
             },
             (id) => {
               const existing = fileProgressMap.get(id);
-              const targetItem = filesToUpload.find((entry) => entry.id === id);
+              const targetItem = fileLookup.get(id);
 
               fileProgressMap.set(id, {
                 transferred: existing?.total || targetItem?.file.size || 0,
@@ -387,12 +401,15 @@ function WeddingUpload() {
   const handleUpload = async () => {
     setError("");
     setSuccess(false);
+    setSuccessCount(0);
 
     const validationError = validatePreparedFiles(files);
     if (validationError) {
       setError(validationError);
       return;
     }
+
+    const totalFilesToUpload = files.length;
 
     try {
       setUploading(true);
@@ -402,6 +419,7 @@ function WeddingUpload() {
       await uploadInBatchesWithProgress(files, UPLOAD_BATCH_SIZE);
 
       setSuccess(true);
+      setSuccessCount(totalFilesToUpload);
       setFiles([]);
       resetFileInput();
     } catch (err) {
@@ -437,6 +455,26 @@ function WeddingUpload() {
       />
 
       <div className="upload-shell">
+        {uploading && (
+          <div className="upload-progress-wrap">
+            <div className="upload-progress-top">
+              <span className="upload-progress-label">Upload u toku</span>
+              <span className="upload-progress-value">{uploadProgress}%</span>
+            </div>
+
+            <div className="upload-progress-bar">
+              <div
+                className="upload-progress-bar-fill"
+                style={{ width: `${uploadProgress}%` }}
+              />
+            </div>
+
+            <p className="upload-progress-count">
+              Poslato {uploadedCount} / {files.length} fotografija
+            </p>
+          </div>
+        )}
+
         <div className="upload-hero-card">
           <div className="upload-hero-image-wrap">
             <img
@@ -516,26 +554,6 @@ function WeddingUpload() {
               ))}
             </div>
 
-            {uploading && (
-              <div className="upload-progress-wrap">
-                <div className="upload-progress-top">
-                  <span className="upload-progress-label">Upload u toku</span>
-                  <span className="upload-progress-value">{uploadProgress}%</span>
-                </div>
-
-                <div className="upload-progress-bar">
-                  <div
-                    className="upload-progress-bar-fill"
-                    style={{ width: `${uploadProgress}%` }}
-                  />
-                </div>
-
-                <p className="upload-progress-count">
-                  Poslato {uploadedCount} / {files.length} fotografija
-                </p>
-              </div>
-            )}
-
             <button
               type="button"
               className="upload-submit-button"
@@ -574,7 +592,8 @@ function WeddingUpload() {
                 Fotografije su uspešno uploadovane
               </p>
               <p className="upload-success-description">
-                Hvala vam što ste podelili uspomene sa ovog posebnog dana.
+                Uspešno je poslato {successCount}{" "}
+                {successCount === 1 ? "fotografija." : "fotografija."}
               </p>
             </div>
 
