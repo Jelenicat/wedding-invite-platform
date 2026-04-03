@@ -2,12 +2,15 @@
 <html lang="sr">
   <head>
     <meta charset="UTF-8" />
+
     <title>Dijana i Stefan - Pozivnica za venčanje</title>
+
     <meta
       name="description"
       content="Kliknite i otvorite digitalnu pozivnicu za venčanje Dijane i Stefana."
     />
 
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Dijana i Stefan - Pozivnica za venčanje" />
     <meta
@@ -23,6 +26,7 @@
       content="https://mojapozivnica.app/dijana-stefan.html"
     />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dijana i Stefan - Pozivnica za venčanje" />
     <meta
@@ -34,9 +38,16 @@
       content="https://mojapozivnica.app/previews/dijana-stefan.jpg"
     />
   </head>
+
   <body>
+    <p style="font-family: sans-serif; text-align:center; margin-top:40px;">
+      Otvaranje pozivnice...
+    </p>
+
     <script>
-      window.location.replace("/dijana-stefan");
+      setTimeout(() => {
+        window.location.href = "/dijana-stefan";
+      }, 1500);
     </script>
   </body>
 </html>
