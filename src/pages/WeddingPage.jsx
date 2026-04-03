@@ -110,8 +110,10 @@ function WeddingPage() {
 
   const [isIntroOpen, setIsIntroOpen] = useState(false);
   const [showInvitation, setShowInvitation] = useState(false);
+  const [musicStarted, setMusicStarted] = useState(false);
 
   const introTimeoutRef = useRef(null);
+  const audioRef = useRef(null);
 
   const invitation = useMemo(() => {
     return demoWedding.find((item) => item.slug === slug);
@@ -121,6 +123,10 @@ function WeddingPage() {
     return () => {
       if (introTimeoutRef.current) {
         clearTimeout(introTimeoutRef.current);
+      }
+
+      if (audioRef.current) {
+        audioRef.current.pause();
       }
     };
   }, []);
@@ -135,9 +141,17 @@ function WeddingPage() {
 
     setIsIntroOpen(false);
     setShowInvitation(false);
+    setMusicStarted(false);
 
     if (introTimeoutRef.current) {
       clearTimeout(introTimeoutRef.current);
+    }
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      audioRef.current.muted = false;
+      audioRef.current.load();
     }
   }, [invitation]);
 
@@ -167,6 +181,13 @@ function WeddingPage() {
   const handleIntroEnter = () => {
     if (introTimeoutRef.current) {
       clearTimeout(introTimeoutRef.current);
+    }
+
+    if (invitation.musicSrc && audioRef.current && !musicStarted) {
+      audioRef.current.play().catch((error) => {
+        console.error("Muzika nije pokrenuta:", error);
+      });
+      setMusicStarted(true);
     }
 
     setShowInvitation(true);
@@ -214,6 +235,12 @@ function WeddingPage() {
   if (templateKey === "angel") {
     return (
       <div className="wedding-page">
+        {invitation.musicSrc && (
+          <audio ref={audioRef} loop preload="auto">
+            <source src={invitation.musicSrc} type="audio/mpeg" />
+          </audio>
+        )}
+
         <IntroComponent {...introProps} />
         <InvitationComponent {...invitationProps} />
       </div>
@@ -222,6 +249,12 @@ function WeddingPage() {
 
   return (
     <div className="wedding-page">
+      {invitation.musicSrc && (
+        <audio ref={audioRef} loop preload="auto">
+          <source src={invitation.musicSrc} type="audio/mpeg" />
+        </audio>
+      )}
+
       {!showInvitation ? (
         <IntroComponent {...introProps} />
       ) : (

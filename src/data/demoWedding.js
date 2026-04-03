@@ -1200,6 +1200,7 @@ events: [
   brideName: "Dijana",
   groomName: "Stefan",
   videoSrc: "/videos/dijana-stefan.mp4",
+  musicSrc: "/music/dijana-stefan.mp3",
   weddingDate: "16 OKT 2026",
   weddingTime: "16:00",
 
