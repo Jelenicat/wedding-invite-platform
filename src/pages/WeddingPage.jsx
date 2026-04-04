@@ -42,6 +42,10 @@ import BirthdaySplitInvitationCard from "../components/BirthdaySplitInvitationCa
 
 import AngelIntro from "../components/AngelIntro";
 import AngelInvitationCard from "../components/AngelInvitationCard";
+import ClassicIntro from "../components/ClassicIntro";
+import ClassicInvitationCard from "../components/ClassicInvitationCard";
+import EditorialIntro from "../components/EditorialIntro";
+import EditorialInvitationCard from "../components/EditorialInvitationCard";
 
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
@@ -103,6 +107,14 @@ const TEMPLATE_COMPONENTS = {
     Intro: AngelIntro,
     Invitation: AngelInvitationCard,
   },
+  classic: {
+  Intro: ClassicIntro,
+  Invitation: ClassicInvitationCard,
+},
+editorial: {
+  Intro: EditorialIntro,
+  Invitation: EditorialInvitationCard,
+},
 };
 
 function WeddingPage() {
@@ -211,6 +223,7 @@ function WeddingPage() {
     isOpen: isIntroOpen,
     onOpen: handleIntroOpen,
     slug: invitation.slug,
+    introPreviewImage: invitation.introPreviewImage,
   };
 
   const invitationProps = {
@@ -232,20 +245,20 @@ function WeddingPage() {
     image3: invitation.image3,
   };
 
-  if (templateKey === "angel") {
-    return (
-      <div className="wedding-page">
-        {invitation.musicSrc && (
-          <audio ref={audioRef} loop preload="auto">
-            <source src={invitation.musicSrc} type="audio/mpeg" />
-          </audio>
-        )}
+if (templateKey === "angel" || templateKey === "classic") {
+  return (
+    <div className="wedding-page">
+      {invitation.musicSrc && (
+        <audio ref={audioRef} loop preload="auto">
+          <source src={invitation.musicSrc} type="audio/mpeg" />
+        </audio>
+      )}
 
-        <IntroComponent {...introProps} />
-        <InvitationComponent {...invitationProps} />
-      </div>
-    );
-  }
+      <IntroComponent {...introProps} />
+      <InvitationComponent {...invitationProps} />
+    </div>
+  );
+}
 
   return (
     <div className="wedding-page">

@@ -5616,3 +5616,571 @@
   margin-bottom: 10px;
   letter-spacing: 0.04em;
 }
+/* =========================
+   CLASSIC VERTICAL INVITATION
+========================= */
+
+.classic-vertical-page {
+  width: 100%;
+  background: #a66161;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.classic-vertical-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.classic-vertical-column {
+  width: min(100%, 430px);
+  background: #ebe8db;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.classic-vertical-card {
+  position: relative;
+  width: 100%;
+  background: #ebe8db;
+  overflow: hidden;
+}
+
+.classic-vertical-inner {
+  position: relative;
+  padding: 22px 22px 26px;
+}
+
+/* =========================
+   SCHEDULE
+========================= */
+
+.classic-schedule-card {
+  background: #ebe8db;
+}
+
+.classic-vertical-script {
+  margin: 0;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #7a5b44;
+  line-height: 0.9;
+}
+
+.classic-vertical-title {
+  margin: -2px 0 22px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #4b3e35;
+  line-height: 0.95;
+}
+
+.classic-striped-frame {
+  width: 100%;
+  height: 18px;
+  margin: 0 auto 18px;
+  background: repeating-linear-gradient(
+    90deg,
+    #6e5138 0 5px,
+    transparent 5px 12px
+  );
+  opacity: 0.95;
+}
+
+.classic-striped-frame-bottom {
+  margin: 22px auto 0;
+}
+
+.classic-schedule-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.classic-schedule-item {
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+}
+
+.classic-schedule-time {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #7a5b44;
+}
+
+.classic-schedule-label {
+  margin-top: 3px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #443830;
+}
+
+.classic-schedule-note {
+  margin: 6px auto 0;
+  max-width: 220px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: #66564a;
+}
+
+.classic-schedule-divider {
+  width: 1px;
+  height: 34px;
+  margin: 16px auto;
+  background: rgba(110, 81, 56, 0.45);
+}
+
+/* =========================
+   DRESS CODE
+========================= */
+
+.classic-dress-card {
+  min-height: 360px;
+  background: #d9d0c4;
+}
+
+.classic-dress-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(235, 232, 219, 0.72) 0%,
+      rgba(235, 232, 219, 0.84) 100%
+    ),
+    url("/images/dress-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.95;
+}
+
+.classic-dress-inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 28px;
+  padding-bottom: 34px;
+}
+
+.classic-dress-script {
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  color: #7a5b44;
+  line-height: 1;
+}
+
+.classic-dress-text {
+  margin: 18px auto 0;
+  max-width: 250px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #4e433c;
+}
+
+.classic-dress-swatches {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.classic-dress-swatch {
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+  border: 1px solid rgba(90, 78, 69, 0.12);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.classic-dress-footnote {
+  margin: 22px auto 0;
+  max-width: 250px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: #6a5a4f;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .classic-vertical-column {
+    width: 100%;
+  }
+
+  .classic-vertical-inner {
+    padding: 18px 18px 22px;
+  }
+
+  .classic-vertical-script {
+    font-size: 1.45rem;
+  }
+
+  .classic-vertical-title {
+    font-size: 2rem;
+    margin-bottom: 18px;
+  }
+
+  .classic-striped-frame {
+    height: 14px;
+    margin-bottom: 14px;
+    background: repeating-linear-gradient(
+      90deg,
+      #6e5138 0 4px,
+      transparent 4px 10px
+    );
+  }
+
+  .classic-striped-frame-bottom {
+    margin-top: 18px;
+  }
+
+  .classic-schedule-item {
+    max-width: 220px;
+  }
+
+  .classic-schedule-time {
+    font-size: 1.1rem;
+  }
+
+  .classic-schedule-label {
+    font-size: 1.25rem;
+  }
+
+  .classic-schedule-note {
+    font-size: 0.84rem;
+    max-width: 200px;
+  }
+
+  .classic-schedule-divider {
+    height: 28px;
+    margin: 14px auto;
+  }
+
+  .classic-dress-card {
+    min-height: 320px;
+  }
+
+  .classic-dress-script {
+    font-size: 2.1rem;
+  }
+
+  .classic-dress-text {
+    font-size: 1rem;
+    max-width: 220px;
+  }
+
+  .classic-dress-swatch {
+    width: 36px;
+    height: 36px;
+  }
+
+  .classic-dress-footnote {
+    font-size: 0.88rem;
+    max-width: 220px;
+  }
+}
+.classic-schedule-location {
+  margin-top: 6px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: #7a6a5d;
+}
+
+.classic-schedule-location-link {
+  text-decoration: none;
+}
+/* =========================
+   EDITORIAL INVITATION CARD
+========================= */
+
+.editorial-card {
+  background: #f5f1ec;
+  padding: 0;
+}
+
+.editorial-card-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.editorial-card-inner {
+  width: 100%;
+  max-width: 430px;
+  background: #f5f1ec;
+  color: #1d1b19;
+}
+
+/* HERO */
+
+.editorial-hero {
+  width: calc(100% - 34px);
+  margin: 0 auto;
+  margin-top: 18px;
+  padding: 26px 18px 24px;
+  min-height: 270px;
+  border-radius: 0 0 24px 24px;
+  background: linear-gradient(180deg, #1b1a19 0%, #23211f 100%);
+  color: #f4efe9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.editorial-hero-top,
+.editorial-hero-bottom {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: 0.2px;
+  opacity: 0.95;
+}
+
+.editorial-hero-date {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 18px 0;
+}
+
+/* COMMON SECTIONS */
+
+.editorial-section {
+  text-align: center;
+  padding: 38px 22px 0;
+}
+
+.editorial-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  line-height: 0.95;
+  letter-spacing: 1px;
+  color: #2a2623;
+  font-weight: 400;
+}
+
+.editorial-script {
+  margin-top: -4px;
+  margin-bottom: 18px;
+  font-family: "Italianno", cursive;
+  font-size: 26px;
+  color: rgba(53, 47, 43, 0.28);
+  line-height: 1;
+}
+
+/* LOCATION */
+
+.editorial-location-image-wrap {
+  width: 122px;
+  height: 152px;
+  margin: 14px auto 18px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(60, 46, 36, 0.12);
+}
+
+.editorial-location-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+}
+
+.editorial-location-text {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.editorial-location-text p {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #2f2b28;
+}
+
+.editorial-map-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #2f2b28;
+  border-bottom: 1px solid rgba(47, 43, 40, 0.35);
+  padding-bottom: 2px;
+}
+
+.editorial-monogram {
+  margin-top: 28px;
+  font-family: "Playfair Display", serif;
+  font-size: 58px;
+  line-height: 0.9;
+  color: #151311;
+}
+
+.editorial-monogram-sub {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  color: rgba(28, 24, 21, 0.55);
+}
+
+/* TIMING */
+
+.editorial-timing-section {
+  padding-top: 54px;
+}
+
+.editorial-timeline {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  margin: 18px auto 0;
+  padding: 6px 0 0;
+}
+
+.editorial-timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: rgba(70, 60, 54, 0.15);
+}
+
+.editorial-timeline-item {
+  position: relative;
+  padding: 24px 0;
+}
+
+.editorial-time {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  line-height: 1;
+  color: #2a2623;
+  margin-bottom: 6px;
+}
+
+.editorial-time-label {
+  max-width: 150px;
+  margin: 0 auto;
+  font-size: 10px;
+  line-height: 1.35;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: rgba(42, 38, 35, 0.75);
+}
+
+/* DRESS CODE */
+
+.editorial-dress-section {
+  padding-top: 58px;
+  padding-bottom: 44px;
+}
+
+.editorial-dress-title {
+  line-height: 0.82;
+}
+
+.editorial-dress-copy {
+  max-width: 255px;
+  margin: 18px auto 0;
+}
+
+.editorial-dress-copy p {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #2d2926;
+}
+
+.editorial-color-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.editorial-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.editorial-color-light {
+  background: #4d4d4d;
+}
+
+.editorial-color-dark {
+  background: #111111;
+}
+
+.editorial-color-label {
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #2a2623;
+}
+
+/* MOBILE SMALL */
+
+@media (max-width: 380px) {
+  .editorial-title {
+    font-size: 36px;
+  }
+
+  .editorial-hero-date {
+    font-size: 30px;
+  }
+
+  .editorial-time {
+    font-size: 31px;
+  }
+
+  .editorial-monogram {
+    font-size: 50px;
+  }
+}
+.editorial-time-location {
+  max-width: 180px;
+  margin: 6px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(42, 38, 35, 0.72);
+}

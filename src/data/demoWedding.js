@@ -1439,6 +1439,105 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
     rsvpText: "Radovaćemo se da zajedno proslavimo Ninin rođendan.",
   }),
 },
+{
+  slug: "laura-david",
+  type: "wedding",
+  template: "classic",
+  brideName: "Laura",
+  groomName: "David",
+  weddingDate: "26 AVG 2026",
+  weddingTime: "14:00",
+  backgroundImage: "/images/laura-david/intro-bg.jpg",
+  introPreviewImage: "/images/laura-david/intro-preview.jpg",
+  image1: "/images/laura-david/story1.jpg",
+  image2: "/images/laura-david/story2.jpg",
+  details: createDetails({
+    welcomeText: "Biće nam zadovoljstvo da naš dan podelimo sa vama.",
+    date: "26 AVG 2026",
+    dateISO: "2026-08-26T14:00:00",
+
+    events: [
+{
+  label: "Građansko venčanje",
+  time: "14:00",
+  location: "Opština",
+  note: "Molimo vas da dođete 30 minuta ranije.",
+},
+{
+  label: "Fotografisanje",
+  time: "16:00",
+  location: "Park",
+  note: "Zabeležimo najlepše trenutke zajedno.",
+},
+{
+  label: "Koktel",
+  time: "18:00",
+  location: "Restoran",
+  note: "Dobrodošlica uz piće i muziku.",
+},
+{
+  label: "Večera i slavlje",
+  time: "20:00",
+  location: "Sala",
+  note: "Počinje proslava!",
+},
+    ],
+
+    dressCodeNote: "The wedding theme is old money.",
+    dressCodePalette: ["#e9e1d9", "#d8c5b7", "#9a836d", "#6b532e"],
+
+    note: "Molimo vas da potvrdite dolazak."
+  }),
+},
+{
+  slug: "nevena-pedja",
+  type: "wedding",
+  template: "editorial",
+
+  brideName: "Nevena",
+  groomName: "Pedja",
+
+  weddingDate: "25 JUN 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Tradition, Beograd",
+
+  image1: "/images/nevena-pedja/location.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da ovaj poseban dan podelimo sa vama.",
+
+    date: "25 JUN 2026",
+    dateISO: "2026-06-25T17:00:00",
+
+    venue: "Restoran Tradition, Beograd",
+    mapLink: "https://maps.google.com/?q=Restoran+Tradition+Beograd",
+
+    dressCodeWomen:
+      "Za dame preporučujemo elegantne haljine u crnim i neutralnim tonovima.",
+    dressCodeMen:
+      "Za muškarce preporučujemo odela u tamnim nijansama.",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "17:00",
+        location: "Restoran Tradition, Beograd",
+      },
+      {
+        label: "Početak ceremonije",
+        time: "18:00",
+        location: "Restoran Tradition, Beograd",
+      },
+      {
+        label: "Proslava i večera",
+        time: "19:00",
+        location: "Restoran Tradition, Beograd",
+      },
+    ],
+  }),
+}
+
 ];
 
 export default demoWedding;
