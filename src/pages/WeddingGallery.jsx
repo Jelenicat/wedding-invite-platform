@@ -84,13 +84,7 @@ function Toast({ toast, onClose }) {
   );
 }
 
-function DeleteModal({
-  open,
-  photoName,
-  deleting,
-  onCancel,
-  onConfirm,
-}) {
+function DeleteModal({ open, deleting, onCancel, onConfirm }) {
   if (!open) return null;
 
   return (
@@ -103,12 +97,6 @@ function DeleteModal({
         <h3 className="gallery-modal-title">Da li ste sigurni?</h3>
         <p className="gallery-modal-text">
           Ova fotografija će biti obrisana iz galerije.
-          {photoName ? (
-            <>
-              <br />
-              <strong>{photoName}</strong>
-            </>
-          ) : null}
         </p>
 
         <div className="gallery-modal-actions">
@@ -205,14 +193,14 @@ function Lightbox({
         <div className="gallery-lightbox-image-wrap">
           <img
             src={photo.url}
-            alt={photo.name}
+            alt="Fotografija iz galerije"
             className="gallery-lightbox-image"
           />
         </div>
 
         <div className="gallery-lightbox-footer">
           <div className="gallery-lightbox-meta">
-            <strong>{photo.name || "Fotografija"}</strong>
+            <strong>Fotografija</strong>
             <span>{formatPhotoDate(photo.timeCreated)}</span>
           </div>
 
@@ -244,7 +232,10 @@ function SkeletonGrid() {
   return (
     <div className="gallery-collection-grid">
       {Array.from({ length: 8 }).map((_, index) => (
-        <div key={index} className="gallery-photo-card gallery-photo-card-skeleton">
+        <div
+          key={index}
+          className="gallery-photo-card gallery-photo-card-skeleton"
+        >
           <div className="gallery-photo-frame gallery-skeleton-block" />
           <div className="gallery-photo-actions">
             <span className="gallery-skeleton-line" />
@@ -305,7 +296,7 @@ function GalleryPhotoCard({
           >
             <img
               src={photo.url}
-              alt={photo.name}
+              alt="Fotografija iz galerije"
               className="gallery-photo-image"
               loading="lazy"
               decoding="async"
@@ -316,7 +307,6 @@ function GalleryPhotoCard({
       </div>
 
       <div className="gallery-photo-meta">
-        <strong className="gallery-photo-name">{photo.name || "Fotografija"}</strong>
         <span className="gallery-photo-date">
           {formatPhotoDate(photo.timeCreated)}
         </span>
@@ -360,8 +350,7 @@ function WeddingGallery() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedPhotos, setSelectedPhotos] = useState(() => new Set());
-  const [searchTerm, setSearchTerm] = useState("");
-  const [bulkDownloading, setBulkDownloading] = useState(false);
+  const [bulkDownloadType, setBulkDownloadType] = useState(null);
   const [singleDownloadingId, setSingleDownloadingId] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
@@ -372,6 +361,10 @@ function WeddingGallery() {
 
   const wedding = demoWedding.find((item) => item.slug === slug);
   const galleryTopRef = useRef(null);
+
+  const isDownloadingAll = bulkDownloadType === "all";
+  const isDownloadingSelected = bulkDownloadType === "selected";
+  const isAnyBulkDownloading = bulkDownloadType !== null;
 
   const showToast = useCallback((type, title, message = "") => {
     setToast({ type, title, message });
@@ -439,20 +432,12 @@ function WeddingGallery() {
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE);
-  }, [searchTerm, sortBy]);
+  }, [sortBy]);
 
   const sortedPhotos = useMemo(() => {
     const items = [...photos];
 
     items.sort((a, b) => {
-      if (sortBy === "name-asc") {
-        return (a.name || "").localeCompare(b.name || "", "sr");
-      }
-
-      if (sortBy === "name-desc") {
-        return (b.name || "").localeCompare(a.name || "", "sr");
-      }
-
       const aTime = a.timeCreated ? new Date(a.timeCreated).getTime() : 0;
       const bTime = b.timeCreated ? new Date(b.timeCreated).getTime() : 0;
 
@@ -466,27 +451,16 @@ function WeddingGallery() {
     return items;
   }, [photos, sortBy]);
 
-  const filteredPhotos = useMemo(() => {
-    const term = searchTerm.trim().toLowerCase();
-
-    if (!term) return sortedPhotos;
-
-    return sortedPhotos.filter((photo) => {
-      const fileName = (photo.name || "").toLowerCase();
-      const dateLabel = formatPhotoDayLabel(photo.timeCreated).toLowerCase();
-      return fileName.includes(term) || dateLabel.includes(term);
-    });
-  }, [sortedPhotos, searchTerm]);
-
   const visiblePhotos = useMemo(() => {
-    return filteredPhotos.slice(0, visibleCount);
-  }, [filteredPhotos, visibleCount]);
+    return sortedPhotos.slice(0, visibleCount);
+  }, [sortedPhotos, visibleCount]);
 
-  const hasMore = visibleCount < filteredPhotos.length;
+  const hasMore = visibleCount < sortedPhotos.length;
   const selectedCount = selectedPhotos.size;
 
   const visibleSelectedCount = useMemo(() => {
-    return visiblePhotos.filter((photo) => selectedPhotos.has(photo.fullPath)).length;
+    return visiblePhotos.filter((photo) => selectedPhotos.has(photo.fullPath))
+      .length;
   }, [visiblePhotos, selectedPhotos]);
 
   const allVisibleSelected = useMemo(() => {
@@ -515,8 +489,8 @@ function WeddingGallery() {
 
   const lightboxPhoto = useMemo(() => {
     if (lightboxIndex === null) return null;
-    return filteredPhotos[lightboxIndex] || null;
-  }, [lightboxIndex, filteredPhotos]);
+    return sortedPhotos[lightboxIndex] || null;
+  }, [lightboxIndex, sortedPhotos]);
 
   const isMobileDevice = useCallback(() => {
     return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
@@ -656,8 +630,6 @@ function WeddingGallery() {
       if (!photosToDownload.length) return;
 
       try {
-        setBulkDownloading(true);
-
         if (photosToDownload.length === 1) {
           await downloadSinglePhoto(photosToDownload[0], 1);
           showToast("success", "Preuzimanje je počelo");
@@ -683,8 +655,6 @@ function WeddingGallery() {
       } catch (error) {
         console.error("Greška pri preuzimanju fotografija:", error);
         showToast("error", "Greška", "Došlo je do greške prilikom preuzimanja.");
-      } finally {
-        setBulkDownloading(false);
       }
     },
     [
@@ -697,9 +667,15 @@ function WeddingGallery() {
   );
 
   const handleDownloadAll = useCallback(async () => {
-    if (!filteredPhotos.length) return;
-    await handleSmartDownload(filteredPhotos, `${slug}-sve-fotografije.zip`);
-  }, [filteredPhotos, slug, handleSmartDownload]);
+    if (!sortedPhotos.length) return;
+
+    try {
+      setBulkDownloadType("all");
+      await handleSmartDownload(sortedPhotos, `${slug}-sve-fotografije.zip`);
+    } finally {
+      setBulkDownloadType(null);
+    }
+  }, [sortedPhotos, slug, handleSmartDownload]);
 
   const handleDownloadSelected = useCallback(async () => {
     if (!selectedPhotos.size) {
@@ -711,15 +687,20 @@ function WeddingGallery() {
       return;
     }
 
-    const selectedItems = filteredPhotos.filter((photo) =>
+    const selectedItems = sortedPhotos.filter((photo) =>
       selectedPhotos.has(photo.fullPath)
     );
 
-    await handleSmartDownload(
-      selectedItems,
-      `${slug}-izabrane-fotografije.zip`
-    );
-  }, [filteredPhotos, selectedPhotos, slug, handleSmartDownload, showToast]);
+    try {
+      setBulkDownloadType("selected");
+      await handleSmartDownload(
+        selectedItems,
+        `${slug}-izabrane-fotografije.zip`
+      );
+    } finally {
+      setBulkDownloadType(null);
+    }
+  }, [sortedPhotos, selectedPhotos, slug, handleSmartDownload, showToast]);
 
   const handleSinglePhotoDownload = useCallback(
     async (photo) => {
@@ -757,7 +738,7 @@ function WeddingGallery() {
 
   const openLightbox = useCallback(
     (fullPath) => {
-      const index = filteredPhotos.findIndex(
+      const index = sortedPhotos.findIndex(
         (photo) => photo.fullPath === fullPath
       );
 
@@ -765,7 +746,7 @@ function WeddingGallery() {
         setLightboxIndex(index);
       }
     },
-    [filteredPhotos]
+    [sortedPhotos]
   );
 
   const closeLightbox = useCallback(() => {
@@ -781,10 +762,10 @@ function WeddingGallery() {
 
   const goNextLightbox = useCallback(() => {
     setLightboxIndex((prev) => {
-      if (prev === null || prev >= filteredPhotos.length - 1) return prev;
+      if (prev === null || prev >= sortedPhotos.length - 1) return prev;
       return prev + 1;
     });
-  }, [filteredPhotos.length]);
+  }, [sortedPhotos.length]);
 
   if (!wedding) {
     return (
@@ -807,7 +788,6 @@ function WeddingGallery() {
 
       <DeleteModal
         open={!!deleteTarget}
-        photoName={deleteTarget?.name}
         deleting={!!deletingId}
         onCancel={closeDeleteModal}
         onConfirm={confirmDelete}
@@ -818,7 +798,7 @@ function WeddingGallery() {
         photo={lightboxPhoto}
         canGoPrev={lightboxIndex > 0}
         canGoNext={
-          lightboxIndex !== null && lightboxIndex < filteredPhotos.length - 1
+          lightboxIndex !== null && lightboxIndex < sortedPhotos.length - 1
         }
         onClose={closeLightbox}
         onPrev={goPrevLightbox}
@@ -837,12 +817,15 @@ function WeddingGallery() {
             <p className="gallery-collection-text">
               Sve fotografije koje su gosti poslali na jednom mestu.
             </p>
+            <p className="gallery-collection-text">
+              Fotografije su organizovane po datumu dodavanja.
+            </p>
           </div>
 
           <button
             onClick={handleLogout}
             className="gallery-secondary-button"
-            disabled={bulkDownloading}
+            disabled={isAnyBulkDownloading}
           >
             Izloguj se
           </button>
@@ -853,7 +836,6 @@ function WeddingGallery() {
             <div className="gallery-toolbar gallery-toolbar-loading">
               <div className="gallery-toolbar-left">
                 <div className="gallery-skeleton-line wide" />
-                <div className="gallery-skeleton-input" />
               </div>
               <div className="gallery-toolbar-actions">
                 <div className="gallery-skeleton-button" />
@@ -878,14 +860,6 @@ function WeddingGallery() {
                   Izabrano: <strong>{selectedCount}</strong> / {photos.length}
                 </p>
 
-                <input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Pretraži po nazivu ili datumu..."
-                  className="gallery-search-input"
-                />
-
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
@@ -893,8 +867,6 @@ function WeddingGallery() {
                 >
                   <option value="newest">Najnovije prvo</option>
                   <option value="oldest">Najstarije prvo</option>
-                  <option value="name-asc">Naziv A–Š</option>
-                  <option value="name-desc">Naziv Š–A</option>
                 </select>
               </div>
 
@@ -930,96 +902,80 @@ function WeddingGallery() {
                   type="button"
                   className="gallery-toolbar-button gallery-toolbar-button-dark"
                   onClick={handleDownloadSelected}
-                  disabled={selectedCount === 0 || bulkDownloading}
+                  disabled={selectedCount === 0 || isAnyBulkDownloading}
                 >
-                  {bulkDownloading ? "Preuzimanje..." : "Preuzmi izabrane"}
+                  {isDownloadingSelected ? "Preuzimanje..." : "Preuzmi izabrane"}
                 </button>
 
                 <button
                   type="button"
                   className="gallery-toolbar-button gallery-toolbar-button-dark"
                   onClick={handleDownloadAll}
-                  disabled={!filteredPhotos.length || bulkDownloading}
+                  disabled={!sortedPhotos.length || isAnyBulkDownloading}
                 >
-                  {bulkDownloading ? "Preuzimanje..." : "Preuzmi sve prikazane"}
+                  {isDownloadingAll ? "Preuzimanje..." : "Preuzmi sve"}
                 </button>
               </div>
             </div>
 
-            {!filteredPhotos.length ? (
-              <div className="gallery-empty-state">
-                <h2 className="gallery-empty-title">Nema rezultata</h2>
-                <p className="gallery-collection-empty">
-                  Nijedna fotografija ne odgovara ovoj pretrazi.
-                </p>
-                <button
-                  type="button"
-                  className="gallery-toolbar-button"
-                  onClick={() => setSearchTerm("")}
-                >
-                  Očisti pretragu
-                </button>
-              </div>
-            ) : (
-              <>
-                {groupedVisiblePhotos.map((group) => (
-                  <div key={group.label} className="gallery-group">
-                    <div className="gallery-group-header">
-                      <h3 className="gallery-group-title">{group.label}</h3>
-                      <span className="gallery-group-count">
-                        {group.items.length} fotografija
-                      </span>
-                    </div>
-
-                    <div className="gallery-collection-grid">
-                      {group.items.map((photo) => {
-                        const isSelected = selectedPhotos.has(photo.fullPath);
-                        const isDeleting = deletingId === photo.fullPath;
-                        const isSingleDownloading =
-                          singleDownloadingId === photo.fullPath;
-
-                        return (
-                          <GalleryPhotoCard
-                            key={photo.fullPath}
-                            photo={photo}
-                            isSelected={isSelected}
-                            isDeleting={isDeleting}
-                            isSingleDownloading={isSingleDownloading}
-                            bulkDownloading={bulkDownloading}
-                            onToggleSelect={togglePhotoSelection}
-                            onOpenLightbox={openLightbox}
-                            onDownload={handleSinglePhotoDownload}
-                            onDelete={openDeleteModal}
-                            onImageError={handleImageError}
-                          />
-                        );
-                      })}
-                    </div>
+            <>
+              {groupedVisiblePhotos.map((group) => (
+                <div key={group.label} className="gallery-group">
+                  <div className="gallery-group-header">
+                    <h3 className="gallery-group-title">{group.label}</h3>
+                    <span className="gallery-group-count">
+                      {group.items.length} fotografija
+                    </span>
                   </div>
-                ))}
 
-                {hasMore ? (
-                  <div className="gallery-load-more-wrap">
-                    <button
-                      type="button"
-                      className="gallery-toolbar-button gallery-toolbar-button-dark"
-                      onClick={handleLoadMore}
-                    >
-                      Učitaj još
-                    </button>
-                    <p className="gallery-load-more-text">
-                      Prikazano {visiblePhotos.length} od {filteredPhotos.length} fotografija
-                    </p>
+                  <div className="gallery-collection-grid">
+                    {group.items.map((photo) => {
+                      const isSelected = selectedPhotos.has(photo.fullPath);
+                      const isDeleting = deletingId === photo.fullPath;
+                      const isSingleDownloading =
+                        singleDownloadingId === photo.fullPath;
+
+                      return (
+                        <GalleryPhotoCard
+                          key={photo.fullPath}
+                          photo={photo}
+                          isSelected={isSelected}
+                          isDeleting={isDeleting}
+                          isSingleDownloading={isSingleDownloading}
+                          bulkDownloading={isAnyBulkDownloading}
+                          onToggleSelect={togglePhotoSelection}
+                          onOpenLightbox={openLightbox}
+                          onDownload={handleSinglePhotoDownload}
+                          onDelete={openDeleteModal}
+                          onImageError={handleImageError}
+                        />
+                      );
+                    })}
                   </div>
-                ) : (
-                  <div className="gallery-load-more-wrap">
-                    <p className="gallery-load-more-text">
-                      Prikazane su sve fotografije ({filteredPhotos.length})
-                    </p>
-                  </div>
-                )}
-              </>
-            )}
+                </div>
+              ))}
+
+              {hasMore ? (
+                <div className="gallery-load-more-wrap">
+                  <button
+                    type="button"
+                    className="gallery-toolbar-button gallery-toolbar-button-dark"
+                    onClick={handleLoadMore}
+                  >
+                    Učitaj još
+                  </button>
+                  <p className="gallery-load-more-text">
+                    Prikazano {visiblePhotos.length} od {sortedPhotos.length} fotografija
+                  </p>
+                </div>
+              ) : (
+                <div className="gallery-load-more-wrap">
+                  <p className="gallery-load-more-text">
+                    Prikazane su sve fotografije ({sortedPhotos.length})
+                  </p>
+                </div>
+              )}
+            </>
           </>
         )}
       </div>

@@ -18,6 +18,18 @@ const JPEG_QUALITY = 0.82;
 function WeddingUpload() {
   const { slug } = useParams();
   const wedding = demoWedding.find((item) => item.slug === slug);
+  const isBirthday = wedding?.type === "birthday";
+
+  const heroTitle = isBirthday
+    ? "Podelite najlepše trenutke sa proslave"
+    : "Podelite trenutke koje su mladenci propustili";
+
+  const heroSubtitle = isBirthday
+    ? "Dodajte fotografije sa rođendana i sačuvajte uspomene na jednom mestu."
+    : "Dodajte fotografije direktno mladencima.";
+
+  const heroMetaText =
+    "Do 10 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici nakon obrade";
 
   const fileInputRef = useRef(null);
   const selectedPanelRef = useRef(null);
@@ -444,7 +456,11 @@ function WeddingUpload() {
     wedding.uploadCoverImage || "/images/upload/default-upload-cover.jpg";
 
   return (
-    <section className="upload-page">
+    <section
+      className={`upload-page ${
+        isBirthday ? "upload-page-birthday" : "upload-page-wedding"
+      }`}
+    >
       <input
         ref={fileInputRef}
         type="file"
@@ -493,13 +509,9 @@ function WeddingUpload() {
 
             <div className="upload-hero-divider" />
 
-            <h1 className="upload-hero-title">
-              Podelite trenutke koje su mladenci propustili
-            </h1>
+            <h1 className="upload-hero-title">{heroTitle}</h1>
 
-            <p className="upload-hero-subtitle">
-              Dodajte fotografije direktno mladencima.
-            </p>
+            <p className="upload-hero-subtitle">{heroSubtitle}</p>
 
             <button
               type="button"
@@ -510,9 +522,7 @@ function WeddingUpload() {
               {processing ? "Priprema fotografija..." : "Izaberite fotografije"}
             </button>
 
-            <p className="upload-hero-meta">
-              Do 10 slika • JPG, PNG, WEBP • maksimalno 8 MB po slici nakon obrade
-            </p>
+            <p className="upload-hero-meta">{heroMetaText}</p>
 
             {processing && (
               <p className="upload-processing-note">
@@ -592,8 +602,7 @@ function WeddingUpload() {
                 Fotografije su uspešno uploadovane
               </p>
               <p className="upload-success-description">
-                Uspešno je poslato {successCount}{" "}
-                {successCount === 1 ? "fotografija." : "fotografija."}
+                Uspešno je poslato {successCount} fotografija.
               </p>
             </div>
 

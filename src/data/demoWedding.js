@@ -463,7 +463,7 @@ events: [
   weddingDate: "05 OKT 2026",
   weddingTime: "15:30",
   venue: "Beli dvor, Beograd",
-
+uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   backgroundImage: "/images/sanja-milos-minimal.jpg",
 
   introText:
@@ -525,6 +525,7 @@ events: [
   groomName: "Marko",
   image: "/images/anja-marko-photocard.jpg",
   backgroundImage: "/images/anja-marko-photocard-bg.jpg",
+  
   weddingDate: "12 MAY 2026",
   weddingTime: "17:00",
   venue: "ul. Novosadska, Novi Sad",
