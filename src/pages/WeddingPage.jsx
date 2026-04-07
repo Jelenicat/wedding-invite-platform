@@ -46,6 +46,7 @@ import ClassicIntro from "../components/ClassicIntro";
 import ClassicInvitationCard from "../components/ClassicInvitationCard";
 import EditorialIntro from "../components/EditorialIntro";
 import EditorialInvitationCard from "../components/EditorialInvitationCard";
+import SilkIntro from "../components/SilkIntro";
 
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
@@ -114,6 +115,10 @@ const TEMPLATE_COMPONENTS = {
 editorial: {
   Intro: EditorialIntro,
   Invitation: EditorialInvitationCard,
+},
+silk: {
+  Intro: SilkIntro,
+  Invitation: MinimalInvitationCard, // ili napravi kasnije poseban
 },
 };
 
@@ -224,6 +229,7 @@ function WeddingPage() {
     onOpen: handleIntroOpen,
     slug: invitation.slug,
     introPreviewImage: invitation.introPreviewImage,
+    fontMode: invitation.fontMode,
   };
 
   const invitationProps = {

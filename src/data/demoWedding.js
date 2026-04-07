@@ -964,6 +964,144 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   }),
 },
 // =========================
+// SILK TEMPLATE
+// =========================
+{
+  slug: "nina-nikola",
+  type: "wedding",
+  template: "silk",
+  brideName: "Nina",
+  groomName: "Nikola",
+  videoSrc: "/videos/nina-nikola.mp4",
+  fontMode: "dark",
+  weddingDate: "06 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+  backgroundImage: "/images/nina-nikola-minimal.jpg",
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+    date: "06 SEP 2026",
+    dateISO: "2026-09-06T17:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Beograd",
+      },
+      {
+        label: "Večera i proslava",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Beograd",
+      },
+    ],
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c8b4", "#c2a98f", "#8d7057", "#f3e7da"],
+    dressCodeNote:
+      "Elegantne i nežne nijanse savršeno će se uklopiti u atmosferu našeg dana.",
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "ivona-aleksa",
+  type: "wedding",
+  template: "silk",
+  brideName: "Ivona",
+  groomName: "Aleksa",
+  videoSrc: "/videos/ivona-aleksa.mp4",
+  fontMode: "light",
+  weddingDate: "06 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+  backgroundImage: "/images/ivona-aleksa-minimal.jpg",
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+    date: "06 SEP 2026",
+    dateISO: "2026-09-06T17:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Beograd",
+      },
+      {
+        label: "Večera i proslava",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Beograd",
+      },
+    ],
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c8b4", "#c2a98f", "#8d7057", "#f3e7da"],
+    dressCodeNote:
+      "Elegantne i nežne nijanse savršeno će se uklopiti u atmosferu našeg dana.",
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "nika-ivan",
+  type: "wedding",
+  template: "silk",
+  brideName: "Nina",
+  groomName: "Ivan",
+  videoSrc: "/videos/nika-ivan.mp4",
+  fontMode: "light",
+  weddingDate: "06 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+  backgroundImage: "/images/nika-ivan-minimal.jpg",
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+    date: "06 SEP 2026",
+    dateISO: "2026-09-06T17:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Beograd",
+      },
+      {
+        label: "Večera i proslava",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Beograd",
+      },
+    ],
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c8b4", "#c2a98f", "#8d7057", "#f3e7da"],
+    dressCodeNote:
+      "Elegantne i nežne nijanse savršeno će se uklopiti u atmosferu našeg dana.",
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+// =========================
 // SPLIT IMAGE TEMPLATE
 // =========================
 {
