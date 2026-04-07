@@ -1306,7 +1306,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
  showDressCode: true,
 dressCodeTitle: "Dress code",
 dressCodeNote:
-  "Slobodno birajte boje po želji, uz molbu da izbegnete crnu i belu.",
+  "Slobodno birajte boje po želji, uz molbu da izbegnete belu i potpuno crne kombinacije.",
 dressCodePalette: [],
     mapLink:
       "https://www.google.com/maps/place/Restoran+Rajska+Oaza/@45.8275364,20.4657951,17z/data=!4m6!3m5!1s0x4744df37a886741d:0xf966c38263c7e815!8m2!3d45.8274211!4d20.4659445!16s%2Fg%2F11pf38k3lq?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
