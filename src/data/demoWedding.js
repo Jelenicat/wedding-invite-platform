@@ -8,9 +8,10 @@ const createDetails = ({
   venue,
   churchVenue,
   dinnerTime,
-  dressCodeTitle = "Dress code",
+  showDressCode = false,
+  dressCodeTitle = "",
   dressCodePalette = [],
-  dressCodeNote,
+  dressCodeNote = "",
   dressCodeWomen,
   dressCodeMen,
   mapLink,
@@ -19,6 +20,7 @@ const createDetails = ({
   editorialImage2,
   editorialImage3,
   events = [],
+  rsvpOptions = {},
 }) => ({
   welcomeText,
   date,
@@ -29,6 +31,7 @@ const createDetails = ({
   venue,
   churchVenue,
   dinnerTime,
+  showDressCode,
   dressCodeTitle,
   dressCodePalette,
   dressCodeNote,
@@ -40,6 +43,7 @@ const createDetails = ({
   editorialImage2,
   editorialImage3,
   events,
+  rsvpOptions,
 });
 
 const demoWedding = [
@@ -1249,6 +1253,67 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
     note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra",
   }),
 },
+{
+  slug: "olja-milos",
+  type: "wedding",
+  template: "floral",
+  brideName: "Olja",
+  groomName: "Miloš",
+  backgroundImage: "/images/floral-olja-milos.jpg",
+   musicSrc: "/music/olja-milos.mp3",
+  weddingDate: "20 JUN 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Rajska Oaza, Kikinda",
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
+
+    dateISO: "2026-06-20T17:00:00+02:00",
+
+    rsvpOptions: {
+      foodPreferences: true,
+      musicWish: true,
+    },
+
+    events: [
+      {
+        label: "Skup svatova",
+        time: "16:00",
+        icon: "gathering",
+        location: "Restoran Rajska Oaza, Kikinda",
+        mapLink:
+          "https://www.google.com/maps/place/Restoran+Rajska+Oaza/@45.8275364,20.4657951,17z/data=!4m6!3m5!1s0x4744df37a886741d:0xf966c38263c7e815!8m2!3d45.8274211!4d20.4659445!16s%2Fg%2F11pf38k3lq?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Restoran Rajska Oaza, Kikinda",
+        mapLink:
+          "https://www.google.com/maps/place/Restoran+Rajska+Oaza/@45.8275364,20.4657951,17z/data=!4m6!3m5!1s0x4744df37a886741d:0xf966c38263c7e815!8m2!3d45.8274211!4d20.4659445!16s%2Fg%2F11pf38k3lq?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+      },
+      {
+     label: "Večera i slavlje",
+   
+    icon: "party",
+    note: "Nakon ceremonije nastavljamo sa večerom, muzikom i proslavom.",
+    location: "Restoran Rajska Oaza, Kikinda",
+        mapLink:
+          "https://www.google.com/maps/place/Restoran+Rajska+Oaza/@45.8275364,20.4657951,17z/data=!4m6!3m5!1s0x4744df37a886741d:0xf966c38263c7e815!8m2!3d45.8274211!4d20.4659445!16s%2Fg%2F11pf38k3lq?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+      },
+    ],
+
+ showDressCode: true,
+dressCodeTitle: "Dress code",
+dressCodeNote:
+  "Slobodno birajte boje po želji, uz molbu da izbegnete crnu i belu.",
+dressCodePalette: [],
+    mapLink:
+      "https://www.google.com/maps/place/Restoran+Rajska+Oaza/@45.8275364,20.4657951,17z/data=!4m6!3m5!1s0x4744df37a886741d:0xf966c38263c7e815!8m2!3d45.8274211!4d20.4659445!16s%2Fg%2F11pf38k3lq?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    note: "Molimo vas da svoj dolazak potvrdite do 30. maja.",
+  }),
+},
+
 {
   slug: "katarina-milos",
   type: "wedding",

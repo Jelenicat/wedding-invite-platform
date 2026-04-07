@@ -8,6 +8,7 @@ import SeatingPage from "./pages/SeatingPage";
 import GalleryLogin from "./pages/GalleryLogin";
 import WeddingGallery from "./pages/WeddingGallery";
 import WeddingUpload from "./pages/WeddingUpload";
+import GuestPreferencesPage from "./pages/GuestPreferencesPage";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <Route path="/:slug/upload" element={<WeddingUpload />} />
       <Route path="/:slug/gallery-login" element={<GalleryLogin />} />
       <Route path="/:slug/gallery" element={<WeddingGallery />} />
-
+<Route path="/admin/:slug/preferences" element={<GuestPreferencesPage />} />
       {/* POSTOJEĆE */}
       <Route path="/:slug" element={<WeddingPage />} />
 

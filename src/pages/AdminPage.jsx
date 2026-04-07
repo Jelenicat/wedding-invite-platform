@@ -11,7 +11,9 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
-
+import demoWedding from "../data/demoWedding";
+import html2pdf from "html2pdf.js";
+import { getDocs } from "firebase/firestore";
 function AdminPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ function AdminPage() {
   const [password, setPassword] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [authError, setAuthError] = useState("");
-
+const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [guests, setGuests] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -45,7 +47,7 @@ function AdminPage() {
   });
 
   const [guestSearch, setGuestSearch] = useState("");
-
+const [debouncedSearch, setDebouncedSearch] = useState("");
   const [messageModal, setMessageModal] = useState({
     isOpen: false,
     title: "",
@@ -63,19 +65,35 @@ function AdminPage() {
     payload: null,
     loading: false,
   });
-const [isMobile, setIsMobile] = useState(
-  typeof window !== "undefined" ? window.innerWidth <= 640 : false
-);
 
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 640 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 640);
-  };
+  const timer = setTimeout(() => {
+    setDebouncedSearch(guestSearch);
+  }, 300);
 
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  return () => clearTimeout(timer);
+}, [guestSearch]);
   const expectedPassword = adminAccess[slug];
+
+  const invitation = useMemo(() => {
+    return demoWedding.find((item) => item.slug === slug);
+  }, [slug]);
+
+  const rsvpOptions = invitation?.details?.rsvpOptions || {};
+  const hasGuestPreferencesPage =
+    Boolean(rsvpOptions.foodPreferences) || Boolean(rsvpOptions.musicWish);
 
   const sanitizeNumberInput = (value) => {
     return value.replace(/[^\d]/g, "");
@@ -86,11 +104,7 @@ useEffect(() => {
     return new Intl.NumberFormat("sr-RS").format(Number(value));
   };
 
-  const openMessageModal = ({
-    title,
-    text,
-    variant = "default",
-  }) => {
+  const openMessageModal = ({ title, text, variant = "default" }) => {
     setMessageModal({
       isOpen: true,
       title,
@@ -148,121 +162,113 @@ useEffect(() => {
     }
   }, [slug]);
 
-  useEffect(() => {
-    if (!slug || !isAuthorized) return;
+ useEffect(() => {
+  if (!slug || !isAuthorized) return;
 
-    setLoading(true);
-    setError("");
+  setLoading(true);
+  setError("");
 
-    const rsvpsRef = collection(db, "events", slug, "rsvps");
-    const eventRef = doc(db, "events", slug);
-    const expensesRef = collection(db, "events", slug, "expenses");
+  const rsvpsRef = collection(db, "events", slug, "rsvps");
+  const eventRef = doc(db, "events", slug);
+  const expensesRef = collection(db, "events", slug, "expenses");
 
-    let guestsLoaded = false;
-    let expensesLoaded = false;
-    let budgetLoaded = false;
+  let guestsLoaded = false;
+  let expensesLoaded = false;
+  let budgetLoaded = false;
 
-    const stopLoadingIfReady = () => {
-      if (guestsLoaded && expensesLoaded && budgetLoaded) {
-        setLoading(false);
-      }
-    };
+  const stopLoadingIfReady = () => {
+    if (guestsLoaded && expensesLoaded && budgetLoaded) {
+      setLoading(false);
+    }
+  };
 
-    const unsubscribeGuests = onSnapshot(
-      rsvpsRef,
-      (snapshot) => {
-        const data = snapshot.docs
-          .map((docItem) => ({
-            id: docItem.id,
-            ...docItem.data(),
-          }))
-          .sort((a, b) => {
-            const aMs =
-              typeof a?.createdAt?.toMillis === "function"
-                ? a.createdAt.toMillis()
-                : 0;
-            const bMs =
-              typeof b?.createdAt?.toMillis === "function"
-                ? b.createdAt.toMillis()
-                : 0;
+  const getTimestampMs = (item) => {
+    if (typeof item?.createdAt?.toMillis === "function") {
+      return item.createdAt.toMillis();
+    }
 
-            return bMs - aMs;
-          });
+    if (typeof item?.updatedAt?.toMillis === "function") {
+      return item.updatedAt.toMillis();
+    }
 
-        setGuests(data);
-        guestsLoaded = true;
-        stopLoadingIfReady();
-      },
-      (err) => {
-        console.error("Greška pri realtime učitavanju gostiju:", err);
-        setError("Došlo je do greške pri učitavanju odgovora.");
-        setLoading(false);
-      }
-    );
+    return 0;
+  };
 
-    const unsubscribeEvent = onSnapshot(
-      eventRef,
-      (snapshot) => {
-        if (snapshot.exists()) {
-          const eventData = snapshot.data();
-          const savedBudget = eventData?.budget;
+  const unsubscribeGuests = onSnapshot(
+    rsvpsRef,
+    (snapshot) => {
+      const data = snapshot.docs
+        .map((docItem) => ({
+          id: docItem.id,
+          ...docItem.data(),
+        }))
+        .sort((a, b) => getTimestampMs(b) - getTimestampMs(a));
 
-          if (typeof savedBudget === "number") {
-            setBudget(savedBudget);
-          } else {
-            setBudget(null);
-          }
+      setGuests(data);
+      guestsLoaded = true;
+      stopLoadingIfReady();
+    },
+    (err) => {
+      console.error("Greška pri realtime učitavanju gostiju:", err);
+      setError("Došlo je do greške pri učitavanju odgovora.");
+      guestsLoaded = true;
+      stopLoadingIfReady();
+    }
+  );
+
+  const unsubscribeEvent = onSnapshot(
+    eventRef,
+    (snapshot) => {
+      if (snapshot.exists()) {
+        const eventData = snapshot.data();
+        const savedBudget = eventData?.budget;
+
+        if (typeof savedBudget === "number") {
+          setBudget(savedBudget);
         } else {
           setBudget(null);
         }
-
-        budgetLoaded = true;
-        stopLoadingIfReady();
-      },
-      (err) => {
-        console.error("Greška pri realtime učitavanju budžeta:", err);
-        budgetLoaded = true;
-        stopLoadingIfReady();
+      } else {
+        setBudget(null);
       }
-    );
 
-    const unsubscribeExpenses = onSnapshot(
-      expensesRef,
-      (snapshot) => {
-        const expensesData = snapshot.docs
-          .map((docItem) => ({
-            id: docItem.id,
-            ...docItem.data(),
-          }))
-          .sort((a, b) => {
-            const aMs =
-              typeof a?.createdAt?.toMillis === "function"
-                ? a.createdAt.toMillis()
-                : 0;
-            const bMs =
-              typeof b?.createdAt?.toMillis === "function"
-                ? b.createdAt.toMillis()
-                : 0;
+      budgetLoaded = true;
+      stopLoadingIfReady();
+    },
+    (err) => {
+      console.error("Greška pri realtime učitavanju budžeta:", err);
+      budgetLoaded = true;
+      stopLoadingIfReady();
+    }
+  );
 
-            return bMs - aMs;
-          });
+  const unsubscribeExpenses = onSnapshot(
+    expensesRef,
+    (snapshot) => {
+      const expensesData = snapshot.docs
+        .map((docItem) => ({
+          id: docItem.id,
+          ...docItem.data(),
+        }))
+        .sort((a, b) => getTimestampMs(b) - getTimestampMs(a));
 
-        setExpenses(expensesData);
-        expensesLoaded = true;
-        stopLoadingIfReady();
-      },
-      (err) => {
-        console.error("Greška pri realtime učitavanju troškova:", err);
-        setLoading(false);
-      }
-    );
+      setExpenses(expensesData);
+      expensesLoaded = true;
+      stopLoadingIfReady();
+    },
+    (err) => {
+      console.error("Greška pri realtime učitavanju troškova:", err);
+      expensesLoaded = true;
+      stopLoadingIfReady();
+    }
+  );
 
-    return () => {
-      unsubscribeGuests();
-      unsubscribeEvent();
-      unsubscribeExpenses();
-    };
-  }, [slug, isAuthorized]);
+  return () => {
+    unsubscribeGuests();
+    unsubscribeEvent();
+    unsubscribeExpenses();
+  };
+}, [slug, isAuthorized]);
 
   useEffect(() => {
     if (budget === null) {
@@ -574,17 +580,31 @@ useEffect(() => {
     try {
       setConfirmModal((prev) => ({ ...prev, loading: true }));
 
-      if (actionType === "deleteGuest") {
-        await deleteDoc(doc(db, "events", slug, "rsvps", payload.guestId));
+  if (actionType === "deleteGuest") {
+  const guestId = payload.guestId;
 
-        closeConfirmModal();
-        openMessageModal({
-          title: "Gost je obrisan",
-          text: "Izabrani gost je uspešno uklonjen.",
-          variant: "success",
-        });
-        return;
-      }
+  // 1. obriši iz rsvps
+  await deleteDoc(doc(db, "events", slug, "rsvps", guestId));
+
+  // 2. obriši iz tableGuests
+  const tableGuestsRef = collection(db, "events", slug, "tableGuests");
+  const snapshot = await getDocs(tableGuestsRef);
+
+  for (const docItem of snapshot.docs) {
+    if (docItem.data().guestId === guestId) {
+      await deleteDoc(doc(db, "events", slug, "tableGuests", docItem.id));
+    }
+  }
+
+  closeConfirmModal();
+  openMessageModal({
+    title: "Gost je obrisan",
+    text: "Gost je uklonjen i iz rasporeda sedenja.",
+    variant: "success",
+  });
+
+  return;
+}
 
       if (actionType === "deleteExpense") {
         await deleteDoc(doc(db, "events", slug, "expenses", payload.expenseId));
@@ -633,7 +653,7 @@ useEffect(() => {
     }).format(Number(value) || 0);
   };
 
-  const normalizedSearch = guestSearch.trim().toLowerCase();
+ const normalizedSearch = debouncedSearch.trim().toLowerCase();
 
   const comingGuests = useMemo(
     () =>
@@ -685,21 +705,32 @@ useEffect(() => {
     return Math.min((totalExpenses / budget) * 100, 100);
   }, [budget, totalExpenses]);
 
-  const handleExportPDF = () => {
-    const exportGuests = guests.filter((guest) => guest.attending === "da");
+const handleExportPDF = async () => {
+  if (isExportingPdf) return;
 
-    if (!exportGuests.length) {
-      openMessageModal({
-        title: "Nema podataka za eksport",
-        text: "Trenutno nema gostiju koji dolaze.",
-        variant: "warning",
-      });
-      return;
-    }
+  const exportGuests = guests.filter((guest) => guest.attending === "da");
 
+  if (!exportGuests.length) {
+    openMessageModal({
+      title: "Nema podataka za eksport",
+      text: "Trenutno nema gostiju koji dolaze.",
+      variant: "warning",
+    });
+    return;
+  }
+
+  setIsExportingPdf(true);
+
+  const element = document.createElement("div");
+
+  try {
     const totalConfirmed = exportGuests.reduce((sum, guest) => {
       return sum + (Number(guest.guests) || 0);
     }, 0);
+
+    const totalDeclined = guests.filter(
+      (guest) => guest.attending === "ne"
+    ).length;
 
     const formattedDate = new Date().toLocaleString("sr-RS", {
       day: "2-digit",
@@ -709,349 +740,401 @@ useEffect(() => {
       minute: "2-digit",
     });
 
-    const guestRows = exportGuests
-      .map(
-        (guest, index) => `
-          <tr>
-            <td class="col-index">${index + 1}.</td>
-            <td class="col-name">${guest.fullName || ""}</td>
-            <td class="col-count">${Number(guest.guests) || 0}</td>
-            <td class="col-source">
-              ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
-            </td>
-            <td class="col-date">${formatDate(guest.createdAt) || "—"}</td>
-          </tr>
-        `
-      )
+    const escapeHtml = (value = "") =>
+      String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    const chunkArray = (array, size) => {
+      const chunks = [];
+      for (let i = 0; i < array.length; i += size) {
+        chunks.push(array.slice(i, i + size));
+      }
+      return chunks;
+    };
+
+    const guestsPerPage = 20;
+    const guestChunks = chunkArray(exportGuests, guestsPerPage);
+    const totalPages = guestChunks.length;
+
+    const pagesHtml = guestChunks
+      .map((guestChunk, pageIndex) => {
+        const guestRows = guestChunk
+          .map(
+            (guest, rowIndex) => `
+              <tr>
+                <td class="col-index">${pageIndex * guestsPerPage + rowIndex + 1}.</td>
+                <td class="col-name">${escapeHtml(guest.fullName || "")}</td>
+                <td class="col-count">${Number(guest.guests) || 0}</td>
+                <td class="col-source">
+                  ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
+                </td>
+                <td class="col-date">${escapeHtml(
+                  formatDate(guest.createdAt) || "—"
+                )}</td>
+              </tr>
+            `
+          )
+          .join("");
+
+        return `
+          <section class="pdf-page ${pageIndex < totalPages - 1 ? "page-break" : ""}">
+            <div class="pdf-shell">
+              <div class="hero">
+                <div class="topline">Wedding admin export</div>
+                <h1 class="title">Spisak potvrđenih gostiju</h1>
+                <p class="subtitle">
+                  Događaj: <strong>${escapeHtml(slug)}</strong><br />
+                  Generisano: ${escapeHtml(formattedDate)}<br />
+                  Strana: <strong>${pageIndex + 1} / ${totalPages}</strong>
+                </p>
+              </div>
+
+              ${
+                pageIndex === 0
+                  ? `
+                <div class="summary-grid">
+                  <div class="summary-card">
+                    <p class="summary-label">Potvrđeni odgovori</p>
+                    <p class="summary-value">${exportGuests.length}</p>
+                  </div>
+
+                  <div class="summary-card">
+                    <p class="summary-label">Ukupno osoba</p>
+                    <p class="summary-value">${totalConfirmed}</p>
+                  </div>
+
+                  <div class="summary-card">
+                    <p class="summary-label">Ne dolaze</p>
+                    <p class="summary-value">${totalDeclined}</p>
+                  </div>
+                </div>
+              `
+                  : ""
+              }
+
+              <div class="section-wrap">
+                <div class="section-title-row">
+                  <div class="section-title">Lista gostiju</div>
+                </div>
+
+                <div class="table-card">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Ime i prezime</th>
+                        <th style="text-align:right;">Broj osoba</th>
+                        <th>Izvor</th>
+                        <th>Datum odgovora</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${guestRows}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="footer">
+                <div class="footer-line"></div>
+                Dokument generisan iz admin panela
+              </div>
+            </div>
+          </section>
+        `;
+      })
       .join("");
 
-    const printWindow = window.open("", "_blank", "width=1200,height=900");
+    element.style.width = "100%";
+    element.style.maxWidth = "794px";
+    element.style.margin = "0 auto";
+    element.style.background = "#f6efe8";
+    element.style.padding = "12px";
+    element.style.boxSizing = "border-box";
 
-    if (!printWindow) {
+    element.innerHTML = `
+      <div class="pdf-root">
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+
+          .pdf-root {
+            width: 100%;
+            margin: 0 auto;
+            color: #5f4b3f;
+            font-family: Georgia, "Times New Roman", serif;
+          }
+
+          .pdf-page {
+            width: 100%;
+          }
+
+          .page-break {
+            page-break-after: always;
+            break-after: page;
+            margin-bottom: 12px;
+          }
+
+          .pdf-shell {
+            background: #ffffff;
+            border: 1px solid #e5d6c8;
+            border-radius: 24px;
+            overflow: hidden;
+          }
+
+          .hero {
+            padding: 22px 20px 16px;
+            border-bottom: 1px solid rgba(190, 162, 139, 0.22);
+            background: #f8f2ec;
+          }
+
+          .topline {
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #a1775f;
+            margin-bottom: 12px;
+          }
+
+          .title {
+            margin: 0;
+            font-size: 28px;
+            line-height: 1.1;
+            font-weight: 700;
+            color: #6b5447;
+          }
+
+          .subtitle {
+            margin: 10px 0 0;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #756255;
+          }
+
+          .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 14px 20px 4px;
+          }
+
+          .summary-card {
+            background: #ffffff;
+            border: 1px solid #e6d8cb;
+            border-radius: 16px;
+            padding: 14px;
+          }
+
+          .summary-label {
+            margin: 0 0 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #90715d;
+          }
+
+          .summary-value {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: #6b5447;
+            line-height: 1;
+          }
+
+          .section-wrap {
+            padding: 14px 20px 20px;
+          }
+
+          .section-title-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+          }
+
+          .section-title-row::before,
+          .section-title-row::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #dbc8b8;
+          }
+
+          .section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #a1775f;
+          }
+
+          .table-card {
+            background: #ffffff;
+            border: 1px solid #e5d6c8;
+            border-radius: 18px;
+            padding: 12px;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+
+          thead {
+            display: table-header-group;
+          }
+
+          tr,
+          td,
+          th,
+          tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          thead th {
+            text-align: left;
+            padding: 8px 5px 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #8b7364;
+            border-bottom: 1px solid #eaded3;
+          }
+
+          tbody td {
+            padding: 7px 5px;
+            font-size: 12px;
+            border-bottom: 1px solid #f1e8e0;
+            vertical-align: top;
+          }
+
+          tbody tr:last-child td {
+            border-bottom: none;
+          }
+
+          .col-index {
+            width: 42px;
+            color: #9a8374;
+          }
+
+          .col-name {
+            font-weight: 700;
+            color: #6b5447;
+          }
+
+          .col-count {
+            width: 80px;
+            text-align: right;
+            font-weight: 700;
+          }
+
+          .col-source {
+            width: 120px;
+            color: #7a675b;
+          }
+
+          .col-date {
+            width: 135px;
+            color: #7a675b;
+          }
+
+          .footer {
+            padding: 0 20px 18px;
+            text-align: center;
+            font-size: 11px;
+            color: #8a776a;
+          }
+
+          .footer-line {
+            height: 1px;
+            background: #e0d0c3;
+            margin-bottom: 10px;
+          }
+        </style>
+
+        ${pagesHtml}
+      </div>
+    `;
+
+    await html2pdf()
+      .set({
+        margin: [4, 4, 4, 4],
+        filename: `spisak-gostiju-${slug}.pdf`,
+        image: { type: "jpeg", quality: 0.9 },
+        html2canvas: {
+          scale: 1,
+          useCORS: true,
+          backgroundColor: "#f6efe8",
+        },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "portrait",
+        },
+        pagebreak: {
+          mode: ["css", "legacy"],
+        },
+      })
+      .from(element)
+      .save();
+  } catch (error) {
+    console.error("PDF export failed:", error);
+
+    try {
+      const htmlDocument = `
+        <!DOCTYPE html>
+        <html lang="sr">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Spisak gostiju - ${slug}</title>
+          </head>
+          <body style="margin:0; background:#f6efe8;">
+            ${element.innerHTML}
+          </body>
+        </html>
+      `;
+
+      const blob = new Blob([htmlDocument], {
+        type: "text/html;charset=utf-8;",
+      });
+
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `spisak-gostiju-${slug}.html`;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
       openMessageModal({
-        title: "Popup je blokiran",
-        text: "Dozvoli popup prozor kako bi PDF/štampa radili.",
+        title: "PDF nije uspeo",
+        text: "Preuzet je HTML fajl koji možete otvoriti i sačuvati ili odštampati kao PDF.",
         variant: "warning",
       });
-      return;
+    } catch (fallbackError) {
+      console.error("Fallback export failed:", fallbackError);
+
+      openMessageModal({
+        title: "Eksport nije uspeo",
+        text: "Došlo je do greške pri eksportu. Pokušajte ponovo.",
+        variant: "danger",
+      });
     }
-
-    printWindow.document.write(`
-      <!DOCTYPE html>
-      <html lang="sr">
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Spisak dolazaka - ${slug}</title>
-          <style>
-            :root {
-              --bg: #f7f1eb;
-              --paper: #fffdf9;
-              --line: #e7dbcf;
-              --line-strong: #d8c7b7;
-              --text: #2f241f;
-              --muted: #7b675b;
-              --accent: #a87361;
-            }
-            * { box-sizing: border-box; }
-            html, body {
-              margin: 0;
-              padding: 0;
-              background: #ffffff;
-              color: var(--text);
-              font-family: Georgia, "Times New Roman", serif;
-            }
-            body { padding: 26px; }
-            .sheet { max-width: 1100px; margin: 0 auto; }
-            .hero {
-              background: linear-gradient(180deg, #fffdfb 0%, #fbf6f1 100%);
-              border: 1px solid var(--line);
-              border-radius: 28px;
-              padding: 34px 34px 28px;
-              margin-bottom: 22px;
-            }
-            .hero-topline {
-              letter-spacing: 0.22em;
-              text-transform: uppercase;
-              font-size: 11px;
-              color: var(--accent);
-              margin-bottom: 14px;
-            }
-            .hero h1 {
-              margin: 0;
-              font-size: 38px;
-              line-height: 1.08;
-              font-weight: 700;
-              color: var(--text);
-            }
-            .hero-subtitle {
-              margin-top: 10px;
-              font-size: 15px;
-              color: var(--muted);
-            }
-            .summary-grid {
-              display: grid;
-              grid-template-columns: repeat(3, minmax(0, 1fr));
-              gap: 14px;
-              margin-top: 24px;
-            }
-            .summary-card {
-              background: rgba(255,255,255,0.78);
-              border: 1px solid var(--line);
-              border-radius: 20px;
-              padding: 16px 18px;
-            }
-            .summary-label {
-              font-size: 11px;
-              text-transform: uppercase;
-              letter-spacing: 0.14em;
-              color: var(--muted);
-              margin-bottom: 8px;
-            }
-            .summary-value {
-              font-size: 28px;
-              font-weight: 700;
-              color: var(--text);
-              line-height: 1;
-            }
-            .summary-note {
-              margin-top: 6px;
-              font-size: 13px;
-              color: var(--muted);
-            }
-            .section-title-wrap {
-              display: flex;
-              align-items: center;
-              gap: 14px;
-              margin: 28px 2px 18px;
-            }
-            .section-title-wrap::before,
-            .section-title-wrap::after {
-              content: "";
-              flex: 1;
-              height: 1px;
-              background: var(--line-strong);
-            }
-            .section-title {
-              font-size: 13px;
-              text-transform: uppercase;
-              letter-spacing: 0.2em;
-              color: var(--accent);
-              white-space: nowrap;
-            }
-            .table-wrap {
-              background: var(--paper);
-              border: 1px solid var(--line);
-              border-radius: 24px;
-              padding: 20px;
-              box-shadow: 0 10px 28px rgba(63, 48, 40, 0.06);
-            }
-            table { width: 100%; border-collapse: collapse; }
-            thead th {
-              padding: 12px 8px 14px;
-              text-align: left;
-              font-size: 11px;
-              text-transform: uppercase;
-              letter-spacing: 0.12em;
-              color: var(--muted);
-              border-bottom: 1px solid var(--line);
-            }
-            tbody td {
-              padding: 12px 8px;
-              border-bottom: 1px solid #f0e7df;
-              font-size: 14px;
-              vertical-align: top;
-            }
-            tbody tr:last-child td { border-bottom: none; }
-            .col-index { width: 54px; color: var(--muted); }
-            .col-name { font-weight: 600; color: var(--text); }
-            .col-count { width: 110px; text-align: right; font-weight: 700; }
-            .col-source { width: 170px; color: var(--muted); }
-            .col-date { width: 190px; color: var(--muted); }
-            .footer-note {
-              margin-top: 24px;
-              padding-top: 16px;
-              border-top: 1px solid var(--line);
-              text-align: center;
-              color: var(--muted);
-              font-size: 12px;
-              letter-spacing: 0.04em;
-            }
-            @page { size: A4; margin: 14mm; }
-            @media print {
-              body { padding: 0; background: #fff; }
-              .sheet { max-width: 100%; }
-              .hero, .table-wrap { box-shadow: none; }
-            }
-              @media screen and (max-width: 700px) {
-  body {
-    padding: 14px;
-  }
-
-  .hero {
-    padding: 20px 18px 18px;
-    border-radius: 20px;
-  }
-thead th {
-  position: sticky;
-  top: 0;
-  background: #fffdf9;
-  z-index: 2;
+  } finally {
+  element.remove();
+  setIsExportingPdf(false);
 }
-  .hero-topline {
-    font-size: 10px;
-    letter-spacing: 0.16em;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-    line-height: 1.12;
-  }
-
-  .hero-subtitle {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .summary-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 18px;
-  }
-
-  .summary-card {
-    border-radius: 16px;
-    padding: 14px;
-  }
-
-  .summary-value {
-    font-size: 22px;
-  }
-
-  .section-title-wrap {
-    margin: 20px 0 14px;
-    gap: 10px;
-  }
-
-  .section-title {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-align: center;
-  }
-
-  .table-wrap {
-    padding: 12px;
-    border-radius: 18px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
- table {
-  width: 100%;
-  min-width: 600px;
-}
-
-  thead th,
-  tbody td {
-    font-size: 12px;
-    padding: 10px 6px;
-  }
-
-  .col-index {
-    width: 44px;
-  }
-
-  .col-count {
-    width: 90px;
-  }
-
-  .col-source {
-    width: 130px;
-  }
-
-  .col-date {
-    width: 140px;
-  }
-
-  .footer-note {
-    font-size: 11px;
-    line-height: 1.5;
-    margin-top: 18px;
-  }
-}
-          </style>
-        </head>
-        <body>
-          <div class="sheet">
-            <section class="hero">
-             <div class="hero-topline">Pregled gostiju</div>
-              <h1>Spisak potvrđenih dolazaka</h1>
-              <div class="hero-subtitle">
-                Događaj: <strong>${slug}</strong><br />
-                Generisano: ${formattedDate}
-              </div>
-
-              <div class="summary-grid">
-                <div class="summary-card">
-                  <div class="summary-label">Broj prijava</div>
-                  <div class="summary-value">${exportGuests.length}</div>
-                  <div class="summary-note">Broj potvrđenih odgovora</div>
-                </div>
-
-                <div class="summary-card">
-                  <div class="summary-label">Ukupno osoba</div>
-                  <div class="summary-value">${totalConfirmed}</div>
-                  <div class="summary-note">Zbir svih prijavljenih gostiju</div>
-                </div>
-
-                <div class="summary-card">
-                  <div class="summary-label">Negativni odgovori</div>
-                  <div class="summary-value">
-                    ${guests.filter((guest) => guest.attending === "ne").length}
-                  </div>
-                  <div class="summary-note">Gosti koji ne dolaze</div>
-                </div>
-              </div>
-            </section>
-
-            <div class="section-title-wrap">
-              <div class="section-title">Lista gostiju</div>
-            </div>
-
-            <section class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Ime i prezime</th>
-                    <th style="text-align:right;">Broj osoba</th>
-                    <th>Izvor</th>
-                    <th>Datum odgovora</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${guestRows}
-                </tbody>
-              </table>
-            </section>
-
-            <div class="footer-note">
-              Dokument je pripremljen za štampu ili čuvanje kao PDF.
-            </div>
-          </div>
-        </body>
-      </html>
-    `);
-
-    printWindow.document.close();
-    printWindow.focus();
-
-   printWindow.onload = () => {
-  printWindow.focus();
-  printWindow.print();
 };
-  };
-
   const getModalAccentStyle = (variant) => {
     if (variant === "success") {
       return {
@@ -1189,6 +1272,19 @@ thead th {
                 Napravi raspored
               </button>
 
+              {hasGuestPreferencesPage && (
+                <button
+                  type="button"
+                  onClick={() => navigate(`/admin/${slug}/preferences`)}
+                  {...getPressableProps(
+                    styles.secondaryButton,
+                    isMobile ? styles.topButtonMobile : {}
+                  )}
+                >
+                  RSVP želje gostiju
+                </button>
+              )}
+
               <button
                 type="button"
                 onClick={() => setShowExpenses((prev) => !prev)}
@@ -1200,16 +1296,20 @@ thead th {
                 {showExpenses ? "Zatvori troškove" : "Troškovi"}
               </button>
 
-              <button
-                type="button"
-                onClick={handleExportPDF}
-                {...getPressableProps(
-                  styles.exportButton,
-                  isMobile ? styles.topButtonMobile : {}
-                )}
-              >
-                Preuzmi PDF
-              </button>
+   <button
+  type="button"
+  onClick={handleExportPDF}
+  disabled={isExportingPdf}
+  {...getPressableProps(
+    {
+      ...styles.exportButton,
+      ...(isExportingPdf ? styles.exportButtonDisabled : {}),
+    },
+    isMobile ? styles.topButtonMobile : {}
+  )}
+>
+  {isExportingPdf ? "Priprema PDF..." : "Preuzmi PDF"}
+</button>
 
               <button
                 type="button"
@@ -1240,7 +1340,15 @@ thead th {
             </div>
 
             <div style={styles.statBox}>
-              <span style={{ ...styles.statNumber, fontSize: isMobile ? "32px" : "38px", color: "#2f241f" }}>{totalConfirmedPeople}</span>
+              <span
+                style={{
+                  ...styles.statNumber,
+                  fontSize: isMobile ? "32px" : "38px",
+                  color: "#2f241f",
+                }}
+              >
+                {totalConfirmedPeople}
+              </span>
               <span style={styles.statLabel}>Ukupno osoba</span>
             </div>
           </div>
@@ -1255,12 +1363,12 @@ thead th {
               </div>
             </div>
 
-           <div
-  style={{
-    ...styles.budgetBlock,
-    ...(isMobile ? styles.budgetBlockMobile : {}),
-  }}
->
+            <div
+              style={{
+                ...styles.budgetBlock,
+                ...(isMobile ? styles.budgetBlockMobile : {}),
+              }}
+            >
               <div style={styles.field}>
                 <label htmlFor="budget-input" style={styles.label}>
                   Budžet (opciono)
@@ -1539,6 +1647,7 @@ thead th {
             >
               {addingGuest ? "Dodavanje..." : "Dodaj gosta"}
             </button>
+
           </form>
         </div>
 
@@ -1771,6 +1880,11 @@ const styles = {
     boxShadow: "0 10px 30px rgba(63, 48, 40, 0.08)",
     border: "1px solid rgba(120, 90, 70, 0.12)",
   },
+  exportButtonDisabled: {
+  opacity: 0.7,
+  cursor: "not-allowed",
+  boxShadow: "none",
+},
   searchCard: {
     maxWidth: "1100px",
     margin: "0 auto 24px",
@@ -1878,22 +1992,22 @@ const styles = {
     gap: "16px",
     alignItems: "end",
   },
-budgetBlock: {
-  marginTop: "18px",
-  display: "grid",
-  gridTemplateColumns: "minmax(220px, 320px) auto",
-  gap: "16px",
-  alignItems: "end",
-},
-budgetBlockMobile: {
-  gridTemplateColumns: "1fr",
-  alignItems: "stretch",
-},
-fullWidthButton: {
-  width: "100%",
-  minWidth: "100%",
-  padding: "0 18px",
-},
+  budgetBlock: {
+    marginTop: "18px",
+    display: "grid",
+    gridTemplateColumns: "minmax(220px, 320px) auto",
+    gap: "16px",
+    alignItems: "end",
+  },
+  budgetBlockMobile: {
+    gridTemplateColumns: "1fr",
+    alignItems: "stretch",
+  },
+  fullWidthButton: {
+    width: "100%",
+    minWidth: "100%",
+    padding: "0 18px",
+  },
   field: {
     display: "flex",
     flexDirection: "column",
@@ -1912,26 +2026,26 @@ fullWidthButton: {
     outline: "none",
     background: "#fff",
   },
-button: {
-  height: "52px",
-  borderRadius: "999px",
-  border: "none",
-  background: "linear-gradient(135deg, #b8826f, #a06a57)",
-  color: "#fff",
-  fontSize: "14px",
-  fontWeight: 600,
-  letterSpacing: "0.08em",
-  textTransform: "uppercase",
-  cursor: "pointer",
-  padding: "0 22px",
-  whiteSpace: "normal",
-  textAlign: "center",
-  boxShadow: "0 8px 18px rgba(184,130,111,0.25)",
-  transition: "transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-},
+  button: {
+    height: "52px",
+    borderRadius: "999px",
+    border: "none",
+    background: "linear-gradient(135deg, #b8826f, #a06a57)",
+    color: "#fff",
+    fontSize: "14px",
+    fontWeight: 600,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    cursor: "pointer",
+    padding: "0 22px",
+    whiteSpace: "normal",
+    textAlign: "center",
+    boxShadow: "0 8px 18px rgba(184,130,111,0.25)",
+    transition: "transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   secondaryButton: {
     height: "44px",
     padding: "0 18px",

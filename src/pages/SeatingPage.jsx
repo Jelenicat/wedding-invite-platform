@@ -11,7 +11,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
-
+import html2pdf from "html2pdf.js";
+import { getDocs } from "firebase/firestore";
 function SeatingPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -237,7 +238,33 @@ function SeatingPage() {
       unsubscribeTableGuests();
     };
   }, [slug, isAuthorized]);
+useEffect(() => {
+  if (!slug || !isAuthorized) return;
+  
 
+
+  const cleanupDeletedGuests = async () => {
+    const existingGuestIds = new Set(comingGuests.map((g) => g.id));
+
+    const toDelete = tableGuests.filter(
+      (assignment) => !existingGuestIds.has(assignment.guestId)
+    );
+
+    if (toDelete.length === 0) return;
+
+    try {
+     
+
+    for (const item of toDelete) {
+  await deleteDoc(doc(db, "events", slug, "tableGuests", item.id));
+}
+    } catch (err) {
+      console.error("Cleanup error:", err);
+    }
+  };
+
+  cleanupDeletedGuests();
+}, [comingGuests, tableGuests, slug, isAuthorized]);
   useEffect(() => {
     setSelectedGuestsByTable((prev) => {
       let hasChanges = false;
@@ -479,11 +506,11 @@ function SeatingPage() {
     }, 0);
   }, [unassignedGuests]);
 
-const handlePrintSeatingPlan = () => {
+const handleExportSeatingPDF = async () => {
   if (!tables.length) {
     openMessageModal({
       title: "Nema podataka",
-      text: "Nema stolova za štampu.",
+      text: "Nema stolova za eksport.",
     });
     return;
   }
@@ -506,450 +533,480 @@ const handlePrintSeatingPlan = () => {
     minute: "2-digit",
   });
 
-  const printableTablesHtml = tables
-    .map((table, index) => {
-      const assignments = getAssignmentsForTable(table.id);
-      const occupiedSeats = getOccupiedSeats(table.id);
-      const capacity = Number(table.capacity) || 0;
-      const freeSeats = capacity - occupiedSeats;
+  const escapeHtml = (value = "") =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
-      const guestRows =
-        assignments.length > 0
-          ? assignments
-              .map(
-                (item, guestIndex) => `
+  const chunkArray = (array, size) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+  };
+
+  // 4 je sigurnije za veće rasporede
+  const tablesPerPage = 2;
+  const tableChunks = chunkArray(tables, tablesPerPage);
+  const totalPages = tableChunks.length;
+
+  const pagesHtml = tableChunks
+    .map((tableChunk, pageIndex) => {
+      const printableTablesHtml = tableChunk
+        .map((table, localIndex) => {
+          const globalIndex = pageIndex * tablesPerPage + localIndex;
+          const assignments = getAssignmentsForTable(table.id);
+          const occupiedSeats = getOccupiedSeats(table.id);
+          const capacity = Number(table.capacity) || 0;
+          const freeSeats = Math.max(capacity - occupiedSeats, 0);
+
+          const guestRows =
+            assignments.length > 0
+              ? assignments
+                  .map(
+                    (item, guestIndex) => `
+                      <tr>
+                        <td class="guest-index">${guestIndex + 1}.</td>
+                        <td class="guest-name">${escapeHtml(item.fullName || "")}</td>
+                        <td class="guest-count">${Number(item.guests) || 0}</td>
+                      </tr>
+                    `
+                  )
+                  .join("")
+              : `
                   <tr>
-                    <td class="guest-index">${guestIndex + 1}.</td>
-                    <td class="guest-name">${item.fullName || ""}</td>
-                    <td class="guest-count">${Number(item.guests) || 0}</td>
+                    <td colspan="3" class="empty-row">
+                      Nema raspoređenih gostiju za ovim stolom.
+                    </td>
                   </tr>
-                `
-              )
-              .join("")
-          : `
-              <tr>
-                <td colspan="3" class="empty-row">Nema raspoređenih gostiju za ovim stolom.</td>
-              </tr>
-            `;
+                `;
+
+          return `
+            <section class="table-card">
+              <div class="table-card-top">
+                <div>
+                  <div class="table-number">Sto ${globalIndex + 1}</div>
+                  <h2>${escapeHtml(table.name)}</h2>
+                </div>
+
+                <div class="table-badges">
+                  <span class="badge">Kapacitet: ${capacity}</span>
+                  <span class="badge">Zauzeto: ${occupiedSeats}</span>
+                  <span class="badge ${freeSeats <= 0 ? "badge-full" : "badge-free"}">
+                    Slobodno: ${freeSeats}
+                  </span>
+                </div>
+              </div>
+
+              <div class="table-divider"></div>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:48px;">#</th>
+                    <th>Gost</th>
+                    <th style="width:110px; text-align:right;">Osoba</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${guestRows}
+                </tbody>
+              </table>
+            </section>
+          `;
+        })
+        .join("");
 
       return `
-        <section class="table-card">
-          <div class="table-card-top">
-            <div>
-              <div class="table-number">Sto ${index + 1}</div>
-              <h2>${table.name}</h2>
+        <section class="pdf-page ${pageIndex < totalPages - 1 ? "page-break" : ""}">
+          <div class="pdf-shell">
+            <section class="hero">
+              <div class="hero-topline">Wedding Seating Plan</div>
+              <h1>Raspored sedenja</h1>
+              <div class="hero-subtitle">
+                Događaj: <strong>${escapeHtml(slug)}</strong><br />
+                Generisano: ${escapeHtml(formattedDate)}<br />
+                Strana: <strong>${pageIndex + 1} / ${totalPages}</strong>
+              </div>
+            </section>
+
+            ${
+              pageIndex === 0
+                ? `
+              <div class="summary-grid">
+                <div class="summary-card">
+                  <div class="summary-label">Ukupno stolova</div>
+                  <div class="summary-value">${tables.length}</div>
+                  <div class="summary-note">Pripremljenih za raspored</div>
+                </div>
+
+                <div class="summary-card">
+                  <div class="summary-label">Gostiju koji dolaze</div>
+                  <div class="summary-value">${totalComingPeople}</div>
+                  <div class="summary-note">Potvrđeni dolasci</div>
+                </div>
+
+                <div class="summary-card">
+                  <div class="summary-label">Raspoređenih osoba</div>
+                  <div class="summary-value">${totalAssignedPeople}</div>
+                  <div class="summary-note">Već dodeljeno stolovima</div>
+                </div>
+
+                <div class="summary-card">
+                  <div class="summary-label">Slobodnih mesta</div>
+                  <div class="summary-value">${Math.max(
+                    totalCapacity - totalAssignedPeople,
+                    0
+                  )}</div>
+                  <div class="summary-note">Preostali kapacitet</div>
+                </div>
+              </div>
+            `
+                : ""
+            }
+
+            <div class="section-wrap">
+              <div class="section-title-row">
+                <div class="section-title">Pregled po stolovima</div>
+              </div>
+
+              <section class="tables-grid">
+                ${printableTablesHtml}
+              </section>
             </div>
 
-            <div class="table-badges">
-              <span class="badge">Kapacitet: ${capacity}</span>
-              <span class="badge">Zauzeto: ${occupiedSeats}</span>
-              <span class="badge ${freeSeats <= 0 ? "badge-full" : "badge-free"}">
-                Slobodno: ${freeSeats}
-              </span>
+            <div class="footer">
+              <div class="footer-line"></div>
+              Ukupno neraspoređenih osoba: <strong>${unassignedGuestsCount}</strong>
             </div>
           </div>
-
-          <div class="table-divider"></div>
-
-          <table>
-            <thead>
-              <tr>
-                <th style="width:48px;">#</th>
-                <th>Gost</th>
-                <th style="width:110px; text-align:right;">Osoba</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${guestRows}
-            </tbody>
-          </table>
         </section>
       `;
     })
     .join("");
 
-  const printWindow = window.open("", "_blank", "width=1200,height=900");
+  const element = document.createElement("div");
+  element.style.width = "100%";
+  element.style.maxWidth = "794px";
+  element.style.margin = "0 auto";
+  element.style.background = "#f6efe8";
+  element.style.padding = "12px";
+  element.style.boxSizing = "border-box";
 
-  if (!printWindow) {
+  element.innerHTML = `
+    <div class="pdf-root">
+      <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        .pdf-root {
+          width: 100%;
+          margin: 0 auto;
+          color: #5f4b3f;
+          font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .pdf-page {
+          width: 100%;
+        }
+
+        .page-break {
+          page-break-after: always;
+          break-after: page;
+          margin-bottom: 12px;
+        }
+
+        .pdf-shell {
+          background: #ffffff;
+          border: 1px solid #e5d6c8;
+          border-radius: 24px;
+          overflow: hidden;
+        }
+
+        .hero {
+          padding: 22px 20px 16px;
+          border-bottom: 1px solid rgba(190, 162, 139, 0.22);
+          background: #f8f2ec;
+        }
+
+        .hero-topline {
+          font-size: 10px;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: #a1775f;
+          margin-bottom: 12px;
+        }
+
+        .hero h1 {
+          margin: 0;
+          font-size: 28px;
+          line-height: 1.1;
+          font-weight: 700;
+          color: #6b5447;
+        }
+
+        .hero-subtitle {
+          margin-top: 10px;
+          font-size: 13px;
+          line-height: 1.6;
+          color: #756255;
+        }
+
+        .summary-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+          padding: 14px 20px 4px;
+        }
+
+        .summary-card {
+          background: #ffffff;
+          border: 1px solid #e6d8cb;
+          border-radius: 16px;
+          padding: 14px;
+        }
+
+        .summary-label {
+          margin: 0 0 8px;
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 0.14em;
+          color: #90715d;
+        }
+
+        .summary-value {
+          margin: 0;
+          font-size: 22px;
+          font-weight: 700;
+          color: #6b5447;
+          line-height: 1;
+        }
+
+        .summary-note {
+          margin-top: 6px;
+          font-size: 12px;
+          color: #7b675b;
+          line-height: 1.4;
+        }
+
+        .section-wrap {
+          padding: 14px 20px 20px;
+        }
+
+        .section-title-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 12px;
+        }
+
+        .section-title-row::before,
+        .section-title-row::after {
+          content: "";
+          flex: 1;
+          height: 1px;
+          background: #dbc8b8;
+        }
+
+        .section-title {
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          color: #a1775f;
+          white-space: nowrap;
+        }
+
+        .tables-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .table-card {
+          background: #ffffff;
+          border: 1px solid #e5d6c8;
+          border-radius: 18px;
+          padding: 14px;
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+
+        .table-card-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .table-number {
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          color: #7b675b;
+          margin-bottom: 6px;
+        }
+
+        .table-card h2 {
+          margin: 0;
+          font-size: 22px;
+          line-height: 1.12;
+          color: #6b5447;
+        }
+
+        .table-badges {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          gap: 8px;
+          max-width: 260px;
+        }
+
+        .badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 28px;
+          padding: 5px 10px;
+          border-radius: 999px;
+          background: #f4e8e1;
+          color: #7a5549;
+          font-size: 11px;
+          font-weight: 700;
+          border: 1px solid #ead6cb;
+          white-space: nowrap;
+        }
+
+        .badge-free {
+          background: #e6f2e8;
+          color: #2e5c36;
+          border-color: #cfe0d2;
+        }
+
+        .badge-full {
+          background: #f8e7e5;
+          color: #9d4036;
+          border-color: #e7c5c1;
+        }
+
+        .table-divider {
+          height: 1px;
+          background: #e0d0c3;
+          margin: 14px 0 12px;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        thead {
+          display: table-header-group;
+        }
+
+        tr,
+        td,
+        th,
+        tbody tr {
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+
+        thead th {
+          padding: 8px 5px 10px;
+          text-align: left;
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          color: #8b7364;
+          border-bottom: 1px solid #eaded3;
+        }
+
+        tbody td {
+          padding: 7px 5px;
+          border-bottom: 1px solid #f0e7df;
+          font-size: 12px;
+          vertical-align: top;
+        }
+
+        tbody tr:last-child td {
+          border-bottom: none;
+        }
+
+        .guest-index {
+          color: #9a8374;
+          width: 42px;
+        }
+
+        .guest-name {
+          color: #5f4b3f;
+        }
+
+        .guest-count {
+          text-align: right;
+          font-weight: 700;
+          color: #6b5447;
+        }
+
+        .empty-row {
+          padding: 14px 6px;
+          color: #7b675b;
+          font-style: italic;
+        }
+
+        .footer {
+          padding: 0 20px 18px;
+          text-align: center;
+          font-size: 11px;
+          color: #8a776a;
+        }
+
+        .footer-line {
+          height: 1px;
+          background: #e0d0c3;
+          margin-bottom: 10px;
+        }
+      </style>
+
+      ${pagesHtml}
+    </div>
+  `;
+
+  try {
+    await html2pdf()
+      .set({
+        margin: [4, 4, 4, 4],
+        filename: `raspored-sedenja-${slug}.pdf`,
+        image: { type: "jpeg", quality: 0.9 },
+        html2canvas: {
+          scale: 1.35,
+          useCORS: true,
+          backgroundColor: "#f6efe8",
+        },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "portrait",
+        },
+        pagebreak: {
+          mode: ["css", "legacy"],
+        },
+      })
+      .from(element)
+      .save();
+  } catch (error) {
+    console.error("Greška pri eksportu rasporeda:", error);
     openMessageModal({
-      title: "Popup je blokiran",
-      text: "Dozvoli otvaranje popup prozora kako bi PDF/štampa radili.",
+      title: "Greška",
+      text: "Došlo je do greške pri kreiranju PDF fajla.",
     });
-    return;
   }
-
-  printWindow.document.write(`
-    <!DOCTYPE html>
-    <html lang="sr">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Raspored sedenja - ${slug}</title>
-        <style>
-          :root {
-            --bg: #f7f1eb;
-            --paper: #fffdf9;
-            --line: #e7dbcf;
-            --line-strong: #d8c7b7;
-            --text: #2f241f;
-            --muted: #7b675b;
-            --accent: #a87361;
-            --accent-soft: #f4e8e1;
-            --success-soft: #e6f2e8;
-            --danger-soft: #f8e7e5;
-          }
-
-          * {
-            box-sizing: border-box;
-          }
-
-          html, body {
-            margin: 0;
-            padding: 0;
-            background: #ffffff;
-            color: var(--text);
-            font-family: "Georgia", "Times New Roman", serif;
-          }
-
-          body {
-            padding: 26px;
-          }
-
-          .sheet {
-            max-width: 1100px;
-            margin: 0 auto;
-          }
-
-          .hero {
-            position: relative;
-            overflow: hidden;
-            background:
-              radial-gradient(circle at top right, rgba(168,115,97,0.08), transparent 32%),
-              linear-gradient(180deg, #fffdfb 0%, #fbf6f1 100%);
-            border: 1px solid var(--line);
-            border-radius: 28px;
-            padding: 34px 34px 28px;
-            margin-bottom: 22px;
-          }
-
-          .hero-topline {
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            font-size: 11px;
-            color: var(--accent);
-            margin-bottom: 14px;
-          }
-
-          .hero h1 {
-            margin: 0;
-            font-size: 38px;
-            line-height: 1.08;
-            font-weight: 700;
-            color: var(--text);
-          }
-
-          .hero-subtitle {
-            margin-top: 10px;
-            font-size: 15px;
-            color: var(--muted);
-          }
-
-          .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 24px;
-          }
-
-          .summary-card {
-            background: rgba(255,255,255,0.78);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 16px 18px;
-          }
-
-          .summary-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            color: var(--muted);
-            margin-bottom: 8px;
-          }
-
-          .summary-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text);
-            line-height: 1;
-          }
-
-          .summary-note {
-            margin-top: 6px;
-            font-size: 13px;
-            color: var(--muted);
-          }
-
-          .section-title-wrap {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin: 28px 2px 18px;
-          }
-
-          .section-title-wrap::before,
-          .section-title-wrap::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: var(--line-strong);
-          }
-
-          .section-title {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-            white-space: nowrap;
-          }
-
-          .tables-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-          }
-
-          .table-card {
-            background: var(--paper);
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            padding: 22px 22px 18px;
-            page-break-inside: avoid;
-            break-inside: avoid;
-            box-shadow: 0 10px 28px rgba(63, 48, 40, 0.06);
-          }
-
-          .table-card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 14px;
-          }
-
-          .table-number {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--muted);
-            margin-bottom: 8px;
-          }
-
-          .table-card h2 {
-            margin: 0;
-            font-size: 26px;
-            line-height: 1.12;
-            color: var(--text);
-          }
-
-          .table-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 8px;
-            max-width: 280px;
-          }
-
-          .badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 30px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            background: var(--accent-soft);
-            color: #7a5549;
-            font-size: 12px;
-            font-weight: 700;
-            border: 1px solid #ead6cb;
-            white-space: nowrap;
-          }
-
-          .badge-free {
-            background: var(--success-soft);
-            color: #2e5c36;
-            border-color: #cfe0d2;
-          }
-
-          .badge-full {
-            background: var(--danger-soft);
-            color: #9d4036;
-            border-color: #e7c5c1;
-          }
-
-          .table-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--line-strong) 12%, var(--line-strong) 88%, transparent 100%);
-            margin: 16px 0 14px;
-          }
-
-          table {
-            width: 100%;
-            border-collapse: collapse;
-          }
-
-          thead th {
-            padding: 10px 6px 12px;
-            text-align: left;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-            border-bottom: 1px solid var(--line);
-          }
-
-          tbody td {
-            padding: 10px 6px;
-            border-bottom: 1px solid #f0e7df;
-            font-size: 14px;
-            vertical-align: top;
-          }
-
-          tbody tr:last-child td {
-            border-bottom: none;
-          }
-
-          .guest-index {
-            color: var(--muted);
-            width: 48px;
-          }
-
-          .guest-name {
-            color: var(--text);
-          }
-
-          .guest-count {
-            text-align: right;
-            font-weight: 700;
-            color: var(--text);
-          }
-
-          .empty-row {
-            padding: 16px 6px;
-            color: var(--muted);
-            font-style: italic;
-          }
-
-          .footer-note {
-            margin-top: 24px;
-            padding-top: 16px;
-            border-top: 1px solid var(--line);
-            text-align: center;
-            color: var(--muted);
-            font-size: 12px;
-            letter-spacing: 0.04em;
-          }
-
-          @page {
-            size: A4;
-            margin: 14mm;
-          }
-
-          @media print {
-            body {
-              padding: 0;
-              background: #fff;
-            }
-
-            .sheet {
-              max-width: 100%;
-            }
-
-            .hero {
-              box-shadow: none;
-            }
-
-            .table-card {
-              box-shadow: none;
-            }
-          }
-
-          @media (max-width: 900px) {
-            .summary-grid,
-            .tables-grid {
-              grid-template-columns: 1fr;
-            }
-
-            .table-card-top {
-              flex-direction: column;
-            }
-
-            .table-badges {
-              justify-content: flex-start;
-              max-width: none;
-            }
-          }
-        </style>
-      </head>
-      <body>
-        <div class="sheet">
-          <section class="hero">
-            <div class="hero-topline">Wedding Seating Plan</div>
-            <h1>Raspored sedenja</h1>
-            <div class="hero-subtitle">
-              Događaj: <strong>${slug}</strong><br />
-              Generisano: ${formattedDate}
-            </div>
-
-            <div class="summary-grid">
-              <div class="summary-card">
-                <div class="summary-label">Ukupno stolova</div>
-                <div class="summary-value">${tables.length}</div>
-                <div class="summary-note">Pripremljenih za raspored</div>
-              </div>
-
-              <div class="summary-card">
-                <div class="summary-label">Gostiju koji dolaze</div>
-                <div class="summary-value">${totalComingPeople}</div>
-                <div class="summary-note">Potvrđeni dolasci</div>
-              </div>
-
-              <div class="summary-card">
-                <div class="summary-label">Raspoređenih osoba</div>
-                <div class="summary-value">${totalAssignedPeople}</div>
-                <div class="summary-note">Već dodeljeno stolovima</div>
-              </div>
-
-              <div class="summary-card">
-                <div class="summary-label">Slobodnih mesta</div>
-                <div class="summary-value">${Math.max(totalCapacity - totalAssignedPeople, 0)}</div>
-                <div class="summary-note">Preostali kapacitet</div>
-              </div>
-            </div>
-          </section>
-
-          <div class="section-title-wrap">
-            <div class="section-title">Pregled po stolovima</div>
-          </div>
-
-          <section class="tables-grid">
-            ${printableTablesHtml}
-          </section>
-
-          <div class="footer-note">
-            Ukupno neraspoređenih osoba: <strong>${unassignedGuestsCount}</strong>
-          </div>
-        </div>
-      </body>
-    </html>
-  `);
-
-  printWindow.document.close();
-  printWindow.focus();
-
-  setTimeout(() => {
-    printWindow.print();
-  }, 300);
 };
-
   const handleSaveCapacity = async () => {
     const newCapacity = Number(editCapacityModal.capacity);
     const occupiedSeats = getOccupiedSeats(editCapacityModal.tableId);
@@ -1376,9 +1433,9 @@ const handlePrintSeatingPlan = () => {
             <button
               type="button"
               style={styles.exportButton}
-              onClick={handlePrintSeatingPlan}
+              onClick={handleExportSeatingPDF}
             >
-              Preuzmi raspored (štampa)
+              Preuzmi PDF
             </button>
 
             <button

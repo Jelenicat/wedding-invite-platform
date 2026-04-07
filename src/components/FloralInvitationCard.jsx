@@ -15,6 +15,69 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
     church: "/icons/church.svg",
     civil: "/icons/rings.svg",
     restaurant: "/icons/dinner.svg",
+    party: "/icons/dinner.svg",
+  };
+
+  const shouldShowDressCode =
+    details.showDressCode &&
+    (
+      details.dressCodeTitle ||
+      details.dressCodeNote ||
+      details.dressCodePalette?.length > 0
+    );
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 36 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+        staggerChildren: 0.12,
+        delayChildren: 0.08,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 26, filter: "blur(8px)" },
+    show: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const softReveal = {
+    hidden: { opacity: 0, y: 22, scale: 0.98 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const timelineItemVariants = {
+    hidden: { opacity: 0, y: 34, scale: 0.96 },
+    show: (index) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.75,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    }),
   };
 
   const renderCalendar = (dateString) => {
@@ -59,28 +122,54 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
     ];
 
     return (
-      <div className="floral-calendar-card">
-        <p className="floral-calendar-month">{monthNames[month]}</p>
+      <motion.div
+        className="floral-calendar-card"
+        variants={softReveal}
+      >
+        <motion.p
+          className="floral-calendar-month"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          {monthNames[month]}
+        </motion.p>
 
         <div className="floral-calendar-weekdays">
           {weekDays.map((day) => (
-            <span key={day}>{day}</span>
+            <motion.span
+              key={day}
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.4 }}
+            >
+              {day}
+            </motion.span>
           ))}
         </div>
 
         <div className="floral-calendar-grid">
           {cells.map((day, index) => (
-            <span
+            <motion.span
               key={`${day ?? "empty"}-${index}`}
               className={`floral-calendar-day ${
                 day === selectedDay ? "is-active" : ""
               } ${day === null ? "is-empty" : ""}`}
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: day === null ? 0 : 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.25,
+                delay: Math.min(index * 0.015, 0.3),
+              }}
             >
               {day ?? ""}
-            </span>
+            </motion.span>
           ))}
         </div>
-      </div>
+      </motion.div>
     );
   };
 
@@ -88,34 +177,56 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
     <>
       <motion.section
         className="floral-invitation-card floral-editorial-card"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        initial="hidden"
+        animate="show"
+        variants={sectionVariants}
       >
         <div className="floral-invitation-overlay" />
         <div className="floral-corner floral-corner-top-left" />
         <div className="floral-corner floral-corner-bottom-right" />
 
-        <div className="floral-paper floral-editorial-paper">
-          <div className="floral-monogram-badge">
+        <motion.div
+          className="floral-paper floral-editorial-paper"
+          initial={{ opacity: 0, y: 50, scale: 0.97, rotateX: 6 }}
+          animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <motion.div
+            className="floral-monogram-badge"
+            variants={itemVariants}
+            whileHover={{ scale: 1.04, rotate: 2 }}
+            transition={{ duration: 0.35 }}
+          >
             <span>{brideInitial}</span>
             <span className="floral-monogram-and">&</span>
             <span>{groomInitial}</span>
-          </div>
+          </motion.div>
 
-          <h1 className="floral-invitation-names">
+          <motion.h1
+            className="floral-invitation-names"
+            variants={itemVariants}
+          >
             {brideName} <span>&</span> {groomName}
-          </h1>
+          </motion.h1>
 
-          <div className="floral-divider floral-divider-lg" />
+          <motion.div
+            className="floral-divider floral-divider-lg"
+            variants={itemVariants}
+          />
 
           {details.welcomeText && (
-            <p className="floral-invitation-text floral-editorial-text">
+            <motion.p
+              className="floral-invitation-text floral-editorial-text"
+              variants={itemVariants}
+            >
               {details.welcomeText}
-            </p>
+            </motion.p>
           )}
 
-          <div className="floral-divider floral-divider-sm" />
+          <motion.div
+            className="floral-divider floral-divider-sm"
+            variants={itemVariants}
+          />
 
           {renderCalendar(details.dateISO)}
 
@@ -125,44 +236,82 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
                 <motion.div
                   key={`${event.label}-${index}`}
                   className="floral-timeline-item"
-                  initial={{ opacity: 0, y: 34 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="show"
                   viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.55, delay: index * 0.08 }}
+                  variants={timelineItemVariants}
+                  whileHover={{ y: -6, scale: 1.01 }}
                 >
-                  <div className="floral-timeline-icon">
+                  <motion.div
+                    className="floral-timeline-icon"
+                    initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.08,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    whileHover={{ scale: 1.08, rotate: -3 }}
+                  >
                     <img
                       src={iconMap[event.icon] || "/icons/guests.svg"}
                       alt={event.label}
                     />
-                  </div>
+                  </motion.div>
 
-                  <h3 className="floral-timeline-title">{event.label}</h3>
+                  <motion.h3
+                    className="floral-timeline-title"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.55, delay: 0.08 }}
+                  >
+                    {event.label}
+                  </motion.h3>
 
                   <div className="floral-timeline-meta">
                     {event.time && (
-                   <p className="floral-timeline-time">
-  {event.time}
-  {event.location && (
-    <span className="floral-timeline-separator"> • </span>
-  )}
-{event.location && (
-  event.mapLink ? (
-    <a
-      href={event.mapLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="floral-timeline-location-inline floral-timeline-location-link"
-    >
-      {event.location}
-    </a>
-  ) : (
-    <span className="floral-timeline-location-inline">
-      {event.location}
-    </span>
-  )
-)}
-</p>
+                      <motion.p
+                        className="floral-timeline-time"
+                        initial={{ opacity: 0, y: 8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.5, delay: 0.12 }}
+                      >
+                        {event.time}
+                        {event.location && (
+                          <span className="floral-timeline-separator"> • </span>
+                        )}
+                        {event.location &&
+                          (event.mapLink ? (
+                            <a
+                              href={event.mapLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="floral-timeline-location-inline floral-timeline-location-link"
+                            >
+                              {event.location}
+                            </a>
+                          ) : (
+                            <span className="floral-timeline-location-inline">
+                              {event.location}
+                            </span>
+                          ))}
+                      </motion.p>
+                    )}
+
+                    {event.note && (
+                      <motion.p
+                        className="floral-timeline-note"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.55, delay: 0.18 }}
+                      >
+                        {event.note}
+                      </motion.p>
                     )}
                   </div>
                 </motion.div>
@@ -170,69 +319,131 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
             </div>
           )}
 
-          {details.dressCodePalette?.length > 0 && (
+          {shouldShowDressCode && (
             <motion.div
               className="floral-extra-card floral-dresscode-card"
-              initial={{ opacity: 0, y: 34 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 34, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.55 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
             >
-              <div className="floral-dresscode-icon">
+              <motion.div
+                className="floral-dresscode-icon"
+                initial={{ opacity: 0, scale: 0.85, rotate: -6 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
+              >
                 <img src="/icons/dresscode.svg" alt="Dress code" />
-              </div>
+              </motion.div>
 
-              <h3 className="floral-section-title">
+              <motion.h3
+                className="floral-section-title"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.55 }}
+              >
                 {details.dressCodeTitle || "Dress code"}
-              </h3>
+              </motion.h3>
 
               {details.dressCodeNote && (
-                <p className="floral-section-note floral-dresscode-note">
+                <motion.p
+                  className="floral-section-note floral-dresscode-note"
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.55, delay: 0.08 }}
+                >
                   {details.dressCodeNote}
-                </p>
+                </motion.p>
               )}
 
-              <div className="floral-palette floral-dresscode-palette">
-                {details.dressCodePalette.map((color, index) => (
-                  <span
-                    key={`${color}-${index}`}
-                    className="floral-palette-dot"
-                    style={{ backgroundColor: color }}
-                    aria-label={`dress code color ${index + 1}`}
-                  />
-                ))}
-              </div>
+              {details.dressCodePalette?.length > 0 && (
+                <motion.div
+                  className="floral-palette floral-dresscode-palette"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.45, delay: 0.1 }}
+                >
+                  {details.dressCodePalette.map((color, index) => (
+                    <motion.span
+                      key={`${color}-${index}`}
+                      className="floral-palette-dot"
+                      style={{ backgroundColor: color }}
+                      aria-label={`dress code color ${index + 1}`}
+                      initial={{ opacity: 0, scale: 0.7, y: 8 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: index * 0.06,
+                      }}
+                      whileHover={{ y: -4, scale: 1.08 }}
+                    />
+                  ))}
+                </motion.div>
+              )}
             </motion.div>
           )}
 
           {details.mapLink && (
             <motion.div
               className="floral-extra-card floral-map-card"
-              initial={{ opacity: 0, y: 34 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 34, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.55 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
             >
-              <h3 className="floral-section-title">Lokacija</h3>
+              <motion.h3
+                className="floral-section-title"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+              >
+                Lokacija
+              </motion.h3>
 
-              <a
+              <motion.a
                 href={details.mapLink}
                 target="_blank"
                 rel="noreferrer"
                 className="floral-map-link"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.55, delay: 0.08 }}
+                whileHover={{ y: -3, scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Pogledaj na mapi
-              </a>
+              </motion.a>
             </motion.div>
           )}
 
           {details.note && (
-            <p className="floral-invitation-note">{details.note}</p>
+            <motion.p
+              className="floral-invitation-note"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.65, delay: 0.08 }}
+            >
+              {details.note}
+            </motion.p>
           )}
-        </div>
+        </motion.div>
       </motion.section>
 
-      <FloralRSVP slug={slug} eventType={type} />
+      <FloralRSVP
+        slug={slug}
+        eventType={type}
+        rsvpOptions={details?.rsvpOptions}
+      />
 
       {details.dateISO && <FloralCountdown targetDate={details.dateISO} />}
     </>

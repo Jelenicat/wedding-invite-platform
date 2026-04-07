@@ -541,289 +541,6 @@
     width: 100%;
   }
 }
-.upload-page {
-  min-height: 100vh;
-  padding: 0;
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,0.96), transparent 32%),
-    linear-gradient(180deg, #f5f7fb 0%, #eef2f7 52%, #f8fafc 100%);
-}
-
-.upload-hidden-input {
-  display: none;
-}
-
-.upload-shell {
-  width: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.upload-hero-card {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 0;
-  background: rgba(255, 255, 255, 0.96);
-  border: none;
-  box-shadow: none;
-}
-
-.upload-hero-image-wrap {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
-}
-
-.upload-hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.upload-hero-image-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 26%),
-    linear-gradient(180deg, rgba(255,255,255,0) 58%, rgba(255,255,255,0.97) 100%);
-}
-
-.upload-hero-content {
-  margin-top: -28px;
-  position: relative;
-  z-index: 2;
-  padding: 0 20px 28px;
-  text-align: center;
-}
-
-.upload-hero-kicker {
-  margin: 0;
-  font-size: 30px;
-  line-height: 1.05;
-  color: #1e293b;
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 600;
-}
-
-.upload-hero-divider {
-  width: 96px;
-  height: 1px;
-  background: #94a3b8;
-  margin: 12px auto 18px;
-}
-
-.upload-hero-title {
-  margin: 0;
-  font-size: 28px;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  color: #0f172a;
-  font-weight: 700;
-}
-
-.upload-hero-subtitle {
-  margin: 12px 0 0;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #475569;
-}
-
-.upload-choose-button {
-  margin-top: 22px;
-  width: 100%;
-  min-height: 54px;
-  border: 1px solid #0f172a;
-  border-radius: 14px;
-  background: #ffffff;
-  color: #0f172a;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.upload-choose-button:hover {
-  transform: translateY(-1px);
-  background: #0f172a;
-  color: #ffffff;
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
-}
-
-.upload-hero-meta {
-  margin: 12px 0 0;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #64748b;
-}
-
-.upload-selected-panel {
-  width: 100%;
-  margin-top: 0;
-  background: rgba(255, 255, 255, 0.92);
-  border-top: 1px solid rgba(148, 163, 184, 0.14);
-  border-radius: 0;
-  padding: 18px 20px 24px;
-  box-shadow: none;
-}
-
-.upload-selected-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-}
-
-.upload-selected-title {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.upload-selected-count {
-  font-size: 13px;
-  color: #64748b;
-  font-weight: 600;
-}
-
-.upload-selected-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
-  gap: 12px;
-}
-
-.upload-selected-item {
-  overflow: hidden;
-  border-radius: 14px;
-  background: #e2e8f0;
-}
-
-.upload-selected-image {
-  width: 100%;
-  height: 92px;
-  object-fit: cover;
-  display: block;
-}
-
-.upload-submit-button {
-  margin-top: 18px;
-  width: 100%;
-  min-height: 52px;
-  border: none;
-  border-radius: 14px;
-  background: #0f172a;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.upload-submit-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.15);
-}
-
-.upload-submit-button:disabled {
-  opacity: 0.72;
-  cursor: not-allowed;
-}
-
-.upload-error-text {
-  margin: 0;
-  padding: 0 20px 8px;
-  text-align: center;
-  color: #b42318;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.upload-success-card {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 18px 20px 24px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  border: 1px solid rgba(16, 185, 129, 0.18);
-  box-shadow:
-    0 14px 30px rgba(15, 23, 42, 0.06),
-    0 2px 8px rgba(15, 23, 42, 0.03);
-}
-
-.upload-success-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: #ecfdf3;
-  color: #047857;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.upload-success-title {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.upload-success-description {
-  margin: 6px 0 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #475569;
-}
-
-@media (max-width: 480px) {
-  .upload-page {
-    padding: 0;
-  }
-
-  .upload-hero-image-wrap {
-    height: 420px;
-  }
-
-  .upload-hero-content {
-    padding: 0 16px 24px;
-  }
-
-  .upload-selected-panel {
-    padding: 18px 16px 24px;
-  }
-
-  .upload-error-text {
-    padding: 0 16px 8px;
-  }
-
-  .upload-success-card {
-    padding: 18px 16px 24px;
-  }
-
-  .upload-hero-kicker {
-    font-size: 26px;
-  }
-
-  .upload-hero-title {
-    font-size: 24px;
-  }
-}
 .gallery-toolbar {
   margin-bottom: 22px;
   padding: 16px;
@@ -908,121 +625,10 @@
   color: #ffffff;
   border-color: #0f172a;
 }
-.upload-progress-wrap {
-  position: sticky;
-  top: 12px;
-  z-index: 40;
 
-  margin: 0 0 18px;
-  padding: 14px 16px 16px;
-  border-radius: 20px;
-
-  background: rgba(255, 250, 246, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(201, 170, 143, 0.24);
-
-  box-shadow:
-    0 14px 40px rgba(92, 64, 46, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-.upload-progress-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 10px;
-}
-
-.upload-progress-label {
-  font-size: 0.88rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #8a6f5c;
-}
-
-.upload-progress-value {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #4b372c;
-}
-
-.upload-progress-bar {
-  position: relative;
-  width: 100%;
-  height: 8px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: rgba(169, 127, 102, 0.12);
-}
-
-.upload-progress-bar-fill {
-  position: relative;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    #ead9ca 0%,
-    #d7b89d 45%,
-    #b9896f 100%
-  );
-  box-shadow:
-    0 0 14px rgba(201, 170, 143, 0.55),
-    0 0 28px rgba(185, 137, 111, 0.18);
-  transition: width 0.28s ease;
-  overflow: hidden;
-}
-
-.upload-progress-bar-fill::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  left: -35%;
-  width: 35%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.72),
-    transparent
-  );
-  animation: uploadProgressShine 1.8s linear infinite;
-}
-
-.upload-progress-count {
-  margin-top: 10px;
-  font-size: 0.92rem;
-  color: #6f5a4d;
-  font-weight: 500;
-}
-
-@keyframes uploadProgressShine {
-  to {
-    left: 135%;
-  }
-}
-
-@media (max-width: 640px) {
-  .upload-progress-wrap {
-    top: 8px;
-    padding: 12px 13px 14px;
-    border-radius: 18px;
-  }
-
-  .upload-progress-label {
-    font-size: 0.8rem;
-  }
-
-  .upload-progress-value {
-    font-size: 0.92rem;
-  }
-
-  .upload-progress-count {
-    font-size: 0.86rem;
-  }
-}
-
+/* =========================
+   WEDDING GALLERY EXTRA UI
+========================= */
 .gallery-photo-fallback {
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -1036,23 +642,6 @@
   color: #6d6a67;
   font-size: 0.95rem;
 }
-.upload-processing-note {
-  margin-top: 10px;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: #7b6557;
-}
-
-.upload-progress-count {
-  margin-top: 10px;
-  font-size: 0.92rem;
-  color: #6f5a4d;
-  font-weight: 500;
-}
-/* =========================
-   WEDDING GALLERY EXTRA UI
-========================= */
-
 .gallery-toolbar-left {
   display: flex;
   flex-direction: column;
@@ -1685,15 +1274,585 @@
     gap: 18px;
   }
 }
+/* =========================
+   UPLOAD PAGE
+========================= */
+
+.upload-page {
+  min-height: 100vh;
+  padding: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.96), transparent 32%),
+    linear-gradient(180deg, #f5f7fb 0%, #eef2f7 52%, #f8fafc 100%);
+}
+
+.upload-hidden-input {
+  display: none;
+}
+
+.upload-shell {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.upload-hero-card {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.96);
+  border: none;
+  box-shadow: none;
+}
+
+.upload-hero-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.upload-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.upload-hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 58%, rgba(255, 255, 255, 0.97) 100%);
+}
+
+.upload-hero-content {
+  margin-top: -28px;
+  position: relative;
+  z-index: 2;
+  padding: 0 20px 28px;
+  text-align: center;
+}
+
+.upload-hero-kicker {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.05;
+  color: #1e293b;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+
+.upload-hero-divider {
+  width: 96px;
+  height: 1px;
+  background: #94a3b8;
+  margin: 12px auto 18px;
+}
+
+.upload-hero-title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.upload-hero-subtitle {
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.upload-choose-button,
+.upload-submit-button {
+  margin-top: 22px;
+  width: 100%;
+  min-height: 54px;
+  border: none;
+  border-radius: 14px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
+}
+
+.upload-choose-button:hover,
+.upload-submit-button:hover {
+  transform: translateY(-1px);
+}
+
+.upload-choose-button:disabled,
+.upload-submit-button:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.upload-hero-meta {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.upload-processing-note {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.upload-progress-wrap {
+  position: sticky;
+  top: 12px;
+  z-index: 40;
+  margin: 0 16px 18px;
+  padding: 14px 16px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.upload-progress-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.upload-progress-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.upload-progress-value {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.upload-progress-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.upload-progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.upload-progress-count {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* =========================
+   SELECTED / PREVIEW
+========================= */
+
+.upload-selected-panel {
+  width: 100%;
+  margin-top: 0;
+  padding: 18px 20px 24px;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.upload-selected-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.upload-selected-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.upload-selected-helper {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.upload-selected-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.upload-selected-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 12px;
+}
+
+.upload-selected-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.upload-selected-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+}
+
+.upload-selected-item.is-selected {
+  border-color: rgba(15, 23, 42, 0.4);
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.12),
+    0 0 0 2px rgba(15, 23, 42, 0.05);
+}
+
+.upload-selected-item.is-disabled {
+  opacity: 0.5;
+}
+
+.upload-select-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(15, 23, 42, 0.14);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.upload-select-badge:hover {
+  transform: scale(1.08);
+}
+
+.upload-select-badge.is-selected {
+  color: #fff;
+}
+
+.upload-select-badge:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.upload-remove-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.upload-remove-button:hover {
+  transform: scale(1.08);
+}
+
+.upload-remove-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.upload-selected-image {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   ERROR / SUCCESS
+========================= */
+
+.upload-error-text {
+  margin: 0;
+  padding: 0 20px 8px;
+  text-align: center;
+  color: #b42318;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.upload-success-card {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px 24px;
+  border-radius: 18px;
+}
+
+.upload-success-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.upload-success-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.upload-success-description {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.upload-submit-button-secondary {
+  margin-top: 0;
+  margin-left: auto;
+  width: auto;
+  min-width: 190px;
+  padding: 0 18px;
+}
+
+/* =========================
+   WEDDING THEME
+========================= */
+
+.upload-page-wedding .upload-hero-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(245, 245, 245, 0.94) 100%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.upload-page-wedding .upload-hero-divider {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+
+.upload-page-wedding .upload-hero-kicker {
+  color: #111111;
+}
+
+.upload-page-wedding .upload-hero-title {
+  color: #000000;
+}
+
+.upload-page-wedding .upload-hero-subtitle,
+.upload-page-wedding .upload-hero-meta,
+.upload-page-wedding .upload-processing-note {
+  color: #4b4b4b;
+}
+
+.upload-page-wedding .upload-choose-button,
+.upload-page-wedding .upload-submit-button {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.upload-page-wedding .upload-choose-button:hover,
+.upload-page-wedding .upload-submit-button:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+}
+
+.upload-page-wedding .upload-progress-wrap {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.74);
+}
+
+.upload-page-wedding .upload-progress-label {
+  color: #111111;
+}
+
+.upload-page-wedding .upload-progress-value {
+  color: #000000;
+}
+
+.upload-page-wedding .upload-progress-bar {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.upload-page-wedding .upload-progress-bar-fill {
+  background: linear-gradient(90deg, #d9d9d9 0%, #7a7a7a 52%, #000000 100%);
+  box-shadow:
+    0 0 14px rgba(0, 0, 0, 0.18),
+    0 0 28px rgba(0, 0, 0, 0.12);
+}
+
+.upload-page-wedding .upload-progress-count {
+  color: #4b4b4b;
+}
+
+.upload-page-wedding .upload-selected-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(245, 245, 245, 0.94) 100%
+  );
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.upload-page-wedding .upload-selected-title {
+  color: #000000;
+}
+
+.upload-page-wedding .upload-selected-helper,
+.upload-page-wedding .upload-selected-count {
+  color: #5a5a5a;
+}
+
+.upload-page-wedding .upload-selected-item {
+  background: #f3f3f3;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+.upload-page-wedding .upload-selected-item:hover {
+  border-color: rgba(0, 0, 0, 0.24);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.upload-page-wedding .upload-selected-item.is-selected {
+  border-color: rgba(0, 0, 0, 0.45);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.upload-page-wedding .upload-select-badge {
+  background: rgba(255, 255, 255, 0.96);
+  color: #111111;
+}
+
+.upload-page-wedding .upload-select-badge.is-selected {
+  background: #000000;
+  color: #ffffff;
+}
+
+.upload-page-wedding .upload-remove-button {
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.upload-page-wedding .upload-remove-button:hover {
+  background: rgba(20, 20, 20, 0.96);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+}
+
+.upload-page-wedding .upload-success-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(243, 243, 243, 0.95) 100%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.upload-page-wedding .upload-success-title {
+  color: #000000;
+}
+
+.upload-page-wedding .upload-success-description {
+  color: #4b4b4b;
+}
+
+.upload-page-wedding .upload-success-icon {
+  background: #111111;
+  color: #ffffff;
+}
+/* =========================
+   BIRTHDAY THEME
+========================= */
+
 .upload-page-birthday .upload-hero-card {
   background: linear-gradient(
     135deg,
     rgba(255, 252, 248, 0.94) 0%,
-    rgba(246, 237, 228, 0.90) 100%
+    rgba(246, 237, 228, 0.9) 100%
   );
-
   border: 1px solid rgba(200, 170, 143, 0.22);
-
   box-shadow:
     0 18px 50px rgba(120, 90, 70, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
@@ -1724,29 +1883,543 @@
 
 .upload-page-birthday .upload-choose-button,
 .upload-page-birthday .upload-submit-button {
-  background: linear-gradient(
-    135deg,
-    #c9aa8f 0%,
-    #a97f66 100%
-  );
-
+  background: linear-gradient(135deg, #c9aa8f 0%, #a97f66 100%);
+  color: #fff;
   box-shadow: 0 12px 30px rgba(120, 90, 70, 0.18);
 }
 
 .upload-page-birthday .upload-choose-button:hover,
 .upload-page-birthday .upload-submit-button:hover {
   filter: brightness(1.04);
+  box-shadow: 0 16px 34px rgba(120, 90, 70, 0.22);
+}
+
+.upload-page-birthday .upload-progress-wrap {
+  background: rgba(255, 250, 246, 0.88);
+  border: 1px solid rgba(201, 170, 143, 0.24);
+  box-shadow:
+    0 14px 40px rgba(92, 64, 46, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.upload-page-birthday .upload-progress-label {
+  color: #8a6f5c;
+}
+
+.upload-page-birthday .upload-progress-value {
+  color: #4b372c;
+}
+
+.upload-page-birthday .upload-progress-bar {
+  background: rgba(169, 127, 102, 0.12);
 }
 
 .upload-page-birthday .upload-progress-bar-fill {
-  background: linear-gradient(
-    90deg,
-    #e7d3c3 0%,
-    #c9aa8f 55%,
-    #a97f66 100%
-  );
-
+  background: linear-gradient(90deg, #e7d3c3 0%, #c9aa8f 55%, #a97f66 100%);
   box-shadow:
     0 0 14px rgba(201, 170, 143, 0.45),
     0 0 28px rgba(169, 127, 102, 0.18);
+}
+
+.upload-page-birthday .upload-progress-count {
+  color: #6f5a4d;
+}
+
+.upload-page-birthday .upload-selected-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 248, 0.95) 0%,
+    rgba(247, 239, 231, 0.92) 100%
+  );
+  border-top: 1px solid rgba(200, 170, 143, 0.18);
+}
+
+.upload-page-birthday .upload-selected-title {
+  color: #3f2e25;
+}
+
+.upload-page-birthday .upload-selected-helper,
+.upload-page-birthday .upload-selected-count {
+  color: #7c6555;
+}
+
+.upload-page-birthday .upload-selected-item {
+  background: #efe2d8;
+  border: 1px solid rgba(200, 170, 143, 0.22);
+  box-shadow: 0 8px 18px rgba(120, 90, 70, 0.06);
+}
+
+.upload-page-birthday .upload-selected-item:hover {
+  border-color: rgba(169, 127, 102, 0.32);
+  box-shadow: 0 12px 24px rgba(120, 90, 70, 0.1);
+}
+
+.upload-page-birthday .upload-selected-item.is-selected {
+  border-color: rgba(169, 127, 102, 0.5);
+  box-shadow:
+    0 12px 24px rgba(120, 90, 70, 0.12),
+    0 0 0 2px rgba(201, 170, 143, 0.12);
+}
+
+.upload-page-birthday .upload-select-badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: #4b372c;
+}
+
+.upload-page-birthday .upload-select-badge.is-selected {
+  background: #a97f66;
+  color: #ffffff;
+}
+
+.upload-page-birthday .upload-remove-button {
+  background: rgba(75, 55, 44, 0.78);
+}
+
+.upload-page-birthday .upload-remove-button:hover {
+  background: rgba(157, 57, 57, 0.92);
+  box-shadow: 0 10px 22px rgba(157, 57, 57, 0.2);
+}
+
+.upload-page-birthday .upload-success-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 248, 0.96) 0%,
+    rgba(247, 239, 231, 0.94) 100%
+  );
+  border: 1px solid rgba(200, 170, 143, 0.2);
+  box-shadow:
+    0 14px 30px rgba(120, 90, 70, 0.06),
+    0 2px 8px rgba(120, 90, 70, 0.03);
+}
+
+.upload-page-birthday .upload-success-title {
+  color: #3f2e25;
+}
+
+.upload-page-birthday .upload-success-description {
+  color: #6f5a4d;
+}
+
+.upload-page-birthday .upload-success-icon {
+  background: #f1e3d7;
+  color: #a67c5b;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 640px) {
+  .upload-progress-wrap {
+    top: 8px;
+    margin: 0 10px 16px;
+    padding: 12px 13px 14px;
+    border-radius: 18px;
+  }
+
+  .upload-progress-label {
+    font-size: 12px;
+  }
+
+  .upload-progress-value {
+    font-size: 15px;
+  }
+
+  .upload-progress-count {
+    font-size: 12px;
+  }
+
+  .upload-success-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .upload-submit-button-secondary {
+    width: 100%;
+    margin-left: 0;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-page {
+    padding: 0;
+  }
+
+  .upload-hero-image-wrap {
+    height: 420px;
+  }
+
+  .upload-hero-content {
+    padding: 0 16px 24px;
+  }
+
+  .upload-hero-kicker {
+    font-size: 26px;
+  }
+
+  .upload-hero-title {
+    font-size: 24px;
+  }
+
+  .upload-selected-panel {
+    padding: 18px 16px 24px;
+  }
+
+  .upload-error-text {
+    padding: 0 16px 8px;
+  }
+
+  .upload-success-card {
+    padding: 18px 16px 24px;
+  }
+
+  .upload-select-badge,
+  .upload-remove-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .upload-select-badge {
+    font-size: 16px;
+  }
+
+  .upload-remove-button {
+    top: 7px;
+    right: 7px;
+    font-size: 19px;
+  }
+}
+/* =========================
+   LIMIT PULSE (NEW)
+========================= */
+
+.upload-selected-panel.is-limit-pulse {
+  animation: uploadLimitPulse 0.7s ease;
+}
+
+@keyframes uploadLimitPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(220, 38, 38, 0);
+  }
+  25% {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.10);
+  }
+  50% {
+    transform: scale(0.995);
+    box-shadow: 0 0 0 8px rgba(220, 38, 38, 0.06);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+/* =========================
+   BUTTON LOADING EFFECT (NEW)
+========================= */
+
+.upload-submit-button,
+.upload-choose-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-submit-button::after,
+.upload-choose-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  opacity: 0;
+}
+
+.upload-submit-button:disabled::after,
+.upload-choose-button:disabled::after {
+  opacity: 1;
+  animation: uploadButtonSweep 1.4s linear infinite;
+}
+
+@keyframes uploadButtonSweep {
+  from {
+    left: -120%;
+  }
+  to {
+    left: 160%;
+  }
+}
+/* =========================
+   SUCCESS WOW EFFECT
+========================= */
+
+.upload-success-overlay {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 16px 24px;
+  isolation: isolate;
+  animation: uploadSuccessOverlayFade 0.5s ease;
+}
+
+.upload-success-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 255, 255, 0.58) 38%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 0;
+}
+
+.upload-success-card-wow {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 720px);
+  align-items: center;
+  gap: 18px;
+  border-radius: 24px;
+  padding: 26px 22px;
+  animation: uploadSuccessCardPop 0.7s cubic-bezier(0.2, 0.9, 0.2, 1);
+  box-shadow:
+    0 24px 60px rgba(15, 23, 42, 0.10),
+    0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.upload-success-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.upload-success-icon-wow {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  flex-shrink: 0;
+  animation: uploadSuccessIconPulse 1.2s ease;
+}
+
+.upload-success-icon-wow::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  animation: uploadSuccessRing 1.3s ease-out 0.15s;
+}
+
+.upload-success-subtle {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+.upload-success-confetti {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.upload-confetti-piece {
+  position: absolute;
+  top: -16px;
+  width: 10px;
+  height: 18px;
+  border-radius: 999px;
+  opacity: 0;
+  animation: uploadConfettiFall 1.9s ease-out forwards;
+}
+
+.upload-confetti-piece-1 {
+  left: 8%;
+  background: #f59e0b;
+  animation-delay: 0.02s;
+}
+.upload-confetti-piece-2 {
+  left: 16%;
+  background: #111111;
+  animation-delay: 0.12s;
+}
+.upload-confetti-piece-3 {
+  left: 27%;
+  background: #d4af37;
+  animation-delay: 0.18s;
+}
+.upload-confetti-piece-4 {
+  left: 41%;
+  background: #c084fc;
+  animation-delay: 0.08s;
+}
+.upload-confetti-piece-5 {
+  left: 58%;
+  background: #fb7185;
+  animation-delay: 0.2s;
+}
+.upload-confetti-piece-6 {
+  left: 74%;
+  background: #60a5fa;
+  animation-delay: 0.14s;
+}
+.upload-confetti-piece:nth-child(7) {
+  left: 12%;
+  background: #111111;
+  animation-delay: 0.24s;
+}
+.upload-confetti-piece:nth-child(8) {
+  left: 22%;
+  background: #f59e0b;
+  animation-delay: 0.1s;
+}
+.upload-confetti-piece:nth-child(9) {
+  left: 33%;
+  background: #f472b6;
+  animation-delay: 0.28s;
+}
+.upload-confetti-piece:nth-child(10) {
+  left: 47%;
+  background: #111111;
+  animation-delay: 0.06s;
+}
+.upload-confetti-piece:nth-child(11) {
+  left: 52%;
+  background: #fde68a;
+  animation-delay: 0.22s;
+}
+.upload-confetti-piece:nth-child(12) {
+  left: 63%;
+  background: #93c5fd;
+  animation-delay: 0.16s;
+}
+.upload-confetti-piece:nth-child(13) {
+  left: 69%;
+  background: #f59e0b;
+  animation-delay: 0.26s;
+}
+.upload-confetti-piece:nth-child(14) {
+  left: 79%;
+  background: #111111;
+  animation-delay: 0.05s;
+}
+.upload-confetti-piece:nth-child(15) {
+  left: 86%;
+  background: #f9a8d4;
+  animation-delay: 0.21s;
+}
+.upload-confetti-piece:nth-child(16) {
+  left: 91%;
+  background: #d4af37;
+  animation-delay: 0.11s;
+}
+.upload-confetti-piece:nth-child(17) {
+  left: 37%;
+  background: #60a5fa;
+  animation-delay: 0.17s;
+}
+.upload-confetti-piece:nth-child(18) {
+  left: 66%;
+  background: #f472b6;
+  animation-delay: 0.25s;
+}
+
+@keyframes uploadSuccessOverlayFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes uploadSuccessCardPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(18px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.015) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes uploadSuccessIconPulse {
+  0% {
+    transform: scale(0.82);
+  }
+  55% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes uploadSuccessRing {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.88);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+}
+
+@keyframes uploadConfettiFall {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(210px) rotate(220deg);
+  }
+}
+.upload-submit-button-secondary {
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #6b5b4d;
+  border: 1px solid rgba(181, 163, 145, 0.35);
+  box-shadow: 0 10px 24px rgba(94, 72, 58, 0.08);
+}
+
+.upload-submit-button-secondary:hover:not(:disabled) {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.upload-submit-button-secondary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
 }

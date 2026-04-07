@@ -690,11 +690,11 @@ html {
   bottom: 92px;
   transform: translateX(-50%);
   border: 1px solid rgba(255, 248, 238, 0.28);
-  border-radius: 1px;
+  border-radius: 20px;
   padding: 14px 32px;
   min-width: 178px;
   background: linear-gradient(180deg, #e3bc8a 0%, #cfa06a 100%);
-  color:  #5d331dcd;
+  color: #efe7dd;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.1em;
