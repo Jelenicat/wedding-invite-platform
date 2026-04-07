@@ -653,7 +653,7 @@ html {
 .floral-names {
   position: absolute;
   left: 50%;
-  bottom: 148px;
+  bottom: 118px;
   transform: translateX(-50%);
   margin: 0;
   width: 100%;
@@ -687,7 +687,7 @@ html {
 .floral-button {
   position: absolute;
   left: 50%;
-  bottom: 92px;
+  bottom: 70px;
   transform: translateX(-50%);
   border: 1px solid rgba(255, 248, 238, 0.28);
   border-radius: 20px;
