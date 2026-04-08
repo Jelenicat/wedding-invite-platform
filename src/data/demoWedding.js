@@ -963,6 +963,64 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
+  {
+  slug: "ANA-OGNJEN",
+  type: "wedding",
+  template: "split-video",
+  brideName: "Ana",
+  groomName: "Ognjen",
+  videoSrc: "/videos/ana-ognjen.mp4",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+  details: createDetails({
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        location: "Bašta hotela, Beograd",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Početak okupljanja i dragi susreti pre ceremonije.",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        location: "Svečana sala",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Trenutak kada počinje naše novo poglavlje.",
+      },
+      {
+        label: "Večera",
+        time: "18:30",
+        location: "Restoranski salon",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Veče uz muziku, nazdravljanje i slavlje.",
+      },
+      {
+        label: "Torta",
+        time: "21:30",
+        location: "Glavna sala",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+        note: "Slatki trenutak koji ćemo podeliti sa svima vama.",
+      },
+    ],
+
+    venue: "Beograd",
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
+    dressCodeNote:
+      "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
+    mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+
 // =========================
 // SILK TEMPLATE
 // =========================
@@ -1068,6 +1126,51 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   weddingTime: "17:00",
   venue: "Beograd",
   backgroundImage: "/images/nika-ivan-minimal.jpg",
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+    date: "06 SEP 2026",
+    dateISO: "2026-09-06T17:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Beograd",
+      },
+      {
+        label: "Večera i proslava",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Beograd",
+      },
+    ],
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c8b4", "#c2a98f", "#8d7057", "#f3e7da"],
+    dressCodeNote:
+      "Elegantne i nežne nijanse savršeno će se uklopiti u atmosferu našeg dana.",
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "anđela-jovan",
+  type: "wedding",
+  template: "silk",
+  brideName: "Anđela",
+  groomName: "Jovan",
+  videoSrc: "/videos/anđela-jovan.mp4",
+  fontMode: "light",
+  weddingDate: "06 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+  backgroundImage: "/images/anđela-jovan-minimal.jpg",
   details: createDetails({
     welcomeText:
       "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
@@ -1337,6 +1440,61 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   }),
 },
 {
+  slug: "katarina-milos",
+  type: "wedding",
+  template: "video-band",
+  brideName: "Katarina",
+  groomName: "Milos",
+  videoSrc: "/videos/wedding2222.mp4",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se da zajedno sa vama proslavimo ljubav i početak našeg novog poglavlja.",
+
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00",
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "14:30",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        location: "Crkva Svetog Marka, Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Svečani ručak",
+        time: "18:30",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    venue: "Topčiderac, Beograd",
+    churchVenue: "Crkva Svetog Marka, Beograd",
+
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c7c2", "#e9ddd6", "#bfa8a0", "#cbb7ae", "#f2ebe6"],
+    dressCodeNote:
+      "Molimo vas da birate elegantne, nežne i puderaste tonove.",
+
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra.",
+  }),
+},
+// =========================
+// Klijenti
+// =========================
+{
   slug: "dijana-stefan",
   type: "wedding",
   template: "video-band",
@@ -1452,58 +1610,7 @@ dressCodePalette: [],
   }),
 },
 
-{
-  slug: "katarina-milos",
-  type: "wedding",
-  template: "video-band",
-  brideName: "Katarina",
-  groomName: "Milos",
-  videoSrc: "/videos/wedding2222.mp4",
-  weddingDate: "18 SEP 2026",
-  weddingTime: "17:00",
 
-  details: createDetails({
-    welcomeText:
-      "Radujemo se da zajedno sa vama proslavimo ljubav i početak našeg novog poglavlja.",
-
-    date: "18 SEP 2026",
-    dateISO: "2026-09-18T17:00:00",
-
-    events: [
-      {
-        label: "Skup gostiju",
-        time: "14:30",
-        location: "Topčiderac, Beograd",
-      },
-      {
-        label: "Crkveno venčanje",
-        time: "15:00",
-        location: "Crkva Svetog Marka, Beograd",
-      },
-      {
-        label: "Građansko venčanje",
-        time: "17:00",
-        location: "Topčiderac, Beograd",
-      },
-      {
-        label: "Svečani ručak",
-        time: "18:30",
-        location: "Topčiderac, Beograd",
-      },
-    ],
-
-    venue: "Topčiderac, Beograd",
-    churchVenue: "Crkva Svetog Marka, Beograd",
-
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#d8c7c2", "#e9ddd6", "#bfa8a0", "#cbb7ae", "#f2ebe6"],
-    dressCodeNote:
-      "Molimo vas da birate elegantne, nežne i puderaste tonove.",
-
-    mapLink: "https://maps.google.com/?q=Beograd",
-    note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra.",
-  }),
-},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
@@ -1642,6 +1749,9 @@ dressCodePalette: [],
     rsvpText: "Radovaćemo se da zajedno proslavimo Ninin rođendan.",
   }),
 },
+  // =========================
+  // CLASSIC TEMPLATES
+  // =========================
 {
   slug: "laura-david",
   type: "wedding",
@@ -1692,6 +1802,9 @@ dressCodePalette: [],
     note: "Molimo vas da potvrdite dolazak."
   }),
 },
+  // =========================
+  // EDITORIAL TEMPLATES
+  // =========================
 {
   slug: "nevena-pedja",
   type: "wedding",
