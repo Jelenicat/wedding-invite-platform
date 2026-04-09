@@ -1778,7 +1778,7 @@ location: "Ресторан LUSSO, Ниш",
   details: createDetails({
     welcomeText:
       "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
-
+venue: "Restoran Srpski dvor otvorena sala, Rušanj",
     date: "06 SEP 2026",
     dateISO: "2026-09-06T16:30:00+02:00",
 
@@ -1815,7 +1815,7 @@ dressCodeTitle: "Dress code",
 dressCodeNote:
   "Elegantne kombinacije u tonovima iz palete (crna, bordo, maslinasta i zemljani tonovi) su dobrodošle.",
 
-    mapLink: "https://maps.google.com/?q=ulica+Novosadska+Novi+Sad",
+    mapLink:  "https://www.google.com/maps?q=Orthodox+Church+of+St.+Luke+the+Apostle,+Kneza+Vi%C5%A1eslava+100,+Beograd&ftid=0x475a71ea9fb4c97f:0xeec28c0c6bbe6268&entry=gps&shh=CAE&lucs=,94297699,100795625,94284454,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI2LjE0LjAuODkxOTAzMTgwMBgAINeCAypSLDk0Mjk3Njk5LDEwMDc5NTYyNSw5NDI4NDQ1NCw5NDIzMTE4OCw5NDI4MDU2OCw0NzA3MTcwNCw5NDIxODY0MSw5NDI4MjEzNCw5NDI4Njg2OUICUlM%3D&skid=02ce878b-ce2e-4e16-b2c4-ed151262d881&g_st=iw",
     note: "Molimo vas da svoj dolazak potvrdite do 23. avgusta.",
   }),
 },
