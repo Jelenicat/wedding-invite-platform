@@ -2658,8 +2658,38 @@
   }
 }
 /* =========================
-   SPLIT VIDEO INVITATION - NUDE EDITORIAL
+   SPLIT VIDEO INVITATION - THEME READY
 ========================= */
+
+.split-video-paper {
+  --split-bg: #f3ece6;
+
+  --split-paper-overlay-top: rgba(255, 255, 255, 0.08);
+  --split-paper-overlay-bottom: rgba(0, 0, 0, 0.05);
+  --split-vignette: rgba(0, 0, 0, 0.05);
+
+  --split-main-text: #827167;
+  --split-soft-text: #8a776c;
+  --split-script-text: #7b6558;
+  --split-muted-text: #9a877a;
+
+  --split-accent: #8f8a64;
+  --split-accent-strong: #6e5a4e;
+  --split-button-text: #fffaf5;
+
+  --split-card-bg: rgba(255, 255, 255, 0.28);
+  --split-card-border: rgba(145, 122, 108, 0.12);
+  --split-frame-border: rgba(145, 122, 108, 0.15);
+
+  --split-divider-line: rgba(145, 122, 108, 0.4);
+  --split-divider-line-soft: rgba(145, 122, 108, 0);
+  --split-flow-line: rgba(145, 122, 108, 0.55);
+  --split-node-ring: rgba(143, 138, 100, 0.12);
+
+  --split-shadow-soft: rgba(0, 0, 0, 0.02);
+  --split-shadow-strong: rgba(0, 0, 0, 0.06);
+  --split-palette-hover: rgba(88, 71, 60, 0.08);
+}
 
 .split-video-invitation {
   position: relative;
@@ -2669,7 +2699,7 @@
   justify-content: center;
   align-items: stretch;
   padding: 0;
-  background: #f3ece6;
+  background: var(--split-bg);
   overflow: hidden;
 }
 
@@ -2678,13 +2708,13 @@
   z-index: 2;
   width: 100%;
   min-height: 100dvh;
-  background-image: url("/images/paper-texture1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   overflow: hidden;
+  animation: splitPaperFade 0.9s ease;
 }
 
 .split-video-paper::before {
@@ -2693,8 +2723,8 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(247, 238, 233, 0.3),
-    rgba(243, 231, 225, 0.3)
+    var(--split-paper-overlay-top),
+    var(--split-paper-overlay-bottom)
   );
   z-index: 0;
 }
@@ -2707,7 +2737,7 @@
   background: radial-gradient(
     circle at center,
     transparent 50%,
-    rgba(0, 0, 0, 0.05) 100%
+    var(--split-vignette) 100%
   );
   z-index: 0;
 }
@@ -2719,31 +2749,45 @@
   margin: 0 auto;
   padding: 80px 24px 60px;
   text-align: center;
+  animation: splitInnerFloat 7s ease-in-out infinite;
 }
 
 .split-video-paper-inner::before {
   content: "";
   position: absolute;
   inset: 16px 10px;
-  border: 1px solid rgba(145, 122, 108, 0.15);
+  border: 1px solid var(--split-frame-border);
   pointer-events: none;
 }
 
 .split-video-invitation-names.top {
   margin: 0 0 12px;
-
   font-family: "Italianno", cursive;
   font-size: clamp(2.6rem, 8vw, 4.8rem);
-
-  line-height: 0.9;
-  letter-spacing: 0.1px; /* 👈 smanji */
-
-  color: #827167;
-
-  text-shadow: none; /* 👈 ovo je ključno */
+  line-height: 1.05;
+  letter-spacing: 0.1px;
+  color: var(--split-main-text);
+  text-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+  gap: 2px;
+  animation: splitNamesGlow 4.5s ease-in-out infinite;
 }
+
+.split-video-name {
+  display: block;
+}
+
 .split-video-invitation-and {
   opacity: 0.6;
+  color: var(--split-main-text);
+}
+
+.split-video-invitation-and.block {
+  font-size: 26px;
+  margin: 2px 0;
 }
 
 .split-video-kicker {
@@ -2751,7 +2795,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 1.7rem;
   font-style: italic;
-  color: #7f6b5f;
+  color: var(--split-script-text);
 }
 
 .split-video-text {
@@ -2759,7 +2803,7 @@
   margin: 0 auto 24px;
   font-size: 13px;
   line-height: 1.7;
-  color: #8a776c;
+  color: var(--split-soft-text);
   font-style: italic;
 }
 
@@ -2774,9 +2818,9 @@
   margin-bottom: 14px;
   background: linear-gradient(
     90deg,
-    rgba(145, 122, 108, 0),
-    rgba(145, 122, 108, 0.4),
-    rgba(145, 122, 108, 0)
+    var(--split-divider-line-soft),
+    var(--split-divider-line),
+    var(--split-divider-line-soft)
   );
 }
 
@@ -2801,7 +2845,7 @@
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #9a877a;
+  color: var(--split-muted-text);
   margin-bottom: 6px;
 }
 
@@ -2809,28 +2853,30 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 2.3rem;
   line-height: 1;
-  color: #6e5a4e;
+  color: var(--split-accent-strong);
 }
 
 .split-video-calendar-heart {
   display: block;
   font-size: 18px;
-  color: #8f8a64;
+  color: var(--split-accent);
   margin-bottom: 2px;
+  animation: splitHeartPulse 3.2s ease-in-out infinite;
 }
 
 .split-video-calendar-month {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.2rem;
   letter-spacing: 0.12em;
-  color: #7a675c;
+  color: var(--split-script-text);
 }
 
 .split-video-love-mark {
   margin: 6px auto 12px;
   font-size: 22px;
   line-height: 1;
-  color: #8c8b62;
+  color: var(--split-accent);
+  animation: splitHeartPulse 3.2s ease-in-out infinite;
 }
 
 .split-video-flow {
@@ -2857,8 +2903,8 @@
   height: 12px;
   border-radius: 999px;
   transform: translateX(-50%);
-  background: #8f8a64;
-  box-shadow: 0 0 0 6px rgba(143, 138, 100, 0.12);
+  background: var(--split-accent);
+  box-shadow: 0 0 0 6px var(--split-node-ring);
 }
 
 .split-video-flow-curve {
@@ -2868,7 +2914,7 @@
   width: 90px;
   height: 88px;
   transform: translateX(-50%);
-  border-left: 1.5px solid rgba(145, 122, 108, 0.55);
+  border-left: 1.5px solid var(--split-flow-line);
   border-bottom-left-radius: 60px;
   border-top-right-radius: 60px;
   opacity: 0.72;
@@ -2889,7 +2935,7 @@
   font-size: 1.75rem;
   font-style: italic;
   font-weight: 500;
-  color: #7a6357;
+  color: var(--split-script-text);
 }
 
 .split-video-flow-time {
@@ -2897,7 +2943,7 @@
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #9a877a;
+  color: var(--split-muted-text);
 }
 
 .split-video-flow-location {
@@ -2906,7 +2952,7 @@
   max-width: 220px;
   font-size: 12px;
   line-height: 1.55;
-  color: #7f6d63;
+  color: var(--split-soft-text);
   text-decoration: none;
 }
 
@@ -2919,7 +2965,7 @@
   max-width: 220px;
   font-size: 11px;
   line-height: 1.55;
-  color: #a08f84;
+  color: var(--split-soft-text);
   font-style: italic;
 }
 
@@ -2928,8 +2974,8 @@
   max-width: 290px;
   margin: 0 auto 24px;
   padding: 18px 16px;
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid rgba(145, 122, 108, 0.12);
+  background: var(--split-card-bg);
+  border: 1px solid var(--split-card-border);
 }
 
 .split-video-section-script {
@@ -2938,14 +2984,14 @@
   font-size: 2rem;
   font-style: italic;
   font-weight: 500;
-  color: #7b6558;
+  color: var(--split-script-text);
 }
 
 .split-video-location-text {
   margin: 0 0 10px;
   font-size: 12px;
   line-height: 1.6;
-  color: #837267;
+  color: var(--split-soft-text);
 }
 
 .split-video-location-link {
@@ -2953,12 +2999,12 @@
   padding: 10px 16px;
   border-radius: 999px;
   text-decoration: none;
-  background: #8f8a64;
-  color: #fffaf5;
+  background: var(--split-accent);
+  color: var(--split-button-text);
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease, letter-spacing 0.25s ease;
 }
 
 .split-video-location-link:hover {
@@ -2971,7 +3017,7 @@
   margin: 0 auto 14px;
   font-size: 12px;
   line-height: 1.65;
-  color: #8d7a6f;
+  color: var(--split-soft-text);
 }
 
 .split-video-palette {
@@ -2985,8 +3031,16 @@
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  border: 1px solid rgba(145, 122, 108, 0.12);
+  border: 1px solid var(--split-card-border);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.split-video-palette-dot:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow:
+    0 8px 16px var(--split-palette-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .split-video-note {
@@ -2994,11 +3048,10 @@
   margin: 0 auto;
   font-size: 12px;
   line-height: 1.7;
-  color: #8d7a70;
+  color: var(--split-soft-text);
   font-style: italic;
 }
 
-/* hide old classes that više ne koristimo */
 .split-video-divider,
 .split-video-editorial-block,
 .split-video-extra {
@@ -3066,9 +3119,6 @@
     font-size: 55px;
   }
 }
-.split-video-paper {
-  animation: splitPaperFade 0.9s ease;
-}
 
 @keyframes splitPaperFade {
   from {
@@ -3079,10 +3129,6 @@
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.split-video-paper-inner {
-  animation: splitInnerFloat 7s ease-in-out infinite;
 }
 
 @keyframes splitInnerFloat {
@@ -3097,25 +3143,16 @@
   }
 }
 
-.split-video-invitation-names.top {
-  animation: splitNamesGlow 4.5s ease-in-out infinite;
-}
-
 @keyframes splitNamesGlow {
   0% {
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    text-shadow: 0 2px 10px var(--split-shadow-soft);
   }
   50% {
-    text-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+    text-shadow: 0 6px 22px var(--split-shadow-strong);
   }
   100% {
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    text-shadow: 0 2px 10px var(--split-shadow-soft);
   }
-}
-
-.split-video-calendar-heart,
-.split-video-love-mark {
-  animation: splitHeartPulse 3.2s ease-in-out infinite;
 }
 
 @keyframes splitHeartPulse {
@@ -3139,17 +3176,6 @@
 .split-video-flow-location.is-link:hover {
   transform: translateY(-2px);
   opacity: 0.85;
-}
-
-.split-video-palette-dot {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.split-video-palette-dot:hover {
-  transform: translateY(-2px) scale(1.04);
-  box-shadow:
-    0 8px 16px rgba(88, 71, 60, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 /* =========================
    ENVELOPE INVITATION CARD

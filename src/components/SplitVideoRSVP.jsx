@@ -10,7 +10,7 @@ import {
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
-function SplitVideoRSVP({ slug, eventType }) {
+function SplitVideoRSVP({ slug, eventType, details = {} }) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
@@ -19,6 +19,29 @@ function SplitVideoRSVP({ slug, eventType }) {
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const theme = details.theme || {};
+
+  const themeStyles = {
+   "--rsvp-bg": theme.backgroundColor || "#f3ece6",
+    "--rsvp-main-text": theme.mainText || "#6f5b4f",
+    "--rsvp-soft-text": theme.softText || "#87756a",
+    "--rsvp-muted-text": theme.mutedText || "#8c7a6f",
+"--rsvp-accent": theme.accent || "#8f8a64",
+"--rsvp-accent-strong": theme.accentStrong || "#6e5a4e",
+"--rsvp-button-bg": theme.rsvpButtonBg || theme.accent || "#8f8a64",
+"--rsvp-button-text": theme.rsvpButtonText || theme.buttonText || "#fffaf5",
+    "--rsvp-card-bg": theme.cardBg || "rgba(255,255,255,0.34)",
+    "--rsvp-card-border": theme.cardBorder || "rgba(145,122,108,0.12)",
+    "--rsvp-frame-border": theme.frameBorder || "rgba(145,122,108,0.12)",
+    "--rsvp-divider": theme.dividerLine || "rgba(145,122,108,0.35)",
+    "--rsvp-overlay-top":
+      theme.paperOverlayTop || "rgba(247, 238, 233, 0.95)",
+    "--rsvp-overlay-bottom":
+      theme.paperOverlayBottom || "rgba(243, 231, 225, 0.96)",
+    "--rsvp-vignette": theme.vignetteColor || "rgba(0, 0, 0, 0.04)",
+    "--rsvp-node-ring": theme.nodeRing || "rgba(143,138,100,0.12)",
+  };
 
   useEffect(() => {
     if (submitted) {
@@ -99,6 +122,7 @@ function SplitVideoRSVP({ slug, eventType }) {
   return (
     <motion.section
       className="split-video-rsvp-section"
+      style={themeStyles}
       initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}

@@ -230,6 +230,7 @@ function WeddingPage() {
     slug: invitation.slug,
     introPreviewImage: invitation.introPreviewImage,
     fontMode: invitation.fontMode,
+    details: invitation.details,
   };
 
   const invitationProps = {

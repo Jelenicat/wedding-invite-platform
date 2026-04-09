@@ -1,4 +1,6 @@
 const createDetails = ({
+  backgroundImage,
+   theme,
   welcomeText,
   date,
   dateISO,
@@ -22,6 +24,8 @@ const createDetails = ({
   events = [],
   rsvpOptions = {},
 }) => ({
+  backgroundImage,
+   theme,
   welcomeText,
   date,
   dateISO,
@@ -803,6 +807,9 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   venue: "Beograd",
   introText: "Radujemo se da ovaj dan podelimo sa vama.",
   details: createDetails({
+   
+  backgroundImage: "/images/nevena-ognjen-split.jpg",
+ 
     welcomeText:
       "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
     date: "18 SEP 2026",
@@ -839,13 +846,14 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
       },
     ],
 
-    venue: "Beograd",
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
-    dressCodeNote:
-      "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
-    mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
-    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+   showDressCode: true,
+  venue: "Beograd",
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
+  dressCodeNote:
+    "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
+  mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
 
@@ -861,6 +869,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   venue: "Beograd",
   introText: "Radujemo se da ovaj dan podelimo sa vama.",
   details: createDetails({
+      backgroundImage: "/images/nina-janko-split.jpg",
     welcomeText:
       "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
     date: "18 SEP 2026",
@@ -897,13 +906,14 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
       },
     ],
 
-    venue: "Beograd",
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
-    dressCodeNote:
-      "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
-    mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
-    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  showDressCode: true,
+  venue: "Beograd",
+  dressCodeTitle: "Dress code",
+  dressCodePalette: [],
+  dressCodeNote:
+    "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
+  mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
 {
@@ -918,6 +928,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   venue: "Beograd",
   introText: "Radujemo se da ovaj dan podelimo sa vama.",
   details: createDetails({
+     backgroundImage: "/images/vanja-aleksa-split.jpg",
     welcomeText:
       "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
     date: "18 SEP 2026",
@@ -954,13 +965,14 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
       },
     ],
 
-    venue: "Beograd",
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
-    dressCodeNote:
-      "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
-    mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
-    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+showDressCode: false,
+  venue: "Beograd",
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
+  dressCodeNote:
+    "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
+  mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
   {
@@ -975,6 +987,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   venue: "Beograd",
   introText: "Radujemo se da ovaj dan podelimo sa vama.",
   details: createDetails({
+    backgroundImage: "/images/ANA-OGNJEN-split.jpg",
     welcomeText:
       "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
     date: "18 SEP 2026",
@@ -1011,13 +1024,14 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
       },
     ],
 
-    venue: "Beograd",
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
-    dressCodeNote:
-      "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
-    mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
-    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+ showDressCode: true,
+  venue: "Beograd",
+  dressCodeTitle: "Dress code",
+  dressCodePalette: ["#c9c3bb", "#a89e94", "#e8ddd4", "#f3ece6", "#8f8a64"],
+  dressCodeNote:
+    "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
+  mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+  note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
 
@@ -1611,6 +1625,95 @@ dressCodePalette: [],
 },
 
 
+  {
+  slug: "aleksandra-aleksej",
+  type: "wedding",
+  template: "split-video",
+  brideName: "Aleksandra",
+  groomName: "Aleksej",
+  videoSrc: "/videos/aleksandra-aleksej.mp4",
+   musicSrc: "/music/aleksandra-aleksej.mp3",
+     uploadCoverImage: "/images/upload/aleksandra-aleksej-upload.jpg",
+  weddingDate: "17 OKT 2026",
+  weddingTime: "17:00",
+ venue: "Bečej",
+ 
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+  details: createDetails({
+    backgroundImage: "/images/aleksandra-aleksej-split.jpg",
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "17 OKT 2026",
+    dateISO: "2026-10-17T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "14:30",
+        location: "Srpska pravoslavna crkva Svetog Đorđa, Bečej",
+        mapLink: "https://www.google.com/maps/place/%D0%A6%D1%80%D0%BA%D0%B2%D0%B0+%D0%A1%D0%B2%D0%B5%D1%82%D0%BE%D0%B3+%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%BC%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%BA%D0%B0+%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D1%98%D0%B0+%D0%91%D0%B5%D1%87%D0%B5%D1%98/@45.6149232,20.047257,17z/data=!3m1!4b1!4m6!3m5!1s0x475b33006a2a744b:0xe5a4d8f6bbc9e249!8m2!3d45.6149232!4d20.0498319!16s%2Fg%2F155qnvzp?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+        note: "Svečani čin crkvenog venčanja.",
+      },
+      {
+        label: "Skup svatova",
+        time: "16:00",
+        location: "Hotel Tiski Cvet, Bečej",
+        mapLink: "https://www.google.com/maps/place/%D0%A2%D0%B8%D1%81%D0%BA%D0%B8+%D1%86%D0%B2%D0%B5%D1%82/@45.5942253,20.132972,17z/data=!3m1!4b1!4m9!3m8!1s0x475b2d9034f0ae43:0xea48bcb4e8be3019!5m2!4m1!1i2!8m2!3d45.5942253!4d20.132972!16s%2Fg%2F1tqpy0mn?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+        note: "Početak okupljanja i dragi susreti pre ceremonije."
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+       location: "Hotel Tiski Cvet, Bečej",
+        mapLink: "https://www.google.com/maps/place/%D0%A2%D0%B8%D1%81%D0%BA%D0%B8+%D1%86%D0%B2%D0%B5%D1%82/@45.5942253,20.132972,17z/data=!3m1!4b1!4m9!3m8!1s0x475b2d9034f0ae43:0xea48bcb4e8be3019!5m2!4m1!1i2!8m2!3d45.5942253!4d20.132972!16s%2Fg%2F1tqpy0mn?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+        note: "Trenutak kada počinje naše novo poglavlje",
+      },
+    
+    ],
+theme: {
+  mainText: "#7b1234",
+  softText: "#243b6b",
+  scriptText: "#7b1234",
+  mutedText: "#7b1234",
+
+  accent: "#7b1234",
+  accentStrong: "#243b6b",
+  buttonText: "#ffffff",
+
+  cardBg: "rgba(255,255,255,0.28)",
+  cardBorder: "transparent",
+  frameBorder: "rgba(123,18,52,0.20)",
+
+  paperOverlayTop: "rgba(255,255,255,0.03)",
+paperOverlayBottom: "rgba(36,59,107,0.06)",
+  vignetteColor: "rgba(123,18,52,0.08)",
+
+  flowLine: "#7b1234",
+  dividerLine: "rgba(123,18,52,0.25)",
+  nodeRing: "rgba(181,144,59,0.16)",
+backgroundColor: "#f3ece6",
+  /* INTRO */
+  introMainText: "#ffffff",
+  introAccent: "#ffffff",
+  introButtonBg: "rgba(255,255,255,0.18)",
+  introButtonBorder: "rgba(255,255,255,0.35)",
+  introButtonText: "#ffffff",
+  introButtonHoverBg: "rgba(255,255,255,0.28)",
+
+  /* RSVP */
+  rsvpButtonBg: "#7b1234",
+  rsvpButtonText: "#ffffff",
+},
+ showDressCode: true,
+  venue: "Bečej",
+  dressCodeTitle: "Dress code",
+  dressCodePalette: [],
+  dressCodeNote:
+    "Slobodno birajte boje po želji, uz molbu da izbegnete belu.",
+  mapLink: "https://www.google.com/maps/place/%D0%A2%D0%B8%D1%81%D0%BA%D0%B8+%D1%86%D0%B2%D0%B5%D1%82/@45.5942253,20.132972,17z/data=!3m1!4b1!4m9!3m8!1s0x475b2d9034f0ae43:0xea48bcb4e8be3019!5m2!4m1!1i2!8m2!3d45.5942253!4d20.132972!16s%2Fg%2F1tqpy0mn?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+  note: "Molimo vas da svoj dolazak potvrdite do 26. septembra.",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

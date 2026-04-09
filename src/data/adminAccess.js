@@ -11,8 +11,9 @@ const adminAccess = {
      "katarina-milos": "katarina123",
      "dijana-stefan":"dijana123",
      "ivana-filip": "ivana123",
-     "olja-milos":"olja123"
-
+     "olja-milos":"olja123",
+     "aleksandra-aleksej": "aleksandra123",
+     
 };
 
 export default adminAccess;
