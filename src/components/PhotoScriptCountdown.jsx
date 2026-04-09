@@ -2,7 +2,28 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/rsvp.css";
 
-function PhotoScriptCountdown({ targetDate }) {
+function PhotoScriptCountdown({ targetDate, script = "latin" }) {
+  const t =
+    script === "cyrillic"
+      ? {
+          arrived: "Дан венчања је стигао",
+          remaining: "До венчања је остало",
+          days: "дана",
+          hours: "сати",
+          minutes: "мин",
+          seconds: "сек",
+          note: "Једва чекамо да заједно обележимо овај посебан тренутак.",
+        }
+      : {
+          arrived: "Dan venčanja je stigao",
+          remaining: "Do venčanja je ostalo",
+          days: "dana",
+          hours: "sati",
+          minutes: "min",
+          seconds: "sek",
+          note: "Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.",
+        };
+
   const calculateTimeLeft = () => {
     const difference =
       new Date(targetDate).getTime() - new Date().getTime();
@@ -33,17 +54,17 @@ function PhotoScriptCountdown({ targetDate }) {
     return (
       <section className="photo-script-countdown-section">
         <div className="photo-script-countdown-inner">
-          <p className="photo-script-countdown-kicker">Dan venčanja je stigao</p>
+          <p className="photo-script-countdown-kicker">{t.arrived}</p>
         </div>
       </section>
     );
   }
 
   const items = [
-    { value: format(timeLeft.days), label: "dana" },
-    { value: format(timeLeft.hours), label: "sati" },
-    { value: format(timeLeft.minutes), label: "min" },
-    { value: format(timeLeft.seconds), label: "sek" },
+    { value: format(timeLeft.days), label: t.days },
+    { value: format(timeLeft.hours), label: t.hours },
+    { value: format(timeLeft.minutes), label: t.minutes },
+    { value: format(timeLeft.seconds), label: t.seconds },
   ];
 
   return (
@@ -55,7 +76,7 @@ function PhotoScriptCountdown({ targetDate }) {
       viewport={{ once: true }}
     >
       <div className="photo-script-countdown-inner">
-        <p className="photo-script-countdown-kicker">Do venčanja je ostalo</p>
+        <p className="photo-script-countdown-kicker">{t.remaining}</p>
 
         <div className="photo-script-countdown-divider" />
 
@@ -79,9 +100,7 @@ function PhotoScriptCountdown({ targetDate }) {
           ))}
         </div>
 
-        <p className="photo-script-countdown-note">
-          Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
-        </p>
+        <p className="photo-script-countdown-note">{t.note}</p>
       </div>
     </motion.section>
   );

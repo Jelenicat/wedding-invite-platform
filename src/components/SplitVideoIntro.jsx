@@ -44,13 +44,13 @@ const themeStyles = {
         <span>{groomName}</span>
       </div>
 
-      <motion.button
-        className="split-btn"
-        onClick={onEnter}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
-      >
+   <motion.button
+  className="split-btn"
+  onClick={onEnter}
+  initial={{ opacity: 0, y: 20, x: "-50%" }}
+  animate={{ opacity: 1, y: 0, x: "-50%" }}
+  transition={{ delay: 0.6, duration: 0.6 }}
+>
         Pogledaj pozivnicu
       </motion.button>
     </section>

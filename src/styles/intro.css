@@ -1002,7 +1002,6 @@ html {
   padding: 0;
   overflow: hidden;
   background: #111;
- 
 }
 
 .photo-script-bg-video {
@@ -1044,17 +1043,27 @@ html {
   align-items: center;
   justify-content: center;
   text-align: center;
-
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
   font-family: "Italianno", cursive;
   font-size: clamp(5rem, 14vw, 8rem);
   line-height: 0.88;
   letter-spacing: 1px;
-font-weight: 100;
+  font-weight: 100;
   color: #cb7474;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+}
+
+.photo-script-names.cyrillic {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 0.5px;
+}
+
+.photo-script-names .name,
+.photo-script-and,
+.photo-script-button {
+  will-change: transform, opacity, filter;
 }
 
 .photo-script-and {
@@ -1069,7 +1078,6 @@ font-weight: 100;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-
   border: 1px solid rgba(255, 255, 255, 0.38);
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
@@ -1107,7 +1115,6 @@ font-weight: 100;
     max-width: 260px;
   }
 }
-
 .photo-card-intro {
   position: relative;
   min-height: 100dvh;
@@ -1559,18 +1566,14 @@ font-weight: 100;
 .split-btn {
   position: absolute;
   bottom: 40px;
-  left: 25%;
-  transform: translateX(-50%);
+  left: 50%;
+  transform: none; 
   min-width: 210px;
   padding: 12px 22px;
-
-  /* 🔥 DEFAULT GLASS */
   background: var(--intro-button-bg, rgba(255,255,255,0.18));
   border: 1px solid var(--intro-button-border, rgba(255,255,255,0.35));
   color: var(--intro-button-text, #ffffff);
-
   backdrop-filter: blur(6px);
-
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;

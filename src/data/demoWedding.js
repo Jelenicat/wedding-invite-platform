@@ -669,6 +669,9 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
+// =========================
+// PHOTO SCRIPT TEMPLATES
+// =========================
 {
   slug: "ivana-filip",
   type: "wedding",
@@ -1712,6 +1715,52 @@ backgroundColor: "#f3ece6",
     "Slobodno birajte boje po želji, uz molbu da izbegnete belu.",
   mapLink: "https://www.google.com/maps/place/%D0%A2%D0%B8%D1%81%D0%BA%D0%B8+%D1%86%D0%B2%D0%B5%D1%82/@45.5942253,20.132972,17z/data=!3m1!4b1!4m9!3m8!1s0x475b2d9034f0ae43:0xea48bcb4e8be3019!5m2!4m1!1i2!8m2!3d45.5942253!4d20.132972!16s%2Fg%2F1tqpy0mn?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
   note: "Molimo vas da svoj dolazak potvrdite do 26. septembra.",
+  }),
+},
+{
+  slug: "adrijana-aleksandar",
+  type: "wedding",
+  template: "photo-script",
+  script: "cyrillic",
+brideName: "Aдријана",
+groomName: "Александар",
+  videoSrc: "/videos/wedding-Adrijana-Aleksandar1.mp4",
+  musicSrc: "/music/adrijana-aleksandar.mp3",
+  weddingDate: "12 ЈУЛ 2026",
+  weddingTime: "19:00",
+  venue: "Beograd",
+  details: createDetails({
+    welcomeText: "Радујемо се да овај дан поделимо са вама.",
+    date: "12 ЈУЛ 2026",
+    dateISO: "2026-07-12T19:00:00+02:00",
+
+    events: [
+      {
+        label: "Окупљанје званица",
+        time: "17:45",
+        icon: "gathering",
+        location: "Ресторан LUSSO, Ниш",
+        mapLink: "https://www.google.com/maps/place/Lusso+Restoran/@43.2596203,21.8634665,17z/data=!3m1!4b1!4m6!3m5!1s0x4755bba205ac2295:0x7907c824c1cde073!8m2!3d43.2596203!4d21.8660414!16s%2Fg%2F11y_f7y92x?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+      },
+   
+      {
+        label: "Грађанско венчање",
+        time: "19:00",
+        icon: "civil",
+location: "Ресторан LUSSO, Ниш",
+        mapLink: "https://www.google.com/maps/place/Lusso+Restoran/@43.2596203,21.8634665,17z/data=!3m1!4b1!4m6!3m5!1s0x4755bba205ac2295:0x7907c824c1cde073!8m2!3d43.2596203!4d21.8660414!16s%2Fg%2F11y_f7y92x?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+      },
+
+    ],
+
+    editorialImage1: "/images/couple-blackwhite1.jpg",
+
+  showDressCode: true,
+  dressCodeTitle: "Dress code",
+  dressCodeNote:
+    "Свечано и елегантно, у стилу који вам највише прија.",
+  dressCodePalette: [],
+    note: "Молимо вас да свој долазак потврдите до 1. јуна.",
   }),
 },
   // =========================

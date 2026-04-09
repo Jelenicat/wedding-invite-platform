@@ -12,20 +12,36 @@ function PhotoScriptInvitationCard({
   slug,
   type,
   videoSrc,
+  script = "latin",
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
-  const iconMap = {
-    gathering: "/icons/guests.svg",
-    church: "/icons/church.svg",
-    civil: "/icons/rings.svg",
-    restaurant: "/icons/dinner.svg",
-    party: "/icons/party.svg",
-  };
+  const t =
+    script === "cyrillic"
+      ? {
+          invitation: "Позивница",
+          timing: "Програм",
+          dressCode: "Dress code",
+          palette: "Основне нијансе",
+        }
+      : {
+          invitation: "Pozivnica",
+          timing: "Timing",
+          dressCode: "Dress code",
+          palette: "Osnovne nijanse",
+        };
 
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
+
+  const shouldShowDressCode =
+    details.showDressCode &&
+    (
+      details.dressCodeTitle ||
+      details.dressCodeNote ||
+      details.dressCodePalette?.length > 0
+    );
 
   return (
     <>
@@ -49,9 +65,13 @@ function PhotoScriptInvitationCard({
         <div className="photo-script-invitation-overlay" />
 
         <div className="photo-script-paper photo-script-editorial-paper">
-          <p className="photo-script-kicker">Pozivnica</p>
+          <p className="photo-script-kicker">{t.invitation}</p>
 
-          <h1 className="photo-script-invitation-names">
+          <h1
+            className={`photo-script-invitation-names ${
+              script === "cyrillic" ? "cyrillic" : ""
+            }`}
+          >
             <span className="name">{safeBrideName}</span>
             <span className="photo-script-invitation-and">&</span>
             <span className="name">{safeGroomName}</span>
@@ -67,7 +87,13 @@ function PhotoScriptInvitationCard({
 
           {timelineItems.length > 0 && (
             <div className="photo-script-editorial-block">
-              <h3 className="photo-script-editorial-script">Timing</h3>
+              <h3
+                className={`photo-script-editorial-script ${
+                  script === "cyrillic" ? "cyrillic" : ""
+                }`}
+              >
+                {t.timing}
+              </h3>
 
               <div className="photo-script-editorial-timeline">
                 {timelineItems.map((event, index) => (
@@ -91,7 +117,11 @@ function PhotoScriptInvitationCard({
                     </div>
 
                     <div className="photo-script-editorial-content">
-                      <h4 className="photo-script-editorial-title">
+                      <h4
+                        className={`photo-script-editorial-title ${
+                          script === "cyrillic" ? "cyrillic" : ""
+                        }`}
+                      >
                         {event.label}
                       </h4>
 
@@ -127,10 +157,14 @@ function PhotoScriptInvitationCard({
             </div>
           )}
 
-          {details.dressCodePalette?.length > 0 && (
+          {shouldShowDressCode && (
             <div className="photo-script-editorial-block photo-script-editorial-dresscode">
-              <h3 className="photo-script-editorial-script">
-                {details.dressCodeTitle || "Dress code"}
+              <h3
+                className={`photo-script-editorial-script ${
+                  script === "cyrillic" ? "cyrillic" : ""
+                }`}
+              >
+                {details.dressCodeTitle || t.dressCode}
               </h3>
 
               {details.dressCodeNote && (
@@ -139,33 +173,43 @@ function PhotoScriptInvitationCard({
                 </p>
               )}
 
-              <div className="photo-script-editorial-palette-label">
-                Osnovne nijanse
-              </div>
+              {details.dressCodePalette?.length > 0 && (
+                <>
+                  <div className="photo-script-editorial-palette-label">
+                    {t.palette}
+                  </div>
 
-              <div className="photo-script-editorial-palette-shell">
-                <div className="photo-script-palette photo-script-editorial-palette">
-                  {details.dressCodePalette.map((color, index) => (
-                    <span
-                      key={`${color}-${index}`}
-                      className="photo-script-palette-dot photo-script-editorial-palette-dot"
-                      style={{ backgroundColor: color }}
-                      aria-label={`dress code color ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
+                  <div className="photo-script-editorial-palette-shell">
+                    <div className="photo-script-palette photo-script-editorial-palette">
+                      {details.dressCodePalette.map((color, index) => (
+                        <span
+                          key={`${color}-${index}`}
+                          className="photo-script-palette-dot photo-script-editorial-palette-dot"
+                          style={{ backgroundColor: color }}
+                          aria-label={`dress code color ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           )}
 
           {details.note && <p className="photo-script-note">{details.note}</p>}
         </div>
       </motion.section>
-
-      <PhotoScriptRSVP slug={slug} eventType={type} />
+<PhotoScriptRSVP
+  slug={slug}
+  eventType={type}
+  script={script}
+/>
 
       {details.dateISO && (
-        <PhotoScriptCountdown targetDate={details.dateISO} />
+        <PhotoScriptCountdown
+          targetDate={details.dateISO}
+          script={script}
+        />
       )}
     </>
   );

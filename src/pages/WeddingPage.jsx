@@ -231,6 +231,7 @@ function WeddingPage() {
     introPreviewImage: invitation.introPreviewImage,
     fontMode: invitation.fontMode,
     details: invitation.details,
+    script: invitation.script,
   };
 
   const invitationProps = {
@@ -250,6 +251,7 @@ function WeddingPage() {
     image1: invitation.image1,
     image2: invitation.image2,
     image3: invitation.image3,
+     script: invitation.script,
   };
 
 if (templateKey === "angel" || templateKey === "classic") {
