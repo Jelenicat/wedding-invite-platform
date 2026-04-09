@@ -27,6 +27,15 @@ function PhotoCardInvitationCard({
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
 
+  // ✅ NOVO – ista logika kao floral
+  const shouldShowDressCode =
+    details.showDressCode &&
+    (
+      details.dressCodeTitle ||
+      details.dressCodeNote ||
+      details.dressCodePalette?.length > 0
+    );
+
   const renderMiniCalendar = (dateString) => {
     if (!dateString) return null;
 
@@ -41,8 +50,6 @@ function PhotoCardInvitationCard({
 
     return (
       <div className="photo-card-editorial-calendar">
-       
-
         <div className="photo-card-editorial-calendar-month">
           <span>{month}</span>
           <span>{year}</span>
@@ -91,7 +98,9 @@ function PhotoCardInvitationCard({
           </h1>
 
           {details.welcomeText && (
-            <p className="photo-card-invitation-text">{details.welcomeText}</p>
+            <p className="photo-card-invitation-text">
+              {details.welcomeText}
+            </p>
           )}
 
           {renderMiniCalendar(details.dateISO)}
@@ -108,31 +117,33 @@ function PhotoCardInvitationCard({
                   transition={{ duration: 0.45, delay: index * 0.08 }}
                 >
                   <div className="photo-card-editorial-timeline-side left">
-    {index % 2 === 0 ? (
-  <>
-    <p className="photo-card-editorial-time">{event.time}</p>
+                    {index % 2 === 0 && (
+                      <>
+                        <p className="photo-card-editorial-time">
+                          {event.time}
+                        </p>
 
-    <h4 className="photo-card-editorial-event-title">
-      {event.label}
-    </h4>
+                        <h4 className="photo-card-editorial-event-title">
+                          {event.label}
+                        </h4>
 
-    {event.location &&
-      (event.mapLink ? (
-        <a
-          href={event.mapLink}
-          target="_blank"
-          rel="noreferrer"
-          className="photo-card-editorial-location-inline is-link"
-        >
-          {event.location}
-        </a>
-      ) : (
-        <p className="photo-card-editorial-location-inline">
-          {event.location}
-        </p>
-      ))}
-  </>
-) : null}
+                        {event.location &&
+                          (event.mapLink ? (
+                            <a
+                              href={event.mapLink}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="photo-card-editorial-location-inline is-link"
+                            >
+                              {event.location}
+                            </a>
+                          ) : (
+                            <p className="photo-card-editorial-location-inline">
+                              {event.location}
+                            </p>
+                          ))}
+                      </>
+                    )}
                   </div>
 
                   <div className="photo-card-editorial-timeline-center">
@@ -147,31 +158,33 @@ function PhotoCardInvitationCard({
                   </div>
 
                   <div className="photo-card-editorial-timeline-side right">
-             {index % 2 !== 0 ? (
-  <>
-    <p className="photo-card-editorial-time">{event.time}</p>
+                    {index % 2 !== 0 && (
+                      <>
+                        <p className="photo-card-editorial-time">
+                          {event.time}
+                        </p>
 
-    <h4 className="photo-card-editorial-event-title">
-      {event.label}
-    </h4>
+                        <h4 className="photo-card-editorial-event-title">
+                          {event.label}
+                        </h4>
 
-    {event.location &&
-      (event.mapLink ? (
-        <a
-          href={event.mapLink}
-          target="_blank"
-          rel="noreferrer"
-          className="photo-card-editorial-location-inline is-link"
-        >
-          {event.location}
-        </a>
-      ) : (
-        <p className="photo-card-editorial-location-inline">
-          {event.location}
-        </p>
-      ))}
-  </>
-) : null}
+                        {event.location &&
+                          (event.mapLink ? (
+                            <a
+                              href={event.mapLink}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="photo-card-editorial-location-inline is-link"
+                            >
+                              {event.location}
+                            </a>
+                          ) : (
+                            <p className="photo-card-editorial-location-inline">
+                              {event.location}
+                            </p>
+                          ))}
+                      </>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -203,7 +216,8 @@ function PhotoCardInvitationCard({
             </div>
           )}
 
-          {details.dressCodePalette?.length > 0 && (
+          {/* ✅ ISPRAVLJEN DRESS CODE */}
+          {shouldShowDressCode && (
             <div className="photo-card-editorial-dresscode">
               <h3 className="photo-card-editorial-script photo-card-editorial-dresscode-title">
                 {details.dressCodeTitle || "Dress code"}
@@ -215,18 +229,20 @@ function PhotoCardInvitationCard({
                 </p>
               )}
 
-              <div className="photo-card-editorial-palette-shell">
-                <div className="photo-card-palette photo-card-editorial-palette">
-                  {details.dressCodePalette.map((color, index) => (
-                    <span
-                      key={`${color}-${index}`}
-                      className="photo-card-palette-dot photo-card-editorial-palette-dot"
-                      style={{ backgroundColor: color }}
-                      aria-label={`dress code color ${index + 1}`}
-                    />
-                  ))}
+              {details.dressCodePalette?.length > 0 && (
+                <div className="photo-card-editorial-palette-shell">
+                  <div className="photo-card-palette photo-card-editorial-palette">
+                    {details.dressCodePalette.map((color, index) => (
+                      <span
+                        key={`${color}-${index}`}
+                        className="photo-card-palette-dot photo-card-editorial-palette-dot"
+                        style={{ backgroundColor: color }}
+                        aria-label={`dress code color ${index + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           )}
 
@@ -234,9 +250,11 @@ function PhotoCardInvitationCard({
         </div>
       </motion.section>
 
-  <PhotoCardRSVP slug={slug} eventType={type} />
+      <PhotoCardRSVP slug={slug} eventType={type} />
 
-      {details.dateISO && <PhotoCardCountdown targetDate={details.dateISO} />}
+      {details.dateISO && (
+        <PhotoCardCountdown targetDate={details.dateISO} />
+      )}
     </>
   );
 }

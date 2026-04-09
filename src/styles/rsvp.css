@@ -2254,7 +2254,8 @@ width: 100%;
     font-size: 12px;
     margin-top: 20px;
   }
-}/* =========================
+}
+/* =========================
    PHOTO CARD RSVP
 ========================= */
 
@@ -2262,15 +2263,15 @@ width: 100%;
   position: relative;
   width: 100%;
   margin-top: -34px;
-  padding: 92px 18px 34px;
+  padding: 96px 18px 42px;
   overflow: hidden;
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0) 42%),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 42%),
     linear-gradient(
       180deg,
-      rgba(255, 250, 245, 0.96) 0%,
-      rgba(248, 241, 234, 0.98) 18%,
-      #f4ece5 54%,
+      rgba(255, 250, 245, 0.98) 0%,
+      rgba(248, 241, 234, 0.99) 20%,
+      #f4ece5 56%,
       #eee3da 100%
     );
 }
@@ -2282,8 +2283,8 @@ width: 100%;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.55) 0%,
-      rgba(255, 255, 255, 0.12) 24%,
+      rgba(255, 255, 255, 0.58) 0%,
+      rgba(255, 255, 255, 0.14) 24%,
       rgba(255, 255, 255, 0) 60%
     );
   pointer-events: none;
@@ -2316,18 +2317,18 @@ width: 100%;
 
 .photo-card-rsvp-box {
   position: relative;
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 auto;
-  padding: 42px 28px 36px;
+  padding: 46px 30px 38px;
   text-align: center;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.84) 0%,
-      rgba(255, 251, 247, 0.9) 100%
+      rgba(255, 255, 255, 0.86) 0%,
+      rgba(255, 251, 247, 0.93) 100%
     );
   border: 1px solid rgba(92, 83, 77, 0.1);
-  border-radius: 28px;
+  border-radius: 30px;
   box-shadow:
     0 30px 70px rgba(62, 48, 40, 0.1),
     0 8px 24px rgba(62, 48, 40, 0.05),
@@ -2342,7 +2343,7 @@ width: 100%;
   position: absolute;
   inset: 12px;
   border: 1px solid rgba(92, 83, 77, 0.07);
-  border-radius: 22px;
+  border-radius: 24px;
   pointer-events: none;
 }
 
@@ -2375,15 +2376,15 @@ width: 100%;
 .photo-card-rsvp-title {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  line-height: 1;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  line-height: 0.98;
   font-weight: 500;
   letter-spacing: 0.01em;
   color: #4f4640;
 }
 
 .photo-card-rsvp-subtitle {
-  max-width: 380px;
+  max-width: 400px;
   margin: 14px auto 0;
   font-size: 14px;
   line-height: 1.9;
@@ -2406,7 +2407,7 @@ width: 100%;
 .photo-card-rsvp-form {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
 }
 
 .photo-card-rsvp-field {
@@ -2431,7 +2432,7 @@ width: 100%;
   padding: 0 18px;
   border: 1px solid rgba(92, 83, 77, 0.1);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.72);
   color: #544b45;
   font-size: 15px;
   outline: none;
@@ -2450,7 +2451,7 @@ width: 100%;
 
 .photo-card-rsvp-field input[type="text"]:focus,
 .photo-card-rsvp-field input[type="number"]:focus {
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   border-color: rgba(92, 83, 77, 0.24);
   box-shadow:
     0 14px 30px rgba(62, 48, 40, 0.07),
@@ -2475,8 +2476,8 @@ width: 100%;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.7) 0%,
-      rgba(255, 250, 246, 0.88) 100%
+      rgba(255, 255, 255, 0.72) 0%,
+      rgba(255, 250, 246, 0.9) 100%
     );
   padding: 20px 18px;
   text-align: center;
@@ -2504,8 +2505,8 @@ width: 100%;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.94) 0%,
-      rgba(250, 244, 238, 0.96) 100%
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(250, 244, 238, 0.98) 100%
     );
   box-shadow:
     0 18px 34px rgba(62, 48, 40, 0.1),
@@ -2531,17 +2532,17 @@ width: 100%;
 
 .photo-card-rsvp-button {
   align-self: center;
-  min-width: 250px;
-  min-height: 54px;
-  margin-top: 6px;
-  padding: 14px 28px;
+  min-width: 270px;
+  min-height: 56px;
+  margin-top: 8px;
+  padding: 14px 30px;
   border: 1px solid rgba(92, 83, 77, 0.14);
   border-radius: 999px;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(247, 239, 232, 0.96) 100%
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(247, 239, 232, 0.98) 100%
     );
   color: #4f4640;
   font-size: 11px;
@@ -2572,14 +2573,17 @@ width: 100%;
     0 20px 38px rgba(62, 48, 40, 0.11),
     inset 0 1px 0 rgba(255,255,255,0.78);
 }
-/* =========================
-   PHOTO CARD SUCCESS
-========================= */
+
+.photo-card-rsvp-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
 
 .photo-card-rsvp-success {
   position: relative;
   text-align: center;
-  padding: 30px;
+  padding: 34px 18px;
 }
 
 .photo-card-success-heart {
@@ -2588,13 +2592,16 @@ width: 100%;
 }
 
 .photo-card-rsvp-success h3 {
+  margin: 0;
   font-family: "Cormorant Garamond", serif;
   font-size: 2rem;
   color: #4f4640;
 }
 
 .photo-card-rsvp-success p {
+  margin: 10px 0 0;
   color: #7c7068;
+  line-height: 1.7;
 }
 
 .photo-card-confetti-wrap {
@@ -2611,6 +2618,48 @@ width: 100%;
   height: 10px;
   background: #d8b4a0;
   border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+  .photo-card-rsvp-section {
+    padding: 84px 14px 32px;
+  }
+
+  .photo-card-rsvp-box {
+    padding: 34px 18px 28px;
+    border-radius: 24px;
+  }
+
+  .photo-card-rsvp-box::before {
+    inset: 10px;
+    border-radius: 18px;
+  }
+
+  .photo-card-rsvp-title {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+
+  .photo-card-rsvp-subtitle {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .photo-card-rsvp-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-card-choice-card {
+    padding: 18px 16px;
+  }
+
+  .photo-card-choice-title {
+    font-size: 1.4rem;
+  }
+
+  .photo-card-rsvp-button {
+    width: 100%;
+    min-width: unset;
+  }
 }
 /* =========================
    PHOTO CARD COUNTDOWN
