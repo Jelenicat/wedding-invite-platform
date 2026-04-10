@@ -1721,49 +1721,49 @@ backgroundColor: "#f3ece6",
   slug: "adrijana-aleksandar",
   type: "wedding",
   template: "photo-script",
-  script: "cyrillic",
-brideName: "Aдријана",
-groomName: "Александар",
+
+  brideName: "Adrijana",
+  groomName: "Aleksandar",
   videoSrc: "/videos/wedding-Adrijana-Aleksandar1.mp4",
   musicSrc: "/music/adrijana-aleksandar.mp3",
-  weddingDate: "11 ЈУЛ 2026",
+  weddingDate: "11 JUL 2026",
   weddingTime: "19:00",
-  venue: "Beograd",
+  venue: "Niš",
+
   details: createDetails({
-    welcomeText: "Радујемо се да овај дан поделимо са вама.",
-    date: "11 ЈУЛ 2026",
+    welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+
+    date: "11 JUL 2026",
     dateISO: "2026-07-11T19:00:00+02:00",
-editorialImage1: "/images/adrijana-aleksandar.jpg",
+
+    editorialImage1: "/images/adrijana-aleksandar.jpg",
+
     events: [
       {
-        label: "Окупљање званица",
+        label: "Okupljanje zvanica",
         time: "17:45",
         icon: "gathering",
-        location: "Ресторан LUSSO, Ниш",
+        location: "Restoran LUSSO, Niš",
         mapLink: "https://www.google.com/maps/place/Lusso+Restoran/@43.2596203,21.8634665,17z/data=!3m1!4b1!4m6!3m5!1s0x4755bba205ac2295:0x7907c824c1cde073!8m2!3d43.2596203!4d21.8660414!16s%2Fg%2F11y_f7y92x?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
       },
-   
       {
-        label: "Грађанско венчање",
+        label: "Građansko venčanje",
         time: "19:00",
         icon: "civil",
-location: "Ресторан LUSSO, Ниш",
+        location: "Restoran LUSSO, Niš",
         mapLink: "https://www.google.com/maps/place/Lusso+Restoran/@43.2596203,21.8634665,17z/data=!3m1!4b1!4m6!3m5!1s0x4755bba205ac2295:0x7907c824c1cde073!8m2!3d43.2596203!4d21.8660414!16s%2Fg%2F11y_f7y92x?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
       },
-
     ],
 
-    
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodeNote:
+      "Svečano i elegantno, u stilu koji vam najviše prija.",
+    dressCodePalette: [],
 
-  showDressCode: true,
-  dressCodeTitle: "Dress code",
-  dressCodeNote:
-    "Свечано и елегантно, у стилу који вам највише прија.",
-  dressCodePalette: [],
-    note: "Молимо вас да свој долазак потврдите до 1. јуна.",
+    note: "Molimo vas da svoj dolazak potvrdite do 1. juna.",
   }),
 },
-
 {
   slug: "masa-nikola",
   type: "wedding",
