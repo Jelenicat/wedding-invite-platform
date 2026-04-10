@@ -9,9 +9,6 @@
       content="Kliknite i otvorite digitalnu pozivnicu za venčanje Adrijane i Aleksandra."
     />
 
-    <!-- 🔥 BITNO: meta refresh -->
-    <meta http-equiv="refresh" content="0; url=/adrijana-aleksandar" />
-
     <!-- OG -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Adrijana i Aleksandar - Pozivnica za venčanje" />
@@ -27,6 +24,9 @@
       property="og:image"
       content="https://mojapozivnica.app/previews/adrijana-aleksandar.jpg"
     />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -42,9 +42,10 @@
   </head>
 
   <body>
-    <!-- fallback ako meta refresh ne radi -->
     <script>
-      window.location.href = "/adrijana-aleksandar";
+      setTimeout(() => {
+        window.location.href = "/adrijana-aleksandar";
+      }, 400);
     </script>
   </body>
 </html>
