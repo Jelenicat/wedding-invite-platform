@@ -1965,7 +1965,8 @@
   line-height: 0.88;
   letter-spacing: 1px;
   font-weight: 100;
-  color: #cb7474;
+   color: rgba(255, 255, 255, 0.72);
+ 
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -1987,7 +1988,7 @@
   font-size: 25px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+   color: #cb7474;
 }
 
 .photo-script-divider {
