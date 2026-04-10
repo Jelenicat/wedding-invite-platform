@@ -1726,17 +1726,17 @@ brideName: "Aдријана",
 groomName: "Александар",
   videoSrc: "/videos/wedding-Adrijana-Aleksandar1.mp4",
   musicSrc: "/music/adrijana-aleksandar.mp3",
-  weddingDate: "12 ЈУЛ 2026",
+  weddingDate: "11 ЈУЛ 2026",
   weddingTime: "19:00",
   venue: "Beograd",
   details: createDetails({
     welcomeText: "Радујемо се да овај дан поделимо са вама.",
-    date: "12 ЈУЛ 2026",
-    dateISO: "2026-07-12T19:00:00+02:00",
-
+    date: "11 ЈУЛ 2026",
+    dateISO: "2026-07-11T19:00:00+02:00",
+editorialImage1: "/images/adrijana-aleksandar.jpg",
     events: [
       {
-        label: "Окупљанје званица",
+        label: "Окупљање званица",
         time: "17:45",
         icon: "gathering",
         location: "Ресторан LUSSO, Ниш",
@@ -1753,7 +1753,7 @@ location: "Ресторан LUSSO, Ниш",
 
     ],
 
-    editorialImage1: "/images/couple-blackwhite1.jpg",
+    
 
   showDressCode: true,
   dressCodeTitle: "Dress code",
