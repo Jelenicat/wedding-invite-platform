@@ -1585,7 +1585,7 @@
 .photo-card-editorial-timeline-row {
   display: grid;
   grid-template-columns: 1fr 42px 1fr;
-  gap: 8px;
+  gap: 18px;
   align-items: center;
   min-height: 82px;
 }
@@ -1841,12 +1841,12 @@
   }
 
   .photo-card-editorial-timeline {
-    max-width: 290px;
+    max-width: 390px;
   }
 
   .photo-card-editorial-timeline-row {
     grid-template-columns: 1fr 4px 1fr;
-    gap: 10px;
+    gap: 23px;
     min-height: 72px;
   }
 
