@@ -27,7 +27,6 @@ function PhotoCardInvitationCard({
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
 
-  // ✅ NOVO – ista logika kao floral
   const shouldShowDressCode =
     details.showDressCode &&
     (
@@ -43,7 +42,8 @@ function PhotoCardInvitationCard({
     if (Number.isNaN(date.getTime())) return null;
 
     const day = date.getDate();
-    const month = date.toLocaleString("sr-RS", { month: "long" });
+    const monthRaw = date.toLocaleString("sr-Latn-RS", { month: "long" });
+    const month = monthRaw.charAt(0).toUpperCase() + monthRaw.slice(1);
     const year = date.getFullYear();
 
     const nearbyDays = [day - 2, day - 1, day, day + 1, day + 2];
@@ -216,7 +216,6 @@ function PhotoCardInvitationCard({
             </div>
           )}
 
-          {/* ✅ ISPRAVLJEN DRESS CODE */}
           {shouldShowDressCode && (
             <div className="photo-card-editorial-dresscode">
               <h3 className="photo-card-editorial-script photo-card-editorial-dresscode-title">

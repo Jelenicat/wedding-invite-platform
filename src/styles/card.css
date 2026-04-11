@@ -1831,7 +1831,7 @@
   .photo-card-editorial-calendar-day {
     width: 28px;
     height: 28px;
-    font-size: 1.35rem;
+    font-size: 1.6rem;
   }
 
   .photo-card-editorial-calendar-day.is-active {
@@ -1845,8 +1845,8 @@
   }
 
   .photo-card-editorial-timeline-row {
-    grid-template-columns: 1fr 34px 1fr;
-    gap: 6px;
+    grid-template-columns: 1fr 4px 1fr;
+    gap: 10px;
     min-height: 72px;
   }
 
