@@ -8,9 +8,15 @@ function PhotoCardIntro({
   image,
   backgroundImage,
   onEnter,
+  details = {},
 }) {
   const finalBg = backgroundImage || "/images/photo-card-bg.jpg";
   const finalImage = image || "/images/couple.jpg";
+
+  const allowedShapes = ["square", "vertical"];
+  const imageShape = allowedShapes.includes(details?.imageShape)
+    ? details.imageShape
+    : "square";
 
   return (
     <section
@@ -26,8 +32,8 @@ function PhotoCardIntro({
       >
         <p className="photo-card-title">Sačuvaj datum</p>
 
-        <div className="photo-frame">
-          <img src={finalImage} alt="couple" />
+        <div className={`photo-frame photo-frame--${imageShape}`}>
+          <img src={finalImage} alt={`${brideName} i ${groomName}`} />
         </div>
 
         <p className="photo-card-names">
@@ -38,7 +44,7 @@ function PhotoCardIntro({
 
         <div className="photo-divider" />
 
-       <p className="photo-location">{venue}</p>
+        <p className="photo-location">{venue}</p>
 
         <button className="photo-card-btn" onClick={onEnter}>
           Pogledaj pozivnicu

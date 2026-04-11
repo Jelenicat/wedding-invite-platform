@@ -1132,17 +1132,7 @@ html {
   background-position: center;
   background-size: cover, cover;
 }
-.photo-card {
-  width: 100%;
-  max-width: 390px;
-  text-align: center;
-  padding: 0px 8px 0;
 
-  .photo-card {
-  position: relative;
-}
-
-}
 .photo-card-intro::before {
   animation: fadeRose 1.5s ease forwards;
 }
@@ -1151,7 +1141,15 @@ html {
   from { opacity: 0; }
   to { opacity: 0.15; }
 }
+
+/* CARD */
 .photo-card {
+  position: relative; /* FIX */
+  width: 100%;
+  max-width: 390px;
+  text-align: center;
+  padding: 0 8px;
+
   animation: floatCard 6s ease-in-out infinite;
 }
 
@@ -1160,6 +1158,7 @@ html {
   50% { transform: translateY(-6px); }
   100% { transform: translateY(0px); }
 }
+
 .photo-card::after {
   content: "";
   position: absolute;
@@ -1168,6 +1167,7 @@ html {
   z-index: -1;
   filter: blur(20px);
 }
+
 .photo-card-title {
   margin: 0 0 30px;
   font-size: 13px;
@@ -1179,20 +1179,46 @@ html {
 /* FRAME */
 .photo-frame {
   position: relative;
+  width: 100%;
+  margin: 0 auto 22px;
+
   background: linear-gradient(180deg, #dfe3e4 0%, #d8ddde 100%);
   padding: 12px;
-  margin-bottom: 22px;
   border-radius: 3px;
+
   box-shadow:
     0 10px 24px rgba(69, 58, 50, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
+/* 🔥 shape kontrola */
+.photo-frame--square {
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+}
+
+.photo-frame--vertical {
+  max-width: 300px;
+  aspect-ratio: 3 / 4;
+}
+
+/* IMAGE */
 .photo-frame img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.2),
+    transparent
+  );
 }
 
 /* NAMES */
@@ -1204,23 +1230,14 @@ html {
 
   font-family: "Italianno", cursive;
   font-style: italic;
- letter-spacing: 0.8px;
+  letter-spacing: 0.8px;
   font-size: 32px;
   line-height: 0.95;
   color: #000000;
   margin: 4px 0 6px;
   font-weight: 100;
 }
-.photo-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.2),
-    transparent
-  );
-}
+
 .photo-card-and {
   font-size: 18px;
   line-height: 1;
@@ -1270,9 +1287,11 @@ html {
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 999px;
+
   box-shadow:
     0 10px 22px rgba(62, 48, 40, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.4);
@@ -1287,6 +1306,7 @@ html {
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
+/* MOBILE */
 @media (max-width: 480px) {
   .photo-card-intro {
     padding: 34px 16px;
@@ -1305,6 +1325,14 @@ html {
   .photo-frame {
     padding: 10px;
     margin-bottom: 18px;
+  }
+
+  .photo-frame--square {
+    max-width: 260px;
+  }
+
+  .photo-frame--vertical {
+    max-width: 240px;
   }
 
   .photo-card-names {

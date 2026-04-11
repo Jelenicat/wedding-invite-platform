@@ -1,6 +1,7 @@
 const createDetails = ({
   backgroundImage,
    theme,
+    imageShape,
   welcomeText,
   date,
   dateISO,
@@ -26,6 +27,7 @@ const createDetails = ({
 }) => ({
   backgroundImage,
    theme,
+    imageShape,
   welcomeText,
   date,
   dateISO,
@@ -1773,9 +1775,11 @@ backgroundColor: "#f3ece6",
   image: "/images/masa-nikola-photocard.jpg",
   backgroundImage: "/images/masa-nikola-photocard-bg.jpg",
    musicSrc: "/music/masa-nikola.mp3",
+   
   weddingDate: "06 SEP 2026",
   weddingTime: "16:30",
   details: createDetails({
+     imageShape: "vertical", // 👈 OVO
     welcomeText:
       "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
 venue: "Restoran Srpski dvor otvorena sala, Rušanj",
@@ -1815,7 +1819,7 @@ dressCodeTitle: "Dress code",
 dressCodeNote:
   "Elegantne kombinacije u tonovima iz palete (crna, bordo, maslinasta i zemljani tonovi) su dobrodošle.",
 
-    mapLink:  "https://www.google.com/maps?q=Orthodox+Church+of+St.+Luke+the+Apostle,+Kneza+Vi%C5%A1eslava+100,+Beograd&ftid=0x475a71ea9fb4c97f:0xeec28c0c6bbe6268&entry=gps&shh=CAE&lucs=,94297699,100795625,94284454,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI2LjE0LjAuODkxOTAzMTgwMBgAINeCAypSLDk0Mjk3Njk5LDEwMDc5NTYyNSw5NDI4NDQ1NCw5NDIzMTE4OCw5NDI4MDU2OCw0NzA3MTcwNCw5NDIxODY0MSw5NDI4MjEzNCw5NDI4Njg2OUICUlM%3D&skid=02ce878b-ce2e-4e16-b2c4-ed151262d881&g_st=iw",
+    mapLink:  "https://www.google.com/maps/place/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD+%D0%A1%D1%80%D0%BF%D1%81%D0%BA%D0%B8+%D0%B4%D0%B2%D0%BE%D1%80/@44.6838824,20.4254496,17z/data=!4m14!1m7!3m6!1s0x475a731a9eef208d:0x82bd697a69e9962c!2z0KDQtdGB0YLQvtGA0LDQvSDQodGA0L_RgdC60Lgg0LTQstC-0YA!8m2!3d44.6838824!4d20.4280245!16s%2Fg%2F1q5bmp24z!3m5!1s0x475a731a9eef208d:0x82bd697a69e9962c!8m2!3d44.6838824!4d20.4280245!16s%2Fg%2F1q5bmp24z!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
     note: "Molimo vas da svoj dolazak potvrdite do 23. avgusta.",
   }),
 },
