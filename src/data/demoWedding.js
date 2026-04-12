@@ -1726,7 +1726,7 @@ backgroundColor: "#f3ece6",
 
   brideName: "Adrijana",
   groomName: "Aleksandar",
-  videoSrc: "/videos/wedding-Adrijana-Aleksandar2.mp4",
+  videoSrc: "/videos/wedding-fixed.mp4",
   musicSrc: "/music/adrijana-aleksandar.mp3",
   weddingDate: "11 JUL 2026",
   weddingTime: "19:00",

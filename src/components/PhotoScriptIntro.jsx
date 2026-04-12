@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function PhotoScriptIntro({
   brideName,
@@ -7,8 +7,11 @@ function PhotoScriptIntro({
   videoSrc,
   onEnter,
   script = "latin",
+  posterSrc = "/images/fallback.jpg",
 }) {
   const videoRef = useRef(null);
+  const [videoReady, setVideoReady] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
 
   const t =
     script === "cyrillic"
@@ -24,6 +27,7 @@ function PhotoScriptIntro({
     if (!video) return;
 
     let cancelled = false;
+    let retryTimeout;
 
     const tryPlay = async () => {
       if (!video || cancelled) return;
@@ -32,6 +36,7 @@ function PhotoScriptIntro({
         video.muted = true;
         video.defaultMuted = true;
         video.playsInline = true;
+        video.setAttribute("muted", "");
         video.setAttribute("playsinline", "");
         video.setAttribute("webkit-playsinline", "");
 
@@ -45,58 +50,97 @@ function PhotoScriptIntro({
       }
     };
 
+    const markReadyAndPlay = async () => {
+      if (cancelled) return;
+      setVideoReady(true);
+      await tryPlay();
+    };
+
+    const handleLoadedData = () => {
+      markReadyAndPlay();
+    };
+
+    const handleCanPlay = () => {
+      markReadyAndPlay();
+    };
+
+    const handlePlaying = () => {
+      if (!cancelled) {
+        setVideoReady(true);
+        setVideoFailed(false);
+      }
+    };
+
+    const handleError = () => {
+      if (!cancelled) {
+        setVideoFailed(true);
+        setVideoReady(false);
+      }
+    };
+
     const handleVisibility = () => {
       if (
         document.visibilityState === "visible" &&
         video &&
         video.paused &&
-        !cancelled
+        !cancelled &&
+        !videoFailed
       ) {
         tryPlay();
       }
     };
 
-    const handleLoadedData = () => {
-      if (video && video.paused && !cancelled) {
-        tryPlay();
-      }
-    };
-
-    const handleCanPlay = () => {
-      if (video && video.paused && !cancelled) {
-        tryPlay();
-      }
-    };
+    setVideoReady(false);
+    setVideoFailed(false);
 
     tryPlay();
 
+    retryTimeout = setTimeout(() => {
+      if (!cancelled && video && video.paused) {
+        tryPlay();
+      }
+    }, 700);
+
     video.addEventListener("loadeddata", handleLoadedData);
     video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("playing", handlePlaying);
+    video.addEventListener("error", handleError);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       cancelled = true;
+      clearTimeout(retryTimeout);
       video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("playing", handlePlaying);
+      video.removeEventListener("error", handleError);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
-  }, [videoSrc]);
+  }, [videoSrc, videoFailed]);
 
   return (
     <section className="photo-script-intro">
+      <div
+        className={`photo-script-poster-layer ${
+          videoReady && !videoFailed ? "is-hidden" : ""
+        }`}
+        style={{ backgroundImage: `url(${posterSrc})` }}
+      />
+
       <video
         ref={videoRef}
         key={videoSrc || "/videos/wedding.mp4"}
-        className="photo-script-bg-video"
+        className={`photo-script-bg-video ${
+          videoReady && !videoFailed ? "is-visible" : ""
+        }`}
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
-        poster="/images/fallback.jpg"
+        poster={posterSrc}
       >
         <source src={videoSrc || "/videos/wedding.mp4"} type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
 
       <div className="photo-script-overlay" />
@@ -130,7 +174,7 @@ function PhotoScriptIntro({
             animate={{ opacity: 0.85, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.85 }}
           >
-            &
+            &amp;
           </motion.span>
 
           <motion.span
