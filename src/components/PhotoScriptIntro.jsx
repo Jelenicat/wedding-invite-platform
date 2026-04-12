@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 function PhotoScriptIntro({
   brideName,
@@ -7,6 +8,8 @@ function PhotoScriptIntro({
   onEnter,
   script = "latin",
 }) {
+  const videoRef = useRef(null);
+
   const t =
     script === "cyrillic"
       ? {
@@ -16,9 +19,74 @@ function PhotoScriptIntro({
           openInvitation: "Pogledaj pozivnicu",
         };
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let cancelled = false;
+
+    const tryPlay = async () => {
+      if (!video || cancelled) return;
+
+      try {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+      } catch (err) {
+        console.warn("Video autoplay nije uspeo:", err);
+      }
+    };
+
+    const handleVisibility = () => {
+      if (
+        document.visibilityState === "visible" &&
+        video &&
+        video.paused &&
+        !cancelled
+      ) {
+        tryPlay();
+      }
+    };
+
+    const handleLoadedData = () => {
+      if (video && video.paused && !cancelled) {
+        tryPlay();
+      }
+    };
+
+    const handleCanPlay = () => {
+      if (video && video.paused && !cancelled) {
+        tryPlay();
+      }
+    };
+
+    tryPlay();
+
+    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("canplay", handleCanPlay);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      cancelled = true;
+      video.removeEventListener("loadeddata", handleLoadedData);
+      video.removeEventListener("canplay", handleCanPlay);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [videoSrc]);
+
   return (
     <section className="photo-script-intro">
       <video
+        ref={videoRef}
+        key={videoSrc || "/videos/wedding.mp4"}
         className="photo-script-bg-video"
         autoPlay
         muted
@@ -75,15 +143,15 @@ function PhotoScriptIntro({
           </motion.span>
         </motion.h1>
 
-       <motion.button
-  className="photo-script-button"
-  onClick={onEnter}
-  initial={{ opacity: 0, x: "-50%", y: 18 }}
-  animate={{ opacity: 1, x: "-50%", y: 0 }}
-  transition={{ duration: 0.9, delay: 1.2 }}
->
-  {t.openInvitation}
-</motion.button>
+        <motion.button
+          className="photo-script-button"
+          onClick={onEnter}
+          initial={{ opacity: 0, x: "-50%", y: 18 }}
+          animate={{ opacity: 1, x: "-50%", y: 0 }}
+          transition={{ duration: 0.9, delay: 1.2 }}
+        >
+          {t.openInvitation}
+        </motion.button>
       </motion.div>
     </section>
   );
