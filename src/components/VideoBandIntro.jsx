@@ -1,27 +1,125 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-function VideoBandIntro({ brideName, groomName, videoSrc, onEnter }) {
+function VideoBandIntro({
+  brideName,
+  groomName,
+  videoSrc,
+  onEnter,
+  posterSrc = "/images/video-band-poster.jpg",
+}) {
+  const videoRef = useRef(null);
   const [videoReady, setVideoReady] = useState(false);
-  const [videoError, setVideoError] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !videoSrc) return;
+
+    let cancelled = false;
+    let retryTimeout;
+
+    const tryPlay = async () => {
+      if (!video || cancelled) return;
+
+      try {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+
+        if (video.paused) {
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            await playPromise;
+          }
+        }
+      } catch (err) {
+        console.warn("VideoBand autoplay nije uspeo:", err);
+      }
+    };
+
+    const handleCanPlay = () => {
+      if (cancelled) return;
+      setVideoReady(true);
+      setVideoFailed(false);
+    };
+
+    const handlePlaying = () => {
+      if (cancelled) return;
+      setVideoReady(true);
+      setVideoFailed(false);
+    };
+
+    const handleError = () => {
+      if (cancelled) return;
+      setVideoFailed(true);
+      setVideoReady(false);
+    };
+
+    const handleVisibility = () => {
+      if (
+        document.visibilityState === "visible" &&
+        video &&
+        video.paused &&
+        !cancelled &&
+        !videoFailed
+      ) {
+        tryPlay();
+      }
+    };
+
+    setVideoReady(false);
+    setVideoFailed(false);
+
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("playing", handlePlaying);
+    video.addEventListener("error", handleError);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    tryPlay();
+
+    retryTimeout = setTimeout(() => {
+      if (!cancelled && video && video.paused) {
+        tryPlay();
+      }
+    }, 700);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(retryTimeout);
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("playing", handlePlaying);
+      video.removeEventListener("error", handleError);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [videoSrc]);
 
   return (
     <section className="video-band-intro">
-      <div className="video-band-poster-layer" />
+      <div
+        className={`video-band-poster-layer ${
+          videoReady && !videoFailed ? "is-hidden" : ""
+        }`}
+        style={{ backgroundImage: `url(${posterSrc})` }}
+      />
 
-      {!videoError && videoSrc && (
+      {!videoFailed && videoSrc && (
         <video
+          ref={videoRef}
+          key={videoSrc}
           className={`video-band-bg ${videoReady ? "is-visible" : ""}`}
-          src={videoSrc}
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          poster="/images/video-band-poster.jpg"
-          onCanPlay={() => setVideoReady(true)}
-          onError={() => setVideoError(true)}
-        />
+          poster={posterSrc}
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
       )}
 
       <div

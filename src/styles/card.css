@@ -2814,9 +2814,9 @@
 }
 
 .split-video-text {
-  max-width: 250px;
-  margin: 0 auto 24px;
-  font-size: 13px;
+  max-width: 350px;
+  margin: 0 auto 10px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--split-soft-text);
   font-style: italic;
@@ -2853,11 +2853,11 @@
 }
 
 .split-video-calendar-col-center {
-  min-width: 78px;
+  min-width: 108px;
 }
 
 .split-video-calendar-label {
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--split-muted-text);
@@ -2896,7 +2896,7 @@
 
 .split-video-flow {
   position: relative;
-  max-width: 280px;
+  max-width: 380px;
   margin: 0 auto 28px;
   padding: 4px 0;
 }
@@ -2954,8 +2954,8 @@
 }
 
 .split-video-flow-time {
-  margin: 0 0 6px;
-  font-size: 11px;
+  margin: 0 0 8px;
+  font-size: 15px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--split-muted-text);
@@ -2977,7 +2977,7 @@
 
 .split-video-flow-note {
   margin: 0 auto;
-  max-width: 220px;
+  max-width: 320px;
   font-size: 11px;
   line-height: 1.55;
   color: var(--split-soft-text);
@@ -3084,11 +3084,11 @@
   }
 
   .split-video-kicker {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .split-video-text {
-    font-size: 12px;
+    font-size: 15px;
     margin-bottom: 20px;
   }
 
@@ -3101,7 +3101,7 @@
   }
 
   .split-video-flow {
-    max-width: 250px;
+    max-width: 300px;
   }
 
   .split-video-flow-curve {
@@ -3110,7 +3110,7 @@
   }
 
   .split-video-flow-title {
-    font-size: 1.55rem;
+    font-size: 1.8rem;
   }
 
   .split-video-flow-location,
@@ -3118,7 +3118,7 @@
   .split-video-location-text,
   .split-video-section-note,
   .split-video-note {
-    font-size: 11px;
+    font-size: 16px;
   }
 
   .split-video-section-script {

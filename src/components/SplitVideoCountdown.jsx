@@ -131,7 +131,7 @@ function SplitVideoCountdown({ targetDate, details = {} }) {
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.15 }}
           >
-            Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
+            Vidimo se da zajedno napravimo uspomene za pamćenje.
           </motion.p>
         </div>
       </div>
