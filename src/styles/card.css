@@ -2887,18 +2887,40 @@
 }
 
 .split-video-love-mark {
+  display: block;
+  width: 380px;
+  max-width: 100%;
   margin: 6px auto 12px;
+  text-align: center;
   font-size: 22px;
   line-height: 1;
   color: var(--split-accent);
+ transform: none; /* 🔥 bitno */
   animation: splitHeartPulse 3.2s ease-in-out infinite;
 }
 
 .split-video-flow {
   position: relative;
-  max-width: 380px;
+  width: 380px;
+  max-width: 100%;
   margin: 0 auto 28px;
   padding: 4px 0;
+}
+
+
+.split-video-flow-node {
+  position: absolute;
+  top: 8px;
+  left: 48%;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+
+ 
+  border-radius: 999px;
+
+  background: var(--split-accent);
+  box-shadow: 0 0 0 6px var(--split-node-ring);
 }
 
 .split-video-flow-item {
@@ -2910,17 +2932,7 @@
   padding-bottom: 8px;
 }
 
-.split-video-flow-node {
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  transform: translateX(-50%);
-  background: var(--split-accent);
-  box-shadow: 0 0 0 6px var(--split-node-ring);
-}
+
 
 .split-video-flow-curve {
   position: absolute;
@@ -3074,6 +3086,13 @@
 }
 
 @media (max-width: 480px) {
+  .split-video-love-mark,
+  .split-video-flow {
+    width: 300px;
+    max-width: 100%;
+  }
+
+
   .split-video-invitation {
     padding: 0;
   }
