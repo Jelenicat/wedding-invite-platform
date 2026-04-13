@@ -1302,7 +1302,7 @@ color: var(--rsvp-button-text, #fff);
   }
 
   .split-video-countdown-note {
-    font-size: 12px;
+    font-size: 18px;
     margin-top: 22px;
   }
 }
