@@ -1,3 +1,5 @@
+import { script } from "framer-motion/client";
+
 const createDetails = ({
   backgroundImage,
    theme,
@@ -671,6 +673,80 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
+{
+  slug: "ivona-marko",
+  type: "wedding",
+  template: "photo-card",
+  brideName: "Ivona",
+  groomName: "Marko",
+  image: "/images/ivona-marko-photocard.jpg",
+  backgroundImage: "/images/ivona-marko-photocard-bg.jpg",
+  weddingDate: "12 MAY 2026",
+  weddingTime: "17:00",
+  venue: "ul. Novosadska, Novi Sad",
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "12 MAY 2026",
+    dateISO: "2026-05-12T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "15:00",
+        icon: "gathering",
+        location: "Dvorište vile",
+        mapLink: "https://maps.google.com/?q=Dvoriste+vile",
+      },
+      {
+        label: "Venčanje",
+        time: "17:30",
+        icon: "civil",
+        location: "Beli dvor",
+        mapLink: "https://maps.google.com/?q=Beli+dvor",
+      },
+      {
+        label: "Svadbena ceremonija",
+        time: "18:00",
+        icon: "church",
+        location: "Crkva Svetog Save",
+        mapLink: "https://maps.google.com/?q=Crkva+Svetog+Save",
+      },
+      {
+        label: "Početak banketa",
+        time: "19:00",
+        icon: "restaurant",
+        location: "Sala za proslave",
+        mapLink: "https://maps.google.com/?q=Sala+za+proslave",
+      },
+      {
+        label: "Završetak proslave",
+        time: "23:00",
+        icon: "party",
+        location: "Beli dvor",
+        mapLink: "https://maps.google.com/?q=Beli+dvor",
+      },
+    ],
+
+   
+
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [
+      "#111111",
+      "#6d4b12",
+      "#9b1637",
+      "#6a7a1f",
+      "#7d8530",
+      "#efeee9",
+    ],
+    dressCodeNote:
+      "Biće nam drago ako svojim odevnim kombinacijama ispratite stilsku notu našeg venčanja.",
+
+    mapLink: "https://maps.google.com/?q=ulica+Novosadska+Novi+Sad",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
 // =========================
 // PHOTO SCRIPT TEMPLATES
 // =========================
@@ -795,6 +871,68 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
     dressCodePalette: ["#2a2a2a", "#6e6461", "#b9a39b", "#d6c4bb"],
     dressCodeNote: "Elegantni, zagasiti i neutralni tonovi.",
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "ena-aleksa",
+  type: "wedding",
+  template: "photo-script",
+  brideName: "Ена",
+  script: "cyrillic",
+  groomName: "Алекса",
+  videoSrc: "/videos/wedding-Ena-Aleksa2.mp4",
+  weddingDate: "18 СЕП 2026",
+  weddingTime: "17:00",
+  venue: "Београд",
+  details: createDetails({
+    welcomeText: "Радујемо се да овај дан поделимо са вама.",
+    date: "18 СЕП 2026",
+    dateISO: "2026-09-18T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Окупљање гостију",
+        time: "15:00",
+        icon: "gathering",
+        location: "Хотел Хајат, Београд",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      },
+      {
+        label: "Црквено венчање",
+        time: "16:30",
+        icon: "church",
+        location: "Црква Светог Марка, Београд",
+        mapLink: "https://maps.google.com/?q=Crkva+Svetog+Marka+Beograd",
+      },
+      {
+        label: "Грађанско венчање",
+        time: "17:00",
+        icon: "civil",
+        location: "Хотел Хајат, Београд",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      },
+      {
+        label: "Почетак банкета",
+        time: "17:30",
+        icon: "restaurant",
+        location: "Свечана сала, Хајат",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      },
+      {
+        label: "Афтер парти",
+        time: "22:00",
+        icon: "party",
+        location: "Лаунџ бар, Хајат",
+        mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
+      },
+    ],
+
+    editorialImage1: "/images/couple-blackwhite1.jpg",
+
+    dressCodeTitle: "Дрес код",
+    dressCodePalette: ["#2a2a2a", "#6e6461", "#b9a39b", "#d6c4bb"],
+    dressCodeNote: "Елегантни, загасити и неутрални тонови.",
+    note: "Молимо вас да свој долазак потврдите на време.",
   }),
 },
 // =========================
@@ -1039,7 +1177,93 @@ showDressCode: false,
   note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
+ {
+  slug: "lana-milan",
+  type: "wedding",
+  template: "split-video",
+  brideName: "Lana",
+  groomName: "Milan",
+  videoSrc: "/videos/lana-milan.mp4",
+  weddingDate: "10 OKT 2026",
+  weddingTime: "17:00",
+ venue: "Beograd",
+ 
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+  details: createDetails({
+    backgroundImage: "/images/lana-milan-split.jpg",
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "10 OKT 2026",
+    dateISO: "2026-10-10T17:00:00+02:00",
 
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "13:30",
+        location: "Hram Svetog Save, Beograd",
+        
+        note: "Svečani čin crkvenog venčanja.",
+      },
+      {
+        label: "Skup svatova",
+        time: "16:00",
+        location: "Hotel Moskva, Beograd",
+        
+        note: "Početak okupljanja i dragi susreti pre ceremonije."
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+       location: "Hotel Moskva, Beograd",
+        
+        note: "Trenutak kada počinje naše novo poglavlje",
+      },
+    
+    ],
+theme: {
+  mainText:" #7b1234",
+  softText: "#243b6b",
+  scriptText: "#7b1234",
+  mutedText: "#7b1234",
+
+  accent: "  #7b1234",
+  accentStrong: "#243b6b",
+  buttonText: "#ffffff",
+
+  cardBg: "rgba(255,255,255,0.28)",
+  cardBorder: "transparent",
+  frameBorder: "rgba(123,18,52,0.20)",
+
+  paperOverlayTop: "rgba(255,255,255,0.03)",
+paperOverlayBottom: "rgba(36,59,107,0.06)",
+  vignetteColor: "rgba(123,18,52,0.08)",
+
+  flowLine: "#7b1234",
+  dividerLine: "rgba(123,18,52,0.25)",
+  nodeRing: "rgba(181,144,59,0.16)",
+backgroundColor: "#f3ece6",
+  /* INTRO */
+  introMainText:"#7b1234",
+  introAccent: "#7b1234",
+  introButtonBg: "rgba(255,255,255,0.18)",
+  introButtonBorder: "rgba(255,255,255,0.35)",
+  introButtonText: "#ffffff",
+  introButtonHoverBg: "rgba(255,255,255,0.28)",
+
+  /* RSVP */
+  rsvpButtonBg: "#7b1234",
+  rsvpButtonText: "#ffffff",
+},
+ showDressCode: true,
+  venue: "Beograd",
+  dressCodeTitle: "Dress code",
+  dressCodePalette: [],
+  dressCodeNote:
+    "Slobodno birajte boje po želji, uz molbu da izbegnete belu.",
+  mapLink: "https://www.google.com/maps/place/%D0%A2%D0%B8%D1%81%D0%BA%D0%B8+%D1%86%D0%B2%D0%B5%D1%82/@45.5942253,20.132972,17z/data=!3m1!4b1!4m9!3m8!1s0x475b2d9034f0ae43:0xea48bcb4e8be3019!5m2!4m1!1i2!8m2!3d45.5942253!4d20.132972!16s%2Fg%2F1tqpy0mn?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+  note: "Molimo vas da svoj dolazak potvrdite do 26. septembra.",
+  }),
+},
 // =========================
 // SILK TEMPLATE
 // =========================
@@ -1190,6 +1414,51 @@ showDressCode: false,
   weddingTime: "17:00",
   venue: "Beograd",
   backgroundImage: "/images/anđela-jovan-minimal.jpg",
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+    date: "06 SEP 2026",
+    dateISO: "2026-09-06T17:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Beograd",
+      },
+      {
+        label: "Večera i proslava",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Beograd",
+      },
+    ],
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c8b4", "#c2a98f", "#8d7057", "#f3e7da"],
+    dressCodeNote:
+      "Elegantne i nežne nijanse savršeno će se uklopiti u atmosferu našeg dana.",
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "jovana-nikola",
+  type: "wedding",
+  template: "silk",
+  brideName: "Jovana",
+  groomName: "Nikola",
+  videoSrc: "/videos/jovana-nikola.mp4",
+  fontMode: "dark",
+  weddingDate: "06 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+  backgroundImage: "/images/jovana-nikola-minimal.jpg",
   details: createDetails({
     welcomeText:
       "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
