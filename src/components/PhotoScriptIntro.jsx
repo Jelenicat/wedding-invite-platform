@@ -8,10 +8,37 @@ function PhotoScriptIntro({
   onEnter,
   script = "latin",
   posterSrc = "/images/fallback.jpg",
+  details = {},
 }) {
   const videoRef = useRef(null);
   const [videoReady, setVideoReady] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
+
+  const theme = details.theme || {};
+  const hasCustomNameFont = Boolean(theme.nameFont);
+
+  const themeStyles = {
+    "--photo-script-bg": theme.introBg || "#111",
+    "--photo-script-names-color": theme.introMainText || "#cb7474",
+    "--photo-script-accent-color": theme.introAccent || "#cb7474",
+    "--photo-script-button-border":
+      theme.introButtonBorder || "rgba(255, 255, 255, 0.38)",
+    "--photo-script-button-bg":
+      theme.introButtonBg || "rgba(255, 255, 255, 0.08)",
+    "--photo-script-button-text": theme.introButtonText || "#ffffff",
+    "--photo-script-button-hover-bg":
+      theme.introButtonHoverBg || "rgba(255, 255, 255, 0.14)",
+    "--photo-script-overlay-top":
+      theme.introOverlayTop || "rgba(0, 0, 0, 0.08)",
+    "--photo-script-overlay-mid":
+      theme.introOverlayMid || "rgba(0, 0, 0, 0.12)",
+    "--photo-script-overlay-bottom":
+      theme.introOverlayBottom || "rgba(0, 0, 0, 0.28)",
+    "--photo-script-name-font":
+      theme.nameFont || '"Italianno", cursive',
+    "--photo-script-name-font-cyrillic":
+      theme.nameFontCyrillic || '"Great Vibes", cursive',
+  };
 
   const t =
     script === "cyrillic"
@@ -119,7 +146,15 @@ function PhotoScriptIntro({
   }, [videoSrc, videoFailed]);
 
   return (
-    <section className="photo-script-intro">
+    <section
+      className={[
+        "photo-script-intro",
+        hasCustomNameFont ? "has-custom-name-font" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      style={themeStyles}
+    >
       <div
         className={`photo-script-poster-layer ${
           videoReady && !videoFailed ? "is-hidden" : ""

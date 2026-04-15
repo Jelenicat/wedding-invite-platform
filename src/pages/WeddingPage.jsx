@@ -47,6 +47,7 @@ import ClassicInvitationCard from "../components/ClassicInvitationCard";
 import EditorialIntro from "../components/EditorialIntro";
 import EditorialInvitationCard from "../components/EditorialInvitationCard";
 import SilkIntro from "../components/SilkIntro";
+import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
 
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
@@ -109,17 +110,21 @@ const TEMPLATE_COMPONENTS = {
     Invitation: AngelInvitationCard,
   },
   classic: {
-  Intro: ClassicIntro,
-  Invitation: ClassicInvitationCard,
-},
-editorial: {
-  Intro: EditorialIntro,
-  Invitation: EditorialInvitationCard,
-},
-silk: {
-  Intro: SilkIntro,
-  Invitation: MinimalInvitationCard, // ili napravi kasnije poseban
-},
+    Intro: ClassicIntro,
+    Invitation: ClassicInvitationCard,
+  },
+  editorial: {
+    Intro: EditorialIntro,
+    Invitation: EditorialInvitationCard,
+  },
+  silk: {
+    Intro: SilkIntro,
+    Invitation: MinimalInvitationCard,
+  },
+  "envelope-split": {
+    Intro: EnvelopeSplitIntro,
+    Invitation: MinimalInvitationCard,
+  },
 };
 
 function WeddingPage() {
@@ -128,6 +133,7 @@ function WeddingPage() {
   const [isIntroOpen, setIsIntroOpen] = useState(false);
   const [showInvitation, setShowInvitation] = useState(false);
   const [musicStarted, setMusicStarted] = useState(false);
+  const [envelopeRevealed, setEnvelopeRevealed] = useState(false);
 
   const introTimeoutRef = useRef(null);
   const audioRef = useRef(null);
@@ -159,6 +165,7 @@ function WeddingPage() {
     setIsIntroOpen(false);
     setShowInvitation(false);
     setMusicStarted(false);
+    setEnvelopeRevealed(false);
 
     if (introTimeoutRef.current) {
       clearTimeout(introTimeoutRef.current);
@@ -251,31 +258,50 @@ function WeddingPage() {
     image1: invitation.image1,
     image2: invitation.image2,
     image3: invitation.image3,
-     script: invitation.script,
+    script: invitation.script,
   };
 
-if (templateKey === "angel" || templateKey === "classic") {
+  const audioNode = invitation.musicSrc ? (
+    <audio ref={audioRef} loop preload="auto">
+      <source src={invitation.musicSrc} type="audio/mpeg" />
+    </audio>
+  ) : null;
+
+  if (templateKey === "angel" || templateKey === "classic") {
+    return (
+      <div className="wedding-page">
+        {audioNode}
+        <IntroComponent {...introProps} />
+        <InvitationComponent {...invitationProps} />
+      </div>
+    );
+  }
+
+  if (templateKey === "envelope-split") {
+    return (
+      <div className="wedding-page">
+        {audioNode}
+
+        <div
+          className={`envelope-card-layer ${
+            envelopeRevealed ? "is-revealed" : ""
+          }`}
+        >
+          <InvitationComponent {...invitationProps} />
+        </div>
+
+        <IntroComponent
+          {...introProps}
+          onEnter={handleIntroEnter}
+          onReveal={() => setEnvelopeRevealed(true)}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="wedding-page">
-      {invitation.musicSrc && (
-        <audio ref={audioRef} loop preload="auto">
-          <source src={invitation.musicSrc} type="audio/mpeg" />
-        </audio>
-      )}
-
-      <IntroComponent {...introProps} />
-      <InvitationComponent {...invitationProps} />
-    </div>
-  );
-}
-
-  return (
-    <div className="wedding-page">
-      {invitation.musicSrc && (
-        <audio ref={audioRef} loop preload="auto">
-          <source src={invitation.musicSrc} type="audio/mpeg" />
-        </audio>
-      )}
+      {audioNode}
 
       {!showInvitation ? (
         <IntroComponent {...introProps} />

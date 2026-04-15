@@ -10,7 +10,117 @@ import {
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
-function PhotoScriptRSVP({ slug, eventType, script = "latin" }) {
+function PhotoScriptRSVP({
+  slug,
+  eventType,
+  script = "latin",
+  details = {},
+}) {
+  const theme = details.theme || {};
+
+  const themeStyles = {
+    "--photo-script-rsvp-section-bg":
+      theme.rsvpSectionBg ||
+      `linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.9) 20%,
+        rgba(0, 0, 0, 0.9) 16%,
+        rgba(0, 0, 0, 0.9) 38%,
+        rgba(0, 0, 0, 0.9) 100%
+      )`,
+    "--photo-script-rsvp-box-bg":
+      theme.rsvpBoxBg ||
+      `linear-gradient(
+        180deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.03)
+      )`,
+    "--photo-script-rsvp-box-border":
+      theme.rsvpBoxBorder || "rgba(255,255,255,0.1)",
+    "--photo-script-rsvp-box-inner-border":
+      theme.rsvpBoxInnerBorder || "rgba(255,255,255,0.06)",
+    "--photo-script-rsvp-kicker":
+      theme.rsvpKicker || "rgba(255,255,255,0.68)",
+    "--photo-script-rsvp-title":
+      theme.rsvpTitle || "#f2e8e6",
+    "--photo-script-rsvp-subtitle":
+      theme.rsvpSubtitle || "rgba(255,255,255,0.68)",
+    "--photo-script-rsvp-divider-accent":
+      theme.rsvpDividerAccent ||
+      theme.cardAccent ||
+      theme.introAccent ||
+      "rgba(203, 116, 116, 0.38)",
+    "--photo-script-rsvp-label":
+      theme.rsvpLabel || "rgba(255,255,255,0.56)",
+    "--photo-script-rsvp-input-bg":
+      theme.rsvpInputBg || "rgba(255,255,255,0.04)",
+    "--photo-script-rsvp-input-bg-focus":
+      theme.rsvpInputBgFocus || "rgba(255,255,255,0.07)",
+    "--photo-script-rsvp-input-border":
+      theme.rsvpInputBorder || "rgba(255,255,255,0.14)",
+    "--photo-script-rsvp-input-border-focus":
+      theme.rsvpInputBorderFocus ||
+      theme.cardAccent ||
+      theme.introAccent ||
+      "rgba(203, 116, 116, 0.36)",
+    "--photo-script-rsvp-input-text":
+      theme.rsvpInputText || "#ffffff",
+    "--photo-script-rsvp-input-placeholder":
+      theme.rsvpInputPlaceholder || "rgba(255,255,255,0.4)",
+    "--photo-script-choice-border":
+      theme.rsvpChoiceBorder || "rgba(255,255,255,0.1)",
+    "--photo-script-choice-bg":
+      theme.rsvpChoiceBg ||
+      `linear-gradient(
+        180deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.025)
+      )`,
+    "--photo-script-choice-hover-border":
+      theme.rsvpChoiceHoverBorder ||
+      theme.cardAccent ||
+      theme.introAccent ||
+      "rgba(203, 116, 116, 0.24)",
+    "--photo-script-choice-active-border":
+      theme.rsvpChoiceActiveBorder ||
+      theme.cardAccent ||
+      theme.introAccent ||
+      "rgba(203, 116, 116, 0.34)",
+    "--photo-script-choice-active-bg":
+      theme.rsvpChoiceActiveBg ||
+      `linear-gradient(
+        180deg,
+        rgba(255,255,255,0.09),
+        rgba(203,116,116,0.06)
+      )`,
+    "--photo-script-choice-title":
+      theme.rsvpChoiceTitle || "#f2e8e6",
+    "--photo-script-choice-text":
+      theme.rsvpChoiceText || "rgba(255,255,255,0.56)",
+    "--photo-script-rsvp-button-border":
+      theme.rsvpButtonBorder || "rgba(203,116,116,0.18)",
+    "--photo-script-rsvp-button-bg":
+      theme.rsvpButtonBg ||
+      `linear-gradient(
+        180deg,
+        rgba(203,116,116,0.9),
+        rgba(160,85,85,0.86)
+      )`,
+    "--photo-script-rsvp-button-text":
+      theme.rsvpButtonText || "#fffaf8",
+    "--photo-script-rsvp-success-title":
+      theme.rsvpSuccessTitle || "#f2e8e6",
+    "--photo-script-rsvp-success-text":
+      theme.rsvpSuccessText || "rgba(255, 255, 255, 0.72)",
+    "--photo-script-confetti-accent":
+      theme.rsvpConfettiAccent ||
+      theme.cardAccent ||
+      theme.introAccent ||
+      "#cb7474",
+      "--photo-script-rsvp-button-hover-shadow":
+  theme.rsvpButtonHoverShadow || "rgba(45, 49, 28, 0.28)",
+  };
+
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
@@ -159,6 +269,7 @@ function PhotoScriptRSVP({ slug, eventType, script = "latin" }) {
   return (
     <motion.section
       className="photo-script-rsvp-section"
+      style={themeStyles}
       initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}

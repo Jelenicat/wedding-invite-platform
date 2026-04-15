@@ -1888,6 +1888,26 @@
 ========================= */
 
 .photo-script-invitation {
+  --photo-script-card-accent: #cb7474;
+  --photo-script-card-text-main: rgba(255, 255, 255, 0.84);
+  --photo-script-card-text-soft: rgba(255, 255, 255, 0.72);
+  --photo-script-card-text-muted: rgba(255, 255, 255, 0.66);
+  --photo-script-card-border: rgba(255, 255, 255, 0.12);
+  --photo-script-card-inner-border: rgba(255, 255, 255, 0.08);
+  --photo-script-card-bg: rgba(18, 18, 18, 0.34);
+  --photo-script-card-kicker: rgba(255, 255, 255, 0.72);
+  --photo-script-card-divider: rgba(255, 255, 255, 0.7);
+  --photo-script-card-title: rgba(255, 255, 255, 0.72);
+  --photo-script-card-event-title: #ffffff;
+  --photo-script-card-palette-bg: rgba(255, 255, 255, 0.05);
+  --photo-script-card-palette-border: rgba(255, 255, 255, 0.12);
+  --photo-script-card-dot-ring: rgba(203, 116, 116, 0.12);
+  --photo-script-card-line-top: rgba(203, 116, 116, 0.42);
+  --photo-script-card-line-bottom: rgba(203, 116, 116, 0.08);
+  --photo-script-card-overlay-top: rgba(0, 0, 0, 0.12);
+  --photo-script-card-overlay-mid: rgba(0, 0, 0, 0.24);
+  --photo-script-card-overlay-bottom: rgba(0, 0, 0, 0.58);
+
   position: relative;
   width: 100%;
   min-height: 100dvh;
@@ -1912,13 +1932,12 @@
 .photo-script-invitation-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.12) 0%,
-      rgba(0, 0, 0, 0.24) 34%,
-      rgba(0, 0, 0, 0.58) 100%
-    );
+  background: linear-gradient(
+    to bottom,
+    var(--photo-script-card-overlay-top) 0%,
+    var(--photo-script-card-overlay-mid) 34%,
+    var(--photo-script-card-overlay-bottom) 100%
+  );
 }
 
 .photo-script-paper {
@@ -1928,8 +1947,8 @@
   max-width: 470px;
   padding: 34px 24px 30px;
   text-align: center;
-  background: rgba(18, 18, 18, 0.34);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--photo-script-card-bg);
+  border: 1px solid var(--photo-script-card-border);
   box-shadow:
     0 24px 50px rgba(0, 0, 0, 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -1941,7 +1960,7 @@
   content: "";
   position: absolute;
   inset: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--photo-script-card-inner-border);
   pointer-events: none;
 }
 
@@ -1950,7 +1969,7 @@
   font-size: 11px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--photo-script-card-kicker);
 }
 
 .photo-script-invitation-names {
@@ -1960,20 +1979,23 @@
   justify-content: center;
   margin: 0 0 14px;
   text-align: center;
-  font-family: "Italianno", cursive;
+  font-family: var(--photo-script-name-font);
   font-size: clamp(4.4rem, 12vw, 7rem);
   line-height: 0.88;
   letter-spacing: 1px;
   font-weight: 100;
-   color: rgba(255, 255, 255, 0.72);
- 
+  color: var(--photo-script-card-title);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 .photo-script-invitation-names.cyrillic {
-  font-family: "Great Vibes", cursive;
-  letter-spacing: 0.5px;
+  font-family: var(--photo-script-name-font-cyrillic);
+}
+
+.photo-script-invitation.has-custom-name-font .photo-script-invitation-names,
+.photo-script-invitation.has-custom-name-font .photo-script-invitation-names.cyrillic {
+  font-style: italic;
 }
 
 .photo-script-invitation-and {
@@ -1981,6 +2003,7 @@
   margin: 2px 0 6px;
   opacity: 0.85;
   line-height: 0.8;
+  color: var(--photo-script-card-text-main);
 }
 
 .photo-script-date {
@@ -1988,7 +2011,7 @@
   font-size: 25px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-   color: #cb7474;
+  color: var(--photo-script-card-accent);
 }
 
 .photo-script-divider {
@@ -1998,7 +2021,7 @@
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.7),
+    var(--photo-script-card-divider),
     rgba(255, 255, 255, 0)
   );
 }
@@ -2008,10 +2031,62 @@
   margin: 0 auto 22px;
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.84);
+  color: var(--photo-script-card-text-main);
   font-style: italic;
 }
+/* =========================
+   LOCATION BUTTON
+========================= */
 
+.photo-script-location-button-wrap {
+  max-width: 320px;
+  margin: -4px auto 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-script-location-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  padding: 12px 22px;
+  border: 1px solid var(--photo-script-location-button-border);
+  background: var(--photo-script-location-button-bg);
+  color: var(--photo-script-location-button-text);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.photo-script-location-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.24);
+  opacity: 0.95;
+}
+
+@media (max-width: 480px) {
+  .photo-script-location-button-wrap {
+    max-width: 280px;
+    margin: -2px auto 20px;
+  }
+
+  .photo-script-location-button {
+    width: 100%;
+    padding: 11px 18px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+}
 /* =========================
    EDITORIAL BLOCK
 ========================= */
@@ -2024,16 +2099,21 @@
 
 .photo-script-editorial-script {
   margin: 0 0 18px;
-  font-family: "Italianno", "Allura", cursive;
+  font-family: var(--photo-script-script-font);
   font-size: 2.7rem;
   line-height: 0.9;
   font-weight: 400;
-  color: #cb7474;
+  color: var(--photo-script-card-accent);
 }
 
 .photo-script-editorial-script.cyrillic {
-  font-family: "Great Vibes", cursive;
+  font-family: var(--photo-script-script-font-cyrillic);
   letter-spacing: 0.4px;
+}
+
+.photo-script-invitation.has-custom-name-font .photo-script-editorial-script {
+  font-family: var(--photo-script-name-font);
+  font-style: italic;
 }
 
 .photo-script-editorial-timeline {
@@ -2055,7 +2135,7 @@
   padding-top: 1px;
   font-size: 0.88rem;
   line-height: 1.2;
-  color: rgba(255, 255, 255, 0.76);
+  color: var(--photo-script-card-text-soft);
   font-weight: 500;
 }
 
@@ -2074,8 +2154,8 @@
   height: 7px;
   margin-top: 4px;
   border-radius: 50%;
-  background: #cb7474;
-  box-shadow: 0 0 0 4px rgba(203, 116, 116, 0.12);
+  background: var(--photo-script-card-accent);
+  box-shadow: 0 0 0 4px var(--photo-script-card-dot-ring);
 }
 
 .photo-script-editorial-line {
@@ -2084,8 +2164,8 @@
   margin-top: 6px;
   background: linear-gradient(
     180deg,
-    rgba(203, 116, 116, 0.42),
-    rgba(203, 116, 116, 0.08)
+    var(--photo-script-card-line-top),
+    var(--photo-script-card-line-bottom)
   );
 }
 
@@ -2095,16 +2175,23 @@
 
 .photo-script-editorial-title {
   margin: 0 0 5px;
-  font-family: "Italianno", "Allura", cursive;
+  font-family: var(--photo-script-script-font);
   font-size: 2rem;
   line-height: 0.92;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--photo-script-card-event-title);
 }
 
 .photo-script-editorial-title.cyrillic {
-  font-family: "Great Vibes", cursive;
+  font-family: var(--photo-script-script-font-cyrillic);
   letter-spacing: 0.35px;
+}
+
+.photo-script-invitation.has-custom-script-font .photo-script-editorial-title,
+.photo-script-invitation.has-custom-script-font .photo-script-editorial-title.cyrillic {
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.05;
 }
 
 .photo-script-editorial-location {
@@ -2112,12 +2199,12 @@
   margin: 0;
   font-size: 0.82rem;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.66);
+  color: var(--photo-script-card-text-muted);
   text-decoration: none;
 }
 
 .photo-script-editorial-location.is-link {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--photo-script-card-text-soft);
   transition: opacity 0.2s ease;
 }
 
@@ -2157,7 +2244,7 @@
   margin: 0 auto 14px;
   font-size: 13px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--photo-script-card-text-soft);
 }
 
 .photo-script-editorial-palette-label {
@@ -2172,9 +2259,9 @@
   max-width: 260px;
   margin: 0 auto;
   padding: 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--photo-script-card-palette-border);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--photo-script-card-palette-bg);
 }
 
 .photo-script-palette {
@@ -2209,7 +2296,7 @@
   margin: 20px auto 0;
   font-size: 13px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--photo-script-card-text-soft);
   font-style: italic;
 }
 
@@ -2256,6 +2343,11 @@
 
   .photo-script-editorial-title {
     font-size: 1.7rem;
+  }
+
+  .photo-script-invitation.has-custom-script-font .photo-script-editorial-title,
+  .photo-script-invitation.has-custom-script-font .photo-script-editorial-title.cyrillic {
+    font-size: 1.4rem;
   }
 
   .photo-script-editorial-location,

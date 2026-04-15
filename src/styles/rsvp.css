@@ -1789,18 +1789,63 @@ width: 100%;
 ========================= */
 
 .photo-script-rsvp-section {
+  --photo-script-rsvp-section-bg: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.9) 20%,
+    rgba(0, 0, 0, 0.9) 16%,
+    rgba(0, 0, 0, 0.9) 38%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  --photo-script-rsvp-box-bg: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.03)
+  );
+  --photo-script-rsvp-box-border: rgba(255,255,255,0.1);
+  --photo-script-rsvp-box-inner-border: rgba(255,255,255,0.06);
+  --photo-script-rsvp-kicker: rgba(255,255,255,0.68);
+  --photo-script-rsvp-title: #f2e8e6;
+  --photo-script-rsvp-subtitle: rgba(255,255,255,0.68);
+  --photo-script-rsvp-divider-accent: rgba(203, 116, 116, 0.38);
+  --photo-script-rsvp-label: rgba(255,255,255,0.56);
+  --photo-script-rsvp-input-bg: rgba(255,255,255,0.04);
+  --photo-script-rsvp-input-bg-focus: rgba(255,255,255,0.07);
+  --photo-script-rsvp-input-border: rgba(255,255,255,0.14);
+  --photo-script-rsvp-input-border-focus: rgba(203, 116, 116, 0.36);
+  --photo-script-rsvp-input-text: #ffffff;
+  --photo-script-rsvp-input-placeholder: rgba(255,255,255,0.4);
+  --photo-script-choice-border: rgba(255,255,255,0.1);
+  --photo-script-choice-bg: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.025)
+  );
+  --photo-script-choice-hover-border: rgba(203, 116, 116, 0.24);
+  --photo-script-choice-active-border: rgba(203, 116, 116, 0.34);
+  --photo-script-choice-active-bg: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.09),
+    rgba(203,116,116,0.06)
+  );
+  --photo-script-choice-title: #f2e8e6;
+  --photo-script-choice-text: rgba(255,255,255,0.56);
+  --photo-script-rsvp-button-border: rgba(203,116,116,0.18);
+  --photo-script-rsvp-button-bg: linear-gradient(
+    180deg,
+    rgba(203,116,116,0.9),
+    rgba(160,85,85,0.86)
+  );
+  --photo-script-rsvp-button-text: #fffaf8;
+  --photo-script-rsvp-success-title: #f2e8e6;
+  --photo-script-rsvp-success-text: rgba(255, 255, 255, 0.72);
+  --photo-script-confetti-accent: #cb7474;
+
   width: 100%;
- 
   padding: 18px 16px 62px;
- background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.9) 20%,
-          rgba(0, 0, 0, 0.9)16%,
-         rgba(0, 0, 0, 0.9) 38%,
-         rgba(0, 0, 0, 0.9)100%
-    );
+  background: var(--photo-script-rsvp-section-bg);
   margin-top: -40px;
   margin-bottom: -0px;
+  position: relative;
 }
 
 .photo-script-rsvp-section::before {
@@ -1810,13 +1855,7 @@ width: 100%;
   left: 0;
   right: 0;
   height: 160px;
- background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.9) 20%,
-          rgba(0, 0, 0, 0.9)16%,
-         rgba(0, 0, 0, 0.9) 38%,
-         rgba(0, 0, 0, 0.9)100%
-    );
+  background: var(--photo-script-rsvp-section-bg);
   pointer-events: none;
 }
 
@@ -1832,13 +1871,8 @@ width: 100%;
   margin: 0 auto;
   padding: 42px 30px 34px;
   text-align: center;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.08),
-      rgba(255,255,255,0.03)
-    );
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--photo-script-rsvp-box-bg);
+  border: 1px solid var(--photo-script-rsvp-box-border);
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(255,255,255,0.08);
@@ -1851,7 +1885,7 @@ width: 100%;
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid var(--photo-script-rsvp-box-inner-border);
   pointer-events: none;
 }
 
@@ -1860,7 +1894,7 @@ width: 100%;
   font-size: 10px;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.68);
+  color: var(--photo-script-rsvp-kicker);
 }
 
 .photo-script-rsvp-title {
@@ -1869,7 +1903,7 @@ width: 100%;
   font-size: clamp(2.2rem, 5vw, 3rem);
   line-height: 1.02;
   font-weight: 500;
-  color: #f2e8e6;
+  color: var(--photo-script-rsvp-title);
 }
 
 .photo-script-rsvp-subtitle {
@@ -1877,7 +1911,7 @@ width: 100%;
   margin: 14px auto 0;
   font-size: 14px;
   line-height: 1.9;
-  color: rgba(255,255,255,0.68);
+  color: var(--photo-script-rsvp-subtitle);
   font-style: italic;
 }
 
@@ -1887,9 +1921,9 @@ width: 100%;
   margin: 24px auto 28px;
   background: linear-gradient(
     90deg,
-    rgba(203, 116, 116, 0),
-    rgba(203, 116, 116, 0.38),
-    rgba(203, 116, 116, 0)
+    rgba(255,255,255,0),
+    var(--photo-script-rsvp-divider-accent),
+    rgba(255,255,255,0)
   );
 }
 
@@ -1910,7 +1944,7 @@ width: 100%;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.56);
+  color: var(--photo-script-rsvp-label);
 }
 
 .photo-script-rsvp-field input[type="text"],
@@ -1919,9 +1953,9 @@ width: 100%;
   height: 56px;
   padding: 0 18px;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.04);
-  color: #ffffff;
+  border-bottom: 1px solid var(--photo-script-rsvp-input-border);
+  background: var(--photo-script-rsvp-input-bg);
+  color: var(--photo-script-rsvp-input-text);
   font-size: 15px;
   outline: none;
   transition: all 0.28s ease;
@@ -1929,13 +1963,13 @@ width: 100%;
 
 .photo-script-rsvp-field input[type="text"]::placeholder,
 .photo-script-rsvp-field input[type="number"]::placeholder {
-  color: rgba(255,255,255,0.4);
+  color: var(--photo-script-rsvp-input-placeholder);
 }
 
 .photo-script-rsvp-field input[type="text"]:focus,
 .photo-script-rsvp-field input[type="number"]:focus {
-  background: rgba(255,255,255,0.07);
-  border-bottom-color: rgba(203, 116, 116, 0.36);
+  background: var(--photo-script-rsvp-input-bg-focus);
+  border-bottom-color: var(--photo-script-rsvp-input-border-focus);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
 }
 
@@ -1951,13 +1985,8 @@ width: 100%;
 
 .photo-script-choice-card {
   appearance: none;
-  border: 1px solid rgba(255,255,255,0.1);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.05),
-      rgba(255,255,255,0.025)
-    );
+  border: 1px solid var(--photo-script-choice-border);
+  background: var(--photo-script-choice-bg);
   padding: 18px 16px;
   text-align: center;
   cursor: pointer;
@@ -1973,20 +2002,15 @@ width: 100%;
 
 .photo-script-choice-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(203, 116, 116, 0.24);
+  border-color: var(--photo-script-choice-hover-border);
   box-shadow:
     0 16px 32px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .photo-script-choice-card.is-active {
-  border-color: rgba(203, 116, 116, 0.34);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.09),
-      rgba(203,116,116,0.06)
-    );
+  border-color: var(--photo-script-choice-active-border);
+  background: var(--photo-script-choice-active-bg);
   box-shadow:
     0 16px 34px rgba(0, 0, 0, 0.22),
     inset 0 1px 0 rgba(255,255,255,0.08);
@@ -1997,14 +2021,14 @@ width: 100%;
   margin-bottom: 6px;
   font-family: "Cormorant Garamond", serif;
   font-size: 1.45rem;
-  color: #f2e8e6;
+  color: var(--photo-script-choice-title);
 }
 
 .photo-script-choice-text {
   display: block;
   font-size: 12px;
   line-height: 1.6;
-  color: rgba(255,255,255,0.56);
+  color: var(--photo-script-choice-text);
 }
 
 .photo-script-rsvp-button {
@@ -2013,14 +2037,9 @@ width: 100%;
   min-height: 54px;
   margin-top: 4px;
   padding: 14px 24px;
-  border: 1px solid rgba(203,116,116,0.18);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(203,116,116,0.9),
-      rgba(160,85,85,0.86)
-    );
-  color: #fffaf8;
+  border: 1px solid var(--photo-script-rsvp-button-border);
+  background: var(--photo-script-rsvp-button-bg);
+  color: var(--photo-script-rsvp-button-text);
   font-size: 11px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -2034,17 +2053,14 @@ width: 100%;
 .photo-script-rsvp-button:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 18px 36px rgba(80, 26, 26, 0.28),
+    0 18px 36px var(--photo-script-rsvp-button-hover-shadow),
     inset 0 1px 0 rgba(255,255,255,0.16);
   filter: saturate(1.04);
 }
-/* =========================
-   PHOTO SCRIPT SUCCESS UPGRADE
-========================= */
 
-.photo-script-rsvp-box {
-  overflow: hidden;
-}
+/* =========================
+   PHOTO SCRIPT SUCCESS
+========================= */
 
 .photo-script-rsvp-success {
   position: relative;
@@ -2059,7 +2075,7 @@ width: 100%;
   font-size: 44px;
   margin-bottom: 12px;
   display: inline-block;
-  filter: drop-shadow(0 10px 20px rgba(203, 116, 116, 0.2));
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
 }
 
 .photo-script-rsvp-success h3 {
@@ -2067,7 +2083,7 @@ width: 100%;
   font-family: "Cormorant Garamond", serif;
   font-size: 2rem;
   font-weight: 500;
-  color: #f2e8e6;
+  color: var(--photo-script-rsvp-success-title);
 }
 
 .photo-script-rsvp-success p {
@@ -2075,7 +2091,7 @@ width: 100%;
   font-size: 14px;
   line-height: 1.7;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--photo-script-rsvp-success-text);
 }
 
 .photo-script-confetti-wrap {
@@ -2096,7 +2112,7 @@ width: 100%;
 }
 
 .photo-script-confetti:nth-child(3n) {
-  background: #cb7474;
+  background: var(--photo-script-confetti-accent);
 }
 
 .photo-script-confetti:nth-child(3n + 1) {
@@ -2106,21 +2122,28 @@ width: 100%;
 .photo-script-confetti:nth-child(3n + 2) {
   background: rgba(255, 255, 255, 0.45);
 }
+
 /* =========================
    PHOTO SCRIPT COUNTDOWN
 ========================= */
 
 .photo-script-countdown-section {
-width: 100%;
- 
+  --photo-script-countdown-section-bg: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.9) 20%,
+    rgba(0, 0, 0, 0.9) 16%,
+    rgba(0, 0, 0, 0.9) 38%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  --photo-script-countdown-kicker: rgba(255,255,255,0.56);
+  --photo-script-countdown-divider-top: rgba(203,116,116,0.3);
+  --photo-script-countdown-number: #f2e8e6;
+  --photo-script-countdown-label: rgba(255,255,255,0.5);
+  --photo-script-countdown-note: rgba(255,255,255,0.54);
+
+  width: 100%;
   padding: 18px 16px 62px;
- background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.9) 20%,
-          rgba(0, 0, 0, 0.9)16%,
-         rgba(0, 0, 0, 0.9) 38%,
-         rgba(0, 0, 0, 0.9)100%
-    );
+  background: var(--photo-script-countdown-section-bg);
   margin-top: -20px;
   margin-bottom: -80px;
 }
@@ -2137,7 +2160,7 @@ width: 100%;
   font-size: 10px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.56);
+  color: var(--photo-script-countdown-kicker);
 }
 
 .photo-script-countdown-divider {
@@ -2146,9 +2169,9 @@ width: 100%;
   margin: 16px auto 24px;
   background: linear-gradient(
     90deg,
-    rgba(203,116,116,0),
-    rgba(203,116,116,0.3),
-    rgba(203,116,116,0)
+    rgba(255,255,255,0),
+    var(--photo-script-countdown-divider-top),
+    rgba(255,255,255,0)
   );
 }
 
@@ -2170,7 +2193,7 @@ width: 100%;
   font-family: "Cormorant Garamond", serif;
   font-size: 2.9rem;
   line-height: 1;
-  color: #f2e8e6;
+  color: var(--photo-script-countdown-number);
 }
 
 .photo-script-countdown-item small {
@@ -2179,7 +2202,7 @@ width: 100%;
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: var(--photo-script-countdown-label);
 }
 
 .photo-script-countdown-note {
@@ -2187,7 +2210,7 @@ width: 100%;
   margin: 26px auto 0;
   font-size: 13px;
   line-height: 1.8;
-  color: rgba(255,255,255,0.54);
+  color: var(--photo-script-countdown-note);
   font-style: italic;
 }
 

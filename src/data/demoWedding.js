@@ -2,8 +2,8 @@ import { script } from "framer-motion/client";
 
 const createDetails = ({
   backgroundImage,
-   theme,
-    imageShape,
+  theme,
+  imageShape,
   welcomeText,
   date,
   dateISO,
@@ -24,12 +24,15 @@ const createDetails = ({
   editorialImage1,
   editorialImage2,
   editorialImage3,
+  showLocationButton = false,
+  locationButtonText = "",
+  locationButtonLink = "",
   events = [],
   rsvpOptions = {},
 }) => ({
   backgroundImage,
-   theme,
-    imageShape,
+  theme,
+  imageShape,
   welcomeText,
   date,
   dateISO,
@@ -50,10 +53,12 @@ const createDetails = ({
   editorialImage1,
   editorialImage2,
   editorialImage3,
+  showLocationButton,
+  locationButtonText,
+  locationButtonLink,
   events,
   rsvpOptions,
 });
-
 const demoWedding = [
   {
     slug: "ana-marko",
@@ -1779,6 +1784,46 @@ backgroundColor: "#f3ece6",
     note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra.",
   }),
 },
+{
+  slug: "anika-stefan",
+  type: "wedding",
+  template: "envelope-split",
+  brideName: "Anika",
+  groomName: "Stefan",
+  weddingDate: "24 AVG 2026",
+  weddingTime: "16:00",
+  venue: "Hotel Moskva, Beograd",
+  backgroundImage: "/images/milica-ognjen-minimal.jpg",
+  musicSrc: "/music/milica-aleksandar.mp3",
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "24 AVG 2026",
+    dateISO: "2026-08-24T16:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Hotel Moskva, Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "16:00",
+        icon: "civil",
+        location: "Hotel Moskva, Beograd",
+      },
+      {
+        label: "Večera",
+        time: "18:00",
+        icon: "restaurant",
+        location: "Hotel Moskva, Beograd",
+      },
+    ],
+    showDressCode: false,
+    note: "Molimo vas da svoj dolazak potvrdite do 1. avgusta.",
+  }),
+},
 // =========================
 // Klijenti
 // =========================
@@ -2092,7 +2137,86 @@ dressCodeNote:
     note: "Molimo vas da svoj dolazak potvrdite do 23. avgusta.",
   }),
 },
+{
+  slug: "milica-aleksandar",
+  type: "wedding",
+  template: "photo-script",
 
+  brideName: "Milica",
+  groomName: "Aleksandar",
+  videoSrc: "/videos/milica-aleksandar1.mp4",
+  musicSrc: "/music/milica-aleksandar.mp3",
+  weddingDate: "30 MAJ 2026",
+  weddingTime: "16:30",
+  
+
+  details: createDetails({
+  welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+
+  date: "30 MAJ 2026",
+  dateISO: "2026-05-30T16:30:00+02:00",
+
+  editorialImage1: "/images/milica-aleksandar.jpg",
+
+  showLocationButton: true,
+  locationButtonText: "Pogledaj lokaciju",
+  locationButtonLink: "https://www.google.com/maps/place/Hotel+Euforija,+Obilazni+put+BB,+Majur/data=!4m2!3m1!1s0x475bcbb440cbc269:0x844f650670df7b7d?sa=X&ved=1t:242&ictx=111",
+
+  events: [
+    {
+      label: "Skup svatova",
+      time: "10:00",
+      icon: "gathering",
+      location: "Porodična kuća",
+      
+    },
+    {
+      label: "Crkveno venčanje",
+      time: "15:30",
+      icon: "gathering",
+      location: "Hram Svete Trojice, Letnjikovac",
+      mapLink: "https://www.google.com/maps/place/Church+of+the+Holy+Trinity/data=!4m2!3m1!1s0x0:0xb63c516e0e4822d9?sa=X&ved=1t:2428&ictx=111",
+    },
+    {
+      label: "Okupljanje gostiju",
+      time: "16:30",
+      icon: "civil",
+      location: "Hotel Euforija, Obilazni put BB, Majur",
+      mapLink: "https://www.google.com/maps/place/Hotel+Euforija,+Obilazni+put+BB,+Majur/data=!4m2!3m1!1s0x475bcbb440cbc269:0x844f650670df7b7d?sa=X&ved=1t:242&ictx=111",
+    },
+  ],
+
+  showDressCode: false,
+  dressCodeTitle: "Dress code",
+  dressCodeNote: "Svečano i elegantno, u stilu koji vam najviše prija.",
+  dressCodePalette: [],
+  note: "Molimo vas da svoj dolazak potvrdite do 10. maja.",
+
+  theme: {
+    introMainText: "#7a7f46",
+    introAccent: "#5f633a",
+
+    cardAccent: "#5f633a",
+    cardTextMain: "rgba(255,255,255,0.84)",
+    cardTextSoft: "rgba(255,255,255,0.72)",
+    cardTextMuted: "rgba(255,255,255,0.66)",
+
+    rsvpDividerAccent: "#5f633a",
+    rsvpChoiceActiveBorder: "#5f633a",
+    rsvpInputBorderFocus: "#5f633a",
+    rsvpConfettiAccent: "#5f633a",
+
+    rsvpButtonBorder: "rgba(95,99,58,0.34)",
+    rsvpButtonBg: "linear-gradient(180deg, #6f7442, #5f633a)",
+    rsvpButtonText: "#fffdf7",
+  locationButtonBg: "rgba(95,99,58,0.18)",
+  locationButtonBorder: "rgba(95,99,58,0.34)",
+  locationButtonTextColor: "#f5f1e8",
+    countdownDividerTop: "#5f633a",
+    nameFont: '"Tangerine", cursive',
+    scriptFont: '"Cormorant Garamond", serif',
+  },
+}),},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

@@ -2,7 +2,38 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/rsvp.css";
 
-function PhotoScriptCountdown({ targetDate, script = "latin" }) {
+function PhotoScriptCountdown({
+  targetDate,
+  script = "latin",
+  details = {},
+}) {
+  const theme = details.theme || {};
+
+  const themeStyles = {
+    "--photo-script-countdown-section-bg":
+      theme.countdownSectionBg ||
+      `linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.9) 20%,
+        rgba(0, 0, 0, 0.9) 16%,
+        rgba(0, 0, 0, 0.9) 38%,
+        rgba(0, 0, 0, 0.9) 100%
+      )`,
+    "--photo-script-countdown-kicker":
+      theme.countdownKicker || "rgba(255,255,255,0.56)",
+    "--photo-script-countdown-divider-top":
+      theme.countdownDividerTop ||
+      theme.cardAccent ||
+      theme.introAccent ||
+      "rgba(203,116,116,0.3)",
+    "--photo-script-countdown-number":
+      theme.countdownNumber || "#f2e8e6",
+    "--photo-script-countdown-label":
+      theme.countdownLabel || "rgba(255,255,255,0.5)",
+    "--photo-script-countdown-note":
+      theme.countdownNote || "rgba(255,255,255,0.54)",
+  };
+
   const t =
     script === "cyrillic"
       ? {
@@ -52,7 +83,10 @@ function PhotoScriptCountdown({ targetDate, script = "latin" }) {
 
   if (!timeLeft) {
     return (
-      <section className="photo-script-countdown-section">
+      <section
+        className="photo-script-countdown-section"
+        style={themeStyles}
+      >
         <div className="photo-script-countdown-inner">
           <p className="photo-script-countdown-kicker">{t.arrived}</p>
         </div>
@@ -70,6 +104,7 @@ function PhotoScriptCountdown({ targetDate, script = "latin" }) {
   return (
     <motion.section
       className="photo-script-countdown-section"
+      style={themeStyles}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}

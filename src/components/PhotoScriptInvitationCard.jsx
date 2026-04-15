@@ -17,6 +17,63 @@ function PhotoScriptInvitationCard({
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
+  const theme = details.theme || {};
+
+  const themeStyles = {
+    "--photo-script-card-accent":
+      theme.cardAccent || theme.introAccent || "#cb7474",
+    "--photo-script-card-text-main":
+      theme.cardTextMain || "rgba(255, 255, 255, 0.84)",
+    "--photo-script-card-text-soft":
+      theme.cardTextSoft || "rgba(255, 255, 255, 0.72)",
+    "--photo-script-card-text-muted":
+      theme.cardTextMuted || "rgba(255, 255, 255, 0.66)",
+    "--photo-script-card-border":
+      theme.cardBorder || "rgba(255, 255, 255, 0.12)",
+    "--photo-script-card-inner-border":
+      theme.cardInnerBorder || "rgba(255, 255, 255, 0.08)",
+    "--photo-script-card-bg":
+      theme.cardBg || "rgba(18, 18, 18, 0.34)",
+    "--photo-script-card-kicker":
+      theme.cardKicker || "rgba(255, 255, 255, 0.72)",
+    "--photo-script-card-divider":
+      theme.cardDivider || "rgba(255, 255, 255, 0.7)",
+    "--photo-script-card-title":
+      theme.cardTitle || "rgba(255, 255, 255, 0.72)",
+    "--photo-script-card-event-title":
+      theme.cardEventTitle || "#ffffff",
+    "--photo-script-card-palette-bg":
+      theme.cardPaletteBg || "rgba(255, 255, 255, 0.05)",
+    "--photo-script-card-palette-border":
+      theme.cardPaletteBorder || "rgba(255, 255, 255, 0.12)",
+    "--photo-script-card-dot-ring":
+      theme.cardDotRing || "rgba(203, 116, 116, 0.12)",
+    "--photo-script-card-line-top":
+      theme.cardLineTop || "rgba(203, 116, 116, 0.42)",
+    "--photo-script-card-line-bottom":
+      theme.cardLineBottom || "rgba(203, 116, 116, 0.08)",
+    "--photo-script-card-overlay-top":
+      theme.cardOverlayTop || "rgba(0, 0, 0, 0.12)",
+    "--photo-script-card-overlay-mid":
+      theme.cardOverlayMid || "rgba(0, 0, 0, 0.24)",
+    "--photo-script-card-overlay-bottom":
+      theme.cardOverlayBottom || "rgba(0, 0, 0, 0.58)",
+    "--photo-script-name-font":
+      theme.nameFont || '"Italianno", cursive',
+    "--photo-script-name-font-cyrillic":
+      theme.nameFontCyrillic || '"Great Vibes", cursive',
+    "--photo-script-script-font":
+      theme.scriptFont || '"Italianno", "Allura", cursive',
+    "--photo-script-script-font-cyrillic":
+      theme.scriptFontCyrillic || '"Great Vibes", cursive',
+      "--photo-script-location-button-bg":
+  theme.locationButtonBg || "rgba(255, 255, 255, 0.06)",
+"--photo-script-location-button-border":
+  theme.locationButtonBorder || "rgba(255, 255, 255, 0.16)",
+"--photo-script-location-button-text":
+  theme.locationButtonTextColor || "rgba(255, 255, 255, 0.84)",
+  };
+
   const t =
     script === "cyrillic"
       ? {
@@ -43,10 +100,20 @@ function PhotoScriptInvitationCard({
       details.dressCodePalette?.length > 0
     );
 
+  const hasCustomScriptFont = Boolean(theme.scriptFont);
+  const hasCustomNameFont = Boolean(theme.nameFont);
+
   return (
     <>
       <motion.section
-        className="photo-script-invitation"
+        className={[
+          "photo-script-invitation",
+          hasCustomScriptFont ? "has-custom-script-font" : "",
+          hasCustomNameFont ? "has-custom-name-font" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        style={themeStyles}
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -146,7 +213,18 @@ function PhotoScriptInvitationCard({
               </div>
             </div>
           )}
-
+        {details.showLocationButton && details.locationButtonLink && (
+  <div className="photo-script-location-button-wrap">
+    <a
+      href={details.locationButtonLink}
+      target="_blank"
+      rel="noreferrer"
+      className="photo-script-location-button"
+    >
+      {details.locationButtonText || "Pogledaj lokaciju"}
+    </a>
+  </div>
+)}
           {details.editorialImage1 && (
             <div className="photo-script-editorial-image-block">
               <img
@@ -156,6 +234,7 @@ function PhotoScriptInvitationCard({
               />
             </div>
           )}
+  
 
           {shouldShowDressCode && (
             <div className="photo-script-editorial-block photo-script-editorial-dresscode">
@@ -199,16 +278,19 @@ function PhotoScriptInvitationCard({
           {details.note && <p className="photo-script-note">{details.note}</p>}
         </div>
       </motion.section>
-<PhotoScriptRSVP
-  slug={slug}
-  eventType={type}
-  script={script}
-/>
+
+      <PhotoScriptRSVP
+        slug={slug}
+        eventType={type}
+        script={script}
+        details={details}
+      />
 
       {details.dateISO && (
         <PhotoScriptCountdown
           targetDate={details.dateISO}
           script={script}
+          details={details}
         />
       )}
     </>
