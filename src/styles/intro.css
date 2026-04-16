@@ -3397,75 +3397,53 @@ color: #8e7f73;
   overflow: hidden;
   cursor: pointer;
   background: transparent;
-
-  /* smooth fade */
   will-change: opacity, filter;
+  perspective: 1600px;
+  transform-style: preserve-3d;
 }
 
 /* ===============================
    ENVELOPE IMAGES
 ================================= */
 
-.envelope-split-top,
-.envelope-split-bottom {
+.envelope-split-bottom,
+.envelope-top-wrap {
   position: absolute;
   left: 0;
   width: 100vw;
-  height: auto;
-
   display: block;
   user-select: none;
   pointer-events: none;
-
-  will-change: transform;
-}
-
-/* gornji deo */
-.envelope-split-top {
-  top: 0;
-  z-index: 2;
+  will-change: transform, opacity, filter;
 }
 
 /* donji deo */
 .envelope-split-bottom {
   bottom: 0;
   z-index: 2;
+  height: auto;
+  display: block;
 }
 
-/* ===============================
-   SHADOW (realizam)
-================================= */
+/* wrapper za gornji deo */
+.envelope-top-wrap {
+  top: 0;
+  z-index: 3;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+}
 
-.envelope-split-top::after,
-.envelope-split-bottom::before {
-  content: "";
-  position: absolute;
-  left: 0;
+/* sama slika gore */
+.envelope-split-top {
+  display: block;
   width: 100%;
-  height: 80px;
+  height: auto;
+  user-select: none;
   pointer-events: none;
 }
 
-.envelope-split-top::after {
-  bottom: -40px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.15),
-    transparent
-  );
-}
-
-.envelope-split-bottom::before {
-  top: -40px;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.15),
-    transparent
-  );
-}
-
 /* ===============================
-   HOVER (subtle feedback)
+   HOVER
 ================================= */
 
 .envelope-split-overlay:hover {
@@ -3481,16 +3459,13 @@ color: #8e7f73;
   transform: scale(1.08) translateY(20px);
   filter: blur(10px);
   opacity: 0.85;
-
   will-change: transform, filter, opacity;
-
-  transition: 
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.9s ease,
-    opacity 0.6s ease;
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s ease,
+    opacity 0.7s ease;
 }
 
-/* kada se otvara */
 .envelope-card-layer.is-revealed {
   transform: scale(1) translateY(0);
   filter: blur(0px);
@@ -3502,9 +3477,13 @@ color: #8e7f73;
 ================================= */
 
 @media (max-width: 768px) {
-  .envelope-split-top,
-  .envelope-split-bottom {
+  .envelope-split-bottom,
+  .envelope-top-wrap {
     width: 100%;
+  }
+
+  .envelope-top-wrap {
+    transform-origin: top center;
   }
 
   .envelope-card-layer {

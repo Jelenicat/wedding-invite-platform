@@ -2,9 +2,12 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import "../styles/intro.css";
 
-function EnvelopeSplitIntro({ onEnter, onReveal }) {
+function EnvelopeSplitIntro({ onEnter, onReveal, slug }) {
   const [opened, setOpened] = useState(false);
   const [hidden, setHidden] = useState(false);
+
+  const topImage = `/images/envelope/${slug}-top.svg`;
+  const bottomImage = `/images/envelope/${slug}-bottom.svg`;
 
   const handleOpen = () => {
     if (opened) return;
@@ -15,7 +18,7 @@ function EnvelopeSplitIntro({ onEnter, onReveal }) {
     setTimeout(() => {
       setHidden(true);
       onEnter?.();
-    }, 2000);
+    }, 5200);
   };
 
   if (hidden) return null;
@@ -36,31 +39,58 @@ function EnvelopeSplitIntro({ onEnter, onReveal }) {
             }
       }
       transition={{
-        duration: 3,
+        duration: 3.8,
         ease: [0.22, 1, 0.36, 1],
+        delay: opened ? 1.6 : 0,
       }}
     >
       <motion.img
-        src="/images/envelope/envelope-bottom.svg"
+        src={bottomImage}
         alt=""
         className="envelope-split-bottom"
-        animate={opened ? { y: "55vh" } : { y: 0 }}
+        animate={
+          opened
+            ? {
+                y: "62vh",
+                scale: 1.02,
+              }
+            : {
+                y: 0,
+                scale: 1,
+              }
+        }
         transition={{
-          duration: 2.5,
+          duration: 4.8,
           ease: [0.16, 1, 0.3, 1],
         }}
       />
 
-      <motion.img
-        src="/images/envelope/envelope-top.svg"
-        alt=""
-        className="envelope-split-top"
-        animate={opened ? { y: "-55vh" } : { y: 0 }}
+      <motion.div
+        className="envelope-top-wrap"
+        animate={
+          opened
+            ? {
+                rotateX: -28,
+                y: "-56vh",
+                scale: 1.01,
+              }
+            : {
+                rotateX: 0,
+                y: 0,
+                scale: 1,
+              }
+        }
         transition={{
-          duration: 2.5,
+          duration: 4.8,
           ease: [0.16, 1, 0.3, 1],
         }}
-      />
+      >
+        <motion.img
+          src={topImage}
+          alt=""
+          className="envelope-split-top"
+        />
+      </motion.div>
     </motion.section>
   );
 }

@@ -4,6 +4,8 @@ const createDetails = ({
   backgroundImage,
   theme,
   imageShape,
+  envelopeTopImage,
+  envelopeBottomImage,
   welcomeText,
   date,
   dateISO,
@@ -33,6 +35,8 @@ const createDetails = ({
   backgroundImage,
   theme,
   imageShape,
+  envelopeTopImage,
+  envelopeBottomImage,
   welcomeText,
   date,
   dateISO,
@@ -1796,6 +1800,89 @@ backgroundColor: "#f3ece6",
   backgroundImage: "/images/milica-ognjen-minimal.jpg",
   musicSrc: "/music/milica-aleksandar.mp3",
   details: createDetails({
+  
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "24 AVG 2026",
+    dateISO: "2026-08-24T16:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Hotel Moskva, Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "16:00",
+        icon: "civil",
+        location: "Hotel Moskva, Beograd",
+      },
+      {
+        label: "Večera",
+        time: "18:00",
+        icon: "restaurant",
+        location: "Hotel Moskva, Beograd",
+      },
+    ],
+    showDressCode: false,
+    note: "Molimo vas da svoj dolazak potvrdite do 1. avgusta.",
+  }),
+},
+{
+  slug: "anika-ivan",
+  type: "wedding",
+  template: "envelope-split",
+  brideName: "Anika",
+  groomName: "Ivan",
+  weddingDate: "24 AVG 2026",
+  weddingTime: "16:00",
+  venue: "Hotel Moskva, Beograd",
+  backgroundImage: "/images/milica-ognjen-minimal.jpg",
+  musicSrc: "/music/milica-aleksandar.mp3",
+  details: createDetails({
+ 
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "24 AVG 2026",
+    dateISO: "2026-08-24T16:00:00+02:00",
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Hotel Moskva, Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "16:00",
+        icon: "civil",
+        location: "Hotel Moskva, Beograd",
+      },
+      {
+        label: "Večera",
+        time: "18:00",
+        icon: "restaurant",
+        location: "Hotel Moskva, Beograd",
+      },
+    ],
+    showDressCode: false,
+    note: "Molimo vas da svoj dolazak potvrdite do 1. avgusta.",
+  }),
+},
+{
+  slug: "anika-jovan",
+  type: "wedding",
+  template: "envelope-split",
+  brideName: "Anika",
+  groomName: "Jovan",
+  weddingDate: "24 AVG 2026",
+  weddingTime: "16:00",
+  venue: "Hotel Moskva, Beograd",
+  backgroundImage: "/images/milica-ognjen-minimal.jpg",
+  musicSrc: "/music/milica-aleksandar.mp3",
+  details: createDetails({
+ 
     welcomeText:
       "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan.",
     date: "24 AVG 2026",
