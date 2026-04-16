@@ -1,16 +1,37 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/intro.css";
 
 function EnvelopeSplitIntro({ onEnter, onReveal, slug }) {
   const [opened, setOpened] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [imagesReady, setImagesReady] = useState(false);
 
   const topImage = `/images/envelope/${slug}-top.svg`;
   const bottomImage = `/images/envelope/${slug}-bottom.svg`;
 
+  useEffect(() => {
+    let loadedCount = 0;
+
+    const markLoaded = () => {
+      loadedCount += 1;
+      if (loadedCount === 2) {
+        setImagesReady(true);
+      }
+    };
+
+    const topImg = new Image();
+    const bottomImg = new Image();
+
+    topImg.onload = markLoaded;
+    bottomImg.onload = markLoaded;
+
+    topImg.src = topImage;
+    bottomImg.src = bottomImage;
+  }, [topImage, bottomImage]);
+
   const handleOpen = () => {
-    if (opened) return;
+    if (opened || !imagesReady) return;
 
     setOpened(true);
     onReveal?.();
@@ -21,7 +42,7 @@ function EnvelopeSplitIntro({ onEnter, onReveal, slug }) {
     }, 5200);
   };
 
-  if (hidden) return null;
+  if (hidden || !imagesReady) return null;
 
   return (
     <motion.section
