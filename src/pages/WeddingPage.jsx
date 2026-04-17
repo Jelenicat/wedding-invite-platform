@@ -48,7 +48,7 @@ import EditorialIntro from "../components/EditorialIntro";
 import EditorialInvitationCard from "../components/EditorialInvitationCard";
 import SilkIntro from "../components/SilkIntro";
 import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
-
+import EnvelopeSideSplitIntro from "../components/EnvelopeSideSplitIntro";
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -125,6 +125,10 @@ const TEMPLATE_COMPONENTS = {
     Intro: EnvelopeSplitIntro,
     Invitation: MinimalInvitationCard,
   },
+  "envelope-side-split": {
+  Intro: EnvelopeSideSplitIntro,
+  Invitation: FloralInvitationCard,
+},
 };
 
 function WeddingPage() {
@@ -277,7 +281,7 @@ function WeddingPage() {
     );
   }
 
-  if (templateKey === "envelope-split") {
+  if (templateKey === "envelope-split" || templateKey === "envelope-side-split") {
     return (
       <div className="wedding-page">
         {audioNode}

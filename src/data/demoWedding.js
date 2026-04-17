@@ -1911,6 +1911,321 @@ backgroundColor: "#f3ece6",
     note: "Molimo vas da svoj dolazak potvrdite do 1. avgusta.",
   }),
 },
+{
+  slug: "milena-stefan",
+  type: "wedding",
+  template: "envelope-side-split", // 👈 BITNO
+
+  brideName: "Milena",
+  groomName: "Stefan",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Topčiderac, Beograd",
+
+  backgroundImage: "/images/floral-milena-stefan.jpg", // floral background
+  musicSrc: "/music/olja-milos.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo naš poseban dan podeliti sa vama.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:30",
+        icon: "gathering",
+        location: "Topčiderac, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Topciderac+Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Večera i slavlje",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [
+      "#e8ddd4",
+      "#c9b8a8",
+      "#a38f7b",
+      "#f3ece6",
+    ],
+    dressCodeNote:
+      "Elegantni i nežni tonovi savršeno će se uklopiti.",
+
+    mapLink:
+      "https://maps.google.com/?q=Topciderac+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+  }),
+},
+{
+  slug: "milena-ivan",
+  type: "wedding",
+  template: "envelope-side-split", // 👈 BITNO
+
+  brideName: "Milena",
+  groomName: "Ivan",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Topčiderac, Beograd",
+
+  backgroundImage: "/images/floral-milena-ivan.jpg", // floral background
+  musicSrc: "/music/olja-milos.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo naš poseban dan podeliti sa vama.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:30",
+        icon: "gathering",
+        location: "Topčiderac, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Topciderac+Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Večera i slavlje",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [
+      "#e8ddd4",
+      "#c9b8a8",
+      "#a38f7b",
+      "#f3ece6",
+    ],
+    dressCodeNote:
+      "Elegantni i nežni tonovi savršeno će se uklopiti.",
+
+    mapLink:
+      "https://maps.google.com/?q=Topciderac+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+  }),
+},
+{
+  slug: "milena-jovan",
+  type: "wedding",
+  template: "envelope-side-split", // 👈 BITNO
+
+  brideName: "Milena",
+  groomName: "Jovan",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Topčiderac, Beograd",
+
+  backgroundImage: "/images/floral-milena-jovan.jpg", // floral background
+  musicSrc: "/music/olja-milos.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo naš poseban dan podeliti sa vama.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:30",
+        icon: "gathering",
+        location: "Topčiderac, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Topciderac+Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Večera i slavlje",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [
+      "#e8ddd4",
+      "#c9b8a8",
+      "#a38f7b",
+      "#f3ece6",
+    ],
+    dressCodeNote:
+      "Elegantni i nežni tonovi savršeno će se uklopiti.",
+
+    mapLink:
+      "https://maps.google.com/?q=Topciderac+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+  }),
+},
+{
+  slug: "milena-aleksa",
+  type: "wedding",
+  template: "envelope-side-split", // 👈 BITNO
+
+  brideName: "Milena",
+  groomName: "Aleksa",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Topčiderac, Beograd",
+
+  backgroundImage: "/images/floral-milena-aleksa.jpg", // floral background
+  musicSrc: "/music/olja-milos.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo naš poseban dan podeliti sa vama.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:30",
+        icon: "gathering",
+        location: "Topčiderac, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Topciderac+Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Večera i slavlje",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [
+      "#e8ddd4",
+      "#c9b8a8",
+      "#a38f7b",
+      "#f3ece6",
+    ],
+    dressCodeNote:
+      "Elegantni i nežni tonovi savršeno će se uklopiti.",
+
+    mapLink:
+      "https://maps.google.com/?q=Topciderac+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+  }),
+},
+{
+  slug: "milena-nenad",
+  type: "wedding",
+  template: "envelope-side-split", // 👈 BITNO
+
+  brideName: "Milena",
+  groomName: "Nenad",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Topčiderac, Beograd",
+
+  backgroundImage: "/images/floral-milena-nenad.jpg", // floral background
+  musicSrc: "/music/olja-milos.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo naš poseban dan podeliti sa vama.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T17:00:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:30",
+        icon: "gathering",
+        location: "Topčiderac, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Topciderac+Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        icon: "civil",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Večera i slavlje",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [
+      "#e8ddd4",
+      "#c9b8a8",
+      "#a38f7b",
+      "#f3ece6",
+    ],
+    dressCodeNote:
+      "Elegantni i nežni tonovi savršeno će se uklopiti.",
+
+    mapLink:
+      "https://maps.google.com/?q=Topciderac+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+  }),
+},
 // =========================
 // Klijenti
 // =========================

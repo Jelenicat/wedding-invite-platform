@@ -3499,3 +3499,110 @@ color: #8e7f73;
 .envelope-split-overlay * {
   box-sizing: border-box;
 }
+/* ===============================
+   ENVELOPE SIDE SPLIT OVERLAY
+================================= */
+
+.envelope-side-split-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  will-change: opacity, filter;
+}
+
+.envelope-side-split-overlay:hover {
+  filter: brightness(1.02);
+  transition: filter 0.3s ease;
+}
+
+/* ===============================
+   WRAPPERS
+================================= */
+
+.envelope-side-left-wrap,
+.envelope-side-right-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  will-change: transform, opacity, filter;
+}
+
+/* leva */
+.envelope-side-left-wrap {
+  left: 0;
+  z-index: 2;
+  transform-origin: center left;
+}
+
+/* desna ide preko leve */
+.envelope-side-right-wrap {
+  right: 0;
+  z-index: 3;
+  transform-origin: center right;
+}
+
+/* ===============================
+   IMAGES
+================================= */
+
+.envelope-side-left,
+.envelope-side-right {
+  display: block;
+  height: 100dvh;
+  width: auto;
+  max-width: none;
+  max-height: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ===============================
+   CARD LAYER (ispod intro-a)
+================================= */
+
+.envelope-card-layer {
+  transform: scale(1.08) translateY(20px);
+  filter: blur(10px);
+  opacity: 0.85;
+  will-change: transform, filter, opacity;
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s ease,
+    opacity 0.7s ease;
+}
+
+.envelope-card-layer.is-revealed {
+  transform: scale(1) translateY(0);
+  filter: blur(0px);
+  opacity: 1;
+}
+
+/* ===============================
+   MOBILE
+================================= */
+
+@media (max-width: 768px) {
+  .envelope-side-left,
+  .envelope-side-right {
+    height: 100dvh;
+    width: auto;
+    max-width: none;
+    max-height: none;
+  }
+
+  .envelope-card-layer {
+    transform: scale(1.04) translateY(12px);
+    filter: blur(6px);
+  }
+}
+
+/* ===============================
+   SAFETY
+================================= */
+
+.envelope-side-split-overlay * {
+  box-sizing: border-box;
+}
