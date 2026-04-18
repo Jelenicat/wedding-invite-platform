@@ -1789,6 +1789,58 @@ backgroundColor: "#f3ece6",
   }),
 },
 {
+  slug: "katarina-aleksa",
+  type: "wedding",
+  template: "video-band",
+  brideName: "Katarina",
+  groomName: "Aleksa",
+  videoSrc: "/videos/katarina-aleksa5.mp4",
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se da zajedno sa vama proslavimo ljubav i početak našeg novog poglavlja.",
+
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00",
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "14:30",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        location: "Crkva Svetog Marka, Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Svečani ručak",
+        time: "18:30",
+        location: "Topčiderac, Beograd",
+      },
+    ],
+
+    venue: "Topčiderac, Beograd",
+    churchVenue: "Crkva Svetog Marka, Beograd",
+
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#d8c7c2", "#e9ddd6", "#bfa8a0", "#cbb7ae", "#f2ebe6"],
+    dressCodeNote:
+      "Molimo vas da birate elegantne, nežne i puderaste tonove.",
+
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra.",
+  }),
+},
+{
   slug: "anika-stefan",
   type: "wedding",
   template: "envelope-split",
