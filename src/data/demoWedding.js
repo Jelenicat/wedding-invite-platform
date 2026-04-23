@@ -7,6 +7,7 @@ const createDetails = ({
   envelopeTopImage,
   envelopeBottomImage,
   welcomeText,
+    cardBackground,
   date,
   dateISO,
   gatheringTime,
@@ -38,6 +39,7 @@ const createDetails = ({
   envelopeTopImage,
   envelopeBottomImage,
   welcomeText,
+    cardBackground,
   date,
   dateISO,
   gatheringTime,
@@ -1788,6 +1790,7 @@ backgroundColor: "#f3ece6",
     note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra.",
   }),
 },
+
 {
   slug: "katarina-aleksa",
   type: "wedding",
@@ -1838,6 +1841,184 @@ backgroundColor: "#f3ece6",
 
     mapLink: "https://maps.google.com/?q=Beograd",
     note: "Molimo vas da svoj dolazak potvrdite do 20. Septembra.",
+  }),
+},
+// =========================
+// PASSPORT TEMPLATE
+// =========================
+{
+  slug: "anja-jovan",
+  type: "wedding",
+  template: "passport",
+
+  brideName: "Anja",
+  groomName: "Jovan",
+
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Hotel Hyatt, Beograd",
+
+  details: createDetails({
+    cardBackground: "/images/passport/anja-jovan-card-bg.jpg",
+    welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00+02:00",
+    venue: "Hotel Hyatt, Beograd",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        location: "Hotel Hyatt, Beograd",
+        icon: "gathering",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        location: "Hotel Hyatt, Beograd",
+        icon: "civil",
+      },
+      {
+        label: "Zdravica i koktel",
+        time: "17:45",
+        location: "Hotel Hyatt, Beograd",
+        icon: "toast",
+      },
+      {
+        label: "Večera",
+        time: "19:00",
+        location: "Hotel Hyatt, Beograd",
+        icon: "restaurant",
+      },
+      {
+        label: "After party",
+        time: "23:30",
+        location: "Hotel Hyatt, Beograd",
+        icon: "party",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodeNote: "Elegantne i svetle nijanse savršeno će se uklopiti.",
+    dressCodePalette: ["#e8ddd4", "#c9b8a8", "#a38f7b"],
+
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+    rsvpDeadline: "Molimo vas da odgovorite do 1. septembra 2026.",
+  }),
+},
+{
+  slug: "anja-dejan",
+  type: "wedding",
+  template: "elegant-white",
+
+  brideName: "Anja",
+  groomName: "Dejan",
+
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+    backgroundImage: "/images/elegant-white/background.jpg",
+  details: createDetails({
+    backgroundImage: "/images/elegant-white/background.jpg",
+
+    welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00+02:00",
+
+    venue: "Vila Miloš",
+    locationText: "Karađorđeva 72, Topola",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        location: "Hotel Hyatt, Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        location: "Hotel Hyatt, Beograd",
+      },
+      {
+        label: "Koktel",
+        time: "18:00",
+        location: "Bašta hotela",
+      },
+      {
+        label: "Večera",
+        time: "19:30",
+        location: "Svečana sala",
+      },
+      {
+        label: "Proslava",
+        time: "21:00",
+        location: "DJ & ples",
+      },
+    ],
+  }),
+},
+// =========================
+// ELEGANT BLACK TEMPLATE
+// =========================
+{
+  slug: "marija-nikola",
+  type: "wedding",
+  template: "elegant-black",
+
+  brideName: "Marija",
+  groomName: "Nikola",
+
+  weddingDate: "12 SEP 2026",
+  weddingTime: "17:00",
+
+  backgroundImage: "/images/elegant-black/marija-nikola-bg.jpg",
+
+  details: createDetails({
+    backgroundImage: "/images/elegant-black/marija-nikola-bg.jpg",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "12 SEP 2026",
+    dateISO: "2026-09-12T17:00:00+02:00",
+
+    venue: "Restoran Topčiderac, Beograd",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Ceremonija",
+        time: "17:00",
+        location: "Topčiderac, Beograd",
+      },
+      {
+        label: "Večera",
+        time: "19:00",
+        location: "Svečana sala",
+      },
+      {
+        label: "Proslava",
+        time: "21:00",
+        location: "DJ & ples",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#000000", "#2b2b2b", "#8c6f3f", "#d4c2a8"],
+    dressCodeNote:
+      "Elegantne i tamnije nijanse uz zlatne detalje savršeno će se uklopiti.",
+
+    mapLink:
+      "https://maps.google.com/?q=Topciderac+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
   }),
 },
 {

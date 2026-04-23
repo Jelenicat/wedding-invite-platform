@@ -49,6 +49,12 @@ import EditorialInvitationCard from "../components/EditorialInvitationCard";
 import SilkIntro from "../components/SilkIntro";
 import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
 import EnvelopeSideSplitIntro from "../components/EnvelopeSideSplitIntro";
+import PassportIntro from "../components/PassportIntro";
+import PassportInvitationCard from "../components/PassportInvitationCard"; // (ili šta već nazoveš)
+import ElegantWhiteIntro from "../components/ElegantWhiteIntro";
+import EleganWhiteInvitationCard from "../components/EleganWhiteInvitationCard";
+import ElegantBlackIntro from "../components/ElegantBlackIntro";
+import ElegantBlackInvitationCard from "../components/ElegantBlackInvitationCard";
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -128,6 +134,18 @@ const TEMPLATE_COMPONENTS = {
   "envelope-side-split": {
   Intro: EnvelopeSideSplitIntro,
   Invitation: FloralInvitationCard,
+},
+ passport: {
+    Intro: PassportIntro,
+    Invitation: PassportInvitationCard,
+  },
+  "elegant-white": {
+  Intro: ElegantWhiteIntro,
+   Invitation: EleganWhiteInvitationCard,// privremeno koristi neki postojeći
+},
+"elegant-black": {
+  Intro: ElegantBlackIntro,
+  Invitation: ElegantBlackInvitationCard,
 },
 };
 

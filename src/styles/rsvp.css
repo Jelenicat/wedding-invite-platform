@@ -8556,3 +8556,2093 @@ margin-bottom: 2px;
     font-size: 14px;
   }
 }
+.passport-rsvp-section {
+  position: relative;
+  padding: 8px 16px 70px;
+  display: flex;
+  justify-content: center;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.92)),
+    #f5f3ee;
+}
+
+.passport-rsvp-card {
+  position: relative;
+  width: min(760px, 100%);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1.5px solid rgba(177, 141, 83, 0.26);
+  box-shadow: 0 30px 80px rgba(91, 71, 38, 0.08);
+  background: transparent;
+}
+
+.passport-rsvp-bg-parallax {
+  position: absolute;
+  inset: -20px;
+  background-image: var(--passport-rsvp-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  will-change: transform;
+  filter: saturate(1.03) contrast(1.02);
+}
+
+.passport-rsvp-card::after {
+  content: "";
+  position: absolute;
+  top: -18%;
+  left: -32%;
+  width: 42%;
+  height: 150%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(16deg);
+  animation: passportRsvpShine 8.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.passport-rsvp-paper {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 251, 245, 0.82),
+      rgba(255, 251, 245, 0.88)
+    );
+  z-index: 1;
+}
+
+.passport-rsvp-inner {
+  position: relative;
+  z-index: 3;
+  padding: 34px 28px 30px;
+  text-align: center;
+}
+
+.passport-rsvp-topline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.passport-rsvp-topline span {
+  width: 110px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(186, 152, 95, 0.72) 0 5px,
+    transparent 5px 10px
+  );
+}
+
+.passport-rsvp-plane {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 10px rgba(122, 92, 46, 0.12));
+}
+
+.passport-rsvp-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.22em;
+  color: #8a6940;
+  font-weight: 600;
+}
+
+.passport-rsvp-heart-wrap {
+  margin: 10px auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.passport-rsvp-heart-line {
+  width: 88px;
+  height: 2px;
+  background: rgba(186, 152, 95, 0.32);
+}
+
+.passport-rsvp-heart {
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+}
+
+.passport-rsvp-subtitle {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a27d4e;
+  line-height: 1.7;
+}
+
+.passport-rsvp-divider {
+  width: 100%;
+  height: 2px;
+  margin: 18px 0 20px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(186, 152, 95, 0.55),
+    transparent
+  );
+}
+
+.passport-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.passport-rsvp-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.passport-rsvp-label {
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9b7b52;
+}
+
+.passport-rsvp-input {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 14px;
+  border: 1px solid rgba(184, 151, 99, 0.34);
+  background: rgba(255, 255, 255, 0.62);
+  padding: 0 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  color: #6d5233;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+  box-sizing: border-box;
+}
+
+.passport-rsvp-input:focus {
+  border-color: rgba(184, 151, 99, 0.78);
+  box-shadow: 0 0 0 3px rgba(184, 151, 99, 0.12);
+  background: rgba(255, 255, 255, 0.78);
+  transform: translateY(-1px);
+}
+
+.passport-rsvp-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.passport-rsvp-option {
+  width: 100%;
+  border: 1px solid rgba(184, 151, 99, 0.34);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.46);
+  min-height: 58px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.passport-rsvp-option:hover {
+  transform: translateY(-2px);
+  border-color: rgba(184, 151, 99, 0.62);
+  box-shadow: 0 10px 22px rgba(116, 91, 50, 0.06);
+}
+
+.passport-rsvp-option.active {
+  background: rgba(255, 251, 243, 0.9);
+  border-color: rgba(184, 151, 99, 0.74);
+  box-shadow: 0 12px 26px rgba(116, 91, 50, 0.08);
+}
+
+.passport-rsvp-option-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.passport-rsvp-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.6px solid #b48c58;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.passport-rsvp-option.active .passport-rsvp-radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #b48c58;
+}
+
+.passport-rsvp-option-icon {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 10px rgba(122, 92, 46, 0.12));
+}
+
+.passport-rsvp-option-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8b6a42;
+  text-align: left;
+}
+
+.passport-rsvp-submit {
+  margin-top: 6px;
+  min-height: 52px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #b8935c, #9f7743);
+  color: #fffaf2;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    opacity 0.22s ease,
+    filter 0.22s ease;
+  box-shadow: 0 16px 30px rgba(153, 117, 67, 0.18);
+}
+
+.passport-rsvp-submit:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+.passport-rsvp-submit:disabled {
+  opacity: 0.56;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.passport-rsvp-success {
+  padding: 24px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.passport-rsvp-success img {
+  width: 18px;
+  height: 18px;
+}
+
+.passport-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  color: #8a6940;
+}
+
+.passport-rsvp-success p {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.08rem;
+  color: #9b7a50;
+}
+
+@keyframes passportRsvpShine {
+  0% {
+    transform: translateX(-140%) rotate(16deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.55;
+  }
+  28% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateX(280%) rotate(16deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .passport-rsvp-section {
+    padding: 0 12px 56px;
+  }
+
+  .passport-rsvp-card {
+    border-radius: 22px;
+  }
+
+  .passport-rsvp-inner {
+    padding: 26px 16px 22px;
+  }
+
+  .passport-rsvp-topline span {
+    width: 74px;
+  }
+
+  .passport-rsvp-plane {
+    width: 38px;
+    height: 38px;
+  }
+
+  .passport-rsvp-title {
+    font-size: 2.6rem;
+    letter-spacing: 0.18em;
+  }
+
+  .passport-rsvp-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .passport-rsvp-option {
+    min-height: 54px;
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .passport-rsvp-option-left {
+    gap: 10px;
+  }
+
+  .passport-rsvp-option-icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .passport-rsvp-option-text {
+    font-size: 0.86rem;
+    letter-spacing: 0.06em;
+  }
+
+  .passport-rsvp-submit {
+    min-height: 48px;
+    font-size: 0.92rem;
+  }
+}
+/* ===============================
+   PASSPORT COUNTDOWN
+================================= */
+
+.passport-countdown-section {
+  position: relative;
+  padding: 0 16px 80px;
+  display: flex;
+  justify-content: center;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.92)),
+    #f5f3ee;
+}
+
+.passport-countdown-card {
+  position: relative;
+  width: min(760px, 100%);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1.5px solid rgba(177, 141, 83, 0.26);
+  box-shadow: 0 30px 80px rgba(91, 71, 38, 0.08);
+  background: transparent;
+}
+
+.passport-countdown-bg-parallax {
+  position: absolute;
+  inset: -20px;
+  background-image: var(--passport-countdown-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  will-change: transform;
+  filter: saturate(1.03) contrast(1.02);
+}
+
+.passport-countdown-card::after {
+  content: "";
+  position: absolute;
+  top: -18%;
+  left: -32%;
+  width: 42%;
+  height: 150%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(16deg);
+  animation: passportCountdownShine 8.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.passport-countdown-paper {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 251, 245, 0.82),
+      rgba(255, 251, 245, 0.88)
+    );
+  z-index: 1;
+}
+
+.passport-countdown-inner {
+  position: relative;
+  z-index: 3;
+  padding: 34px 28px 34px;
+  text-align: center;
+}
+
+.passport-countdown-topline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.passport-countdown-topline span {
+  width: 110px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(186, 152, 95, 0.72) 0 5px,
+    transparent 5px 10px
+  );
+}
+
+.passport-countdown-plane {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 10px rgba(122, 92, 46, 0.12));
+}
+
+.passport-countdown-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: 0.2em;
+  color: #8a6940;
+  font-weight: 500;
+}
+
+.passport-countdown-heart-wrap {
+  margin: 10px auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.passport-countdown-heart-line {
+  width: 88px;
+  height: 2px;
+  background: rgba(186, 152, 95, 0.32);
+}
+
+.passport-countdown-heart {
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+}
+
+.passport-countdown-subtitle {
+  margin: 0 0 22px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a27d4e;
+  line-height: 1.7;
+}
+
+.passport-countdown-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 22px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.passport-countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+  transition: transform 0.22s ease;
+}
+
+.passport-countdown-item:hover {
+  transform: translateY(-2px);
+}
+
+.passport-countdown-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
+  line-height: 1;
+  color: #8a6940;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 10px rgba(122, 92, 46, 0.08);
+}
+
+.passport-countdown-label {
+  margin-top: 6px;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b0956d;
+}
+
+.passport-countdown-expired {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  color: #8a6940;
+  padding: 10px 0 4px;
+}
+
+@keyframes passportCountdownShine {
+  0% {
+    transform: translateX(-140%) rotate(16deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.55;
+  }
+  28% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateX(280%) rotate(16deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .passport-countdown-section {
+    padding: 0 12px 56px;
+  }
+
+  .passport-countdown-card {
+    border-radius: 22px;
+  }
+
+  .passport-countdown-inner {
+    padding: 26px 16px 24px;
+  }
+
+  .passport-countdown-topline span {
+    width: 74px;
+  }
+
+  .passport-countdown-plane {
+    width: 22px;
+    height: 22px;
+  }
+
+  .passport-countdown-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.16em;
+  }
+
+  .passport-countdown-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .passport-countdown-grid {
+    gap: 14px;
+  }
+
+  .passport-countdown-item {
+    min-width: 58px;
+  }
+
+  .passport-countdown-number {
+    font-size: 2.1rem;
+  }
+
+  .passport-countdown-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+  }
+
+  .passport-countdown-expired {
+    font-size: 1.15rem;
+  }
+}
+.elegant-white-rsvp-section,
+.elegant-white-countdown-section {
+  --ew-bg: #f4efe7;
+  --ew-paper: rgba(252, 248, 242, 0.9);
+  --ew-paper-strong: rgba(255, 252, 247, 0.94);
+  --ew-border: rgba(177, 155, 129, 0.45);
+  --ew-border-soft: rgba(177, 155, 129, 0.22);
+  --ew-text: #8f7a60;
+  --ew-text-soft: #a9957c;
+  --ew-script: #9f8a72;
+  --ew-shadow: 0 24px 70px rgba(102, 84, 57, 0.09);
+
+  position: relative;
+  width: 100%;
+  padding: 72px 18px 90px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 252, 247, 0.65),
+      rgba(247, 240, 230, 0.78)
+    ),
+    var(--ew-bg);
+  overflow: hidden;
+}
+.elegant-white-rsvp-field {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.elegant-white-rsvp-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* INPUT POLJE (IME I PREZIME) */
+.elegant-white-rsvp-field input {
+  width: 100%;
+  border: 1px solid rgba(177, 155, 129, 0.3);
+  background: rgba(255, 252, 247, 0.76);
+  border-radius: 20px;
+  padding: 16px 18px;
+  outline: none;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.elegant-white-rsvp-field input::placeholder {
+  color: var(--ew-text-soft);
+}
+
+.elegant-white-rsvp-field input:focus {
+  border-color: rgba(177, 155, 129, 0.58);
+  box-shadow: 0 0 0 4px rgba(177, 155, 129, 0.08);
+}
+.elegant-white-rsvp-shell,
+.elegant-white-countdown-shell {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.elegant-white-rsvp-card,
+.elegant-white-countdown-card {
+  position: relative;
+  background: var(--ew-paper);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: var(--ew-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 34px;
+  padding: 14px;
+}
+
+.elegant-white-rsvp-inner,
+.elegant-white-countdown-inner {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.92),
+    rgba(250, 245, 238, 0.96)
+  );
+  border: 1px solid var(--ew-border);
+  border-radius: 26px;
+  padding: 44px 34px 40px;
+  text-align: center;
+}
+
+.elegant-white-rsvp-inner::before,
+.elegant-white-countdown-inner::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid var(--ew-border-soft);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.elegant-white-rsvp-overline,
+.elegant-white-countdown-overline {
+  margin: 0 0 8px;
+  color: var(--ew-script);
+  font-family: "Italianno", cursive;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.elegant-white-rsvp-title,
+.elegant-white-countdown-title {
+  margin: 0;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.elegant-white-rsvp-divider,
+.elegant-white-countdown-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 18px 0 18px;
+}
+
+.elegant-white-rsvp-divider span,
+.elegant-white-countdown-divider span {
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: rgba(177, 155, 129, 0.4);
+}
+
+.elegant-white-rsvp-subtitle {
+  max-width: 420px;
+  margin: 0 auto 30px;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* RSVP */
+
+.elegant-white-rsvp-form {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.elegant-white-rsvp-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.elegant-white-rsvp-option {
+  appearance: none;
+  border: 1px solid rgba(177, 155, 129, 0.36);
+  background: rgba(255, 252, 247, 0.72);
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.12rem;
+  letter-spacing: 0.06em;
+  padding: 15px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.28s ease;
+}
+
+.elegant-white-rsvp-option:hover {
+  background: rgba(255, 252, 247, 0.96);
+  border-color: rgba(177, 155, 129, 0.52);
+  transform: translateY(-1px);
+}
+
+.elegant-white-rsvp-option.is-active {
+  background: rgba(177, 155, 129, 0.14);
+  border-color: rgba(177, 155, 129, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(177, 155, 129, 0.16);
+}
+
+.elegant-white-rsvp-textarea {
+  width: 100%;
+  min-height: 132px;
+  resize: vertical;
+  border: 1px solid rgba(177, 155, 129, 0.3);
+  background: rgba(255, 252, 247, 0.76);
+  border-radius: 20px;
+  padding: 18px 18px;
+  outline: none;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.elegant-white-rsvp-textarea::placeholder {
+  color: var(--ew-text-soft);
+}
+
+.elegant-white-rsvp-textarea:focus {
+  border-color: rgba(177, 155, 129, 0.58);
+  box-shadow: 0 0 0 4px rgba(177, 155, 129, 0.08);
+}
+
+.elegant-white-rsvp-submit {
+  margin-top: 18px;
+  min-width: 220px;
+  border: 1px solid rgba(177, 155, 129, 0.42);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.95),
+    rgba(245, 237, 226, 0.95)
+  );
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.08rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.28s ease;
+}
+
+.elegant-white-rsvp-submit:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 1),
+    rgba(241, 233, 221, 1)
+  );
+  box-shadow: 0 12px 28px rgba(102, 84, 57, 0.08);
+}
+
+.elegant-white-rsvp-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.elegant-white-rsvp-success,
+.elegant-white-countdown-finished {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0 8px;
+}
+
+.elegant-white-rsvp-success-heart,
+.elegant-white-countdown-finished-heart {
+  color: var(--ew-text-soft);
+  font-size: 1.4rem;
+}
+
+.elegant-white-rsvp-success p,
+.elegant-white-countdown-finished p {
+  margin: 0;
+  color: var(--ew-script);
+  font-family: "Italianno", cursive;
+  font-size: 2.2rem;
+  line-height: 1.1;
+}
+
+/* COUNTDOWN */
+
+.elegant-white-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.elegant-white-countdown-box {
+  position: relative;
+  padding: 24px 12px 20px;
+  border-radius: 24px;
+  background: rgba(255, 252, 247, 0.72);
+  border: 1px solid rgba(177, 155, 129, 0.28);
+}
+
+.elegant-white-countdown-box::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(177, 155, 129, 0.14);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.elegant-white-countdown-box strong {
+  position: relative;
+  display: block;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 6vw, 3.3rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.elegant-white-countdown-box span {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  color: var(--ew-text-soft);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* responsive */
+
+@media (max-width: 768px) {
+  .elegant-white-rsvp-section,
+  .elegant-white-countdown-section {
+    padding: 48px 14px 72px;
+  }
+
+  .elegant-white-rsvp-card,
+  .elegant-white-countdown-card {
+    border-radius: 26px;
+    padding: 10px;
+  }
+
+  .elegant-white-rsvp-inner,
+  .elegant-white-countdown-inner {
+    border-radius: 20px;
+    padding: 34px 18px 30px;
+  }
+
+  .elegant-white-rsvp-inner::before,
+  .elegant-white-countdown-inner::before {
+    inset: 10px;
+    border-radius: 14px;
+  }
+
+  .elegant-white-rsvp-overline,
+  .elegant-white-countdown-overline {
+    font-size: 1.95rem;
+  }
+
+  .elegant-white-rsvp-title,
+  .elegant-white-countdown-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.14em;
+  }
+
+  .elegant-white-rsvp-subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .elegant-white-rsvp-options {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .elegant-white-countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .elegant-white-countdown-box {
+    padding: 20px 10px 18px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .elegant-white-rsvp-section,
+  .elegant-white-countdown-section {
+    padding: 38px 10px 58px;
+  }
+
+  .elegant-white-rsvp-title,
+  .elegant-white-countdown-title {
+    font-size: 1.55rem;
+    letter-spacing: 0.12em;
+  }
+
+  .elegant-white-rsvp-divider span,
+  .elegant-white-countdown-divider span {
+    width: 90px;
+  }
+
+  .elegant-white-rsvp-option {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+
+  .elegant-white-rsvp-submit {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .elegant-white-rsvp-success p,
+  .elegant-white-countdown-finished p {
+    font-size: 1.9rem;
+  }
+
+  .elegant-white-countdown-box strong {
+    font-size: 2.25rem;
+  }
+
+  .elegant-white-countdown-box span {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+  }
+}.elegant-white-rsvp-section,
+.elegant-white-countdown-section {
+  --ew-bg: #f4efe7;
+  --ew-paper: rgba(252, 248, 242, 0.9);
+  --ew-paper-strong: rgba(255, 252, 247, 0.94);
+  --ew-border: rgba(177, 155, 129, 0.45);
+  --ew-border-soft: rgba(177, 155, 129, 0.22);
+  --ew-text: #8f7a60;
+  --ew-text-soft: #a9957c;
+  --ew-script: #9f8a72;
+  --ew-shadow: 0 24px 70px rgba(102, 84, 57, 0.09);
+
+  position: relative;
+  width: 100%;
+  padding: 72px 18px 90px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.elegant-white-rsvp-bg-overlay,
+.elegant-white-countdown-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 252, 247, 0.42),
+    rgba(247, 240, 230, 0.62)
+  );
+  pointer-events: none;
+}
+
+.elegant-white-rsvp-shell,
+.elegant-white-countdown-shell {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.elegant-white-rsvp-card,
+.elegant-white-countdown-card {
+  position: relative;
+  background: var(--ew-paper);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: var(--ew-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 34px;
+  padding: 14px;
+  overflow: hidden;
+}
+
+.elegant-white-rsvp-card::after,
+.elegant-white-countdown-card::after {
+  content: "";
+  position: absolute;
+  inset: -20% auto auto -10%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.elegant-white-rsvp-inner,
+.elegant-white-countdown-inner {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.92),
+    rgba(250, 245, 238, 0.96)
+  );
+  border: 1px solid var(--ew-border);
+  border-radius: 26px;
+  padding: 44px 34px 40px;
+  text-align: center;
+}
+
+.elegant-white-rsvp-inner::before,
+.elegant-white-countdown-inner::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid var(--ew-border-soft);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.elegant-white-rsvp-overline,
+.elegant-white-countdown-overline {
+  margin: 0 0 8px;
+  color: var(--ew-script);
+  font-family: "Italianno", cursive;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.elegant-white-rsvp-title,
+.elegant-white-countdown-title {
+  margin: 0;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.elegant-white-rsvp-divider,
+.elegant-white-countdown-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 18px 0 18px;
+}
+
+.elegant-white-rsvp-divider span,
+.elegant-white-countdown-divider span {
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: rgba(177, 155, 129, 0.4);
+}
+
+.elegant-white-rsvp-subtitle,
+.elegant-white-countdown-subtitle {
+  max-width: 420px;
+  margin: 0 auto 30px;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* RSVP */
+
+.elegant-white-rsvp-form {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.elegant-white-rsvp-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.elegant-white-rsvp-option {
+  appearance: none;
+  border: 1px solid rgba(177, 155, 129, 0.36);
+  background: rgba(255, 252, 247, 0.72);
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.12rem;
+  letter-spacing: 0.06em;
+  padding: 15px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.28s ease;
+}
+
+.elegant-white-rsvp-option:hover {
+  background: rgba(255, 252, 247, 0.96);
+  border-color: rgba(177, 155, 129, 0.52);
+  transform: translateY(-1px);
+}
+
+.elegant-white-rsvp-option.is-active {
+  background: rgba(177, 155, 129, 0.14);
+  border-color: rgba(177, 155, 129, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(177, 155, 129, 0.16);
+}
+
+.elegant-white-rsvp-guests-wrap {
+  overflow: hidden;
+  margin: 4px 0 8px;
+}
+
+.elegant-white-rsvp-guests-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.02rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.elegant-white-rsvp-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.elegant-white-rsvp-stepper-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(177, 155, 129, 0.36);
+  background: rgba(255, 252, 247, 0.86);
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.28s ease;
+  box-shadow: 0 10px 24px rgba(102, 84, 57, 0.06);
+}
+
+.elegant-white-rsvp-stepper-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 252, 247, 0.98);
+  border-color: rgba(177, 155, 129, 0.54);
+}
+
+.elegant-white-rsvp-stepper-value {
+  min-width: 74px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(177, 155, 129, 0.3);
+  background: rgba(255, 252, 247, 0.72);
+  color: var(--ew-text);
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+}
+
+.elegant-white-rsvp-submit {
+  margin-top: 22px;
+  min-width: 220px;
+  border: 1px solid rgba(177, 155, 129, 0.42);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.95),
+    rgba(245, 237, 226, 0.95)
+  );
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.08rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.28s ease;
+}
+
+.elegant-white-rsvp-submit:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 1),
+    rgba(241, 233, 221, 1)
+  );
+  box-shadow: 0 12px 28px rgba(102, 84, 57, 0.08);
+}
+
+.elegant-white-rsvp-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.elegant-white-rsvp-success,
+.elegant-white-countdown-finished {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0 8px;
+}
+
+.elegant-white-rsvp-success {
+  min-height: 170px;
+  justify-content: center;
+}
+
+.elegant-white-rsvp-success-heart,
+.elegant-white-countdown-finished-heart {
+  color: var(--ew-text-soft);
+  font-size: 1.6rem;
+}
+
+.elegant-white-rsvp-success p,
+.elegant-white-countdown-finished p {
+  margin: 0;
+  color: var(--ew-script);
+  font-family: "Italianno", cursive;
+  font-size: 2.2rem;
+  line-height: 1.1;
+}
+
+/* COUNTDOWN */
+
+.elegant-white-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.elegant-white-countdown-box {
+  position: relative;
+  padding: 24px 12px 20px;
+  border-radius: 24px;
+  background: rgba(255, 252, 247, 0.72);
+  border: 1px solid rgba(177, 155, 129, 0.28);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.elegant-white-countdown-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(102, 84, 57, 0.06);
+}
+
+.elegant-white-countdown-box::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(177, 155, 129, 0.14);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.elegant-white-countdown-box strong {
+  position: relative;
+  display: block;
+  color: var(--ew-text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 6vw, 3.3rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.elegant-white-countdown-box span {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  color: var(--ew-text-soft);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* responsive */
+
+@media (max-width: 768px) {
+  .elegant-white-rsvp-section,
+  .elegant-white-countdown-section {
+    padding: 48px 14px 72px;
+  }
+
+  .elegant-white-rsvp-card,
+  .elegant-white-countdown-card {
+    border-radius: 26px;
+    padding: 10px;
+  }
+
+  .elegant-white-rsvp-inner,
+  .elegant-white-countdown-inner {
+    border-radius: 20px;
+    padding: 34px 18px 30px;
+  }
+
+  .elegant-white-rsvp-inner::before,
+  .elegant-white-countdown-inner::before {
+    inset: 10px;
+    border-radius: 14px;
+  }
+
+  .elegant-white-rsvp-overline,
+  .elegant-white-countdown-overline {
+    font-size: 1.95rem;
+  }
+
+  .elegant-white-rsvp-title,
+  .elegant-white-countdown-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.14em;
+  }
+
+  .elegant-white-rsvp-subtitle,
+  .elegant-white-countdown-subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .elegant-white-rsvp-options {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .elegant-white-countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .elegant-white-countdown-box {
+    padding: 20px 10px 18px;
+    border-radius: 18px;
+  }
+
+  .elegant-white-rsvp-stepper-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .elegant-white-rsvp-section,
+  .elegant-white-countdown-section {
+    padding: 38px 10px 58px;
+  }
+
+  .elegant-white-rsvp-title,
+  .elegant-white-countdown-title {
+    font-size: 1.55rem;
+    letter-spacing: 0.12em;
+  }
+
+  .elegant-white-rsvp-divider span,
+  .elegant-white-countdown-divider span {
+    width: 90px;
+  }
+
+  .elegant-white-rsvp-option {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+
+  .elegant-white-rsvp-submit {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .elegant-white-rsvp-success p,
+  .elegant-white-countdown-finished p {
+    font-size: 1.9rem;
+  }
+
+  .elegant-white-countdown-box strong {
+    font-size: 2.25rem;
+  }
+
+  .elegant-white-countdown-box span {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+  }
+
+  .elegant-white-rsvp-stepper {
+    gap: 10px;
+  }
+
+  .elegant-white-rsvp-stepper-value {
+    min-width: 62px;
+    font-size: 1.15rem;
+  }
+}
+/* ===============================
+   ELEGANT BLACK RSVP
+================================= */
+
+.elegant-black-rsvp-section {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 18px;
+  background: #090909;
+  isolation: isolate;
+}
+
+.elegant-black-rsvp-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  filter: grayscale(100%);
+}
+
+.elegant-black-rsvp-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.68) 0%,
+      rgba(0, 0, 0, 0.56) 40%,
+      rgba(0, 0, 0, 0.74) 100%
+    );
+  z-index: 1;
+}
+
+.elegant-black-rsvp-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(0, 0, 0, 0.14) 45%,
+      rgba(0, 0, 0, 0.52) 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.elegant-black-rsvp-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 42px 28px 34px;
+  border-radius: 32px;
+  border: 1px solid rgba(243, 237, 231, 0.16);
+  background: rgba(20, 20, 20, 0.42);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 18px 54px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  text-align: center;
+  color: #f4eee8;
+}
+
+.elegant-black-rsvp-top {
+  margin: 0 0 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(243, 237, 231, 0.84);
+}
+
+.elegant-black-rsvp-ornament {
+  display: block;
+  width: 120px;
+  max-width: 36vw;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+}
+
+.elegant-black-rsvp-ornament-top {
+  margin-bottom: 18px;
+}
+
+.elegant-black-rsvp-ornament-bottom {
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+.elegant-black-rsvp-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(46px, 8vw, 68px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5eee8;
+}
+
+.elegant-black-rsvp-subtitle {
+  margin: 14px auto 0;
+  max-width: 360px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-style: italic;
+  color: rgba(243, 237, 231, 0.88);
+}
+
+.elegant-black-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+}
+
+.elegant-black-rsvp-field label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243, 237, 231, 0.86);
+}
+
+.elegant-black-rsvp-field input,
+.elegant-black-rsvp-field select {
+  width: 100%;
+  height: 56px;
+  border-radius: 18px;
+  border: 1px solid rgba(243, 237, 231, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5eee8;
+  padding: 0 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.elegant-black-rsvp-field input::placeholder {
+  color: rgba(243, 237, 231, 0.45);
+}
+
+.elegant-black-rsvp-field input:focus,
+.elegant-black-rsvp-field select:focus {
+  border-color: rgba(243, 237, 231, 0.46);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(243, 237, 231, 0.05);
+}
+
+.elegant-black-rsvp-choice-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.elegant-black-rsvp-choice {
+  min-height: 56px;
+  border-radius: 18px;
+  border: 1px solid rgba(243, 237, 231, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5eee8;
+  padding: 14px 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.elegant-black-rsvp-choice:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(243, 237, 231, 0.34);
+}
+
+.elegant-black-rsvp-choice.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(243, 237, 231, 0.56);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.elegant-black-rsvp-submit {
+  appearance: none;
+  margin-top: 6px;
+  border: 1px solid rgba(243, 237, 231, 0.38);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5eee8;
+  border-radius: 999px;
+  min-height: 58px;
+  padding: 14px 28px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    opacity 0.28s ease;
+}
+
+.elegant-black-rsvp-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(243, 237, 231, 0.6);
+}
+
+.elegant-black-rsvp-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.elegant-black-rsvp-success {
+  padding: 18px 6px 8px;
+}
+
+.elegant-black-rsvp-success h3 {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #f5eee8;
+}
+
+.elegant-black-rsvp-success p {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  line-height: 1.55;
+  font-style: italic;
+  color: rgba(243, 237, 231, 0.88);
+}
+
+@media (max-width: 768px) {
+  .elegant-black-rsvp-section {
+    padding: 74px 16px;
+  }
+
+  .elegant-black-rsvp-card {
+    padding: 34px 20px 28px;
+    border-radius: 28px;
+  }
+
+  .elegant-black-rsvp-top {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+  }
+
+  .elegant-black-rsvp-subtitle {
+    font-size: 19px;
+    max-width: 300px;
+  }
+
+  .elegant-black-rsvp-field input,
+  .elegant-black-rsvp-field select,
+  .elegant-black-rsvp-choice {
+    min-height: 54px;
+    font-size: 18px;
+  }
+
+  .elegant-black-rsvp-submit {
+    min-height: 56px;
+    font-size: 15px;
+  }
+
+  .elegant-black-rsvp-success h3 {
+    font-size: 34px;
+  }
+
+  .elegant-black-rsvp-success p {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .elegant-black-rsvp-choice-row {
+    grid-template-columns: 1fr;
+  }
+
+  .elegant-black-rsvp-title {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .elegant-black-rsvp-subtitle {
+    font-size: 17px;
+  }
+}
+/* ===============================
+   ELEGANT BLACK COUNTDOWN
+================================= */
+
+.elegant-black-countdown-section {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 18px;
+  background: #090909;
+  isolation: isolate;
+}
+
+.elegant-black-countdown-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  filter: grayscale(100%);
+}
+
+.elegant-black-countdown-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.68) 0%,
+      rgba(0, 0, 0, 0.56) 40%,
+      rgba(0, 0, 0, 0.74) 100%
+    );
+  z-index: 1;
+}
+
+.elegant-black-countdown-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(0, 0, 0, 0.14) 45%,
+      rgba(0, 0, 0, 0.52) 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.elegant-black-countdown-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 44px 28px 36px;
+  border-radius: 32px;
+  border: 1px solid rgba(243, 237, 231, 0.16);
+  background: rgba(20, 20, 20, 0.42);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 18px 54px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  text-align: center;
+  color: #f4eee8;
+}
+
+.elegant-black-countdown-top {
+  margin: 0 0 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(243, 237, 231, 0.84);
+}
+
+.elegant-black-countdown-ornament {
+  display: block;
+  width: 120px;
+  max-width: 36vw;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+}
+
+.elegant-black-countdown-ornament-top {
+  margin-bottom: 18px;
+}
+
+.elegant-black-countdown-ornament-bottom {
+  margin-top: 18px;
+  margin-bottom: 26px;
+}
+
+.elegant-black-countdown-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(42px, 7vw, 66px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5eee8;
+}
+
+.elegant-black-countdown-subtitle {
+  margin: 14px auto 0;
+  max-width: 410px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  line-height: 1.5;
+  font-style: italic;
+  color: rgba(243, 237, 231, 0.88);
+}
+
+.elegant-black-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.elegant-black-countdown-box {
+  padding: 22px 14px 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(243, 237, 231, 0.16);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.elegant-black-countdown-number {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 7vw, 62px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #f5eee8;
+}
+
+.elegant-black-countdown-label {
+  display: block;
+  margin-top: 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(243, 237, 231, 0.72);
+}
+
+.elegant-black-countdown-expired {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  line-height: 1.3;
+  font-style: italic;
+  color: rgba(243, 237, 231, 0.9);
+}
+
+@media (max-width: 768px) {
+  .elegant-black-countdown-section {
+    padding: 74px 16px;
+  }
+
+  .elegant-black-countdown-card {
+    padding: 34px 20px 28px;
+    border-radius: 28px;
+  }
+
+  .elegant-black-countdown-top {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+  }
+
+  .elegant-black-countdown-subtitle {
+    font-size: 18px;
+    max-width: 300px;
+  }
+
+  .elegant-black-countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .elegant-black-countdown-box {
+    padding: 18px 12px 16px;
+    border-radius: 20px;
+  }
+
+  .elegant-black-countdown-label {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  .elegant-black-countdown-expired {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .elegant-black-countdown-title {
+    font-size: clamp(36px, 10vw, 46px);
+  }
+
+  .elegant-black-countdown-subtitle {
+    font-size: 17px;
+  }
+
+  .elegant-black-countdown-number {
+    font-size: 38px;
+  }
+}
+.elegant-black-rsvp-section,
+.elegant-black-countdown-section {
+  margin-top: -56px;
+  padding-top: 110px;
+}
