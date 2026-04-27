@@ -2723,7 +2723,7 @@ backgroundColor: "#f3ece6",
   groomName: "Nikola",
   image: "/images/masa-nikola-photocard.jpg",
   backgroundImage: "/images/masa-nikola-photocard-bg.jpg",
-   
+   uploadCoverImage: "/images/upload/masa-nikola-photocard.jpg",
    
   weddingDate: "06 SEP 2026",
   weddingTime: "16:30",
