@@ -2699,7 +2699,7 @@ backgroundColor: "#f3ece6",
       },
       {
         label: "Početak proslave",
-        time: "16:00",
+        time: "16:30",
         icon: "gathering",
         location: "Crystal Light, Niš",
         mapLink: "https://www.google.com/maps/place/Hotel+Crystal+Light/data=!4m2!3m1!1s0x0:0x1d9ede331e21ad6f?sa=X&ved=1t:2428&ictx=111",
