@@ -9,8 +9,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
-
-function MinimalRSVP({ slug, eventType }) {
+import { addToCalendar } from "../utils/calendar";
+function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
@@ -218,7 +218,22 @@ function MinimalRSVP({ slug, eventType }) {
                       required
                     />
                   </div>
-
+<button
+  type="button"
+  className="minimal-calendar-btn"
+  onClick={() =>
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: details?.dateISO,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    })
+  }
+>
+  📅 Sačuvaj datum
+</button>
                   <div className="minimal-rsvp-choice-block">
                     <p className="minimal-rsvp-choice-label">
                       Da li dolazite?
@@ -293,6 +308,7 @@ function MinimalRSVP({ slug, eventType }) {
                   </button>
                 </form>
               </motion.div>
+              
             )}
           </AnimatePresence>
         </motion.div>

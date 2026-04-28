@@ -211,7 +211,13 @@ function MinimalInvitationCard({
         </div>
       </motion.section>
 
-     <MinimalRSVP slug={slug} eventType={type} />
+     <MinimalRSVP
+  slug={slug}
+  eventType={type}
+  brideName={safeBrideName}
+  groomName={safeGroomName}
+  details={details}
+/>
 
       {details.dateISO && <MinimalCountdown targetDate={details.dateISO} />}
     </>

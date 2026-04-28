@@ -2678,7 +2678,7 @@ backgroundColor: "#f3ece6",
   videoSrc: "/videos/wedding-fixed.mp4",
   musicSrc: "/music/adrijana-aleksandar.mp3",
   weddingDate: "11 JUL 2026",
-  weddingTime: "19:00",
+  weddingTime: "16:00",
   venue: "Niš",
 
   details: createDetails({
@@ -2690,20 +2690,21 @@ backgroundColor: "#f3ece6",
     editorialImage1: "/images/adrijana-aleksandar.jpg",
 
     events: [
-      {
-        label: "Okupljanje zvanica",
-        time: "17:45",
-        icon: "gathering",
-        location: "Restoran LUSSO, Niš",
-        mapLink: "https://www.google.com/maps/place/Lusso+Restoran/@43.2596203,21.8634665,17z/data=!3m1!4b1!4m6!3m5!1s0x4755bba205ac2295:0x7907c824c1cde073!8m2!3d43.2596203!4d21.8660414!16s%2Fg%2F11y_f7y92x?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
-      },
-      {
+        {
         label: "Građansko venčanje",
-        time: "19:00",
+        time: "16:00",
         icon: "civil",
-        location: "Restoran LUSSO, Niš",
-        mapLink: "https://www.google.com/maps/place/Lusso+Restoran/@43.2596203,21.8634665,17z/data=!3m1!4b1!4m6!3m5!1s0x4755bba205ac2295:0x7907c824c1cde073!8m2!3d43.2596203!4d21.8660414!16s%2Fg%2F11y_f7y92x?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D",
+        location: "Crystal Light, Niš",
+        mapLink: "https://www.google.com/maps/place/Hotel+Crystal+Light/data=!4m2!3m1!1s0x0:0x1d9ede331e21ad6f?sa=X&ved=1t:2428&ictx=111",
       },
+      {
+        label: "Početak proslave",
+        time: "16:00",
+        icon: "gathering",
+        location: "Crystal Light, Niš",
+        mapLink: "https://www.google.com/maps/place/Hotel+Crystal+Light/data=!4m2!3m1!1s0x0:0x1d9ede331e21ad6f?sa=X&ved=1t:2428&ictx=111",
+      },
+    
     ],
 
     showDressCode: true,
