@@ -218,22 +218,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
                       required
                     />
                   </div>
-<button
-  type="button"
-  className="minimal-calendar-btn"
-  onClick={() =>
-    addToCalendar({
-      brideName,
-      groomName,
-      dateISO: details?.dateISO,
-      venue: details?.venue,
-      mapLink: details?.mapLink,
-      note: details?.note,
-    })
-  }
->
-  📅 Sačuvaj datum
-</button>
+
                   <div className="minimal-rsvp-choice-block">
                     <p className="minimal-rsvp-choice-label">
                       Da li dolazite?

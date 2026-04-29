@@ -365,7 +365,7 @@ events: [
   weddingTime: "15:30",
   venue: "Beli dvor, Beograd",
 
-  backgroundImage: "/images/milica-ognjen-minimal.jpg",
+  backgroundImage: "/images/milica-ognjen-minimal1.jpg",
 
   introText:
     "Pozivamo vas da zajedno sa nama proslavite ljubav, radost i početak novog poglavlja.",

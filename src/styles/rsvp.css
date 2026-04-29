@@ -10646,55 +10646,67 @@ margin-bottom: 2px;
   margin-top: -56px;
   padding-top: 110px;
 }
-.minimal-calendar-btn {
-  margin-top: 14px;
-  width: 100%;
-  border-radius: 999px;
-  padding: 14px 18px;
+/* =========================
+   MINIMAL COUNTDOWN CALENDAR
+========================= */
 
-  display: flex;
+.minimal-countdown-calendar-box {
+  margin: 24px auto 0;
+  max-width: 320px;
+  text-align: center;
+}
+
+.minimal-countdown-calendar-btn {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid rgba(56, 47, 42, 0.18);
+  background: rgba(255, 255, 255, 0.34);
+  color: #2f241d;
+  cursor: pointer;
+
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  background: rgba(255, 255, 255, 0.6);
-  color: inherit;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  cursor: pointer;
-
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: all 0.25s ease;
 }
 
-.minimal-calendar-btn:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow:
-    0 10px 26px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+.minimal-countdown-calendar-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.52);
+  border-color: rgba(56, 47, 42, 0.28);
 }
 
-.minimal-calendar-btn:active {
-  transform: translateY(0);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.1),
-    inset 0 2px 4px rgba(0, 0, 0, 0.06);
-}
-
-.minimal-calendar-btn span {
+.minimal-countdown-calendar-btn span {
   font-size: 1rem;
+}
+
+.minimal-countdown-calendar-hint {
+  margin: 10px auto 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #7d6c61;
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .minimal-countdown-calendar-box {
+    max-width: 100%;
+    margin-top: 22px;
+  }
+
+  .minimal-countdown-calendar-btn {
+    min-height: 48px;
+    font-size: 9px;
+    letter-spacing: 0.17em;
+  }
+
+  .minimal-countdown-calendar-hint {
+    font-size: 11.5px;
+  }
 }

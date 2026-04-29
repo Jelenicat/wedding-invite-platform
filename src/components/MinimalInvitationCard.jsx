@@ -219,7 +219,14 @@ function MinimalInvitationCard({
   details={details}
 />
 
-      {details.dateISO && <MinimalCountdown targetDate={details.dateISO} />}
+     {details.dateISO && (
+  <MinimalCountdown
+    targetDate={details.dateISO}
+    brideName={safeBrideName}
+    groomName={safeGroomName}
+    details={details}
+  />
+)}
     </>
   );
 }

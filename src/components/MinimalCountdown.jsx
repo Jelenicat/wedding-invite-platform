@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/rsvp.css";
+import { addToCalendar } from "../utils/calendar";
 
-function MinimalCountdown({ targetDate }) {
+function MinimalCountdown({
+  targetDate,
+  brideName,
+  groomName,
+  details = {},
+}) {
   const calculateTimeLeft = () => {
-    const difference =
-      new Date(targetDate).getTime() - new Date().getTime();
+    const difference = new Date(targetDate).getTime() - new Date().getTime();
 
     if (difference <= 0) return null;
 
@@ -29,11 +34,37 @@ function MinimalCountdown({ targetDate }) {
 
   const format = (num) => String(num).padStart(2, "0");
 
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: targetDate,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
+
   if (!timeLeft) {
     return (
       <section className="minimal-countdown-section">
         <div className="minimal-countdown-inner">
           <p className="minimal-countdown-kicker">Dan venčanja je stigao</p>
+
+          <div className="minimal-countdown-calendar-box">
+            <button
+              type="button"
+              className="minimal-countdown-calendar-btn"
+              onClick={handleCalendarClick}
+            >
+              <span>📅</span>
+              Dodaj u kalendar
+            </button>
+
+            <p className="minimal-countdown-calendar-hint">
+              Sačuvajte datum venčanja u svom telefonu.
+            </p>
+          </div>
         </div>
       </section>
     );
@@ -89,6 +120,21 @@ function MinimalCountdown({ targetDate }) {
         <p className="minimal-countdown-note">
           Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
         </p>
+
+        <div className="minimal-countdown-calendar-box">
+          <button
+            type="button"
+            className="minimal-countdown-calendar-btn"
+            onClick={handleCalendarClick}
+          >
+            <span>📅</span>
+            Dodaj u kalendar
+          </button>
+
+          <p className="minimal-countdown-calendar-hint">
+            Sačuvajte datum venčanja u svom telefonu.
+          </p>
+        </div>
       </div>
     </motion.section>
   );
