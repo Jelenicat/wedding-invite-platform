@@ -12,10 +12,32 @@ function MinimalInvitationCard({
   backgroundImage,
   slug,
   type,
-}){
+  script = "latin",
+}) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
   const finalBg = backgroundImage || "/images/minimal-bg.jpg";
+
+  const t =
+    script === "cyrillic"
+      ? {
+          invitation: "Позивница",
+          date: "Датум",
+          plan: "План венчања",
+          dressCode: "Дрес код",
+          women: "Даме:",
+          men: "Мушкарци:",
+          location: "Погледај локацију",
+        }
+      : {
+          invitation: "Pozivnica",
+          date: "Datum",
+          plan: "Plan venčanja",
+          dressCode: "Dress code",
+          women: "Dame:",
+          men: "Muškarci:",
+          location: "Pogledaj lokaciju",
+        };
 
   const iconMap = {
     gathering: "/icons/guests.svg",
@@ -27,6 +49,14 @@ function MinimalInvitationCard({
 
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
+
+  const shouldShowDressCode =
+    details.showDressCode &&
+    (details.dressCodeTitle ||
+      details.dressCodeNote ||
+      details.dressCodeWomen ||
+      details.dressCodeMen ||
+      details.dressCodePalette?.length > 0);
 
   return (
     <>
@@ -45,7 +75,7 @@ function MinimalInvitationCard({
         <div className="minimal-invitation-paper">
           <div className="minimal-invitation-frame" />
 
-          <p className="minimal-invitation-kicker">Pozivnica</p>
+          <p className="minimal-invitation-kicker">{t.invitation}</p>
 
           <div className="minimal-invitation-monogram">
             <span>{safeBrideName[0]}</span>
@@ -53,7 +83,11 @@ function MinimalInvitationCard({
             <span>{safeGroomName[0]}</span>
           </div>
 
-          <h1 className="minimal-invitation-names">
+         <h1
+  className={`minimal-invitation-names ${
+    script === "cyrillic" ? "minimal-invitation-names-cyrillic" : ""
+  }`}
+>
             <span>{safeBrideName}</span>
 
             <span className="minimal-invitation-amp">
@@ -84,7 +118,7 @@ function MinimalInvitationCard({
 
           {details.date && (
             <div className="minimal-invitation-date-block">
-              <span className="minimal-invitation-date-label">Datum</span>
+              <span className="minimal-invitation-date-label">{t.date}</span>
               <p className="minimal-invitation-date">{details.date}</p>
             </div>
           )}
@@ -92,7 +126,7 @@ function MinimalInvitationCard({
           {timelineItems.length > 0 && (
             <div className="minimal-program-card minimal-program-editorial">
               <h3 className="minimal-section-title minimal-script-title">
-                Plan venčanja
+                {t.plan}
               </h3>
 
               <div className="minimal-timeline">
@@ -128,7 +162,7 @@ function MinimalInvitationCard({
                               |{" "}
                             </span>
                             <a
-  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
+  href={event.mapLink || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
   target="_blank"
   rel="noopener noreferrer"
   className="minimal-timeline-location-inline minimal-timeline-location-link"
@@ -147,10 +181,10 @@ function MinimalInvitationCard({
             </div>
           )}
 
-          {details.dressCodePalette?.length > 0 && (
+          {shouldShowDressCode && (
             <div className="minimal-extra-card minimal-dresscode-editorial">
               <h3 className="minimal-section-title minimal-script-title">
-                {details.dressCodeTitle || "Dress code"}
+                {details.dressCodeTitle || t.dressCode}
               </h3>
 
               {details.dressCodeNote && (
@@ -161,29 +195,31 @@ function MinimalInvitationCard({
 
               {details.dressCodeWomen && (
                 <div className="minimal-dresscode-role">
-                  <p className="minimal-dresscode-role-title">Dame:</p>
+                  <p className="minimal-dresscode-role-title">{t.women}</p>
                   <p className="minimal-dresscode-role-text">
                     {details.dressCodeWomen}
                   </p>
                 </div>
               )}
 
-              <div className="minimal-palette-box">
-                <div className="minimal-palette minimal-palette-editorial">
-                  {details.dressCodePalette.map((color, index) => (
-                    <span
-                      key={`${color}-${index}`}
-                      className="minimal-palette-dot minimal-palette-dot-editorial"
-                      style={{ backgroundColor: color }}
-                      aria-label={`dress code color ${index + 1}`}
-                    />
-                  ))}
+              {details.dressCodePalette?.length > 0 && (
+                <div className="minimal-palette-box">
+                  <div className="minimal-palette minimal-palette-editorial">
+                    {details.dressCodePalette.map((color, index) => (
+                      <span
+                        key={`${color}-${index}`}
+                        className="minimal-palette-dot minimal-palette-dot-editorial"
+                        style={{ backgroundColor: color }}
+                        aria-label={`dress code color ${index + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {details.dressCodeMen && (
                 <div className="minimal-dresscode-role minimal-dresscode-role-men">
-                  <p className="minimal-dresscode-role-title">Muškarci:</p>
+                  <p className="minimal-dresscode-role-title">{t.men}</p>
                   <p className="minimal-dresscode-role-text">
                     {details.dressCodeMen}
                   </p>
@@ -200,7 +236,7 @@ function MinimalInvitationCard({
                 rel="noreferrer"
                 className="minimal-map-link"
               >
-                Pogledaj lokaciju
+                {t.location}
               </a>
             </div>
           )}
@@ -217,6 +253,7 @@ function MinimalInvitationCard({
   brideName={safeBrideName}
   groomName={safeGroomName}
   details={details}
+  script={script}
 />
 
      {details.dateISO && (
@@ -225,6 +262,7 @@ function MinimalInvitationCard({
     brideName={safeBrideName}
     groomName={safeGroomName}
     details={details}
+    script={script}
   />
 )}
     </>

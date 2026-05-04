@@ -9,12 +9,30 @@ function MinimalIntro({
   introText,
   backgroundImage,
   onEnter,
+  script = "latin",
 }) {
   const [day = "15", month = "JAN", year = "2025"] = weddingDate
     ? weddingDate.split(" ")
     : ["15", "JAN", "2025"];
 
   const finalBg = backgroundImage || "/images/minimal-bg.jpg";
+
+  const t =
+    script === "cyrillic"
+      ? {
+          invitation: "ПОЗИВНИЦА",
+          day: "ДАН",
+          defaultText:
+            "Са великом радошћу вас позивамо да својим присуством улепшате наш посебан дан.",
+          open: "ОТВОРИ ПОЗИВНИЦУ",
+        }
+      : {
+          invitation: "POZIVNICA",
+          day: "DAN",
+          defaultText:
+            "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan.",
+          open: "OTVORI POZIVNICU",
+        };
 
   return (
     <section className="minimal-intro-v2">
@@ -32,7 +50,7 @@ function MinimalIntro({
       >
         <div className="minimal-frame" />
 
-        <p className="minimal-top-title">POZIVNICA</p>
+        <p className="minimal-top-title">{t.invitation}</p>
 
         <div className="minimal-arch" />
 
@@ -63,7 +81,7 @@ function MinimalIntro({
 
         <div className="minimal-date-row">
           <div className="minimal-date-box">
-            <span className="minimal-date-label">DAN</span>
+            <span className="minimal-date-label">{t.day}</span>
             <span className="minimal-date-line" />
           </div>
 
@@ -79,15 +97,12 @@ function MinimalIntro({
           </div>
         </div>
 
-        <p className="minimal-bottom-text">
-          {introText ||
-            "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan."}
-        </p>
+        <p className="minimal-bottom-text">{introText || t.defaultText}</p>
 
         <p className="minimal-venue">{venue}</p>
 
         <button className="minimal-open-btn" onClick={onEnter}>
-          OTVORI POZIVNICU
+          {t.open}
         </button>
       </motion.div>
     </section>

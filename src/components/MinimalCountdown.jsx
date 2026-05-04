@@ -8,7 +8,33 @@ function MinimalCountdown({
   brideName,
   groomName,
   details = {},
+  script = "latin",
 }) {
+  const t =
+    script === "cyrillic"
+      ? {
+          arrived: "Дан венчања је стигао",
+          remaining: "До венчања је остало",
+          days: "дана",
+          hours: "сати",
+          minutes: "мин",
+          seconds: "сек",
+          note: "Једва чекамо да заједно обележимо овај посебан тренутак.",
+          addCalendar: "Додај у календар",
+          calendarHint: "Сачувајте датум венчања у свом телефону.",
+        }
+      : {
+          arrived: "Dan venčanja je stigao",
+          remaining: "Do venčanja je ostalo",
+          days: "dana",
+          hours: "sati",
+          minutes: "min",
+          seconds: "sek",
+          note: "Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.",
+          addCalendar: "Dodaj u kalendar",
+          calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
+        };
+
   const calculateTimeLeft = () => {
     const difference = new Date(targetDate).getTime() - new Date().getTime();
 
@@ -49,7 +75,7 @@ function MinimalCountdown({
     return (
       <section className="minimal-countdown-section">
         <div className="minimal-countdown-inner">
-          <p className="minimal-countdown-kicker">Dan venčanja je stigao</p>
+          <p className="minimal-countdown-kicker">{t.arrived}</p>
 
           <div className="minimal-countdown-calendar-box">
             <button
@@ -58,11 +84,11 @@ function MinimalCountdown({
               onClick={handleCalendarClick}
             >
               <span>📅</span>
-              Dodaj u kalendar
+              {t.addCalendar}
             </button>
 
             <p className="minimal-countdown-calendar-hint">
-              Sačuvajte datum venčanja u svom telefonu.
+              {t.calendarHint}
             </p>
           </div>
         </div>
@@ -71,10 +97,10 @@ function MinimalCountdown({
   }
 
   const items = [
-    { value: format(timeLeft.days), label: "dana" },
-    { value: format(timeLeft.hours), label: "sati" },
-    { value: format(timeLeft.minutes), label: "min" },
-    { value: format(timeLeft.seconds), label: "sek" },
+    { value: format(timeLeft.days), label: t.days },
+    { value: format(timeLeft.hours), label: t.hours },
+    { value: format(timeLeft.minutes), label: t.minutes },
+    { value: format(timeLeft.seconds), label: t.seconds },
   ];
 
   return (
@@ -86,7 +112,7 @@ function MinimalCountdown({
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="minimal-countdown-inner">
-        <p className="minimal-countdown-kicker">Do venčanja je ostalo</p>
+        <p className="minimal-countdown-kicker">{t.remaining}</p>
 
         <div className="minimal-countdown-divider" />
 
@@ -118,7 +144,7 @@ function MinimalCountdown({
         </div>
 
         <p className="minimal-countdown-note">
-          Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
+          {t.note}
         </p>
 
         <div className="minimal-countdown-calendar-box">
@@ -128,11 +154,11 @@ function MinimalCountdown({
             onClick={handleCalendarClick}
           >
             <span>📅</span>
-            Dodaj u kalendar
+            {t.addCalendar}
           </button>
 
           <p className="minimal-countdown-calendar-hint">
-            Sačuvajte datum venčanja u svom telefonu.
+            {t.calendarHint}
           </p>
         </div>
       </div>

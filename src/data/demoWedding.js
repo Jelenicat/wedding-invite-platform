@@ -2853,6 +2853,297 @@ dressCodeNote:
     scriptFont: '"Cormorant Garamond", serif',
   },
 }),},
+
+{
+  slug: "aleksandra-marko",
+  type: "wedding",
+  template: "silk",
+  script: "cyrillic",
+
+  brideName: "Александра",
+  groomName: "Марко",
+
+  videoSrc: "/videos/aleksandra-marko.mp4",
+  fontMode: "light",
+
+  weddingDate: "20 СЕП 2026",
+  weddingTime: "11:00",
+  venue: "Jet Set Lux, Нова Пазова",
+
+  backgroundImage: "/images/aleksandra-marko.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
+
+    date: "20 СЕП 2026",
+    dateISO: "2026-09-20T11:00:00+02:00",
+
+    events: [
+      {
+        label: "Дочек сватова",
+        time: "11:00",
+        icon: "gathering",
+        location: "Породица Шарац",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14:00",
+        icon: "church",
+        location: "Храм Рођења Пресвете Богородице, Батајница",
+        mapLink:
+          "https://maps.google.com/?q=Hram+Rodjenja+Presvete+Bogorodice+Batajnica",
+      },
+      {
+        label: "Ресторан",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Jet Set Lux, Пионирска 12, Нова Пазова",
+        mapLink:
+          "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+
+    note: "Молимо вас да свој долазак потврдите до 1. септембра 2026.",
+  }),
+},
+{
+  slug: "aleksandra-marko-1",
+  type: "wedding",
+  template: "silk",
+  script: "cyrillic",
+
+  brideName: "Александра",
+  groomName: "Марко",
+
+  videoSrc: "/videos/aleksandra-marko-1.mp4",
+  fontMode: "dark",
+
+  weddingDate: "20 СЕП 2026",
+  weddingTime: "11:00",
+  venue: "Jet Set Lux, Нова Пазова",
+
+  backgroundImage: "/images/aleksandra-marko-1.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
+
+    date: "20 СЕП 2026",
+    dateISO: "2026-09-20T11:00:00+02:00",
+
+    events: [
+      {
+        label: "Дочек сватова",
+        time: "11:00",
+        icon: "gathering",
+        location: "Породица Шарац",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14:00",
+        icon: "church",
+        location: "Храм Рођења Пресвете Богородице, Батајница",
+        mapLink:
+          "https://maps.google.com/?q=Hram+Rodjenja+Presvete+Bogorodice+Batajnica",
+      },
+      {
+        label: "Ресторан",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Jet Set Lux, Пионирска 12, Нова Пазова",
+        mapLink:
+          "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+
+    note: "Молимо вас да свој долазак потврдите до 1. септембра 2026.",
+  }),
+},
+{
+  slug: "aleksandra-marko-2",
+  type: "wedding",
+  template: "silk",
+  script: "cyrillic",
+
+  brideName: "Александра",
+  groomName: "Марко",
+
+  videoSrc: "/videos/aleksandra-marko-2.mp4",
+  fontMode: "light",
+
+  weddingDate: "20 СЕП 2026",
+  weddingTime: "11:00",
+  venue: "Jet Set Lux, Нова Пазова",
+
+  backgroundImage: "/images/aleksandra-marko-2.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
+
+    date: "20 СЕП 2026",
+    dateISO: "2026-09-20T11:00:00+02:00",
+
+    events: [
+      {
+        label: "Дочек сватова",
+        time: "11:00",
+        icon: "gathering",
+        location: "Породица Шарац",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14:00",
+        icon: "church",
+        location: "Храм Рођења Пресвете Богородице, Батајница",
+        mapLink:
+          "https://maps.google.com/?q=Hram+Rodjenja+Presvete+Bogorodice+Batajnica",
+      },
+      {
+        label: "Ресторан",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Jet Set Lux, Пионирска 12, Нова Пазова",
+        mapLink:
+          "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+
+    note: "Молимо вас да свој долазак потврдите до 1. септембра 2026.",
+  }),
+},
+{
+  slug: "aleksandra-marko-3",
+  type: "wedding",
+  template: "silk",
+  script: "cyrillic",
+
+  brideName: "Александра",
+  groomName: "Марко",
+
+  videoSrc: "/videos/aleksandra-marko-3.mp4",
+  fontMode: "light",
+
+  weddingDate: "20 СЕП 2026",
+  weddingTime: "11:00",
+  venue: "Jet Set Lux, Нова Пазова",
+
+  backgroundImage: "/images/aleksandra-marko-3.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
+
+    date: "20 СЕП 2026",
+    dateISO: "2026-09-20T11:00:00+02:00",
+
+    events: [
+      {
+        label: "Дочек сватова",
+        time: "11:00",
+        icon: "gathering",
+        location: "Породица Шарац",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14:00",
+        icon: "church",
+        location: "Храм Рођења Пресвете Богородице, Батајница",
+        mapLink:
+          "https://maps.google.com/?q=Hram+Rodjenja+Presvete+Bogorodice+Batajnica",
+      },
+      {
+        label: "Ресторан",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Jet Set Lux, Пионирска 12, Нова Пазова",
+        mapLink:
+          "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+
+    note: "Молимо вас да свој долазак потврдите до 1. септембра 2026.",
+  }),
+},
+{
+  slug: "aleksandra-marko-4",
+  type: "wedding",
+  template: "silk",
+  script: "latin",
+
+  brideName: "Aleksandra",
+  groomName: "Marko",
+
+  videoSrc: "/videos/aleksandra-marko-4.mp4",
+  fontMode: "dark",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "11:00",
+  venue: "Jet Set Lux, Nova Pazova",
+
+  backgroundImage: "/images/aleksandra-marko-4.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T11:00:00+02:00",
+
+    events: [
+      {
+        label: "Doček svatova",
+        time: "11:00",
+        icon: "gathering",
+        location: "Porodica Šarac",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "14:00",
+        icon: "church",
+        location: "Hram Rođenja Presvete Bogorodice, Batajnica",
+        mapLink:
+          "https://maps.google.com/?q=Hram+Rodjenja+Presvete+Bogorodice+Batajnica",
+      },
+      {
+        label: "Restoran",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Jet Set Lux, Pionirska 12, Nova Pazova",
+        mapLink:
+          "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 1. septembra 2026.",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

@@ -3287,6 +3287,16 @@ color: #8e7f73;
   margin: 0;
 }
 
+/* ĆIRILICA - samo imena mladenaca */
+.silk-names-cyrillic {
+  font-family: "Great Vibes", cursive;
+  font-size: 68px;
+  line-height: 0.92;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+/* Ampersand ostaje drugačiji i elegantan */
 .silk-names span,
 .silk-amp {
   font-family: "Playfair Display", serif;
@@ -3368,6 +3378,11 @@ color: #8e7f73;
   .silk-names {
     font-size: 72px;
     line-height: 0.9;
+  }
+
+  .silk-names-cyrillic {
+    font-size: 56px;
+    line-height: 1;
   }
 
   .silk-names span,

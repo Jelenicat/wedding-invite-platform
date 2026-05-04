@@ -10,7 +10,54 @@ import {
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 import { addToCalendar } from "../utils/calendar";
-function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
+function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = "latin" }) {
+  const t =
+    script === "cyrillic"
+      ? {
+          missingSlug: "Недостаје slug или тип догађаја.",
+          enterName: "Унесите име и презиме.",
+          chooseAttendance: "Изаберите да ли долазите.",
+          invalidGuests: "Унесите исправан број особа.",
+          submitError: "Дошло је до грешке при слању.",
+          thanks: "Хвала!",
+          success: "Ваша потврда је успешно послата.",
+          title: "Потврдите долазак",
+          subtitle:
+            "Биће нам велико задовољство да својим присуством улепшате наш посебан дан.",
+          fullName: "Име и презиме",
+          fullNamePlaceholder: "Унесите име и презиме",
+          attendance: "Да ли долазите?",
+          yes: "Долазим",
+          yesText: "Радујем се што славим са вама",
+          no: "Не долазим",
+          noText: "Нажалост нисам у могућности",
+          guests: "Број особа",
+          sending: "Слање...",
+          submit: "Пошаљи потврду",
+        }
+      : {
+          missingSlug: "Nedostaje slug ili tip događaja.",
+          enterName: "Unesite ime i prezime.",
+          chooseAttendance: "Izaberite da li dolazite.",
+          invalidGuests: "Unesite ispravan broj osoba.",
+          submitError: "Došlo je do greške pri slanju.",
+          thanks: "Hvala!",
+          success: "Vaša potvrda je uspešno poslata.",
+          title: "Potvrdite dolazak",
+          subtitle:
+            "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+          fullName: "Ime i prezime",
+          fullNamePlaceholder: "Unesite ime i prezime",
+          attendance: "Da li dolazite?",
+          yes: "Dolazim",
+          yesText: "Radujem se što slavim sa vama",
+          no: "Ne dolazim",
+          noText: "Nažalost nisam u mogućnosti",
+          guests: "Broj osoba",
+          sending: "Slanje...",
+          submit: "Pošalji potvrdu",
+        };
+
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
@@ -56,17 +103,17 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
     e.preventDefault();
 
     if (!slug || !eventType) {
-      alert("Nedostaje slug ili tip događaja.");
+      alert(t.missingSlug);
       return;
     }
 
     if (!formData.fullName.trim()) {
-      alert("Unesite ime i prezime.");
+      alert(t.enterName);
       return;
     }
 
     if (!formData.attending) {
-      alert("Izaberite da li dolazite.");
+      alert(t.chooseAttendance);
       return;
     }
 
@@ -74,7 +121,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
 
     if (formData.attending === "da") {
       if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
-        alert("Unesite ispravan broj osoba.");
+        alert(t.invalidGuests);
         return;
       }
     }
@@ -103,7 +150,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
       setSubmitted(true);
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);
-      alert("Došlo je do greške pri slanju.");
+      alert(t.submitError);
     } finally {
       setLoading(false);
     }
@@ -149,7 +196,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15, duration: 0.45 }}
                 >
-                  Hvala!
+                  {t.thanks}
                 </motion.h3>
 
                 <motion.p
@@ -157,7 +204,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.28, duration: 0.45 }}
                 >
-                  Vaša potvrda je uspešno poslata.
+                  {t.success}
                 </motion.p>
 
                 <div className="minimal-confetti-wrap">
@@ -196,32 +243,31 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
               >
                 <p className="minimal-rsvp-kicker">RSVP</p>
 
-                <h2 className="minimal-rsvp-title">Potvrdite dolazak</h2>
+                <h2 className="minimal-rsvp-title">{t.title}</h2>
 
                 <p className="minimal-rsvp-subtitle">
-                  Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš
-                  poseban dan.
+                  {t.subtitle}
                 </p>
 
                 <div className="minimal-rsvp-divider" />
 
                 <form className="minimal-rsvp-form" onSubmit={handleSubmit}>
                   <div className="minimal-rsvp-field">
-                    <label htmlFor="minimal-fullName">Ime i prezime</label>
+                    <label htmlFor="minimal-fullName">{t.fullName}</label>
                     <input
                       id="minimal-fullName"
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      placeholder="Unesite ime i prezime"
+                      placeholder={t.fullNamePlaceholder}
                       required
                     />
                   </div>
 
                   <div className="minimal-rsvp-choice-block">
                     <p className="minimal-rsvp-choice-label">
-                      Da li dolazite?
+                      {t.attendance}
                     </p>
 
                     <div className="minimal-rsvp-choice-grid">
@@ -232,9 +278,9 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
                         }`}
                         onClick={() => handleAttendanceSelect("da")}
                       >
-                        <span className="minimal-choice-title">Dolazim</span>
+                        <span className="minimal-choice-title">{t.yes}</span>
                         <span className="minimal-choice-text">
-                          Radujem se što slavim sa vama
+                          {t.yesText}
                         </span>
                       </button>
 
@@ -245,9 +291,9 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
                         }`}
                         onClick={() => handleAttendanceSelect("ne")}
                       >
-                        <span className="minimal-choice-title">Ne dolazim</span>
+                        <span className="minimal-choice-title">{t.no}</span>
                         <span className="minimal-choice-text">
-                          Nažalost nisam u mogućnosti
+                          {t.noText}
                         </span>
                       </button>
                     </div>
@@ -269,7 +315,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
                         exit={{ opacity: 0, height: 0, y: -4 }}
                         transition={{ duration: 0.25 }}
                       >
-                        <label htmlFor="minimal-guests">Broj osoba</label>
+                        <label htmlFor="minimal-guests">{t.guests}</label>
                         <input
                           id="minimal-guests"
                           type="number"
@@ -289,7 +335,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details }) {
                     className="minimal-rsvp-button"
                     disabled={loading}
                   >
-                    {loading ? "Slanje..." : "Pošalji potvrdu"}
+                    {loading ? t.sending : t.submit}
                   </button>
                 </form>
               </motion.div>
