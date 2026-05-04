@@ -2865,6 +2865,8 @@ dressCodeNote:
 
   videoSrc: "/videos/aleksandra-marko.mp4",
   fontMode: "light",
+  startMusicOnIntro: true,
+musicSrc: "/music/aleksandra-marko.mp3",
 
   weddingDate: "20 СЕП 2026",
   weddingTime: "11:00",
@@ -3152,7 +3154,8 @@ dressCodeNote:
 
   brideName: "Aleksandra",
   groomName: "Marko",
-
+  startMusicOnIntro: true,
+musicSrc: "/music/aleksandra-marko.mp3",
   videoSrc: "/videos/aleksandra-marko-5.mp4",
   fontMode: "light",
 

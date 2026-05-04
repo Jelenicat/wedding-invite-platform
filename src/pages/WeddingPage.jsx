@@ -200,7 +200,27 @@ function WeddingPage() {
       audioRef.current.load();
     }
   }, [invitation]);
+useEffect(() => {
+  if (!invitation?.startMusicOnIntro) return;
+  if (!invitation?.musicSrc) return;
+  if (!audioRef.current) return;
 
+  const audio = audioRef.current;
+
+  audio.volume = 0.45;
+  audio.muted = false;
+
+  const tryAutoplay = async () => {
+    try {
+      await audio.play();
+      setMusicStarted(true);
+    } catch (error) {
+      console.log("Autoplay muzike je blokiran, čekamo prvi klik/tap.", error);
+    }
+  };
+
+  tryAutoplay();
+}, [invitation]);
   if (!invitation) {
     return <div className="wedding-page">Pozivnica nije pronađena.</div>;
   }
@@ -211,33 +231,44 @@ function WeddingPage() {
 
   const IntroComponent = template.Intro;
   const InvitationComponent = template.Invitation;
+const playInvitationMusic = () => {
+  if (!invitation.musicSrc || !audioRef.current || musicStarted) return;
 
-  const handleIntroOpen = () => {
-    setIsIntroOpen(true);
+  audioRef.current.volume = 0.45;
 
-    if (introTimeoutRef.current) {
-      clearTimeout(introTimeoutRef.current);
-    }
-
-    introTimeoutRef.current = setTimeout(() => {
-      setShowInvitation(true);
-    }, 1600);
-  };
-
-  const handleIntroEnter = () => {
-    if (introTimeoutRef.current) {
-      clearTimeout(introTimeoutRef.current);
-    }
-
-    if (invitation.musicSrc && audioRef.current && !musicStarted) {
-      audioRef.current.play().catch((error) => {
-        console.error("Muzika nije pokrenuta:", error);
-      });
+  audioRef.current
+    .play()
+    .then(() => {
       setMusicStarted(true);
-    }
+    })
+    .catch((error) => {
+      console.error("Muzika nije pokrenuta:", error);
+    });
+};
+const handleIntroOpen = () => {
+  setIsIntroOpen(true);
 
+  if (invitation.startMusicOnIntro) {
+    playInvitationMusic();
+  }
+
+  if (introTimeoutRef.current) {
+    clearTimeout(introTimeoutRef.current);
+  }
+
+  introTimeoutRef.current = setTimeout(() => {
     setShowInvitation(true);
-  };
+  }, 1600);
+};
+const handleIntroEnter = () => {
+  if (introTimeoutRef.current) {
+    clearTimeout(introTimeoutRef.current);
+  }
+
+  playInvitationMusic();
+
+  setShowInvitation(true);
+};
 
   const introProps = {
     brideName: invitation.brideName,
@@ -283,11 +314,16 @@ function WeddingPage() {
     script: invitation.script,
   };
 
-  const audioNode = invitation.musicSrc ? (
-    <audio ref={audioRef} loop preload="auto">
-      <source src={invitation.musicSrc} type="audio/mpeg" />
-    </audio>
-  ) : null;
+const audioNode = invitation.musicSrc ? (
+  <audio
+    ref={audioRef}
+    loop
+    preload="auto"
+    autoPlay={Boolean(invitation.startMusicOnIntro)}
+  >
+    <source src={invitation.musicSrc} type="audio/mpeg" />
+  </audio>
+) : null;
 
   if (templateKey === "angel" || templateKey === "classic") {
     return (
