@@ -39,6 +39,7 @@ import BirthdayOneWordInvitationCard from "../components/BirthdayOneWordInvitati
 
 import BirthdaySplitIntro from "../components/BirthdaySplitIntro";
 import BirthdaySplitInvitationCard from "../components/BirthdaySplitInvitationCard";
+import BirthdayPartyIntro from "../components/BirthdayPartyIntro";
 
 import AngelIntro from "../components/AngelIntro";
 import AngelInvitationCard from "../components/AngelInvitationCard";
@@ -49,6 +50,7 @@ import EditorialInvitationCard from "../components/EditorialInvitationCard";
 import SilkIntro from "../components/SilkIntro";
 import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
 import EnvelopeSideSplitIntro from "../components/EnvelopeSideSplitIntro";
+import EnvelopeSplitIntroV2 from "../components/EnvelopeSplitIntroV2";
 import PassportIntro from "../components/PassportIntro";
 import PassportInvitationCard from "../components/PassportInvitationCard"; // (ili šta već nazoveš)
 import ElegantWhiteIntro from "../components/ElegantWhiteIntro";
@@ -147,6 +149,14 @@ const TEMPLATE_COMPONENTS = {
   Intro: ElegantBlackIntro,
   Invitation: ElegantBlackInvitationCard,
 },
+"birthday-party": {
+  Intro: BirthdayPartyIntro,
+  Invitation: BirthdaySplitInvitationCard,
+},
+"envelope-split-v2": {
+  Intro: EnvelopeSplitIntroV2,
+  Invitation: FloralInvitationCard,
+},
 };
 
 function WeddingPage() {
@@ -197,30 +207,10 @@ function WeddingPage() {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       audioRef.current.muted = false;
-      audioRef.current.load();
+      
     }
   }, [invitation]);
-useEffect(() => {
-  if (!invitation?.startMusicOnIntro) return;
-  if (!invitation?.musicSrc) return;
-  if (!audioRef.current) return;
 
-  const audio = audioRef.current;
-
-  audio.volume = 0.45;
-  audio.muted = false;
-
-  const tryAutoplay = async () => {
-    try {
-      await audio.play();
-      setMusicStarted(true);
-    } catch (error) {
-      console.log("Autoplay muzike je blokiran, čekamo prvi klik/tap.", error);
-    }
-  };
-
-  tryAutoplay();
-}, [invitation]);
   if (!invitation) {
     return <div className="wedding-page">Pozivnica nije pronađena.</div>;
   }
@@ -248,9 +238,8 @@ const playInvitationMusic = () => {
 const handleIntroOpen = () => {
   setIsIntroOpen(true);
 
-  if (invitation.startMusicOnIntro) {
-    playInvitationMusic();
-  }
+  // Muzika kreće tek nakon korisničkog klika/tapa
+  playInvitationMusic();
 
   if (introTimeoutRef.current) {
     clearTimeout(introTimeoutRef.current);
@@ -292,6 +281,8 @@ const handleIntroEnter = () => {
     fontMode: invitation.fontMode,
     details: invitation.details,
     script: invitation.script,
+    babyImage: invitation.babyImage,
+    partyGender: invitation.partyGender,
   };
 
   const invitationProps = {
@@ -315,12 +306,7 @@ const handleIntroEnter = () => {
   };
 
 const audioNode = invitation.musicSrc ? (
-  <audio
-    ref={audioRef}
-    loop
-    preload="auto"
-    autoPlay={Boolean(invitation.startMusicOnIntro)}
-  >
+<audio ref={audioRef} loop preload="none">
     <source src={invitation.musicSrc} type="audio/mpeg" />
   </audio>
 ) : null;
@@ -335,7 +321,11 @@ const audioNode = invitation.musicSrc ? (
     );
   }
 
-  if (templateKey === "envelope-split" || templateKey === "envelope-side-split") {
+  if (
+  templateKey === "envelope-split" ||
+  templateKey === "envelope-split-v2" ||
+  templateKey === "envelope-side-split"
+) {
     return (
       <div className="wedding-page">
         {audioNode}
@@ -348,11 +338,12 @@ const audioNode = invitation.musicSrc ? (
           <InvitationComponent {...invitationProps} />
         </div>
 
-        <IntroComponent
-          {...introProps}
-          onEnter={handleIntroEnter}
-          onReveal={() => setEnvelopeRevealed(true)}
-        />
+     <IntroComponent
+  {...introProps}
+  onStartMusic={playInvitationMusic}
+  onEnter={handleIntroEnter}
+  onReveal={() => setEnvelopeRevealed(true)}
+/>
       </div>
     );
   }

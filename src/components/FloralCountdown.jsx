@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/rsvp.css";
+import { addToCalendar } from "../utils/calendar";
 
-function FloralCountdown({ targetDate }) {
+function FloralCountdown({
+  targetDate,
+  brideName,
+  groomName,
+  details = {},
+  showCalendarButton = false,
+}) {
   const calculateTimeLeft = () => {
     const difference =
       new Date(targetDate).getTime() - new Date().getTime();
@@ -28,6 +35,17 @@ function FloralCountdown({ targetDate }) {
   }, [targetDate]);
 
   const format = (num) => String(num).padStart(2, "0");
+
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: targetDate,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 28, scale: 0.985, filter: "blur(8px)" },
@@ -72,6 +90,23 @@ function FloralCountdown({ targetDate }) {
     }),
   };
 
+  const calendarBox = showCalendarButton ? (
+    <motion.div className="floral-countdown-calendar-box" variants={fadeUp}>
+      <button
+        type="button"
+        className="floral-countdown-calendar-btn"
+        onClick={handleCalendarClick}
+      >
+        <span>📅</span>
+        Dodaj u kalendar
+      </button>
+
+      <p className="floral-countdown-calendar-hint">
+        Sačuvajte datum venčanja u svom telefonu.
+      </p>
+    </motion.div>
+  ) : null;
+
   if (!timeLeft) {
     return (
       <motion.section
@@ -82,17 +117,11 @@ function FloralCountdown({ targetDate }) {
         variants={sectionVariants}
       >
         <motion.div className="floral-countdown-inner" variants={fadeUp}>
-          <motion.p
-            className="floral-countdown-kicker"
-            variants={fadeUp}
-          >
+          <motion.p className="floral-countdown-kicker" variants={fadeUp}>
             Poseban dan je stigao
           </motion.p>
 
-          <motion.div
-            className="floral-countdown-divider"
-            variants={fadeUp}
-          />
+          <motion.div className="floral-countdown-divider" variants={fadeUp} />
 
           <motion.h3
             className="floral-countdown-finished-title"
@@ -111,6 +140,8 @@ function FloralCountdown({ targetDate }) {
           >
             Hvala vam što ste deo naše priče.
           </motion.p>
+
+          {calendarBox}
         </motion.div>
       </motion.section>
     );
@@ -140,16 +171,15 @@ function FloralCountdown({ targetDate }) {
           Do venčanja je ostalo
         </motion.p>
 
-        <motion.div
-          className="floral-countdown-divider"
-          variants={fadeUp}
-        />
+        <motion.div className="floral-countdown-divider" variants={fadeUp} />
 
         <motion.div className="floral-countdown" variants={fadeUp}>
           {items.map((item, index) => (
             <motion.div
               key={item.label}
-              className={`floral-countdown-item ${item.isWide ? "is-wide" : ""}`}
+              className={`floral-countdown-item ${
+                item.isWide ? "is-wide" : ""
+              }`}
               custom={index}
               variants={cardVariants}
               whileHover={{ y: -4, scale: 1.02 }}
@@ -196,6 +226,8 @@ function FloralCountdown({ targetDate }) {
         <motion.p className="floral-countdown-note" variants={fadeUp}>
           Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
         </motion.p>
+
+        {calendarBox}
       </div>
     </motion.section>
   );

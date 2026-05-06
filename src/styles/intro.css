@@ -4253,3 +4253,240 @@ color: #8e7f73;
     max-width: 280px;
   }
 }
+/* =========================
+   BIRTHDAY PARTY INTRO
+========================= */
+
+.birthday-party-intro {
+  --party-bg: #fff3f7;
+  --party-text: #965f4f;
+  --party-soft-text: #8f5f53;
+  --party-accent: #c63b4c;
+  --party-button-border: rgba(255, 160, 185, 0.68);
+  --party-button-hover-border: rgba(255, 150, 180, 0.9);
+  --party-button-bg: rgba(255, 255, 255, 0.28);
+  --party-button-hover-bg: rgba(255, 255, 255, 0.36);
+  --party-button-shadow: rgba(255, 150, 175, 0.16);
+  --party-drop-shadow: rgba(130, 70, 70, 0.16);
+
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: var(--party-bg);
+}
+
+.birthday-party-intro.birthday-party-girl {
+  --party-bg: #fff3f7;
+  --party-text: #965f4f;
+  --party-soft-text: #8f5f53;
+  --party-accent: #c63b4c;
+  --party-button-border: rgba(255, 160, 185, 0.68);
+  --party-button-hover-border: rgba(255, 150, 180, 0.9);
+  --party-button-bg: rgba(255, 255, 255, 0.28);
+  --party-button-hover-bg: rgba(255, 255, 255, 0.36);
+  --party-button-shadow: rgba(255, 150, 175, 0.16);
+  --party-drop-shadow: rgba(130, 70, 70, 0.16);
+}
+
+.birthday-party-intro.birthday-party-boy {
+  --party-bg: #eef7ff;
+  --party-text: #4f7496;
+  --party-soft-text: #567b9b;
+  --party-accent: #3f8fca;
+  --party-button-border: rgba(130, 190, 235, 0.72);
+  --party-button-hover-border: rgba(100, 170, 225, 0.95);
+  --party-button-bg: rgba(255, 255, 255, 0.3);
+  --party-button-hover-bg: rgba(255, 255, 255, 0.4);
+  --party-button-shadow: rgba(100, 170, 220, 0.16);
+  --party-drop-shadow: rgba(65, 120, 170, 0.16);
+}
+
+.birthday-party-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.birthday-party-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 246, 250, 0.05);
+  pointer-events: none;
+}
+
+.birthday-party-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 430px);
+  min-height: 100svh;
+  padding: 56px 16px 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.birthday-party-title {
+  color: var(--party-text);
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.7);
+}
+
+.birthday-party-title h1 {
+  margin: 0;
+  font-family: "Comic Sans MS", "Comic Neue", cursive;
+  font-size: clamp(48px, 15vw, 76px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.birthday-party-title p {
+  margin: 2px 0 0;
+  font-family: "Comic Sans MS", "Comic Neue", cursive;
+  font-size: clamp(28px, 8vw, 43px);
+  line-height: 1;
+  color: var(--party-soft-text);
+}
+
+.birthday-party-age {
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Comic Sans MS", "Comic Neue", cursive;
+}
+
+.birthday-party-age span {
+  color: var(--party-accent);
+  font-size: clamp(42px, 11vw, 62px);
+  font-weight: 500;
+}
+
+.birthday-party-age strong {
+  color: var(--party-text);
+  font-size: clamp(24px, 6.5vw, 38px);
+  font-weight: 500;
+}
+
+.birthday-party-baby {
+  width: min(105vw, 460px);
+  max-height: 64svh;
+  object-fit: contain;
+  margin-top: 34px;
+  filter: drop-shadow(0 18px 24px var(--party-drop-shadow));
+  user-select: none;
+  pointer-events: none;
+}
+
+.birthday-party-button {
+  position: absolute;
+  left: 50%;
+  bottom: 96px;
+  translate: -50% 0;
+
+  border: 1px solid var(--party-button-border);
+  border-radius: 999px;
+  padding: 13px 24px;
+  width: min(72vw, 260px);
+
+  background: var(--party-button-bg);
+  color: var(--party-text);
+
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  cursor: pointer;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  box-shadow: 0 10px 24px var(--party-button-shadow);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  z-index: 4;
+}
+
+.birthday-party-button:hover {
+  background: var(--party-button-hover-bg);
+  border-color: var(--party-button-hover-border);
+  color: var(--party-text);
+}
+
+@media (max-width: 390px) {
+  .birthday-party-content {
+    padding: 48px 14px 36px;
+  }
+
+  .birthday-party-baby {
+    width: min(108vw, 430px);
+    max-height: 63svh;
+    margin-top: 28px;
+  }
+
+  .birthday-party-button {
+    bottom: 84px;
+    width: min(76vw, 240px);
+    padding: 12px 18px;
+    font-size: 11px;
+    letter-spacing: 0.11em;
+  }
+}
+
+@media (max-height: 760px) {
+  .birthday-party-content {
+    padding-top: 40px;
+    padding-bottom: 28px;
+  }
+
+  .birthday-party-baby {
+    width: min(102vw, 410px);
+    max-height: 56svh;
+    margin-top: 22px;
+  }
+
+  .birthday-party-button {
+    bottom: 72px;
+  }
+}
+
+@media (max-height: 680px) {
+  .birthday-party-content {
+    padding-top: 30px;
+    padding-bottom: 22px;
+  }
+
+  .birthday-party-title h1 {
+    font-size: clamp(42px, 13vw, 66px);
+  }
+
+  .birthday-party-title p {
+    font-size: clamp(24px, 7vw, 36px);
+  }
+
+  .birthday-party-age span {
+    font-size: clamp(36px, 10vw, 54px);
+  }
+
+  .birthday-party-age strong {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+
+  .birthday-party-baby {
+    width: min(96vw, 370px);
+    max-height: 52svh;
+    margin-top: 18px;
+  }
+
+  .birthday-party-button {
+    bottom: 52px;
+    width: min(74vw, 220px);
+    padding: 11px 16px;
+  }
+}

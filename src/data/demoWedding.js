@@ -32,6 +32,7 @@ const createDetails = ({
   locationButtonLink = "",
   events = [],
   rsvpOptions = {},
+  showCalendarButton = false,
 }) => ({
   backgroundImage,
   theme,
@@ -64,6 +65,7 @@ const createDetails = ({
   locationButtonLink,
   events,
   rsvpOptions,
+  showCalendarButton,
 });
 const demoWedding = [
   {
@@ -2854,66 +2856,6 @@ dressCodeNote:
   },
 }),},
 
-{
-  slug: "aleksandra-marko",
-  type: "wedding",
-  template: "silk",
-  script: "cyrillic",
-
-  brideName: "Александра",
-  groomName: "Марко",
-
-  videoSrc: "/videos/aleksandra-marko.mp4",
-  fontMode: "light",
-  startMusicOnIntro: true,
-musicSrc: "/music/aleksandra-marko.mp3",
-
-  weddingDate: "20 СЕП 2026",
-  weddingTime: "11:00",
-  venue: "Jet Set Lux, Нова Пазова",
-
-  backgroundImage: "/images/aleksandra-marko.jpg",
-
-  details: createDetails({
-    welcomeText:
-      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
-
-    date: "20 СЕП 2026",
-    dateISO: "2026-09-20T11:00:00+02:00",
-
-    events: [
-      {
-        label: "Дочек сватова",
-        time: "11:00",
-        icon: "gathering",
-        location: "Породица Шарац",
-      },
-      {
-        label: "Црквено венчање",
-        time: "14:00",
-        icon: "church",
-        location: "Храм Рођења Пресвете Богородице, Батајница",
-        mapLink:
-          "https://maps.google.com/?q=Hram+Rodjenja+Presvete+Bogorodice+Batajnica",
-      },
-      {
-        label: "Ресторан",
-        time: "16:00",
-        icon: "restaurant",
-        location: "Jet Set Lux, Пионирска 12, Нова Пазова",
-        mapLink:
-          "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
-      },
-    ],
-
-    showDressCode: false,
-
-    mapLink:
-      "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
-
-    note: "Молимо вас да свој долазак потврдите до 1. септембра 2026.",
-  }),
-},
 
 
 {
@@ -2925,7 +2867,7 @@ musicSrc: "/music/aleksandra-marko.mp3",
   brideName: "Александра",
   groomName: "Марко",
 
-  startMusicOnIntro: true,
+ 
   musicSrc: "/music/aleksandra-marko.mp3",
 
   videoSrc: "/videos/aleksandra-marko-4.mp4",
@@ -2975,6 +2917,54 @@ musicSrc: "/music/aleksandra-marko.mp3",
       "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
 
     note: "Молимо вас да свој долазак потврдите до 1. септембра 2026.",
+  }),
+},
+{
+  slug: "marija-milan",
+  type: "wedding",
+  template: "envelope-split-v2",
+
+  brideName: "Marija",
+  groomName: "Milan",
+
+  weddingDate: "15 AVG 2026",
+  weddingTime: "15:30",
+  venue: "Talas Resort",
+ musicSrc: "/music/marija-milan.mp3",
+  backgroundImage: "/images/floral-marija-milan.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
+showCalendarButton: true,
+    date: "15 AVG 2026",
+    dateISO: "2026-08-15T15:30:00+02:00",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Talas Resort, Kraljevo",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=Talas+Resort",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:30",
+        icon: "civil",
+        location: "Talas Resort, Kraljevo",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=Talas+Resort",
+      },
+    ],
+
+ showDressCode: true,
+dressCodeTitle: "Dress code",
+dressCodeNote:
+  "Slobodno birajte boje po želji, uz molbu da izbegnete belu i potpuno crne kombinacije.",
+dressCodePalette: [],
+
+    mapLink: "https://www.google.com/maps/search/?api=1&query=Talas+Resort",
+    note: "Molimo vas da svoj dolazak potvrdite do 25. jula.",
   }),
 },
   // =========================
@@ -3113,6 +3103,46 @@ musicSrc: "/music/aleksandra-marko.mp3",
     note: "RSVP do 10. septembra",
     rsvpTitle: "Potvrdite dolazak",
     rsvpText: "Radovaćemo se da zajedno proslavimo Ninin rođendan.",
+  }),
+},
+{
+  slug: "ana-rodjendan",
+  type: "birthday",
+  template: "birthday-party",
+  partyGender: "girl",
+  brideName: "Ana",
+  weddingDate: "1 SEP 2026",
+  weddingTime: "18:00",
+  venue: "Igraonica Maštograd",
+
+  videoSrc: "/videos/ana-rodjendan-intro.mp4",
+  babyImage: "/images/ana-beba.svg",
+  
+  introText: "Pozivamo vas da zajedno proslavimo Anin prvi rođendan.",
+
+  details: createDetails({
+    dateISO: "2026-09-01T18:00:00+02:00",
+    note: "Molimo vas da potvrdite dolazak.",
+  }),
+},
+{
+  slug: "nikola-1",
+  type: "birthday",
+  template: "birthday-party",
+  partyGender: "boy",
+  brideName: "Nikola",
+  weddingDate: "1 SEP 2026",
+  weddingTime: "18:00",
+  venue: "Igraonica Maštograd",
+
+  videoSrc: "/videos/nikola-rodjendan-intro.mp4",
+  babyImage: "/images/nikola-beba.svg",
+  
+  introText: "Pozivamo vas da zajedno proslavimo Anin prvi rođendan.",
+
+  details: createDetails({
+    dateISO: "2026-09-01T18:00:00+02:00",
+    note: "Molimo vas da potvrdite dolazak.",
   }),
 },
   // =========================

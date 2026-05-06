@@ -7,7 +7,10 @@
   width: 100%;
   min-height: 100dvh;
   overflow: hidden;
-  background: url("../assets/floral.png") center/cover no-repeat;
+  background-image: var(--floral-bg-image, url("../assets/floral.png"));
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;

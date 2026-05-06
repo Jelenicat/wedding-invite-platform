@@ -4,7 +4,14 @@ import FloralCountdown from "./FloralCountdown";
 import "../styles/card.css";
 import "../styles/rsvp.css";
 
-function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }) {
+function FloralInvitationCard({
+  brideName,
+  groomName,
+  details = {},
+  slug,
+  type,
+  backgroundImage,
+}) {
   const brideInitial = brideName?.[0] || "A";
   const groomInitial = groomName?.[0] || "M";
 
@@ -175,12 +182,17 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
 
   return (
     <>
-      <motion.section
-        className="floral-invitation-card floral-editorial-card"
-        initial="hidden"
-        animate="show"
-        variants={sectionVariants}
-      >
+    <motion.section
+  className="floral-invitation-card floral-editorial-card"
+  style={
+    backgroundImage
+      ? { "--floral-bg-image": `url(${backgroundImage})` }
+      : undefined
+  }
+  initial="hidden"
+  animate="show"
+  variants={sectionVariants}
+>
         <div className="floral-invitation-overlay" />
         <div className="floral-corner floral-corner-top-left" />
         <div className="floral-corner floral-corner-bottom-right" />
@@ -445,7 +457,15 @@ function FloralInvitationCard({ brideName, groomName, details = {}, slug, type }
         rsvpOptions={details?.rsvpOptions}
       />
 
-      {details.dateISO && <FloralCountdown targetDate={details.dateISO} />}
+      {details.dateISO && (
+  <FloralCountdown
+    targetDate={details.dateISO}
+    brideName={brideName}
+    groomName={groomName}
+    details={details}
+    showCalendarButton={details?.showCalendarButton}
+  />
+)}
     </>
   );
 }
