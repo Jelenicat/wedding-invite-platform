@@ -2960,7 +2960,7 @@ showCalendarButton: true,
  showDressCode: true,
 dressCodeTitle: "Dress code",
 dressCodeNote:
-  "Slobodno birajte boje po želji, uz molbu da izbegnete belu i potpuno crne kombinacije.",
+  "Bez pravila za boje — po Vašoj želji.",
 dressCodePalette: [],
 
     mapLink: "https://www.google.com/maps/search/?api=1&query=Talas+Resort",
