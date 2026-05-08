@@ -4490,3 +4490,61 @@ color: #8e7f73;
     padding: 11px 16px;
   }
 }
+.angel-music-floating-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid rgba(177, 90, 88, 0.36);
+  background: rgba(255, 250, 247, 0.86);
+  color: #b15a58;
+
+  padding: 11px 16px;
+  border-radius: 999px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 10px 26px rgba(120, 70, 70, 0.16);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.angel-music-floating-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 250, 247, 0.98);
+  box-shadow: 0 14px 32px rgba(120, 70, 70, 0.2);
+}
+
+.angel-music-floating-btn span {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.angel-music-floating-btn.is-playing {
+  opacity: 0.82;
+  background: rgba(255, 250, 247, 0.72);
+}
+
+@media (max-width: 640px) {
+  .angel-music-floating-btn {
+    right: 14px;
+    bottom: 14px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+  }
+}

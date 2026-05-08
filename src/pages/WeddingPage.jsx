@@ -342,16 +342,30 @@ const audioNode = invitation.musicSrc ? (
     <source src={invitation.musicSrc} type="audio/mpeg" />
   </audio>
 ) : null;
-
-  if (templateKey === "angel" || templateKey === "classic") {
-    return (
-      <div className="wedding-page">
-        {audioNode}
-        <IntroComponent {...introProps} />
-        <InvitationComponent {...invitationProps} />
-      </div>
-    );
-  }
+const angelMusicButton =
+  templateKey === "angel" && invitation.musicSrc ? (
+    <button
+      type="button"
+      className={`angel-music-floating-btn ${
+        musicStarted ? "is-playing" : ""
+      }`}
+      onClick={playInvitationMusic}
+      aria-label={musicStarted ? "Muzika svira" : "Pusti muziku"}
+    >
+      <span>♪</span>
+      {musicStarted ? "Muzika svira" : "Pusti muziku"}
+    </button>
+  ) : null;
+ if (templateKey === "angel" || templateKey === "classic") {
+  return (
+    <div className="wedding-page">
+      {audioNode}
+      {angelMusicButton}
+      <IntroComponent {...introProps} />
+      <InvitationComponent {...invitationProps} />
+    </div>
+  );
+}
 
   if (
   templateKey === "envelope-split" ||
