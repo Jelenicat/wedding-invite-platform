@@ -210,7 +210,39 @@ function WeddingPage() {
       
     }
   }, [invitation]);
+useEffect(() => {
+  if (!invitation) return;
 
+  const templateKey = invitation.template || "envelope";
+
+  // Samo Angel template — ostali ostaju po starom
+  if (templateKey !== "angel") return;
+
+  // Ako nema muzike ili je već pokrenuta, ne dodajemo listenere
+  if (!invitation.musicSrc || musicStarted) return;
+
+  const events = ["click", "touchstart", "wheel"];
+
+  const handleFirstInteraction = () => {
+    playInvitationMusic();
+
+    events.forEach((eventName) => {
+      document.removeEventListener(eventName, handleFirstInteraction);
+    });
+  };
+
+  events.forEach((eventName) => {
+    document.addEventListener(eventName, handleFirstInteraction, {
+      passive: true,
+    });
+  });
+
+  return () => {
+    events.forEach((eventName) => {
+      document.removeEventListener(eventName, handleFirstInteraction);
+    });
+  };
+}, [invitation, musicStarted]);
   if (!invitation) {
     return <div className="wedding-page">Pozivnica nije pronađena.</div>;
   }

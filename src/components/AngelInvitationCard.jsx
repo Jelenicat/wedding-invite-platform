@@ -29,6 +29,7 @@ function AngelInvitationCard({
   const getCalendarData = () => {
     if (details?.dateISO) {
       const d = new Date(details.dateISO);
+
       if (!Number.isNaN(d.getTime())) {
         return {
           day: d.getDate(),
@@ -40,6 +41,7 @@ function AngelInvitationCard({
 
     if (details?.date) {
       const parts = details.date.trim().split(/\s+/);
+
       if (parts.length >= 3) {
         const day = Number(parts[0]);
         const monthIndex = monthsShort[parts[1]?.toUpperCase()];
@@ -90,9 +92,11 @@ function AngelInvitationCard({
   const firstDayOffset = getFirstDayOffset(monthIndex, year);
 
   const calendarCells = [];
+
   for (let i = 0; i < firstDayOffset; i += 1) {
     calendarCells.push(null);
   }
+
   for (let i = 1; i <= daysInMonth; i += 1) {
     calendarCells.push(i);
   }
@@ -152,10 +156,11 @@ function AngelInvitationCard({
     );
   };
 
-  const hasDressCode =
-    !!details?.dressCodeNote ||
-    details?.dressCodeWomen?.length > 0 ||
-    details?.dressCodeMen?.length > 0;
+  const shouldShowDressCode =
+    details?.showDressCode &&
+    (details?.dressCodeTitle ||
+      details?.dressCodeNote ||
+      details?.dressCodePalette?.length > 0);
 
   return (
     <>
@@ -181,8 +186,6 @@ function AngelInvitationCard({
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
-          
-
               <p className="angel-card-invite-text">Pozivnica</p>
 
               {details?.welcomeText && (
@@ -285,7 +288,7 @@ function AngelInvitationCard({
               </motion.div>
             </div>
 
-            {hasDressCode && (
+            {shouldShowDressCode && (
               <div className="angel-card-bottom-grid angel-card-bottom-grid-single">
                 <motion.div
                   className="angel-info-block angel-dress-block"
@@ -294,41 +297,24 @@ function AngelInvitationCard({
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.55, delay: 0.08 }}
                 >
-                  <div className="angel-block-title">Dress code</div>
+                  <div className="angel-block-title">
+                    {details?.dressCodeTitle || "Dress code"}
+                  </div>
 
                   {details?.dressCodeNote && (
                     <p className="angel-dress-text">{details.dressCodeNote}</p>
                   )}
 
-                  {details?.dressCodeWomen?.length > 0 && (
-                    <div className="angel-dress-group">
-                      <div className="angel-dress-group-title">Za dame</div>
-
-                      <div className="angel-dress-palette">
-                        {details.dressCodeWomen.map((color, index) => (
-                          <span
-                            key={`women-${color}-${index}`}
-                            className="angel-dress-swatch"
-                            style={{ backgroundColor: color }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {details?.dressCodeMen?.length > 0 && (
-                    <div className="angel-dress-group">
-                      <div className="angel-dress-group-title">Za gospodu</div>
-
-                      <div className="angel-dress-palette">
-                        {details.dressCodeMen.map((color, index) => (
-                          <span
-                            key={`men-${color}-${index}`}
-                            className="angel-dress-swatch"
-                            style={{ backgroundColor: color }}
-                          />
-                        ))}
-                      </div>
+                  {details?.dressCodePalette?.length > 0 && (
+                    <div className="angel-dress-palette">
+                      {details.dressCodePalette.map((color, index) => (
+                        <span
+                          key={`${color}-${index}`}
+                          className="angel-dress-swatch"
+                          style={{ backgroundColor: color }}
+                          aria-label={`dress code color ${index + 1}`}
+                        />
+                      ))}
                     </div>
                   )}
                 </motion.div>
@@ -351,12 +337,18 @@ function AngelInvitationCard({
       </section>
 
       <div className="angel-rsvp-connected">
-       <AngelRSVP slug={slug} eventType={type} />
+        <AngelRSVP slug={slug} eventType={type} />
       </div>
 
       {details?.dateISO && (
         <div className="angel-countdown-connected">
-         <AngelCountdown targetDate={details.dateISO} />
+          <AngelCountdown
+            targetDate={details.dateISO}
+            brideName={brideName}
+            groomName={groomName}
+            details={details}
+            showCalendarButton={details?.showCalendarButton}
+          />
         </div>
       )}
     </>

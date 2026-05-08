@@ -10753,3 +10753,43 @@ margin-bottom: 2px;
   line-height: 1.5;
   color: rgba(109, 91, 82, 0.72);
 }
+.angel-countdown-calendar-box {
+  position: relative;
+  z-index: 3;
+  margin: 28px auto 0;
+  text-align: center;
+}
+
+.angel-countdown-calendar-btn {
+  border: 1px solid rgba(183, 150, 101, 0.45);
+  background: rgba(255, 250, 243, 0.9);
+  color: #7d684c;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(95, 73, 45, 0.12);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.angel-countdown-calendar-btn span {
+  margin-right: 8px;
+}
+
+.angel-countdown-calendar-btn:hover {
+  transform: translateY(-3px);
+  background: #fffaf2;
+  box-shadow: 0 16px 34px rgba(95, 73, 45, 0.18);
+}
+
+.angel-countdown-calendar-hint {
+  margin: 10px 0 0;
+  font-size: 0.78rem;
+  color: rgba(125, 104, 76, 0.72);
+}

@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/rsvp.css";
+import { addToCalendar } from "../utils/calendar";
 
-function AngelCountdown({ targetDate }) {
+function AngelCountdown({
+  targetDate,
+  brideName,
+  groomName,
+  details = {},
+  showCalendarButton = false,
+}) {
   const calculateTimeLeft = () => {
     const difference =
       new Date(targetDate).getTime() - new Date().getTime();
@@ -27,13 +34,78 @@ function AngelCountdown({ targetDate }) {
     return () => clearInterval(interval);
   }, [targetDate]);
 
-  if (!timeLeft) return null;
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: targetDate,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
+
+  const calendarBox = showCalendarButton ? (
+    <motion.div
+      className="angel-countdown-calendar-box"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.55, delay: 0.15 }}
+    >
+      <button
+        type="button"
+        className="angel-countdown-calendar-btn"
+        onClick={handleCalendarClick}
+      >
+        <span>📅</span>
+        Dodaj u kalendar
+      </button>
+
+      <p className="angel-countdown-calendar-hint">
+        Sačuvajte datum venčanja u svom telefonu.
+      </p>
+    </motion.div>
+  ) : null;
+
+  if (!timeLeft) {
+    return (
+      <section className="angel-countdown-section">
+        <div className="angel-countdown-shell">
+          <div className="angel-countdown-frame-outer">
+            <motion.div
+              className="angel-countdown-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="angel-countdown-frame" />
+              <div className="angel-countdown-frame angel-countdown-frame-second" />
+
+              <div className="angel-countdown-heading">
+                <div className="angel-countdown-script">Wedding day</div>
+                <h2 className="angel-countdown-title">
+                  Dan venčanja je stigao ✨
+                </h2>
+              </div>
+
+              {calendarBox}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const items = [
     { label: "Dana", value: timeLeft.days },
     { label: "Sati", value: timeLeft.hours },
     { label: "Minuta", value: timeLeft.minutes },
-    { label: timeLeft.seconds === 1 ? "Sekunda" : "Sekundi", value: timeLeft.seconds },
+    {
+      label: timeLeft.seconds === 1 ? "Sekunda" : "Sekundi",
+      value: timeLeft.seconds,
+    },
   ];
 
   return (
@@ -77,6 +149,8 @@ function AngelCountdown({ targetDate }) {
                 </div>
               ))}
             </div>
+
+            {calendarBox}
           </motion.div>
         </div>
       </div>

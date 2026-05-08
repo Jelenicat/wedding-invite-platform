@@ -2967,6 +2967,61 @@ dressCodePalette: [],
     note: "Molimo vas da svoj dolazak potvrdite do 25. jula.",
   }),
 },
+{
+  slug: "stefana-stefan",
+  type: "wedding",
+  template: "angel",
+
+  brideName: "Stefana",
+  groomName: "Stefan",
+  image: "/images/angel/stefana-stefan.jpg",
+  weddingDate: "25 JUL 2026",
+  weddingTime: "13:30",
+  venue: "Manastir Svetog Nikole, Vranje",
+musicSrc: "/music/marija-milan.mp3",
+  details: createDetails({
+    welcomeText: "Sa radošću vas pozivamo da zajedno proslavimo naš dan.",
+
+    date: "25 JUL 2026",
+    dateISO: "2026-07-25T13:30:00+02:00",
+
+    venue: "Manastir Svetog Nikole, Vranje",
+    mapLink: "https://share.google/GAdgkOXoQMaIXVnz3",
+
+    showCalendarButton: true,
+
+    showDressCode: false,
+
+    rsvpDeadline: "10.07.2026",
+    rsvpDeadlineISO: "2026-07-10",
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "13:30",
+        location: "Manastir Svetog Nikole, Vranje",
+        mapLink: "https://share.google/GAdgkOXoQMaIXVnz3",
+        icon: "church",
+      },
+      {
+        label: "Skup svatova",
+        time: "15:30",
+        location: "Hotel Vojvoda Putnik",
+        mapLink: "https://share.google/0446AIS1OR5YgVM33",
+        icon: "restaurant",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        location: "Hotel Vojvoda Putnik",
+        mapLink: "https://share.google/0446AIS1OR5YgVM33",
+        icon: "civil",
+      },
+    ],
+
+    note: "Molimo vas da potvrdite dolazak do 10.07.2026.",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
