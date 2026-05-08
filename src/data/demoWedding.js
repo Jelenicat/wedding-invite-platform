@@ -2978,7 +2978,7 @@ dressCodePalette: [],
   weddingDate: "25 JUL 2026",
   weddingTime: "13:30",
   venue: "Manastir Svetog Nikole, Vranje",
-musicSrc: "/music/marija-milan.mp3",
+musicSrc: "/music/stefana-stefan.mp3",
   details: createDetails({
     welcomeText: "Sa radošću vas pozivamo da zajedno proslavimo naš dan.",
 
