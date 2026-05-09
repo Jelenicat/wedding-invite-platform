@@ -3052,14 +3052,14 @@ musicSrc: "/music/stefana-stefan.mp3",
         location: "CRKVA SVETA PETKA",
         icon: "church",
         mapLink:
-          "https://www.google.com/maps?sca_esv=c37b95320aa0990c&sxsrf=ANbL-n6yUdusDUNAunc1SIG3Gp1xDjlnXA:1778344831964&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiFWNydHZhIHN2ZXRlIHBldGtlIG5pczIPEC4YgAQYDRgTGMcBGK8BMgkQABiABBgNGBMyChAAGAgYHhgNGBMyBRAAGO8FMggQABiABBiiBDIFEAAY7wVI2yRQkgdYjyNwA3gAkAEAmAGHAaAB5hGqAQQ5LjEzuAEDyAEA-AEBmAIYoALOEsICChAAGEcY1gQYsAPCAgoQIxiABBiKBRgnwgILEAAYgAQYigUYkQLCAgoQABiABBiKBRhDwgIQEC4YgAQYigUYxwEYrwEYJ8ICBBAjGCfCAgUQABiABMICEBAuGIAEGIoFGEMYxwEY0QPCAh8QLhiABBiKBRhDGMcBGNEDGJcFGNwEGN4EGOAE2AEBwgIJEAAYgAQYChgLwgIHEAAYgAQYCsICDRAuGIAEGA0YxwEYrwHCAgcQABiABBgNwgIFECEYoAHCAgYQABgeGA2YAwCIBgGQBgO6BgYIARABGBSSBwQ3LjE3oAf-nwGyBwQ0LjE3uAfDEsIHCjAuNS4xNy4xLjHIB4UBgAgB&um=1&ie=UTF-8&fb=1&gl=rs&sa=X&geocode=KTMo0N9Tt1VHMQXPRMcz32TL&daddr=Ni%C5%A1",
+          "https://www.google.com/maps/place/%D0%A1%D1%80%D0%BF%D1%81%D0%BA%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0+%D1%86%D1%80%D0%BA%D0%B2%D0%B0+%D0%A1%D0%B2%D0%B5%D1%82%D0%B5+%D0%9F%D0%B5%D1%82%D0%BA%D0%B5/@43.3153621,21.8756639,17z/data=!3m1!4b1!4m6!3m5!1s0x4755b753dfd02833:0xcb64df33c744cf05!8m2!3d43.3153621!4d21.8782388!16s%2Fg%2F11fzb1rkxl?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D",
       },
       {
         time: "17H",
         location: "DAMI RESORT (PROSEK)",
         icon: "rings",
         mapLink:
-          "https://www.google.com/maps/dir//Dami+Resort,+Pukovnika+Slobodana+Peri%C4%87a+74,+Ni%C5%A1+18000/@44.791424,20.4796054,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4755aff5798d548f:0x7452a892b4b01cc8!2m2!1d22.0387438!2d43.3152839?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D",
+          "https://www.google.com/maps?sca_esv=828ada9278fc7429&output=search&q=dami+resort+nis&source=lnms&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3j2nXl-YQ05KjnWz5SrU93HEjYyChsjChlPh8hoCFXOKGKdIkdWV9Y1jIT6MO4-1nGlfchNIc5D-klC_exTOWrKKe_kCTVhWhBJtlgR9t2IFizZKJRWqvxEYC_nin3RN3qM7yrmb9k7HQN7FFHERx57AJ_KtnFsSMRokLgDMbrpTS2zLMg&entry=mc&ved=1t:200715&ictx=111",
       },
     ],
 
