@@ -2828,7 +2828,7 @@ dressCodeNote:
   dressCodeTitle: "Dress code",
   dressCodeNote: "Svečano i elegantno, u stilu koji vam najviše prija.",
   dressCodePalette: [],
-  note: "Molimo vas da svoj dolazak potvrdite do 10. maja.",
+  note: "Molimo vas da svoj dolazak potvrdite do 15. maja.",
 
   theme: {
     introMainText: "#7a7f46",
