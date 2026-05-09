@@ -3022,6 +3022,52 @@ musicSrc: "/music/stefana-stefan.mp3",
     note: "Molimo vas da potvrdite dolazak do 10.07.2026.",
   }),
 },
+{
+  slug: "anabela-marko",
+  template: "envelope-side-split-v2",
+
+  brideName: "Anabela",
+  groomName: "Marko",
+
+  weddingDate: "12.09.2026.",
+  weddingTime: "13H",
+  venue: "Crkva Sveta Petka",
+
+  musicSrc: "/music/anabela-marko.mp3",
+
+  backgroundImage: "/images/cards/envelope-side-split-v2-paper.jpg",
+
+  details: {
+    cardBackgroundImage: "/images/cards/envelope-side-split-v2-paper.jpg",
+
+    invitationText:
+      "POZIVAMO VAS DA SVOJIM\nPRISUSTVOM UVELIČATE NAŠE SLAVLJE",
+
+    city: "NIŠ",
+    date: "12.09.2026.",
+
+    events: [
+      {
+        time: "13H",
+        location: "CRKVA SVETA PETKA",
+        icon: "church",
+        mapLink:
+          "https://www.google.com/maps?sca_esv=c37b95320aa0990c&sxsrf=ANbL-n6yUdusDUNAunc1SIG3Gp1xDjlnXA:1778344831964&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiFWNydHZhIHN2ZXRlIHBldGtlIG5pczIPEC4YgAQYDRgTGMcBGK8BMgkQABiABBgNGBMyChAAGAgYHhgNGBMyBRAAGO8FMggQABiABBiiBDIFEAAY7wVI2yRQkgdYjyNwA3gAkAEAmAGHAaAB5hGqAQQ5LjEzuAEDyAEA-AEBmAIYoALOEsICChAAGEcY1gQYsAPCAgoQIxiABBiKBRgnwgILEAAYgAQYigUYkQLCAgoQABiABBiKBRhDwgIQEC4YgAQYigUYxwEYrwEYJ8ICBBAjGCfCAgUQABiABMICEBAuGIAEGIoFGEMYxwEY0QPCAh8QLhiABBiKBRhDGMcBGNEDGJcFGNwEGN4EGOAE2AEBwgIJEAAYgAQYChgLwgIHEAAYgAQYCsICDRAuGIAEGA0YxwEYrwHCAgcQABiABBgNwgIFECEYoAHCAgYQABgeGA2YAwCIBgGQBgO6BgYIARABGBSSBwQ3LjE3oAf-nwGyBwQ0LjE3uAfDEsIHCjAuNS4xNy4xLjHIB4UBgAgB&um=1&ie=UTF-8&fb=1&gl=rs&sa=X&geocode=KTMo0N9Tt1VHMQXPRMcz32TL&daddr=Ni%C5%A1",
+      },
+      {
+        time: "17H",
+        location: "DAMI RESORT (PROSEK)",
+        icon: "rings",
+        mapLink:
+          "https://www.google.com/maps/dir//Dami+Resort,+Pukovnika+Slobodana+Peri%C4%87a+74,+Ni%C5%A1+18000/@44.791424,20.4796054,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4755aff5798d548f:0x7452a892b4b01cc8!2m2!1d22.0387438!2d43.3152839?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D",
+      },
+    ],
+
+    closingScript: "Radujemo se vašem dolasku",
+
+    rsvpText: "Molimo Vas da potvrdite Vaš dolazak do 01.09.2026.",
+  },
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

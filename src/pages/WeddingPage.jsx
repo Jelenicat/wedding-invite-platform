@@ -51,6 +51,8 @@ import SilkIntro from "../components/SilkIntro";
 import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
 import EnvelopeSideSplitIntro from "../components/EnvelopeSideSplitIntro";
 import EnvelopeSplitIntroV2 from "../components/EnvelopeSplitIntroV2";
+import EnvelopeSideSplitIntroV2 from "../components/EnvelopeSideSplitIntroV2";
+import EnvelopeSideSplitV2InvitationCard from "../components/EnvelopeSideSplitV2InvitationCard";
 import PassportIntro from "../components/PassportIntro";
 import PassportInvitationCard from "../components/PassportInvitationCard"; // (ili šta već nazoveš)
 import ElegantWhiteIntro from "../components/ElegantWhiteIntro";
@@ -156,6 +158,10 @@ const TEMPLATE_COMPONENTS = {
 "envelope-split-v2": {
   Intro: EnvelopeSplitIntroV2,
   Invitation: FloralInvitationCard,
+},
+"envelope-side-split-v2": {
+  Intro: EnvelopeSideSplitIntroV2,
+  Invitation: EnvelopeSideSplitV2InvitationCard,
 },
 };
 
@@ -367,10 +373,11 @@ const angelMusicButton =
   );
 }
 
-  if (
+if (
   templateKey === "envelope-split" ||
   templateKey === "envelope-split-v2" ||
-  templateKey === "envelope-side-split"
+  templateKey === "envelope-side-split" ||
+  templateKey === "envelope-side-split-v2"
 ) {
     return (
       <div className="wedding-page">
