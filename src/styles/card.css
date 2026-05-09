@@ -8807,7 +8807,7 @@
   }
 
   .essv2-inner {
-  padding: 175px 22px 30px;
+  padding: 135px 22px 30px;
 }
 
   .essv2-monogram {
@@ -8846,13 +8846,14 @@
     font-size: clamp(2.45rem, 10vw, 3.4rem);
   }
 
-  .essv2-event-row {
-    grid-template-columns: 52px 1fr;
-    gap: 12px;
-  }
+.essv2-event-row {
+  grid-template-columns: 40px 1fr;
+  gap: 7px;
+  padding-left: 24px;
+}
 
   .essv2-events {
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 28px;
   }
 
