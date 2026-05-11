@@ -2903,7 +2903,7 @@ dressCodeNote:
       },
       {
         label: "Ресторан",
-        time: "16:00",
+        time: "15:00",
         icon: "restaurant",
         location: "Jet Set Lux, Пионирска 12, Нова Пазова",
         mapLink:
