@@ -1,4 +1,4 @@
-import { script } from "framer-motion/client";
+
 
 const createDetails = ({
   backgroundImage,
@@ -33,6 +33,8 @@ const createDetails = ({
   events = [],
   rsvpOptions = {},
   rsvpSignature,
+  locationName,
+locationAddress,
   showCalendarButton = false,
 }) => ({
   backgroundImage,
@@ -67,6 +69,8 @@ const createDetails = ({
   events,
   rsvpOptions,
   rsvpSignature,
+  locationName,
+locationAddress,
   showCalendarButton,
 });
 const demoWedding = [
@@ -3115,9 +3119,9 @@ musicSrc: "/music/stefana-stefan.mp3",
 
   brideName: "Đorđe",
 
-  weddingDate:"27.06.2026.",
+  weddingDate: "27.06.2026.",
   weddingTime: "19:00",
-  venue: "Côtier",
+  venue: "Splav Côtier",
 
   backgroundImage: "/images/birthday-glass-bg.jpg",
   introBackgroundImage: "/images/birthday-glass-intro.jpg",
@@ -3131,9 +3135,14 @@ musicSrc: "/music/stefana-stefan.mp3",
 
     date: "27.06.2026.",
     dateISO: "2026-06-27T19:00:00+02:00",
-rsvpSignature: "Đorđe Krušić",
-    venue: "Côtier",
-    mapLink: "https://maps.google.com/?q=Cotier",
+
+    rsvpSignature: "Đorđe Krušić",
+
+    venue: "Splav Côtier",
+    locationName: "Splav Côtier",
+    locationAddress: "Zemunski kej",
+
+    mapLink: "https://maps.google.com/?q=Splav+Cotier+Zemunski+kej",
 
     note: "Molimo vas da potvrdite dolazak do 10.06.",
     rsvpDeadline: "10.06.2026.",

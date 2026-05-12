@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
 
 .blux-rsvp-section {
   position: relative;
@@ -13,38 +13,9 @@
   align-items: flex-start;
   justify-content: center;
   color: #f6ead4;
-  margin-top: -54px;
-}
-.blux-rsvp-signature {
-  width: fit-content;
-  margin: 12px auto 0;
-  padding: 0 18px;
-  position: relative;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
-  line-height: 1.2;
-  font-weight: 500;
-  color: rgba(245, 222, 192, 0.94);
-  text-align: center;
+  margin-top: -124px;
 }
 
-.blux-rsvp-signature::before,
-.blux-rsvp-signature::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 42px;
-  height: 1px;
-  background: rgba(226, 188, 127, 0.46);
-}
-
-.blux-rsvp-signature::before {
-  right: 100%;
-}
-
-.blux-rsvp-signature::after {
-  left: 100%;
-}
 .blux-rsvp-section::before {
   content: "";
   position: absolute;
@@ -138,6 +109,42 @@
   font-size: 20px;
   line-height: 1.42;
   color: rgba(246, 236, 221, 0.78);
+}
+
+.blux-rsvp-signature {
+  width: fit-content;
+  margin: 14px auto 0;
+  padding: 0 20px;
+  position: relative;
+  font-family: "Allura", "Cormorant Garamond", cursive;
+  font-size: 32px;
+  line-height: 0.9;
+  font-weight: 200;
+  letter-spacing: 0.2px;
+  color: rgba(245, 222, 192, 0.96);
+  text-align: center;
+  text-transform: none;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.62),
+    0 0 12px rgba(216, 170, 104, 0.12);
+}
+
+.blux-rsvp-signature::before,
+.blux-rsvp-signature::after {
+  content: "";
+  position: absolute;
+  top: 56%;
+  width: 34px;
+  height: 1px;
+  background: rgba(226, 188, 127, 0.38);
+}
+
+.blux-rsvp-signature::before {
+  right: 100%;
+}
+
+.blux-rsvp-signature::after {
+  left: 100%;
 }
 
 .blux-rsvp-deadline {
@@ -238,7 +245,11 @@
 .blux-choice-card.is-active {
   border-color: rgba(226, 188, 127, 0.9);
   background:
-    linear-gradient(180deg, rgba(226, 188, 127, 0.16), rgba(255, 255, 255, 0.04));
+    linear-gradient(
+      180deg,
+      rgba(226, 188, 127, 0.16),
+      rgba(255, 255, 255, 0.04)
+    );
   box-shadow:
     0 0 20px rgba(226, 188, 127, 0.14),
     inset 0 0 18px rgba(255, 255, 255, 0.025);
@@ -346,15 +357,7 @@
     padding: 14px 16px 64px;
     margin-top: -28px;
   }
-.blux-rsvp-signature {
-  font-size: 22px;
-  padding: 0 14px;
-}
 
-.blux-rsvp-signature::before,
-.blux-rsvp-signature::after {
-  width: 30px;
-}
   .blux-rsvp-box {
     padding: 32px 18px 30px;
   }
@@ -370,6 +373,17 @@
 
   .blux-rsvp-subtitle {
     font-size: 19px;
+  }
+
+  .blux-rsvp-signature {
+    font-size: 22px;
+    padding: 0 16px;
+    margin-top: 13px;
+  }
+
+  .blux-rsvp-signature::before,
+  .blux-rsvp-signature::after {
+    width: 26px;
   }
 
   .blux-rsvp-deadline {

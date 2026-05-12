@@ -270,8 +270,7 @@
       rgba(9, 10, 12, 0.72),
       rgba(4, 4, 4, 0.62)
     );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+
   text-align: center;
   color: #f6ead4;
   box-shadow:
@@ -369,14 +368,37 @@
   text-transform: uppercase;
   color: rgba(246, 236, 221, 0.54);
 }
-
 .bglass-info-grid strong {
   font-family: "Cormorant Garamond", serif;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.1;
+  font-weight: 600;
   color: #f5dec0;
 }
 
+.bglass-location-box {
+  text-align: center;
+}
+
+.bglass-location-name {
+  display: block;
+  font-size: 27px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #f5dec0;
+}
+
+.bglass-location-address {
+  display: block;
+  margin-top: 7px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: rgba(246, 236, 221, 0.68);
+}
 .bglass-full {
   grid-column: 1 / -1;
 }
@@ -453,9 +475,18 @@
     padding: 15px 8px;
   }
 
-  .bglass-info-grid strong {
-    font-size: 20px;
-  }
+.bglass-info-grid strong {
+  font-size: 25px;
+}
+
+.bglass-location-name {
+  font-size: 25px;
+}
+
+.bglass-location-address {
+  font-size: 11px;
+  letter-spacing: 1.7px;
+}
 
   .bglass-note {
     font-size: 19px;

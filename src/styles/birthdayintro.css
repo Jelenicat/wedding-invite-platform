@@ -355,8 +355,7 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
       rgba(10, 12, 15, 0.76),
       rgba(4, 4, 4, 0.66)
     );
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+ 
   text-align: center;
   box-shadow:
     0 34px 80px rgba(0, 0, 0, 0.52),
@@ -459,28 +458,33 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
 
 .bglass-age-wrap {
   position: relative;
-  line-height: 0.78;
-  margin-bottom: 32px;
+  line-height: 0.95;
+  margin-bottom: 20px;
+  overflow: visible;
 }
 
 .bglass-age {
+  display: inline-block;
+  padding: 0 10px 4px;
   font-family: "Cinzel", "Noto Serif Display", "Cormorant Garamond", serif;
-  font-size: clamp(126px, 34vw, 188px);
+font-size: clamp(124px, 33vw, 184px);
   font-weight: 500;
-  letter-spacing: -3px;
+  line-height: 0.9;
+  letter-spacing: 0;
+
   background: linear-gradient(
     180deg,
     #fff2d4 0%,
-    #d7a260 42%,
-    #8a5728 100%
+    #d7a260 44%,
+    #9b652f 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow:
-    0 20px 38px rgba(0, 0, 0, 0.46),
-    0 0 18px rgba(216, 170, 104, 0.12);
-}
 
+  text-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.22),
+    0 0 10px rgba(216, 170, 104, 0.08);
+}
 .bglass-age-shine {
   display: none;
 }
@@ -600,7 +604,7 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
   }
 
   .bglass-age {
-    font-size: clamp(120px, 33vw, 168px);
+    font-size: clamp(150px, 40vw, 180px);
     letter-spacing: -2px;
   }
 

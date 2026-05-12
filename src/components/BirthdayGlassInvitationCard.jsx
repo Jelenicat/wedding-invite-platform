@@ -17,7 +17,10 @@ function BirthdayGlassInvitationCard({
   const age = details.age || 18;
   const date = weddingDate || details.date || "27.06.2026.";
   const time = weddingTime || details.time || "20:00";
-  const location = venue || details.venue || "Côtier";
+
+  const locationName = details.locationName || venue || details.venue || "Splav Cotier";
+  const locationAddress = details.locationAddress || "Zemunski kej";
+
   const note =
     details.note ||
     "Radujemo se da zajedno proslavimo ovaj poseban dan.";
@@ -69,9 +72,18 @@ function BirthdayGlassInvitationCard({
               <strong>{time}</strong>
             </div>
 
-            <div className="bglass-full">
+            <div className="bglass-full bglass-location-box">
               <span>Lokacija</span>
-              <strong>{location}</strong>
+
+              <strong className="bglass-location-name">
+                {locationName}
+              </strong>
+
+              {locationAddress && (
+                <small className="bglass-location-address">
+                  {locationAddress}
+                </small>
+              )}
             </div>
           </div>
 
