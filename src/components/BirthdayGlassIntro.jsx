@@ -11,7 +11,13 @@ function BirthdayGlassIntro({
 }) {
   const age = details.age || 18;
   const displayName = brideName || "Đorđe";
-  const date = weddingDate || details.date || "27 • 06 • 2026";
+
+  const date =
+    details.introDate ||
+    details.dateFormatted ||
+    details.date ||
+    weddingDate ||
+    "27.06.2026.";
 
   const bgImage =
     introBackgroundImage || backgroundImage || "/images/birthday-glass-intro.jpg";
@@ -63,8 +69,7 @@ function BirthdayGlassIntro({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.52, ease: "easeOut" }}
         >
-          <div className="bglass-age">{age}</div>
-          <div className="bglass-age-shine" />
+          <div className="bglass-age">{age}.</div>
         </motion.div>
 
         <motion.div

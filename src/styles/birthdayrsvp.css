@@ -15,7 +15,36 @@
   color: #f6ead4;
   margin-top: -54px;
 }
+.blux-rsvp-signature {
+  width: fit-content;
+  margin: 12px auto 0;
+  padding: 0 18px;
+  position: relative;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: rgba(245, 222, 192, 0.94);
+  text-align: center;
+}
 
+.blux-rsvp-signature::before,
+.blux-rsvp-signature::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 42px;
+  height: 1px;
+  background: rgba(226, 188, 127, 0.46);
+}
+
+.blux-rsvp-signature::before {
+  right: 100%;
+}
+
+.blux-rsvp-signature::after {
+  left: 100%;
+}
 .blux-rsvp-section::before {
   content: "";
   position: absolute;
@@ -317,7 +346,15 @@
     padding: 14px 16px 64px;
     margin-top: -28px;
   }
+.blux-rsvp-signature {
+  font-size: 22px;
+  padding: 0 14px;
+}
 
+.blux-rsvp-signature::before,
+.blux-rsvp-signature::after {
+  width: 30px;
+}
   .blux-rsvp-box {
     padding: 32px 18px 30px;
   }

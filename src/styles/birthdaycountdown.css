@@ -79,42 +79,120 @@
   box-shadow: 0 0 12px rgba(226, 188, 127, 0.32);
 }
 
-.blux-countdown-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 9px;
-}
+/* CALENDAR PREVIEW */
 
-.blux-countdown-item {
-  min-height: 82px;
-  padding: 13px 5px 11px;
+.blux-calendar-preview {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 330px);
+  margin: 0 auto;
+  padding: 22px 18px 20px;
   box-sizing: border-box;
-  border: 1px solid rgba(226, 188, 127, 0.2);
-  background: rgba(255, 255, 255, 0.032);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid rgba(226, 188, 127, 0.24);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.025)
+    );
+  box-shadow:
+    inset 0 0 22px rgba(255, 255, 255, 0.018),
+    0 18px 38px rgba(0, 0, 0, 0.24);
 }
 
-.blux-countdown-item span {
-  font-family: "Noto Serif Display", "Cormorant Garamond", serif;
-  font-size: clamp(27px, 8vw, 38px);
+.blux-calendar-preview-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.blux-calendar-preview-header span {
+ font-family: "Cinzel", "Cormorant Garamond", serif;
+  font-size: clamp(36px, 9vw, 48px);
   line-height: 1;
-  font-weight: 500;
-  color: #f5dec0;
-  background: linear-gradient(180deg, #ffe6b7 0%, #c58a45 100%);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(180deg, #fff0c8 0%, #d39a4f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.55),
+    0 0 10px rgba(216, 170, 104, 0.12);
 }
 
-.blux-countdown-item small {
-  margin-top: 8px;
+.blux-calendar-preview-header strong {
   font-family: "Montserrat", sans-serif;
-  font-size: 9.5px;
-  letter-spacing: 2px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(246, 236, 221, 0.62);
+}
+
+.blux-calendar-weekdays,
+.blux-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.blux-calendar-weekdays {
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.blux-calendar-weekdays span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: rgba(246, 236, 221, 0.56);
+  color: rgba(246, 236, 221, 0.44);
+}
+
+.blux-calendar-days {
+  gap: 7px;
+}
+
+.blux-calendar-days span {
+  min-height: 34px;
+  border: 1px solid rgba(226, 188, 127, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: rgba(246, 236, 221, 0.68);
+}
+
+.blux-calendar-days span.is-empty {
+  border-color: transparent;
+  background: transparent;
+}
+
+.blux-calendar-days span.is-selected {
+  position: relative;
+  border-color: rgba(238, 211, 171, 0.95);
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 230, 183, 0.22), transparent 58%),
+    linear-gradient(180deg, #d8aa68 0%, #8c5d28 100%);
+  color: #fff7e8;
+  font-weight: 600;
+  box-shadow:
+    0 0 22px rgba(216, 170, 104, 0.28),
+    inset 0 0 18px rgba(255, 255, 255, 0.08);
+}
+
+.blux-calendar-days span.is-selected::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 247, 232, 0.95);
+  transform: translateX(-50%);
 }
 
 .blux-countdown-note {
@@ -185,18 +263,31 @@
     letter-spacing: 4px;
   }
 
-  .blux-countdown-grid {
-    gap: 7px;
+  .blux-calendar-preview {
+    padding: 20px 14px 18px;
   }
 
-  .blux-countdown-item {
-    min-height: 76px;
-    padding: 12px 4px 10px;
+  .blux-calendar-preview-header span {
+  font-size: clamp(34px, 9vw, 42px);
+  letter-spacing: 1px;
+}
+
+  .blux-calendar-preview-header strong {
+    font-size: 10px;
+    letter-spacing: 2.5px;
   }
 
-  .blux-countdown-item small {
-    font-size: 8.8px;
-    letter-spacing: 1.4px;
+  .blux-calendar-weekdays span {
+    font-size: 8px;
+  }
+
+  .blux-calendar-days {
+    gap: 5px;
+  }
+
+  .blux-calendar-days span {
+    min-height: 31px;
+    font-size: 11px;
   }
 
   .blux-countdown-note {

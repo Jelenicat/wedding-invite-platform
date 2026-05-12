@@ -15,9 +15,9 @@ function BirthdayGlassInvitationCard({
 }) {
   const name = brideName || "Đorđe";
   const age = details.age || 18;
-  const date = weddingDate || details.date || "27 • 06 • 2026";
+  const date = weddingDate || details.date || "27.06.2026.";
   const time = weddingTime || details.time || "20:00";
-  const location = venue || details.venue || "Cotier";
+  const location = venue || details.venue || "Côtier";
   const note =
     details.note ||
     "Radujemo se da zajedno proslavimo ovaj poseban dan.";
@@ -46,9 +46,14 @@ function BirthdayGlassInvitationCard({
         >
           <p className="bglass-card-kicker">Pozivnica za rođendan</p>
 
-          <h2>
-            {name.toLocaleUpperCase("sr-RS")}
-            <span>proslavlja {age}. rođendan</span>
+          <h2 className="bglass-card-title">
+            <span className="bglass-card-name">
+              {name.toLocaleUpperCase("sr-RS")}
+            </span>
+
+            <span className="bglass-card-subtitle">
+              proslavlja {age}. rođendan
+            </span>
           </h2>
 
           <div className="bglass-card-line" />

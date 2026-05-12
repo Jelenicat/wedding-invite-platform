@@ -5,16 +5,38 @@ export function addToCalendar({
   venue,
   mapLink,
   note,
+  eventType = "wedding",
+  age,
+  eventTitle,
 }) {
   if (!dateISO) return;
 
   const startDate = new Date(dateISO);
   const endDate = new Date(startDate.getTime() + 6 * 60 * 60 * 1000);
 
+  if (Number.isNaN(startDate.getTime())) return;
+
   const formatICSDate = (date) =>
     date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 
-  const title = `Venčanje - ${brideName} & ${groomName}`;
+  const safeName = brideName || "Pozivnica";
+
+  const title =
+    eventTitle ||
+    (eventType === "birthday"
+      ? `${safeName} - ${age ? `${age}. rođendan` : "rođendan"}`
+      : `Venčanje - ${brideName || ""} & ${groomName || ""}`);
+
+  const fileName =
+    eventType === "birthday"
+      ? `${safeName}-rodjendan.ics`
+      : `${brideName || "pozivnica"}-${groomName || "vencanje"}-vencanje.ics`;
+
+  const prodId =
+    eventType === "birthday"
+      ? "-//Moja Pozivnica//Birthday Invitation//SR"
+      : "-//Moja Pozivnica//Wedding Invitation//SR";
+
   const description = [
     note || "Radujemo se vašem dolasku.",
     mapLink ? `Lokacija: ${mapLink}` : "",
@@ -24,9 +46,9 @@ export function addToCalendar({
 
   const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Moja Pozivnica//Wedding Invitation//SR
+PRODID:${prodId}
 BEGIN:VEVENT
-UID:${Date.now()}-${brideName}-${groomName}@mojapozivnica.app
+UID:${Date.now()}-${safeName}-${eventType}@mojapozivnica.app
 DTSTAMP:${formatICSDate(new Date())}
 DTSTART:${formatICSDate(startDate)}
 DTEND:${formatICSDate(endDate)}
@@ -44,7 +66,7 @@ END:VCALENDAR`;
   const link = document.createElement("a");
 
   link.href = url;
-  link.download = `${brideName}-${groomName}-vencanje.ics`;
+  link.download = fileName;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

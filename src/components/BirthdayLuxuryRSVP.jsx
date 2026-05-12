@@ -24,6 +24,8 @@ function BirthdayLuxuryRSVP({
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const rsvpSignature = details.rsvpSignature || "Đorđe Krušić";
+
   useEffect(() => {
     if (!submitted) return;
 
@@ -203,6 +205,8 @@ function BirthdayLuxuryRSVP({
                   Biće nam drago da zajedno proslavimo ovaj poseban dan.
                 </p>
 
+                <p className="blux-rsvp-signature">{rsvpSignature}</p>
+
                 {details.rsvpDeadline && (
                   <p className="blux-rsvp-deadline">
                     Potvrda dolaska do {details.rsvpDeadline}
@@ -238,7 +242,7 @@ function BirthdayLuxuryRSVP({
                       >
                         <span className="blux-choice-title">Dolazim</span>
                         <span className="blux-choice-text">
-                          Radujem se proslavi
+                          Broj osoba za koje potvrđujem dolazak
                         </span>
                       </button>
 
@@ -271,7 +275,9 @@ function BirthdayLuxuryRSVP({
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.35 }}
                     >
-                      <label htmlFor="blux-guests">Broj osoba</label>
+                      <label htmlFor="blux-guests">
+                        Broj osoba za koje potvrđujem dolazak
+                      </label>
                       <input
                         id="blux-guests"
                         type="number"

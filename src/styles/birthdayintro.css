@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
 
 .blux-intro {
   position: relative;
@@ -411,13 +411,16 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
   font-family: "Noto Serif Display", "Cormorant Garamond", serif;
   font-size: clamp(43px, 12vw, 70px);
   line-height: 0.96;
-  font-weight: 500;
-  letter-spacing: 8px;
+  font-weight: 600;
+  letter-spacing: 7px;
   text-transform: uppercase;
   background: linear-gradient(180deg, #ffe8bd 0%, #c58a45 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 18px 34px rgba(0, 0, 0, 0.52);
+  -webkit-text-stroke: 0.35px rgba(255, 232, 189, 0.2);
+  text-shadow:
+    0 1px 0 rgba(255, 232, 189, 0.16),
+    0 18px 34px rgba(0, 0, 0, 0.52);
 }
 
 .bglass-proslavlja {
@@ -461,35 +464,25 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
 }
 
 .bglass-age {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(150px, 38vw, 230px);
+  font-family: "Cinzel", "Noto Serif Display", "Cormorant Garamond", serif;
+  font-size: clamp(126px, 34vw, 188px);
   font-weight: 500;
-  letter-spacing: -10px;
+  letter-spacing: -3px;
   background: linear-gradient(
     180deg,
     #fff2d4 0%,
-    #d7a260 38%,
+    #d7a260 42%,
     #8a5728 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow:
-    0 24px 40px rgba(0, 0, 0, 0.48),
-    0 0 22px rgba(216, 170, 104, 0.12);
+    0 20px 38px rgba(0, 0, 0, 0.46),
+    0 0 18px rgba(216, 170, 104, 0.12);
 }
 
 .bglass-age-shine {
-  position: absolute;
-  right: 24%;
-  top: 24%;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: rgba(255, 239, 203, 0.95);
-  filter: blur(1px);
-  box-shadow:
-    0 0 16px rgba(255, 239, 203, 0.9),
-    0 0 34px rgba(216, 170, 104, 0.64);
+  display: none;
 }
 
 .bglass-divider {
@@ -540,9 +533,9 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
   margin: 0 0 30px;
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
-  letter-spacing: 7px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  color: rgba(246, 236, 221, 0.62);
+  color: rgba(246, 236, 221, 0.74);
 }
 
 .bglass-button {
@@ -592,7 +585,8 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
   .bglass-name {
     margin-top: 82px;
     font-size: clamp(38px, 11vw, 58px);
-    letter-spacing: 6px;
+    letter-spacing: 5.5px;
+    font-weight: 600;
   }
 
   .bglass-proslavlja {
@@ -606,7 +600,8 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
   }
 
   .bglass-age {
-    font-size: clamp(138px, 37vw, 196px);
+    font-size: clamp(120px, 33vw, 168px);
+    letter-spacing: -2px;
   }
 
   .bglass-age-wrap {
@@ -620,7 +615,7 @@ filter: brightness(0.96) contrast(1.06) saturate(1.02);
   }
 
   .bglass-date {
-    letter-spacing: 5px;
+    letter-spacing: 4px;
   }
 
   .bglass-button {

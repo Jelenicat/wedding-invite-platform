@@ -32,6 +32,7 @@ const createDetails = ({
   locationButtonLink = "",
   events = [],
   rsvpOptions = {},
+  rsvpSignature,
   showCalendarButton = false,
 }) => ({
   backgroundImage,
@@ -65,6 +66,7 @@ const createDetails = ({
   locationButtonLink,
   events,
   rsvpOptions,
+  rsvpSignature,
   showCalendarButton,
 });
 const demoWedding = [
@@ -3107,14 +3109,14 @@ musicSrc: "/music/stefana-stefan.mp3",
   }),
 },
 {
-  slug: "djordje-glass-18",
+  slug: "djordje-rodjendan",
   type: "birthday",
   template: "birthday-glass-luxury",
 
   brideName: "Đorđe",
 
-  weddingDate: "27 • 06 • 2026",
-  weddingTime: "20:00",
+  weddingDate:"27.06.2026.",
+  weddingTime: "19:00",
   venue: "Côtier",
 
   backgroundImage: "/images/birthday-glass-bg.jpg",
@@ -3127,9 +3129,9 @@ musicSrc: "/music/stefana-stefan.mp3",
     welcomeText:
       "Pozivamo vas da zajedno proslavimo Đorđev 18. rođendan.",
 
-    date: "27 • 06 • 2026",
-    dateISO: "2026-06-27T20:00:00+02:00",
-
+    date: "27.06.2026.",
+    dateISO: "2026-06-27T19:00:00+02:00",
+rsvpSignature: "Đorđe Krušić",
     venue: "Côtier",
     mapLink: "https://maps.google.com/?q=Cotier",
 
