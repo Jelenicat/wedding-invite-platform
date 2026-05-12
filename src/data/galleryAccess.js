@@ -11,6 +11,7 @@ const galleryAccess = {
   "katarina-milos": "katarina123",
   "aleksandra-aleksej": "aleksandra123",
   "masa-nikola": "masa123",
+  "djordje-rodjendan":"djordje123",
 };
 
 export default galleryAccess;

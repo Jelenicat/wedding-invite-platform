@@ -3126,7 +3126,7 @@ musicSrc: "/music/stefana-stefan.mp3",
   backgroundImage: "/images/birthday-glass-bg.jpg",
   introBackgroundImage: "/images/birthday-glass-intro.jpg",
   musicSrc: "/music/djordje-18.mp3",
-
+uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
   details: createDetails({
     age: 18,
 
