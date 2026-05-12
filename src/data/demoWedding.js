@@ -3068,6 +3068,122 @@ musicSrc: "/music/stefana-stefan.mp3",
     rsvpText: "Molimo Vas da potvrdite Vaš dolazak do 01.09.2026.",
   },
 },
+{
+  slug: "djordje-18",
+  type: "birthday",
+  template: "birthday-luxury",
+
+  brideName: "Đorđe",
+
+  weddingDate: "27 • 06 • 2026",
+  weddingTime: "20:00",
+  venue: "Côtier",
+
+  backgroundImage: "/images/djordje-18-bg.jpg",
+  musicSrc: "/music/djordje-18.mp3",
+
+  details: createDetails({
+    age: 18,
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Đorđev 18. rođendan.",
+
+    date: "27 • 06 • 2026",
+    dateISO: "2026-06-27T20:00:00+02:00",
+
+    venue: "Côtier",
+    mapLink: "https://maps.google.com/?q=Cotier",
+
+    note: "Molimo vas da potvrdite dolazak do 10.06.",
+    rsvpDeadline: "10.06.2026.",
+
+    showCalendarButton: true,
+
+    showDressCode: false,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#050403", "#d8aa68", "#f6ead4", "#17311f"],
+    dressCodeNote:
+      "Elegantne kombinacije u tamnim i zlatnim tonovima su dobrodošle.",
+  }),
+},
+{
+  slug: "djordje-glass-18",
+  type: "birthday",
+  template: "birthday-glass-luxury",
+
+  brideName: "Đorđe",
+
+  weddingDate: "27 • 06 • 2026",
+  weddingTime: "20:00",
+  venue: "Côtier",
+
+  backgroundImage: "/images/birthday-glass-bg.jpg",
+  introBackgroundImage: "/images/birthday-glass-intro.jpg",
+  musicSrc: "/music/djordje-18.mp3",
+
+  details: createDetails({
+    age: 18,
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Đorđev 18. rođendan.",
+
+    date: "27 • 06 • 2026",
+    dateISO: "2026-06-27T20:00:00+02:00",
+
+    venue: "Côtier",
+    mapLink: "https://maps.google.com/?q=Cotier",
+
+    note: "Molimo vas da potvrdite dolazak do 10.06.",
+    rsvpDeadline: "10.06.2026.",
+
+    showCalendarButton: true,
+
+    showDressCode: false,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#050403", "#d8aa68", "#f6ead4", "#17311f"],
+    dressCodeNote:
+      "Elegantne kombinacije u tamnim i zlatnim tonovima su dobrodošle.",
+  }),
+},
+{
+  slug: "djordje-marble-18",
+  type: "birthday",
+  template: "birthday-marble-luxury",
+
+  brideName: "Đorđe",
+
+  weddingDate: "27 • 06 • 2026",
+  weddingTime: "20:00",
+  venue: "Cotier",
+
+  backgroundImage: "/images/birthday-marble-bg.jpg",
+  introBackgroundImage: "/images/birthday-marble-intro.jpg",
+  musicSrc: "/music/djordje-18.mp3",
+
+  details: createDetails({
+    age: 18,
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Đorđev 18. rođendan.",
+
+    date: "27 • 06 • 2026",
+    dateISO: "2026-06-27T20:00:00+02:00",
+
+    venue: "Cotier",
+    mapLink: "https://maps.google.com/?q=Cotier",
+
+    note: "Molimo vas da potvrdite dolazak na vreme do 10.06.",
+    rsvpDeadline: "10.06.2026.",
+
+    showCalendarButton: true,
+
+    showDressCode: false,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#050403", "#0f3b31", "#d8aa68", "#f6ead4"],
+    dressCodeNote:
+      "Elegantne kombinacije u tamnim, zelenim i zlatnim tonovima su dobrodošle.",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

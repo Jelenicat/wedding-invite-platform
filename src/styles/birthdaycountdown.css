@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
+
+.blux-countdown-section {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 20px 72px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(211, 159, 91, 0.08), transparent 32%),
+    linear-gradient(180deg, #050403 0%, #070504 48%, #050403 100%);
+  display: flex;
+  justify-content: center;
+  color: #f6ead4;
+}
+
+.blux-countdown-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: rgba(203, 147, 72, 0.1);
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+.blux-countdown-glow-1 {
+  left: -120px;
+  top: 4%;
+}
+
+.blux-countdown-glow-2 {
+  right: -130px;
+  bottom: 8%;
+}
+
+.blux-countdown-box {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 430px);
+  padding: 32px 20px 30px;
+  box-sizing: border-box;
+  border: 1px solid rgba(226, 188, 127, 0.42);
+  background: rgba(7, 6, 5, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: center;
+  box-shadow:
+    0 20px 54px rgba(0, 0, 0, 0.42),
+    inset 0 0 24px rgba(255, 255, 255, 0.02);
+}
+
+.blux-countdown-box::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(226, 188, 127, 0.13);
+  pointer-events: none;
+}
+
+.blux-countdown-kicker {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(246, 236, 221, 0.68);
+}
+
+.blux-countdown-divider {
+  width: 112px;
+  height: 1px;
+  margin: 22px auto 26px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(226, 188, 127, 0.9),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(226, 188, 127, 0.32);
+}
+
+.blux-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+
+.blux-countdown-item {
+  min-height: 82px;
+  padding: 13px 5px 11px;
+  box-sizing: border-box;
+  border: 1px solid rgba(226, 188, 127, 0.2);
+  background: rgba(255, 255, 255, 0.032);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.blux-countdown-item span {
+  font-family: "Noto Serif Display", "Cormorant Garamond", serif;
+  font-size: clamp(27px, 8vw, 38px);
+  line-height: 1;
+  font-weight: 500;
+  color: #f5dec0;
+  background: linear-gradient(180deg, #ffe6b7 0%, #c58a45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blux-countdown-item small {
+  margin-top: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(246, 236, 221, 0.56);
+}
+
+.blux-countdown-note {
+  width: min(100%, 310px);
+  margin: 24px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  line-height: 1.4;
+  color: rgba(246, 236, 221, 0.78);
+}
+
+.blux-calendar-box {
+  margin-top: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.blux-calendar-button {
+  width: min(100%, 275px);
+  min-height: 52px;
+  border: 1px solid rgba(238, 211, 171, 0.8);
+  background: rgba(0, 0, 0, 0.22);
+  color: rgba(255, 244, 225, 0.96);
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.34),
+    inset 0 0 20px rgba(255, 255, 255, 0.025);
+}
+
+.blux-calendar-button span {
+  display: inline-block;
+  margin-right: 8px;
+  color: #d8aa68;
+}
+
+.blux-calendar-button:active {
+  transform: scale(0.98);
+}
+
+.blux-calendar-box p {
+  width: min(100%, 280px);
+  margin: 12px auto 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  line-height: 1.55;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(246, 236, 221, 0.48);
+}
+
+@media (max-width: 390px) {
+  .blux-countdown-section {
+    padding: 14px 16px 62px;
+  }
+
+  .blux-countdown-box {
+    padding: 30px 16px 28px;
+  }
+
+  .blux-countdown-kicker {
+    font-size: 10px;
+    letter-spacing: 4px;
+  }
+
+  .blux-countdown-grid {
+    gap: 7px;
+  }
+
+  .blux-countdown-item {
+    min-height: 76px;
+    padding: 12px 4px 10px;
+  }
+
+  .blux-countdown-item small {
+    font-size: 8.8px;
+    letter-spacing: 1.4px;
+  }
+
+  .blux-countdown-note {
+    font-size: 19px;
+  }
+
+  .blux-calendar-button {
+    min-height: 50px;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+}

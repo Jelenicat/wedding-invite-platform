@@ -59,6 +59,12 @@ import ElegantWhiteIntro from "../components/ElegantWhiteIntro";
 import EleganWhiteInvitationCard from "../components/EleganWhiteInvitationCard";
 import ElegantBlackIntro from "../components/ElegantBlackIntro";
 import ElegantBlackInvitationCard from "../components/ElegantBlackInvitationCard";
+import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
+import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
+import BirthdayGlassIntro from "../components/BirthdayGlassIntro";
+import BirthdayGlassInvitationCard from "../components/BirthdayGlassInvitationCard";
+import BirthdayMarbleIntro from "../components/BirthdayMarbleIntro";
+import BirthdayMarbleInvitationCard from "../components/BirthdayMarbleInvitationCard";
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -162,6 +168,18 @@ const TEMPLATE_COMPONENTS = {
 "envelope-side-split-v2": {
   Intro: EnvelopeSideSplitIntroV2,
   Invitation: EnvelopeSideSplitV2InvitationCard,
+},
+"birthday-luxury": {
+  Intro: BirthdayLuxuryIntro,
+  Invitation: BirthdayLuxuryInvitationCard,
+},
+"birthday-glass-luxury": {
+  Intro: BirthdayGlassIntro,
+  Invitation: BirthdayGlassInvitationCard,
+},
+"birthday-marble-luxury": {
+  Intro: BirthdayMarbleIntro,
+  Invitation: BirthdayMarbleInvitationCard,
 },
 };
 

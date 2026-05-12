@@ -1,0 +1,992 @@
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
+
+.blux-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050403;
+  color: #f6ead4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blux-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+filter: brightness(0.96) contrast(1.06) saturate(1.02);
+}
+
+.blux-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(0, 0, 0, 0.02),
+      rgba(0, 0, 0, 0.54) 74%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(0, 0, 0, 0.08) 34%,
+      rgba(0, 0, 0, 0.64) 100%
+    );
+}
+
+.blux-gold-glow {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 999px;
+  background: rgba(203, 147, 72, 0.13);
+  filter: blur(42px);
+  pointer-events: none;
+}
+
+.blux-gold-glow-1 {
+  left: -90px;
+  top: 12%;
+}
+
+.blux-gold-glow-2 {
+  right: -110px;
+  bottom: 12%;
+}
+
+.blux-frame {
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(224, 191, 139, 0.72);
+  box-shadow:
+    inset 0 0 26px rgba(224, 191, 139, 0.08),
+    0 0 30px rgba(224, 191, 139, 0.06);
+  pointer-events: none;
+}
+
+.blux-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 430px);
+  padding: 70px 26px 52px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.blux-name-top {
+  font-family: "Noto Serif Display", "Cormorant Garamond", serif;
+  font-size: clamp(48px, 13vw, 76px);
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+  line-height: 0.95;
+  background: linear-gradient(180deg, #ffe6b7 0%, #c58a45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 16px 28px rgba(0, 0, 0, 0.55);
+}
+
+.blux-top {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: rgba(245, 235, 218, 0.9);
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+
+.blux-age-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  line-height: 0.82;
+  margin-bottom: 6px;
+}
+
+.blux-age {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(116px, 31vw, 168px);
+  font-weight: 400;
+  letter-spacing: -9px;
+  background: linear-gradient(
+    180deg,
+    #fff3d9 0%,
+    #d8aa68 42%,
+    #8c5d28 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 18px 36px rgba(0, 0, 0, 0.42);
+}
+
+.blux-age-dot {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(54px, 15vw, 78px);
+  line-height: 0.8;
+  margin-left: 6px;
+  margin-bottom: 8px;
+  color: #d9aa66;
+  text-shadow: 0 0 18px rgba(217, 170, 102, 0.45);
+}
+
+.blux-age-light {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -12px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(234, 196, 135, 0.95),
+    transparent
+  );
+  box-shadow: 0 0 16px rgba(234, 196, 135, 0.65);
+}
+
+.blux-birthday-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(30px, 8vw, 42px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  color: rgba(246, 236, 221, 0.94);
+  margin-top: 10px;
+  margin-bottom: 16px;
+  text-shadow: 0 12px 22px rgba(0, 0, 0, 0.45);
+}
+
+.blux-divider {
+  width: 210px;
+  height: 18px;
+  position: relative;
+  margin: 2px 0 24px;
+  transform-origin: center;
+}
+
+.blux-divider::before,
+.blux-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 86px;
+  height: 1px;
+  background: rgba(226, 188, 127, 0.8);
+}
+
+.blux-divider::before {
+  left: 0;
+}
+
+.blux-divider::after {
+  right: 0;
+}
+
+.blux-divider span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(226, 188, 127, 0.92);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.blux-info {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: rgba(246, 236, 221, 0.9);
+}
+
+.blux-info p {
+  margin: 0;
+}
+
+.blux-info p:first-child {
+  font-size: 18px;
+  letter-spacing: 9px;
+  padding-left: 9px;
+  margin-bottom: 14px;
+}
+
+.blux-info p:last-child {
+  font-size: 13px;
+  letter-spacing: 9px;
+  padding-left: 9px;
+}
+
+.blux-button {
+  margin-top: 58px;
+  width: min(100%, 285px);
+  min-height: 58px;
+  border: 1px solid rgba(238, 211, 171, 0.86);
+  background: rgba(0, 0, 0, 0.28);
+  color: rgba(255, 244, 225, 0.96);
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.45),
+    inset 0 0 22px rgba(255, 255, 255, 0.03);
+}
+
+.blux-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 390px) {
+  .blux-frame {
+    inset: 14px;
+  }
+
+  .blux-content {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .blux-name-top {
+    font-size: clamp(44px, 12vw, 66px);
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+
+  .blux-top {
+    font-size: 11px;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+  }
+
+  .blux-age {
+    font-size: clamp(108px, 30vw, 150px);
+  }
+
+  .blux-birthday-label {
+    font-size: 30px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+
+  .blux-info p:first-child {
+    font-size: 16px;
+    letter-spacing: 7px;
+  }
+
+  .blux-info p:last-child {
+    font-size: 12px;
+    letter-spacing: 7px;
+  }
+
+  .blux-button {
+    margin-top: 48px;
+  }
+}
+/* ============================= */
+/* BIRTHDAY GLASS LUXURY INTRO */
+/* Dodati na kraj birthdayintro.css */
+/* ============================= */
+
+.bglass-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050403;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f6ead4;
+}
+
+.bglass-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: brightness(1.08) contrast(1.04) saturate(1.05);
+  transform: scale(1.01);
+}
+
+.bglass-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0.01),
+      rgba(0, 0, 0, 0.12) 76%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.04),
+      rgba(0, 0, 0, 0.18)
+    );
+}
+
+.bglass-panel {
+  position: relative;
+  z-index: 2;
+  width: min(78%, 390px);
+  min-height: 76vh;
+  padding: 52px 24px 46px;
+  box-sizing: border-box;
+  border: 1px solid rgba(238, 211, 171, 0.58);
+  border-radius: 30px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 12, 15, 0.76),
+      rgba(4, 4, 4, 0.66)
+    );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-align: center;
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.52),
+    inset 0 0 36px rgba(255, 255, 255, 0.025);
+}
+
+.bglass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 24px;
+  border: 1px solid rgba(238, 211, 171, 0.1);
+  pointer-events: none;
+}
+
+.bglass-top-line,
+.bglass-bottom-line {
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: 64px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(226, 188, 127, 0.82),
+    transparent
+  );
+}
+
+.bglass-top-line {
+  top: -36px;
+}
+
+.bglass-bottom-line {
+  bottom: -36px;
+}
+
+.bglass-top-line span,
+.bglass-bottom-line span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  background: #d8aa68;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 0 14px rgba(216, 170, 104, 0.48);
+}
+
+.bglass-name {
+  margin: 88px 0 24px;
+  font-family: "Noto Serif Display", "Cormorant Garamond", serif;
+  font-size: clamp(43px, 12vw, 70px);
+  line-height: 0.96;
+  font-weight: 500;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffe8bd 0%, #c58a45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 18px 34px rgba(0, 0, 0, 0.52);
+}
+
+.bglass-proslavlja {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  width: min(100%, 270px);
+  margin: 0 auto 30px;
+}
+
+.bglass-proslavlja span {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(226, 188, 127, 0.65)
+  );
+}
+
+.bglass-proslavlja span:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(226, 188, 127, 0.65),
+    transparent
+  );
+}
+
+.bglass-proslavlja p {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  letter-spacing: 8px;
+  color: rgba(246, 236, 221, 0.72);
+}
+
+.bglass-age-wrap {
+  position: relative;
+  line-height: 0.78;
+  margin-bottom: 32px;
+}
+
+.bglass-age {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(150px, 38vw, 230px);
+  font-weight: 500;
+  letter-spacing: -10px;
+  background: linear-gradient(
+    180deg,
+    #fff2d4 0%,
+    #d7a260 38%,
+    #8a5728 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 24px 40px rgba(0, 0, 0, 0.48),
+    0 0 22px rgba(216, 170, 104, 0.12);
+}
+
+.bglass-age-shine {
+  position: absolute;
+  right: 24%;
+  top: 24%;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255, 239, 203, 0.95);
+  filter: blur(1px);
+  box-shadow:
+    0 0 16px rgba(255, 239, 203, 0.9),
+    0 0 34px rgba(216, 170, 104, 0.64);
+}
+
+.bglass-divider {
+  position: relative;
+  width: min(100%, 240px);
+  height: 18px;
+  margin: 0 auto 20px;
+  transform-origin: center;
+}
+
+.bglass-divider::before,
+.bglass-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 96px;
+  height: 1px;
+  background: rgba(226, 188, 127, 0.42);
+}
+
+.bglass-divider::before {
+  left: 0;
+}
+
+.bglass-divider::after {
+  right: 0;
+}
+
+.bglass-divider span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  background: #d8aa68;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.bglass-birthday {
+  margin: 0 0 28px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 8vw, 38px);
+  letter-spacing: 8px;
+  color: rgba(246, 236, 221, 0.72);
+}
+
+.bglass-date {
+  margin: 0 0 30px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: rgba(246, 236, 221, 0.62);
+}
+
+.bglass-button {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 290px);
+  min-height: 58px;
+  border: 1px solid rgba(238, 211, 171, 0.56);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 244, 225, 0.9);
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.38),
+    inset 0 0 20px rgba(255, 255, 255, 0.025);
+}
+
+.bglass-button span {
+  margin-left: 18px;
+  font-size: 22px;
+  vertical-align: -2px;
+  color: #d8aa68;
+}
+
+.bglass-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 390px) {
+  .bglass-panel {
+    width: min(82%, 360px);
+    min-height: 74vh;
+    padding: 46px 18px 42px;
+    border-radius: 26px;
+  }
+
+  .bglass-panel::before {
+    border-radius: 21px;
+  }
+
+  .bglass-name {
+    margin-top: 82px;
+    font-size: clamp(38px, 11vw, 58px);
+    letter-spacing: 6px;
+  }
+
+  .bglass-proslavlja {
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .bglass-proslavlja p {
+    font-size: 22px;
+    letter-spacing: 6px;
+  }
+
+  .bglass-age {
+    font-size: clamp(138px, 37vw, 196px);
+  }
+
+  .bglass-age-wrap {
+    margin-bottom: 30px;
+  }
+
+  .bglass-birthday {
+    font-size: 29px;
+    letter-spacing: 6px;
+    margin-bottom: 26px;
+  }
+
+  .bglass-date {
+    letter-spacing: 5px;
+  }
+
+  .bglass-button {
+    min-height: 56px;
+    font-size: 11px;
+    letter-spacing: 2.8px;
+  }
+}
+/* ============================= */
+/* BIRTHDAY MARBLE LUXURY INTRO */
+/* ============================= */
+
+.bmarble-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #020302;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f6ead4;
+}
+
+.bmarble-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: brightness(1.02) contrast(1.08) saturate(1.05);
+  transform: scale(1.01);
+}
+
+.bmarble-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(0, 0, 0, 0.14) 36%,
+      rgba(0, 0, 0, 0.08) 68%,
+      rgba(0, 0, 0, 0.05) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.04),
+      rgba(0, 0, 0, 0.16)
+    );
+}
+
+.bmarble-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 430px);
+  min-height: 100vh;
+  padding: 74px 28px 58px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #f6ead4;
+}
+
+/* blaža senka iza glavnog dela */
+.bmarble-content::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: min(84%, 360px);
+  height: 390px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.32) 0%,
+      rgba(0, 0, 0, 0.22) 44%,
+      rgba(0, 0, 0, 0.08) 76%,
+      transparent 100%
+    );
+  filter: blur(22px);
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* vrlo diskretan zlatni glow */
+.bmarble-content::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: min(70%, 300px);
+  height: 340px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(216, 170, 104, 0.06) 0%,
+      rgba(216, 170, 104, 0.025) 45%,
+      transparent 72%
+    );
+  filter: blur(26px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bmarble-venue {
+  margin: 0 0 30px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(31px, 8vw, 42px);
+  letter-spacing: 4px;
+  color: rgba(255, 219, 161, 0.92);
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.72),
+    0 0 14px rgba(0, 0, 0, 0.52);
+}
+
+.bmarble-age-wrap {
+  position: relative;
+  line-height: 0.82;
+  margin-bottom: 8px;
+  isolation: isolate;
+}
+
+/* vrlo blaga senka direktno iza 18 */
+.bmarble-age-wrap::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 205px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  filter: blur(22px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* diskretan zlatni odsjaj iza 18 */
+.bmarble-age-wrap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  width: 155px;
+  height: 86px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: rgba(216, 170, 104, 0.055);
+  filter: blur(24px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bmarble-age-wrap span {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(142px, 39vw, 225px);
+  font-weight: 500;
+  letter-spacing: -10px;
+
+  background: linear-gradient(
+    180deg,
+    #f8e6c4 0%,
+    #d8b178 32%,
+    #a87943 68%,
+    #70502f 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter:
+    drop-shadow(0 3px 5px rgba(0, 0, 0, 0.62))
+    drop-shadow(0 12px 22px rgba(0, 0, 0, 0.28))
+    drop-shadow(0 0 8px rgba(216, 170, 104, 0.08));
+}
+
+.bmarble-name {
+  margin: 0;
+  font-family: "Allura", "Cormorant Garamond", cursive;
+  font-size: clamp(74px, 20vw, 118px);
+  line-height: 0.88;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: none;
+  background: linear-gradient(180deg, #fff0c8 0%, #d39a4f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.72),
+    0 16px 28px rgba(0, 0, 0, 0.48),
+    0 0 14px rgba(216, 170, 104, 0.14);
+}
+
+.bmarble-subtitle {
+  margin: 24px 0 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255, 244, 225, 0.96);
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.75),
+    0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+.bmarble-divider {
+  width: 210px;
+  height: 18px;
+  position: relative;
+  margin: 24px 0 88px;
+  transform-origin: center;
+}
+
+.bmarble-divider::before,
+.bmarble-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 88px;
+  height: 1px;
+  background: rgba(226, 188, 127, 0.7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.55);
+}
+
+.bmarble-divider::before {
+  left: 0;
+}
+
+.bmarble-divider::after {
+  right: 0;
+}
+
+.bmarble-divider span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  background: #d8aa68;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow:
+    0 0 12px rgba(216, 170, 104, 0.42),
+    0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.bmarble-date {
+  margin: 0 0 32px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: rgba(255, 244, 225, 0.9);
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.75),
+    0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+.bmarble-button {
+  position: relative;
+  width: min(100%, 285px);
+  min-height: 54px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 232, 189, 0.96);
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.75),
+    0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+.bmarble-button span {
+  display: block;
+  margin-top: 18px;
+  font-size: 32px;
+  line-height: 1;
+  color: #d8aa68;
+  text-shadow:
+    0 0 14px rgba(216, 170, 104, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.72);
+}
+
+.bmarble-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 390px) {
+  .bmarble-content {
+    padding: 66px 22px 54px;
+  }
+
+  .bmarble-content::before {
+    top: 42%;
+    width: 86%;
+    height: 360px;
+    background:
+      radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.34) 0%,
+        rgba(0, 0, 0, 0.24) 46%,
+        rgba(0, 0, 0, 0.08) 78%,
+        transparent 100%
+      );
+    filter: blur(22px);
+  }
+
+  .bmarble-content::after {
+    top: 42%;
+    width: 72%;
+    height: 320px;
+    filter: blur(24px);
+  }
+
+  .bmarble-venue {
+    margin-bottom: 28px;
+    font-size: 32px;
+  }
+
+  .bmarble-age-wrap::before {
+    width: 190px;
+    height: 116px;
+    background: rgba(0, 0, 0, 0.24);
+    filter: blur(20px);
+  }
+
+  .bmarble-age-wrap::after {
+    width: 148px;
+    height: 82px;
+    background: rgba(216, 170, 104, 0.05);
+    filter: blur(22px);
+  }
+
+  .bmarble-age-wrap span {
+    font-size: clamp(136px, 38vw, 198px);
+  }
+
+  .bmarble-name {
+    font-size: clamp(68px, 20vw, 98px);
+  }
+
+  .bmarble-subtitle {
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+
+  .bmarble-divider {
+    margin-bottom: 72px;
+  }
+
+  .bmarble-date {
+    letter-spacing: 5px;
+  }
+
+  .bmarble-button {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+}
