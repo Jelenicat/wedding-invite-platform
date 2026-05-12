@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   color: #f6ead4;
+  margin-top: -80px;
 }
 
 .blux-countdown-glow {
@@ -252,6 +253,7 @@
 @media (max-width: 390px) {
   .blux-countdown-section {
     padding: 14px 16px 62px;
+    margin-top: -80px;
   }
 
   .blux-countdown-box {
