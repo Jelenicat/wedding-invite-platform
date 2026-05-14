@@ -300,8 +300,14 @@ function SplitVideoInvitationCard({
   details={details}
 />
       {details.dateISO && (
-  <SplitVideoCountdown targetDate={details.dateISO} details={details} />
+  <SplitVideoCountdown
+    targetDate={details.dateISO}
+    brideName={safeBrideName}
+    groomName={safeGroomName}
+    details={details}
+  />
 )}
+
     </>
   );
 }

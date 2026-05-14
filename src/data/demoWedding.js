@@ -3074,44 +3074,7 @@ musicSrc: "/music/stefana-stefan.mp3",
     rsvpText: "Molimo Vas da potvrdite Vaš dolazak do 01.09.2026.",
   },
 },
-{
-  slug: "djordje-18",
-  type: "birthday",
-  template: "birthday-luxury",
 
-  brideName: "Đorđe",
-
-  weddingDate: "27 • 06 • 2026",
-  weddingTime: "20:00",
-  venue: "Côtier",
-
-  backgroundImage: "/images/djordje-18-bg.jpg",
-  musicSrc: "/music/djordje-18.mp3",
-
-  details: createDetails({
-    age: 18,
-
-    welcomeText:
-      "Pozivamo vas da zajedno proslavimo Đorđev 18. rođendan.",
-
-    date: "27 • 06 • 2026",
-    dateISO: "2026-06-27T20:00:00+02:00",
-
-    venue: "Côtier",
-    mapLink: "https://maps.google.com/?q=Cotier",
-
-    note: "Molimo vas da potvrdite dolazak do 10.06.",
-    rsvpDeadline: "10.06.2026.",
-
-    showCalendarButton: true,
-
-    showDressCode: false,
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#050403", "#d8aa68", "#f6ead4", "#17311f"],
-    dressCodeNote:
-      "Elegantne kombinacije u tamnim i zlatnim tonovima su dobrodošle.",
-  }),
-},
 {
   slug: "djordje-rodjendan",
   type: "birthday",
@@ -3157,42 +3120,44 @@ uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
   }),
 },
 {
-  slug: "djordje-marble-18",
-  type: "birthday",
-  template: "birthday-marble-luxury",
-
-  brideName: "Đorđe",
-
-  weddingDate: "27 • 06 • 2026",
-  weddingTime: "20:00",
-  venue: "Cotier",
-
-  backgroundImage: "/images/birthday-marble-bg.jpg",
-  introBackgroundImage: "/images/birthday-marble-intro.jpg",
-  musicSrc: "/music/djordje-18.mp3",
-
+  slug: "nevena-nemanja",
+  type: "wedding",
+  template: "split-video",
+  brideName: "Nevena",
+  groomName: "Nemanja",
+  videoSrc: "/videos/nevena-nemanja.mp4",
+  weddingDate: "11 JUL 2026",
+  weddingTime: "16:00",
+  venue: "Beograd",
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+   musicSrc: "/music/nevena-nemanja.mp3",
   details: createDetails({
-    age: 18,
-
+      backgroundImage: "/images/nevena-nemanja.jpg",
     welcomeText:
-      "Pozivamo vas da zajedno proslavimo Đorđev 18. rođendan.",
+      "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+    date: "11 JUL 2026",
+    dateISO: "2026-07-11T16:00:00+02:00",
+  showCalendarButton: true,
+    events: [
+     
+      {
+        label: "Proslava",
+        time: "16:00",
+        location: "Restoran Festina Palace",
+        mapLink: "https://www.google.com/maps/place/Festina+Palace+Event+Centar/@43.2311955,21.5715658,14.5z/data=!4m6!3m5!1s0x4755c358d19b64c7:0x2acaf488a87cb79c!8m2!3d43.232074!4d21.5801227!16s%2Fg%2F11vz7xfjpc?entry=ttu&g_ep=EgoyMDI2MDUxMS4wIKXMDSoASAFQAw%3D%3D",
+        note: "Trenutak kada počinje naše novo poglavlje.",
+      },
+ 
+    ],
 
-    date: "27 • 06 • 2026",
-    dateISO: "2026-06-27T20:00:00+02:00",
-
-    venue: "Cotier",
-    mapLink: "https://maps.google.com/?q=Cotier",
-
-    note: "Molimo vas da potvrdite dolazak na vreme do 10.06.",
-    rsvpDeadline: "10.06.2026.",
-
-    showCalendarButton: true,
-
-    showDressCode: false,
-    dressCodeTitle: "Dress code",
-    dressCodePalette: ["#050403", "#0f3b31", "#d8aa68", "#f6ead4"],
-    dressCodeNote:
-      "Elegantne kombinacije u tamnim, zelenim i zlatnim tonovima su dobrodošle.",
+  showDressCode: false,
+  venue: "Prokuplje",
+  dressCodeTitle: "Dress code",
+  dressCodePalette: [],
+  dressCodeNote:
+    "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
+  mapLink: "https://www.google.com/maps/place/Festina+Palace+Event+Centar/@43.2311955,21.5715658,14.5z/data=!4m6!3m5!1s0x4755c358d19b64c7:0x2acaf488a87cb79c!8m2!3d43.232074!4d21.5801227!16s%2Fg%2F11vz7xfjpc?entry=ttu&g_ep=EgoyMDI2MDUxMS4wIKXMDSoASAFQAw%3D%3D",
+  note: "Molimo vas da svoj dolazak potvrdite do 30.06.",
   }),
 },
   // =========================

@@ -10793,3 +10793,44 @@ margin-bottom: 2px;
   font-size: 0.78rem;
   color: rgba(125, 104, 76, 0.72);
 }
+.split-video-calendar-box {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.split-video-calendar-btn {
+  border: 1px solid rgba(111, 91, 79, 0.28);
+  background: rgba(255, 255, 255, 0.46);
+  color: var(--countdown-accent-strong, #6e5a4e);
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 10px 26px rgba(88, 71, 60, 0.08);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.split-video-calendar-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 14px 30px rgba(88, 71, 60, 0.12);
+}
+
+.split-video-calendar-hint {
+  margin: 0;
+  max-width: 240px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--countdown-muted-text, #8c7a6f);
+}

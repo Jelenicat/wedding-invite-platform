@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/rsvp.css";
+import { addToCalendar } from "../utils/calendar";
 
-function SplitVideoCountdown({ targetDate, details = {} }) {
+function SplitVideoCountdown({
+  targetDate,
+  brideName,
+  groomName,
+  details = {},
+}) {
   const calculateTimeLeft = () => {
     const difference =
       new Date(targetDate).getTime() - new Date().getTime();
@@ -20,6 +26,7 @@ function SplitVideoCountdown({ targetDate, details = {} }) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   const theme = details.theme || {};
+  const showCalendarButton = details?.showCalendarButton === true;
 
   const themeStyles = {
     "--countdown-bg": theme.backgroundColor || "#f3ece6",
@@ -46,6 +53,38 @@ function SplitVideoCountdown({ targetDate, details = {} }) {
 
   const format = (num) => String(num).padStart(2, "0");
 
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: targetDate || details?.dateISO,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
+
+  const CalendarButton = () => {
+    if (!showCalendarButton) return null;
+
+    return (
+      <div className="split-video-calendar-box">
+        <button
+          type="button"
+          className="split-video-calendar-btn"
+          onClick={handleCalendarClick}
+        >
+          <span>📅</span>
+          Dodaj u kalendar
+        </button>
+
+        <p className="split-video-calendar-hint">
+          Sačuvajte datum venčanja u svom telefonu.
+        </p>
+      </div>
+    );
+  };
+
   if (!timeLeft) {
     return (
       <section className="split-video-countdown-section" style={themeStyles}>
@@ -55,6 +94,8 @@ function SplitVideoCountdown({ targetDate, details = {} }) {
             <h3 className="split-video-countdown-finished">
               Dan venčanja je stigao
             </h3>
+
+            <CalendarButton />
           </div>
         </div>
       </section>
@@ -133,6 +174,8 @@ function SplitVideoCountdown({ targetDate, details = {} }) {
           >
             Vidimo se da zajedno napravimo uspomene za pamćenje.
           </motion.p>
+
+          <CalendarButton />
         </div>
       </div>
     </motion.section>
