@@ -21,6 +21,7 @@ const adminAccess = {
      "stefana-stefan":"stefana123",
      "djordje-rodjendan":"djordje123",
      "nevena-nemanja":"nevena123",
+     "jovana-caslav":"jovana123",
      
 };
 
