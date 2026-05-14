@@ -55,26 +55,13 @@ function PassportInvitationCard({
   const ticketNumber = useMemo(() => {
     if (details.ticketNumber) return details.ticketNumber;
 
-    const cleanSlug = (slug || `${brideName}-${groomName}`)
-      .replace(/\s+/g, "")
-      .replace(/[^a-zA-Z0-9-]/g, "")
-      .toUpperCase();
-
     const datePart = (details.date || weddingDate || "2026")
       .replace(/\s+/g, "")
       .replace(/[^A-Z0-9]/gi, "")
-      .slice(0, 8)
       .toUpperCase();
 
-    return `${cleanSlug.slice(0, 6)}-${datePart}-01`;
-  }, [
-    details.ticketNumber,
-    details.date,
-    weddingDate,
-    slug,
-    brideName,
-    groomName,
-  ]);
+    return datePart;
+  }, [details.ticketNumber, details.date, weddingDate]);
 
   useLayoutEffect(() => {
     const updateStops = () => {
@@ -536,22 +523,21 @@ function PassportInvitationCard({
                               {event.label}
                             </div>
 
-                           {event.location && (
-  event.mapLink ? (
-    <a
-      href={event.mapLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="passport-ticket-event-location passport-ticket-event-location-link"
-    >
-      {event.location}
-    </a>
-  ) : (
-    <div className="passport-ticket-event-location">
-      {event.location}
-    </div>
-  )
-)}
+                            {event.location &&
+                              (event.mapLink ? (
+                                <a
+                                  href={event.mapLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="passport-ticket-event-location passport-ticket-event-location-link"
+                                >
+                                  {event.location}
+                                </a>
+                              ) : (
+                                <div className="passport-ticket-event-location">
+                                  {event.location}
+                                </div>
+                              ))}
                           </motion.div>
                         </div>
                       </motion.div>
@@ -613,12 +599,13 @@ function PassportInvitationCard({
           <div className="passport-ticket-corner passport-ticket-corner-bottom" />
         </motion.div>
       </section>
-<PassportRSVP
-  slug={slug}
-  eventType="wedding"
-  theme={theme}
-  details={details}
-/>
+
+      <PassportRSVP
+        slug={slug}
+        eventType="wedding"
+        theme={theme}
+        details={details}
+      />
 
       {details.dateISO && (
         <PassportCountdown

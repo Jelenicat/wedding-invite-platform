@@ -35,6 +35,7 @@ const createDetails = ({
   rsvpSignature,
   locationName,
 locationAddress,
+ ticketNumber,
   showCalendarButton = false,
 }) => ({
   backgroundImage,
@@ -71,6 +72,7 @@ locationAddress,
   rsvpSignature,
   locationName,
 locationAddress,
+ ticketNumber,
   showCalendarButton,
 });
 const demoWedding = [
@@ -3174,7 +3176,7 @@ uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
  musicSrc: "/music/jovana-caslav.mp3",
   details: createDetails({
     cardBackground: "/images/passport/jovana-caslav-card-bg.jpg",
-
+ticketNumber: "06SEP2026",
     welcomeText: "Radujemo se da ovaj poseban dan podelimo sa vama.",
 
     date: "06 SEP 2026",
