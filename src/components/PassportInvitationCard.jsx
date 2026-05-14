@@ -15,13 +15,42 @@ function PassportInvitationCard({
   slug = "",
 }) {
   const events = details.events || [];
+  const theme = details.theme || {};
+
   const lineWrapRef = useRef(null);
   const planeRef = useRef(null);
   const stopRefs = useRef([]);
   const [planeStops, setPlaneStops] = useState([0, 120, 240]);
 
+  // Invitation card koristi SAMO slug-card-bg, ne slug-bg
   const cardBg =
     details.cardBackground || `/images/passport/${slug}-card-bg.jpg`;
+
+  const passportThemeStyle = {
+    "--passport-main": theme.main || "#f7efe4",
+    "--passport-main-dark": theme.mainDark || "#efe1cd",
+    "--passport-cream": theme.cream || "#fffbf5",
+    "--passport-white": theme.white || "#ffffff",
+
+    "--passport-text-main": theme.textMain || "#5f4a2d",
+    "--passport-text-soft": theme.textSoft || "#8f7450",
+    "--passport-text-muted": theme.textMuted || "#a08965",
+
+    "--passport-card-overlay":
+      theme.cardOverlay || "rgba(255, 251, 245, 0.82)",
+    "--passport-card-border":
+      theme.cardBorder || "rgba(177, 141, 83, 0.26)",
+    "--passport-band-bg": theme.bandBg || "rgba(237, 223, 201, 0.44)",
+
+    "--passport-accent": theme.accent || "#b18d53",
+    "--passport-accent-soft":
+      theme.accentSoft || "rgba(180, 144, 84, 0.34)",
+
+    "--passport-button-bg": theme.buttonBg || "#b18d53",
+    "--passport-button-text": theme.buttonText || "#ffffff",
+
+    "--passport-icon-filter": theme.iconFilter || "none",
+  };
 
   const ticketNumber = useMemo(() => {
     if (details.ticketNumber) return details.ticketNumber;
@@ -60,6 +89,7 @@ function PassportInvitationCard({
           const planeHalf = planeRef.current
             ? planeRef.current.offsetHeight / 2
             : 18;
+
           return rect.top - wrapRect.top - planeHalf + rect.height / 2;
         });
 
@@ -70,6 +100,7 @@ function PassportInvitationCard({
 
     updateStops();
     window.addEventListener("resize", updateStops);
+
     return () => window.removeEventListener("resize", updateStops);
   }, [events.length]);
 
@@ -77,6 +108,7 @@ function PassportInvitationCard({
     if (!planeStops.length) return [0];
 
     const frames = [];
+
     planeStops.forEach((stop) => {
       frames.push(stop, stop, stop);
     });
@@ -162,7 +194,7 @@ function PassportInvitationCard({
 
   return (
     <>
-      <section className="passport-card-page">
+      <section className="passport-card-page" style={passportThemeStyle}>
         <div className="passport-card-bg-overlay" />
 
         <motion.div
@@ -191,7 +223,9 @@ function PassportInvitationCard({
                 {Array.from({ length: 16 }).map((_, i) => (
                   <span
                     key={i}
-                    className={`passport-band-line ${i % 4 === 0 ? "wide" : ""}`}
+                    className={`passport-band-line ${
+                      i % 4 === 0 ? "wide" : ""
+                    }`}
                   />
                 ))}
               </div>
@@ -319,13 +353,18 @@ function PassportInvitationCard({
                   alt=""
                   className="passport-ticket-small-plane"
                   aria-hidden="true"
-                  animate={{ x: [0, 6, 0], y: [0, -4, 0], rotate: [0, 4, 0] }}
+                  animate={{
+                    x: [0, 6, 0],
+                    y: [0, -4, 0],
+                    rotate: [0, 4, 0],
+                  }}
                   transition={{
                     duration: 6,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
                 />
+
                 <motion.img
                   src="/images/passport/route-heart.svg"
                   alt=""
@@ -363,8 +402,16 @@ function PassportInvitationCard({
                 }}
                 transition={{
                   opacity: { duration: 0.55, delay: 0.22 },
-                  scale: { duration: 4.8, repeat: Infinity, ease: "easeInOut" },
-                  rotate: { duration: 4.8, repeat: Infinity, ease: "easeInOut" },
+                  scale: {
+                    duration: 4.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                  rotate: {
+                    duration: 4.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
                 }}
               >
                 <div className="passport-ticket-stamp-inner">
@@ -390,6 +437,7 @@ function PassportInvitationCard({
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: 0.1 }}
                   />
+
                   <motion.span
                     className="passport-ticket-events-title-text"
                     initial={{ opacity: 0, letterSpacing: "0.32em" }}
@@ -399,6 +447,7 @@ function PassportInvitationCard({
                   >
                     RASPORED
                   </motion.span>
+
                   <motion.span
                     className="passport-ticket-events-title-line"
                     initial={{ scaleX: 0.4, opacity: 0 }}
@@ -487,11 +536,22 @@ function PassportInvitationCard({
                               {event.label}
                             </div>
 
-                            {event.location && (
-                              <div className="passport-ticket-event-location">
-                                {event.location}
-                              </div>
-                            )}
+                           {event.location && (
+  event.mapLink ? (
+    <a
+      href={event.mapLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="passport-ticket-event-location passport-ticket-event-location-link"
+    >
+      {event.location}
+    </a>
+  ) : (
+    <div className="passport-ticket-event-location">
+      {event.location}
+    </div>
+  )
+)}
                           </motion.div>
                         </div>
                       </motion.div>
@@ -519,6 +579,7 @@ function PassportInvitationCard({
                   ease: "easeInOut",
                 }}
               />
+
               <span>LJUBAV NAS VODI ZAUVEK</span>
             </motion.div>
 
@@ -552,12 +613,23 @@ function PassportInvitationCard({
           <div className="passport-ticket-corner passport-ticket-corner-bottom" />
         </motion.div>
       </section>
+<PassportRSVP
+  slug={slug}
+  eventType="wedding"
+  theme={theme}
+  details={details}
+/>
 
-      <PassportRSVP slug={slug} eventType="wedding" />
-
-     {details.dateISO && (
-  <PassportCountdown targetDate={details.dateISO} slug={slug} />
-)}
+      {details.dateISO && (
+        <PassportCountdown
+          targetDate={details.dateISO}
+          slug={slug}
+          theme={theme}
+          brideName={brideName}
+          groomName={groomName}
+          details={details}
+        />
+      )}
     </>
   );
 }

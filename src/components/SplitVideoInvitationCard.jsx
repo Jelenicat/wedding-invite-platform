@@ -73,8 +73,8 @@ function SplitVideoInvitationCard({
 
   return (
     <>
-      <motion.section
-        className="split-video-invitation"
+     <motion.section
+  className={`split-video-invitation split-video-${slug || ""}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}

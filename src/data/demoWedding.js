@@ -3142,7 +3142,7 @@ uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
      
       {
         label: "Proslava",
-        time: "16:00",
+        time: "16.00",
         location: "Restoran Festina Palace",
         mapLink: "https://www.google.com/maps/place/Festina+Palace+Event+Centar/@43.2311955,21.5715658,14.5z/data=!4m6!3m5!1s0x4755c358d19b64c7:0x2acaf488a87cb79c!8m2!3d43.232074!4d21.5801227!16s%2Fg%2F11vz7xfjpc?entry=ttu&g_ep=EgoyMDI2MDUxMS4wIKXMDSoASAFQAw%3D%3D",
         note: "Trenutak kada počinje naše novo poglavlje.",
@@ -3158,6 +3158,121 @@ uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
     "Nježni, elegantni i prirodni tonovi lepo će se uklopiti u atmosferu našeg dana.",
   mapLink: "https://www.google.com/maps/place/Festina+Palace+Event+Centar/@43.2311955,21.5715658,14.5z/data=!4m6!3m5!1s0x4755c358d19b64c7:0x2acaf488a87cb79c!8m2!3d43.232074!4d21.5801227!16s%2Fg%2F11vz7xfjpc?entry=ttu&g_ep=EgoyMDI2MDUxMS4wIKXMDSoASAFQAw%3D%3D",
   note: "Molimo vas da svoj dolazak potvrdite do 30.06.",
+  }),
+},
+{
+  slug: "jovana-caslav",
+  type: "wedding",
+  template: "passport",
+
+  brideName: "Jovana",
+  groomName: "Časlav",
+
+  weddingDate: "06 SEP 2026",
+  weddingTime: "13:00",
+  venue: "EKOPARK Event & catering center, Beograd",
+ musicSrc: "/music/jovana-caslav.mp3",
+  details: createDetails({
+    cardBackground: "/images/passport/jovana-caslav-card-bg.jpg",
+
+    welcomeText: "Radujemo se da ovaj poseban dan podelimo sa vama.",
+
+    date: "06 SEP 2026",
+    dateISO: "2026-09-06T13:00:00+02:00",
+    venue: "EKOPARK Event & catering center, Beograd",
+
+    showCalendarButton: true,
+
+    theme: {
+      /* OSNOVNE BOJE */
+      main: "#1c3720",
+      mainDark: "#102414",
+      cream: "#f5efe3",
+      white: "#ffffff",
+
+      /* TEKST */
+      textMain: "#ffffff",
+      textSoft: "rgba(255,255,255,0.82)",
+      textMuted: "rgba(255,255,255,0.64)",
+
+      /* KARTICA */
+      cardOverlay: "rgba(28, 55, 32, 0.90)",
+      cardBorder: "rgba(255,255,255,0.28)",
+      bandBg: "rgba(16, 36, 20, 0.92)",
+
+      /* DETALJI */
+      accent: "#ffffff",
+      accentSoft: "rgba(255,255,255,0.22)",
+
+      /* DUGMAD */
+      buttonBg: "#ffffff",
+      buttonText: "#1c3720",
+
+      /* IKONICE */
+      iconFilter: "brightness(0) invert(1)",
+
+      /* INTRO */
+      introButtonBg: "rgba(255,255,255,0.96)",
+      introButtonBorder: "rgba(255,255,255,0.75)",
+      introButtonText: "#1c3720",
+      introButtonTextHover: "#102414",
+      introButtonDot: "#1c3720",
+      introButtonDotRing: "rgba(28,55,32,0.16)",
+      introButtonHoverBg: "#ffffff",
+
+      introOverlayTop: "rgba(28, 55, 32, 0.06)",
+      introOverlayMid: "rgba(28, 55, 32, 0.04)",
+      introOverlayMid2: "rgba(28, 55, 32, 0.08)",
+      introOverlayBottom: "rgba(0, 0, 0, 0.10)",
+
+      /* RSVP */
+      rsvpButtonBg: "#ffffff",
+      rsvpButtonText: "#1c3720",
+
+      /* COUNTDOWN */
+      countdownBg: "#1c3720",
+    },
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "13:00",
+        icon: "church",
+        location:
+          "Crkva Svetog Vasilija Ostroškog, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Vasilija+Ostroskog+Crnotravska+2+Vozdovac+Beograd",
+      },
+      {
+        label: "Skup gostiju",
+        time: "15:00",
+        icon: "gathering",
+        location:
+          "EKOPARK Event & catering center, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=EKOPARK+Event+catering+center+Staska+Sondermajera+18v+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:00",
+        icon: "civil",
+        location: "EKOPARK Event & catering center",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=EKOPARK+Event+catering+center+Staska+Sondermajera+18v+Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#1c3720", "#f5efe3", "#ffffff", "#d8cfbd"],
+    dressCodeNote:
+      "Zelena i krem nijanse će se lepo uklopiti u atmosferu venčanja.",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=EKOPARK+Event+catering+center+Staska+Sondermajera+18v+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 20.08.2026.",
+    rsvpDeadline: "20.08.2026.",
   }),
 },
   // =========================

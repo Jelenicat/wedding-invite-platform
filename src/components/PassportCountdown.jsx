@@ -1,11 +1,46 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/rsvp.css";
+import { addToCalendar } from "../utils/calendar";
 
-function PassportCountdown({ targetDate, slug = "" }) {
+function PassportCountdown({
+  targetDate,
+  slug = "",
+  theme = {},
+  brideName,
+  groomName,
+  details = {},
+}) {
   const countdownBg = useMemo(() => {
     return `/images/passport/${slug}-card-bg.jpg`;
   }, [slug]);
+
+  const passportCountdownThemeStyle = {
+    "--passport-countdown-bg": `url(${countdownBg})`,
+
+    "--passport-main": theme.main || "#f7efe4",
+    "--passport-main-dark": theme.mainDark || "#efe1cd",
+    "--passport-cream": theme.cream || "#fffbf5",
+    "--passport-white": theme.white || "#ffffff",
+
+    "--passport-text-main": theme.textMain || "#5f4a2d",
+    "--passport-text-soft": theme.textSoft || "#8f7450",
+    "--passport-text-muted": theme.textMuted || "#a08965",
+
+    "--passport-card-overlay":
+      theme.cardOverlay || "rgba(255, 251, 245, 0.82)",
+    "--passport-card-border":
+      theme.cardBorder || "rgba(177, 141, 83, 0.26)",
+
+    "--passport-accent": theme.accent || "#b18d53",
+    "--passport-accent-soft":
+      theme.accentSoft || "rgba(180, 144, 84, 0.34)",
+
+    "--passport-button-bg": theme.buttonBg || "#b18d53",
+    "--passport-button-text": theme.buttonText || "#ffffff",
+
+    "--passport-icon-filter": theme.iconFilter || "none",
+  };
 
   const calculateTimeLeft = useMemo(() => {
     return () => {
@@ -43,12 +78,23 @@ function PassportCountdown({ targetDate, slug = "" }) {
     return () => clearInterval(interval);
   }, [calculateTimeLeft]);
 
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: targetDate,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
+
   if (!targetDate || !timeLeft) return null;
 
   return (
     <section
       className="passport-countdown-section"
-      style={{ "--passport-countdown-bg": `url(${countdownBg})` }}
+      style={passportCountdownThemeStyle}
     >
       <motion.div
         className="passport-countdown-card"
@@ -176,12 +222,36 @@ function PassportCountdown({ targetDate, slug = "" }) {
                     >
                       {String(item.value).padStart(2, "0")}
                     </motion.div>
-                    <div className="passport-countdown-label">{item.label}</div>
+
+                    <div className="passport-countdown-label">
+                      {item.label}
+                    </div>
                   </motion.div>
                 ))}
               </div>
             </>
           )}
+
+          <motion.div
+            className="passport-countdown-calendar-box"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.18 }}
+          >
+            <button
+              type="button"
+              className="passport-countdown-calendar-btn"
+              onClick={handleCalendarClick}
+            >
+              <span>📅</span>
+              Dodaj u kalendar
+            </button>
+
+            <p className="passport-countdown-calendar-hint">
+              Sačuvajte datum venčanja u svom telefonu.
+            </p>
+          </motion.div>
         </div>
       </motion.div>
     </section>

@@ -10,7 +10,12 @@ import {
 } from "firebase/firestore";
 import "../styles/rsvp.css";
 
-function PassportRSVP({ slug, eventType = "wedding" }) {
+function PassportRSVP({
+  slug,
+  eventType = "wedding",
+  theme = {},
+  details = {},
+}) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
@@ -20,9 +25,41 @@ function PassportRSVP({ slug, eventType = "wedding" }) {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const rsvpBg = useMemo(() => {
-    return `/images/passport/${slug}-card-bg.jpg`;
-  }, [slug]);
+const rsvpBg = useMemo(() => {
+  return `/images/passport/${slug}-card-bg.jpg`;
+}, [slug]);
+
+const rsvpSubtitle =
+  details.note || "Molimo vas da potvrdite svoj dolazak";
+
+  const passportRsvpThemeStyle = {
+    "--passport-rsvp-bg": `url(${rsvpBg})`,
+
+    "--passport-main": theme.main || "#f7efe4",
+    "--passport-main-dark": theme.mainDark || "#efe1cd",
+    "--passport-cream": theme.cream || "#fffbf5",
+    "--passport-white": theme.white || "#ffffff",
+
+    "--passport-text-main": theme.textMain || "#5f4a2d",
+    "--passport-text-soft": theme.textSoft || "#8f7450",
+    "--passport-text-muted": theme.textMuted || "#a08965",
+
+    "--passport-card-overlay":
+      theme.cardOverlay || "rgba(255, 251, 245, 0.82)",
+    "--passport-card-border":
+      theme.cardBorder || "rgba(177, 141, 83, 0.26)",
+
+    "--passport-accent": theme.accent || "#b18d53",
+    "--passport-accent-soft":
+      theme.accentSoft || "rgba(180, 144, 84, 0.34)",
+
+    "--passport-button-bg":
+      theme.rsvpButtonBg || theme.buttonBg || "#b18d53",
+    "--passport-button-text":
+      theme.rsvpButtonText || theme.buttonText || "#ffffff",
+
+    "--passport-icon-filter": theme.iconFilter || "none",
+  };
 
   const handleChange = (field, value) => {
     setFormData((prev) => ({
@@ -78,10 +115,7 @@ function PassportRSVP({ slug, eventType = "wedding" }) {
   };
 
   return (
-    <section
-      className="passport-rsvp-section"
-      style={{ "--passport-rsvp-bg": `url(${rsvpBg})` }}
-    >
+    <section className="passport-rsvp-section" style={passportRsvpThemeStyle}>
       <motion.div
         className="passport-rsvp-card"
         initial={{ opacity: 0, y: 36, scale: 0.985 }}
@@ -164,7 +198,7 @@ function PassportRSVP({ slug, eventType = "wedding" }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.12 }}
           >
-            Molimo vas da potvrdite svoj dolazak
+            {rsvpSubtitle}
           </motion.p>
 
           <motion.div
@@ -299,9 +333,7 @@ function PassportRSVP({ slug, eventType = "wedding" }) {
                   type="submit"
                   className="passport-rsvp-submit"
                   disabled={
-                    loading ||
-                    !formData.fullName.trim() ||
-                    !formData.attending
+                    loading || !formData.fullName.trim() || !formData.attending
                   }
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
