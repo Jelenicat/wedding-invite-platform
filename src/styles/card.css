@@ -8923,3 +8923,335 @@
 .essv2-event-location-link:active {
   opacity: 0.65;
 }
+.df-card-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.df-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.df-card-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.1) 62%,
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.02),
+      rgba(0, 0, 0, 0.16)
+    );
+  pointer-events: none;
+}
+
+.df-card-content {
+  position: relative;
+  z-index: 2;
+  width: min(82%, 390px);
+  min-height: 68vh;
+  padding: 72px 24px 44px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #f5eee8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.df-card-kicker {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 238, 232, 0.72);
+  margin-bottom: 18px;
+}
+
+.df-card-names {
+  margin: 0;
+  font-family: "Italianno", cursive;
+  font-weight: 400;
+  font-size: clamp(58px, 16vw, 88px);
+  line-height: 0.78;
+  color: #f8f1ec;
+  text-shadow: 0 10px 34px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.df-card-names em {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-style: italic;
+  margin: 10px 0 12px;
+  color: rgba(208, 177, 170, 0.95);
+}
+
+.df-card-date {
+  margin-top: 26px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 238, 232, 0.86);
+}
+
+.df-card-text {
+  margin: 22px auto 0;
+  max-width: 280px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(245, 238, 232, 0.76);
+}
+
+.df-card-divider {
+  width: 130px;
+  height: 1px;
+  margin: 28px 0 22px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(245, 238, 232, 0.48),
+    transparent
+  );
+}
+
+.df-card-divider-bottom {
+  margin-top: 28px;
+  margin-bottom: 20px;
+}
+
+.df-card-events {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 2px;
+}
+
+.df-card-section-title {
+  margin: 0 0 20px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(220, 188, 180, 0.86);
+}
+
+.df-card-event {
+  display: grid;
+  grid-template-columns: 58px 1px 1fr;
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+}
+
+.df-card-event-time {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  color: rgba(220, 188, 180, 0.96);
+  letter-spacing: 0.12em;
+}
+
+.df-card-event-line {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(245, 238, 232, 0.42),
+    transparent
+  );
+}
+
+.df-card-event-info {
+  min-width: 0;
+}
+
+.df-card-event-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248, 241, 236, 0.92);
+}
+
+.df-card-event-location {
+  margin-top: 4px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  line-height: 1.25;
+  color: rgba(245, 238, 232, 0.66);
+}
+
+.df-card-event-location-link {
+  display: inline-block;
+  color: rgba(245, 238, 232, 0.72);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(220, 188, 180, 0.35);
+  transition: 0.25s ease;
+}
+
+.df-card-event-location-link:hover {
+  color: #f5eee8;
+  border-bottom-color: rgba(245, 238, 232, 0.75);
+}
+
+.df-card-location {
+  margin-top: 0;
+  font-family: "Cormorant Garamond", serif;
+  color: rgba(245, 238, 232, 0.78);
+}
+
+.df-card-location span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: rgba(220, 188, 180, 0.8);
+}
+
+.df-card-location strong {
+  display: block;
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.df-card-map-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(220, 188, 180, 0.46);
+  color: rgba(245, 238, 232, 0.86);
+  text-decoration: none;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: 0.25s ease;
+}
+
+.df-card-map-button:hover {
+  background: rgba(220, 188, 180, 0.14);
+  border-color: rgba(245, 238, 232, 0.75);
+  color: #fff8f2;
+}
+
+.df-card-note {
+  margin: 28px auto 0;
+  max-width: 310px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(245, 238, 232, 0.72);
+  text-align: center;
+}
+
+.df-card-dress-code {
+  width: 100%;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.df-card-dress-palette {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0 4px;
+  flex-wrap: wrap;
+}
+
+.df-card-dress-color {
+  width: 27px;
+  height: 27px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 238, 232, 0.42);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.42);
+}
+
+.df-card-dress-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.df-card-dress-info div {
+  padding: 15px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(220, 188, 180, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.df-card-dress-info span {
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(220, 188, 180, 0.84);
+}
+
+.df-card-dress-info p {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(245, 238, 232, 0.76);
+}
+
+@media (max-width: 430px) {
+  .df-card-content {
+    width: min(86%, 380px);
+    padding: 66px 20px 40px;
+  }
+
+  .df-card-names {
+    font-size: clamp(56px, 17vw, 78px);
+  }
+
+  .df-card-event {
+    grid-template-columns: 52px 1px 1fr;
+    gap: 12px;
+  }
+
+  .df-card-event-time {
+    font-size: 16px;
+  }
+
+  .df-card-event-label {
+    font-size: 13px;
+  }
+
+  .df-card-event-location {
+    font-size: 13px;
+  }
+}

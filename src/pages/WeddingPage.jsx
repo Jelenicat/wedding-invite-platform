@@ -59,6 +59,9 @@ import ElegantWhiteIntro from "../components/ElegantWhiteIntro";
 import EleganWhiteInvitationCard from "../components/EleganWhiteInvitationCard";
 import ElegantBlackIntro from "../components/ElegantBlackIntro";
 import ElegantBlackInvitationCard from "../components/ElegantBlackInvitationCard";
+import DarkFloralIntro from "../components/DarkFloralIntro";
+import DarkFloralInvitationCard from "../components/DarkFloralInvitationCard";
+
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
 import BirthdayGlassIntro from "../components/BirthdayGlassIntro";
@@ -181,6 +184,11 @@ const TEMPLATE_COMPONENTS = {
   Intro: BirthdayMarbleIntro,
   Invitation: BirthdayMarbleInvitationCard,
 },
+"dark-floral": {
+  Intro: DarkFloralIntro,
+  Invitation: DarkFloralInvitationCard,
+},
+
 };
 
 function WeddingPage() {

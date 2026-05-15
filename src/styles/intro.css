@@ -4571,3 +4571,103 @@ color: #8e7f73;
     font-size: 0.82rem;
   }
 }
+.df-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.df-intro-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+}
+
+.df-intro-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 52%, rgba(0, 0, 0, 0.05) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.16));
+  pointer-events: none;
+}
+
+.df-intro-content {
+  position: relative;
+  z-index: 2;
+  width: min(86%, 420px);
+  min-height: 58vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #f4eee8;
+  padding: 40px 22px;
+}
+
+.df-intro-kicker {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 238, 232, 0.76);
+  margin-bottom: 20px;
+}
+
+.df-intro-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Italianno", cursive;
+  font-size: clamp(66px, 19vw, 102px);
+  line-height: 0.78;
+  color: #f7f0ea;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.78);
+}
+
+.df-intro-names em {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-style: italic;
+  color: rgba(210, 184, 178, 0.92);
+  margin: 10px 0 12px;
+}
+
+.df-intro-date {
+  margin-top: 28px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  color: rgba(244, 238, 232, 0.86);
+  text-transform: uppercase;
+}
+
+.df-intro-button {
+  margin-top: 34px;
+  border: 1px solid rgba(244, 238, 232, 0.42);
+  background: rgba(10, 10, 10, 0.46);
+  color: #f7f0ea;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.48);
+}
+
+.df-intro-button:hover {
+  background: rgba(244, 238, 232, 0.12);
+}

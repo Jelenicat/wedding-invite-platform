@@ -2469,6 +2469,70 @@ backgroundColor: "#f3ece6",
       "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
   }),
 },
+{
+  slug: "dark-floral-demo",
+  type: "wedding",
+  template: "dark-floral",
+
+  brideName: "Katarina",
+  groomName: "Miloš",
+
+  weddingDate: "18 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+
+  backgroundImage: "/images/dark-floral-intro.jpg",
+
+  details: createDetails({
+    backgroundImage: "/images/dark-floral-intro.jpg",
+    cardBackground: "/images/dark-floral-card.jpg",
+
+    welcomeText: "Radujemo se da ovaj poseban dan podelimo sa vama.",
+
+    date: "18 SEP 2026",
+    dateISO: "2026-09-18T17:00:00+02:00",
+    venue: "Beograd",
+
+    showCalendarButton: true,
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Beograd",
+        mapLink: "https://maps.google.com/?q=Beograd",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "16:00",
+        icon: "church",
+        location: "Crkva Svetog Marka, Beograd",
+        mapLink: "https://maps.google.com/?q=Crkva+Svetog+Marka+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Beograd",
+        mapLink: "https://maps.google.com/?q=Beograd",
+      },
+      {
+        label: "Svečani ručak",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Restoran, Beograd",
+        mapLink: "https://maps.google.com/?q=Restoran+Beograd",
+      },
+    ],
+
+    mapLink: "https://maps.google.com/?q=Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+
 // =========================
 // Klijenti
 // =========================
