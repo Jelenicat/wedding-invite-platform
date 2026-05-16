@@ -1156,7 +1156,7 @@ showDressCode: false,
       "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
     date: "18 SEP 2026",
     dateISO: "2026-09-18T17:00:00+02:00",
-
+  showCalendarButton: true,
     events: [
       {
         label: "Okupljanje gostiju",
@@ -1194,7 +1194,7 @@ theme: {
   mutedText: "#ffffff",
 
   accent: "#ffffff",
-  accentStrong: "#000000",
+  accentStrong: "#ffffff",
   buttonText: "#000000",
 
   cardBg: "rgba(52, 51, 51, 0.28)",
@@ -1208,7 +1208,7 @@ paperOverlayBottom: "rgba(36,59,107,0.06)",
   flowLine: "#ffffff",
   dividerLine: "rgba(123,18,52,0.25)",
   nodeRing: "rgba(181,144,59,0.16)",
-backgroundColor: "#f3ece6",
+backgroundColor: "#000000",
   /* INTRO */
   introMainText:"#ffffff",
   introAccent: "#ffffff",
@@ -1218,7 +1218,7 @@ backgroundColor: "#f3ece6",
   introButtonHoverBg: "rgba(255,255,255,0.28)",
 
   /* RSVP */
-  rsvpButtonBg: "#050505",
+  rsvpButtonBg: "#a24242",
   rsvpButtonText: "#ffffff",
 },
  showDressCode: true,
