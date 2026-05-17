@@ -5363,3 +5363,431 @@ color: #8e7f73;
     letter-spacing: 0.25em;
   }
 }
+.mag-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.mag-intro-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: grayscale(1) contrast(1.06) brightness(0.82);
+  transform-origin: center;
+}
+
+.mag-intro-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.08) 25%,
+      rgba(0, 0, 0, 0.22) 58%,
+      rgba(0, 0, 0, 0.66) 100%
+    ),
+    radial-gradient(
+      circle at 70% 42%,
+      rgba(255, 255, 255, 0.05),
+      rgba(0, 0, 0, 0.22) 55%,
+      rgba(0, 0, 0, 0.58) 100%
+    );
+  pointer-events: none;
+}
+
+.mag-intro-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background-image:
+    repeating-radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.2) 0 1px,
+      transparent 1px 3px
+    );
+}
+
+.mag-intro-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 520px);
+  min-height: 100vh;
+  padding: 30px 24px 30px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.mag-intro-header {
+  position: relative;
+}
+
+.mag-intro-title {
+  margin: 0;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(52px, 14vw, 102px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+.mag-intro-issue {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 9px;
+  line-height: 1.5;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.mag-intro-issue span:not(:last-child)::after {
+  content: "|";
+  margin-left: 8px;
+  opacity: 0.6;
+}
+
+.mag-intro-magazine {
+  margin-top: 10px;
+  text-align: right;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mag-intro-left-copy {
+  margin-top: 54px;
+  max-width: 165px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.7;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.mag-intro-left-copy p {
+  margin: 0;
+}
+
+.mag-intro-left-copy span {
+  display: block;
+  width: 42px;
+  height: 1px;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.mag-intro-names {
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.mag-intro-script {
+  margin-bottom: 8px;
+  font-family: "Great Vibes", "Parisienne", cursive;
+  font-size: clamp(34px, 10vw, 62px);
+  line-height: 0.95;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.mag-intro-couple {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 250px;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(42px, 12vw, 78px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.98);
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+}
+
+.mag-intro-amp {
+  font-size: 0.72em;
+  line-height: 0.8;
+  font-style: italic;
+}
+
+/* DESNI DATUM SAD NIJE VIŠE PREVIŠE NISKO */
+.mag-intro-date-block {
+  position: absolute;
+  right: 24px;
+  bottom: 250px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.42);
+}
+
+.mag-intro-date-block strong,
+.mag-intro-date-block span,
+.mag-intro-date-block small {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.mag-intro-date-block strong {
+  font-size: 58px;
+  line-height: 0.9;
+  font-weight: 500;
+}
+
+.mag-intro-date-block span {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 24px;
+  line-height: 0.95;
+}
+
+.mag-intro-date-block small {
+  margin-top: 6px;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+}
+
+/* DUGME */
+.mag-intro-button {
+  position: relative;
+  margin-top: 18px;
+  width: 100%;
+  max-width: 100%;
+  height: 64px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.mag-intro-button span {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  width: 38px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.mag-intro-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mag-intro-bottom {
+  margin-top: 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mag-intro-barcode {
+  width: 126px;
+  height: 58px;
+  padding: 7px 8px 5px;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: stretch;
+  gap: 3px;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.26);
+  box-sizing: border-box;
+}
+
+.mag-intro-barcode i {
+  display: block;
+  width: 3px;
+  height: 36px;
+  background: #111;
+}
+
+.mag-intro-barcode i.wide {
+  width: 7px;
+}
+
+.mag-intro-barcode em {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3px;
+  text-align: center;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  color: #111;
+}
+
+.mag-intro-follow {
+  text-align: right;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.02;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.mag-intro-follow span {
+  display: block;
+  width: 42px;
+  height: 1px;
+  margin: 8px 0 0 auto;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* TABLET / DESKTOP */
+@media (min-width: 768px) {
+  .mag-intro-content {
+    padding: 42px 28px 32px;
+  }
+
+  .mag-intro-title {
+    font-size: 104px;
+  }
+
+  .mag-intro-left-copy {
+    margin-top: 62px;
+    max-width: 180px;
+    font-size: 11px;
+  }
+
+  .mag-intro-names {
+    margin-bottom: 24px;
+  }
+
+  .mag-intro-script {
+    font-size: 66px;
+  }
+
+  .mag-intro-couple {
+    max-width: 380px;
+    font-size: 80px;
+  }
+
+  .mag-intro-date-block {
+    right: 28px;
+    bottom: 235px;
+  }
+
+  .mag-intro-date-block strong {
+    font-size: 70px;
+  }
+
+  .mag-intro-date-block span {
+    font-size: 29px;
+  }
+
+  .mag-intro-date-block small {
+    font-size: 21px;
+  }
+
+  .mag-intro-button {
+    margin-top: 22px;
+    height: 66px;
+    font-size: 12px;
+  }
+
+  .mag-intro-bottom {
+    margin-top: 24px;
+  }
+}
+
+/* BAŠ USKI TELEFONI */
+@media (max-width: 390px) {
+  .mag-intro-content {
+    padding: 24px 18px 24px;
+  }
+
+  .mag-intro-title {
+    font-size: 48px;
+  }
+
+  .mag-intro-issue {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+  }
+
+  .mag-intro-magazine {
+    font-size: 22px;
+  }
+
+  .mag-intro-left-copy {
+    margin-top: 44px;
+    max-width: 145px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+  }
+
+  .mag-intro-script {
+    font-size: 30px;
+  }
+
+  .mag-intro-couple {
+    max-width: 210px;
+    font-size: 34px;
+  }
+
+  .mag-intro-date-block {
+    right: 18px;
+    bottom: 232px;
+  }
+
+  .mag-intro-date-block strong {
+    font-size: 48px;
+  }
+
+  .mag-intro-date-block span {
+    font-size: 20px;
+  }
+
+  .mag-intro-date-block small {
+    font-size: 15px;
+  }
+
+  .mag-intro-button {
+    height: 60px;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+  }
+
+  .mag-intro-barcode {
+    width: 108px;
+    height: 52px;
+  }
+
+  .mag-intro-follow {
+    font-size: 16px;
+  }
+}

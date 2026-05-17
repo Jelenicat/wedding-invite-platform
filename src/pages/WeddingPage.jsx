@@ -62,6 +62,7 @@ import ElegantBlackInvitationCard from "../components/ElegantBlackInvitationCard
 import DarkFloralIntro from "../components/DarkFloralIntro";
 import DarkFloralInvitationCard from "../components/DarkFloralInvitationCard";
 import IntroHeart from "../components/IntroHeart";
+import MagazineEditorialIntro from "../components/MagazineEditorialIntro";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -193,6 +194,10 @@ const TEMPLATE_COMPONENTS = {
     Intro: IntroHeart,
     Invitation: FloralInvitationCard,
   },
+  "magazine-editorial": {
+  Intro: MagazineEditorialIntro,
+  Invitation: EditorialInvitationCard,
+},
 
 };
 

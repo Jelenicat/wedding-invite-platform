@@ -2645,7 +2645,72 @@ backgroundColor: "#f3ece6",
     note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
   }),
 },
+{
+  slug: "lara-mateja-magazine",
+  type: "wedding",
+  template: "magazine-editorial",
 
+  brideName: "Lara",
+  groomName: "Mateja",
+
+  weddingDate: "06 SEP 2026",
+  weddingTime: "13:00",
+  venue: "EKOPARK Event & catering center, Beograd",
+
+  backgroundImage: "/images/magazine-intro-bg.png",
+  image1: "/images/nevena-pedja/location.jpg",
+  details: createDetails({
+    backgroundImage: "/images/magazine-intro-bg.png",
+
+
+    ticketNumber: "060926LM",
+
+    welcomeText:
+      "Radujemo se da ovaj poseban dan podelimo sa vama.",
+
+    date: "06 SEP 2026",
+    dateISO: "2026-09-06T13:00:00+02:00",
+
+    venue: "EKOPARK Event & catering center, Beograd",
+
+    showCalendarButton: true,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "13:00",
+        icon: "church",
+        location: "Crkva Svetog Vasilija Ostroškog, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Vasilija+Ostroskog+Crnotravska+2+Vozdovac+Beograd",
+      },
+      {
+        label: "Skup gostiju",
+        time: "15:00",
+        icon: "gathering",
+        location: "EKOPARK Event & catering center, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=EKOPARK+Event+catering+center+Staska+Sondermajera+18v+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:00",
+        icon: "civil",
+        location: "EKOPARK Event & catering center",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=EKOPARK+Event+catering+center+Staska+Sondermajera+18v+Beograd",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=EKOPARK+Event+catering+center+Staska+Sondermajera+18v+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 20.08.2026.",
+    rsvpDeadline: "20.08.2026.",
+  }),
+},
 // =========================
 // Klijenti
 // =========================
