@@ -61,6 +61,7 @@ import ElegantBlackIntro from "../components/ElegantBlackIntro";
 import ElegantBlackInvitationCard from "../components/ElegantBlackInvitationCard";
 import DarkFloralIntro from "../components/DarkFloralIntro";
 import DarkFloralInvitationCard from "../components/DarkFloralInvitationCard";
+import IntroHeart from "../components/IntroHeart";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -188,6 +189,10 @@ const TEMPLATE_COMPONENTS = {
   Intro: DarkFloralIntro,
   Invitation: DarkFloralInvitationCard,
 },
+  "heart-floral": {
+    Intro: IntroHeart,
+    Invitation: FloralInvitationCard,
+  },
 
 };
 

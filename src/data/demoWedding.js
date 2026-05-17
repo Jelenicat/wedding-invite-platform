@@ -36,6 +36,7 @@ const createDetails = ({
   locationName,
 locationAddress,
  ticketNumber,
+ introCardImage,
   showCalendarButton = false,
 }) => ({
   backgroundImage,
@@ -73,6 +74,7 @@ locationAddress,
   locationName,
 locationAddress,
  ticketNumber,
+ introCardImage,
   showCalendarButton,
 });
 const demoWedding = [
@@ -2563,6 +2565,84 @@ backgroundColor: "#f3ece6",
     mapLink: "https://maps.google.com/?q=Beograd",
 
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "heart-floral-demo",
+  type: "wedding",
+  template: "heart-floral",
+
+  brideName: "Lena",
+  groomName: "Vuk",
+
+  backgroundImage: "/images/floral-jovana-luka.png",
+  musicSrc: "/music/olja-milos.mp3",
+
+  weddingDate: "12 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Topčider, Beograd",
+
+  details: createDetails({
+    welcomeText:
+      "Radujemo se što ćemo najlepše trenutke našeg dana podeliti sa vama.",
+
+    date: "12 SEP 2026",
+    dateISO: "2026-09-12T17:00:00+02:00",
+
+    rsvpOptions: {
+      foodPreferences: true,
+      musicWish: true,
+    },
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:30",
+        icon: "gathering",
+        location: "Topčider, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Topcider+Beograd",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "15:30",
+        icon: "church",
+        location: "Crkva Svetog Marka, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Marka+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Topčider, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Topcider+Beograd",
+      },
+      {
+        label: "Svečani ručak",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Restoran Topčiderac",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Topciderac+Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [
+      "#b8b1a4",
+      "#d8d0c2",
+      "#7f8173",
+      "#cab7a4",
+      "#e7d9cf",
+    ],
+    dressCodeNote:
+      "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+
+    mapLink: "https://maps.google.com/?q=Topcider+Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
   }),
 },
 

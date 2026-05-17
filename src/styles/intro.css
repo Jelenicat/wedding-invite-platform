@@ -4671,3 +4671,695 @@ color: #8e7f73;
 .df-intro-button:hover {
   background: rgba(244, 238, 232, 0.12);
 }
+/* ============================================================
+   IntroHeart.css — image card + luxury glass heart button
+   ============================================================ */
+
+
+/* ── Root scene ─────────────────────────────────────────────── */
+
+.hi-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #fdf6f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+/* ── Background ─────────────────────────────────────────────── */
+
+.hi-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+  background-color: #fdf6f0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(180, 130, 110, 0.025) 2px,
+      rgba(180, 130, 110, 0.025) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(180, 130, 110, 0.02) 3px,
+      rgba(180, 130, 110, 0.02) 6px
+    );
+}
+
+.hi-bg.has-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+/* ── Soft overlay ───────────────────────────────────────────── */
+
+.hi-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 244, 235, 0.22) 0%,
+      rgba(255, 238, 226, 0.12) 45%,
+      rgba(245, 226, 211, 0.22) 100%
+    ),
+    radial-gradient(
+      ellipse 75% 55% at 50% 32%,
+      rgba(255, 250, 244, 0.22) 0%,
+      rgba(255, 244, 238, 0.08) 48%,
+      transparent 76%
+    );
+}
+
+/* ── Very soft vignette ─────────────────────────────────────── */
+
+.hi-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    transparent 42%,
+    rgba(70, 45, 40, 0.07) 74%,
+    rgba(35, 24, 22, 0.15) 100%
+  );
+}
+
+/* ── Bokeh ──────────────────────────────────────────────────── */
+
+.hi-bokeh {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.hi-bokeh--1 {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  left: -90px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 220, 210, 0.1) 0%,
+    transparent 68%
+  );
+  animation: hi-drift1 9s ease-in-out infinite;
+}
+
+.hi-bokeh--2 {
+  width: 250px;
+  height: 250px;
+  bottom: -40px;
+  right: -60px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 190, 175, 0.07) 0%,
+    transparent 68%
+  );
+  animation: hi-drift2 12s ease-in-out infinite;
+}
+
+.hi-bokeh--3 {
+  width: 150px;
+  height: 150px;
+  top: 38%;
+  left: 6%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 230, 220, 0.06) 0%,
+    transparent 70%
+  );
+  animation: hi-drift1 15s ease-in-out infinite reverse;
+}
+
+@keyframes hi-drift1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(22px, -26px) scale(1.07);
+  }
+}
+
+@keyframes hi-drift2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-18px, 20px) scale(0.93);
+  }
+}
+
+/* ── Dust particles ─────────────────────────────────────────── */
+
+.hi-dust {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 235, 225, 0.16);
+  pointer-events: none;
+  animation: hi-dust-float linear infinite;
+  opacity: 0;
+}
+
+@keyframes hi-dust-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.62;
+  }
+
+  88% {
+    opacity: 0.25;
+  }
+
+  100% {
+    transform: translateY(-300px) translateX(var(--dx, 0px));
+    opacity: 0;
+  }
+}
+
+/* ── Background glyphs ──────────────────────────────────────── */
+
+.hi-star {
+  position: absolute;
+  pointer-events: none;
+  color: rgba(255, 235, 225, 0.12);
+  line-height: 1;
+  animation: hi-twinkle ease-in-out infinite;
+}
+
+@keyframes hi-twinkle {
+  0%,
+  100% {
+    opacity: 0.05;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.2;
+    transform: scale(1.22);
+  }
+}
+
+/* ── Card wrapper ───────────────────────────────────────────── */
+
+.hi-card {
+  position: relative;
+  width: min(88vw, 410px);
+  min-height: 610px;
+  padding: 58px 34px 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #5f302d;
+  z-index: 2;
+  border-radius: 34px;
+  overflow: hidden;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* ── Image card frame — OVO JE SLIKA KARTICE ────────────────── */
+
+.hi-card-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 34px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    0 28px 70px rgba(70, 46, 40, 0.24),
+    0 0 0 1px rgba(181, 126, 100, 0.15);
+
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* blagi sloj preko slike — ne pravi belu karticu, samo čuva čitljivost */
+.hi-card-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 245, 0.08) 0%,
+      rgba(255, 246, 240, 0.025) 45%,
+      rgba(255, 239, 229, 0.07) 100%
+    );
+  pointer-events: none;
+}
+
+/* unutrašnja fina ivica kao na premium kartici */
+.hi-card-frame::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 27px;
+  border: 1px solid rgba(180, 120, 95, 0.14);
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  pointer-events: none;
+}
+
+/* svi elementi moraju biti iznad slike kartice */
+.hi-kicker,
+.hi-names,
+.hi-date,
+.hi-ornament,
+.hi-btn,
+.hi-hint {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+
+.hi-kicker {
+  margin: 0 0 20px;
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(83, 43, 39, 0.72);
+  font-weight: 500;
+}
+
+.hi-names {
+  margin: 0;
+  font-size: clamp(48px, 12vw, 68px);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  color: #763b35;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.92),
+    0 8px 22px rgba(82, 42, 36, 0.14);
+}
+
+.hi-names em {
+  display: block;
+  font-style: normal;
+  font-size: 0.34em;
+  letter-spacing: 0.1em;
+  color: rgba(95, 47, 43, 0.82);
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  margin: 9px 0;
+}
+
+.hi-date {
+  margin-top: 20px;
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(83, 43, 39, 0.7);
+  font-weight: 500;
+}
+
+/* ── Ornament ───────────────────────────────────────────────── */
+
+.hi-ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 2px;
+  width: 68%;
+}
+
+.hi-ornament-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(150, 82, 68, 0.34),
+    transparent
+  );
+}
+
+.hi-ornament-diamond {
+  width: 5px;
+  height: 5px;
+  background: rgba(150, 82, 68, 0.54);
+  transform: rotate(45deg);
+  box-shadow: 0 0 5px rgba(150, 82, 68, 0.18);
+  flex-shrink: 0;
+}
+
+/* ── Luxury Glass Heart Button ───────────────────────────────── */
+
+.hi-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  position: relative;
+  margin-top: 22px;
+  width: 142px;
+  height: 142px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  display: grid;
+  place-items: center;
+  perspective: 1000px;
+}
+
+.hi-btn:disabled {
+  cursor: default;
+}
+
+.hi-btn-ring {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0.14) 34%,
+      transparent 64%
+    ),
+    radial-gradient(
+      circle,
+      transparent 46%,
+      rgba(204, 139, 116, 0.18) 58%,
+      transparent 76%
+    );
+  pointer-events: none;
+  filter: drop-shadow(0 12px 26px rgba(120, 72, 58, 0.18));
+}
+
+.hi-btn-base {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 45% 30%,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 238, 230, 0.38) 26%,
+      transparent 50%
+    ),
+    linear-gradient(
+      145deg,
+      #fff7f1 0%,
+      #e9b9a7 36%,
+      #b46b58 68%,
+      #8f4f42 100%
+    );
+  box-shadow:
+    0 28px 46px rgba(90, 52, 43, 0.26),
+    0 12px 24px rgba(115, 68, 56, 0.18),
+    0 4px 8px rgba(255, 255, 255, 0.5),
+    inset 0 3px 0 rgba(255, 255, 255, 0.92),
+    inset 0 -16px 24px rgba(105, 58, 48, 0.24);
+  transform: rotateX(9deg);
+}
+
+.hi-btn-base::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: -15px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(86, 50, 42, 0.2);
+  filter: blur(12px);
+}
+
+.hi-btn-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 145deg,
+      #fff8ef 0deg,
+      #d7a16f 42deg,
+      #fff0dc 88deg,
+      #b87955 146deg,
+      #fff9ee 205deg,
+      #c78b61 270deg,
+      #fff4e5 330deg,
+      #fff8ef 360deg
+    );
+  border: 1px solid rgba(255, 247, 235, 0.86);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.44),
+    0 10px 24px rgba(130, 76, 59, 0.22),
+    inset 0 0 16px rgba(255, 255, 255, 0.68);
+}
+
+.hi-btn-rim::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 20deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(198, 129, 93, 0.32),
+      rgba(255, 244, 228, 0.82),
+      rgba(160, 86, 64, 0.34),
+      rgba(255, 255, 255, 0.76)
+    );
+  filter: blur(0.2px);
+}
+
+.hi-btn-face {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse 66% 48% at 34% 20%,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(255, 255, 255, 0.58) 24%,
+      rgba(255, 255, 255, 0.08) 52%,
+      transparent 66%
+    ),
+    radial-gradient(
+      circle at 62% 72%,
+      rgba(132, 63, 55, 0.35),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      #f0aaa0 0%,
+      #d9877c 42%,
+      #bf6d62 67%,
+      #a95d54 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    inset 0 6px 10px rgba(255, 255, 255, 0.58),
+    inset 0 -18px 26px rgba(115, 54, 48, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24),
+    0 9px 20px rgba(104, 57, 49, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: translateY(-3px);
+}
+
+.hi-btn-face::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 21px;
+  width: 46px;
+  height: 20px;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.22)
+  );
+  transform: rotate(-18deg);
+  filter: blur(0.2px);
+  pointer-events: none;
+}
+
+.hi-btn-face::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow:
+    -43px -6px 0 -3px rgba(255, 255, 255, 0.7),
+    -28px 18px 0 -5px rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.hi-heart-icon {
+  position: relative;
+  z-index: 2;
+  font-size: 37px;
+  line-height: 1;
+  color: #fffdf9;
+  text-shadow:
+    0 2px 3px rgba(112, 53, 46, 0.18),
+    0 8px 16px rgba(112, 53, 46, 0.18),
+    0 0 20px rgba(255, 244, 238, 0.86);
+  display: block;
+  transform: translateY(-1px);
+}
+
+.hi-btn-label {
+  position: absolute;
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(93, 50, 45, 0.78);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+/* ── Burst particles ─────────────────────────────────────────── */
+
+.hi-particles {
+  position: absolute;
+  inset: 50%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hi-particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  color: #b65c55;
+  text-shadow:
+    0 0 12px rgba(255, 220, 208, 0.78),
+    0 4px 12px rgba(120, 75, 68, 0.14);
+  transform-origin: center;
+  line-height: 1;
+}
+
+.hi-particle:nth-child(3n) {
+  color: #d9867e;
+}
+
+.hi-particle:nth-child(4n) {
+  color: #8f4b45;
+}
+
+.hi-particle:nth-child(5n) {
+  color: #e8aaa2;
+}
+
+/* ── Hint ───────────────────────────────────────────────────── */
+
+.hi-hint {
+  margin: 48px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(83, 43, 39, 0.54);
+}
+
+/* ── Mobile ─────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .hi-card {
+    width: min(89vw, 390px);
+    min-height: 585px;
+    padding: 50px 22px 54px;
+    border-radius: 28px;
+  }
+
+  .hi-card-frame {
+    border-radius: 28px;
+  }
+
+  .hi-card-frame::after {
+    border-radius: 22px;
+  }
+
+  .hi-kicker {
+    font-size: 9px;
+    letter-spacing: 0.34em;
+    margin-bottom: 18px;
+  }
+
+  .hi-names {
+    font-size: clamp(44px, 13vw, 58px);
+  }
+
+  .hi-date {
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    margin-top: 18px;
+  }
+
+  .hi-ornament {
+    margin-top: 23px;
+    width: 66%;
+  }
+
+  .hi-btn {
+    width: 132px;
+    height: 132px;
+    margin-top: 20px;
+  }
+
+  .hi-heart-icon {
+    font-size: 35px;
+  }
+
+  .hi-btn-label {
+    bottom: -31px;
+    font-size: 8.5px;
+    letter-spacing: 0.27em;
+  }
+
+  .hi-hint {
+    margin-top: 45px;
+    font-size: 8.5px;
+    letter-spacing: 0.25em;
+  }
+}
