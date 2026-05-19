@@ -10110,3 +10110,819 @@ padding: 100px 12px 0;
     transform: translateY(170px) scale(0.85) rotate(160deg);
   }
 }
+
+/* ============================= */
+/* CALLA LACE INVITATION CARD    */
+/* ============================= */
+
+.clace-card-page {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1), transparent 38%),
+    linear-gradient(180deg, #050505 0%, #11100d 44%, #050505 100%);
+  color: #17130f;
+}
+
+/* ============================= */
+/* HERO                          */
+/* ============================= */
+
+.clace-card-hero {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clace-card-hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clace-card-hero-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.clace-card-hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.28) 0%,
+      rgba(0, 0, 0, 0.38) 38%,
+      rgba(0, 0, 0, 0.72) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.28) 0%,
+      rgba(0, 0, 0, 0.42) 38%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+}
+
+.clace-card-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(88vw, 520px);
+  min-height: 520px;
+  padding: 70px 28px 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.clace-card-hero-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  pointer-events: none;
+}
+
+.clace-card-hero-content::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  pointer-events: none;
+}
+
+.clace-card-kicker {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 30px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.clace-card-names {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Italianno", "Tangerine", cursive;
+  font-size: clamp(78px, 17vw, 122px);
+  line-height: 0.82;
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow:
+    0 2px 2px rgba(0, 0, 0, 0.78),
+    0 12px 28px rgba(0, 0, 0, 0.75),
+    0 0 34px rgba(0, 0, 0, 0.55);
+}
+
+.clace-card-names em {
+  margin: 10px 0 12px;
+  font-size: 0.48em;
+  font-style: normal;
+  opacity: 0.76;
+}
+
+.clace-card-hero-text {
+  position: relative;
+  z-index: 1;
+  max-width: 330px;
+  margin: 34px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  line-height: 1.55;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 8px 18px rgba(0, 0, 0, 0.7);
+}
+/* ============================= */
+/* DATE / SCRATCH                */
+/* ============================= */
+
+.clace-date-section {
+  position: relative;
+  padding: 96px 18px 104px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.14), transparent 34%),
+    linear-gradient(180deg, #050505 0%, #121212 52%, #050505 100%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.clace-date-inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 520px);
+  margin: 0 auto;
+}
+
+.clace-section-kicker {
+  margin: 0 0 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.clace-section-title {
+  margin: 0;
+  font-family: "Italianno", "Tangerine", cursive;
+  font-size: clamp(58px, 14vw, 88px);
+  line-height: 0.92;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.clace-date-help {
+  margin: 24px auto 30px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.clace-date-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: min(100%, 460px);
+  margin: 0 auto;
+}
+
+.clace-date-card {
+  position: relative;
+  min-height: 138px;
+  padding: 10px 8px 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(226, 226, 226, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  color: #080808;
+  overflow: hidden;
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.clace-date-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.clace-date-scratch-box {
+  position: relative;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.clace-date-scratch-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.clace-date-value {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 7vw, 42px);
+  line-height: 1;
+  font-weight: 500;
+  color: #080808;
+}
+
+.clace-date-label {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.clace-date-time {
+  margin: 30px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.clace-date-time strong {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.clace-date-venue {
+  margin: 10px auto 0;
+  max-width: 320px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ============================= */
+/* LETTER / ENVELOPE - ITALIAN LOGIC */
+/* ============================= */
+
+.clace-letter-section {
+  position: relative;
+  min-height: calc(100svh + 200px);
+  padding: 100px 12px 0;
+
+  background:
+  
+    url("/images/calla-lace-letter-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.clace-letter-sticky {
+  position: sticky;
+  top: 0;
+  width: min(100%, 620px);
+  height: 100svh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clace-envelope-scene {
+  position: relative;
+  width: min(96vw, 430px);
+  height: auto;
+  aspect-ratio: 430 / 500;
+  max-height: 72svh;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.clace-envelope-back-img {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.clace-letter-stack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 225px;
+  z-index: 4;
+  width: 78%;
+  margin: 0 auto;
+  will-change: transform;
+}
+
+.clace-letter-hearts {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -70px;
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  color: #d8c3a5;
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(90, 150, 180, 0.18);
+}
+
+.clace-letter-hearts span {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(38px, 10vw, 54px);
+  line-height: 1;
+  font-weight: 300;
+}
+
+.clace-letter-hearts span:first-child {
+  transform: rotate(-14deg);
+}
+
+.clace-letter-hearts span:last-child {
+  margin-top: 25px;
+  font-size: clamp(26px, 7vw, 38px);
+  transform: rotate(12deg);
+}
+
+.clace-letter-paper {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  margin: 0 auto;
+  padding: 34px 22px 46px;
+  background: #ffffff;
+  box-shadow:
+    0 18px 45px rgba(68, 62, 55, 0.11),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  text-align: center;
+  color: #383838;
+  clip-path: none;
+}
+
+.clace-letter-paper::before,
+.clace-letter-paper::after {
+  display: none;
+}
+
+.clace-letter-ornament {
+  display: none;
+}
+
+.clace-letter-script {
+  margin: 0 0 20px;
+  font-family: "Great Vibes", "Allura", "Tangerine", cursive;
+  font-size: clamp(28px, 7vw, 40px);
+  line-height: 1;
+  color: #3c3c3a;
+}
+
+.clace-letter-paper p {
+  margin: 0 auto 16px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(16px, 4.2vw, 22px);
+  line-height: 1.13;
+  font-weight: 500;
+  color: #444441;
+}
+
+.clace-letter-paper .clace-letter-signature {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-family: "Great Vibes", "Allura", "Tangerine", cursive !important;
+  font-size: clamp(29px, 7vw, 42px) !important;
+  font-weight: 400;
+  color: #d8c3a5 !important;
+}
+
+.clace-envelope-front-img {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 5;
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.clace-envelope-scene::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 12px;
+  z-index: 0;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(80, 120, 140, 0.1);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+/* ============================= */
+/* EVENTS - ITALIAN STYLE WHITE  */
+/* ============================= */
+
+.clace-events-section {
+  position: relative;
+  min-height: 100svh;
+  padding: 92px 18px 110px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(0, 0, 0, 0.035), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f8f8f6 48%, #ffffff 100%);
+  color: #171717;
+}
+
+.clace-events-inner {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.clace-events-title {
+  margin: 0 0 54px;
+  font-family: "Great Vibes", "Allura", "Italianno", cursive;
+  font-size: clamp(54px, 14vw, 86px);
+  line-height: 0.92;
+  font-weight: 400;
+  color: #171717;
+}
+
+.clace-timeline {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 4px 0 12px;
+}
+
+.clace-timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.28),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.clace-timeline-row {
+  position: relative;
+  min-height: 118px;
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  align-items: start;
+}
+
+.clace-timeline-row.is-right .clace-timeline-content {
+  grid-column: 3;
+  text-align: left;
+  padding-left: 12px;
+}
+
+.clace-timeline-row.is-left .clace-timeline-content {
+  grid-column: 1;
+  text-align: right;
+  padding-right: 12px;
+}
+
+.clace-timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: #171717;
+  box-shadow:
+    0 0 0 7px rgba(0, 0, 0, 0.05),
+    0 8px 18px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+.clace-timeline-content {
+  position: relative;
+  padding-bottom: 42px;
+}
+
+.clace-timeline-time {
+  margin: 0 0 7px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 500;
+  color: #171717;
+}
+
+.clace-timeline-label {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 27px;
+  line-height: 1.02;
+  font-weight: 500;
+  color: #171717;
+}
+
+.clace-timeline-location {
+  margin-top: 7px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(23, 23, 23, 0.64);
+}
+
+.clace-timeline-map {
+  display: inline-block;
+  margin-top: 9px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #171717;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.35);
+  padding-bottom: 3px;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.clace-timeline-map:hover {
+  opacity: 0.65;
+  transform: translateY(-1px);
+}
+
+.clace-event-cloud {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.24;
+  filter: grayscale(100%) brightness(0.92) contrast(0.9);
+}
+
+.clace-event-cloud-left {
+  left: -7%;
+  top: 12%;
+  width: min(58vw, 340px);
+}
+
+.clace-event-cloud-right {
+  right: -7%;
+  top: 22%;
+  width: min(58vw, 340px);
+}
+
+@media (max-width: 520px) {
+  .clace-events-section {
+    padding: 78px 14px 96px;
+  }
+
+  .clace-events-title {
+    margin-bottom: 46px;
+    font-size: clamp(52px, 16vw, 72px);
+  }
+
+  .clace-timeline {
+    max-width: 360px;
+  }
+
+  .clace-timeline-row {
+    min-height: 110px;
+    grid-template-columns: 1fr 28px 1fr;
+  }
+
+  .clace-timeline-time {
+    font-size: 21px;
+  }
+
+  .clace-timeline-label {
+    font-size: 22px;
+  }
+
+  .clace-timeline-location {
+    font-size: 13px;
+  }
+
+  .clace-timeline-map {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+  }
+
+  .clace-event-cloud-left {
+    left: -18%;
+    top: 9%;
+    width: 72vw;
+  }
+
+  .clace-event-cloud-right {
+    right: -18%;
+    top: 19%;
+    width: 72vw;
+  }
+}
+/* ============================= */
+/* MOBILE                        */
+/* ============================= */
+
+@media (max-width: 640px) {
+  .clace-card-hero-content {
+    width: min(90vw, 390px);
+    min-height: 480px;
+    padding: 56px 22px 52px;
+  }
+
+  .clace-card-hero-content::before {
+    inset: -12px;
+    border-width: 1px;
+  }
+
+  .clace-card-kicker {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+  }
+
+  .clace-card-names {
+    font-size: clamp(62px, 18vw, 82px);
+  }
+
+  .clace-card-hero-text {
+    font-size: 16px;
+    margin-top: 24px;
+  }
+
+  .clace-date-section {
+    padding: 76px 14px 86px;
+  }
+
+  .clace-date-grid {
+    gap: 8px;
+  }
+
+  .clace-date-card {
+    min-height: 122px;
+    padding-inline: 6px;
+  }
+
+  .clace-date-scratch-box {
+    height: 76px;
+  }
+
+  .clace-date-value {
+    font-size: 28px;
+  }
+
+  .clace-date-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+
+  .clace-date-help {
+    margin-bottom: 24px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+  }
+
+  .clace-date-time {
+    font-size: 18px;
+  }
+
+  .clace-date-venue {
+    font-size: 16px;
+  }
+
+  .clace-event-card {
+    grid-template-columns: 72px 1fr;
+    gap: 13px;
+    padding: 13px;
+  }
+
+  .clace-event-time {
+    min-height: 80px;
+    font-size: 20px;
+  }
+
+  .clace-event-body h3 {
+    font-size: 21px;
+  }
+
+  .clace-event-body p {
+    font-size: 15px;
+  }
+}
+
+/* ============================= */
+/* MOBILE LETTER - SAME AS ITALIAN */
+/* ============================= */
+
+@media (max-width: 520px) {
+  .clace-letter-section {
+    min-height: 100vh;
+    padding: 120px 2px 1px;
+    margin-bottom: -400px;
+  }
+
+  .clace-letter-sticky {
+    top: 0;
+    height: 100svh;
+  }
+
+  .clace-envelope-scene {
+    width: min(100vw, 405px);
+    height: 600px;
+    max-height: 91svh;
+  }
+
+  .clace-envelope-back-img {
+    bottom: 34px;
+    width: 100%;
+  }
+
+  .clace-letter-stack {
+    bottom: 218px;
+    width: 79%;
+  }
+
+  .clace-letter-hearts {
+    top: -66px;
+  }
+
+  .clace-letter-paper {
+    min-height: 320px;
+    padding: 31px 20px 42px;
+  }
+
+  .clace-letter-script {
+    font-size: clamp(28px, 7vw, 38px);
+    margin-bottom: 18px;
+  }
+
+  .clace-letter-paper p {
+    font-size: clamp(16px, 4.25vw, 20px);
+    line-height: 1.12;
+    margin-bottom: 15px;
+  }
+
+  .clace-letter-paper .clace-letter-signature {
+    font-size: clamp(29px, 7vw, 40px) !important;
+  }
+}

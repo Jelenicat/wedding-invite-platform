@@ -2734,34 +2734,63 @@ backgroundColor: "#f3ece6",
   venue: "Restoran Elegance, Beograd",
 
   backgroundImage: "/images/calla-lace-bg.jpg",
+  videoSrc: "/videos/tamara-viktor-calla.mp4",
   musicSrc: "/music/olja-milos.mp3",
 
   details: createDetails({
     backgroundImage: "/images/calla-lace-bg.jpg",
-
-    welcomeText:
-      "Biće nam veliko zadovoljstvo da ovaj poseban dan podelimo sa vama.",
-
-    introSentence:
-      "Sa radošću vas pozivamo da budete deo dana u kom ljubav postaje naš najlepši početak.",
+    heroText: "sa radošću vas pozivaju da budete deo njihovog dana",
 
     date: "14.06.2026.",
     dateISO: "2026-06-14T16:00:00+02:00",
-
-    events: [
-      {
-        label: "Svečana ceremonija i proslava",
-        time: "16:00",
-        icon: "civil",
-        location: "Restoran Elegance, Beograd",
-        mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
-      },
-    ],
+rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
+ events: [
+  {
+    label: "Okupljanje gostiju",
+    time: "15:30",
+    icon: "gathering",
+    location: "Restoran Elegance, Beograd",
+    mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+  },
+  {
+    label: "Svečana ceremonija",
+    time: "16:00",
+    icon: "civil",
+    location: "Restoran Elegance, Beograd",
+    mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+  },
+  {
+    label: "Čestitanje i fotografisanje",
+    time: "16:30",
+    icon: "toast",
+    location: "Restoran Elegance, Beograd",
+    mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+  },
+  {
+    label: "Svečani ručak / večera",
+    time: "17:30",
+    icon: "restaurant",
+    location: "Restoran Elegance, Beograd",
+    mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+  },
+  {
+    label: "Prvi ples",
+    time: "20:00",
+    icon: "party",
+    location: "Restoran Elegance, Beograd",
+    mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+  },
+  {
+    label: "Torta",
+    time: "22:00",
+    icon: "cake",
+    location: "Restoran Elegance, Beograd",
+    mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+  },
+],
 
     showDressCode: false,
-
     mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
-
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },

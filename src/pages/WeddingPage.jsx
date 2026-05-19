@@ -64,6 +64,7 @@ import DarkFloralInvitationCard from "../components/DarkFloralInvitationCard";
 import IntroHeart from "../components/IntroHeart";
 import MagazineEditorialIntro from "../components/MagazineEditorialIntro";
 import CallaLaceIntro from "../components/CallaLaceIntro";
+import CallaLaceInvitationCard from "../components/CallaLaceInvitationCard";
 import ItalianIntro from "../components/ItalianIntro";
 import ItalianInvitationCard from "../components/ItalianInvitationCard";
 
@@ -204,7 +205,7 @@ const TEMPLATE_COMPONENTS = {
 },
 "calla-lace": {
   Intro: CallaLaceIntro,
-  Invitation: FloralInvitationCard,
+  Invitation: CallaLaceInvitationCard,
 },
 "italian-envelope-video": {
   Intro: ItalianIntro,
