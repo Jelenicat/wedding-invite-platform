@@ -1,6 +1,37 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "../styles/intro.css";
+
+function preloadImage(src) {
+  return new Promise((resolve) => {
+    if (!src) {
+      resolve();
+      return;
+    }
+
+    const img = new Image();
+
+    img.onload = async () => {
+      try {
+        if (img.decode) {
+          await img.decode();
+        }
+      } catch {
+        // Ako browser ne uspe decode, ne blokiramo prikaz.
+      }
+
+      resolve();
+    };
+
+    img.onerror = () => {
+      // Ne blokiramo pozivnicu ako neka slika fali,
+      // ali proveri u Network tabu ako se nešto ne prikaže.
+      resolve();
+    };
+
+    img.src = src;
+  });
+}
 
 function ItalianIntro({
   onEnter,
@@ -29,42 +60,17 @@ function ItalianIntro({
   const centerImage =
     details?.envelopeCenterImage || `/images/envelope/${slug}-center.svg`;
 
-  useEffect(() => {
-    setImagesReady(false);
-
-    const imagesToLoad = [
+  const imagesToLoad = useMemo(() => {
+    return [
       leftImage,
       rightImage,
       topImage,
       bottomImage,
       centerImage,
-    ];
-
-    if (backgroundImage) {
-      imagesToLoad.push(backgroundImage);
-    }
-
-    let loadedCount = 0;
-    let isMounted = true;
-
-    const markLoaded = () => {
-      loadedCount += 1;
-
-      if (loadedCount === imagesToLoad.length && isMounted) {
-        setImagesReady(true);
-      }
-    };
-
-    imagesToLoad.forEach((src) => {
-      const img = new Image();
-      img.onload = markLoaded;
-      img.onerror = markLoaded;
-      img.src = src;
-    });
-
-    return () => {
-      isMounted = false;
-    };
+      backgroundImage,
+    ]
+      .filter(Boolean)
+      .filter((src, index, array) => array.indexOf(src) === index);
   }, [
     leftImage,
     rightImage,
@@ -73,6 +79,22 @@ function ItalianIntro({
     centerImage,
     backgroundImage,
   ]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    setImagesReady(false);
+
+    Promise.all(imagesToLoad.map((src) => preloadImage(src))).then(() => {
+      if (isMounted) {
+        setImagesReady(true);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [imagesToLoad]);
 
   const handleOpen = () => {
     if (opened || !imagesReady) return;
@@ -116,6 +138,9 @@ function ItalianIntro({
         alt=""
         className="fourway-envelope-part fourway-envelope-top"
         draggable={false}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         animate={
           opened
             ? {
@@ -140,6 +165,9 @@ function ItalianIntro({
         alt=""
         className="fourway-envelope-part fourway-envelope-bottom"
         draggable={false}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         animate={
           opened
             ? {
@@ -164,6 +192,9 @@ function ItalianIntro({
         alt=""
         className="fourway-envelope-part fourway-envelope-left"
         draggable={false}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         animate={
           opened
             ? {
@@ -188,6 +219,9 @@ function ItalianIntro({
         alt=""
         className="fourway-envelope-part fourway-envelope-right"
         draggable={false}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         animate={
           opened
             ? {
@@ -212,6 +246,9 @@ function ItalianIntro({
         alt=""
         className="fourway-envelope-part fourway-envelope-center-piece"
         draggable={false}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         animate={
           opened
             ? {

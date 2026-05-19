@@ -338,28 +338,28 @@ function EnvelopeLetterSection({ brideName, groomName, details = {} }) {
 function AnimatedEventsSection({ events = [], details = {} }) {
   const sectionRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 95%", "end 45%"],
-  });
+const { scrollYProgress } = useScroll({
+  target: sectionRef,
+  offset: ["start 80%", "start -20%"], // umesto ["start 95%", "end 45%"]
+});
 
-  const leftCloudX = useTransform(
-    scrollYProgress,
-    [0, 0.35, 0.8, 1],
-    ["0%", "0%", "-55%", "-125%"]
-  );
+const leftCloudX = useTransform(
+  scrollYProgress,
+  [0, 0.2, 0.5, 1],       // umesto [0, 0.35, 0.8, 1]
+  ["0%", "0%", "-55%", "-125%"]
+);
 
-  const rightCloudX = useTransform(
-    scrollYProgress,
-    [0, 0.35, 0.8, 1],
-    ["0%", "0%", "55%", "125%"]
-  );
+const rightCloudX = useTransform(
+  scrollYProgress,
+  [0, 0.2, 0.5, 1],       // umesto [0, 0.35, 0.8, 1]
+  ["0%", "0%", "55%", "125%"]
+);
 
-  const cloudsOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.55, 0.85, 1],
-    [1, 1, 0.75, 0]
-  );
+const cloudsOpacity = useTransform(
+  scrollYProgress,
+  [0, 0.35, 0.6, 1],      // umesto [0, 0.55, 0.85, 1]
+  [1, 1, 0.75, 0]
+);
 
   const cloudLeft =
     details?.cloudLeft || "/images/italian-clouds/cloud-left.svg";
