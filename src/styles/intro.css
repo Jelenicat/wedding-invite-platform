@@ -5840,7 +5840,7 @@ color: #8e7f73;
   align-items: center;
   justify-content: center;
   padding: 92px 0 28px;
-  gap: 74px;
+  gap: 120px;
 }
 
 /* ── Text card ── */
@@ -6005,12 +6005,12 @@ color: #8e7f73;
     background-position: center center;
   }
 
-  .clace-content {
-    width: min(74vw, 330px);
-    padding-top: 82px;
-    padding-bottom: 24px;
-    gap: 72px;
-  }
+ .clace-content {
+  width: min(74vw, 330px);
+  padding-top: 152px;
+  padding-bottom: 24px;
+  gap: 111px;
+}
 
   .clace-text-card {
     padding: 30px 18px 26px;

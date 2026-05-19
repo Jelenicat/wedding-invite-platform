@@ -4,14 +4,9 @@ function CallaLaceIntro({
   brideName,
   groomName,
   backgroundImage,
-  introSentence,
   onEnter,
 }) {
   const bg = backgroundImage || "/images/calla-lace-bg.jpg";
-
-  const sentence =
-    introSentence ||
-    "Sa radošću vas pozivamo da budete deo našeg najlepšeg početka.";
 
   return (
     <section className="clace-intro">
@@ -37,11 +32,7 @@ function CallaLaceIntro({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
         >
-          <div className="clace-small-ornament" aria-hidden="true">
-            ⌁
-          </div>
-
-          <p className="clace-kicker">Pozivamo vas</p>
+          <p className="clace-kicker">Pozivnica za venčanje</p>
 
           <div className="clace-divider" aria-hidden="true">
             <span />
@@ -54,8 +45,6 @@ function CallaLaceIntro({
             <em aria-hidden="true">&amp;</em>
             <span>{groomName || "Viktor"}</span>
           </h1>
-
-          <p className="clace-sentence">{sentence}</p>
         </motion.div>
 
         <motion.button
