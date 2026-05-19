@@ -275,7 +275,7 @@ function EnvelopeLetterSection({ brideName, groomName, details = {} }) {
   const envelopeFront =
     details?.envelopeFront || "/images/italian-envelope/envelope-front.svg";
 
-  const letterIntro = details?.letterIntro || "Dragi prijatelji i porodico,";
+  const letterIntro = details?.letterIntro || "Dragi naši,";
 
   const letterText1 =
     details?.letterText1 ||
