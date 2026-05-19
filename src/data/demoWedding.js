@@ -42,6 +42,7 @@ cloudRight,
 rsvpImage,
 rsvpPhotoTitle,
 heroText,
+
   showCalendarButton = false,
 }) => ({
   backgroundImage,
@@ -85,6 +86,7 @@ cloudRight,
 rsvpImage,
 rsvpPhotoTitle,
 heroText,
+
   showCalendarButton,
 });
 const demoWedding = [
@@ -2792,6 +2794,77 @@ rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
     showDressCode: false,
     mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
+{
+  slug: "nina-nemanja",
+  type: "wedding",
+  template: "italian-envelope-video",
+
+  brideName: "Nina",
+  groomName: "Nemanja",
+
+  weddingDate: "12.06.2027.",
+  weddingTime: "15:30",
+  venue: "Villa Jelena, Beograd",
+
+  videoSrc: "/videos/nina-nemanja.mp4",
+
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    rsvpImage: "/images/italian-rsvp/nina-nemanja-rsvp.jpg",
+    rsvpPhotoTitle: "Vidimo se!",
+
+    heroText: "Naš poseban dan",
+    showCalendarButton: true,
+
+    date: "12.06.2027.",
+    dateISO: "2027-06-12T15:30:00+02:00",
+
+    cloudLeft: "/images/italian-clouds/nina-nemanja-cloud-left.svg",
+    cloudRight: "/images/italian-clouds/nina-nemanja-cloud-right.svg",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Villa Jelena, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Villa+Jelena+Beograd",
+      },
+      {
+        label: "Ceremonija venčanja",
+        time: "16:30",
+        icon: "civil",
+        location: "Bašta restorana Villa Jelena",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Villa+Jelena+Beograd",
+      },
+      {
+        label: "Svečana večera",
+        time: "18:00",
+        icon: "restaurant",
+        location: "Villa Jelena, svečana sala",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Villa+Jelena+Beograd",
+      },
+      {
+        label: "Žurka",
+        time: "20:30",
+        icon: "party",
+        location: "Villa Jelena, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Villa+Jelena+Beograd",
+      },
+    ],
+
+    mapLink: "https://www.google.com/maps/search/?api=1&query=Villa+Jelena+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 25. maja.",
   }),
 },
 // =========================
