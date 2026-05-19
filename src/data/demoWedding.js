@@ -37,6 +37,11 @@ const createDetails = ({
 locationAddress,
  ticketNumber,
  introCardImage,
+ cloudLeft,
+cloudRight,
+rsvpImage,
+rsvpPhotoTitle,
+heroText,
   showCalendarButton = false,
 }) => ({
   backgroundImage,
@@ -75,6 +80,11 @@ locationAddress,
 locationAddress,
  ticketNumber,
  introCardImage,
+ cloudLeft,
+cloudRight,
+rsvpImage,
+rsvpPhotoTitle,
+heroText,
   showCalendarButton,
 });
 const demoWedding = [
@@ -2711,6 +2721,50 @@ backgroundColor: "#f3ece6",
     rsvpDeadline: "20.08.2026.",
   }),
 },
+{
+  slug: "tamara-viktor-calla",
+  type: "wedding",
+  template: "calla-lace",
+
+  brideName: "Tamara",
+  groomName: "Viktor",
+
+  weddingDate: "14.06.2026.",
+  weddingTime: "16:00",
+  venue: "Restoran Elegance, Beograd",
+
+  backgroundImage: "/images/calla-lace-bg.jpg",
+  musicSrc: "/music/olja-milos.mp3",
+
+  details: createDetails({
+    backgroundImage: "/images/calla-lace-bg.jpg",
+
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da ovaj poseban dan podelimo sa vama.",
+
+    introSentence:
+      "Sa radošću vas pozivamo da budete deo dana u kom ljubav postaje naš najlepši početak.",
+
+    date: "14.06.2026.",
+    dateISO: "2026-06-14T16:00:00+02:00",
+
+    events: [
+      {
+        label: "Svečana ceremonija i proslava",
+        time: "16:00",
+        icon: "civil",
+        location: "Restoran Elegance, Beograd",
+        mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink: "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
 // =========================
 // Klijenti
 // =========================
@@ -3518,6 +3572,67 @@ ticketNumber: "06SEP2026",
     note: "Molimo vas da svoj dolazak potvrdite do 20.08.2026.",
     rsvpDeadline: "20.08.2026.",
   }),
+},
+{
+  slug: "marija-aleksandar",
+  type: "wedding",
+  template: "italian-envelope-video",
+
+  brideName: "Marija",
+  groomName: "Aleksandar",
+
+  weddingDate: "19.09.2026.",
+  weddingTime: "14:00",
+  venue: "New Lux Event",
+
+  videoSrc: "/videos/marija-aleksandar.mp4",
+  musicSrc: "/music/marija-aleksandar.mp3",
+
+
+
+details: createDetails({
+  welcomeText:
+    "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+rsvpImage: "/images/italian-rsvp/marija-aleksandar-rsvp.jpg",
+rsvpPhotoTitle: "Vidimo se!",
+  heroText: "venčanje",
+  showCalendarButton: true,
+  date: "19.09.2026.",
+  dateISO: "2026-09-19T14:00:00+02:00",
+
+  cloudLeft: "/images/italian-clouds/cloud-left.svg",
+  cloudRight: "/images/italian-clouds/cloud-right.svg",
+
+  events: [
+    {
+      label: "Crkveno venčanje",
+      time: "14:00",
+      icon: "church",
+      location: "Crkva Svetog Luke, Krnjača",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Luke+Krnjaca",
+    },
+    {
+      label: "Skup gostiju",
+      time: "15:00",
+      icon: "gathering",
+      location: "Restoran New Lux Event",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=New+Lux+Event",
+    },
+    {
+      label: "Ceremonija građanskog venčanja",
+      time: "16:20",
+      icon: "civil",
+      location: "Restoran New Lux Event",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=New+Lux+Event",
+    },
+  ],
+
+  mapLink: "https://www.google.com/maps/search/?api=1&query=New+Lux+Event",
+  note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+})
 },
   // =========================
   // BIRTHDAY TEMPLATES

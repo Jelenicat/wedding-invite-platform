@@ -63,6 +63,10 @@ import DarkFloralIntro from "../components/DarkFloralIntro";
 import DarkFloralInvitationCard from "../components/DarkFloralInvitationCard";
 import IntroHeart from "../components/IntroHeart";
 import MagazineEditorialIntro from "../components/MagazineEditorialIntro";
+import CallaLaceIntro from "../components/CallaLaceIntro";
+import ItalianIntro from "../components/ItalianIntro";
+import ItalianInvitationCard from "../components/ItalianInvitationCard";
+
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -198,7 +202,14 @@ const TEMPLATE_COMPONENTS = {
   Intro: MagazineEditorialIntro,
   Invitation: EditorialInvitationCard,
 },
-
+"calla-lace": {
+  Intro: CallaLaceIntro,
+  Invitation: FloralInvitationCard,
+},
+"italian-envelope-video": {
+  Intro: ItalianIntro,
+  Invitation: ItalianInvitationCard,
+},
 };
 
 function WeddingPage() {
@@ -413,7 +424,8 @@ if (
   templateKey === "envelope-split" ||
   templateKey === "envelope-split-v2" ||
   templateKey === "envelope-side-split" ||
-  templateKey === "envelope-side-split-v2"
+  templateKey === "envelope-side-split-v2" ||
+  templateKey === "italian-envelope-video"
 ) {
     return (
       <div className="wedding-page">

@@ -5791,3 +5791,351 @@ color: #8e7f73;
     font-size: 16px;
   }
 }
+/* ============================= */
+/* CALLA LACE INTRO TEMPLATE     */
+/* ============================= */
+
+.clace-intro {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #020302;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clace-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: contrast(1.04) brightness(0.94);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.clace-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.01),
+      rgba(0, 0, 0, 0.04) 55%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+}
+
+.clace-content {
+  position: relative;
+  z-index: 2;
+  width: min(76vw, 360px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 92px 0 28px;
+  gap: 74px;
+}
+
+/* ── Text card ── */
+
+.clace-text-card {
+  width: 100%;
+  padding: 38px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* ── Ornament ── */
+
+.clace-small-ornament {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: rgba(28, 28, 25, 0.46);
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+/* ── Kicker ── */
+
+.clace-kicker {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(18, 18, 16, 0.74);
+ 
+}
+
+/* ── Divider ── */
+
+.clace-divider {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 19px 0 18px;
+  color: rgba(28, 28, 25, 0.42);
+}
+
+.clace-divider span {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(45, 45, 40, 0.34),
+    transparent
+  );
+}
+
+.clace-divider i {
+  font-style: normal;
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* ── Names ── */
+
+.clace-names {
+  margin: 0;
+  text-align: center;
+  color: rgba(12, 12, 11, 0.9);
+  font-family: "Italianno", "Great Vibes", cursive;
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+ 
+}
+
+.clace-names span {
+  display: block;
+  font-size: clamp(62px, 15vw, 88px);
+}
+
+.clace-names em {
+  display: block;
+  margin: 8px 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  font-style: italic;
+  color: rgba(18, 18, 16, 0.42);
+  line-height: 1;
+
+}
+
+/* ── Sentence ── */
+
+.clace-sentence {
+  max-width: 250px;
+  margin: 22px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15.5px;
+  line-height: 1.48;
+  text-align: center;
+  color: rgba(20, 20, 18, 0.82);
+
+}
+
+/* ── Date ── */
+
+.clace-date {
+  margin: 18px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(22, 22, 19, 0.58);
+ 
+}
+
+/* ── CTA button ── */
+
+.clace-open-btn {
+  display: block;
+  min-width: 228px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  background: rgba(255, 255, 255, 0.055);
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.36),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.clace-open-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.82);
+}
+
+.clace-open-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 430px) {
+  .clace-bg {
+    background-position: center center;
+  }
+
+  .clace-content {
+    width: min(74vw, 330px);
+    padding-top: 82px;
+    padding-bottom: 24px;
+    gap: 72px;
+  }
+
+  .clace-text-card {
+    padding: 30px 18px 26px;
+  }
+
+  .clace-names span {
+    font-size: clamp(58px, 16vw, 78px);
+  }
+
+  .clace-names em {
+    font-size: 32px;
+    margin: 7px 0 9px;
+  }
+
+  .clace-sentence {
+    max-width: 225px;
+    font-size: 14.5px;
+  }
+
+  .clace-date {
+    font-size: 11.5px;
+  }
+
+  .clace-open-btn {
+    height: 40px;
+    min-width: 210px;
+    font-size: 11.5px;
+    letter-spacing: 0.26em;
+  }
+}
+/* ============================= */
+/* FOUR WAY ENVELOPE INTRO       */
+/* ============================= */
+
+.fourway-envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #f6f2eb;
+  cursor: pointer;
+  touch-action: manipulation;
+  perspective: 1200px;
+}
+
+.fourway-envelope-part {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  will-change: transform, opacity, filter;
+}
+
+/* bočni delovi najniže */
+.fourway-envelope-left {
+  z-index: 2 !important;
+}
+
+.fourway-envelope-right {
+  z-index: 2 !important;
+}
+
+/* donji flap ispod gornjeg */
+.fourway-envelope-bottom {
+  z-index: 4 !important;
+}
+
+/* gornji flap preko donjeg */
+.fourway-envelope-top {
+  z-index: 6 !important;
+}
+
+/* pečat/deo u sredini preko svih flapova */
+.fourway-envelope-center-piece {
+  z-index: 8 !important;
+}
+
+/* tekst tačno ispod pečata */
+.fourway-envelope-open-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% + 122px);
+  z-index: 9 !important;
+
+  width: 100%;
+  transform: none;
+
+  border: 0;
+  background: transparent;
+  padding: 0;
+
+  cursor: pointer;
+  font-family: "Cormorant Garamond", serif;
+  color: #8a6a3f;
+  font-size: clamp(18px, 5vw, 25px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  will-change: transform, opacity, filter;
+}
+
+.fourway-envelope-open-btn:hover {
+  color: #6f512e;
+}
+
+
+
+@media (max-width: 480px) {
+  .fourway-envelope-overlay {
+    height: 100svh;
+  }
+
+  .fourway-envelope-open-btn {
+    top: calc(50% + 120px);
+  }
+}
