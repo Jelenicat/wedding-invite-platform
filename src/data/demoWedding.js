@@ -1289,13 +1289,13 @@ backgroundColor: "#000000",
     
     ],
 theme: {
-  mainText:" #ffffff",
-  softText: "#ffffff",
+  mainText:"#584c4c",
+  softText: "#584c4c",
   scriptText: "#7b1234",
   mutedText: "#7b1234",
 
   accent: "  #7b1234",
-  accentStrong: "#243b6b",
+  accentStrong:" #7b1234",
   buttonText: "#ffffff",
 
   cardBg: "rgba(255,255,255,0.28)",
@@ -1311,8 +1311,8 @@ paperOverlayBottom: "rgba(36,59,107,0.06)",
   nodeRing: "rgba(181,144,59,0.16)",
 backgroundColor: "#f3ece6",
   /* INTRO */
-  introMainText:"#000000",
-  introAccent: "#000000",
+  introMainText:"#ffffff",
+  introAccent: "#ffffff",
   introButtonBg: "rgba(255,255,255,0.18)",
   introButtonBorder: "rgba(255,255,255,0.35)",
   introButtonText: "#ffffff",
