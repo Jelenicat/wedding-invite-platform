@@ -56,6 +56,9 @@ function ItalianRSVP({
     details?.rsvpPhotoTitle ||
     (isCyrillic ? "Радујемо се вашем доласку!" : "Vidimo se!");
 
+  const photoNamesText =
+    details?.rsvpPhotoText || `${brideName} & ${groomName}`;
+
   const photoSrc =
     details?.rsvpImage ||
     details?.editorialImage1 ||
@@ -364,8 +367,9 @@ function ItalianRSVP({
       >
         <div className="italian-rsvp-photo-top">
           <p className="italian-rsvp-photo-script">{photoTitle}</p>
+
           <h3 className="italian-rsvp-photo-names">
-            {brideName} & {groomName}
+            {photoNamesText}
           </h3>
         </div>
 
@@ -375,7 +379,7 @@ function ItalianRSVP({
         <div className="italian-rsvp-photo-wrap">
           <img
             src={photoSrc}
-            alt={`${brideName} and ${groomName}`}
+            alt={photoNamesText}
             className="italian-rsvp-photo"
           />
         </div>
