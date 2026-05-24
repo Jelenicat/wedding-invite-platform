@@ -8,8 +8,12 @@ function BirthdayOneWordIntro({
   image3,
   onEnter,
   slug,
+  details = {},
 }) {
   const name = brideName || "Emilia";
+
+  const introText = details?.introText || `${name} uskoro puni`;
+  const inviteText = details?.introInviteText || "Pridružite se mom slavlju!";
 
   return (
     <section className="birthday-one-word-intro">
@@ -25,7 +29,7 @@ function BirthdayOneWordIntro({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.6 }}
         >
-          {name} uskoro puni
+          {introText}
         </motion.p>
 
         <motion.div
@@ -56,7 +60,7 @@ function BirthdayOneWordIntro({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.32, duration: 0.6 }}
         >
-          Pridružite se mom slavlju!
+          {inviteText}
         </motion.p>
 
         <motion.p
@@ -81,7 +85,6 @@ function BirthdayOneWordIntro({
         </motion.button>
       </motion.div>
 
-      {/* 🔥 SVG DNO */}
       <img
         src={`/images/${slug}-bottom.svg`}
         alt=""

@@ -43,7 +43,7 @@ rsvpImage,
 rsvpPhotoTitle,
 rsvpPhotoText,
 heroText,
-
+sliderImages = [],
   showCalendarButton = false,
 }) => ({
   backgroundImage,
@@ -88,7 +88,7 @@ rsvpImage,
 rsvpPhotoTitle,
 rsvpPhotoText,
 heroText,
-
+  sliderImages,
   showCalendarButton,
 });
 const demoWedding = [
@@ -3738,6 +3738,125 @@ rsvpPhotoText: "Porodice Živić i Milutinović",
   mapLink: "https://www.google.com/maps/search/?api=1&query=New+Lux+Event",
   note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
 })
+},
+{
+  slug: "aleksandra-luka",
+  type: "wedding",
+  template: "silk",
+
+  brideName: "Aleksandra",
+  groomName: "Luka",
+
+  videoSrc: "/videos/aleksandra-luka.mp4",
+  fontMode: "light",
+
+  weddingDate: "26 SEP 2026",
+  weddingTime: "15:00",
+  venue: "Restoran Smokvica, Airport City, Novi Beograd",
+
+  backgroundImage: "/images/aleksandra-luka-minimal-1.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "26 SEP 2026",
+    dateISO: "2026-09-26T15:00:00+02:00",
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        icon: "church",
+        location: "Crkva Sveti Stefan Dečanski, Železnik",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Sveti+Stefan+De%C4%8Danski+%C5%BDeleznik",
+      },
+      {
+        label: "Okupljanje gostiju ispred restorana",
+        time: "16:30",
+        icon: "gathering",
+        location: "Restoran Smokvica, Airport City, Novi Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Smokvica+Airport+City+Novi+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "18:15",
+        icon: "civil",
+        location: "Restoran Smokvica, Airport City, Novi Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Smokvica+Airport+City+Novi+Beograd",
+      },
+  
+    ],
+
+    showCalendarButton: true,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Smokvica+Airport+City+Novi+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 10.09.2026.",
+  }),
+},
+{
+  slug: "relja-1",
+  type: "birthday",
+  template: "birthday-one-word",
+
+  brideName: "Relja",
+  title: "Relja slavi rođendan",
+
+  weddingDate: "09 AUG 2026",
+  weddingTime: "14:30",
+  venue: "Restoran Romantična noć 2, Kaluđerica",
+
+  backgroundImage: "/images/relja-1-bg.jpg",
+  image1: "/images/relja-1-1.jpg",
+  image2: "/images/relja-1-2.jpg",
+  image3: "/images/relja-1-3.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da zajedno proslavimo Reljin poseban dan.",
+showCalendarButton: true,
+
+    date: "09 AUG 2026",
+    dateISO: "2026-08-09T14:30:00+02:00",
+
+    venue: "Restoran Romantična noć 2, Kaluđerica",
+
+    events: [
+      {
+        label: "Krštenje",
+        time: "14:30",
+        icon: "church",
+        location: "Crkva Sv. Luka, Krnjača",
+      },
+      {
+        label: "Rođendan",
+        time: "16:00",
+        icon: "cake",
+        location: "Restoran Romantična noć 2, Kaluđerica",
+      },
+    ],
+    sliderImages: [
+      "/images/relja-1-card-1.jpg",
+      "/images/relja-1-card-2.jpg",
+      "/images/relja-1-card-3.jpg",
+      "/images/relja-1-card-4.jpg",
+      "/images/relja-1-card-5.jpg",
+          "/images/relja-1-card-6.jpg",
+      "/images/relja-1-card-7.jpg",
+      "/images/relja-1-card-8.jpg",
+    ],
+    note: "Dolazak je potrebno potvrditi do 25.07.2026.",
+
+    
+
+    mapLink:
+      "https://maps.google.com/?q=Restoran%20Romanti%C4%8Dna%20no%C4%87%202%20Kalu%C4%91erica",
+  }),
 },
   // =========================
   // BIRTHDAY TEMPLATES

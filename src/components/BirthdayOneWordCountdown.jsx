@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { addToCalendar } from "../utils/calendar";
 import "../styles/rsvp.css";
 
-function BirthdayOneWordCountdown({ targetDate, backgroundImage }) {
+function BirthdayOneWordCountdown({
+  targetDate,
+  backgroundImage,
+  brideName,
+  venue,
+  details = {},
+}) {
   const calculateTimeLeft = () => {
-    const difference =
-      new Date(targetDate).getTime() - new Date().getTime();
+    const difference = new Date(targetDate).getTime() - new Date().getTime();
 
     if (difference <= 0) return null;
 
@@ -38,6 +44,19 @@ function BirthdayOneWordCountdown({ targetDate, backgroundImage }) {
       ]
     : [];
 
+  const handleAddToCalendar = () => {
+    addToCalendar({
+      brideName,
+      dateISO: details?.dateISO || targetDate,
+      venue: details?.venue || venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+      eventType: "birthday",
+      age: details?.age,
+      eventTitle: details?.calendarTitle || `${brideName || "Relja"} - rođendan`,
+    });
+  };
+
   return (
     <section
       className="birthday-one-word-countdown-section"
@@ -64,13 +83,17 @@ function BirthdayOneWordCountdown({ targetDate, backgroundImage }) {
         </h2>
 
         <p className="birthday-one-word-countdown-subtitle">
-          Odbrojavamo do jednog posebnog dana punog osmeha, igre i lepih uspomena.
+          Odbrojavamo do jednog posebnog dana punog osmeha, igre i lepih
+          uspomena.
         </p>
 
         {timeLeft ? (
           <div className="birthday-one-word-countdown-grid">
             {units.map((item) => (
-              <div className="birthday-one-word-countdown-unit" key={item.label}>
+              <div
+                className="birthday-one-word-countdown-unit"
+                key={item.label}
+              >
                 <AnimatePresence mode="popLayout">
                   <motion.span
                     key={item.value}
@@ -83,6 +106,7 @@ function BirthdayOneWordCountdown({ targetDate, backgroundImage }) {
                     {item.value}
                   </motion.span>
                 </AnimatePresence>
+
                 <span className="birthday-one-word-countdown-label">
                   {item.label}
                 </span>
@@ -98,6 +122,18 @@ function BirthdayOneWordCountdown({ targetDate, backgroundImage }) {
           >
             Proslava je počela!
           </motion.div>
+        )}
+
+        {details?.showCalendarButton && (
+          <motion.button
+            type="button"
+            className="birthday-one-word-calendar-button"
+            onClick={handleAddToCalendar}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Dodaj u kalendar
+          </motion.button>
         )}
       </motion.div>
     </section>

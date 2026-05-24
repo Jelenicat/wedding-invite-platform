@@ -22,8 +22,82 @@ function BirthdayOneWordInvitationCard({
   const month = dateParts[1] || "SEP";
   const year = dateParts[2] || "2026";
 
-  const images = [image1, image2, image3].filter(Boolean);
+  const fallbackImages = [image1, image2, image3].filter(Boolean);
+
+  const images =
+    Array.isArray(details?.sliderImages) && details.sliderImages.length > 0
+      ? details.sliderImages
+      : fallbackImages;
+
   const sliderImages = [...images, ...images];
+
+  const title = details?.cardTitle || `${name} slavi rođendan`;
+  const events = Array.isArray(details?.events) ? details.events : [];
+
+  const getEventIcon = (icon) => {
+    if (icon === "church") {
+      return (
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 3v4M10 5h4M6.5 21V10.5L12 7l5.5 3.5V21"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M9.5 21v-5a2.5 2.5 0 0 1 5 0v5"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    }
+
+    if (icon === "cake") {
+      return (
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M7 10h10v4H7zM5.5 14h13v6h-13z"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M9 10V7M12 10V7M15 10V7"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+          />
+          <path
+            d="M9 6.2c.6-.8.8-1.2 0-2-.8.8-.6 1.2 0 2ZM12 6.2c.6-.8.8-1.2 0-2-.8.8-.6 1.2 0 2ZM15 6.2c.6-.8.8-1.2 0-2-.8.8-.6 1.2 0 2Z"
+            fill="currentColor"
+          />
+        </svg>
+      );
+    }
+
+    return (
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle
+          cx="12"
+          cy="12"
+          r="8.5"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        />
+        <path
+          d="M12 7.5v5l3 2"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  };
 
   return (
     <>
@@ -49,7 +123,7 @@ function BirthdayOneWordInvitationCard({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08, duration: 0.55 }}
           >
-            {name} slavi rođendan
+            {title}
           </motion.p>
 
           <motion.div
@@ -62,10 +136,10 @@ function BirthdayOneWordInvitationCard({
 
             <div className="birthday-date-day">
               <span className="heart" aria-hidden="true">
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 21s-6.5-5.2-9.5-9A5.5 5.5 0 0 1 12 4.5 5.5 5.5 0 0 1 21.5 12c-3 3.8-9.5 9-9.5 9Z" />
-  </svg>
-</span>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21s-6.5-5.2-9.5-9A5.5 5.5 0 0 1 12 4.5 5.5 5.5 0 0 1 21.5 12c-3 3.8-9.5 9-9.5 9Z" />
+                </svg>
+              </span>
               {day}
             </div>
 
@@ -78,54 +152,85 @@ function BirthdayOneWordInvitationCard({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.26, duration: 0.6 }}
           >
-            <motion.a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                venue || ""
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="birthday-info-item"
-              whileHover={{ y: -1 }}
-            >
-              <span className="birthday-info-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10Z"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <circle cx="12" cy="11" r="2.5" fill="currentColor" />
-                </svg>
-              </span>
-              <span>{venue}</span>
-            </motion.a>
+            {events.length > 0 ? (
+              <div className="birthday-events-list">
+                {events.map((event, index) => (
+                  <motion.a
+                    key={`${event.label}-${event.time}-${index}`}
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      event.location || ""
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="birthday-info-item birthday-event-item"
+                    whileHover={{ y: -1 }}
+                  >
+                    <span className="birthday-event-content">
+                      <span className="birthday-event-title-row">
+                        <span className="birthday-info-icon" aria-hidden="true">
+                          {getEventIcon(event.icon)}
+                        </span>
 
-            <motion.div
-              className="birthday-info-item"
-              whileHover={{ y: -1 }}
-            >
-              <span className="birthday-info-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="8.5"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                  <path
-                    d="M12 7.5v5l3 2"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <span>{weddingTime}</span>
-            </motion.div>
+                        <strong>{event.label}</strong>
+                      </span>
+
+                      <span className="birthday-event-meta">
+                        {event.time}
+                        {event.location ? ` • ${event.location}` : ""}
+                      </span>
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            ) : (
+              <>
+                <motion.a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    venue || ""
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="birthday-info-item"
+                  whileHover={{ y: -1 }}
+                >
+                  <span className="birthday-info-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10Z"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <circle cx="12" cy="11" r="2.5" fill="currentColor" />
+                    </svg>
+                  </span>
+                  <span>{venue}</span>
+                </motion.a>
+
+                <motion.div className="birthday-info-item" whileHover={{ y: -1 }}>
+                  <span className="birthday-info-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="8.5"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                      />
+                      <path
+                        d="M12 7.5v5l3 2"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span>{weddingTime}</span>
+                </motion.div>
+              </>
+            )}
 
             {details?.note && (
               <motion.div
@@ -166,10 +271,13 @@ function BirthdayOneWordInvitationCard({
         backgroundImage={backgroundImage}
       />
 
-      <BirthdayOneWordCountdown
-        targetDate={details?.dateISO}
-        backgroundImage={backgroundImage}
-      />
+    <BirthdayOneWordCountdown
+  targetDate={details?.dateISO}
+  backgroundImage={backgroundImage}
+  brideName={brideName}
+  venue={venue}
+  details={details}
+/>
     </>
   );
 }

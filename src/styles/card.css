@@ -5059,6 +5059,90 @@
     width: 190px;
     height: 160px;
   }
+  .birthday-events-list {
+    gap: 14px;
+  }
+
+  .birthday-event-item {
+    gap: 7px;
+  }
+
+  .birthday-event-content strong {
+    font-size: 1rem;
+  }
+
+  .birthday-event-content span {
+    font-size: 0.82rem;
+  }
+
+  .birthday-event-item .birthday-info-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    margin-top: 3px;
+  }
+}
+/* =========================
+   EVENTS LIST - BIRTHDAY + CHRISTENING
+========================= */
+
+.birthday-events-list {
+  width: 100%;
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+
+.birthday-event-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #8a7b70;
+}
+
+.birthday-event-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  line-height: 1.25;
+}
+
+.birthday-event-title-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.birthday-event-title-row strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #6b5d53;
+  letter-spacing: 0.03em;
+}
+
+.birthday-event-meta {
+  display: block;
+  font-size: 0.86rem;
+  color: #8a7b70;
+  opacity: 0.92;
+  text-align: center;
+}
+
+.birthday-event-title-row .birthday-info-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  margin-top: 1px;
+  color: #9a8b80;
 }
 /* =========================
    VIDEO INVITATION (SPLIT)
