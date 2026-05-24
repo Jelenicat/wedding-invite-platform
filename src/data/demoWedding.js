@@ -43,6 +43,7 @@ rsvpImage,
 rsvpPhotoTitle,
 rsvpPhotoText,
 heroText,
+rsvpText,
 sliderImages = [],
   showCalendarButton = false,
 }) => ({
@@ -88,6 +89,7 @@ rsvpImage,
 rsvpPhotoTitle,
 rsvpPhotoText,
 heroText,
+rsvpText,
   sliderImages,
   showCalendarButton,
 });
@@ -3747,7 +3749,7 @@ rsvpPhotoText: "Porodice Živić i Milutinović",
   brideName: "Aleksandra",
   groomName: "Luka",
 
-  videoSrc: "/videos/aleksandra-luka.mp4",
+  videoSrc: "/videos/aleksandra-luka-1.mp4",
   fontMode: "light",
 
   weddingDate: "26 SEP 2026",
@@ -3823,7 +3825,8 @@ showCalendarButton: true,
 
     date: "09 AUG 2026",
     dateISO: "2026-08-09T14:30:00+02:00",
-
+rsvpText:
+  "Radovaćemo se da zajedno proslavimo Reljin rođendan i krštenje.",
     venue: "Restoran Romantična noć 2, Kaluđerica",
 
     events: [

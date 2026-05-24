@@ -19,6 +19,11 @@ function BirthdayOneWordRSVP({
 }) {
   const name = brideName || "Nina";
 
+  const rsvpTitle = details?.rsvpTitle || "Potvrdite dolazak";
+  const rsvpText =
+    details?.rsvpText ||
+    `Radovaćemo se da zajedno proslavimo ${name} rođendan.`;
+
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
@@ -207,11 +212,11 @@ function BirthdayOneWordRSVP({
                 <p className="birthday-one-word-rsvp-kicker">RSVP</p>
 
                 <h2 className="birthday-one-word-rsvp-title">
-                  Potvrdite dolazak
+                  {rsvpTitle}
                 </h2>
 
                 <p className="birthday-one-word-rsvp-subtitle">
-                  Radovaćemo se da zajedno proslavimo {name}in rođendan.
+                  {rsvpText}
                 </p>
 
                 {details?.note && (

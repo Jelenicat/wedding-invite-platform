@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 function SilkIntro({
   brideName,
@@ -9,6 +10,26 @@ function SilkIntro({
   weddingDate,
   script = "latin",
 }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Browser je blokirao autoplay.
+        // Intro i dalje ostaje prikazan normalno.
+      });
+    }
+  }, [videoSrc]);
+
   const textColor =
     fontMode === "dark" ? "#2f2a26" : "rgba(255,255,255,0.92)";
 
@@ -86,12 +107,15 @@ function SilkIntro({
   return (
     <section className="silk-intro">
       <video
+        ref={videoRef}
         className="silk-video"
         src={videoSrc}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
+        disablePictureInPicture
       />
 
       <div className="silk-overlay" />
