@@ -1110,7 +1110,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   venue: "Beograd",
   introText: "Radujemo se da ovaj dan podelimo sa vama.",
   details: createDetails({
-     backgroundImage: "/images/vanja-aleksa-split.jpg",
+     backgroundImage: "/images/vanja-aleksa-split-1.jpg",
     welcomeText:
       "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
     date: "18 SEP 2026",
