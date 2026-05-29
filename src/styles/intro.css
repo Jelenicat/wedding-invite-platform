@@ -6139,3 +6139,22 @@ color: #8e7f73;
     top: calc(50% + 120px);
   }
 }
+
+/* ============================= */
+/* FOURWAY ENVELOPE SILVER       */
+/* only details.italianVariant   */
+/* ============================= */
+
+.fourway-envelope-overlay.fourway-envelope-silver {
+  background: #f3f4f5;
+}
+
+.fourway-envelope-overlay.fourway-envelope-silver .fourway-envelope-open-btn {
+  color: #7d858f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.fourway-envelope-overlay.fourway-envelope-silver
+  .fourway-envelope-open-btn:hover {
+  color: #5f6873;
+}

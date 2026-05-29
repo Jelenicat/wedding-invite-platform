@@ -44,6 +44,10 @@ function ItalianCountdown({
 
   const isCyrillic = script === "cyrillic";
 
+  const italianVariantClass = details?.italianVariant
+    ? `italian-${details.italianVariant}`
+    : "";
+
   const labels = useMemo(
     () => ({
       title: isCyrillic ? "До венчања" : "Do venčanja",
@@ -84,7 +88,7 @@ function ItalianCountdown({
   if (!targetDate) return null;
 
   return (
-    <section className="italian-countdown-section">
+    <section className={`italian-countdown-section ${italianVariantClass}`}>
       <motion.div
         className="italian-countdown-shell"
         initial={{ opacity: 0, y: 28 }}

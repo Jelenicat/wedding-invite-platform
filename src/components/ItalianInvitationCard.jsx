@@ -82,7 +82,7 @@ function getDateParts(dateText = "") {
   };
 }
 
-function ScratchCard({ value, label, onReveal }) {
+function ScratchCard({ value, label, onReveal, variant = "default" }) {
   const canvasRef = useRef(null);
   const isDrawing = useRef(false);
   const scratchCount = useRef(0);
@@ -105,15 +105,26 @@ function ScratchCard({ value, label, onReveal }) {
     const ctx = canvas.getContext("2d");
     ctx.scale(dpr, dpr);
 
+    const isSilver = variant === "silver";
+
     const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-    gradient.addColorStop(0, "#f1eadc");
-    gradient.addColorStop(0.5, "#fbf5e9");
-    gradient.addColorStop(1, "#e8dcc8");
+
+    if (isSilver) {
+      gradient.addColorStop(0, "#e9edf2");
+      gradient.addColorStop(0.46, "#f8fafc");
+      gradient.addColorStop(1, "#d7dde5");
+    } else {
+      gradient.addColorStop(0, "#f1eadc");
+      gradient.addColorStop(0.5, "#fbf5e9");
+      gradient.addColorStop(1, "#e8dcc8");
+    }
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, rect.width, rect.height);
 
-    ctx.fillStyle = "rgba(156, 119, 72, 0.06)";
+    ctx.fillStyle = isSilver
+      ? "rgba(128, 139, 154, 0.075)"
+      : "rgba(156, 119, 72, 0.06)";
 
     for (let i = 0; i < 28; i += 1) {
       ctx.beginPath();
@@ -127,7 +138,9 @@ function ScratchCard({ value, label, onReveal }) {
       ctx.fill();
     }
 
-    ctx.strokeStyle = "rgba(255,255,255,0.30)";
+    ctx.strokeStyle = isSilver
+      ? "rgba(255,255,255,0.52)"
+      : "rgba(255,255,255,0.30)";
     ctx.lineWidth = 1;
 
     for (let i = -rect.height; i < rect.width; i += 18) {
@@ -136,7 +149,7 @@ function ScratchCard({ value, label, onReveal }) {
       ctx.lineTo(i + rect.height, rect.height);
       ctx.stroke();
     }
-  }, []);
+  }, [variant]);
 
   const revealWholeCard = () => {
     const canvas = canvasRef.current;
@@ -338,28 +351,28 @@ function EnvelopeLetterSection({ brideName, groomName, details = {} }) {
 function AnimatedEventsSection({ events = [], details = {} }) {
   const sectionRef = useRef(null);
 
-const { scrollYProgress } = useScroll({
-  target: sectionRef,
-  offset: ["start 80%", "start -20%"], // umesto ["start 95%", "end 45%"]
-});
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 80%", "start -20%"],
+  });
 
-const leftCloudX = useTransform(
-  scrollYProgress,
-  [0, 0.2, 0.5, 1],       // umesto [0, 0.35, 0.8, 1]
-  ["0%", "0%", "-55%", "-125%"]
-);
+  const leftCloudX = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.5, 1],
+    ["0%", "0%", "-55%", "-125%"]
+  );
 
-const rightCloudX = useTransform(
-  scrollYProgress,
-  [0, 0.2, 0.5, 1],       // umesto [0, 0.35, 0.8, 1]
-  ["0%", "0%", "55%", "125%"]
-);
+  const rightCloudX = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.5, 1],
+    ["0%", "0%", "55%", "125%"]
+  );
 
-const cloudsOpacity = useTransform(
-  scrollYProgress,
-  [0, 0.35, 0.6, 1],      // umesto [0, 0.55, 0.85, 1]
-  [1, 1, 0.75, 0]
-);
+  const cloudsOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.35, 0.6, 1],
+    [1, 1, 0.75, 0]
+  );
 
   const cloudLeft =
     details?.cloudLeft || "/images/italian-clouds/cloud-left.svg";
@@ -481,6 +494,13 @@ function ItalianInvitationCard({
   const events = details?.events || [];
   const dateParts = getDateParts(dateText);
 
+  const italianVariantClass = details?.italianVariant
+    ? `italian-${details.italianVariant}`
+    : "";
+
+  const scratchVariant =
+    details?.italianVariant === "silver" ? "silver" : "default";
+
   const [revealedDateParts, setRevealedDateParts] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -502,7 +522,7 @@ function ItalianInvitationCard({
 
   return (
     <>
-      <main className="italian-card-page">
+      <main className={`italian-card-page ${italianVariantClass}`}>
         <section className="italian-hero">
           <video
             className="italian-hero-video"
@@ -555,18 +575,21 @@ function ItalianInvitationCard({
                 <ScratchCard
                   value={dateParts.day}
                   label="DAN"
+                  variant={scratchVariant}
                   onReveal={handleDatePartReveal}
                 />
 
                 <ScratchCard
                   value={dateParts.month}
                   label="MESEC"
+                  variant={scratchVariant}
                   onReveal={handleDatePartReveal}
                 />
 
                 <ScratchCard
                   value={dateParts.year}
                   label="GODINA"
+                  variant={scratchVariant}
                   onReveal={handleDatePartReveal}
                 />
               </div>

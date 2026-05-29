@@ -6,6 +6,8 @@ const createDetails = ({
   imageShape,
   envelopeTopImage,
   envelopeBottomImage,
+  envelopeBack,
+envelopeFront,
   welcomeText,
     cardBackground,
   date,
@@ -44,6 +46,8 @@ rsvpPhotoTitle,
 rsvpPhotoText,
 heroText,
 rsvpText,
+italianVariant,
+hideRsvpPhotoBlock = false,
 sliderImages = [],
   showCalendarButton = false,
 }) => ({
@@ -52,6 +56,8 @@ sliderImages = [],
   imageShape,
   envelopeTopImage,
   envelopeBottomImage,
+  envelopeBack,
+envelopeFront,
   welcomeText,
     cardBackground,
   date,
@@ -90,6 +96,8 @@ rsvpPhotoTitle,
 rsvpPhotoText,
 heroText,
 rsvpText,
+italianVariant,
+hideRsvpPhotoBlock,
   sliderImages,
   showCalendarButton,
 });
@@ -3859,6 +3867,66 @@ rsvpText:
 
     mapLink:
       "https://maps.google.com/?q=Restoran%20Romanti%C4%8Dna%20no%C4%87%202%20Kalu%C4%91erica",
+  }),
+},
+{
+  slug: "milica-djordje",
+  type: "wedding",
+  template: "italian-envelope-video",
+
+  brideName: "Milica",
+  groomName: "Đorđe",
+
+  weddingDate: "21.08.2026.",
+  weddingTime: "16:30",
+  venue: "Mesečev konak, Niš",
+
+  videoSrc: "/videos/milica-djordje.mp4",
+  musicSrc: "/music/milica-djordje.mp3",
+
+  details: createDetails({
+    italianVariant: "silver",
+    hideRsvpPhotoBlock: true,
+envelopeBack: "/images/italian-envelope/milica-djordje-envelope-back.svg",
+envelopeFront: "/images/italian-envelope/milica-djordje-envelope-front.svg",
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    heroText: "venčanje",
+    showCalendarButton: true,
+
+    date: "21.08.2026.",
+    dateISO: "2026-08-21T16:30:00+02:00",
+
+    cloudLeft: "/images/italian-clouds/milica-djordje-cloud-left.svg",
+    cloudRight: "/images/italian-clouds/milica-djordje-cloud-right.svg",
+
+    events: [
+      {
+        label: "Ceremonija građanskog venčanja",
+        time: "16:30",
+        icon: "civil",
+        location: "Mesečev konak, Niš",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+      },
+      {
+        label: "Večera i proslava",
+        time: "17:00",
+        icon: "restaurant",
+        location: "Mesečev konak, Niš",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 1. avgusta.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 1. avgusta.",
   }),
 },
   // =========================

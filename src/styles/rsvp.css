@@ -11736,6 +11736,7 @@ margin-bottom: 2px;
     height: 160px;
   }
 }
+
 /* =========================
    ITALIAN RSVP SUCCESS - MINIMAL STYLE
 ========================= */
@@ -11804,6 +11805,7 @@ margin-bottom: 2px;
 .italian-rsvp-confetti:nth-child(3n + 2) {
   background: #9f7f53;
 }
+
 /* ============================= */
 /* ITALIAN COUNTDOWN SECTION     */
 /* ============================= */
@@ -11977,6 +11979,7 @@ margin-bottom: 2px;
     bottom: 22px;
   }
 }
+
 .italian-countdown-calendar-box {
   margin-top: 28px;
   text-align: center;
@@ -12024,6 +12027,202 @@ margin-bottom: 2px;
   line-height: 1.6;
   color: rgba(92, 70, 48, 0.68);
   font-style: italic;
+}
+
+/* ============================= */
+/* ITALIAN RSVP SILVER VARIANT   */
+/* only details.italianVariant   */
+/* ============================= */
+
+.italian-rsvp-section.italian-silver {
+  background: #ffffff;
+}
+
+.italian-rsvp-section.italian-silver::before {
+  background: linear-gradient(
+    90deg,
+    rgba(176, 184, 194, 0),
+    rgba(176, 184, 194, 0.56),
+    rgba(176, 184, 194, 0)
+  );
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-eyebrow,
+.italian-rsvp-section.italian-silver .italian-rsvp-field span,
+.italian-rsvp-section.italian-silver .italian-rsvp-guests-label {
+  color: rgba(82, 88, 96, 0.52);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-title {
+  color: rgba(42, 44, 47, 0.9);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-subtitle {
+  color: rgba(52, 56, 62, 0.68);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-ornament {
+  color: #aeb5bd;
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-ornament span {
+  background: linear-gradient(
+    90deg,
+    rgba(176, 184, 194, 0),
+    rgba(176, 184, 194, 0.78),
+    rgba(176, 184, 194, 0)
+  );
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-field input {
+  border-bottom-color: rgba(142, 150, 162, 0.28);
+  color: rgba(42, 44, 47, 0.92);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-field input:focus {
+  border-bottom-color: rgba(142, 150, 162, 0.62);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-attendance {
+  border-top-color: rgba(142, 150, 162, 0.18);
+  border-bottom-color: rgba(142, 150, 162, 0.18);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-attendance-card:first-child {
+  border-right-color: rgba(142, 150, 162, 0.18);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-attendance-card:hover {
+  background: rgba(232, 236, 241, 0.42);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-attendance-card.is-active {
+  background: rgba(224, 229, 235, 0.68);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-choice-icon {
+  color: #aeb5bd;
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-guests-box {
+  border-bottom-color: rgba(142, 150, 162, 0.18);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-stepper {
+  border-color: rgba(142, 150, 162, 0.22);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-stepper button:hover {
+  background: rgba(232, 236, 241, 0.58);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-submit {
+  border-top-color: rgba(142, 150, 162, 0.2);
+  border-bottom-color: rgba(142, 150, 162, 0.2);
+  color: rgba(42, 44, 47, 0.88);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-submit:hover {
+  background: rgba(232, 236, 241, 0.48);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-success-heart {
+  filter: drop-shadow(0 10px 20px rgba(90, 98, 110, 0.12));
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-success h3 {
+  color: #343638;
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-success p {
+  color: rgba(52, 56, 62, 0.72);
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-confetti:nth-child(3n) {
+  background: #aeb5bd;
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-confetti:nth-child(3n + 1) {
+  background: #e0e4e9;
+}
+
+.italian-rsvp-section.italian-silver .italian-rsvp-confetti:nth-child(3n + 2) {
+  background: #89929e;
+}
+
+/* ============================= */
+/* ITALIAN COUNTDOWN SILVER      */
+/* works if countdown gets class */
+/* ============================= */
+
+.italian-countdown-section.italian-silver::before {
+  background: linear-gradient(
+    90deg,
+    rgba(176, 184, 194, 0),
+    rgba(176, 184, 194, 0.56),
+    rgba(176, 184, 194, 0)
+  );
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-kicker {
+  color: rgba(82, 88, 96, 0.52);
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-title {
+  color: rgba(42, 44, 47, 0.9);
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-ornament {
+  color: #aeb5bd;
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-ornament span {
+  background: linear-gradient(
+    90deg,
+    rgba(176, 184, 194, 0),
+    rgba(176, 184, 194, 0.78),
+    rgba(176, 184, 194, 0)
+  );
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-grid {
+  border-top-color: rgba(142, 150, 162, 0.18);
+  border-bottom-color: rgba(142, 150, 162, 0.18);
+}
+
+.italian-countdown-section.italian-silver
+  .italian-countdown-item:not(:last-child)::after {
+  background: linear-gradient(
+    180deg,
+    rgba(142, 150, 162, 0),
+    rgba(142, 150, 162, 0.22),
+    rgba(142, 150, 162, 0)
+  );
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-item strong {
+  color: rgba(42, 44, 47, 0.92);
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-item span {
+  color: rgba(82, 88, 96, 0.52);
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-calendar-btn {
+  border-color: rgba(142, 150, 162, 0.28);
+  background: rgba(255, 255, 255, 0.72);
+  color: #343638;
+  box-shadow: 0 12px 28px rgba(90, 98, 110, 0.08);
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-calendar-btn:hover {
+  border-color: rgba(142, 150, 162, 0.42);
+  background: rgba(245, 247, 250, 0.92);
+  box-shadow: 0 16px 34px rgba(90, 98, 110, 0.12);
+}
+
+.italian-countdown-section.italian-silver .italian-countdown-calendar-hint {
+  color: rgba(52, 56, 62, 0.66);
 }
 .birthday-one-word-calendar-button {
   margin-top: 26px;

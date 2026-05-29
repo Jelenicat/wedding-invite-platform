@@ -45,6 +45,12 @@ function ItalianIntro({
   const [hidden, setHidden] = useState(false);
   const [imagesReady, setImagesReady] = useState(false);
 
+  const italianVariantClass = details?.italianVariant
+    ? `fourway-envelope-${details.italianVariant}`
+    : "";
+
+const openText = details?.introOpenText || "Klikni da otvoriš";
+
   const leftImage =
     details?.envelopeLeftImage || `/images/envelope/${slug}-left.svg`;
 
@@ -114,7 +120,7 @@ function ItalianIntro({
 
   return (
     <motion.section
-      className="fourway-envelope-overlay"
+      className={`fourway-envelope-overlay ${italianVariantClass}`}
       onClick={handleOpen}
       animate={
         opened
@@ -290,7 +296,7 @@ function ItalianIntro({
           ease: [0.22, 1, 0.36, 1],
         }}
       >
-        Klikni da otvoriš
+        {openText}
       </motion.button>
     </motion.section>
   );

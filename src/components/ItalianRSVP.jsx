@@ -30,6 +30,12 @@ function ItalianRSVP({
 
   const isCyrillic = script === "cyrillic";
 
+  const italianVariantClass = details?.italianVariant
+    ? `italian-${details.italianVariant}`
+    : "";
+
+  const showRsvpPhotoBlock = details?.hideRsvpPhotoBlock !== true;
+
   const labels = {
     eyebrow: "RSVP",
     title: isCyrillic ? "Потврда доласка" : "Potvrda dolaska",
@@ -169,7 +175,7 @@ function ItalianRSVP({
   };
 
   return (
-    <section className="italian-rsvp-section">
+    <section className={`italian-rsvp-section ${italianVariantClass}`}>
       <motion.div
         className="italian-rsvp-shell"
         initial={{ opacity: 0, y: 28 }}
@@ -358,32 +364,38 @@ function ItalianRSVP({
         </AnimatePresence>
       </motion.div>
 
-      <motion.div
-        className="italian-rsvp-photo-block"
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.9, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="italian-rsvp-photo-top">
-          <p className="italian-rsvp-photo-script">{photoTitle}</p>
+      {showRsvpPhotoBlock && (
+        <motion.div
+          className="italian-rsvp-photo-block"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{
+            duration: 0.9,
+            delay: 0.08,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <div className="italian-rsvp-photo-top">
+            <p className="italian-rsvp-photo-script">{photoTitle}</p>
 
-          <h3 className="italian-rsvp-photo-names">
-            {photoNamesText}
-          </h3>
-        </div>
+            <h3 className="italian-rsvp-photo-names">
+              {photoNamesText}
+            </h3>
+          </div>
 
-        <div className="italian-rsvp-photo-divider" />
-        <div className="italian-rsvp-photo-heart">♡</div>
+          <div className="italian-rsvp-photo-divider" />
+          <div className="italian-rsvp-photo-heart">♡</div>
 
-        <div className="italian-rsvp-photo-wrap">
-          <img
-            src={photoSrc}
-            alt={photoNamesText}
-            className="italian-rsvp-photo"
-          />
-        </div>
-      </motion.div>
+          <div className="italian-rsvp-photo-wrap">
+            <img
+              src={photoSrc}
+              alt={photoNamesText}
+              className="italian-rsvp-photo"
+            />
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }
