@@ -498,6 +498,8 @@ function ItalianInvitationCard({
     ? `italian-${details.italianVariant}`
     : "";
 
+  const slugClass = slug ? `italian-slug-${slug}` : "";
+
   const scratchVariant =
     details?.italianVariant === "silver" ? "silver" : "default";
 
@@ -522,7 +524,7 @@ function ItalianInvitationCard({
 
   return (
     <>
-      <main className={`italian-card-page ${italianVariantClass}`}>
+      <main className={`italian-card-page ${italianVariantClass} ${slugClass}`}>
         <section className="italian-hero">
           <video
             className="italian-hero-video"

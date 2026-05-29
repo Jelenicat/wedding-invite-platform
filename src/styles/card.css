@@ -10346,6 +10346,109 @@
   color: #8f98a5;
 }
 /* ============================= */
+/* MILICA DJORDJE TIMELINE FIX   */
+/* only this slug                */
+/* clouds cover timeline         */
+/* ============================= */
+
+.italian-card-page.italian-slug-milica-djordje .italian-events-section {
+  min-height: 620px;
+  padding: 78px 18px 34px;
+  overflow: hidden;
+}
+
+/* bitno: inner ne sme da bude iznad oblaka kao cela grupa */
+.italian-card-page.italian-slug-milica-djordje .italian-events-inner {
+  position: relative;
+  z-index: 5;
+}
+
+/* naslov neka ostane iznad oblaka */
+.italian-card-page.italian-slug-milica-djordje
+  .italian-events-section
+  .italian-events-title {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 44px;
+}
+
+/* timeline je ispod oblaka */
+.italian-card-page.italian-slug-milica-djordje .italian-timeline {
+  position: relative;
+  z-index: 6;
+  min-height: 390px;
+  padding-bottom: 0;
+}
+
+.italian-card-page.italian-slug-milica-djordje .italian-timeline-line {
+  top: 26px;
+  bottom: 48px;
+}
+
+.italian-card-page.italian-slug-milica-djordje .italian-timeline-row {
+  min-height: 138px;
+}
+
+/* OVO JE KLJUČNO: oblaci moraju biti iznad timeline-a */
+.italian-card-page.italian-slug-milica-djordje .italian-event-cloud {
+  z-index: 9;
+}
+
+/* levi oblak preko sredine timeline-a */
+.italian-card-page.italian-slug-milica-djordje .italian-event-cloud-left {
+  left: -42vw;
+  top: 31%;
+}
+
+/* desni oblak preko donjeg dela timeline-a */
+.italian-card-page.italian-slug-milica-djordje .italian-event-cloud-right {
+  right: -46vw;
+  bottom: -6%;
+}
+
+@media (max-width: 520px) {
+  .italian-card-page.italian-slug-milica-djordje .italian-events-section {
+    min-height: 600px;
+    padding: 72px 12px 28px;
+  }
+
+  .italian-card-page.italian-slug-milica-djordje
+    .italian-events-section
+    .italian-events-title {
+    z-index: 10;
+    margin-bottom: 40px;
+  }
+
+  .italian-card-page.italian-slug-milica-djordje .italian-timeline {
+    z-index: 6;
+    min-height: 380px;
+  }
+
+  .italian-card-page.italian-slug-milica-djordje .italian-timeline-line {
+    top: 26px;
+    bottom: 44px;
+  }
+
+  .italian-card-page.italian-slug-milica-djordje .italian-timeline-row {
+    min-height: 134px;
+  }
+
+  .italian-card-page.italian-slug-milica-djordje .italian-event-cloud {
+    z-index: 9;
+    width: 142vw;
+  }
+
+  .italian-card-page.italian-slug-milica-djordje .italian-event-cloud-left {
+    left: -52vw;
+    top: 10%;
+  }
+
+  .italian-card-page.italian-slug-milica-djordje .italian-event-cloud-right {
+    right: -56vw;
+    bottom: -30%;
+  }
+}
+/* ============================= */
 /* CALLA LACE INVITATION CARD    */
 /* ============================= */
 
