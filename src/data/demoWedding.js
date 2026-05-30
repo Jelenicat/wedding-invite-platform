@@ -3908,7 +3908,7 @@ envelopeFront: "/images/italian-envelope/milica-djordje-envelope-front.svg",
         icon: "civil",
         location: "Mesečev konak, Niš",
         mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+          "https://www.google.com/maps/place/43%C2%B018'57.3%22N+21%C2%B047'54.7%22E/@43.31592,21.7972305,358m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d43.31592!4d21.798518?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
       },
       {
         label: "Večera i proslava",
@@ -3916,7 +3916,7 @@ envelopeFront: "/images/italian-envelope/milica-djordje-envelope-front.svg",
         icon: "restaurant",
         location: "Mesečev konak, Niš",
         mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+          "https://www.google.com/maps/place/43%C2%B018'57.3%22N+21%C2%B047'54.7%22E/@43.31592,21.7972305,358m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d43.31592!4d21.798518?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
       },
     ],
 
