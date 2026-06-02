@@ -8,9 +8,13 @@ function ElegantWhiteIntro({
   groomName,
   weddingDate,
   backgroundImage,
-  monogram = "A | M",
+  monogram,
   subtitle = "Dobrodošli",
 }) {
+  const computedMonogram =
+    monogram ||
+    `${brideName?.charAt(0) || ""} | ${groomName?.charAt(0) || ""}`;
+
   const [isLeaving, setIsLeaving] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
@@ -71,15 +75,13 @@ function ElegantWhiteIntro({
               alt=""
               className="elegant-white-monogram-frame"
             />
-            <span className="elegant-white-monogram-text">{monogram}</span>
+
+            <span className="elegant-white-monogram-text">
+              {computedMonogram}
+            </span>
           </motion.div>
 
-          <motion.div
-            className="elegant-white-divider"
-            initial={{ opacity: 0, scaleX: 0.7 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.45 }}
-          />
+          <div className="elegant-white-divider" />
 
           <motion.p
             className="elegant-white-subtitle"
@@ -96,7 +98,9 @@ function ElegantWhiteIntro({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.65 }}
           >
-            {brideName} <span>&</span> {groomName}
+            <span className="elegant-white-title-name">{brideName}</span>
+            <span className="elegant-white-title-amp">&</span>
+            <span className="elegant-white-title-name">{groomName}</span>
           </motion.h1>
 
           <motion.p

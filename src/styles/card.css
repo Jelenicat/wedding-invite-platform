@@ -8236,6 +8236,20 @@
     line-height: 1.5;
   }
 }
+.elegant-white-event-location-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(181, 162, 143, 0.45);
+  transition:
+    opacity 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.elegant-white-event-location-link:hover {
+  opacity: 0.75;
+  border-color: rgba(181, 162, 143, 0.85);
+}
 /* ===============================
    ELEGANT BLACK INVITATION CARD
 ================================= */

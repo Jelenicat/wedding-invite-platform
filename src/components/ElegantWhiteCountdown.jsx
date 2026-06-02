@@ -1,10 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/rsvp.css";
+import { addToCalendar } from "../utils/calendar";
 
 function ElegantWhiteCountdown({
   targetDate,
   backgroundImage = "/images/elegant-white/background.jpg",
+  brideName,
+  groomName,
+  details = {},
+  showCalendarButton = false,
   script = "latin",
 }) {
   const calculateTimeLeft = useMemo(() => {
@@ -55,6 +60,8 @@ function ElegantWhiteCountdown({
           minutes: "Minuta",
           seconds: "Sekundi",
           finished: "Naš dan je stigao!",
+          addCalendar: "Dodaj u kalendar",
+          calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
         }
       : {
           overline: "Odbrojavanje do našeg dana",
@@ -64,7 +71,20 @@ function ElegantWhiteCountdown({
           minutes: "Minuta",
           seconds: "Sekundi",
           finished: "Naš dan je stigao!",
+          addCalendar: "Dodaj u kalendar",
+          calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
         };
+
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: targetDate,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
 
   if (!timeLeft) return null;
 
@@ -177,6 +197,29 @@ function ElegantWhiteCountdown({
                   ♡
                 </motion.div>
                 <p>{t.finished}</p>
+              </motion.div>
+            )}
+
+            {showCalendarButton && (
+              <motion.div
+                className="elegant-white-countdown-calendar-box"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: 0.25 }}
+              >
+                <button
+                  type="button"
+                  className="elegant-white-countdown-calendar-btn"
+                  onClick={handleCalendarClick}
+                >
+                  <span>📅</span>
+                  {t.addCalendar}
+                </button>
+
+                <p className="elegant-white-countdown-calendar-hint">
+                  {t.calendarHint}
+                </p>
               </motion.div>
             )}
           </div>

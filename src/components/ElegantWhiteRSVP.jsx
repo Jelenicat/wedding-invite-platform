@@ -13,6 +13,7 @@ import "../styles/rsvp.css";
 function ElegantWhiteRSVP({
   slug,
   eventType,
+  note,
   script = "latin",
 }) {
   const [formData, setFormData] = useState({
@@ -208,7 +209,7 @@ function ElegantWhiteRSVP({
               viewport={{ once: true }}
               transition={{ duration: 0.65, delay: 0.12 }}
             >
-              {t.subtitle}
+              {note || t.subtitle}
             </motion.p>
 
             <AnimatePresence mode="wait">

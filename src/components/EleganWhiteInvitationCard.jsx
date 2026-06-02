@@ -47,6 +47,14 @@ function EleganWhiteInvitationCard({
     const icon = (event?.icon || "").toLowerCase();
 
     if (
+      icon === "guests" ||
+      label.includes("prijem gostiju") ||
+      label.includes("gosti")
+    ) {
+      return "/images/passport/icons/guests.svg";
+    }
+
+    if (
       icon === "gathering" ||
       label.includes("okupljanje") ||
       label.includes("skup")
@@ -60,8 +68,9 @@ function EleganWhiteInvitationCard({
 
     if (
       icon === "civil" ||
-      label.includes("ceremonija") ||
       label.includes("građansko") ||
+      label.includes("gradjansko") ||
+      label.includes("ceremonija") ||
       label.includes("venčanje") ||
       label.includes("venčanja")
     ) {
@@ -312,14 +321,26 @@ function EleganWhiteInvitationCard({
                         <div className="elegant-white-event-time">
                           {event.time}
                         </div>
+
                         <div className="elegant-white-event-label">
                           {event.label}
                         </div>
-                        {event.location && (
-                          <div className="elegant-white-event-location">
-                            {event.location}
-                          </div>
-                        )}
+
+                        {event.location &&
+                          (event.mapLink ? (
+                            <a
+                              href={event.mapLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="elegant-white-event-location elegant-white-event-location-link"
+                            >
+                              {event.location}
+                            </a>
+                          ) : (
+                            <div className="elegant-white-event-location">
+                              {event.location}
+                            </div>
+                          ))}
                       </div>
                     </motion.div>
                   ))}
@@ -330,11 +351,22 @@ function EleganWhiteInvitationCard({
         )}
       </section>
 
-      <ElegantWhiteRSVP slug={slug} eventType={type} />
+      <ElegantWhiteRSVP
+  slug={slug}
+  eventType={type}
+  note={details?.note}
+/>
 
-      {details.dateISO && (
-        <ElegantWhiteCountdown targetDate={details.dateISO} />
-      )}
+     {details.dateISO && (
+  <ElegantWhiteCountdown
+    targetDate={details.dateISO}
+    backgroundImage={details?.backgroundImage}
+    brideName={brideName}
+    groomName={groomName}
+    details={details}
+    showCalendarButton={details?.showCalendarButton}
+  />
+)}
     </>
   );
 }

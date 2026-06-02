@@ -3841,8 +3841,7 @@ color: #8e7f73;
   padding: 42px 28px 26px;
   border-radius: 220px 220px 26px 26px;
   background: rgba(255, 251, 246, 0.42);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+
   border: 1px solid rgba(191, 172, 150, 0.55);
   box-shadow:
     0 25px 60px rgba(140, 120, 98, 0.12),
@@ -3897,11 +3896,23 @@ color: #8e7f73;
   text-align: center;
 }
 
-.elegant-white-divider {
+/* CRTA IZNAD DOBRODOŠLI - FIKSIRANA NA SREDINU */
+.elegant-white-intro-card .elegant-white-divider {
+  position: absolute;
+  left: 50%;
+  top: 250px;
   width: 92px;
   height: 1px;
-  background: rgba(181, 162, 143, 0.7);
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 0;
+  background: rgba(181, 162, 143, 0.7) !important;
+  transform: translateX(-50%) !important;
+  transform-origin: center;
+  z-index: 3;
+}
+
+.elegant-white-intro-card .elegant-white-divider::before {
+  display: none;
 }
 
 .elegant-white-subtitle {
@@ -3910,23 +3921,37 @@ color: #8e7f73;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #b6a38f;
-  margin: 0 0 14px;
+  margin: 22px 0 14px;
 }
 
 .elegant-white-title {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.3rem, 6vw, 3.4rem);
-  line-height: 1.05;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: #b09a84;
   font-weight: 500;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  line-height: 0.95;
 }
 
-.elegant-white-title span {
-  font-size: 0.8em;
+.elegant-white-title-name {
+  display: block;
+  font-size: clamp(2.25rem, 6vw, 3.35rem);
+  letter-spacing: 0.06em;
+}
+
+.elegant-white-title-amp {
+  display: block;
+  font-family: "Italianno", cursive;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: 0.85;
   opacity: 0.9;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #bda792;
 }
 
 .elegant-white-script {
@@ -4001,6 +4026,18 @@ color: #8e7f73;
 
   .elegant-white-monogram-text {
     font-size: 1.5rem;
+  }
+
+  .elegant-white-intro-card .elegant-white-divider {
+    top: 226px;
+  }
+
+  .elegant-white-title-name {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .elegant-white-title-amp {
+    font-size: clamp(1.9rem, 8vw, 2.45rem);
   }
 
   .elegant-white-script {

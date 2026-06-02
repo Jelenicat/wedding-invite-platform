@@ -3929,6 +3929,66 @@ envelopeFront: "/images/italian-envelope/milica-djordje-envelope-front.svg",
     rsvpText: "Molimo vas da svoj dolazak potvrdite do 1. avgusta.",
   }),
 },
+
+{
+  slug: "magdalena-lazar",
+  type: "wedding",
+  template: "elegant-white",
+
+  brideName: "Magdalena",
+  groomName: "Lazar",
+ musicSrc: "/music/magdalena-lazar.mp3",
+  weddingDate: "02 AVG 2026",
+  weddingTime: "13:00",
+  venue: "Hotel Vojvoda Putnik",
+
+  backgroundImage: "/images/elegant-white/background.jpg",
+
+  details: createDetails({
+    backgroundImage: "/images/elegant-white/background.jpg",
+
+    welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+
+    date: "02 AVG 2026",
+    dateISO: "2026-08-02T13:00:00+02:00",
+
+    venue: "Hotel Vojvoda Putnik",
+
+    showCalendarButton: true,
+
+events: [
+  {
+    label: "Crkveno venčanje",
+    time: "13:00",
+    icon: "church",
+    location: "Manastir Sv. Nikole",
+    mapLink:
+      "https://www.google.com/maps/place/manastir+svetog+nikole+vranje/data=!4m2!3m1!1s0x1355202930267b4d:0xb4c2b186dc6c0bde?sa=X&ved=1t:155783&ictx=111",
+  },
+  {
+    label: "Prijem gostiju",
+    time: "15:30",
+    icon: "guests",
+    location: "Hotel Vojvoda Putnik",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvoda+Putnik",
+  },
+  {
+    label: "Građansko venčanje",
+    time: "17:00",
+    icon: "civil",
+    location: "Hotel Vojvoda Putnik",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvoda+Putnik",
+  },
+],
+
+    showDressCode: false,
+
+    note: "Molimo vas da svoj dolazak potvrdite do 10. jula.",
+   
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
