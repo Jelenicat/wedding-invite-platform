@@ -15,32 +15,82 @@ function EleganWhiteInvitationCard({
 }) {
   const events = details?.events || [];
 
-  const formatMainDate = (dateString) => {
-    if (!dateString) {
-      return {
-        dayName: "SUBOTA",
-        dayNumber: "28",
-        monthYear: "JUN 2025.",
-      };
+  const formatMainDate = (dateString, dateISO) => {
+    const dayNames = [
+      "NEDELJA",
+      "PONEDELJAK",
+      "UTORAK",
+      "SREDA",
+      "ČETVRTAK",
+      "PETAK",
+      "SUBOTA",
+    ];
+
+    const monthMap = {
+      JAN: 0,
+      FEB: 1,
+      MAR: 2,
+      APR: 3,
+      MAJ: 4,
+      JUN: 5,
+      JUL: 6,
+      AVG: 7,
+      SEP: 8,
+      OKT: 9,
+      NOV: 10,
+      DEC: 11,
+    };
+
+    let parsedDate = null;
+
+    if (dateISO) {
+      const isoDateOnly = String(dateISO).split("T")[0];
+      const [year, month, day] = isoDateOnly.split("-").map(Number);
+
+      if (year && month && day) {
+        parsedDate = new Date(year, month - 1, day);
+      }
     }
 
-    const parts = dateString.trim().split(" ");
+    const parts = dateString ? dateString.trim().split(" ") : [];
+
+    if (
+      (!parsedDate || Number.isNaN(parsedDate.getTime())) &&
+      parts.length >= 3
+    ) {
+      const day = Number(parts[0]);
+      const month = monthMap[parts[1]?.toUpperCase()];
+      const year = Number(String(parts[2]).replace(".", ""));
+
+      if (day && month !== undefined && year) {
+        parsedDate = new Date(year, month, day);
+      }
+    }
+
+    const dayName =
+      parsedDate && !Number.isNaN(parsedDate.getTime())
+        ? dayNames[parsedDate.getDay()]
+        : "";
+
     if (parts.length >= 3) {
       return {
-        dayName: "SUBOTA",
+        dayName,
         dayNumber: parts[0],
         monthYear: `${parts[1]} ${parts[2]}`,
       };
     }
 
     return {
-      dayName: "SUBOTA",
-      dayNumber: dateString,
+      dayName,
+      dayNumber: dateString || "",
       monthYear: "",
     };
   };
 
-  const dateParts = formatMainDate(details?.date || weddingDate);
+  const dateParts = formatMainDate(
+    details?.date || weddingDate,
+    details?.dateISO
+  );
 
   const getEventIcon = (event) => {
     const label = (event?.label || "").toLowerCase();
@@ -352,21 +402,21 @@ function EleganWhiteInvitationCard({
       </section>
 
       <ElegantWhiteRSVP
-  slug={slug}
-  eventType={type}
-  note={details?.note}
-/>
+        slug={slug}
+        eventType={type}
+        note={details?.note}
+      />
 
-     {details.dateISO && (
-  <ElegantWhiteCountdown
-    targetDate={details.dateISO}
-    backgroundImage={details?.backgroundImage}
-    brideName={brideName}
-    groomName={groomName}
-    details={details}
-    showCalendarButton={details?.showCalendarButton}
-  />
-)}
+      {details.dateISO && (
+        <ElegantWhiteCountdown
+          targetDate={details.dateISO}
+          backgroundImage={details?.backgroundImage}
+          brideName={brideName}
+          groomName={groomName}
+          details={details}
+          showCalendarButton={details?.showCalendarButton}
+        />
+      )}
     </>
   );
 }

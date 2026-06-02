@@ -28,7 +28,7 @@ function ElegantWhiteRSVP({
   const t =
     script === "cyrillic"
       ? {
-          overline: "Sa ljubavlju",
+          overline: "S' ljubavlju",
           title: "RSVP",
           subtitle: "Molimo vas da nam potvrdite dolazak",
           fullName: "Ime i prezime",
@@ -46,7 +46,7 @@ function ElegantWhiteRSVP({
           submitError: "Došlo je do greške pri slanju.",
         }
       : {
-          overline: "Sa ljubavlju",
+          overline: "S' ljubavlju",
           title: "RSVP",
           subtitle: "Molimo vas da nam potvrdite dolazak",
           fullName: "Ime i prezime",
