@@ -9,6 +9,7 @@ import EnvelopeInvitationCard from "../components/EnvelopeInvitationCard";
 
 import MinimalIntro from "../components/MinimalIntro";
 import MinimalInvitationCard from "../components/MinimalInvitationCard";
+import MinimalInvitationCardSplit from "../components/MinimalInvitationCardSplit";
 
 import PhotoScriptIntro from "../components/PhotoScriptIntro";
 import PhotoScriptInvitationCard from "../components/PhotoScriptInvitationCard";
@@ -147,6 +148,10 @@ const TEMPLATE_COMPONENTS = {
     Intro: SilkIntro,
     Invitation: MinimalInvitationCard,
   },
+  "silk-minimal-split": {
+  Intro: SilkIntro,
+  Invitation: MinimalInvitationCardSplit,
+},
   "envelope-split": {
     Intro: EnvelopeSplitIntro,
     Invitation: MinimalInvitationCard,

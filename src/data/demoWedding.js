@@ -20,6 +20,8 @@ envelopeFront,
   dinnerTime,
   showDressCode = false,
   dressCodeTitle = "",
+  dressCodeWomenPalette = [],
+dressCodeMenPalette = [],
   dressCodePalette = [],
   dressCodeNote = "",
   dressCodeWomen,
@@ -70,6 +72,8 @@ envelopeFront,
   dinnerTime,
   showDressCode,
   dressCodeTitle,
+  dressCodeWomenPalette,
+dressCodeMenPalette,
   dressCodePalette,
   dressCodeNote,
   dressCodeWomen,
@@ -3987,6 +3991,87 @@ events: [
 
     note: "Molimo vas da svoj dolazak potvrdite do 10. jula.",
    
+  }),
+},
+{
+  slug: "jelena-aleksandar",
+  type: "wedding",
+  template: "silk-minimal-split",
+
+  brideName: "Jelena",
+  groomName: "Aleksandar",
+
+  videoSrc: "/videos/jelena-aleksandar.mp4",
+  musicSrc: "/music/jelena-aleksandar.mp3",
+  fontMode: "light",
+
+  weddingDate: "22 AVG 2026",
+  weddingTime: "16:30",
+  venue: "Svečana sala Bjanka, Bogatić",
+
+  backgroundImage: "/images/jelena-aleksandar-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "22.08.2026.",
+    dateISO: "2026-08-22T16:30:00+02:00",
+
+    events: [
+      {
+        label: "Skup svatova",
+        time: "16:30",
+        icon: "gathering",
+        location: "Svečana sala Bjanka, Bogatić",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Svecana+sala+Bjanka+Bogatic",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:30",
+        icon: "civil",
+        location: "Svečana sala Bjanka, Bogatić",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Svecana+sala+Bjanka+Bogatic",
+      },
+    ],
+
+    showCalendarButton: true,
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+
+    dressCodeNote:
+      "Elegantne kombinacije u tonovima naše palete.",
+
+    dressCodeWomen:
+      "Koktel haljine u roze, krem, bordo i zelenim tonovima.",
+
+    dressCodeWomenPalette: [
+      "#b45f72",
+      "#d28f92",
+    
+      "#f5e8d1",
+      "#7b1234",
+      "#4f6b2c",
+      "#9cad6f",
+    ],
+
+    dressCodeMen:
+      "Odela ili elegantne kombinacije u braon, crnoj, beloj ili teget boji.",
+
+    dressCodeMenPalette: [
+      "#4a2f22",
+      "#111111",
+      "#f6efe3",
+      "#1f2f4f",
+    ],
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Svecana+sala+Bjanka+Bogatic",
+
+    note: "Molimo Vas da potvrdite svoj dolazak do 1. avgusta.",
   }),
 },
   // =========================
