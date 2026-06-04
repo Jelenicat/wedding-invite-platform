@@ -367,7 +367,10 @@ function EnvelopeSideSplitV2InvitationCard({
             className="essv2-closing-script"
             variants={fadeUpVariants}
           >
-            {closingScript}
+            <span>{closingScript}</span>
+            <span className="essv2-heart" aria-hidden="true">
+              ♥
+            </span>
           </motion.div>
 
           {footerNote ? (

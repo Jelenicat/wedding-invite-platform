@@ -8854,6 +8854,19 @@
   font-weight: 400;
   line-height: 1.02;
   color: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px; /* ovo razdvaja imena */
+  flex-wrap: wrap;
+}
+
+.essv2-ampersand {
+  font-family: "Tangerine", "Alex Brush", "Allura", cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  vertical-align: middle;
+  margin: 0 4px;
 }
 
 .essv2-name-script {
@@ -8862,11 +8875,7 @@
   font-weight: 400;
 }
 
-.essv2-ampersand {
-    font-family: "Tangerine", "Alex Brush", "Allura", cursive;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  vertical-align: middle;
-}
+
 
 .essv2-events {
   width: 100%;
@@ -8976,6 +8985,7 @@
 
   .essv2-names {
     margin: 6px 0 28px;
+      gap: 12px;
   }
 
   .essv2-name-script {
@@ -9020,6 +9030,27 @@
 
 .essv2-event-location-link:active {
   opacity: 0.65;
+}
+.essv2-closing-script {
+  margin-top: 8px;
+  margin-bottom: 28px;
+  font-family: "Great Vibes", "Allura", cursive;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: 1.08;
+  color: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.essv2-heart {
+  font-family: "Times New Roman", serif;
+  font-size: 0.42em;
+  color: #111;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 .df-card-page {
   position: relative;

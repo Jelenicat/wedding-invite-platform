@@ -3463,7 +3463,7 @@ musicSrc: "/music/stefana-stefan.mp3",
     cardBackgroundImage: "/images/cards/envelope-side-split-v2-paper.jpg",
 
     invitationText:
-      "POZIVAMO VAS DA SVOJIM\nPRISUSTVOM UVELIČATE NAŠE SLAVLJE",
+      "POZIVAMO VAS DA SVOJIM\nPRISUSTVOM ULEPŠATE NAŠE SLAVLJE",
 
     city: "NIŠ",
     date: "12.09.2026.",
