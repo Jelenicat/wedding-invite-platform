@@ -49,6 +49,7 @@ import ClassicInvitationCard from "../components/ClassicInvitationCard";
 import EditorialIntro from "../components/EditorialIntro";
 import EditorialInvitationCard from "../components/EditorialInvitationCard";
 import SilkIntro from "../components/SilkIntro";
+import SilkDateFlowInvitationCard from "../components/SilkDateFlowInvitationCard";
 import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
 import EnvelopeSideSplitIntro from "../components/EnvelopeSideSplitIntro";
 import EnvelopeSplitIntroV2 from "../components/EnvelopeSplitIntroV2";
@@ -76,6 +77,8 @@ import BirthdayGlassIntro from "../components/BirthdayGlassIntro";
 import BirthdayGlassInvitationCard from "../components/BirthdayGlassInvitationCard";
 import BirthdayMarbleIntro from "../components/BirthdayMarbleIntro";
 import BirthdayMarbleInvitationCard from "../components/BirthdayMarbleInvitationCard";
+import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
+
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
 
@@ -148,6 +151,10 @@ const TEMPLATE_COMPONENTS = {
     Intro: SilkIntro,
     Invitation: MinimalInvitationCard,
   },
+  "silk-date-flow": {
+  Intro: SilkIntro,
+  Invitation: SilkDateFlowInvitationCard,
+},
   "silk-minimal-split": {
   Intro: SilkIntro,
   Invitation: MinimalInvitationCardSplit,
@@ -215,6 +222,10 @@ const TEMPLATE_COMPONENTS = {
 "italian-envelope-video": {
   Intro: ItalianIntro,
   Invitation: ItalianInvitationCard,
+},
+"wedding-baptism-silk": {
+  Intro: WeddingBaptismSilkIntro,
+  Invitation: MinimalInvitationCard,
 },
 };
 
@@ -353,6 +364,7 @@ const handleIntroEnter = () => {
   const introProps = {
     brideName: invitation.brideName,
     groomName: invitation.groomName,
+    childName: invitation.childName,
     backgroundImage: invitation.backgroundImage,
     weddingDate: invitation.weddingDate,
     weddingTime: invitation.weddingTime,
@@ -379,6 +391,7 @@ const handleIntroEnter = () => {
   const invitationProps = {
     brideName: invitation.brideName,
     groomName: invitation.groomName,
+    childName: invitation.childName,
     weddingDate: invitation.weddingDate,
     weddingTime: invitation.weddingTime,
     venue: invitation.venue,

@@ -35,6 +35,8 @@ function MinimalCountdown({
           calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
         };
 
+  const showCalendarButton = details?.showCalendarButton === true;
+
   const calculateTimeLeft = () => {
     const difference = new Date(targetDate).getTime() - new Date().getTime();
 
@@ -77,20 +79,22 @@ function MinimalCountdown({
         <div className="minimal-countdown-inner">
           <p className="minimal-countdown-kicker">{t.arrived}</p>
 
-          <div className="minimal-countdown-calendar-box">
-            <button
-              type="button"
-              className="minimal-countdown-calendar-btn"
-              onClick={handleCalendarClick}
-            >
-              <span>📅</span>
-              {t.addCalendar}
-            </button>
+          {showCalendarButton && (
+            <div className="minimal-countdown-calendar-box">
+              <button
+                type="button"
+                className="minimal-countdown-calendar-btn"
+                onClick={handleCalendarClick}
+              >
+                <span>📅</span>
+                {t.addCalendar}
+              </button>
 
-            <p className="minimal-countdown-calendar-hint">
-              {t.calendarHint}
-            </p>
-          </div>
+              <p className="minimal-countdown-calendar-hint">
+                {t.calendarHint}
+              </p>
+            </div>
+          )}
         </div>
       </section>
     );
@@ -143,24 +147,24 @@ function MinimalCountdown({
           ))}
         </div>
 
-        <p className="minimal-countdown-note">
-          {t.note}
-        </p>
+        <p className="minimal-countdown-note">{t.note}</p>
 
-        <div className="minimal-countdown-calendar-box">
-          <button
-            type="button"
-            className="minimal-countdown-calendar-btn"
-            onClick={handleCalendarClick}
-          >
-            <span>📅</span>
-            {t.addCalendar}
-          </button>
+        {showCalendarButton && (
+          <div className="minimal-countdown-calendar-box">
+            <button
+              type="button"
+              className="minimal-countdown-calendar-btn"
+              onClick={handleCalendarClick}
+            >
+              <span>📅</span>
+              {t.addCalendar}
+            </button>
 
-          <p className="minimal-countdown-calendar-hint">
-            {t.calendarHint}
-          </p>
-        </div>
+            <p className="minimal-countdown-calendar-hint">
+              {t.calendarHint}
+            </p>
+          </div>
+        )}
       </div>
     </motion.section>
   );

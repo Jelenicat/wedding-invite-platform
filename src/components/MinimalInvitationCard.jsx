@@ -39,13 +39,20 @@ function MinimalInvitationCard({
           location: "Pogledaj lokaciju",
         };
 
-  const iconMap = {
-    gathering: "/icons/guests.svg",
-    church: "/icons/rings.svg",
-    civil: "/icons/ceremony.svg",
-    restaurant: "/icons/dinner.svg",
-    party: "/icons/party.svg",
-  };
+const iconMap = {
+  gathering: "/icons/gathering.svg",
+  guests: "/icons/guests.svg",
+  church: "/icons/church.svg",
+  groom: "/icons/groom.svg",
+  civil: "/icons/civil.svg",
+  ceremony: "/icons/ceremony.svg",
+  dinner: "/icons/dinner.svg",
+  restaurant: "/icons/restaurant.svg",
+  party: "/icons/party.svg",
+  rings: "/icons/rings.svg",
+  angel: "/icons/angel.svg",
+  dresscode: "/icons/dresscode.svg",
+};
 
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];

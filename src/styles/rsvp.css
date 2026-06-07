@@ -12292,3 +12292,515 @@ margin-bottom: 2px;
   background: rgba(255, 255, 255, 0.92);
   border-color: rgba(168, 155, 144, 0.7);
 }
+/* ============================================================
+   SILK DATE FLOW COUNTDOWN
+   ============================================================ */
+
+.sdf-countdown-section {
+  position: relative;
+  padding: 130px 18px 160px;
+  background: #ffffff;
+  color: #151515;
+  overflow: hidden;
+}
+
+/* GORNJI DEO SLIKE */
+.sdf-countdown-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 135px;
+
+  background-image: var(--sdf-countdown-bg);
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* DONJI DEO SLIKE */
+.sdf-countdown-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 170px;
+
+  background-image: var(--sdf-countdown-bg);
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sdf-countdown-inner {
+  position: relative;
+  z-index: 2;
+  width: min(430px, 100%);
+  margin: 0 auto;
+  padding: 42px 26px 36px;
+  text-align: center;
+
+  background: #ffffff;
+  border: none;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  box-shadow: none;
+}
+
+.sdf-countdown-kicker,
+.sdf-rsvp-kicker {
+  margin: 0 0 16px;
+  font-family: "Italianno", "Tangerine", cursive;
+  font-size: 36px;
+  line-height: 1;
+  color: #151515;
+}
+
+.sdf-countdown-kicker span,
+.sdf-rsvp-kicker span {
+ font-family: "Italianno", "Tangerine", cursive;
+  font-size: 0.55em;
+  font-style: italic;
+  opacity: 0.72;
+}
+
+.sdf-countdown-title {
+  margin: 0 0 32px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 31px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.045em;
+  color: #151515;
+}
+
+.sdf-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: min(360px, 100%);
+  margin: 0 auto;
+}
+
+.sdf-countdown-grid div {
+  padding: 18px 6px 17px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(20, 20, 20, 0.1);
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  box-shadow: none;
+}
+
+.sdf-countdown-grid strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 31px;
+  line-height: 1;
+  font-weight: 400;
+  color: #151515;
+}
+
+.sdf-countdown-grid span {
+  display: block;
+  margin-top: 8px;
+  font-family: "Jost", "DM Sans", system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(20, 20, 20, 0.52);
+}
+
+.sdf-countdown-note {
+  width: min(310px, 100%);
+  margin: 26px auto 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.55;
+  font-style: italic;
+  color: rgba(20, 20, 20, 0.62);
+}
+
+.sdf-countdown-calendar-box {
+  margin-top: 26px;
+  text-align: center;
+}
+
+.sdf-countdown-calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 190px;
+  padding: 14px 20px;
+  border: 1px solid #151515;
+  background: #151515;
+  color: #fff;
+  font-family: "Jost", "DM Sans", system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.sdf-countdown-calendar-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(21, 21, 21, 0.88);
+}
+
+.sdf-countdown-calendar-btn span {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.sdf-countdown-calendar-hint {
+  width: min(260px, 100%);
+  margin: 12px auto 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(20, 20, 20, 0.52);
+}
+/* ============================================================
+   SILK DATE FLOW RSVP
+   ============================================================ */
+
+.sdf-rsvp-section {
+  position: relative;
+  padding: 130px 18px 160px;
+
+  color: #151515;
+  overflow: hidden;
+}
+
+/* GORNJI DEO SLIKE */
+.sdf-rsvp-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+ 
+
+  background-image: var(--sdf-rsvp-bg);
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* DONJI DEO SLIKE */
+.sdf-rsvp-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 170px;
+
+  background-image: var(--sdf-rsvp-bg);
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sdf-rsvp-card {
+  position: relative;
+  z-index: 2;
+  width: min(430px, 100%);
+  min-height: 460px;
+  margin: 0 auto;
+  padding: 40px 28px 36px;
+  text-align: center;
+
+  background: #ffffff;
+  border: none;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  box-shadow: none;
+}
+
+.sdf-rsvp-card h2 {
+  margin: 0;
+  font-family: "Italianno", cursive;
+  font-size: 51px;
+  line-height: 1;
+  font-weight: 500;
+  color: #151515;
+}
+
+.sdf-rsvp-subtitle {
+  width: min(285px, 100%);
+  margin: 16px auto 30px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.48;
+  color: rgba(20, 20, 20, 0.62);
+}
+
+.sdf-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+}
+
+.sdf-rsvp-form label {
+  display: block;
+}
+
+.sdf-rsvp-form label span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Jost", "DM Sans", system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(20, 20, 20, 0.5);
+}
+
+.sdf-rsvp-form input,
+.sdf-rsvp-form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.2);
+  border-radius: 0;
+  padding: 10px 0;
+  background: transparent;
+  outline: none;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  color: #151515;
+}
+
+.sdf-rsvp-form input::placeholder,
+.sdf-rsvp-form textarea::placeholder {
+  color: rgba(20, 20, 20, 0.32);
+}
+
+.sdf-rsvp-form input:focus,
+.sdf-rsvp-form textarea:focus {
+  border-bottom-color: rgba(20, 20, 20, 0.58);
+}
+
+.sdf-rsvp-form textarea {
+  resize: vertical;
+  min-height: 92px;
+}
+
+.sdf-rsvp-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sdf-rsvp-choice button {
+  min-height: 76px;
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+  padding: 13px 10px;
+  font-family: "Jost", "DM Sans", system-ui, sans-serif;
+  color: #151515;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: none;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.sdf-rsvp-choice button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 20, 20, 0.26);
+}
+
+.sdf-rsvp-choice button strong {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.sdf-rsvp-choice button small {
+  display: block;
+  margin-top: 7px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(20, 20, 20, 0.54);
+}
+
+.sdf-rsvp-choice button.active {
+  background: #151515;
+  color: #fff;
+  border-color: #151515;
+}
+
+.sdf-rsvp-choice button.active small {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sdf-rsvp-submit {
+  width: 100%;
+  margin-top: 12px;
+  border: 1px solid #151515;
+  background: #151515;
+  padding: 15px 14px;
+  font-family: "Jost", "DM Sans", system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.sdf-rsvp-submit:hover {
+  transform: translateY(-2px);
+  background: rgba(21, 21, 21, 0.88);
+}
+
+.sdf-rsvp-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+  transform: none;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+  .sdf-rsvp-section {
+    padding: 120px 0 150px;
+  }
+
+  .sdf-rsvp-section::before {
+    height: 135px;
+    background-size: 100% auto;
+    background-position: center top;
+  }
+
+  .sdf-rsvp-section::after {
+    height: 155px;
+    background-size: 100% auto;
+    background-position: center bottom;
+  }
+
+  .sdf-rsvp-card {
+    width: 100%;
+    padding: 40px 20px 36px;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .sdf-rsvp-choice {
+    gap: 8px;
+  }
+
+  .sdf-rsvp-choice button {
+    min-height: 74px;
+    padding: 12px 8px;
+  }
+
+  .sdf-rsvp-choice button strong {
+    font-size: 9px;
+  }
+
+  .sdf-rsvp-choice button small {
+    font-size: 12px;
+  }
+}
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+  .sdf-countdown-section,
+  .sdf-rsvp-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sdf-countdown-inner,
+  .sdf-rsvp-card {
+    width: 100%;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .sdf-countdown-inner {
+    padding: 40px 18px 34px;
+  }
+
+  .sdf-rsvp-card {
+    padding: 40px 20px 36px;
+  }
+
+  .sdf-countdown-grid {
+    width: calc(100% - 34px);
+    gap: 7px;
+  }
+
+  .sdf-countdown-grid div {
+    padding: 16px 4px;
+  }
+
+  .sdf-countdown-grid strong {
+    font-size: 27px;
+  }
+
+  .sdf-countdown-grid span {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .sdf-rsvp-choice {
+    gap: 8px;
+  }
+
+  .sdf-rsvp-choice button {
+    min-height: 74px;
+    padding: 12px 8px;
+  }
+
+  .sdf-rsvp-choice button strong {
+    font-size: 9px;
+  }
+
+  .sdf-rsvp-choice button small {
+    font-size: 12px;
+  }
+}

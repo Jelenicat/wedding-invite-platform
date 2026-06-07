@@ -49,6 +49,7 @@ rsvpPhotoText,
 heroText,
 rsvpText,
 italianVariant,
+scheduleBackground,
 hideRsvpPhotoBlock = false,
 sliderImages = [],
   showCalendarButton = false,
@@ -101,6 +102,7 @@ rsvpPhotoText,
 heroText,
 rsvpText,
 italianVariant,
+scheduleBackground,
 hideRsvpPhotoBlock,
   sliderImages,
   showCalendarButton,
@@ -2883,6 +2885,69 @@ rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
     note: "Molimo vas da svoj dolazak potvrdite do 25. maja.",
   }),
 },
+{
+  slug: "test-silk-date-flow",
+  type: "wedding",
+  template: "silk-date-flow",
+
+  brideName: "Ivana",
+  groomName: "Aleksa",
+
+  videoSrc: "/videos/test-silk-date-flow4.mp4",
+  fontMode: "dark",
+
+  weddingDate: "11 AVG 2026",
+  weddingTime: "14:30",
+  venue: "Restoran Primer, Beograd",
+
+
+
+  details: createDetails({
+    // fallback / opšta slika
+    backgroundImage: "/images/silk-date-flow-bg.jpg",
+
+    // Slika za prvi deo invitation card-a: imena + datum + kalendar
+    cardBackground: "/images/date-flow-bg.jpg",
+
+    // Slika za drugi deo: Raspored događaja
+    scheduleBackground: "/images/date-flow-schedule-bg.jpg",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "11 AVG 2026",
+    dateISO: "2026-08-11T14:30:00+02:00",
+
+    showCalendarButton: true,
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "12:00",
+        location: "Restoran Primer, Beograd",
+        note: "Vreme prijatnog čekanja uz osveženje i upoznavanje sa drugim gostima.",
+        icon: "gathering",
+      },
+      {
+        label: "Ceremonija",
+        time: "14:30",
+        location: "Restoran Primer, Beograd",
+        note: "Vi ćete prisustvovati sklapanju naše veze i naše sreće.",
+        icon: "civil",
+      },
+      {
+        label: "Večera",
+        time: "17:00",
+        location: "Restoran Primer, Beograd",
+        note: "Nastavljamo slavlje uz večeru, muziku i lepe trenutke.",
+        icon: "restaurant",
+      },
+    ],
+
+    mapLink: "https://maps.google.com/?q=Beograd",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
+  }),
+},
 // =========================
 // Klijenti
 // =========================
@@ -3312,13 +3377,13 @@ dressCodeNote:
       {
         label: "Дочек сватова",
         time: "11:00",
-        icon: "gathering",
+        icon: "guest",
         location: "Породица Шарац",
       },
       {
         label: "Црквено венчање",
         time: "14:00",
-        icon: "church",
+        icon: "rings",
         location: "Храм Рођења Пресвете Богородице, Батајница",
         mapLink:
           "https://maps.google.com/?q=Hram+Rodjenja+Presvete+Bogorodice+Batajnica",
@@ -3326,7 +3391,7 @@ dressCodeNote:
       {
         label: "Ресторан",
         time: "15:00",
-        icon: "restaurant",
+        icon: "dinner",
         location: "Jet Set Lux, Пионирска 12, Нова Пазова",
         mapLink:
           "https://maps.google.com/?q=Jet+Set+Lux+Pionirska+12+Nova+Pazova",
@@ -3781,7 +3846,7 @@ rsvpPhotoText: "Porodice Živić i Milutinović",
       {
         label: "Crkveno venčanje",
         time: "15:00",
-        icon: "church",
+        icon: "rings",
         location: "Crkva Sveti Stefan Dečanski, Železnik",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Crkva+Sveti+Stefan+De%C4%8Danski+%C5%BDeleznik",
@@ -3789,7 +3854,7 @@ rsvpPhotoText: "Porodice Živić i Milutinović",
       {
         label: "Okupljanje gostiju ispred restorana",
         time: "16:30",
-        icon: "gathering",
+        icon: "guest",
         location: "Restoran Smokvica, Airport City, Novi Beograd",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Restoran+Smokvica+Airport+City+Novi+Beograd",
@@ -3797,7 +3862,7 @@ rsvpPhotoText: "Porodice Živić i Milutinović",
       {
         label: "Građansko venčanje",
         time: "18:15",
-        icon: "civil",
+        icon: "ceremony",
         location: "Restoran Smokvica, Airport City, Novi Beograd",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Restoran+Smokvica+Airport+City+Novi+Beograd",
@@ -4072,6 +4137,146 @@ events: [
       "https://www.google.com/maps/search/?api=1&query=Svecana+sala+Bjanka+Bogatic",
 
     note: "Molimo Vas da potvrdite svoj dolazak do 1. avgusta.",
+  }),
+},
+{
+  slug: "tamara-ratko",
+  type: "wedding",
+  template: "italian-envelope-video",
+
+  brideName: "Tamara",
+  groomName: "Ratko",
+
+  weddingDate: "17.10.2026.",
+  weddingTime: "14:30",
+  venue: "Klub Maestro, Višnjička 102, Beograd",
+
+  videoSrc: "/videos/tamara-ratko.mp4",
+  musicSrc: "/music/tamara-ratko.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    heroText: "venčanje",
+    showCalendarButton: false,
+
+    date: "17.10.2026.",
+    dateISO: "2026-10-17T14:30:00+02:00",
+
+    cloudLeft: "/images/italian-clouds/cloud-left.svg",
+    cloudRight: "/images/italian-clouds/cloud-right.svg",
+
+     rsvpImage: "/images/italian-rsvp/tamara-ratko-rsvp.jpg",
+    rsvpPhotoTitle: "Vidimo se!",
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "14:30",
+        icon: "church",
+        location: "Crkva Svetog Luke, Krnjača",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Luke+Krnjaca",
+      },
+      {
+        label: "Skup gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Klub Maestro, Višnjička 102, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Klub+Maestro+Visnjicka+102+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:00",
+        icon: "civil",
+        location: "Klub Maestro, Višnjička 102, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Klub+Maestro+Visnjicka+102+Beograd",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Klub+Maestro+Visnjicka+102+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 01.10.2026.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.10.2026.",
+    rsvpDeadline: "01.10.2026.",
+    rsvpDeadlineISO: "2026-10-01",
+  }),
+},
+{
+  slug: "milica-nikola-gavrilo",
+  type: "wedding",
+  template: "wedding-baptism-silk",
+
+  brideName: "Milica",
+  groomName: "Nikola",
+  childName: "Gavrila",
+
+  videoSrc: "/videos/milica-nikola-gavrilo.mp4",
+  musicSrc: "/music/milica-nikola-gavrilo.mp3",
+  fontMode: "light",
+
+  weddingDate: "06 AVG 2026",
+  weddingTime: "15:00",
+  venue: "Crkva Svetog Nikole, Vrbnica",
+
+  backgroundImage: "/images/milica-nikola-gavrilo-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da zajedno sa nama proslavite venčanje Milice i Nikole i krštenje našeg sina Gavrila.",
+
+    date: "06.08.2026.",
+    dateISO: "2026-08-06T15:00:00+02:00",
+
+  events: [
+  {
+    label: "Skup mladinih gostiju",
+    time: "11:00",
+    icon: "gathering",
+    location: "Selo Buci",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=selo+Buci",
+  },
+  {
+    label: "Skup mladoženjinih gostiju",
+    time: "12:30",
+    icon: "groom",
+    location: "Donji Stupanj",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Donji+Stupanj",
+  },
+  {
+    label: "Venčanje i krštenje",
+    time: "15:00",
+    icon: "church",
+    location: "Crkva Svetog Nikole, Vrbnica",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Vrbnica",
+  },
+  {
+    label: "Svečani ručak",
+    time: "17:00",
+    icon: "ceremony",
+    location: "Restoran Trifunović Company, Vitkovo",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Trifunovic+Company+Vitkovo+Aleksandrovac",
+  },
+],
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Trifunovic+Company+Vitkovo+Aleksandrovac",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 16.07.2026.",
+    rsvpDeadline: "16.07.2026.",
   }),
 },
   // =========================

@@ -40,6 +40,10 @@ function ItalianCountdown({
 }) {
   const targetDate = details?.dateISO;
 
+  // Dugme se prikazuje po defaultu,
+  // osim ako je u details eksplicitno stavljeno showCalendarButton: false
+  const showCalendarButton = details?.showCalendarButton !== false;
+
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(targetDate));
 
   const isCyrillic = script === "cyrillic";
@@ -132,20 +136,22 @@ function ItalianCountdown({
           </div>
         </div>
 
-        <div className="italian-countdown-calendar-box">
-          <button
-            type="button"
-            className="italian-countdown-calendar-btn"
-            onClick={handleCalendarClick}
-          >
-            <span>📅</span>
-            {labels.addCalendar}
-          </button>
+        {showCalendarButton && (
+          <div className="italian-countdown-calendar-box">
+            <button
+              type="button"
+              className="italian-countdown-calendar-btn"
+              onClick={handleCalendarClick}
+            >
+              <span>📅</span>
+              {labels.addCalendar}
+            </button>
 
-          <p className="italian-countdown-calendar-hint">
-            {labels.calendarHint}
-          </p>
-        </div>
+            <p className="italian-countdown-calendar-hint">
+              {labels.calendarHint}
+            </p>
+          </div>
+        )}
       </motion.div>
     </section>
   );
