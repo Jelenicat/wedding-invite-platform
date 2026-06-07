@@ -4229,7 +4229,7 @@ events: [
 
   details: createDetails({
     welcomeText:
-      "Sa velikom radošću vas pozivamo da zajedno sa nama proslavite venčanje Milice i Nikole i krštenje našeg sina Gavrila.",
+      "Sa velikom radošću vas pozivamo da zajedno sa nama proslavite naše venčanje i krštenje našeg sina Gavrila.",
 
     date: "06.08.2026.",
     dateISO: "2026-08-06T15:00:00+02:00",
