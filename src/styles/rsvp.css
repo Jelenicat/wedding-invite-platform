@@ -13010,3 +13010,250 @@ margin-bottom: 2px;
   text-align: center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
 }
+/* ============================================================
+   JOVANA & DUŠAN — RSVP samo za slug jovana-dusan-1
+   krem/zlatna slova + svetliji kontrast
+   ============================================================ */
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1 {
+ background: #c9bbab;
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-shell {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(10, 8, 5, 0.06),
+      rgba(10, 8, 5, 0.16)
+    );
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-box {
+background: rgba(92, 64, 38, 0.28);
+ border: 1px solid rgba(178, 148, 108, 0.32);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.42),
+    inset 0 0 0 1px rgba(246, 223, 170, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-kicker,
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-title,
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-choice-label,
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-field label {
+  color: #f6dfaa;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.85),
+    0 0 16px rgba(214, 181, 109, 0.35);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-subtitle {
+  color: #f4ddb0;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.86),
+    0 0 14px rgba(214, 181, 109, 0.25);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(246, 223, 170, 0.62),
+    transparent
+  );
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-field input {
+  color: #f7e3b3;
+  background: rgba(255, 246, 220, 0.08);
+  border: 1px solid rgba(246, 223, 170, 0.26);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 246, 220, 0.04);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-field input::placeholder {
+  color: rgba(246, 223, 170, 0.56);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-field input:focus {
+  border-color: rgba(246, 223, 170, 0.62);
+  box-shadow:
+    0 0 0 3px rgba(246, 223, 170, 0.12),
+    0 8px 20px rgba(0, 0, 0, 0.16);
+  outline: none;
+}
+
+/* kartice Dolazim / Ne dolazim */
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-choice-card {
+  background: rgba(255, 246, 220, 0.08);
+  border: 1px solid rgba(246, 223, 170, 0.22);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.14),
+    inset 0 0 0 1px rgba(255, 246, 220, 0.04);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-choice-card:hover {
+  background: rgba(255, 246, 220, 0.12);
+  border-color: rgba(246, 223, 170, 0.36);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-choice-card.is-active {
+  background: rgba(246, 223, 170, 0.16);
+  border-color: rgba(246, 223, 170, 0.62);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.2),
+    0 0 18px rgba(214, 181, 109, 0.18);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-choice-title {
+  color: #f7e3b3;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.85),
+    0 0 14px rgba(214, 181, 109, 0.28);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-choice-text {
+  color: rgba(244, 221, 176, 0.82);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
+}
+
+/* dugme */
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-button {
+  color: #14100b;
+  background: linear-gradient(180deg, #f7e3b3, #d9b76f);
+  border: 1px solid rgba(246, 223, 170, 0.72);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.24),
+    0 0 18px rgba(214, 181, 109, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-button:hover {
+  background: linear-gradient(180deg, #ffe9bc, #e0bf76);
+}
+
+/* success poruka */
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-success h3 {
+  color: #f7e3b3;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.85),
+    0 0 16px rgba(214, 181, 109, 0.35);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-success p {
+  color: #f4ddb0;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.86),
+    0 0 14px rgba(214, 181, 109, 0.25);
+}
+
+.minimal-rsvp-section.minimal-rsvp-slug-jovana-dusan-1
+  .minimal-rsvp-success-heart {
+  filter:
+    drop-shadow(0 3px 8px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 12px rgba(214, 181, 109, 0.55));
+}
+/* ============================================================
+   JOVANA & DUŠAN — COUNTDOWN samo za slug jovana-dusan-1
+   boje usklađene sa RSVP, bez dodatnih senki
+   ============================================================ */
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1 {
+ background: rgba(92, 64, 38, 0.5);
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.42),
+    inset 0 0 0 1px rgba(246, 223, 170, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  margin-top: -3px;
+}
+
+
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-kicker {
+  color: #f6dfaa;
+  text-shadow: none;
+}
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(246, 223, 170, 0.62),
+    transparent
+  );
+}
+
+
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-item span {
+  color: #f7e3b3;
+  text-shadow: none;
+}
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-item small {
+  color: rgba(244, 221, 176, 0.82);
+  text-shadow: none;
+}
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-note,
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-calendar-hint {
+  color: #f4ddb0;
+  text-shadow: none;
+}
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-calendar-btn {
+  color: #14100b;
+  background: linear-gradient(180deg, #f7e3b3, #d9b76f);
+  border: 1px solid rgba(246, 223, 170, 0.72);
+  box-shadow: none;
+}
+
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-calendar-btn:hover {
+  background: linear-gradient(180deg, #ffe9bc, #e0bf76);
+}
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-kicker,
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-item span,
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-item small,
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-note,
+.minimal-countdown-section.minimal-countdown-slug-jovana-dusan-1
+  .minimal-countdown-calendar-hint {
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.55),
+    0 0 10px rgba(214, 181, 109, 0.24);
+}

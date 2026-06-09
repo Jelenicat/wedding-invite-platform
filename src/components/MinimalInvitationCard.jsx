@@ -67,12 +67,12 @@ const iconMap = {
 
   return (
     <>
-      <motion.section
-        className="minimal-invitation-card"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
+   <motion.section
+  className={`minimal-invitation-card minimal-slug-${slug || ""}`}
+  initial={{ opacity: 0, y: 24 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7 }}
+>
         <div
           className="minimal-invitation-bg"
           style={{ backgroundImage: `url(${finalBg})` }}
@@ -270,6 +270,7 @@ const iconMap = {
     groomName={safeGroomName}
     details={details}
     script={script}
+     slug={slug}
   />
 )}
     </>

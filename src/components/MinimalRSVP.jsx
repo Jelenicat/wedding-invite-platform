@@ -158,7 +158,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
 
   return (
     <motion.section
-      className="minimal-rsvp-section"
+  className={`minimal-rsvp-section minimal-rsvp-slug-${slug || ""}`}
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}

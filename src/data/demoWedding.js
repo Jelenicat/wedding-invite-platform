@@ -4329,7 +4329,7 @@ events: [
 
   brideName: "Јована",
   groomName: "Душан",
-
+musicSrc: "/music/jovana-dusan.mp3",
   videoSrc: "/videos/jovana-dusan.mp4",
   fontMode: "light",
 
@@ -4393,7 +4393,7 @@ events: [
 
   brideName: "Јована",
   groomName: "Душан",
-
+musicSrc: "/music/jovana-dusan.mp3",
   videoSrc: "/videos/jovana-dusan.mp4",
   fontMode: "light",
 
@@ -4401,7 +4401,7 @@ events: [
   weddingTime: "12:00",
   venue: "Краљево",
 
-  backgroundImage: "/images/jovana-dusan-minimal.jpg",
+  backgroundImage: "/images/jovana-dusan-minimal-1.jpg",
 
   details: createDetails({
     welcomeText:

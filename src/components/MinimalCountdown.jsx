@@ -9,6 +9,7 @@ function MinimalCountdown({
   groomName,
   details = {},
   script = "latin",
+  slug,
 }) {
   const t =
     script === "cyrillic"
@@ -75,7 +76,7 @@ function MinimalCountdown({
 
   if (!timeLeft) {
     return (
-      <section className="minimal-countdown-section">
+    <section className={`minimal-countdown-section minimal-countdown-slug-${slug || ""}`}>
         <div className="minimal-countdown-inner">
           <p className="minimal-countdown-kicker">{t.arrived}</p>
 
@@ -108,8 +109,8 @@ function MinimalCountdown({
   ];
 
   return (
-    <motion.section
-      className="minimal-countdown-section"
+   <motion.section
+  className={`minimal-countdown-section minimal-countdown-slug-${slug || ""}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
