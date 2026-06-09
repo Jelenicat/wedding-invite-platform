@@ -11983,39 +11983,26 @@
 }
 /* ============================================================
    JOVANA & DUŠAN — samo slug jovana-dusan-1
-   krem/zlatna slova + bolji kontrast kartice
+   providna braon kartica + zlatna slova
    ============================================================ */
-
-.minimal-invitation-card.minimal-slug-jovana-dusan-1 {
-  background: #14100b;
-}
-
-.minimal-invitation-card.minimal-slug-jovana-dusan-1
-  .minimal-invitation-overlay {
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(10, 8, 5, 0.06),
-      rgba(10, 8, 5, 0.16)
-    );
-}
 
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-paper {
-  background: rgba(24, 18, 10, 0.2);
-  border: 1px solid rgba(246, 223, 170, 0.42);
+  background: rgba(92, 64, 38, 0.38);
+  border: 1px solid rgba(178, 148, 108, 0.32);
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.42),
-    inset 0 0 0 1px rgba(246, 223, 170, 0.08);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+    0 18px 44px rgba(55, 38, 24, 0.28),
+    inset 0 0 0 1px rgba(246, 223, 170, 0.06);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-frame {
-  border-color: rgba(246, 223, 170, 0.42);
+  border-color: rgba(246, 223, 170, 0.34);
 }
 
+/* sitni naslovi */
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-kicker,
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
@@ -12024,38 +12011,41 @@
   .minimal-section-title {
   color: #f6dfaa;
   text-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.85),
-    0 0 16px rgba(214, 181, 109, 0.35);
+    0 2px 7px rgba(0, 0, 0, 0.72),
+    0 0 12px rgba(214, 181, 109, 0.28);
 }
 
+/* monogram */
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-monogram {
   color: #f7e3b3;
-  border-color: rgba(246, 223, 170, 0.5);
+  border-color: rgba(246, 223, 170, 0.44);
   text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.9),
-    0 0 18px rgba(214, 181, 109, 0.45);
+    0 3px 9px rgba(0, 0, 0, 0.78),
+    0 0 14px rgba(214, 181, 109, 0.34);
 }
 
+/* imena */
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-names,
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-names-cyrillic {
   color: #f7e3b3;
   text-shadow:
-    0 3px 8px rgba(0, 0, 0, 0.95),
-    0 8px 24px rgba(0, 0, 0, 0.75),
-    0 0 22px rgba(214, 181, 109, 0.48);
+    0 3px 9px rgba(0, 0, 0, 0.82),
+    0 8px 22px rgba(0, 0, 0, 0.52),
+    0 0 18px rgba(214, 181, 109, 0.38);
 }
 
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-amp svg {
   color: #d9b76f;
   filter:
-    drop-shadow(0 3px 8px rgba(0, 0, 0, 0.9))
-    drop-shadow(0 0 12px rgba(214, 181, 109, 0.55));
+    drop-shadow(0 3px 8px rgba(0, 0, 0, 0.75))
+    drop-shadow(0 0 10px rgba(214, 181, 109, 0.45));
 }
 
+/* glavni tekstovi */
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-invitation-text,
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
@@ -12070,27 +12060,33 @@
   .minimal-timeline-location-link {
   color: #f4ddb0;
   text-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.86),
-    0 0 14px rgba(214, 181, 109, 0.25);
+    0 2px 7px rgba(0, 0, 0, 0.76),
+    0 0 10px rgba(214, 181, 109, 0.2);
 }
 
-/* unutrašnje kartice — svetlije */
+/* raspored — bez dodatnih boja, da se vidi slika iza */
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-program-card,
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-extra-card {
-  background: rgba(255, 246, 220, 0.08);
-  border: 1px solid rgba(246, 223, 170, 0.26);
-  box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.18),
-    inset 0 0 0 1px rgba(255, 246, 220, 0.04);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* redovi u rasporedu — bez pozadine */
+.minimal-invitation-card.minimal-slug-jovana-dusan-1
+  .minimal-timeline-row {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-timeline-row:hover {
-  background: rgba(255, 246, 220, 0.075);
+  background: transparent !important;
 }
 
 /* ikonice — zlatne, bez pozadine */
@@ -12112,11 +12108,12 @@
     hue-rotate(3deg)
     brightness(95%)
     contrast(92%)
-    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7))
-    drop-shadow(0 0 8px rgba(214, 181, 109, 0.45));
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.68))
+    drop-shadow(0 0 8px rgba(214, 181, 109, 0.42));
   opacity: 1;
 }
 
+/* linija rasporeda */
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-timeline-line {
   background: linear-gradient(
@@ -12126,19 +12123,17 @@
   );
 }
 
-/* dugme lokacije — svetlije */
+/* dugme lokacije */
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-map-link {
   color: #f6dfaa;
-  border-color: rgba(246, 223, 170, 0.56);
-  background: rgba(255, 246, 220, 0.08);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
-  box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.16),
-    inset 0 0 0 1px rgba(255, 246, 220, 0.05);
+  border-color: rgba(246, 223, 170, 0.46);
+  background: rgba(92, 64, 38, 0.18);
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.72);
+  box-shadow: none;
 }
 
 .minimal-invitation-card.minimal-slug-jovana-dusan-1
   .minimal-map-link:hover {
-  background: rgba(255, 246, 220, 0.14);
+  background: rgba(92, 64, 38, 0.26);
 }
