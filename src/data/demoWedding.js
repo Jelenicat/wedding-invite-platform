@@ -3202,7 +3202,7 @@ backgroundColor: "#f3ece6",
       "Svečano i elegantno, u stilu koji vam najviše prija.",
     dressCodePalette: [],
 
-    note: "Molimo vas da svoj dolazak potvrdite do 1. juna.",
+    note: "",
   }),
 },
 {
@@ -4319,6 +4319,134 @@ events: [
     note: "A sad ostaju vjera, ufanje i ljubav, ovo troje – ali najveća je među njima ljubav.",
     rsvpDeadline: "28.09.2026.",
     rsvpDeadlineISO: "2026-09-28",
+  }),
+},
+{
+  slug: "jovana-dusan",
+  type: "wedding",
+  template: "silk",
+  script: "cyrillic",
+
+  brideName: "Јована",
+  groomName: "Душан",
+
+  videoSrc: "/videos/jovana-dusan.mp4",
+  fontMode: "light",
+
+  weddingDate: "08 НОВ 2026",
+  weddingTime: "12:00",
+  venue: "Краљево",
+
+  backgroundImage: "/images/jovana-dusan-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
+
+    date: "08 НОВ 2026",
+    dateISO: "2026-11-08T12:00:00+01:00",
+
+    showCalendarButton: true,
+
+    events: [
+      {
+        label: "Окупљање гостију",
+        time: "12:00",
+        icon: "gathering",
+        location: "Породична кућа Дуњић, Ушћанских рудара 5, Краљево",
+        mapLink:
+          "https://www.google.com/maps/place/43.705014,20.682968/data=!4m6!3m5!1s0!7e2!8m2!3d43.705014!4d20.682968!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjIyLjQYACD67A0qgQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTlCAlJT&skid=01924b79-b71d-4264-aa61-f0925d66406a",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14:00",
+        icon: "church",
+        location: "Храм Светог Саве, Краљево",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Save+Kraljevo",
+      },
+      {
+        label: "Ресторан",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Талас Ресорт, Краљево",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
+
+    note: "Молимо вас да свој долазак потврдите до 20. октобра.",
+    rsvpDeadline: "20.10.2026.",
+    rsvpDeadlineISO: "2026-10-20",
+  }),
+},
+{
+  slug: "jovana-dusan-1",
+  type: "wedding",
+  template: "silk",
+  script: "cyrillic",
+
+  brideName: "Јована",
+  groomName: "Душан",
+
+  videoSrc: "/videos/jovana-dusan.mp4",
+  fontMode: "light",
+
+  weddingDate: "08 НОВ 2026",
+  weddingTime: "12:00",
+  venue: "Краљево",
+
+  backgroundImage: "/images/jovana-dusan-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
+
+    date: "08 НОВ 2026",
+    dateISO: "2026-11-08T12:00:00+01:00",
+
+    showCalendarButton: true,
+
+    events: [
+      {
+        label: "Окупљање гостију",
+        time: "12:00",
+        icon: "gathering",
+        location: "Породична кућа Дуњић, Ушћанских рудара 5, Краљево",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Uscanskih+rudara+5+Kraljevo",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14:00",
+        icon: "church",
+        location: "Храм Светог Саве, Краљево",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Save+Kraljevo",
+      },
+      {
+        label: "Сала",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Талас Ресорт, Краљево",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
+
+    note: "Молимо вас да свој долазак потврдите до 20. октобра.",
+    rsvpDeadline: "20.10.2026.",
+    rsvpDeadlineISO: "2026-10-20",
   }),
 },
   // =========================

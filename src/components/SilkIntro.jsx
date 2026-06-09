@@ -9,6 +9,7 @@ function SilkIntro({
   fontMode = "light",
   weddingDate,
   script = "latin",
+  slug,
 }) {
   const videoRef = useRef(null);
 
@@ -105,7 +106,7 @@ function SilkIntro({
         };
 
   return (
-    <section className="silk-intro">
+    <section className={`silk-intro silk-slug-${slug || ""}`}>
       <video
         ref={videoRef}
         className="silk-video"
