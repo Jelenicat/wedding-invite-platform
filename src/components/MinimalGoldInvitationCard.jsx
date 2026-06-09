@@ -88,9 +88,10 @@ function MinimalGoldInvitationCard({
           <p className="minimal-invitation-kicker">{t.invitation}</p>
 
           <div className="minimal-invitation-monogram">
-            <span>{safeBrideName[0]}</span>
-            <span className="minimal-invitation-monogram-and">&</span>
             <span>{safeGroomName[0]}</span>
+            <span className="minimal-invitation-monogram-and">&</span>
+            
+            <span>{safeBrideName[0]}</span>
           </div>
 
           <h1
@@ -100,7 +101,7 @@ function MinimalGoldInvitationCard({
                 : ""
             }`}
           >
-            <span>{safeBrideName}</span>
+                <span>{safeGroomName}</span>
 
             <span className="minimal-invitation-amp">
               <svg
@@ -123,7 +124,8 @@ function MinimalGoldInvitationCard({
               </svg>
             </span>
 
-            <span>{safeGroomName}</span>
+        
+            <span>{safeBrideName}</span>
           </h1>
 
           {details.openingText && (

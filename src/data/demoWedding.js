@@ -4287,7 +4287,7 @@ events: [
   brideName: "Stela",
   groomName: "Benedikt",
 
-  weddingDate: "10 OKT 2026",
+  weddingDate: "10 LISTOPAD 2026",
   weddingTime: "17:30",
   venue: "Svetište sv. Leopolda Bogdana Mandića",
 

@@ -75,7 +75,7 @@ function MinimalGoldIntro({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.45 }}
         >
-          <span>{brideName}</span>
+           <span>{groomName}</span>
 
           <span className="minimal-gold-amp" aria-hidden="true">
             <svg
@@ -98,7 +98,8 @@ function MinimalGoldIntro({
             </svg>
           </span>
 
-          <span>{groomName}</span>
+         
+           <span>{brideName}</span>
         </motion.h1>
 
         <motion.div
