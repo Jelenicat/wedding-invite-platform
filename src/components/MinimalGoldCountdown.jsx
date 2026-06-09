@@ -1,0 +1,173 @@
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import "../styles/rsvp.css";
+import { addToCalendar } from "../utils/calendar";
+
+function MinimalGoldCountdown({
+  targetDate,
+  brideName,
+  groomName,
+  details = {},
+  script = "latin",
+}) {
+  const t =
+    script === "cyrillic"
+      ? {
+          arrived: "Дан венчања је стигао",
+          remaining: "До венчања је остало",
+          days: "дана",
+          hours: "сати",
+          minutes: "мин",
+          seconds: "сек",
+          note: "Једва чекамо да заједно обележимо овај посебан тренутак.",
+          addCalendar: "Додај у календар",
+          calendarHint: "Сачувајте датум венчања у свом телефону.",
+        }
+      : {
+          arrived: "Dan vjenčanja je stigao",
+          remaining: "Do vjenčanja je ostalo",
+          days: "dana",
+          hours: "sati",
+          minutes: "min",
+          seconds: "sek",
+          note: "Jedva čekamo da zajedno obilježimo ovaj poseban trenutak.",
+          addCalendar: "Dodaj u kalendar",
+          calendarHint: "Spremite datum vjenčanja u svoj telefon.",
+        };
+
+  const showCalendarButton = details?.showCalendarButton === true;
+
+  const calculateTimeLeft = () => {
+    const difference = new Date(targetDate).getTime() - new Date().getTime();
+
+    if (difference <= 0) return null;
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  const format = (num) => String(num).padStart(2, "0");
+
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: targetDate,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
+
+  if (!timeLeft) {
+    return (
+      <section className="minimal-countdown-section minimal-gold-countdown-theme">
+        <div className="minimal-countdown-inner">
+          <p className="minimal-countdown-kicker">{t.arrived}</p>
+
+          {showCalendarButton && (
+            <div className="minimal-countdown-calendar-box">
+              <button
+                type="button"
+                className="minimal-countdown-calendar-btn"
+                onClick={handleCalendarClick}
+              >
+                <span>📅</span>
+                {t.addCalendar}
+              </button>
+
+              <p className="minimal-countdown-calendar-hint">
+                {t.calendarHint}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  }
+
+  const items = [
+    { value: format(timeLeft.days), label: t.days },
+    { value: format(timeLeft.hours), label: t.hours },
+    { value: format(timeLeft.minutes), label: t.minutes },
+    { value: format(timeLeft.seconds), label: t.seconds },
+  ];
+
+  return (
+    <motion.section
+      className="minimal-countdown-section minimal-gold-countdown-theme"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className="minimal-countdown-inner">
+        <p className="minimal-countdown-kicker">{t.remaining}</p>
+
+        <div className="minimal-countdown-divider" />
+
+        <div className="minimal-countdown">
+          {items.map((item, index) => (
+            <motion.div
+              key={item.label}
+              className="minimal-countdown-item"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              viewport={{ once: true }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={item.value}
+                  initial={{ opacity: 0, y: 7 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -7 }}
+                  transition={{ duration: 0.22 }}
+                >
+                  {item.value}
+                </motion.span>
+              </AnimatePresence>
+
+              <small>{item.label}</small>
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="minimal-countdown-note">{t.note}</p>
+
+        {showCalendarButton && (
+          <div className="minimal-countdown-calendar-box">
+            <button
+              type="button"
+              className="minimal-countdown-calendar-btn"
+              onClick={handleCalendarClick}
+            >
+              <span>📅</span>
+              {t.addCalendar}
+            </button>
+
+            <p className="minimal-countdown-calendar-hint">
+              {t.calendarHint}
+            </p>
+          </div>
+        )}
+      </div>
+    </motion.section>
+  );
+}
+
+export default MinimalGoldCountdown;

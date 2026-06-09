@@ -4279,6 +4279,48 @@ events: [
     rsvpDeadline: "16.07.2026.",
   }),
 },
+{
+  slug: "benedikt-stela",
+  type: "wedding",
+  template: "minimal-gold",
+
+  brideName: "Stela",
+  groomName: "Benedikt",
+
+  weddingDate: "10 OKT 2026",
+  weddingTime: "17:30",
+  venue: "Svetište sv. Leopolda Bogdana Mandića",
+
+  backgroundImage: "/images/benedikt-stela-minimal-gold.jpg",
+
+  details: createDetails({
+    date: "10.10.2026.",
+    dateISO: "2026-10-10T17:30:00+02:00",
+
+  
+
+    welcomeText:
+      "Pozivamo vas da pred Bogom i u Kristu budete svjedoci našega bračnog zavjeta.",
+
+
+
+    events: [
+      {
+        label: "Crkveno vjenčanje",
+        time: "17:30",
+        icon: "church",
+        location: "Svetište sv. Leopolda Bogdana Mandića",
+      },
+    ],
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+    note: "A sad ostaju vjera, ufanje i ljubav, ovo troje – ali najveća je među njima ljubav.",
+    rsvpDeadline: "28.09.2026.",
+    rsvpDeadlineISO: "2026-09-28",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

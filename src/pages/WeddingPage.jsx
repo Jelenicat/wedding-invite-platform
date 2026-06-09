@@ -69,7 +69,8 @@ import CallaLaceIntro from "../components/CallaLaceIntro";
 import CallaLaceInvitationCard from "../components/CallaLaceInvitationCard";
 import ItalianIntro from "../components/ItalianIntro";
 import ItalianInvitationCard from "../components/ItalianInvitationCard";
-
+import MinimalGoldIntro from "../components/MinimalGoldIntro";
+import MinimalGoldInvitationCard from "../components/MinimalGoldInvitationCard";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -226,6 +227,10 @@ const TEMPLATE_COMPONENTS = {
 "wedding-baptism-silk": {
   Intro: WeddingBaptismSilkIntro,
   Invitation: MinimalInvitationCard,
+},
+"minimal-gold": {
+  Intro: MinimalGoldIntro,
+  Invitation: MinimalGoldInvitationCard,
 },
 };
 

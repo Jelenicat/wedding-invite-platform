@@ -12804,3 +12804,209 @@ margin-bottom: 2px;
     font-size: 12px;
   }
 }
+/* ============================================================
+   MINIMAL GOLD RSVP + COUNTDOWN
+   ista struktura kao MinimalRSVP i MinimalCountdown
+   samo gold boje
+   ============================================================ */
+
+/* RSVP section */
+
+.minimal-gold-rsvp-theme {
+  background: #100d09;
+  color: #fff4dc;
+}
+
+.minimal-gold-rsvp-theme::before {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(16, 13, 9, 0.88) 0%,
+      rgba(16, 13, 9, 0.42) 48%,
+      rgba(16, 13, 9, 0) 100%
+    );
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-box {
+  background: rgba(20, 16, 11, 0.34);
+  border: 1px solid rgba(212, 175, 96, 0.26);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 246, 222, 0.05);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-box::before {
+  border-color: rgba(212, 175, 96, 0.36);
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-kicker,
+.minimal-gold-rsvp-theme .minimal-rsvp-field label,
+.minimal-gold-rsvp-theme .minimal-rsvp-choice-label {
+  color: #d7b56d;
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-title,
+.minimal-gold-rsvp-theme .minimal-rsvp-success h3,
+.minimal-gold-rsvp-theme .minimal-choice-title {
+  color: #fff4dc;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-subtitle,
+.minimal-gold-rsvp-theme .minimal-choice-text,
+.minimal-gold-rsvp-theme .minimal-rsvp-success p {
+  color: rgba(255, 244, 220, 0.82);
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 96, 0.6),
+    transparent
+  );
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-field input[type="text"],
+.minimal-gold-rsvp-theme .minimal-rsvp-field input[type="number"] {
+  border-bottom-color: rgba(212, 175, 96, 0.26);
+  background: transparent;
+  color: #fff4dc;
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-field input[type="text"]::placeholder,
+.minimal-gold-rsvp-theme .minimal-rsvp-field input[type="number"]::placeholder {
+  color: rgba(255, 244, 220, 0.48);
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-field input[type="text"]:focus,
+.minimal-gold-rsvp-theme .minimal-rsvp-field input[type="number"]:focus {
+  border-bottom-color: rgba(212, 175, 96, 0.58);
+}
+
+.minimal-gold-rsvp-theme .minimal-choice-card {
+  border-color: rgba(212, 175, 96, 0.24);
+  background: rgba(255, 246, 222, 0.035);
+  color: #fff4dc;
+}
+
+.minimal-gold-rsvp-theme .minimal-choice-card:hover {
+  border-color: rgba(212, 175, 96, 0.42);
+  background: rgba(255, 246, 222, 0.07);
+}
+
+.minimal-gold-rsvp-theme .minimal-choice-card.is-active {
+  border-color: rgba(212, 175, 96, 0.62);
+  background: rgba(212, 175, 96, 0.13);
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 246, 222, 0.08);
+}
+
+.minimal-gold-rsvp-theme .minimal-choice-card.is-active .minimal-choice-title {
+  color: #d7b56d;
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-button {
+  border-color: rgba(212, 175, 96, 0.46);
+  background: transparent;
+  color: #d7b56d;
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-button:hover {
+  background: rgba(212, 175, 96, 0.1);
+  border-color: rgba(241, 213, 138, 0.62);
+}
+
+.minimal-gold-rsvp-theme .minimal-rsvp-success-heart {
+  filter: drop-shadow(0 10px 20px rgba(212, 175, 96, 0.18));
+}
+
+.minimal-gold-rsvp-theme .minimal-confetti:nth-child(3n) {
+  background: #d4af60;
+}
+
+.minimal-gold-rsvp-theme .minimal-confetti:nth-child(3n + 1) {
+  background: #f1d58a;
+}
+
+.minimal-gold-rsvp-theme .minimal-confetti:nth-child(3n + 2) {
+  background: #fff4dc;
+}
+
+/* Countdown section */
+
+.minimal-gold-countdown-theme {
+  background:
+    linear-gradient(
+      180deg,
+      #100d09 0%,
+      #15110b 48%,
+      #100d09 100%
+    );
+  color: #fff4dc;
+}
+
+.minimal-gold-countdown-theme .minimal-countdown-kicker {
+  color: #d7b56d;
+}
+
+.minimal-gold-countdown-theme .minimal-countdown-divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 96, 0.62),
+    transparent
+  );
+}
+
+.minimal-gold-countdown-theme .minimal-countdown-item span {
+  color: #fff4dc;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.36);
+}
+
+.minimal-gold-countdown-theme .minimal-countdown-item small {
+  color: rgba(215, 181, 109, 0.86);
+}
+
+.minimal-gold-countdown-theme .minimal-countdown-note,
+.minimal-gold-countdown-theme .minimal-countdown-calendar-hint {
+  color: rgba(255, 244, 220, 0.78);
+}
+
+.minimal-gold-countdown-theme .minimal-countdown-calendar-btn {
+  border: 1px solid rgba(212, 175, 96, 0.5);
+  background: transparent;
+  color: #d7b56d;
+}
+
+.minimal-gold-countdown-theme .minimal-countdown-calendar-btn:hover {
+  background: rgba(212, 175, 96, 0.1);
+  border-color: rgba(241, 213, 138, 0.62);
+}
+/* skloni gornju liniju iznad Minimal Gold countdown-a */
+.minimal-gold-countdown-theme {
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.minimal-gold-countdown-theme::before,
+.minimal-gold-countdown-theme::after {
+  display: none !important;
+}
+.minimal-gold-countdown-theme {
+  margin-top: -3px;
+}
+.minimal-gold-rsvp-theme .minimal-gold-rsvp-deadline {
+  max-width: 320px;
+  margin: 14px auto 0;
+  color: #d7b56d;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+}

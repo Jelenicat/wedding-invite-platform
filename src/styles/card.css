@@ -11756,3 +11756,228 @@
     font-size: 20px;
   }
 }
+
+
+/* ============================================================
+   MINIMAL GOLD THEME
+   ista struktura kao MinimalInvitationCard
+   samo drugačije boje
+   ============================================================ */
+
+.minimal-gold-theme {
+  background: #100d09;
+  color: #fff4dc;
+}
+
+/* Background slika */
+.minimal-gold-theme .minimal-invitation-bg {
+  filter: brightness(0.72) contrast(1.06) saturate(0.95);
+}
+
+/* Overlay preko slike */
+.minimal-gold-theme .minimal-invitation-overlay {
+  background:
+    radial-gradient(
+      circle at 50% 8%,
+      rgba(212, 175, 96, 0.045),
+      transparent 36%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(11, 8, 5, 0.16) 0%,
+      rgba(11, 8, 5, 0.12) 30%,
+      rgba(11, 8, 5, 0.18) 60%,
+      rgba(11, 8, 5, 0.34) 100%
+    );
+}
+
+/* Glavna kartica - isti layout kao minimal */
+.minimal-gold-theme .minimal-invitation-paper {
+  background: rgba(20, 16, 11, 0.36);
+  border: 1px solid rgba(212, 175, 96, 0.34);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 246, 222, 0.06);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Unutrašnji okvir */
+.minimal-gold-theme .minimal-invitation-frame {
+  border-color: rgba(212, 175, 96, 0.42);
+}
+
+/* Kicker / naslovi */
+.minimal-gold-theme .minimal-invitation-kicker,
+.minimal-gold-theme .minimal-invitation-date-label,
+.minimal-gold-theme .minimal-section-title,
+.minimal-gold-theme .minimal-script-title {
+  color: #d7b56d;
+}
+
+/* Monogram */
+.minimal-gold-theme .minimal-invitation-monogram {
+  color: #fff4dc;
+}
+
+.minimal-gold-theme .minimal-invitation-monogram-and {
+  color: #d4af60;
+  opacity: 0.95;
+}
+
+/* Imena */
+.minimal-gold-theme .minimal-invitation-names {
+  color: #fff4dc;
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.42),
+    0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.minimal-gold-theme .minimal-invitation-amp {
+  opacity: 0.9;
+}
+
+.minimal-gold-theme .minimal-invitation-amp svg {
+  color: #d4af60;
+  opacity: 0.95;
+}
+
+/* Osnovni tekstovi */
+.minimal-gold-theme .minimal-invitation-text {
+  color: rgba(255, 244, 220, 0.9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.34);
+}
+
+.minimal-gold-theme .minimal-invitation-note {
+  color: rgba(255, 244, 220, 0.82);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+}
+
+/* Posebni verski tekstovi */
+.minimal-gold-theme .minimal-gold-opening-text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.minimal-gold-theme .minimal-gold-main-quote,
+.minimal-gold-theme .minimal-gold-closing-quote {
+  color: #d7b56d;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.minimal-gold-theme .minimal-gold-main-quote::before,
+.minimal-gold-theme .minimal-gold-main-quote::after,
+.minimal-gold-theme .minimal-gold-closing-quote::before,
+.minimal-gold-theme .minimal-gold-closing-quote::after {
+  content: "";
+  display: block;
+  width: 62px;
+  height: 1px;
+  margin: 15px auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 96, 0.75),
+    transparent
+  );
+}
+
+.minimal-gold-theme .minimal-gold-contact-text {
+  color: rgba(255, 244, 220, 0.86);
+}
+
+/* Datum */
+.minimal-gold-theme .minimal-invitation-date-block {
+  color: #fff4dc;
+}
+
+.minimal-gold-theme .minimal-invitation-date {
+  color: #fff4dc;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.38);
+}
+
+/* Program i dodatne kartice - isti layout kao minimal */
+.minimal-gold-theme .minimal-program-card,
+.minimal-gold-theme .minimal-extra-card {
+  border-top-color: rgba(212, 175, 96, 0.28);
+  border-bottom-color: rgba(212, 175, 96, 0.28);
+}
+
+/* Timeline */
+.minimal-gold-theme .minimal-timeline-icon img {
+  opacity: 0.86;
+  filter: brightness(0) saturate(100%) invert(79%) sepia(34%)
+    saturate(571%) hue-rotate(2deg) brightness(92%) contrast(87%);
+}
+
+.minimal-gold-theme .minimal-timeline-line {
+  background: linear-gradient(
+    180deg,
+    rgba(212, 175, 96, 0.5),
+    rgba(212, 175, 96, 0.04)
+  );
+}
+
+.minimal-gold-theme .minimal-timeline-time {
+  color: #d7b56d;
+}
+
+.minimal-gold-theme .minimal-timeline-separator {
+  color: rgba(215, 181, 109, 0.5);
+}
+
+.minimal-gold-theme .minimal-timeline-location-inline,
+.minimal-gold-theme .minimal-timeline-location-link {
+  color: #d7b56d;
+}
+
+.minimal-gold-theme .minimal-timeline-title {
+  color: rgba(255, 244, 220, 0.96);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+}
+
+.minimal-gold-theme .minimal-timeline-note {
+  color: rgba(255, 244, 220, 0.72);
+}
+
+/* Dress code */
+.minimal-gold-theme .minimal-section-note,
+.minimal-gold-theme .minimal-dresscode-role-text {
+  color: rgba(255, 244, 220, 0.86);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.minimal-gold-theme .minimal-dresscode-role-title {
+  color: #d7b56d;
+}
+
+.minimal-gold-theme .minimal-palette-box {
+  border-color: rgba(212, 175, 96, 0.24);
+  background: rgba(255, 246, 222, 0.04);
+}
+
+.minimal-gold-theme .minimal-palette-dot,
+.minimal-gold-theme .minimal-palette-dot-editorial {
+  border-color: rgba(255, 244, 220, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 5px 14px rgba(0, 0, 0, 0.24);
+}
+
+/* Lokacija */
+.minimal-gold-theme .minimal-map-link {
+  color: #d7b56d;
+}
+
+.minimal-gold-theme .minimal-map-link::after {
+  background: rgba(212, 175, 96, 0.72);
+}
+
+/* Mobile - samo boja/providnost, layout ostaje minimal */
+@media (max-width: 480px) {
+  .minimal-gold-theme .minimal-invitation-paper {
+    background: rgba(20, 16, 11, 0.34);
+  }
+}
