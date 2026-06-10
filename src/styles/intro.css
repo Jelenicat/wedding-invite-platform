@@ -6686,3 +6686,52 @@ color: #8e7f73;
   background: rgba(246, 223, 170, 0.12);
   border-color: rgba(246, 223, 170, 0.95) !important;
 }
+/* ============================================================
+   JOVANA & DUŠAN — INTRO SVG imena samo za slug jovana-dusan-1
+   SVG: public/icons/jovana-dusan-intro-names.svg
+   ============================================================ */
+
+.silk-intro.silk-slug-jovana-dusan-1 .silk-intro-names-svg-wrap {
+  width: min(360px, 92vw);
+  height: 250px;
+  margin: 20px auto 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.silk-intro.silk-slug-jovana-dusan-1 .silk-intro-names-svg-mask {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff5ce 0%,
+      #ffe5a3 20%,
+      #c9973e 44%,
+      #fff0bd 62%,
+      #d6a84d 82%,
+      #fff6d4 100%
+    );
+
+  -webkit-mask-image: url("/icons/jovana-dusan-intro-names.svg");
+  mask-image: url("/icons/jovana-dusan-intro-names.svg");
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  filter:
+    drop-shadow(0 2px 1px rgba(255, 246, 202, 0.5))
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.82))
+    drop-shadow(0 12px 26px rgba(0, 0, 0, 0.62))
+    drop-shadow(0 0 16px rgba(214, 181, 109, 0.4));
+}

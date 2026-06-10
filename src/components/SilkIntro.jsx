@@ -13,6 +13,8 @@ function SilkIntro({
 }) {
   const videoRef = useRef(null);
 
+  const shouldUseIntroNamesSvg = slug === "jovana-dusan-1";
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -129,18 +131,27 @@ function SilkIntro({
       >
         <p className={`silk-top ${fontMode}`}>{t.top}</p>
 
-        <h1
-          className={`silk-names ${
-            script === "cyrillic" ? "silk-names-cyrillic" : ""
-          }`}
-          style={{ color: textColor }}
-        >
-          {brideName}
-          <br />
-          <span className="silk-amp">&</span>
-          <br />
-          {groomName}
-        </h1>
+        {shouldUseIntroNamesSvg ? (
+          <div
+            className="silk-intro-names-svg-wrap"
+            aria-label={`${brideName} & ${groomName}`}
+          >
+            <span className="silk-intro-names-svg-mask" />
+          </div>
+        ) : (
+          <h1
+            className={`silk-names ${
+              script === "cyrillic" ? "silk-names-cyrillic" : ""
+            }`}
+            style={{ color: textColor }}
+          >
+            {brideName}
+            <br />
+            <span className="silk-amp">&</span>
+            <br />
+            {groomName}
+          </h1>
+        )}
 
         <p className={`silk-date ${fontMode}`}>
           {month}

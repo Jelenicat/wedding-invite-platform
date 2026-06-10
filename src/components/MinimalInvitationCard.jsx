@@ -18,6 +18,8 @@ function MinimalInvitationCard({
   const safeGroomName = groomName || "Groom";
   const finalBg = backgroundImage || "/images/minimal-bg.jpg";
 
+  const shouldUseNamesSvg = slug === "jovana-dusan-1";
+
   const t =
     script === "cyrillic"
       ? {
@@ -39,20 +41,20 @@ function MinimalInvitationCard({
           location: "Pogledaj lokaciju",
         };
 
-const iconMap = {
-  gathering: "/icons/gathering.svg",
-  guests: "/icons/guests.svg",
-  church: "/icons/church.svg",
-  groom: "/icons/groom.svg",
-  civil: "/icons/civil.svg",
-  ceremony: "/icons/ceremony.svg",
-  dinner: "/icons/dinner.svg",
-  restaurant: "/icons/restaurant.svg",
-  party: "/icons/party.svg",
-  rings: "/icons/rings.svg",
-  angel: "/icons/angel.svg",
-  dresscode: "/icons/dresscode.svg",
-};
+  const iconMap = {
+    gathering: "/icons/gathering.svg",
+    guests: "/icons/guests.svg",
+    church: "/icons/church.svg",
+    groom: "/icons/groom.svg",
+    civil: "/icons/civil.svg",
+    ceremony: "/icons/ceremony.svg",
+    dinner: "/icons/dinner.svg",
+    restaurant: "/icons/restaurant.svg",
+    party: "/icons/party.svg",
+    rings: "/icons/rings.svg",
+    angel: "/icons/angel.svg",
+    dresscode: "/icons/dresscode.svg",
+  };
 
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
@@ -67,12 +69,12 @@ const iconMap = {
 
   return (
     <>
-   <motion.section
-  className={`minimal-invitation-card minimal-slug-${slug || ""}`}
-  initial={{ opacity: 0, y: 24 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7 }}
->
+      <motion.section
+        className={`minimal-invitation-card minimal-slug-${slug || ""}`}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
         <div
           className="minimal-invitation-bg"
           style={{ backgroundImage: `url(${finalBg})` }}
@@ -90,34 +92,47 @@ const iconMap = {
             <span>{safeGroomName[0]}</span>
           </div>
 
-         <h1
-  className={`minimal-invitation-names ${
-    script === "cyrillic" ? "minimal-invitation-names-cyrillic" : ""
-  }`}
->
-            <span>{safeBrideName}</span>
+          {shouldUseNamesSvg ? (
+            <div
+              className="minimal-names-svg-wrap"
+              aria-label={`${safeBrideName} и ${safeGroomName}`}
+            >
+              <span className="minimal-names-svg-mask" />
+            </div>
+          ) : (
+            <h1
+              className={`minimal-invitation-names ${
+                script === "cyrillic"
+                  ? "minimal-invitation-names-cyrillic"
+                  : ""
+              }`}
+            >
+              <span>{safeBrideName}</span>
 
-            <span className="minimal-invitation-amp">
-              <svg
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="1"
-  strokeLinecap="round"
-  strokeLinejoin="round"
->
-  <path d="M12 20
-           c-6-4.5-9-7.5-9-11
-           c0-2.5 2-4.5 4.5-4.5
-           c1.5 0 3 .8 4.5 2.3
-           c1.5-1.5 3-2.3 4.5-2.3
-           C19 4.5 21 6.5 21 9
-           c0 3.5-3 6.5-9 11z" />
-</svg>
-            </span>
+              <span className="minimal-invitation-amp">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path
+                    d="M12 20
+                    c-6-4.5-9-7.5-9-11
+                    c0-2.5 2-4.5 4.5-4.5
+                    c1.5 0 3 .8 4.5 2.3
+                    c1.5-1.5 3-2.3 4.5-2.3
+                    C19 4.5 21 6.5 21 9
+                    c0 3.5-3 6.5-9 11z"
+                  />
+                </svg>
+              </span>
 
-            <span>{safeGroomName}</span>
-          </h1>
+              <span>{safeGroomName}</span>
+            </h1>
+          )}
 
           {details.welcomeText && (
             <p className="minimal-invitation-text">{details.welcomeText}</p>
@@ -169,18 +184,25 @@ const iconMap = {
                               |{" "}
                             </span>
                             <a
-  href={event.mapLink || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="minimal-timeline-location-inline minimal-timeline-location-link"
->
-  {event.location}
-</a>
+                              href={
+                                event.mapLink ||
+                                `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                  event.location
+                                )}`
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="minimal-timeline-location-inline minimal-timeline-location-link"
+                            >
+                              {event.location}
+                            </a>
                           </>
                         )}
                       </p>
 
-                      <h4 className="minimal-timeline-title">{event.label}</h4>
+                      <h4 className="minimal-timeline-title">
+                        {event.label}
+                      </h4>
                     </div>
                   </motion.div>
                 ))}
@@ -254,25 +276,25 @@ const iconMap = {
         </div>
       </motion.section>
 
-     <MinimalRSVP
-  slug={slug}
-  eventType={type}
-  brideName={safeBrideName}
-  groomName={safeGroomName}
-  details={details}
-  script={script}
-/>
+      <MinimalRSVP
+        slug={slug}
+        eventType={type}
+        brideName={safeBrideName}
+        groomName={safeGroomName}
+        details={details}
+        script={script}
+      />
 
-     {details.dateISO && (
-  <MinimalCountdown
-    targetDate={details.dateISO}
-    brideName={safeBrideName}
-    groomName={safeGroomName}
-    details={details}
-    script={script}
-     slug={slug}
-  />
-)}
+      {details.dateISO && (
+        <MinimalCountdown
+          targetDate={details.dateISO}
+          brideName={safeBrideName}
+          groomName={safeGroomName}
+          details={details}
+          script={script}
+          slug={slug}
+        />
+      )}
     </>
   );
 }
