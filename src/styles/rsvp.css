@@ -12815,6 +12815,7 @@ margin-bottom: 2px;
 .minimal-gold-rsvp-theme {
   background: #100d09;
   color: #fff4dc;
+
 }
 
 .minimal-gold-rsvp-theme::before {
@@ -14491,5 +14492,224 @@ margin-bottom: 2px;
   /* OVO spušta baš tekstualnu poruku niže na telefonu */
   .goldprint-video-rsvp-success-message {
     transform: translateY(72px);
+  }
+}
+.goldprint-video-rsvp-confetti-heart {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  font-size: 15px;
+  line-height: 1;
+  color: #d6a341;
+  text-shadow:
+    0 0 6px rgba(255, 241, 184, 0.8),
+    0 0 14px rgba(214, 163, 65, 0.45);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ============================================================
+   GOLDPRINT RSVP — compact position
+   ============================================================ */
+
+.goldprint-video-rsvp-section {
+  padding-top: 24px !important;
+  margin-top: 0 !important;
+}
+
+.goldprint-video-rsvp-shell {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.goldprint-video-rsvp-heading {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.goldprint-video-rsvp-title {
+  margin-top: 0 !important;
+}
+
+/* ============================================================
+   RSVP ORNAMENT — CLEAN FINAL
+   izgleda: ──────  ♡  ──────
+   ============================================================ */
+
+.goldprint-video-rsvp-ornament {
+  width: min(320px, 82vw) !important;
+  height: 32px !important;
+
+  margin: 14px auto 18px !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+
+  overflow: visible !important;
+}
+
+.goldprint-video-rsvp-ornament span {
+  display: block !important;
+  flex: 1 1 0 !important;
+  height: 1px !important;
+  min-width: 0 !important;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(196, 154, 46, 0.45) 10%,
+    rgba(196, 154, 46, 0.95) 50%,
+    rgba(196, 154, 46, 0.45) 90%,
+    transparent 100%
+  ) !important;
+}
+
+.goldprint-video-rsvp-ornament em {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  flex: 0 0 28px !important;
+  width: 28px !important;
+  min-width: 28px !important;
+  height: 32px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-style: normal !important;
+  font-size: 25px !important;
+  line-height: 1 !important;
+
+  color: #c49a2e !important;
+  -webkit-text-fill-color: #c49a2e !important;
+
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+
+  transform: translateY(-1px) !important;
+
+  text-shadow:
+    0 1px 0 rgba(255, 241, 204, 0.35),
+    0 0 12px rgba(216, 176, 106, 0.22) !important;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-rsvp-section {
+    padding-top: 22px !important;
+    margin-top: 0 !important;
+  }
+
+  .goldprint-video-rsvp-shell {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .goldprint-video-rsvp-heading {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .goldprint-video-rsvp-ornament {
+    width: min(292px, 78vw) !important;
+    height: 30px !important;
+    margin: 10px auto 14px !important;
+    gap: 10px !important;
+    transform: none !important;
+  }
+
+  .goldprint-video-rsvp-ornament em {
+    flex-basis: 26px !important;
+    width: 26px !important;
+    min-width: 26px !important;
+    height: 30px !important;
+    font-size: 24px !important;
+  }
+}
+.goldprint-video-rsvp-ornament {
+  width: min(320px, 82vw) !important;
+  margin: 14px auto 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  transform: none !important;
+}
+
+.goldprint-video-rsvp-ornament span {
+  display: block !important;
+  flex: 1 1 0 !important;
+  height: 1px !important;
+  background: rgba(196, 154, 46, 0.65) !important;
+}
+
+.goldprint-video-rsvp-ornament em {
+  flex: 0 0 auto !important;
+  width: 28px !important;
+  text-align: center !important;
+  font-style: normal !important;
+  font-size: 25px !important;
+  color: #c49a2e !important;
+  -webkit-text-fill-color: #c49a2e !important;
+  background: none !important;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-rsvp-ornament {
+    transform: none !important;
+    margin: 12px auto 16px !important;
+  }
+}
+/* ============================================================
+   RSVP ORNAMENT — TEXT FINAL
+   tačno: ──────  ♡  ──────
+   ============================================================ */
+
+.goldprint-video-rsvp-ornament {
+  display: none !important;
+}
+
+.goldprint-video-rsvp-ornament-text {
+  width: 100% !important;
+  margin: 12px auto 14px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+  white-space: nowrap !important;
+
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 27px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+
+  color: #c49a2e !important;
+  -webkit-text-fill-color: #c49a2e !important;
+
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+
+  text-shadow:
+    0 1px 0 rgba(255, 241, 204, 0.32),
+    0 0 12px rgba(216, 176, 106, 0.22) !important;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-rsvp-ornament-text {
+    margin: 8px auto 12px !important;
+    font-size: 24px !important;
+    letter-spacing: 0 !important;
   }
 }

@@ -13589,3 +13589,232 @@
 
   .goldprint-video-letter-stack { bottom: 176px; }
 }
+/* ============================================================
+   GOLDPRINT VIDEO TIMELINE — poravnanje tačkica sa satnicom
+   ============================================================ */
+
+.goldprint-video-timeline {
+  position: relative;
+}
+
+.goldprint-video-timeline-row {
+  position: relative;
+  display: grid;
+  align-items: start;
+}
+
+/* kvadratić / tačka na srednjoj liniji */
+.goldprint-video-timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 15px;
+
+  width: 13px;
+  height: 13px;
+
+  transform: translateX(-50%) rotate(45deg);
+  transform-origin: center;
+
+  z-index: 3;
+}
+
+/* vreme mora imati stabilnu visinu da tačka uvek prati sat */
+.goldprint-video-timeline-time {
+  line-height: 1;
+  min-height: 30px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* desna strana */
+.goldprint-video-timeline-row.is-right .goldprint-video-timeline-content {
+  text-align: left;
+}
+
+/* leva strana */
+.goldprint-video-timeline-row.is-left .goldprint-video-timeline-content {
+  text-align: right;
+}
+
+/* telefon */
+@media (max-width: 520px) {
+  .goldprint-video-timeline-dot {
+    left: 18px;
+    top: 14px;
+
+    width: 12px;
+    height: 12px;
+  }
+
+  .goldprint-video-timeline-time {
+    min-height: 28px;
+    line-height: 1;
+    align-items: center;
+  }
+
+  .goldprint-video-timeline-row.is-left .goldprint-video-timeline-content,
+  .goldprint-video-timeline-row.is-right .goldprint-video-timeline-content {
+    text-align: left;
+  }
+}
+/* ============================================================
+   RSVP ORNAMENT — WIDER + MOVED LEFT FINAL
+   ============================================================ */
+
+.goldprint-video-rsvp-ornament {
+  position: relative !important;
+
+  width: min(100%, 430px) !important;
+  height: auto !important;
+
+  /* približeno gore */
+  margin: 14px auto 0px !important;
+  padding: 0 !important;
+  margin-bottom: -10px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+
+  overflow: visible !important;
+
+  left: auto !important;
+  right: auto !important;
+
+  /* OVO GA POMERA LEVO */
+  transform: translateX(-208px) !important;
+}
+
+.goldprint-video-rsvp-ornament span {
+  display: block !important;
+  flex: 1 1 0 !important;
+  height: 1px !important;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(196, 154, 46, 0.35) 20%,
+    rgba(196, 154, 46, 0.95) 50%,
+    rgba(196, 154, 46, 0.35) 80%,
+    transparent 100%
+  ) !important;
+}
+
+.goldprint-video-rsvp-ornament em {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  flex: 0 0 auto !important;
+  padding: 0 18px !important;
+
+  font-style: normal !important;
+  font-size: 32px !important;
+  line-height: 1 !important;
+  color: #c49a2e !important;
+
+  transform: none !important;
+
+  text-shadow:
+    0 1px 0 rgba(255, 241, 204, 0.38),
+    0 0 14px rgba(216, 176, 106, 0.24) !important;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-rsvp-ornament {
+    width: min(100%, 350px) !important;
+
+    /* približeno gore na telefonu */
+    margin: 12px auto 0px !important;
+    margin-bottom: -12px !important;
+
+    /* telefon — još malo levo */
+    transform: translateX(-155px) !important;
+  }
+
+  .goldprint-video-rsvp-ornament em {
+    font-size: 28px !important;
+    padding: 0 14px !important;
+  }
+}
+
+/* ============================================================
+   PROGRAM DANA ORNAMENT — CENTER FIX
+   ============================================================ */
+
+.goldprint-video-events-wide-ornament {
+  display: block !important;
+
+  width: min(190px, 58vw) !important;
+  max-width: 190px !important;
+  height: auto !important;
+
+  /* približeno gore */
+  margin: 4px auto 0 !important;
+
+  position: relative !important;
+  left: 50% !important;
+  right: auto !important;
+
+  transform: translateX(-95%) !important;
+
+  object-fit: contain !important;
+}
+/* ============================================================
+   GOLDPRINT — smanji prostor između Program dana ornamenta i RSVP
+   ============================================================ */
+
+.goldprint-video-events-section {
+  padding-bottom: 8px !important;
+}
+
+.goldprint-video-events-inner {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.goldprint-video-events-wide-ornament-wrap {
+  margin-bottom: 0 !important;
+}
+
+.goldprint-video-events-wide-ornament {
+  margin-bottom: 0 !important;
+}
+
+/* povuci RSVP sekciju bliže ornamentu iznad */
+.goldprint-video-rsvp-section {
+  margin-top: -56px !important;
+  padding-top: 0 !important;
+}
+
+/* ukloni onu bledu horizontalnu liniju koja pravi osećaj dodatnog prostora */
+.goldprint-video-rsvp-section::before {
+  display: none !important;
+}
+
+/* telefon */
+@media (max-width: 520px) {
+  .goldprint-video-events-section {
+    padding-bottom: 0 !important;
+  }
+
+  .goldprint-video-events-inner {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .goldprint-video-events-wide-ornament-wrap {
+    margin-bottom: 0 !important;
+  }
+
+  .goldprint-video-rsvp-section {
+    margin-top: 0;
+    padding-top: 0 !important;
+  }
+
+  .goldprint-video-rsvp-section::before {
+    display: none !important;
+  }
+}

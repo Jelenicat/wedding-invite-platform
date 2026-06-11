@@ -297,7 +297,7 @@ function GoldPrintVideoRSVP({
                   }
                   transition={{ duration: 0.9 }}
                 >
-                  {isComing ? "🎆" : "🥂"}
+                   {isComing ? "♥" : "🥂"}
                 </motion.div>
 
                 <motion.h3
@@ -320,23 +320,23 @@ function GoldPrintVideoRSVP({
               {isComing && (
                 <div className="goldprint-video-rsvp-confetti-wrap">
                   {Array.from({ length: 26 }).map((_, i) => (
-                    <motion.span
-                      key={i}
-                      className="goldprint-video-rsvp-confetti"
-                      initial={{ opacity: 0, y: 0, x: 0, scale: 0.6 }}
-                      animate={{
-                        opacity: [0, 1, 1, 0],
-                        y: 120 + (i % 4) * 10,
-                        x: (i - 13) * 9,
-                        scale: [0.6, 1, 0.9],
-                        rotate: [0, 120, 240],
-                      }}
-                      transition={{
-                        duration: 1.8,
-                        delay: i * 0.035,
-                        ease: "easeOut",
-                      }}
-                    />
+ <motion.span
+  key={i}
+  className="goldprint-video-rsvp-confetti"
+  initial={{ opacity: 0, y: 0, x: 0, scale: 0.6 }}
+  animate={{
+    opacity: [0, 1, 1, 0],
+    y: 120 + (i % 4) * 10,
+    x: (i - 13) * 9,
+    scale: [0.6, 1, 0.9],
+    rotate: [0, 120, 240],
+  }}
+  transition={{
+    duration: 1.8,
+    delay: i * 0.035,
+    ease: "easeOut",
+  }}
+/>
                   ))}
                 </div>
               )}
@@ -354,12 +354,9 @@ function GoldPrintVideoRSVP({
                 <h2 className="goldprint-video-rsvp-title">{labels.title}</h2>
 
                 <p className="goldprint-video-rsvp-subtitle">{rsvpSubtitle}</p>
-
-                <div className="goldprint-video-rsvp-ornament">
-                  <span />
-                  <em>♡</em>
-                  <span />
-                </div>
+<div className="goldprint-video-rsvp-ornament-text">
+  ──────  ♡  ──────
+</div>
               </div>
 
               <form className="goldprint-video-rsvp-form" onSubmit={handleSubmit}>
