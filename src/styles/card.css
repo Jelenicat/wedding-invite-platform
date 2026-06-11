@@ -14137,3 +14137,206 @@ margin-top: 20px;
     max-height: 205px;
   }
 }
+.goldprint-video-letter-crest {
+  display: block;
+  width: 58px;
+  height: auto;
+  margin: 18px auto 6px;
+
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+
+  opacity: 0.92;
+
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
+    drop-shadow(0 3px 6px rgba(78, 48, 14, 0.28));
+}
+
+@media (max-width: 480px) {
+  .goldprint-video-letter-crest {
+    width: 48px;
+    margin: 14px auto 4px;
+  }
+}
+.goldprint-video-date-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  text-align: center;
+}
+
+.goldprint-video-date-subtitle span {
+  display: inline-block;
+}
+
+.goldprint-video-date-subtitle-svg {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+
+  opacity: 0.95;
+
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
+    drop-shadow(0 3px 6px rgba(78, 48, 14, 0.28));
+}
+
+.goldprint-video-date-subtitle-svg-right {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 480px) {
+  .goldprint-video-date-subtitle {
+    gap: 9px;
+  }
+
+  .goldprint-video-date-subtitle-svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+.goldprint-video-events-wide-ornament-wrap {
+  width: 100vw;
+  margin: 18px 0 22px;
+  margin-left: calc(50% - 50vw);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: visible;
+}
+
+.goldprint-video-events-wide-ornament {
+  display: block;
+
+  width: min(920px, 150vw);
+  height: 150px;
+
+  object-fit: contain;
+  object-position: center;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+
+  opacity: 0.97;
+
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
+    drop-shadow(0 4px 10px rgba(78, 48, 14, 0.32))
+    drop-shadow(0 0 14px rgba(216, 176, 106, 0.18));
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-events-wide-ornament-wrap {
+    margin: 12px 0 16px;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .goldprint-video-events-wide-ornament {
+    width: 140vw;
+    height: 125px;
+  }
+}
+
+@media (max-width: 380px) {
+  .goldprint-video-events-wide-ornament-wrap {
+    margin: 10px 0 14px;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .goldprint-video-events-wide-ornament {
+    width: 135vw;
+    height: 110px;
+  }
+}
+.goldprint-video-timeline-description {
+  margin-top: 6px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 500;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6f4510 0%,
+      #b98228 16%,
+      #d6a341 45%,
+      #7b4b13 60%,
+      #f4d783 76%,
+      #9a651c 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-timeline-description {
+    font-size: 17px;
+  }
+}
+
+/* ============================================================ */
+/* GOLDPRINT DATE SCRATCH — fireworks */
+/* ============================================================ */
+
+.goldprint-video-date-reveal-wrap {
+  position: relative;
+  overflow: visible;
+}
+
+.goldprint-video-fireworks-layer {
+  position: absolute;
+  inset: -18px;
+  z-index: 8;
+
+  pointer-events: none;
+  overflow: visible;
+}
+
+.goldprint-video-firework-particle {
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff6d2 0%,
+      #f4d783 32%,
+      #d6a341 62%,
+      #9a651c 100%
+    );
+
+  box-shadow:
+    0 0 8px rgba(255, 241, 184, 0.8),
+    0 0 14px rgba(216, 176, 106, 0.45),
+    0 0 22px rgba(185, 130, 40, 0.26);
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-fireworks-layer {
+    inset: -10px;
+  }
+
+  .goldprint-video-firework-particle {
+    width: 7px;
+    height: 7px;
+  }
+}

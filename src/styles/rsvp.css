@@ -14194,29 +14194,44 @@ margin-bottom: 2px;
 }
 
 /* ============================================================ */
-/* GOLDPRINT RSVP FIX — input text + submit button visible */
+/* GOLDPRINT RSVP FIX — input name gold */
 /* ============================================================ */
 
 /* tekst koji korisnik unosi */
 .goldprint-video-rsvp-field input {
-  color: #3a2813 !important;
-  -webkit-text-fill-color: #3a2813 !important;
+  background: var(--gpv-gold-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 
-  background: transparent !important;
-  border-bottom: 1px solid rgba(185, 130, 40, 0.34) !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+
+  border-bottom: 1px solid rgba(185, 130, 40, 0.42) !important;
+  caret-color: #b98228 !important;
+
+  text-shadow: none !important;
+  filter: none !important;
 }
 
 /* placeholder */
 .goldprint-video-rsvp-field input::placeholder {
-  color: rgba(58, 40, 19, 0.42) !important;
-  -webkit-text-fill-color: rgba(58, 40, 19, 0.42) !important;
+  background: none !important;
+  color: rgba(185, 130, 40, 0.45) !important;
+  -webkit-text-fill-color: rgba(185, 130, 40, 0.45) !important;
+  opacity: 1;
 }
 
 /* kada klikneš u polje */
 .goldprint-video-rsvp-field input:focus {
-  color: #2b1a0a !important;
-  -webkit-text-fill-color: #2b1a0a !important;
-  border-bottom-color: rgba(185, 130, 40, 0.7) !important;
+  background: var(--gpv-gold-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+
+  border-bottom-color: rgba(185, 130, 40, 0.82) !important;
+  caret-color: #7b4b13 !important;
 }
 
 /* dugme POŠALJI POTVRDU */
@@ -14324,4 +14339,86 @@ margin-bottom: 2px;
 /* Ako želiš da link mapa bude vidljiviji */
 .goldprint-video-timeline-map {
   font-weight: 700;
+}
+
+/* ============================================================ */
+/* GOLDPRINT RSVP — fireworks for "Dolazim" */
+/* ============================================================ */
+
+.goldprint-video-rsvp-success {
+  overflow: visible;
+}
+
+.goldprint-video-rsvp-success.is-coming {
+  min-height: 220px;
+}
+
+.goldprint-video-rsvp-success.is-not-coming {
+  min-height: 190px;
+}
+
+.goldprint-video-rsvp-fireworks {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.goldprint-video-rsvp-firework {
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff1b8 0%,
+      #f4d783 35%,
+      #b98228 72%,
+      rgba(185, 130, 40, 0) 100%
+    );
+
+  box-shadow:
+    0 0 8px rgba(244, 215, 131, 0.65),
+    0 0 16px rgba(185, 130, 40, 0.28);
+}
+
+.goldprint-video-rsvp-success-heart,
+.goldprint-video-rsvp-success h3,
+.goldprint-video-rsvp-success p {
+  position: relative;
+  z-index: 2;
+}
+
+.goldprint-video-rsvp-success-heart {
+  font-size: 52px;
+}
+
+.goldprint-video-rsvp-success.is-not-coming .goldprint-video-rsvp-success-heart {
+  font-size: 54px;
+}
+
+.goldprint-video-rsvp-success p {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-rsvp-success.is-coming {
+    min-height: 215px;
+  }
+
+  .goldprint-video-rsvp-firework {
+    width: 6px;
+    height: 6px;
+  }
+
+  .goldprint-video-rsvp-success-heart {
+    font-size: 48px;
+  }
 }

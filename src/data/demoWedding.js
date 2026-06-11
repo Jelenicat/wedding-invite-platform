@@ -4488,13 +4488,13 @@ musicSrc: "/music/jovana-dusan.mp3",
   details: createDetails({
     namesSvg: "/images/names/nikolina-velibor.svg",
 
-    videoSrc: "/videos/nikolina-velibor-intro-8.mp4",
+    videoSrc: "/videos/nikolina-velibor-intro-1.mp4",
     rsvpImage: "/images/italian-rsvp/nikolina-velibor-rsvp.jpg",
 
     welcomeText:
       "Са великом радошћу вас позивамо да будете део нашег посебног дана.",
 
-    heroText: "венчање",
+    heroText: "вjенчање",
 
     date: "18 СЕП 2026",
     dateISO: "2026-09-18T12:00:00+02:00",
@@ -4513,52 +4513,49 @@ musicSrc: "/music/jovana-dusan.mp3",
       "Под окриљем љубави која нас покреће, желимо да крунишемо наш заједнички пут и закорачимо у нови почетак.",
 
     events: [
-      {
-        label: "Окупљање гостију",
-        time: "12:00 - 12:45",
-        icon: "gathering",
-        location:
-          "Почетак окупљања и драги сусрети пре церемоније",
-      },
-      {
-        label: "Црквено венчање",
-        time: "14:30",
-        icon: "church",
-        location:
-          "Црква Пресвете Богородице, Херцеговачка Грачаница",
-        mapLink:
-          "https://maps.google.com/?q=Crkva+Presvete+Bogorodice+Hercegovacka+Gracanica",
-      },
-      {
-        label: "Круна наше љубави",
-        time: "14:30",
-        icon: "rings",
-        location:
-          "Почетак новог животног поглавља",
-      },
-      {
-        label: "Фотографисање",
-        time: "16:30",
-        icon: "camera",
-        location:
-          "По повратку са црквеног венчања",
-      },
-      {
-        label: "Свечани ручак / вечера",
-        time: "17:30",
-        icon: "restaurant",
-        location:
-          "Прослава са породицом и пријатељима",
-      },
-      {
-        label: "Торта и први плес",
-        time: "21:00",
-        icon: "cake",
-        location:
-          "Слатки тренутак који ћемо поделити са вама уз плес и музику",
-      },
-    ],
-
+  {
+    label: "Окупљање гостију",
+    time: "12:00h - 12:45h",
+    icon: "gathering",
+    location: "Хотел Bellevue, Требиње",
+    description:
+      "Почетак окупљања и драги сусрети прије церемоније.",
+    mapLink:
+      "https://maps.google.com/?q=Hotel+Bellevue+Trebinje",
+  },
+  {
+    label: "Црквено вјенчање",
+    time: "14:30h",
+    icon: "church",
+    location:
+      "Црква Пресвете Богородице, Херцеговачка Грачаница",
+    description:
+      "Круна наше љубави и почетак новог животног поглавља.",
+    mapLink:
+      "https://maps.google.com/?q=Crkva+Presvete+Bogorodice+Hercegovacka+Gracanica",
+  },
+  {
+    label: "Фотографисање",
+    time: "16:30h",
+    icon: "camera",
+    location:
+      "По повратку са црквеног вјенчања",
+  },
+  {
+    label: "Свечани ручак / вечера",
+    time: "17:30h",
+    icon: "restaurant",
+    location:
+      "Прослава са породицом и пријатељима",
+  },
+  {
+    label: "Торта и први плес",
+    time: "21:00h",
+    icon: "cake",
+    location:
+      "Слатки тренутак који ћемо подијелити са вама уз плес и музику",
+  },
+],
     showDressCode: false,
 
     mapLink:

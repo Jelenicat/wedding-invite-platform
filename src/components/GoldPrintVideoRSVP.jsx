@@ -27,16 +27,17 @@ function GoldPrintVideoRSVP({
 
   const [status, setStatus] = useState("idle");
   const [submitted, setSubmitted] = useState(false);
+  const [submittedAnswer, setSubmittedAnswer] = useState("");
 
   const isCyrillic = script === "cyrillic";
   const showRsvpPhotoBlock = details?.hideRsvpPhotoBlock !== true;
 
   const labels = {
-    eyebrow: "RSVP",
+    eyebrow: "",
     title: isCyrillic ? "Потврда доласка" : "Potvrda dolaska",
     subtitle: isCyrillic
       ? "Срећа је стварна само онда када се дијели са онима које волимо. Зато вас позивамо да својом близином, осмијехом и топлином увеличате наш најважнији дан и са нама подијелите радост овог вјечног обећања."
-      : "Molimo vas da svoj dolazak potvrdite na vreme.",
+      : "Molimo vas da svoj dolazak potvrdite na vrijeme.",
     name: isCyrillic ? "Ваше име и презиме" : "Vaše ime i prezime",
     guests: isCyrillic ? "Број гостију" : "Broj gostiju",
     guestsNote: isCyrillic ? "Укључујући вас" : "Uključujući vas",
@@ -45,9 +46,12 @@ function GoldPrintVideoRSVP({
     submit: isCyrillic ? "Пошаљи потврду" : "Pošalji potvrdu",
     sending: isCyrillic ? "Шаље се..." : "Šalje se...",
     thanks: isCyrillic ? "Хвала!" : "Hvala!",
-    success: isCyrillic
-      ? "Ваша потврда је успешно послата."
-      : "Vaša potvrda je uspešno poslata.",
+    successYes: isCyrillic
+      ? "Хвала Вам! Радујемо се што ћете бити дио нашег најважнијег дана."
+      : "Hvala Vam! Radujemo se što ćete biti dio našeg najvažnijeg dana.",
+    successNo: isCyrillic
+      ? "Хвала Вам, наздрављамо другом приликом 🥂"
+      : "Hvala Vam, nazdravljamo drugom prilikom 🥂",
     error: isCyrillic
       ? "Молимо унесите име и изаберите одговор."
       : "Molimo unesite ime i izaberite odgovor.",
@@ -73,6 +77,7 @@ function GoldPrintVideoRSVP({
 
     const timer = setTimeout(() => {
       setSubmitted(false);
+      setSubmittedAnswer("");
       setStatus("idle");
 
       setForm({
@@ -80,7 +85,7 @@ function GoldPrintVideoRSVP({
         attending: "",
         guests: 1,
       });
-    }, 3000);
+    }, 4200);
 
     return () => clearTimeout(timer);
   }, [submitted]);
@@ -162,6 +167,7 @@ function GoldPrintVideoRSVP({
         createdAt: serverTimestamp(),
       });
 
+      setSubmittedAnswer(form.attending);
       setStatus("idle");
       setSubmitted(true);
     } catch (error) {
@@ -169,6 +175,8 @@ function GoldPrintVideoRSVP({
       setStatus("error");
     }
   };
+
+  const isComing = submittedAnswer === "yes";
 
   return (
     <section className="goldprint-video-rsvp-section">
@@ -183,19 +191,53 @@ function GoldPrintVideoRSVP({
           {submitted ? (
             <motion.div
               key="success"
-              className="goldprint-video-rsvp-success"
+              className={`goldprint-video-rsvp-success ${
+                isComing ? "is-coming" : "is-not-coming"
+              }`}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
+              {isComing && (
+                <div className="goldprint-video-rsvp-fireworks" aria-hidden="true">
+                  {Array.from({ length: 22 }).map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="goldprint-video-rsvp-firework"
+                      initial={{
+                        opacity: 0,
+                        scale: 0,
+                        x: 0,
+                        y: 0,
+                      }}
+                      animate={{
+                        opacity: [0, 1, 1, 0],
+                        scale: [0, 1, 0.8],
+                        x: Math.cos((i / 22) * Math.PI * 2) * (72 + (i % 4) * 10),
+                        y: Math.sin((i / 22) * Math.PI * 2) * (72 + (i % 4) * 10),
+                      }}
+                      transition={{
+                        duration: 1.25,
+                        delay: 0.08 + i * 0.015,
+                        ease: "easeOut",
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+
               <motion.div
                 className="goldprint-video-rsvp-success-heart"
                 initial={{ scale: 0, rotate: -15 }}
-                animate={{ scale: [0, 1.2, 1], rotate: [0, 8, -8, 0] }}
+                animate={
+                  isComing
+                    ? { scale: [0, 1.25, 1], rotate: [0, 8, -8, 0] }
+                    : { scale: [0, 1.15, 1], rotate: [0, -6, 6, 0] }
+                }
                 transition={{ duration: 0.9 }}
               >
-                💌
+                {isComing ? "🎆" : "🥂"}
               </motion.div>
 
               <motion.h3
@@ -211,30 +253,32 @@ function GoldPrintVideoRSVP({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.28, duration: 0.45 }}
               >
-                {labels.success}
+                {isComing ? labels.successYes : labels.successNo}
               </motion.p>
 
-              <div className="goldprint-video-rsvp-confetti-wrap">
-                {Array.from({ length: 18 }).map((_, i) => (
-                  <motion.span
-                    key={i}
-                    className="goldprint-video-rsvp-confetti"
-                    initial={{ opacity: 0, y: 0, x: 0, scale: 0.6 }}
-                    animate={{
-                      opacity: [0, 1, 1, 0],
-                      y: 110 + (i % 4) * 8,
-                      x: (i - 9) * 10,
-                      scale: [0.6, 1, 0.9],
-                      rotate: [0, 120, 240],
-                    }}
-                    transition={{
-                      duration: 1.6,
-                      delay: i * 0.04,
-                      ease: "easeOut",
-                    }}
-                  />
-                ))}
-              </div>
+              {isComing && (
+                <div className="goldprint-video-rsvp-confetti-wrap">
+                  {Array.from({ length: 26 }).map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="goldprint-video-rsvp-confetti"
+                      initial={{ opacity: 0, y: 0, x: 0, scale: 0.6 }}
+                      animate={{
+                        opacity: [0, 1, 1, 0],
+                        y: 120 + (i % 4) * 10,
+                        x: (i - 13) * 9,
+                        scale: [0.6, 1, 0.9],
+                        rotate: [0, 120, 240],
+                      }}
+                      transition={{
+                        duration: 1.8,
+                        delay: i * 0.035,
+                        ease: "easeOut",
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
             </motion.div>
           ) : (
             <motion.div

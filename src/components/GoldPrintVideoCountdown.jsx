@@ -47,18 +47,18 @@ function GoldPrintVideoCountdown({
 
   const labels = useMemo(
     () => ({
-      title: isCyrillic ? "Одбројавање" : "Do venčanja",
+      title: isCyrillic ? "Одбројавање" : "Do vjenčanja",
       finished: isCyrillic
-        ? "Дан венчања је стигао"
-        : "Dan venčanja je stigao",
+        ? "Дан вјенчања је стигао"
+        : "Dan vjenčanja je stigao",
       days: isCyrillic ? "дана" : "dana",
       hours: isCyrillic ? "сати" : "sati",
       minutes: isCyrillic ? "минута" : "minuta",
       seconds: isCyrillic ? "секунди" : "sekundi",
       addCalendar: isCyrillic ? "Додај у календар" : "Dodaj u kalendar",
       calendarHint: isCyrillic
-        ? "Сачувајте датум венчања у свом телефону."
-        : "Sačuvajte datum venčanja u svom telefonu.",
+        ? "Сачувајте датум вјенчања у свом телефону."
+        : "Sačuvajte datum vjenčanja u svom telefonu.",
     }),
     [isCyrillic]
   );

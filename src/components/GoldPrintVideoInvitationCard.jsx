@@ -118,7 +118,7 @@ function getDateParts(dateText = "") {
 
   return {
     day: "00",
-    month: "месец",
+    month: "мјесец",
     year: "0000",
   };
 }
@@ -269,6 +269,57 @@ function ScratchCard({ value, label, onReveal, variant = "default" }) {
   );
 }
 
+function FireworksBurst({ active }) {
+  if (!active) return null;
+
+  const bursts = [
+    { left: "18%", top: "30%" },
+    { left: "50%", top: "18%" },
+    { left: "82%", top: "32%" },
+    { left: "30%", top: "72%" },
+    { left: "70%", top: "72%" },
+  ];
+
+  return (
+    <div className="goldprint-video-fireworks-layer" aria-hidden="true">
+      {bursts.map((burst, burstIndex) =>
+        Array.from({ length: 16 }).map((_, i) => {
+          const angle = (Math.PI * 2 * i) / 16;
+          const distance = 46 + (i % 4) * 12;
+
+          return (
+            <motion.span
+              key={`${burstIndex}-${i}`}
+              className="goldprint-video-firework-particle"
+              style={{
+                left: burst.left,
+                top: burst.top,
+              }}
+              initial={{
+                opacity: 0,
+                x: 0,
+                y: 0,
+                scale: 0.25,
+              }}
+              animate={{
+                opacity: [0, 1, 1, 0],
+                x: Math.cos(angle) * distance,
+                y: Math.sin(angle) * distance,
+                scale: [0.25, 1, 0.75],
+              }}
+              transition={{
+                duration: 1.25,
+                delay: burstIndex * 0.14 + i * 0.012,
+                ease: "easeOut",
+              }}
+            />
+          );
+        })
+      )}
+    </div>
+  );
+}
+
 function ConfettiBurst({ active }) {
   if (!active) return null;
 
@@ -350,15 +401,20 @@ function EnvelopeLetterSection({ brideName, groomName, details = {} }) {
     details?.swanRight ||
     "/images/goldprint-envelope/envelope-right.svg";
 
-  const letterIntro = details?.letterIntro || "U srcu Hercegovine,";
+  const letterCrestSvg =
+    details?.letterCrestSvg ||
+    details?.familyCrestSvg ||
+    "/images/crests/family-crest.svg";
+
+  const letterIntro = details?.letterIntro || "У срцу Херцеговине,";
 
   const letterText1 =
     details?.letterText1 ||
-    " tamo gdje sunce najtoplije grli nebo, a kamen čuva priče o vječnosti, kucnuo je čas da i mi ispišemo naše najvažnije poglavlje. ";
+    "тамо гдје сунце најтоплије грли небо, а камен чува приче о вјечности, куцнуо је час да и ми испишемо наше најважније поглавље.";
 
   const letterText2 =
     details?.letterText2 ||
-    "Pod okriljem ljubavi koja nas pokreće, želimo da krunišemo naš zajednički put i zakoračimo u novi početak.";
+    "Под окриљем љубави која нас покреће, желимо да крунишемо наш заједнички пут и закорачимо у нови почетак.";
 
   return (
     <section className="goldprint-video-letter-section" ref={sectionRef}>
@@ -377,14 +433,17 @@ function EnvelopeLetterSection({ brideName, groomName, details = {} }) {
             </div>
 
             <div className="goldprint-video-letter-paper">
+             
               <p className="goldprint-video-letter-script">{letterIntro}</p>
 
               <p>{letterText1}</p>
               <p>{letterText2}</p>
+             
 
               <p className="goldprint-video-letter-signature">
                 {brideName} & {groomName}
               </p>
+
             </div>
           </motion.div>
 
@@ -431,6 +490,10 @@ function AnimatedEventsSection({ events = [], details = {} }) {
   const programText =
     details?.programText ||
     "Срећа је стварна само онда када се дијели са онима које волимо. Зато вас позивамо да својом близином, осмијехом и топлином увеличате наш најважнији дан и са нама подијелите радост овог вјечног обећања.";
+
+  const programOrnamentSvg =
+    details?.programOrnamentSvg ||
+    "/images/ornaments/goldprint-wide.svg";
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -536,6 +599,12 @@ function AnimatedEventsSection({ events = [], details = {} }) {
                     </div>
                   )}
 
+                  {event.description && (
+                    <div className="goldprint-video-timeline-description">
+                      {event.description}
+                    </div>
+                  )}
+
                   {event.mapLink && (
                     <a
                       className="goldprint-video-timeline-map"
@@ -551,6 +620,26 @@ function AnimatedEventsSection({ events = [], details = {} }) {
             );
           })}
         </div>
+
+        <motion.div
+          className="goldprint-video-events-wide-ornament-wrap"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{
+            duration: 0.9,
+            delay: 0.05,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <img
+            className="goldprint-video-events-wide-ornament"
+            src={programOrnamentSvg}
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+        </motion.div>
 
         <motion.p
           className="goldprint-video-events-note"
@@ -603,7 +692,7 @@ function GoldPrintVideoInvitationCard({
   const dateText = details?.date || weddingDate;
 
   const heroText =
-    details?.heroText || details?.invitationText || "се венчавају";
+    details?.heroText || details?.invitationText || "се вјенчавају";
 
   const events = details?.events || [];
   const dateParts = getDateParts(dateText);
@@ -617,17 +706,17 @@ function GoldPrintVideoInvitationCard({
   const scratchVariant =
     details?.goldPrintVariant === "silver" ? "silver" : "default";
 
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [showFireworks, setShowFireworks] = useState(false);
   const revealedDateParts = useRef(0);
 
   const handleDatePartReveal = () => {
     revealedDateParts.current += 1;
 
     if (revealedDateParts.current === 3) {
-      setShowConfetti(true);
+      setShowFireworks(true);
 
       setTimeout(() => {
-        setShowConfetti(false);
+        setShowFireworks(false);
       }, 4000);
     }
   };
@@ -735,11 +824,33 @@ function GoldPrintVideoInvitationCard({
             <h2 className="goldprint-video-date-title">Када?</h2>
 
             <p className="goldprint-video-date-subtitle">
-              ✦ Огреби да откријеш датум ✦
+              <img
+                className="goldprint-video-date-subtitle-svg goldprint-video-date-subtitle-svg-left"
+                src={
+                  details?.scratchOrnamentSvg ||
+                  "/images/ornaments/goldprint-small.svg"
+                }
+                alt=""
+                aria-hidden="true"
+                draggable="false"
+              />
+
+              <span>Огреби да откријеш датум</span>
+
+              <img
+                className="goldprint-video-date-subtitle-svg goldprint-video-date-subtitle-svg-right"
+                src={
+                  details?.scratchOrnamentSvg ||
+                  "/images/ornaments/goldprint-small.svg"
+                }
+                alt=""
+                aria-hidden="true"
+                draggable="false"
+              />
             </p>
 
             <div className="goldprint-video-date-reveal-wrap">
-              <ConfettiBurst active={showConfetti} />
+              <FireworksBurst active={showFireworks} />
 
               <div className="goldprint-video-scratch-grid">
                 <ScratchCard
@@ -751,7 +862,7 @@ function GoldPrintVideoInvitationCard({
 
                 <ScratchCard
                   value={dateParts.month}
-                  label="МЕСЕЦ"
+                  label="МЈЕСЕЦ"
                   variant={scratchVariant}
                   onReveal={handleDatePartReveal}
                 />
