@@ -13379,3 +13379,895 @@ margin-bottom: 2px;
   background: rgba(246, 223, 170, 0.24);
   color: #fff2c8;
 }
+
+
+/* ============================================================
+   GOLDPRINT VIDEO RSVP + COUNTDOWN
+   isto kao Italian, samo zlatna slova
+   ============================================================ */
+
+:root {
+  --gpv-gold-gradient: linear-gradient(
+    135deg,
+    #6f4510 0%,
+    #b98228 16%,
+   
+    #d6a341 45%,
+    #7b4b13 60%,
+    #f4d783 76%,
+    #9a651c 100%
+  );
+}
+
+/* reusable gold text */
+.goldprint-video-rsvp-eyebrow,
+.goldprint-video-rsvp-title,
+.goldprint-video-rsvp-subtitle,
+.goldprint-video-rsvp-ornament em,
+.goldprint-video-rsvp-field span,
+.goldprint-video-rsvp-guests-label,
+.goldprint-video-rsvp-field input,
+.goldprint-video-rsvp-attendance-card,
+.goldprint-video-rsvp-choice-icon,
+.goldprint-video-rsvp-attendance-card strong,
+.goldprint-video-rsvp-guests-box p,
+.goldprint-video-rsvp-stepper button,
+.goldprint-video-rsvp-stepper strong,
+.goldprint-video-rsvp-submit,
+.goldprint-video-rsvp-success-heart,
+.goldprint-video-rsvp-success h3,
+.goldprint-video-rsvp-success p,
+.goldprint-video-rsvp-photo-script,
+.goldprint-video-rsvp-photo-names,
+.goldprint-video-rsvp-photo-heart,
+.goldprint-video-countdown-kicker,
+.goldprint-video-countdown-title,
+.goldprint-video-countdown-ornament em,
+.goldprint-video-countdown-item strong,
+.goldprint-video-countdown-item span,
+.goldprint-video-countdown-calendar-btn,
+.goldprint-video-countdown-calendar-hint {
+  background: var(--gpv-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none !important;
+ 
+}
+
+/* ============================= */
+/* GOLDPRINT RSVP SECTION        */
+/* ============================= */
+
+.goldprint-video-rsvp-section {
+  position: relative;
+  padding: 82px 0 0;
+  background: #ffffff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.goldprint-video-rsvp-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  width: min(78vw, 520px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(216, 195, 165, 0),
+    rgba(216, 195, 165, 0.46),
+    rgba(216, 195, 165, 0)
+  );
+}
+
+.goldprint-video-rsvp-shell {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 28px), 560px);
+  margin: 0 auto 0;
+  padding: 0 16px 46px;
+  background: #ffffff;
+  box-shadow: none;
+  border: none;
+}
+
+.goldprint-video-rsvp-heading {
+  margin-bottom: 30px;
+}
+
+.goldprint-video-rsvp-eyebrow {
+  margin: 0 0 12px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.goldprint-video-rsvp-title {
+  margin: 0;
+ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
+  font-size: clamp(58px, 13vw, 88px);
+  line-height:1.5;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.goldprint-video-rsvp-subtitle {
+  max-width: 390px;
+  margin: 20px auto 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 21px;
+  line-height: 1.28;
+}
+
+.goldprint-video-rsvp-ornament {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 240px);
+  margin: 24px auto 0;
+}
+
+.goldprint-video-rsvp-ornament span {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(216, 195, 165, 0),
+    rgba(216, 195, 165, 0.72),
+    rgba(216, 195, 165, 0)
+  );
+}
+
+.goldprint-video-rsvp-ornament em {
+  font-style: normal;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.goldprint-video-rsvp-form {
+  display: grid;
+  gap: 18px;
+}
+
+.goldprint-video-rsvp-field {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.goldprint-video-rsvp-field span,
+.goldprint-video-rsvp-guests-label {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.goldprint-video-rsvp-field input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(160, 125, 82, 0.24);
+  background: transparent;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 23px;
+  padding: 12px 2px 13px;
+  outline: none;
+  border-radius: 0;
+}
+
+.goldprint-video-rsvp-field input::placeholder {
+  color: rgba(160, 125, 82, 0.36);
+  -webkit-text-fill-color: rgba(160, 125, 82, 0.36);
+}
+
+.goldprint-video-rsvp-field input:focus {
+  border-bottom-color: rgba(160, 125, 82, 0.58);
+}
+
+.goldprint-video-rsvp-attendance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(160, 125, 82, 0.14);
+  border-bottom: 1px solid rgba(160, 125, 82, 0.14);
+}
+
+.goldprint-video-rsvp-attendance-card {
+  min-height: 94px;
+  padding: 16px 8px;
+  border: none;
+  background: transparent;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.goldprint-video-rsvp-attendance-card:first-child {
+  border-right: 1px solid rgba(160, 125, 82, 0.14);
+}
+
+.goldprint-video-rsvp-attendance-card:hover {
+  background: rgba(248, 239, 226, 0.36);
+}
+
+.goldprint-video-rsvp-attendance-card.is-active {
+  background: rgba(248, 239, 226, 0.62);
+}
+
+.goldprint-video-rsvp-choice-icon {
+  display: block;
+  font-size: 27px;
+  line-height: 1;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.goldprint-video-rsvp-attendance-card strong {
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.goldprint-video-rsvp-guests-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(160, 125, 82, 0.14);
+  background: transparent;
+  text-align: left;
+}
+
+.goldprint-video-rsvp-guests-box p {
+  margin: 4px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+}
+
+.goldprint-video-rsvp-stepper {
+  display: inline-grid;
+  grid-template-columns: 38px 44px 38px;
+  align-items: center;
+  border: 1px solid rgba(160, 125, 82, 0.16);
+  background: #ffffff;
+}
+
+.goldprint-video-rsvp-stepper button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.goldprint-video-rsvp-stepper button:hover {
+  background: rgba(248, 239, 226, 0.5);
+}
+
+.goldprint-video-rsvp-stepper strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.goldprint-video-rsvp-submit {
+  margin-top: 6px;
+  min-height: 56px;
+  border: none;
+  border-top: 1px solid rgba(160, 125, 82, 0.16);
+  border-bottom: 1px solid rgba(160, 125, 82, 0.16);
+  background: transparent;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 23px;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.goldprint-video-rsvp-submit:hover {
+  background: rgba(248, 239, 226, 0.42);
+  transform: translateY(-1px);
+}
+
+.goldprint-video-rsvp-submit:disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+}
+
+.goldprint-video-rsvp-status {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+}
+
+.goldprint-video-rsvp-status.is-success {
+  color: #73825c;
+}
+
+.goldprint-video-rsvp-status.is-error {
+  color: #a05252;
+}
+
+/* ============================= */
+/* RSVP PHOTO BLOCK              */
+/* ============================= */
+
+.goldprint-video-rsvp-photo-block {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0;
+  text-align: center;
+  background: #ffffff;
+  padding-top: 52px;
+  overflow: hidden;
+}
+
+.goldprint-video-rsvp-photo-block::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 55%,
+    #ffffff 100%
+  );
+}
+
+.goldprint-video-rsvp-photo-top,
+.goldprint-video-rsvp-photo-divider,
+.goldprint-video-rsvp-photo-heart,
+.goldprint-video-rsvp-photo-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.goldprint-video-rsvp-photo-top {
+  padding: 0 18px 10px;
+  background: #ffffff;
+}
+
+.goldprint-video-rsvp-photo-script {
+  margin: 0 0 10px;
+ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
+  font-size: clamp(46px, 11vw, 76px);
+  line-height: 1.5;
+}
+
+.goldprint-video-rsvp-photo-names {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(38px, 8vw, 58px);
+  line-height: 1;
+  font-weight: 500;
+}
+
+.goldprint-video-rsvp-photo-divider {
+  width: 100%;
+  height: 1px;
+  margin-top: 14px;
+  background: rgba(160, 125, 82, 0.16);
+}
+
+.goldprint-video-rsvp-photo-heart {
+  margin: 10px 0 14px;
+  font-size: 56px;
+  line-height: 1;
+  background-color: #ffffff;
+}
+
+.goldprint-video-rsvp-photo-wrap {
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.goldprint-video-rsvp-photo-wrap::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 190px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #ffffff 34%,
+    rgba(255, 255, 255, 0.9) 54%,
+    rgba(255, 255, 255, 0.46) 78%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.goldprint-video-rsvp-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ============================= */
+/* RSVP SUCCESS                  */
+/* ============================= */
+
+.goldprint-video-rsvp-shell {
+  overflow: hidden;
+}
+
+.goldprint-video-rsvp-success {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin: 10px auto 0;
+  padding: 34px 22px 42px;
+  text-align: center;
+}
+
+.goldprint-video-rsvp-success-heart {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(95, 70, 38, 0.12));
+}
+
+.goldprint-video-rsvp-success h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.goldprint-video-rsvp-success p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.goldprint-video-rsvp-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.goldprint-video-rsvp-confetti {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 7px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.goldprint-video-rsvp-confetti:nth-child(3n) {
+  background: #c99b5f;
+}
+
+.goldprint-video-rsvp-confetti:nth-child(3n + 1) {
+  background: #ead7b8;
+}
+
+.goldprint-video-rsvp-confetti:nth-child(3n + 2) {
+  background: #9f7f53;
+}
+
+/* ============================= */
+/* GOLDPRINT COUNTDOWN SECTION   */
+/* ============================= */
+
+.goldprint-video-countdown-section {
+  position: relative;
+  padding: 88px 16px 100px;
+  background: #ffffff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.goldprint-video-countdown-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 34px;
+  width: min(78vw, 520px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(216, 195, 165, 0),
+    rgba(216, 195, 165, 0.52),
+    rgba(216, 195, 165, 0)
+  );
+}
+
+.goldprint-video-countdown-shell {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 620px);
+  margin: 0 auto;
+}
+
+.goldprint-video-countdown-kicker {
+  margin: 0 0 12px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.goldprint-video-countdown-title {
+  margin: 0;
+  font-family: "Great Vibes", "Allura", "Tangerine", cursive;
+  font-size: clamp(58px, 13vw, 88px);
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.goldprint-video-countdown-ornament {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 240px);
+  margin: 24px auto 34px;
+}
+
+.goldprint-video-countdown-ornament span {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(216, 195, 165, 0),
+    rgba(216, 195, 165, 0.72),
+    rgba(216, 195, 165, 0)
+  );
+}
+
+.goldprint-video-countdown-ornament em {
+  font-style: normal;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.goldprint-video-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  border-top: 1px solid rgba(160, 125, 82, 0.14);
+  border-bottom: 1px solid rgba(160, 125, 82, 0.14);
+}
+
+.goldprint-video-countdown-item {
+  position: relative;
+  min-height: 106px;
+  padding: 22px 8px 18px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.goldprint-video-countdown-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  right: 0;
+  bottom: 24px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(160, 125, 82, 0),
+    rgba(160, 125, 82, 0.18),
+    rgba(160, 125, 82, 0)
+  );
+}
+
+.goldprint-video-countdown-item strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(31px, 7vw, 48px);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.goldprint-video-countdown-item span {
+  display: block;
+  margin-top: 10px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.goldprint-video-countdown-calendar-box {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.goldprint-video-countdown-calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(159, 127, 83, 0.28);
+  background: rgba(255, 255, 255, 0.68);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+ 
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(95, 70, 38, 0.08);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.goldprint-video-countdown-calendar-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.86);
+  border-color: rgba(159, 127, 83, 0.38);
+  box-shadow: 0 16px 34px rgba(95, 70, 38, 0.12);
+}
+
+.goldprint-video-countdown-calendar-btn span {
+  font-size: 15px;
+  letter-spacing: 0;
+  color: #5c4630 !important;
+  -webkit-text-fill-color: #5c4630 !important;
+  background: none !important;
+  filter: none !important;
+}
+
+.goldprint-video-countdown-calendar-hint {
+  max-width: 280px;
+  margin: 10px auto 0;
+  font-size: 13px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-rsvp-section {
+    padding: 76px 0 0;
+  }
+
+  .goldprint-video-rsvp-shell {
+    width: calc(100% - 24px);
+    padding: 0 12px 40px;
+  }
+
+  .goldprint-video-rsvp-title {
+    font-size: clamp(54px, 15vw, 78px);
+  }
+
+  .goldprint-video-rsvp-subtitle {
+    font-size: 20px;
+  }
+
+  .goldprint-video-rsvp-attendance-card {
+    min-height: 88px;
+  }
+
+  .goldprint-video-rsvp-attendance-card strong {
+    font-size: 20px;
+  }
+
+  .goldprint-video-rsvp-guests-box {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .goldprint-video-rsvp-stepper {
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .goldprint-video-rsvp-stepper button {
+    width: 100%;
+  }
+
+  .goldprint-video-rsvp-photo-block {
+    padding-top: 46px;
+  }
+
+  .goldprint-video-rsvp-photo-script {
+    font-size: clamp(42px, 12vw, 62px);
+  }
+
+  .goldprint-video-rsvp-photo-names {
+    font-size: clamp(34px, 9vw, 50px);
+  }
+
+  .goldprint-video-rsvp-photo-heart {
+    font-size: 48px;
+  }
+
+  .goldprint-video-rsvp-photo-wrap::before {
+    height: 160px;
+  }
+
+  .goldprint-video-countdown-section {
+    padding: 76px 12px 86px;
+  }
+
+  .goldprint-video-countdown-title {
+    font-size: clamp(54px, 15vw, 78px);
+  }
+
+  .goldprint-video-countdown-ornament {
+    margin: 22px auto 30px;
+  }
+
+  .goldprint-video-countdown-grid {
+    width: min(100%, 390px);
+  }
+
+  .goldprint-video-countdown-item {
+    min-height: 94px;
+    padding: 20px 4px 16px;
+  }
+
+  .goldprint-video-countdown-item strong {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .goldprint-video-countdown-item span {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  .goldprint-video-countdown-item:not(:last-child)::after {
+    top: 22px;
+    bottom: 22px;
+  }
+}
+
+/* ============================================================ */
+/* GOLDPRINT COUNTDOWN — calendar button visible gold text */
+/* ============================================================ */
+
+.goldprint-video-countdown-calendar-btn {
+  color: #b98228 !important;
+  -webkit-text-fill-color: #b98228 !important;
+
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(185, 130, 40, 0.34) !important;
+
+  box-shadow:
+    0 12px 28px rgba(185, 130, 40, 0.10),
+    inset 0 1px 0 rgba(255, 250, 230, 0.72) !important;
+}
+
+.goldprint-video-countdown-calendar-btn,
+.goldprint-video-countdown-calendar-btn span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: #b98228 !important;
+  -webkit-text-fill-color: #b98228 !important;
+
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+.goldprint-video-countdown-calendar-btn:hover {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(185, 130, 40, 0.56) !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================================ */
+/* GOLDPRINT RSVP FIX — input text + submit button visible */
+/* ============================================================ */
+
+/* tekst koji korisnik unosi */
+.goldprint-video-rsvp-field input {
+  color: #3a2813 !important;
+  -webkit-text-fill-color: #3a2813 !important;
+
+  background: transparent !important;
+  border-bottom: 1px solid rgba(185, 130, 40, 0.34) !important;
+}
+
+/* placeholder */
+.goldprint-video-rsvp-field input::placeholder {
+  color: rgba(58, 40, 19, 0.42) !important;
+  -webkit-text-fill-color: rgba(58, 40, 19, 0.42) !important;
+}
+
+/* kada klikneš u polje */
+.goldprint-video-rsvp-field input:focus {
+  color: #2b1a0a !important;
+  -webkit-text-fill-color: #2b1a0a !important;
+  border-bottom-color: rgba(185, 130, 40, 0.7) !important;
+}
+
+/* dugme POŠALJI POTVRDU */
+.goldprint-video-rsvp-submit {
+  color: #b98228 !important;
+  -webkit-text-fill-color: #b98228 !important;
+
+  background: transparent !important;
+  border-top: 1px solid rgba(185, 130, 40, 0.32) !important;
+  border-bottom: 1px solid rgba(185, 130, 40, 0.32) !important;
+
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* hover dugmeta */
+.goldprint-video-rsvp-submit:hover {
+  color: #7b4b13 !important;
+  -webkit-text-fill-color: #7b4b13 !important;
+  background: rgba(185, 130, 40, 0.08) !important;
+}
+/* ============================================================ */
+/* GOLDPRINT RSVP FIX — plus/minus buttons */
+/* ============================================================ */
+
+.goldprint-video-rsvp-stepper button {
+  color: #b98228 !important;
+  -webkit-text-fill-color: #b98228 !important;
+
+  background: transparent !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.goldprint-video-rsvp-stepper button:hover {
+  color: #7b4b13 !important;
+  -webkit-text-fill-color: #7b4b13 !important;
+
+  background: rgba(185, 130, 40, 0.08) !important;
+}
+
+.goldprint-video-rsvp-stepper strong {
+  color: #3a2813 !important;
+  -webkit-text-fill-color: #3a2813 !important;
+
+  background: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.goldprint-video-rsvp-stepper {
+  border: 1px solid rgba(185, 130, 40, 0.28) !important;
+  background: rgba(255, 255, 255, 0.68) !important;
+}

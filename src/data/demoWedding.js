@@ -49,6 +49,15 @@ rsvpPhotoText,
 heroText,
 rsvpText,
 italianVariant,
+ namesSvg,
+  videoSrc,
+  heroSvg,
+  introSvg,
+  monogramSvg,
+  envelopeLeft,
+  envelopeRight,
+  swanLeft,
+  swanRight,
 scheduleBackground,
 hideRsvpPhotoBlock = false,
 sliderImages = [],
@@ -102,6 +111,15 @@ rsvpPhotoText,
 heroText,
 rsvpText,
 italianVariant,
+ namesSvg,
+  videoSrc,
+  heroSvg,
+  introSvg,
+  monogramSvg,
+  envelopeLeft,
+  envelopeRight,
+  swanLeft,
+  swanRight,
 scheduleBackground,
 hideRsvpPhotoBlock,
   sliderImages,
@@ -4447,6 +4465,106 @@ musicSrc: "/music/jovana-dusan.mp3",
     note: "Молимо вас да свој долазак потврдите до 20. октобра.",
     rsvpDeadline: "20.10.2026.",
     rsvpDeadlineISO: "2026-10-20",
+  }),
+},
+{
+  slug: "nikolina-velibor",
+  type: "wedding",
+  template: "gold-print-video",
+  script: "cyrillic",
+
+  brideName: "Николина",
+  groomName: "Велибор",
+
+  videoSrc: "/videos/nikolina-velibor-intro.mp4",
+  musicSrc: "/music/nikolina-velibor.mp3",
+
+  weddingDate: "18 СЕП 2026",
+  weddingTime: "12:00",
+  venue: "Херцеговачка Грачаница",
+
+  backgroundImage: "/images/nikolina-velibor-fallback.jpg",
+
+  details: createDetails({
+    namesSvg: "/images/names/nikolina-velibor.svg",
+
+    videoSrc: "/videos/nikolina-velibor-intro-8.mp4",
+    rsvpImage: "/images/italian-rsvp/nikolina-velibor-rsvp.jpg",
+
+    welcomeText:
+      "Са великом радошћу вас позивамо да будете део нашег посебног дана.",
+
+    heroText: "венчање",
+
+    date: "18 СЕП 2026",
+    dateISO: "2026-09-18T12:00:00+02:00",
+
+    showCalendarButton: true,
+
+    envelopeLeft: "/images/goldprint-envelope/nikolina-velibor-left.svg",
+    envelopeRight: "/images/goldprint-envelope/nikolina-velibor-right.svg",
+
+    letterIntro: "У срцу Херцеговине,",
+
+    letterText1:
+      "тамо где сунце најтоплије грли небо, а камен чува приче о вечности, куцнуо је час да и ми испишемо наше најважније поглавље.",
+
+    letterText2:
+      "Под окриљем љубави која нас покреће, желимо да крунишемо наш заједнички пут и закорачимо у нови почетак.",
+
+    events: [
+      {
+        label: "Окупљање гостију",
+        time: "12:00 - 12:45",
+        icon: "gathering",
+        location:
+          "Почетак окупљања и драги сусрети пре церемоније",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14:30",
+        icon: "church",
+        location:
+          "Црква Пресвете Богородице, Херцеговачка Грачаница",
+        mapLink:
+          "https://maps.google.com/?q=Crkva+Presvete+Bogorodice+Hercegovacka+Gracanica",
+      },
+      {
+        label: "Круна наше љубави",
+        time: "14:30",
+        icon: "rings",
+        location:
+          "Почетак новог животног поглавља",
+      },
+      {
+        label: "Фотографисање",
+        time: "16:30",
+        icon: "camera",
+        location:
+          "По повратку са црквеног венчања",
+      },
+      {
+        label: "Свечани ручак / вечера",
+        time: "17:30",
+        icon: "restaurant",
+        location:
+          "Прослава са породицом и пријатељима",
+      },
+      {
+        label: "Торта и први плес",
+        time: "21:00",
+        icon: "cake",
+        location:
+          "Слатки тренутак који ћемо поделити са вама уз плес и музику",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://maps.google.com/?q=Crkva+Presvete+Bogorodice+Hercegovacka+Gracanica",
+
+    note: "Молимо вас да свој долазак потврдите до 10. јула .2026..",
   }),
 },
   // =========================

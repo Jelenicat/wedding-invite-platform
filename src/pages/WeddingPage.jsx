@@ -71,6 +71,8 @@ import ItalianIntro from "../components/ItalianIntro";
 import ItalianInvitationCard from "../components/ItalianInvitationCard";
 import MinimalGoldIntro from "../components/MinimalGoldIntro";
 import MinimalGoldInvitationCard from "../components/MinimalGoldInvitationCard";
+import GoldPrintVideoIntro from "../components/GoldPrintVideoIntro";
+import GoldPrintVideoInvitationCard from "../components/GoldPrintVideoInvitationCard";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -231,6 +233,10 @@ const TEMPLATE_COMPONENTS = {
 "minimal-gold": {
   Intro: MinimalGoldIntro,
   Invitation: MinimalGoldInvitationCard,
+},
+"gold-print-video": {
+  Intro: GoldPrintVideoIntro,
+  Invitation: GoldPrintVideoInvitationCard,
 },
 };
 
