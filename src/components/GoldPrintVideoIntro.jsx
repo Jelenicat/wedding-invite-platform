@@ -33,8 +33,12 @@ function GoldPrintVideoIntro({
 
   const namesSvg = details.namesSvg || "/images/names/nikolina-velibor.svg";
 
+  const tribalSvg =
+    details.tribalSvg || "/images/ornaments/goldprint-tribal.svg";
+
   // Zakucan grb za ovaj template
-  const familyCrestSvg = "/images/crests/family-crest.svg";
+  const familyCrestSvg =
+    details.familyCrestSvg || "/images/crests/family-crest.svg";
 
   const fallbackBg = backgroundImage || "/images/gold-print-fallback.jpg";
 
@@ -77,14 +81,39 @@ function GoldPrintVideoIntro({
         }
         transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
       >
-        <motion.p
-          className="gpv-kicker"
-          initial={false}
-          animate={videoEnded ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ delay: 0.15, duration: 0.8, ease: "easeOut" }}
-        >
-          {t.kicker}
-        </motion.p>
+        <div className="gpv-kicker-group">
+          <motion.div
+            className="gpv-tribal-fixed-wrap"
+            aria-hidden="true"
+            initial={false}
+            animate={
+              videoEnded
+                ? { opacity: 1, scale: 1, y: 0 }
+                : { opacity: 0, scale: 0.96, y: 8 }
+            }
+            transition={{
+              delay: 0.08,
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            <div
+              className="gpv-tribal-fixed"
+              style={{
+                "--gpv-tribal-mask": `url(${tribalSvg})`,
+              }}
+            />
+          </motion.div>
+
+          <motion.p
+            className="gpv-kicker"
+            initial={false}
+            animate={videoEnded ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ delay: 0.15, duration: 0.8, ease: "easeOut" }}
+          >
+            {t.kicker}
+          </motion.p>
+        </div>
 
         <motion.img
           className="gpv-family-crest"

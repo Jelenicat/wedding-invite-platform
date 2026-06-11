@@ -551,19 +551,20 @@ function AnimatedEventsSection({ events = [], details = {} }) {
             );
           })}
         </div>
+
         <motion.p
-  className="goldprint-video-events-note"
-  initial={{ opacity: 0, y: 18 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, amount: 0.35 }}
-  transition={{
-    duration: 0.9,
-    delay: 0.12,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
-  {programText}
-</motion.p>
+          className="goldprint-video-events-note"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{
+            duration: 0.9,
+            delay: 0.12,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          {programText}
+        </motion.p>
       </div>
     </section>
   );
@@ -595,6 +596,9 @@ function GoldPrintVideoInvitationCard({
     details?.introSvg ||
     details?.monogramSvg ||
     details?.namesSvg;
+
+  const cornerSvg =
+    details?.cornerSvg || "/images/goldprint-corners/corner.svg";
 
   const dateText = details?.date || weddingDate;
 
@@ -656,8 +660,40 @@ function GoldPrintVideoInvitationCard({
               delay: 0.25,
             }}
           >
-                        {heroSvg ? (
+            {heroSvg ? (
               <div className="goldprint-video-hero-name-box">
+                <img
+                  className="goldprint-video-corner goldprint-video-corner-tl"
+                  src={cornerSvg}
+                  alt=""
+                  aria-hidden="true"
+                  draggable="false"
+                />
+
+                <img
+                  className="goldprint-video-corner goldprint-video-corner-tr"
+                  src={cornerSvg}
+                  alt=""
+                  aria-hidden="true"
+                  draggable="false"
+                />
+
+                <img
+                  className="goldprint-video-corner goldprint-video-corner-br"
+                  src={cornerSvg}
+                  alt=""
+                  aria-hidden="true"
+                  draggable="false"
+                />
+
+                <img
+                  className="goldprint-video-corner goldprint-video-corner-bl"
+                  src={cornerSvg}
+                  alt=""
+                  aria-hidden="true"
+                  draggable="false"
+                />
+
                 <motion.div
                   className="goldprint-video-hero-svg"
                   role="img"
@@ -744,24 +780,24 @@ function GoldPrintVideoInvitationCard({
         )}
       </main>
 
-<GoldPrintVideoRSVP
-  slug={slug}
-  eventType={type}
-  brideName={safeBrideName}
-  groomName={safeGroomName}
-  details={details}
-  script="cyrillic"
-/>
+      <GoldPrintVideoRSVP
+        slug={slug}
+        eventType={type}
+        brideName={safeBrideName}
+        groomName={safeGroomName}
+        details={details}
+        script="cyrillic"
+      />
 
-{details?.dateISO && (
-  <GoldPrintVideoCountdown
-    targetDate={details.dateISO}
-    brideName={safeBrideName}
-    groomName={safeGroomName}
-    details={details}
-    script="cyrillic"
-  />
-)}
+      {details?.dateISO && (
+        <GoldPrintVideoCountdown
+          targetDate={details.dateISO}
+          brideName={safeBrideName}
+          groomName={safeGroomName}
+          details={details}
+          script="cyrillic"
+        />
+      )}
     </>
   );
 }

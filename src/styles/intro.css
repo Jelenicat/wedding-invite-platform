@@ -6738,7 +6738,7 @@ color: #8e7f73;
 
 /* ============================================================
    GOLD PRINT VIDEO INTRO
-   full-screen video + SVG imena kao zlatotisak
+   full-screen video + SVG imenā kao zlatotisak
    ============================================================ */
 
 .gpv-intro {
@@ -6756,7 +6756,6 @@ color: #8e7f73;
   padding: 34px 18px;
 }
 
-/* pozadinski fallback ako video kasni ili ne učita */
 .gpv-fallback-bg {
   position: absolute;
   inset: 0;
@@ -6770,7 +6769,6 @@ color: #8e7f73;
   transform: scale(1.02);
 }
 
-/* video pozadina */
 .gpv-video {
   position: absolute;
   inset: 0;
@@ -6789,14 +6787,12 @@ color: #8e7f73;
     filter 1.6s ease;
 }
 
-/* kada se video završi, ostaje kao tamnija pozadina */
 .gpv-video.is-ended {
   opacity: 0.5;
   transform: scale(1.035);
   filter: brightness(0.72) saturate(0.9);
 }
 
-/* tamni overlay preko videa */
 .gpv-overlay {
   position: absolute;
   inset: 0;
@@ -6817,7 +6813,7 @@ color: #8e7f73;
     );
 }
 
-/* sadržaj koji se pojavljuje kad se video završi */
+/* ---- glavni sadržaj ---- */
 .gpv-content {
   position: relative;
   z-index: 3;
@@ -6834,13 +6830,71 @@ color: #8e7f73;
   text-align: center;
 
   pointer-events: none;
+  /* NEMA padding-top — tribal više nije absolute */
 }
 
 .gpv-content.is-visible {
   pointer-events: auto;
 }
 
-/* tekst gore: POZIVNICA ZA VENČANJE */
+/* ---- kicker group: tribal ornament + tekst zajedno ---- */
+.gpv-kicker-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* tribal ornament wrap — normalan blok, ne absolute */
+.gpv-tribal-fixed-wrap {
+  width: min(600px, 95vw);
+  height: 155px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* tribal ornament — zlatotisak maska */
+.gpv-tribal-fixed {
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6f4510 0%,
+      #b98228 16%,
+      #fff1b8 31%,
+      #d6a341 45%,
+      #7b4b13 60%,
+      #f4d783 76%,
+      #9a651c 100%
+    );
+
+  -webkit-mask-image: var(--gpv-tribal-mask);
+  mask-image: var(--gpv-tribal-mask);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.85))
+    drop-shadow(0 2px 0 rgba(86, 50, 8, 0.55))
+    drop-shadow(0 5px 8px rgba(0, 0, 0, 0.38))
+    drop-shadow(0 0 10px rgba(216, 176, 106, 0.2));
+}
+
+/* kicker tekst */
 .gpv-kicker {
   margin: 0;
 
@@ -6858,7 +6912,7 @@ color: #8e7f73;
     0 0 14px rgba(216, 176, 106, 0.16);
 }
 
-/* porodični grb / family crest */
+/* porodični grb */
 .gpv-family-crest {
   width: 74px;
   height: 74px;
@@ -6875,7 +6929,7 @@ color: #8e7f73;
     drop-shadow(0 0 12px rgba(216, 176, 106, 0.18));
 }
 
-/* SVG imena — dimenzije maske */
+/* SVG imena */
 .gpv-names-svg {
   width: min(360px, 88vw);
   height: 215px;
@@ -6884,7 +6938,6 @@ color: #8e7f73;
   -webkit-user-drag: none;
 }
 
-/* SVG imena — pravi zlatotisak preko maske */
 .gpv-names-gold {
   background:
     linear-gradient(
@@ -6917,7 +6970,7 @@ color: #8e7f73;
     drop-shadow(0 0 10px rgba(216, 176, 106, 0.22));
 }
 
-/* dugme — providno, pravougaono, zlatan tekst */
+/* dugme */
 .gpv-open-btn {
   appearance: none;
 
@@ -6967,7 +7020,7 @@ color: #8e7f73;
   outline-offset: 4px;
 }
 
-/* telefon */
+/* ---- telefon ---- */
 @media (max-width: 520px) {
   .gpv-intro {
     padding: 28px 16px;
@@ -6979,18 +7032,18 @@ color: #8e7f73;
   }
 
   .gpv-kicker {
-    font-size: 11px;
+    font-size: 15px;
     letter-spacing: 0.22em;
   }
 
   .gpv-family-crest {
-    width: 94px;
-    height: 94px;
+    width: 104px;
+    height: 104px;
   }
 
   .gpv-names-svg {
     width: min(330px, 90vw);
-    height: 205px;
+    height: 250px;
   }
 
   .gpv-open-btn {
@@ -7000,9 +7053,19 @@ color: #8e7f73;
     font-size: 11px;
     letter-spacing: 0.16em;
   }
+
+  .gpv-tribal-fixed-wrap {
+  width: 100vw;
+    height: 200px;
+    margin-bottom: -50px;
+  }
+
+  .gpv-kicker-group {
+    gap: 8px;
+  }
 }
 
-/* manji telefoni */
+/* ---- manji telefoni ---- */
 @media (max-width: 380px) {
   .gpv-content {
     min-height: 500px;
@@ -7021,5 +7084,15 @@ color: #8e7f73;
 
   .gpv-open-btn {
     min-width: 198px;
+  }
+
+  .gpv-tribal-fixed-wrap {
+   width: 100vw;
+    height: 120px;
+        margin-bottom: -30px;
+  }
+
+  .gpv-kicker-group {
+    gap: 7px;
   }
 }

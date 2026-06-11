@@ -14271,3 +14271,57 @@ margin-bottom: 2px;
   border: 1px solid rgba(185, 130, 40, 0.28) !important;
   background: rgba(255, 255, 255, 0.68) !important;
 }
+/* ============================================================ */
+/* ALL REMAINING DARK TEXT — GOLD PRINT */
+/* ============================================================ */
+
+.goldprint-video-names,
+.goldprint-video-subtitle,
+.goldprint-video-letter-script,
+.goldprint-video-letter-paper p,
+.goldprint-video-timeline-time,
+.goldprint-video-timeline-label,
+.goldprint-video-timeline-location,
+.goldprint-video-small-label,
+.goldprint-video-paper-card h2,
+.goldprint-video-events-section h2,
+.goldprint-video-rsvp-card h2,
+.goldprint-video-welcome,
+.goldprint-video-info-grid span,
+.goldprint-video-info-grid strong {
+  background:
+    linear-gradient(
+      135deg,
+      #6f4510 0%,
+      #b98228 16%,
+     
+      #d6a341 45%,
+      #7b4b13 60%,
+      #f4d783 76%,
+      #9a651c 100%
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+
+  text-shadow: none !important;
+}
+
+/* Da signature i običan tekst u pismu ne budu previše svetli */
+.goldprint-video-letter-paper p {
+  font-weight: 600;
+}
+
+/* Lokacija u timeline-u je manja, pa joj daj malo jači kontrast */
+.goldprint-video-timeline-location {
+  font-weight: 600;
+  opacity: 0.92;
+}
+
+/* Ako želiš da link mapa bude vidljiviji */
+.goldprint-video-timeline-map {
+  font-weight: 700;
+}
