@@ -14102,13 +14102,13 @@ margin-top: 20px;
 
 @media (max-width: 390px) {
   .goldprint-video-letter-section {
-    margin-bottom: -400px !important;
+    margin-bottom: -320px !important;
   }
 }
 
 @media (max-height: 720px) and (max-width: 520px) {
   .goldprint-video-letter-section {
-    margin-bottom: -395px !important;
+    margin-bottom: -300px !important;
   }
 }
 .goldprint-video-hero-svg-img {
