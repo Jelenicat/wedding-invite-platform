@@ -12210,7 +12210,7 @@
   background: rgba(246, 223, 170, 0.24);
   color: #fff2c8;
 }
-  /* ============================= */
+/* ============================= */
 /* GOLD PRINT VIDEO TEMPLATE     */
 /* ============================= */
 
@@ -12223,10 +12223,19 @@
   overflow-x: hidden;
 }
 
+/* ============================= */
+/* HERO                          */
+/* ============================= */
+
 .goldprint-video-hero {
   position: relative;
   width: 100%;
+  min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -12239,7 +12248,9 @@
   inset: 0;
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   object-fit: cover;
   object-position: center center;
   z-index: 1;
@@ -12253,12 +12264,12 @@
   background:
     radial-gradient(
       circle at 48% 38%,
-      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.16),
       transparent 32%
     ),
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.08) 0%,
       rgba(255, 255, 255, 0.03) 36%,
       rgba(241, 229, 213, 0.1) 72%,
       rgba(222, 205, 184, 0.26) 100%
@@ -12272,6 +12283,9 @@
   margin-top: -6vh;
   text-align: center;
   color: #484a47;
+  /* Android: spriječi compositing probleme */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .goldprint-video-names {
@@ -12302,6 +12316,180 @@
     0 1px 1px rgba(255, 255, 255, 0.42),
     0 14px 30px rgba(65, 56, 45, 0.08);
 }
+
+/* ============================= */
+/* HERO NAMES WRAP               */
+/* ============================= */
+
+.goldprint-video-hero-name-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.goldprint-video-hero-name-wrap::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: 122%;
+  height: 78%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.48);
+  border-radius: 50%;
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+/* ============================= */
+/* HERO NAMES BOX                */
+/* ============================= */
+
+.goldprint-video-hero-name-box {
+  position: relative;
+  width: min(92vw, 430px);
+  margin: 0 auto;
+  padding: 28px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.27);
+  border: 1px solid rgba(216, 176, 106, 0.28);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.34),
+    inset 0 0 0 1px rgba(255, 232, 170, 0.08);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  overflow: visible;
+}
+
+/* ============================= */
+/* HERO SVG / IMG                */
+/* ============================= */
+
+.goldprint-video-hero-svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(360px, 88vw);
+  height: 215px;
+  margin: 0 auto;
+  background:
+    linear-gradient(
+      135deg,
+      #6f4510 0%,
+      #b98228 16%,
+      #fff1b8 31%,
+      #d6a341 45%,
+      #7b4b13 60%,
+      #f4d783 76%,
+      #9a651c 100%
+    );
+  -webkit-mask-image: var(--goldprint-video-hero-mask);
+  mask-image: var(--goldprint-video-hero-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.85))
+    drop-shadow(0 2px 0 rgba(86, 50, 8, 0.55))
+    drop-shadow(0 5px 8px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 10px rgba(216, 176, 106, 0.22));
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.goldprint-video-hero-svg-img {
+  display: block;
+  width: min(360px, 86vw);
+  height: auto;
+  max-height: 230px;
+  object-fit: contain;
+  margin: 0 auto;
+  position: relative;
+  z-index: 4;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.82))
+    drop-shadow(0 2px 0 rgba(86, 50, 8, 0.48))
+    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.38))
+    drop-shadow(0 0 12px rgba(216, 176, 106, 0.22));
+}
+
+/* ============================= */
+/* HERO GOLD TEXT                */
+/* ============================= */
+
+.goldprint-video-subtitle.goldprint-video-subtitle-gold {
+  margin-top: -4px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(31px, 8vw, 54px);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 4;
+  /* Solidna boja kao fallback za Android */
+  color: #c49a2e;
+  /* Gradient za desktop/iOS */
+  background:
+    linear-gradient(
+      135deg,
+      #6f4510 0%,
+      #b98228 16%,
+      #fff1b8 31%,
+      #d6a341 45%,
+      #7b4b13 60%,
+      #f4d783 76%,
+      #9a651c 100%
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.75))
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.58))
+    drop-shadow(0 0 10px rgba(216, 176, 106, 0.22));
+  /* Android compositing fix */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+/* ============================= */
+/* HERO CORNERS                  */
+/* ============================= */
+
+.goldprint-video-corner {
+  position: absolute;
+  z-index: 2;
+  width: 118px;
+  height: 118px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 241, 184, 0.55))
+    drop-shadow(0 3px 7px rgba(0, 0, 0, 0.45));
+}
+
+.goldprint-video-corner-tl { top: 10px; left: 10px; transform: rotate(0deg); }
+.goldprint-video-corner-tr { top: 10px; right: 10px; transform: rotate(90deg); }
+.goldprint-video-corner-br { right: 10px; bottom: 10px; transform: rotate(180deg); }
+.goldprint-video-corner-bl { left: 10px; bottom: 10px; transform: rotate(270deg); }
 
 /* ============================= */
 /* COMMON SECTIONS               */
@@ -12415,46 +12603,109 @@
 }
 
 /* ============================= */
-/* ITALIAN SCRATCH DATE SECTION  */
+/* GOLD GRADIENT — MIXIN         */
+/* Koristimo solidnu boju kao    */
+/* fallback, gradient kao        */
+/* progressive enhancement       */
+/* ============================= */
+
+/*
+  Android Chrome bug:
+  background-clip:text ne radi kada je:
+  - parent ima opacity animaciju (framer-motion whileInView)
+  - element je child canvas siblingа
+  - element je unutar will-change: transform konteksta
+
+  Rješenje: solidna fallback boja + gradient samo gdje sigurno radi.
+  Za elemente u animiranim sekcijama koristimo samo solidnu boju.
+*/
+
+/* ============================= */
+/* DATE SCRATCH SECTION          */
 /* ============================= */
 
 .goldprint-video-date-section {
   position: relative;
-  padding: 70px 16px 76px;
+  padding: clamp(58px, 8vh, 70px) 16px clamp(66px, 9vh, 76px);
   background: #ffffff;
   overflow: hidden;
+  /* Android: osiguraj bijelu pozadinu bez compositing bug-a */
+  isolation: isolate;
 }
 
 .goldprint-video-date-inner {
   width: min(100%, 760px);
   margin: 0 auto;
   text-align: center;
+  /* Osiguraj da motion.div ne "pojede" pozadinu na Androidu */
+  background: #ffffff;
 }
 
+/* "Kada?" naslov — samo solidna zlatna, BEZ gradient teksta */
+/* jer je unutar whileInView motion.div koji na Androidu lomi background-clip */
 .goldprint-video-date-title {
   margin: 0;
   font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   font-size: clamp(50px, 12vw, 82px);
   line-height: 1.5;
   font-weight: 400;
-  color: rgba(48, 48, 46, 0.94);
-  text-shadow: 0 2px 2px rgba(255, 255, 255, 0.55);
+  /* Solidna zlatna boja — radi svuda */
+  color: #c49a2e;
 }
 
+/* "Ogrebi da otkriješ datum" — solidna zlatna */
 .goldprint-video-date-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   margin: 22px 0 36px;
+  text-align: center;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(23px, 5.8vw, 34px);
   line-height: 1.1;
   font-weight: 600;
-  color: #9b7a4f;
+  /* Solidna zlatna boja */
+  color: #c49a2e;
+}
+
+.goldprint-video-date-subtitle span {
+  display: inline-block;
+}
+
+.goldprint-video-date-subtitle-svg {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  opacity: 0.95;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
+    drop-shadow(0 3px 6px rgba(78, 48, 14, 0.28));
+}
+
+.goldprint-video-date-subtitle-svg-right {
+  transform: scaleX(-1);
+}
+
+/* ============================= */
+/* SCRATCH GRID                  */
+/* ============================= */
+
+.goldprint-video-date-reveal-wrap {
+  position: relative;
+  overflow: visible;
 }
 
 .goldprint-video-scratch-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 3vw, 26px);
   align-items: start;
+  width: min(100%, 760px);
+  margin: 0 auto;
 }
 
 .goldprint-video-scratch-item {
@@ -12472,8 +12723,15 @@
   box-shadow:
     0 18px 38px rgba(120, 92, 52, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  /* Android: novi stacking context bez compositing bug-a */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
 }
 
+/* Vrijednost unutar scratch boxa (dan/mjes/god) */
+/* NEMA gradient tekst — nalazi se unutar canvas sibling konteksta */
+/* koji na Android Chrome lomi background-clip: text */
 .goldprint-video-scratch-value {
   position: absolute;
   inset: 0;
@@ -12486,8 +12744,13 @@
   font-size: clamp(25px, 6vw, 44px);
   line-height: 1;
   font-weight: 600;
-  color: #2f2f2d;
   text-align: center;
+  /* Solidna zlatna boja — radi pouzdano na svim uređajima */
+  color: #c49a2e;
+  /* Android: osiguraj novi layer */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
 }
 
 .goldprint-video-scratch-canvas {
@@ -12504,6 +12767,7 @@
   cursor: grabbing;
 }
 
+/* Label ispod scratch boxa (DAN / MJESEC / GODINA) */
 .goldprint-video-scratch-label {
   margin-top: 16px;
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -12511,20 +12775,92 @@
   line-height: 1;
   font-weight: 600;
   letter-spacing: 0.34em;
-  color: #9b7a4f;
+  /* Solidna zlatna boja */
+  color: #c49a2e;
+  /* Android fix */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================= */
-/* ITALIAN SCROLL LETTER SECTION */
-/* SVG SWANS OVER LETTER         */
+/* FIREWORKS / CONFETTI          */
+/* ============================= */
+
+.goldprint-video-fireworks-layer {
+  position: absolute;
+  inset: -18px;
+  z-index: 8;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.goldprint-video-firework-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      circle,
+      #fff6d2 0%,
+      #f4d783 32%,
+      #d6a341 62%,
+      #9a651c 100%
+    );
+  box-shadow:
+    0 0 8px rgba(255, 241, 184, 0.8),
+    0 0 14px rgba(216, 176, 106, 0.45),
+    0 0 22px rgba(185, 130, 40, 0.26);
+}
+
+.goldprint-video-confetti-layer {
+  position: absolute;
+  inset: -70px -10px -30px;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.goldprint-video-confetti-piece {
+  position: absolute;
+  top: 0;
+  display: block;
+  border-radius: 999px;
+  opacity: 0;
+  background: rgba(201, 155, 95, 0.58);
+  box-shadow:
+    10px 12px 0 rgba(234, 215, 184, 0.45),
+    -9px 20px 0 rgba(159, 127, 83, 0.34);
+  animation-name: goldprintVideoConfettiFall;
+  animation-timing-function: cubic-bezier(0.22, 0.72, 0.25, 1);
+  animation-fill-mode: forwards;
+}
+
+.goldprint-video-confetti-piece:nth-child(3n) { background: rgba(234, 215, 184, 0.52); }
+.goldprint-video-confetti-piece:nth-child(4n) { background: rgba(159, 127, 83, 0.38); border-radius: 2px; }
+.goldprint-video-confetti-piece:nth-child(5n) { background: rgba(247, 238, 224, 0.58); border-radius: 50%; }
+
+@keyframes goldprintVideoConfettiFall {
+  0%   { opacity: 0; transform: translateY(4px) scale(0.35) rotate(0deg); }
+  18%  { opacity: 0.75; }
+  65%  { opacity: 0.55; }
+  100% { opacity: 0; transform: translateY(170px) scale(0.85) rotate(160deg); }
+}
+
+/* ============================= */
+/* LETTER SECTION (SWANS)        */
 /* ============================= */
 
 .goldprint-video-letter-section {
   position: relative;
-  min-height: calc(100svh + 220px);
-  padding: 90px 12px 0;
+  min-height: calc(100svh + 40px);
+  padding: 70px 12px 0;
   background: #ffffff;
   overflow: hidden;
+  margin-bottom: -270px;
 }
 
 .goldprint-video-letter-sticky {
@@ -12541,41 +12877,48 @@
 .goldprint-video-envelope-scene {
   position: relative;
   width: min(96vw, 430px);
-  height: auto;
-  aspect-ratio: 430 / 500;
-  max-height: 72svh;
+  height: 540px;
+  max-height: 86svh;
   margin: 0 auto;
   overflow: visible;
 }
 
-/* papir + srca se pomeraju zajedno */
+/* senka */
+.goldprint-video-envelope-scene::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 12px;
+  z-index: 0;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(80, 120, 140, 0.1);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
 .goldprint-video-letter-stack {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 225px;
+  bottom: 195px;
   z-index: 4;
-
   width: 78%;
   margin: 0 auto;
   will-change: transform, opacity;
 }
 
-/* srca iznad papira */
 .goldprint-video-letter-hearts {
   position: absolute;
   left: 0;
   right: 0;
   top: -70px;
   z-index: 6;
-
   display: flex;
   justify-content: center;
   gap: 8px;
-
-  color: #d8c3a5;
   pointer-events: none;
-  text-shadow: 0 2px 8px rgba(90, 150, 180, 0.18);
 }
 
 .goldprint-video-letter-hearts span {
@@ -12584,33 +12927,29 @@
   font-size: clamp(38px, 10vw, 54px);
   line-height: 1;
   font-weight: 300;
+  /* Solidna zlatna — bez gradient tekst bug-a */
+  color: #d8c3a5;
 }
 
-.goldprint-video-letter-hearts span:first-child {
-  transform: rotate(-14deg);
-}
-
+.goldprint-video-letter-hearts span:first-child { transform: rotate(-14deg); }
 .goldprint-video-letter-hearts span:last-child {
   margin-top: 25px;
   font-size: clamp(26px, 7vw, 38px);
   transform: rotate(12deg);
 }
 
-/* papir */
 .goldprint-video-letter-paper {
   position: relative;
   width: 100%;
   min-height: 340px;
   margin: 0 auto;
   padding: 34px 22px 46px;
-
   background: #ffffff;
   box-shadow:
     0 18px 45px rgba(68, 62, 55, 0.11),
     0 1px 0 rgba(255, 255, 255, 0.9) inset;
   text-align: center;
   color: #383838;
-  clip-path: none;
 }
 
 .goldprint-video-letter-script {
@@ -12636,70 +12975,52 @@
   font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   font-size: clamp(29px, 7vw, 42px);
   font-weight: 400;
+  /* Solidna boja — bez gradient tekst */
   color: #d8c3a5;
 }
 
-/* ============================= */
-/* SWANS OVER LETTER             */
-/* motion ide na wrapper, img je obican */
-/* ============================= */
+.goldprint-video-letter-crest {
+  display: block;
+  width: 58px;
+  height: auto;
+  margin: 18px auto 6px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  opacity: 0.92;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
+    drop-shadow(0 3px 6px rgba(78, 48, 14, 0.28));
+}
 
 .goldprint-video-swan-wrap {
   position: absolute;
   top: 10px;
   z-index: 9;
-
   width: 70%;
   height: auto;
-
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-
   will-change: transform, opacity;
 }
 
-/* levi labud: desna ivica prelazi malo preko centra */
-.goldprint-video-swan-wrap-left {
-  right: calc(50% - 120px);
-}
-
-/* desni labud: leva ivica prelazi malo preko centra */
-.goldprint-video-swan-wrap-right {
-  left: calc(50% - 120px);
-}
+.goldprint-video-swan-wrap-left  { right: calc(50% - 120px); }
+.goldprint-video-swan-wrap-right { left:  calc(50% - 120px); }
 
 .goldprint-video-envelope-left-img,
 .goldprint-video-envelope-right-img {
   width: 100%;
   height: auto;
   display: block;
-
-  filter: none;
-  opacity: 1;
-
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
 }
 
-/* senka ispod scene */
-.goldprint-video-envelope-scene::after {
-  content: "";
-  position: absolute;
-  left: 12%;
-  right: 12%;
-  bottom: 12px;
-  z-index: 0;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(80, 120, 140, 0.1);
-  filter: blur(18px);
-  pointer-events: none;
-}
-
 /* ============================= */
-/* EVENTS SECTION - SVG CLOUD TIMELINE */
+/* EVENTS / TIMELINE             */
 /* ============================= */
 
 .goldprint-video-events-section {
@@ -12716,17 +13037,17 @@
   z-index: 3;
   width: min(100%, 620px);
   margin: 0 auto;
-
 }
 
+/* "Програм дана" naslov — solidna zlatna */
 .goldprint-video-events-section .goldprint-video-events-title {
   margin: 0 0 54px;
-font-family: "Great Vibes", "Allura", "Tangerine", cursive;
+  font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   font-size: clamp(62px, 15vw, 96px);
   line-height: 1.5;
   font-weight: 400;
-  color: rgba(48, 48, 46, 0.92);
- 
+  /* Solidna zlatna boja */
+  color: #c49a2e;
 }
 
 .goldprint-video-event-cloud {
@@ -12739,15 +13060,8 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   will-change: transform, opacity;
 }
 
-.goldprint-video-event-cloud-left {
-  left: -38vw;
-  top: 18%;
-}
-
-.goldprint-video-event-cloud-right {
-  right: -42vw;
-  bottom: 2%;
-}
+.goldprint-video-event-cloud-left  { left: -38vw; top: 18%; }
+.goldprint-video-event-cloud-right { right: -42vw; bottom: 2%; }
 
 .goldprint-video-timeline {
   position: relative;
@@ -12764,12 +13078,16 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   left: 50%;
   width: 2px;
   transform: translateX(-50%);
+  /* Solidni gradient za liniju — ovo je background div-a, ne tekst, radi OK */
   background: linear-gradient(
     180deg,
-    rgba(216, 195, 165, 0),
-    rgba(216, 195, 165, 0.92) 12%,
-    rgba(216, 195, 165, 0.92) 88%,
-    rgba(216, 195, 165, 0)
+    rgba(111, 69, 16, 0.12) 0%,
+    #b98228 18%,
+    #fff1b8 34%,
+    #d6a341 50%,
+    #7b4b13 68%,
+    #f4d783 84%,
+    rgba(154, 101, 28, 0.12) 100%
   );
 }
 
@@ -12788,7 +13106,17 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   width: 14px;
   height: 14px;
   margin: 0 auto;
-  background: #d8c3a5;
+  background: linear-gradient(
+    135deg,
+    #6f4510 0%,
+    #b98228 16%,
+    #fff1b8 31%,
+    #d6a341 45%,
+    #7b4b13 60%,
+    #f4d783 76%,
+    #9a651c 100%
+  );
+  border: 1px solid rgba(255, 241, 184, 0.82);
   transform: rotate(45deg);
   box-shadow: 0 2px 10px rgba(160, 125, 82, 0.22);
 }
@@ -12838,264 +13166,114 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   color: rgba(88, 78, 62, 0.62);
 }
 
+.goldprint-video-timeline-description {
+  margin-top: 6px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 500;
+  /* Solidna zlatna */
+  color: #b98228;
+}
+
+/* "Otvori mapu" — solidna zlatna, bez gradient tekst bug-a */
 .goldprint-video-timeline-map {
   display: inline-block;
   margin-top: 7px;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 15px;
   font-weight: 600;
-  color: #a98255;
   text-decoration: none;
+  /* Solidna zlatna boja */
+  color: #b98228;
 }
 
-.goldprint-video-timeline-map:hover {
-  color: #8f6f49;
-}
+.goldprint-video-timeline-map:hover { color: #8f6f49; }
 
 /* ============================= */
-/* RESPONSIVE                    */
+/* PROGRAM ORNAMENT + TEXT       */
 /* ============================= */
 
-@media (max-width: 520px) {
-  .goldprint-video-hero-content {
-    margin-top: -4vh;
-  }
-
-  .goldprint-video-names {
-    font-size: clamp(58px, 15vw, 82px);
-  }
-
-  .goldprint-video-subtitle {
-    font-size: clamp(31px, 8vw, 42px);
-  }
-
-  .goldprint-video-details-section,
-  .goldprint-video-events-section,
-  .goldprint-video-rsvp-section {
-    padding: 58px 14px;
-  }
-
-  .goldprint-video-paper-card,
-  .goldprint-video-rsvp-card {
-    padding: 36px 20px;
-    border-radius: 30px;
-  }
-
-  .goldprint-video-date-section {
-    padding: 58px 14px 66px;
-  }
-
-  .goldprint-video-date-subtitle {
-    margin: 18px 0 28px;
-  }
-
-  .goldprint-video-scratch-grid {
-    gap: 12px;
-  }
-
-  .goldprint-video-scratch-box {
-    border-radius: 18px;
-  }
-
-  .goldprint-video-scratch-value {
-    font-size: clamp(22px, 6.2vw, 34px);
-  }
-
-  .goldprint-video-scratch-label {
-    margin-top: 13px;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-  }
-
-  .goldprint-video-letter-section {
-    min-height: 100vh;
-    padding: 110px 2px 1px;
-    margin-bottom: -400px;
-  }
-
-  .goldprint-video-letter-sticky {
-    top: 0;
-    height: 100svh;
-  }
-
-  .goldprint-video-envelope-scene {
-    width: min(100vw, 405px);
-    height: 600px;
-    max-height: 91svh;
-  }
-
-  .goldprint-video-letter-stack {
-    bottom: 218px;
-    width: 79%;
-  }
-
-  .goldprint-video-swan-wrap {
-    top: 2px;
-    width: 76%;
-  }
-
-  .goldprint-video-swan-wrap-left {
-    right: calc(50% - 118px);
-  }
-
-  .goldprint-video-swan-wrap-right {
-    left: calc(50% - 118px);
-  }
-
-  .goldprint-video-envelope-left-img,
-  .goldprint-video-envelope-right-img {
-    width: 100%;
-    filter: none;
-  }
-
-  .goldprint-video-letter-hearts {
-    top: -66px;
-  }
-
-  .goldprint-video-letter-paper {
-    min-height: 320px;
-    padding: 31px 20px 42px;
-  }
-
-  .goldprint-video-letter-script {
-    font-size: clamp(28px, 7vw, 38px);
-    margin-bottom: 18px;
-  }
-
-  .goldprint-video-letter-paper p {
-    font-size: clamp(16px, 4.25vw, 20px);
-    line-height: 1.12;
-    margin-bottom: 15px;
-  }
-
-  .goldprint-video-letter-paper .goldprint-video-letter-signature {
-    font-size: clamp(29px, 7vw, 40px);
-  }
-
-  .goldprint-video-events-section {
-    min-height: 100svh;
-    padding: 82px 12px 86px;
-  }
-
-  .goldprint-video-events-section .goldprint-video-events-title {
-    margin-bottom: 46px;
-    font-size: clamp(58px, 16vw, 82px);
-  }
-
-  .goldprint-video-event-cloud {
-    width: 132vw;
-  }
-
-  .goldprint-video-event-cloud-left {
-    left: -47vw;
-    top: 18%;
-  }
-
-  .goldprint-video-event-cloud-right {
-    right: -52vw;
-    bottom: 0;
-  }
-
-  .goldprint-video-timeline {
-    width: min(100%, 390px);
-    min-height: 520px;
-  }
-
-  .goldprint-video-timeline-row {
-    grid-template-columns: 1fr 34px 1fr;
-    min-height: 112px;
-  }
-
-  .goldprint-video-timeline-content {
-    max-width: 160px;
-  }
-
-  .goldprint-video-timeline-row.is-right .goldprint-video-timeline-content {
-    padding-left: 10px;
-  }
-
-  .goldprint-video-timeline-row.is-left .goldprint-video-timeline-content {
-    padding-right: 10px;
-  }
-
-  .goldprint-video-timeline-time {
-    font-size: clamp(31px, 8.8vw, 39px);
-  }
-
-  .goldprint-video-timeline-label {
-    font-size: clamp(20px, 5.9vw, 26px);
-  }
-
-  .goldprint-video-timeline-location {
-    font-size: 14px;
-  }
+.goldprint-video-events-wide-ornament-wrap {
+  width: 100vw;
+  margin: 18px 0 22px;
+  margin-left: calc(50% - 50vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
 }
 
-.goldprint-video-date-reveal-wrap {
-  position: relative;
-  width: 100%;
-}
-
-.goldprint-video-confetti-layer {
-  position: absolute;
-  inset: -70px -10px -30px;
-  pointer-events: none;
-  z-index: 10;
-  overflow: hidden;
-}
-
-.goldprint-video-confetti-piece {
-  position: absolute;
-  top: 0;
+.goldprint-video-events-wide-ornament {
   display: block;
-  border-radius: 999px;
-  opacity: 0;
-  background: rgba(201, 155, 95, 0.58);
-  box-shadow:
-    10px 12px 0 rgba(234, 215, 184, 0.45),
-    -9px 20px 0 rgba(159, 127, 83, 0.34);
-  animation-name: goldprintVideoConfettiFall;
-  animation-timing-function: cubic-bezier(0.22, 0.72, 0.25, 1);
-  animation-fill-mode: forwards;
+  width: min(920px, 150vw);
+  height: 150px;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  opacity: 0.97;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
+    drop-shadow(0 4px 10px rgba(78, 48, 14, 0.32))
+    drop-shadow(0 0 14px rgba(216, 176, 106, 0.18));
 }
 
-.goldprint-video-confetti-piece:nth-child(3n) {
-  background: rgba(234, 215, 184, 0.52);
+/* Program tekst — solidna zlatna */
+.goldprint-video-events-note {
+  max-width: 640px;
+  margin-top: 20px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(21px, 5vw, 31px);
+  line-height: 1.28;
+  font-weight: 500;
+  text-align: center;
+  /* Solidna zlatna boja */
+
 }
-
-.goldprint-video-confetti-piece:nth-child(4n) {
-  background: rgba(159, 127, 83, 0.38);
-  border-radius: 2px;
+.goldprint-video-events-note {
+  color: transparent;
+  background: linear-gradient(
+    135deg,
+    #6f4510 0%,
+    #b98228 16%,
+   
+    #d6a341 45%,
+    #7b4b13 60%,
+    #f4d783 76%,
+    #9a651c 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
 }
-
-.goldprint-video-confetti-piece:nth-child(5n) {
-  background: rgba(247, 238, 224, 0.58);
-  border-radius: 50%;
+.goldprint-video-date-title {
+  color: transparent;
+  background: linear-gradient(
+    135deg,
+    #6f4510 0%,
+    #b98228 16%,
+    #fff1b8 31%,
+    #d6a341 45%,
+    #7b4b13 60%,
+    #f4d783 76%,
+    #9a651c 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
 }
-
-@keyframes goldprintVideoConfettiFall {
-  0% {
-    opacity: 0;
-    transform: translateY(4px) scale(0.35) rotate(0deg);
-  }
-
-  18% {
-    opacity: 0.75;
-  }
-
-  65% {
-    opacity: 0.55;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(170px) scale(0.85) rotate(160deg);
-  }
-}
-
 /* ============================= */
-/* ITALIAN SILVER VARIANT        */
-/* only details.italianVariant   */
+/* SILVER VARIANT                */
 /* ============================= */
 
 .goldprint-video-card-page.goldprint-video-silver {
@@ -13109,11 +13287,7 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
 
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-hero-overlay {
   background:
-    radial-gradient(
-      circle at 48% 38%,
-      rgba(255, 255, 255, 0.28),
-      transparent 34%
-    ),
+    radial-gradient(circle at 48% 38%, rgba(255, 255, 255, 0.28), transparent 34%),
     linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.12) 0%,
@@ -13138,25 +13312,35 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
 
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-date-subtitle,
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-scratch-label,
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-map {
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-map,
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-events-note,
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-description {
   color: #8a929c;
 }
 
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-scratch-box {
-  border: 1px solid rgba(150, 158, 168, 0.22);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f8fa 100%);
+  border: 1px solid rgba(160, 168, 178, 0.24);
   box-shadow:
-    0 18px 38px rgba(90, 98, 110, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    0 18px 38px rgba(90, 98, 110, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-scratch-value {
-  color: #2d3033;
+  color: #2f3338;
 }
 
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-letter-hearts,
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-scratch-label {
+  color: #9aa3ae;
+}
+
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-date-subtitle {
+  color: #8f98a5;
+}
+
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-letter-hearts span,
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-letter-paper .goldprint-video-letter-signature {
   color: #aeb5bd;
-  text-shadow: 0 2px 8px rgba(90, 98, 110, 0.12);
 }
 
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-letter-paper {
@@ -13181,24 +13365,14 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
 
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-dot {
   background: #aeb5bd;
+  border: none;
   box-shadow: 0 2px 10px rgba(110, 120, 135, 0.18);
 }
 
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-time {
-  color: #343638;
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-label {
-  color: rgba(45, 47, 50, 0.88);
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-location {
-  color: rgba(88, 94, 102, 0.68);
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-map:hover {
-  color: #68717c;
-}
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-time { color: #343638; }
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-label { color: rgba(45, 47, 50, 0.88); }
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-location { color: rgba(88, 94, 102, 0.68); }
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-timeline-map:hover { color: #68717c; }
 
 .goldprint-video-card-page.goldprint-video-silver .goldprint-video-confetti-piece {
   background: rgba(174, 181, 189, 0.58);
@@ -13207,637 +13381,23 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
     -9px 20px 0 rgba(137, 146, 158, 0.34);
 }
 
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-confetti-piece:nth-child(3n) {
-  background: rgba(224, 228, 233, 0.58);
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-confetti-piece:nth-child(4n) {
-  background: rgba(137, 146, 158, 0.42);
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-confetti-piece:nth-child(5n) {
-  background: rgba(247, 248, 250, 0.7);
-}
-/* Silver scratch canvas refinement */
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-scratch-box {
-  background: linear-gradient(180deg, #ffffff 0%, #f7f8fa 100%);
-  border: 1px solid rgba(160, 168, 178, 0.24);
-  box-shadow:
-    0 18px 38px rgba(90, 98, 110, 0.09),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-scratch-value {
-  color: #2f3338;
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-scratch-label {
-  color: #9aa3ae;
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-date-subtitle {
-  color: #8f98a5;
-}
-
-.goldprint-video-card-page.goldprint-video-silver .goldprint-video-date-subtitle::first-letter {
-  color: #8f98a5;
-}
-/* ============================= */
-/* HERO NAMES WRAP — dark blur   */
-/* ============================= */
-
-.goldprint-video-hero-name-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: fit-content;
-  margin: 0 auto;
-}
-
-.goldprint-video-hero-name-wrap::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 0;
-
-  width: 122%;
-  height: 78%;
-
-  transform: translate(-50%, -50%);
-
-  background: rgba(0, 0, 0, 0.48);
-  border-radius: 50%;
-
-  filter: blur(28px);
-  pointer-events: none;
-}
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-confetti-piece:nth-child(3n) { background: rgba(224, 228, 233, 0.58); }
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-confetti-piece:nth-child(4n) { background: rgba(137, 146, 158, 0.42); }
+.goldprint-video-card-page.goldprint-video-silver .goldprint-video-confetti-piece:nth-child(5n) { background: rgba(247, 248, 250, 0.7); }
 
 /* ============================= */
-/* HERO SVG NAMES — GOLD MASK    */
-/* same gold print as intro      */
+/* RESPONSIVE — MOBILE           */
 /* ============================= */
-
-.goldprint-video-hero-svg {
-  position: relative;
-  z-index: 1;
-
-  display: block;
-
-  width: min(360px, 88vw);
-  height: 215px;
-  margin: 0 auto;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    );
-
-  -webkit-mask-image: var(--goldprint-video-hero-mask);
-  mask-image: var(--goldprint-video-hero-mask);
-
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-
-  -webkit-mask-position: center;
-  mask-position: center;
-
-  -webkit-mask-size: contain;
-  mask-size: contain;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.85))
-    drop-shadow(0 2px 0 rgba(86, 50, 8, 0.55))
-    drop-shadow(0 5px 8px rgba(0, 0, 0, 0.45))
-    drop-shadow(0 0 10px rgba(216, 176, 106, 0.22));
-
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
 
 @media (max-width: 520px) {
-  .goldprint-video-hero-svg {
-    width: min(330px, 90vw);
-    height: 205px;
-  }
-
-  .goldprint-video-hero-name-wrap::before {
-    width: 128%;
-    height: 82%;
-    background: rgba(0, 0, 0, 0.92);
-    filter: blur(26px);
-  }
-}
-
-@media (max-width: 380px) {
-  .goldprint-video-hero-svg {
-    width: min(300px, 90vw);
-    height: 190px;
-  }
-
-  .goldprint-video-hero-name-wrap::before {
-    width: 132%;
-    height: 84%;
-    background: rgba(0, 0, 0, 0.54);
-    filter: blur(24px);
-  }
-}
-/* ============================= */
-/* HERO NAMES BOX — black card   */
-/* ============================= */
-
-.goldprint-video-hero-name-box {
-  position: relative;
-
-  width: min(92vw, 430px);
-  margin: 0 auto;
-  padding: 28px 22px 24px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0, 0, 0, 0.27);
-  border: 1px solid rgba(216, 176, 106, 0.28);
- 
-
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.34),
-    inset 0 0 0 1px rgba(255, 232, 170, 0.08);
-
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-/* ============================= */
-/* HERO TEXT — same gold as SVG  */
-/* ============================= */
-
-.goldprint-video-subtitle.goldprint-video-subtitle-gold {
-  margin-top: -4px;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(31px, 8vw, 54px);
-  line-height: 1;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: none;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.75))
-    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.58))
-    drop-shadow(0 0 10px rgba(216, 176, 106, 0.22));
-}
-/* ============================================================ */
-/* GOLD TEXT — isti zlatotisak za heroText, datum, papir, program */
-/* ============================================================ */
-
-.goldprint-video-subtitle.goldprint-video-subtitle-gold,
-.goldprint-video-date-title,
-.goldprint-video-date-subtitle,
-.goldprint-video-scratch-label,
-.goldprint-video-letter-paper .goldprint-video-letter-signature,
-.goldprint-video-events-section .goldprint-video-events-title {
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: none !important;
-
-
-}
-.goldprint-video-scratch-value {
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: none !important;
-
-}
-/* ============================================================ */
-/* TIMELINE GOLD — linija, tačke i "Otvori mapu" */
-/* ============================================================ */
-
-.goldprint-video-timeline-line {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(111, 69, 16, 0.12) 0%,
-      #b98228 18%,
-      #fff1b8 34%,
-      #d6a341 50%,
-      #7b4b13 68%,
-      #f4d783 84%,
-      rgba(154, 101, 28, 0.12) 100%
-    ) !important;
-
-
-}
-
-.goldprint-video-timeline-dot {
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    ) !important;
-
-  border: 1px solid rgba(255, 241, 184, 0.82) !important;
-
-
-}
-
-/* "Отвори мапу" isto zlatno */
-.goldprint-video-timeline-map {
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    ) !important;
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: none !important;
-
- 
-}
-
-/* ============================= */
-/* OTVORI MAPU — GOLD TEXT       */
-/* ============================= */
-
-.goldprint-video-timeline-map {
-  display: inline-block;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    ) !important;
-
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-
-  text-decoration: none !important;
-  text-shadow: none !important;
-
-
-}
-
-/* ============================================================ */
-/* LETTER HEARTS — GOLD PRINT */
-/* ============================================================ */
-
-.goldprint-video-letter-hearts span {
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #fff1b8 31%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    ) !important;
-
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-
-  text-shadow: none !important;
-
-
-}
-
-/* ============================================================ */
-/* PROGRAM TEXT — GOLD PRINT */
-/* ============================================================ */
-
-.goldprint-video-events-note {
-  max-width: 640px;
-margin-top: 20px;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(21px, 5vw, 31px);
-  line-height: 1.28;
-  font-weight: 500;
-  text-align: center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-     
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-
-  text-shadow: none !important;
-
- 
-}
-
-@media (max-width: 520px) {
-  .goldprint-video-events-note {
-    max-width: 80%;
-    margin: 36px auto 18px;
-    margin-bottom: -20px;
-    font-size: clamp(20px, 6vw, 27px);
-    line-height: 1.32;
-  }
-}
-/* ============================================================ */
-/* HERO BLACK BOX — GOLD SVG CORNERS */
-/* ============================================================ */
-
-.goldprint-video-hero-name-box {
-  overflow: visible;
-}
-
-.goldprint-video-corner {
-  position: absolute;
-  z-index: 2;
-
-  width: 118px;
-  height: 118px;
-  object-fit: contain;
-
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 241, 184, 0.55))
-    drop-shadow(0 3px 7px rgba(0, 0, 0, 0.45));
-}
-
-.goldprint-video-corner-tl {
-  top: 10px;
-  left: 10px;
-  transform: rotate(0deg);
-}
-
-.goldprint-video-corner-tr {
-  top: 10px;
-  right: 10px;
-  transform: rotate(90deg);
-}
-
-.goldprint-video-corner-br {
-  right: 10px;
-  bottom: 10px;
-  transform: rotate(180deg);
-}
-
-.goldprint-video-corner-bl {
-  left: 10px;
-  bottom: 10px;
-  transform: rotate(270deg);
-}
-
-.goldprint-video-hero-svg,
-.goldprint-video-subtitle-gold {
-  position: relative;
-  z-index: 4;
-}
-
-@media (max-width: 520px) {
-  .goldprint-video-corner {
-    width: 82px;
-    height: 82px;
-  }
-
-  .goldprint-video-corner-tl {
-    top: 8px;
-    left: 8px;
-  }
-
-  .goldprint-video-corner-tr {
-    top: 8px;
-    right: 8px;
-  }
-
-  .goldprint-video-corner-br {
-    right: 8px;
-    bottom: 8px;
-  }
-
-  .goldprint-video-corner-bl {
-    left: 8px;
-    bottom: 8px;
-  }
-}
-
-/* ============================================================
-   FINAL FIX — SAME LAYOUT ON ANDROID + iPHONE
-   NE DIRA ZLATNU BOJU / GRADIENT
-   Popravlja samo: gornji video, ogrebi sekciju i labudove
-   ============================================================ */
-
-/* ---------- HERO VIDEO: stabilna visina na svim mobilnim browserima ---------- */
-.goldprint-video-hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  min-height: 100dvh;
-  height: 100vh;
-  height: 100svh;
-  height: 100dvh;
-}
-
-.goldprint-video-hero-video {
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-  min-height: 100dvh;
-  object-fit: cover;
-  object-position: center center;
-}
-
-.goldprint-video-hero-content {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
-
-/* Ne menjamo zlatni gradient, samo čuvamo isti kontrast preko videa */
-.goldprint-video-hero-overlay {
-  background:
-    radial-gradient(
-      circle at 48% 38%,
-      rgba(255, 255, 255, 0.16),
-      transparent 32%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.03) 36%,
-      rgba(241, 229, 213, 0.1) 72%,
-      rgba(222, 205, 184, 0.26) 100%
-    ) !important;
-}
-
-/* ---------- OGREBI SEKCIJA: isti raspored na uskim Android ekranima ---------- */
-.goldprint-video-date-section {
-  padding-top: clamp(58px, 8vh, 70px);
-  padding-bottom: clamp(66px, 9vh, 76px);
-}
-
-.goldprint-video-date-inner {
-  width: min(100%, 760px);
-}
-
-.goldprint-video-scratch-grid {
-  width: min(100%, 760px);
-  margin: 0 auto;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(10px, 3vw, 26px);
-}
-
-.goldprint-video-scratch-box {
-  aspect-ratio: 1 / 1;
-}
-
-/* ---------- LABUDOVI: ne dozvoli da sticky/negative margin sakrije sekciju ---------- */
-.goldprint-video-letter-section {
-  min-height: calc(100vh + 360px);
-  min-height: calc(100svh + 360px);
-  min-height: calc(100dvh + 360px);
-  margin-bottom: 0 !important;
-}
-
-.goldprint-video-letter-sticky {
-  height: 100vh;
-  height: 100svh;
-  height: 100dvh;
-}
-
-.goldprint-video-envelope-scene {
-  max-height: 78vh;
-  max-height: 78svh;
-  max-height: 78dvh;
-}
-
-/* ============================================================
-   MOBILE — čuva isti izgled, ali sprečava sečenje na Androidu
-   ============================================================ */
-
-@media (max-width: 520px) {
-  .goldprint-video-hero {
-    min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
-    height: 100vh;
-    height: 100svh;
-    height: 100dvh;
-  }
-
-  .goldprint-video-hero-video {
-    min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
-    object-fit: cover;
-    object-position: center center;
-  }
-
   .goldprint-video-hero-content {
     width: 100%;
     margin-top: -4vh;
     padding: 0 16px;
   }
+
+  .goldprint-video-names { font-size: clamp(58px, 15vw, 82px); }
+  .goldprint-video-subtitle { font-size: clamp(31px, 8vw, 42px); }
 
   .goldprint-video-hero-name-box {
     width: min(92vw, 390px);
@@ -13849,23 +13409,51 @@ margin-top: 20px;
     height: 205px;
   }
 
-  .goldprint-video-date-section {
-    padding: 58px 14px 66px;
+  .goldprint-video-hero-svg-img {
+    width: min(330px, 90vw);
+    max-height: 205px;
   }
+
+  .goldprint-video-hero-name-wrap::before {
+    width: 128%;
+    height: 82%;
+    filter: blur(26px);
+  }
+
+  .goldprint-video-corner { width: 82px; height: 82px; }
+  .goldprint-video-corner-tl { top: 8px; left: 8px; }
+  .goldprint-video-corner-tr { top: 8px; right: 8px; }
+  .goldprint-video-corner-br { right: 8px; bottom: 8px; }
+  .goldprint-video-corner-bl { left: 8px; bottom: 8px; }
+
+  .goldprint-video-details-section,
+  .goldprint-video-events-section,
+  .goldprint-video-rsvp-section {
+    padding: 58px 14px;
+  }
+
+  .goldprint-video-paper-card,
+  .goldprint-video-rsvp-card {
+    padding: 36px 20px;
+    border-radius: 30px;
+  }
+
+  .goldprint-video-date-section { padding: 58px 14px 66px; }
 
   .goldprint-video-date-subtitle {
     margin: 18px auto 28px;
     max-width: 92vw;
   }
 
+  .goldprint-video-date-subtitle-svg { width: 28px; height: 28px; }
+
   .goldprint-video-scratch-grid {
     width: min(100%, 390px);
     gap: 10px;
   }
 
-  .goldprint-video-scratch-value {
-    font-size: clamp(21px, 6vw, 34px);
-  }
+  .goldprint-video-scratch-box { border-radius: 18px; }
+  .goldprint-video-scratch-value { font-size: clamp(21px, 6vw, 34px); }
 
   .goldprint-video-scratch-label {
     margin-top: 13px;
@@ -13873,470 +13461,131 @@ margin-top: 20px;
     letter-spacing: 0.26em;
   }
 
+  .goldprint-video-fireworks-layer { inset: -10px; }
+  .goldprint-video-firework-particle { width: 7px; height: 7px; }
+
   .goldprint-video-letter-section {
-    min-height: calc(100vh + 520px);
-    min-height: calc(100svh + 520px);
-    min-height: calc(100dvh + 520px);
-    padding: 92px 2px 0;
-    margin-bottom: 0 !important;
+    min-height: calc(100svh + 20px);
+    padding: 82px 2px 0;
+    margin-bottom: -400px;
   }
 
   .goldprint-video-letter-sticky {
     top: 0;
-    height: 100vh;
     height: 100svh;
-    height: 100dvh;
   }
 
   .goldprint-video-envelope-scene {
     width: min(100vw, 405px);
-    height: min(600px, 88vh);
-    height: min(600px, 88svh);
-    height: min(600px, 88dvh);
-    max-height: 88vh;
-    max-height: 88svh;
-    max-height: 88dvh;
+    height: 520px;
+    max-height: 86svh;
   }
 
   .goldprint-video-letter-stack {
-    bottom: clamp(188px, 32vh, 218px);
+    bottom: 190px;
     width: 79%;
   }
 
-  .goldprint-video-swan-wrap {
-    top: 2px;
-    width: 76%;
+  .goldprint-video-letter-hearts { top: -66px; }
+  .goldprint-video-letter-paper { min-height: 320px; padding: 31px 20px 42px; }
+  .goldprint-video-letter-script { font-size: clamp(28px, 7vw, 38px); margin-bottom: 18px; }
+
+  .goldprint-video-letter-paper p {
+    font-size: clamp(16px, 4.25vw, 20px);
+    line-height: 1.12;
+    margin-bottom: 15px;
   }
 
-  .goldprint-video-swan-wrap-left {
-    right: calc(50% - 118px);
+  .goldprint-video-letter-paper .goldprint-video-letter-signature {
+    font-size: clamp(29px, 7vw, 40px);
   }
 
-  .goldprint-video-swan-wrap-right {
-    left: calc(50% - 118px);
-  }
-}
+  .goldprint-video-letter-crest { width: 48px; margin: 14px auto 4px; }
 
-@media (max-width: 380px) {
-  .goldprint-video-hero-content {
-    margin-top: -3vh;
-    padding: 0 14px;
-  }
+  .goldprint-video-swan-wrap { top: 0; width: 76%; }
+  .goldprint-video-swan-wrap-left  { right: calc(50% - 118px); }
+  .goldprint-video-swan-wrap-right { left:  calc(50% - 118px); }
 
-  .goldprint-video-hero-name-box {
-    width: min(92vw, 350px);
-    padding: 26px 18px 22px;
+  .goldprint-video-events-section {
+    min-height: 100svh;
+    padding: 82px 12px 86px;
   }
 
-  .goldprint-video-hero-svg {
-    width: min(300px, 84vw);
-    height: 190px;
+  .goldprint-video-events-section .goldprint-video-events-title {
+    margin-bottom: 46px;
+    font-size: clamp(58px, 16vw, 82px);
   }
 
-  .goldprint-video-scratch-grid {
-    width: min(100%, 350px);
-    gap: 8px;
-  }
+  .goldprint-video-event-cloud { width: 132vw; }
+  .goldprint-video-event-cloud-left  { left: -47vw; top: 18%; }
+  .goldprint-video-event-cloud-right { right: -52vw; bottom: 0; }
 
-  .goldprint-video-letter-section {
-    min-height: calc(100vh + 540px);
-    min-height: calc(100svh + 540px);
-    min-height: calc(100dvh + 540px);
-  }
+  .goldprint-video-timeline { width: min(100%, 390px); min-height: 520px; }
+  .goldprint-video-timeline-row { grid-template-columns: 1fr 34px 1fr; min-height: 112px; }
+  .goldprint-video-timeline-content { max-width: 160px; }
 
-  .goldprint-video-envelope-scene {
-    width: min(100vw, 380px);
-    height: min(570px, 88vh);
-    height: min(570px, 88svh);
-    height: min(570px, 88dvh);
-  }
+  .goldprint-video-timeline-row.is-right .goldprint-video-timeline-content { padding-left: 10px; }
+  .goldprint-video-timeline-row.is-left  .goldprint-video-timeline-content { padding-right: 10px; }
 
-  .goldprint-video-letter-stack {
-    bottom: clamp(178px, 31vh, 205px);
-  }
+  .goldprint-video-timeline-time  { font-size: clamp(31px, 8.8vw, 39px); }
+  .goldprint-video-timeline-label { font-size: clamp(20px, 5.9vw, 26px); }
+  .goldprint-video-timeline-location { font-size: 14px; }
+  .goldprint-video-timeline-description { font-size: 17px; }
 
-  .goldprint-video-swan-wrap {
-    width: 78%;
-  }
+  .goldprint-video-events-wide-ornament-wrap { margin: 12px 0 16px; margin-left: calc(50% - 50vw); }
+  .goldprint-video-events-wide-ornament { width: 140vw; height: 125px; }
 
-  .goldprint-video-swan-wrap-left {
-    right: calc(50% - 110px);
-  }
-
-  .goldprint-video-swan-wrap-right {
-    left: calc(50% - 110px);
-  }
-}
-/* ============================================================ */
-/* FIX — REMOVE BIG EMPTY SPACE UNDER LETTER SECTION */
-/* ============================================================ */
-
-.goldprint-video-letter-section {
-  min-height: calc(100svh + 120px);
-  padding: 90px 12px 0;
-  margin-bottom: -120px;
-}
-
-@media (max-width: 520px) {
-  .goldprint-video-letter-section {
-    min-height: calc(100svh + 80px);
-    padding: 96px 2px 0;
-    margin-bottom: -180px;
-  }
-
-  .goldprint-video-envelope-scene {
-    height: 560px;
-    max-height: 88svh;
-  }
-
-  .goldprint-video-letter-stack {
-    bottom: 205px;
+  .goldprint-video-events-note {
+    max-width: 80%;
+    margin: 36px auto 18px;
+    margin-bottom: -20px;
+    font-size: clamp(20px, 6vw, 27px);
+    line-height: 1.32;
   }
 }
 
 @media (max-width: 390px) {
   .goldprint-video-letter-section {
-    min-height: calc(100svh + 60px);
-    margin-bottom: -210px;
+    min-height: calc(100svh + 10px);
+    margin-bottom: -320px;
   }
 
   .goldprint-video-envelope-scene {
-    height: 535px;
+    height: 500px;
+    max-height: 86svh;
   }
 
-  .goldprint-video-letter-stack {
-    bottom: 198px;
-  }
-}
-/* ============================================================ */
-/* FINAL FIX — TIGHTEN SPACE UNDER SWAN LETTER SECTION */
-/* ============================================================ */
+  .goldprint-video-letter-stack { bottom: 182px; }
 
-.goldprint-video-letter-section {
-  min-height: calc(100svh + 40px) !important;
-  padding: 70px 12px 0 !important;
-  margin-bottom: -230px !important;
-}
+  .goldprint-video-swan-wrap { width: 78%; }
+  .goldprint-video-swan-wrap-left  { right: calc(50% - 110px); }
+  .goldprint-video-swan-wrap-right { left:  calc(50% - 110px); }
 
-.goldprint-video-letter-sticky {
-  height: 100svh !important;
-}
+  .goldprint-video-scratch-grid { width: min(100%, 350px); gap: 8px; }
 
-.goldprint-video-envelope-scene {
-  height: 540px !important;
-  max-height: 86svh !important;
-}
+  .goldprint-video-hero-name-box { width: min(92vw, 350px); padding: 26px 18px 22px; }
+  .goldprint-video-hero-svg { width: min(300px, 84vw); height: 190px; }
 
-.goldprint-video-letter-stack {
-  bottom: 195px !important;
-}
-
-/* telefoni */
-@media (max-width: 520px) {
-  .goldprint-video-letter-section {
-    min-height: calc(100svh + 20px) !important;
-    padding: 82px 2px 0 !important;
-    margin-bottom: -285px !important;
+  .goldprint-video-hero-name-wrap::before {
+    width: 132%;
+    height: 84%;
+    filter: blur(24px);
   }
 
-  .goldprint-video-envelope-scene {
-    height: 520px !important;
-    max-height: 86svh !important;
-  }
-
-  .goldprint-video-letter-stack {
-    bottom: 190px !important;
-  }
-
-  .goldprint-video-swan-wrap {
-    top: 0 !important;
-  }
-}
-
-/* manji Android telefoni */
-@media (max-width: 390px) {
-  .goldprint-video-letter-section {
-    min-height: calc(100svh + 10px) !important;
-    margin-bottom: -315px !important;
-  }
-
-  .goldprint-video-envelope-scene {
-    height: 500px !important;
-    max-height: 86svh !important;
-  }
-
-  .goldprint-video-letter-stack {
-    bottom: 182px !important;
-  }
-}
-
-/* jako niski ekrani */
-@media (max-height: 720px) and (max-width: 520px) {
-  .goldprint-video-letter-section {
-    min-height: 100svh !important;
-    margin-bottom: -330px !important;
-  }
-
-  .goldprint-video-envelope-scene {
-    height: 485px !important;
-    max-height: 84svh !important;
-  }
-
-  .goldprint-video-letter-stack {
-    bottom: 176px !important;
-  }
-}
-/* ============================================================ */
-/* FINAL SMALL TWEAK — LETTER SECTION CLOSER TO PROGRAM */
-/* ============================================================ */
-
-.goldprint-video-letter-section {
-  margin-bottom: -270px !important;
-}
-
-@media (max-width: 520px) {
-  .goldprint-video-letter-section {
-    margin-bottom: -400px !important;
-  }
-}
-
-@media (max-width: 390px) {
-  .goldprint-video-letter-section {
-    margin-bottom: -320px !important;
-  }
+  .goldprint-video-events-wide-ornament-wrap { margin: 10px 0 14px; margin-left: calc(50% - 50vw); }
+  .goldprint-video-events-wide-ornament { width: 135vw; height: 110px; }
 }
 
 @media (max-height: 720px) and (max-width: 520px) {
   .goldprint-video-letter-section {
-    margin-bottom: -300px !important;
-  }
-}
-.goldprint-video-hero-svg-img {
-  display: block;
-  width: min(360px, 86vw);
-  height: auto;
-  max-height: 230px;
-  object-fit: contain;
-
-  margin: 0 auto;
-
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.82))
-    drop-shadow(0 2px 0 rgba(86, 50, 8, 0.48))
-    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.38))
-    drop-shadow(0 0 12px rgba(216, 176, 106, 0.22));
-}
-
-@media (max-width: 480px) {
-  .goldprint-video-hero-svg-img {
-    width: min(330px, 90vw);
-    max-height: 205px;
-  }
-}
-.goldprint-video-letter-crest {
-  display: block;
-  width: 58px;
-  height: auto;
-  margin: 18px auto 6px;
-
-  object-fit: contain;
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-
-  opacity: 0.92;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
-    drop-shadow(0 3px 6px rgba(78, 48, 14, 0.28));
-}
-
-@media (max-width: 480px) {
-  .goldprint-video-letter-crest {
-    width: 48px;
-    margin: 14px auto 4px;
-  }
-}
-.goldprint-video-date-subtitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
-  text-align: center;
-}
-
-.goldprint-video-date-subtitle span {
-  display: inline-block;
-}
-
-.goldprint-video-date-subtitle-svg {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-
-  opacity: 0.95;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
-    drop-shadow(0 3px 6px rgba(78, 48, 14, 0.28));
-}
-
-.goldprint-video-date-subtitle-svg-right {
-  transform: scaleX(-1);
-}
-
-@media (max-width: 480px) {
-  .goldprint-video-date-subtitle {
-    gap: 9px;
+    min-height: 100svh;
+    margin-bottom: -300px;
   }
 
-  .goldprint-video-date-subtitle-svg {
-    width: 28px;
-    height: 28px;
-  }
-}
-.goldprint-video-events-wide-ornament-wrap {
-  width: 100vw;
-  margin: 18px 0 22px;
-  margin-left: calc(50% - 50vw);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  overflow: visible;
-}
-
-.goldprint-video-events-wide-ornament {
-  display: block;
-
-  width: min(920px, 150vw);
-  height: 150px;
-
-  object-fit: contain;
-  object-position: center;
-
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-
-  opacity: 0.97;
-
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.65))
-    drop-shadow(0 4px 10px rgba(78, 48, 14, 0.32))
-    drop-shadow(0 0 14px rgba(216, 176, 106, 0.18));
-}
-
-@media (max-width: 520px) {
-  .goldprint-video-events-wide-ornament-wrap {
-    margin: 12px 0 16px;
-    margin-left: calc(50% - 50vw);
+  .goldprint-video-envelope-scene {
+    height: 485px;
+    max-height: 84svh;
   }
 
-  .goldprint-video-events-wide-ornament {
-    width: 140vw;
-    height: 125px;
-  }
-}
-
-@media (max-width: 380px) {
-  .goldprint-video-events-wide-ornament-wrap {
-    margin: 10px 0 14px;
-    margin-left: calc(50% - 50vw);
-  }
-
-  .goldprint-video-events-wide-ornament {
-    width: 135vw;
-    height: 110px;
-  }
-}
-.goldprint-video-timeline-description {
-  margin-top: 6px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 18px;
-  line-height: 1.35;
-  font-weight: 500;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6f4510 0%,
-      #b98228 16%,
-      #d6a341 45%,
-      #7b4b13 60%,
-      #f4d783 76%,
-      #9a651c 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-@media (max-width: 520px) {
-  .goldprint-video-timeline-description {
-    font-size: 17px;
-  }
-}
-
-/* ============================================================ */
-/* GOLDPRINT DATE SCRATCH — fireworks */
-/* ============================================================ */
-
-.goldprint-video-date-reveal-wrap {
-  position: relative;
-  overflow: visible;
-}
-
-.goldprint-video-fireworks-layer {
-  position: absolute;
-  inset: -18px;
-  z-index: 8;
-
-  pointer-events: none;
-  overflow: visible;
-}
-
-.goldprint-video-firework-particle {
-  position: absolute;
-
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-
-  background:
-    radial-gradient(
-      circle,
-      #fff6d2 0%,
-      #f4d783 32%,
-      #d6a341 62%,
-      #9a651c 100%
-    );
-
-  box-shadow:
-    0 0 8px rgba(255, 241, 184, 0.8),
-    0 0 14px rgba(216, 176, 106, 0.45),
-    0 0 22px rgba(185, 130, 40, 0.26);
-}
-
-@media (max-width: 520px) {
-  .goldprint-video-fireworks-layer {
-    inset: -10px;
-  }
-
-  .goldprint-video-firework-particle {
-    width: 7px;
-    height: 7px;
-  }
+  .goldprint-video-letter-stack { bottom: 176px; }
 }

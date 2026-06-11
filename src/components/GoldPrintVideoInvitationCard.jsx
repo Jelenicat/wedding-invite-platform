@@ -272,45 +272,68 @@ function ScratchCard({ value, label, onReveal, variant = "default" }) {
 function FireworksBurst({ active }) {
   if (!active) return null;
 
-  const bursts = [
-    { left: "18%", top: "30%" },
-    { left: "50%", top: "18%" },
-    { left: "82%", top: "32%" },
-    { left: "30%", top: "72%" },
-    { left: "70%", top: "72%" },
+const bursts = [
+  { x: "16%", y: "80px", delay: 0 },
+  { x: "50%", y: "60px", delay: 0.22 },
+  { x: "84%", y: "80px", delay: 0.42 },
+  { x: "30%", y: "100px", delay: 0.62 },
+  { x: "68%", y: "100px", delay: 0.8 },
+];
+
+  const colors = [
+    "#fff6d2", "#f4d783", "#d6a341", "#b98228",
+    "#ffe066", "#ffd700", "#ffffff", "#e8c96a",
   ];
 
   return (
-    <div className="goldprint-video-fireworks-layer" aria-hidden="true">
-      {bursts.map((burst, burstIndex) =>
-        Array.from({ length: 16 }).map((_, i) => {
-          const angle = (Math.PI * 2 * i) / 16;
-          const distance = 46 + (i % 4) * 12;
+    <div
+      aria-hidden="true"
+      style={{
+        position: "absolute",
+        inset: "-40px",
+        pointerEvents: "none",
+        overflow: "visible",
+        zIndex: 8,
+      }}
+    >
+      {bursts.map((burst, bi) =>
+        Array.from({ length: 32 }).map((_, i) => {
+          const angle = (Math.PI * 2 * i) / 32;
+          const length = 38 + Math.random() * 55;
+          const color = colors[i % colors.length];
+          const width = 1.2 + Math.random() * 1.2;
 
           return (
-            <motion.span
-              key={`${burstIndex}-${i}`}
-              className="goldprint-video-firework-particle"
+            <motion.div
+              key={`${bi}-${i}`}
               style={{
-                left: burst.left,
-                top: burst.top,
+                position: "absolute",
+                left: burst.x,
+                top: burst.y,
+                width: width,
+                height: length,
+                borderRadius: 999,
+                background: `linear-gradient(180deg, ${color} 0%, rgba(255,241,184,0.6) 40%, transparent 100%)`,
+                boxShadow: `0 0 4px ${color}, 0 0 10px rgba(255,220,100,0.3)`,
+                transformOrigin: "top center",
+                rotate: `${(angle * 180) / Math.PI + 90}deg`,
               }}
               initial={{
-                opacity: 0,
                 x: 0,
                 y: 0,
-                scale: 0.25,
+                scaleY: 0,
+                opacity: 0,
               }}
               animate={{
-                opacity: [0, 1, 1, 0],
-                x: Math.cos(angle) * distance,
-                y: Math.sin(angle) * distance,
-                scale: [0.25, 1, 0.75],
+                x: Math.cos(angle) * (length * 0.5),
+                y: Math.sin(angle) * (length * 0.5),
+                scaleY: [0, 1, 1, 0.4],
+                opacity: [0, 1, 0.85, 0],
               }}
               transition={{
-                duration: 1.25,
-                delay: burstIndex * 0.14 + i * 0.012,
-                ease: "easeOut",
+                duration: 1.4 + Math.random() * 0.4,
+                delay: burst.delay + i * 0.008,
+                ease: [0.2, 0.8, 0.4, 1],
               }}
             />
           );

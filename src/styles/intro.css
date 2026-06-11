@@ -6841,9 +6841,11 @@ color: #8e7f73;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
 
-  transform: translateY(-55px);
+  /* manji razmak između ornamenta, naslova, grba i imena */
+  gap: 8px;
+
+   transform: translateY(-35px);
 }
 
 /* ---- kicker group: tribal ornament + tekst zajedno ---- */
@@ -6851,7 +6853,9 @@ color: #8e7f73;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+
+  /* približava ornament naslovu */
+  gap: 4px;
 }
 
 /* tribal ornament wrap */
@@ -6865,6 +6869,9 @@ color: #8e7f73;
 
   pointer-events: none;
   user-select: none;
+
+  /* približava ornament tekstu ispod */
+  margin-bottom: -14px;
 }
 
 /* tribal ornament — zlatotisak maska */
@@ -6925,6 +6932,9 @@ color: #8e7f73;
 .gpv-family-crest {
   width: 92px;
   height: 92px;
+
+  /* približava grb naslovu i imenima */
+  margin: -6px 0 -14px;
 
   object-fit: contain;
   user-select: none;
@@ -6987,7 +6997,8 @@ color: #8e7f73;
   max-height: 260px;
   object-fit: contain;
 
-  margin: 0 auto;
+  /* dodatno približava SVG grbu */
+  margin: -6px auto 0;
 
   user-select: none;
   -webkit-user-drag: none;
@@ -7064,8 +7075,8 @@ color: #8e7f73;
   }
 
   .gpv-top-content {
-    gap: 13px;
-    transform: translateY(-135px);
+    gap: 5px;
+    transform: translateY(-90px);
   }
 
   .gpv-kicker {
@@ -7077,6 +7088,7 @@ color: #8e7f73;
   .gpv-family-crest {
     width: 102px;
     height: 102px;
+    margin: -8px 0 -20px;
   }
 
   .gpv-names-svg {
@@ -7087,6 +7099,7 @@ color: #8e7f73;
   .gpv-names-svg-img {
     width: min(345px, 94vw);
     max-height: 265px;
+    margin: -10px auto 0;
   }
 
   .gpv-open-btn {
@@ -7100,11 +7113,13 @@ color: #8e7f73;
   .gpv-tribal-fixed-wrap {
     width: 106vw;
     height: 190px;
-    margin-bottom: -48px;
+
+    /* bilo je -48px, sada je bliže naslovu */
+    margin-bottom: -62px;
   }
 
   .gpv-kicker-group {
-    gap: 8px;
+    gap: 4px;
   }
 }
 
@@ -7117,8 +7132,8 @@ color: #8e7f73;
   }
 
   .gpv-top-content {
-    gap: 14px;
-    transform: translateY(-128px);
+    gap: 5px;
+      transform: translateY(-88px);
   }
 
   .gpv-kicker {
@@ -7129,6 +7144,7 @@ color: #8e7f73;
   .gpv-family-crest {
     width: 90px;
     height: 90px;
+    margin: -7px 0 -18px;
   }
 
   .gpv-names-svg {
@@ -7139,6 +7155,7 @@ color: #8e7f73;
   .gpv-names-svg-img {
     width: min(315px, 94vw);
     max-height: 245px;
+    margin: -10px auto 0;
   }
 
   .gpv-open-btn {
@@ -7150,10 +7167,12 @@ color: #8e7f73;
   .gpv-tribal-fixed-wrap {
     width: 106vw;
     height: 135px;
-    margin-bottom: -32px;
+
+    /* bilo je -32px, sada je bliže naslovu */
+    margin-bottom: -44px;
   }
 
   .gpv-kicker-group {
-    gap: 7px;
+    gap: 4px;
   }
 }

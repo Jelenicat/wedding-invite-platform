@@ -4488,7 +4488,7 @@ musicSrc: "/music/jovana-dusan.mp3",
   details: createDetails({
     namesSvg: "/images/names/nikolina-velibor.svg",
 
-    videoSrc: "/videos/nikolina-velibor-intro-1.mp4",
+    videoSrc: "/videos/nikolina-velibor-intro-2.mp4",
     rsvpImage: "/images/italian-rsvp/nikolina-velibor-rsvp.jpg",
 
     welcomeText:

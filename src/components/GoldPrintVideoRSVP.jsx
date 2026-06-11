@@ -178,6 +178,10 @@ function GoldPrintVideoRSVP({
 
   const isComing = submittedAnswer === "yes";
 
+  const shouldShowPhotoBlock =
+    showRsvpPhotoBlock &&
+    (!submitted ? form.attending === "yes" : submittedAnswer === "yes");
+
   return (
     <section className="goldprint-video-rsvp-section">
       <motion.div
@@ -200,30 +204,70 @@ function GoldPrintVideoRSVP({
               transition={{ duration: 0.5 }}
             >
               {isComing && (
-                <div className="goldprint-video-rsvp-fireworks" aria-hidden="true">
-                  {Array.from({ length: 22 }).map((_, i) => (
-                    <motion.span
-                      key={i}
-                      className="goldprint-video-rsvp-firework"
-                      initial={{
-                        opacity: 0,
-                        scale: 0,
-                        x: 0,
-                        y: 0,
-                      }}
-                      animate={{
-                        opacity: [0, 1, 1, 0],
-                        scale: [0, 1, 0.8],
-                        x: Math.cos((i / 22) * Math.PI * 2) * (72 + (i % 4) * 10),
-                        y: Math.sin((i / 22) * Math.PI * 2) * (72 + (i % 4) * 10),
-                      }}
-                      transition={{
-                        duration: 1.25,
-                        delay: 0.08 + i * 0.015,
-                        ease: "easeOut",
-                      }}
-                    />
-                  ))}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    inset: "-40px",
+                    pointerEvents: "none",
+                    overflow: "visible",
+                    zIndex: 8,
+                  }}
+                >
+                  {[
+                    { x: "15%", y: "30%", delay: 0 },
+                    { x: "50%", y: "20%", delay: 0.22 },
+                    { x: "82%", y: "30%", delay: 0.42 },
+                    { x: "30%", y: "55%", delay: 0.62 },
+                    { x: "68%", y: "55%", delay: 0.8 },
+                  ].map((burst, bi) =>
+                    Array.from({ length: 32 }).map((_, i) => {
+                      const angle = (Math.PI * 2 * i) / 32;
+                      const length = 38 + Math.random() * 55;
+                      const colors = [
+                        "#fff1b8",
+                        "#f4d783",
+                        "#d6a341",
+                        "#b98228",
+                        "#ffe066",
+                        "#ffd700",
+                        "#ffffff",
+                        "#e8c96a",
+                      ];
+                      const color = colors[i % colors.length];
+                      const width = 1.2 + Math.random() * 1.2;
+
+                      return (
+                        <motion.div
+                          key={`${bi}-${i}`}
+                          style={{
+                            position: "absolute",
+                            left: burst.x,
+                            top: burst.y,
+                            width: width,
+                            height: length,
+                            borderRadius: 999,
+                            background: `linear-gradient(180deg, ${color} 0%, rgba(255,241,184,0.6) 40%, transparent 100%)`,
+                            boxShadow: `0 0 4px ${color}, 0 0 10px rgba(255,220,100,0.3)`,
+                            transformOrigin: "top center",
+                            rotate: `${(angle * 180) / Math.PI + 90}deg`,
+                          }}
+                          initial={{ x: 0, y: 0, scaleY: 0, opacity: 0 }}
+                          animate={{
+                            x: Math.cos(angle) * (length * 0.5),
+                            y: Math.sin(angle) * (length * 0.5),
+                            scaleY: [0, 1, 1, 0.4],
+                            opacity: [0, 1, 0.85, 0],
+                          }}
+                          transition={{
+                            duration: 1.4 + Math.random() * 0.4,
+                            delay: burst.delay + i * 0.008,
+                            ease: [0.2, 0.8, 0.4, 1],
+                          }}
+                        />
+                      );
+                    })
+                  )}
                 </div>
               )}
 
@@ -399,38 +443,41 @@ function GoldPrintVideoRSVP({
         </AnimatePresence>
       </motion.div>
 
-      {showRsvpPhotoBlock && (
-        <motion.div
-          className="goldprint-video-rsvp-photo-block"
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{
-            duration: 0.9,
-            delay: 0.08,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          <div className="goldprint-video-rsvp-photo-top">
-            <p className="goldprint-video-rsvp-photo-script">{photoTitle}</p>
+      <AnimatePresence>
+        {shouldShowPhotoBlock && (
+          <motion.div
+            key="rsvp-photo-block"
+            className="goldprint-video-rsvp-photo-block"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 18 }}
+            transition={{
+              duration: 0.55,
+              delay: 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <div className="goldprint-video-rsvp-photo-top">
+              <p className="goldprint-video-rsvp-photo-script">{photoTitle}</p>
 
-            <h3 className="goldprint-video-rsvp-photo-names">
-              {photoNamesText}
-            </h3>
-          </div>
+              <h3 className="goldprint-video-rsvp-photo-names">
+                {photoNamesText}
+              </h3>
+            </div>
 
-          <div className="goldprint-video-rsvp-photo-divider" />
-          <div className="goldprint-video-rsvp-photo-heart">♡</div>
+            <div className="goldprint-video-rsvp-photo-divider" />
+            <div className="goldprint-video-rsvp-photo-heart">♡</div>
 
-          <div className="goldprint-video-rsvp-photo-wrap">
-            <img
-              src={photoSrc}
-              alt={photoNamesText}
-              className="goldprint-video-rsvp-photo"
-            />
-          </div>
-        </motion.div>
-      )}
+            <div className="goldprint-video-rsvp-photo-wrap">
+              <img
+                src={photoSrc}
+                alt={photoNamesText}
+                className="goldprint-video-rsvp-photo"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
