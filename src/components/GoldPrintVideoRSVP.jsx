@@ -89,11 +89,20 @@ function GoldPrintVideoRSVP({
 
       const rect = element.getBoundingClientRect();
 
+      const isPhone = window.innerWidth <= 520;
+
+      /*
+        Na telefonu spuštamo poruku malo niže.
+        Ako ti i dalje bude visoko, povećaj 0.12 na 0.16.
+      */
+      const phoneLowerOffset = isPhone ? window.innerHeight * 0.12 : 0;
+
       const targetTop =
         window.scrollY +
         rect.top +
         rect.height / 2 -
-        window.innerHeight / 2;
+        window.innerHeight / 2 -
+        phoneLowerOffset;
 
       window.scrollTo({
         top: Math.max(targetTop, 0),

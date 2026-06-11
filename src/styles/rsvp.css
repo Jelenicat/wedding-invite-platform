@@ -14449,14 +14449,14 @@ margin-bottom: 2px;
 /* telefon */
 @media (max-width: 520px) {
   .goldprint-video-rsvp-shell.is-submitted {
-    min-height: 52dvh;
-    min-height: 52svh;
+    min-height: 58dvh;
+    min-height: 58svh;
   }
 
   .goldprint-video-rsvp-shell.is-submitted .goldprint-video-rsvp-success {
-    min-height: 48dvh;
-    min-height: 48svh;
-    padding-top: 18px;
+    min-height: 54dvh;
+    min-height: 54svh;
+    padding-top: 34px;
     padding-bottom: 18px;
   }
 }
