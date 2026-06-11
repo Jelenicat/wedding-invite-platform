@@ -13721,3 +13721,419 @@ margin-top: 20px;
     bottom: 8px;
   }
 }
+
+/* ============================================================
+   FINAL FIX — SAME LAYOUT ON ANDROID + iPHONE
+   NE DIRA ZLATNU BOJU / GRADIENT
+   Popravlja samo: gornji video, ogrebi sekciju i labudove
+   ============================================================ */
+
+/* ---------- HERO VIDEO: stabilna visina na svim mobilnim browserima ---------- */
+.goldprint-video-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+}
+
+.goldprint-video-hero-video {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.goldprint-video-hero-content {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Ne menjamo zlatni gradient, samo čuvamo isti kontrast preko videa */
+.goldprint-video-hero-overlay {
+  background:
+    radial-gradient(
+      circle at 48% 38%,
+      rgba(255, 255, 255, 0.16),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.03) 36%,
+      rgba(241, 229, 213, 0.1) 72%,
+      rgba(222, 205, 184, 0.26) 100%
+    ) !important;
+}
+
+/* ---------- OGREBI SEKCIJA: isti raspored na uskim Android ekranima ---------- */
+.goldprint-video-date-section {
+  padding-top: clamp(58px, 8vh, 70px);
+  padding-bottom: clamp(66px, 9vh, 76px);
+}
+
+.goldprint-video-date-inner {
+  width: min(100%, 760px);
+}
+
+.goldprint-video-scratch-grid {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 3vw, 26px);
+}
+
+.goldprint-video-scratch-box {
+  aspect-ratio: 1 / 1;
+}
+
+/* ---------- LABUDOVI: ne dozvoli da sticky/negative margin sakrije sekciju ---------- */
+.goldprint-video-letter-section {
+  min-height: calc(100vh + 360px);
+  min-height: calc(100svh + 360px);
+  min-height: calc(100dvh + 360px);
+  margin-bottom: 0 !important;
+}
+
+.goldprint-video-letter-sticky {
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+}
+
+.goldprint-video-envelope-scene {
+  max-height: 78vh;
+  max-height: 78svh;
+  max-height: 78dvh;
+}
+
+/* ============================================================
+   MOBILE — čuva isti izgled, ali sprečava sečenje na Androidu
+   ============================================================ */
+
+@media (max-width: 520px) {
+  .goldprint-video-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+  }
+
+  .goldprint-video-hero-video {
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .goldprint-video-hero-content {
+    width: 100%;
+    margin-top: -4vh;
+    padding: 0 16px;
+  }
+
+  .goldprint-video-hero-name-box {
+    width: min(92vw, 390px);
+    padding: 28px 20px 24px;
+  }
+
+  .goldprint-video-hero-svg {
+    width: min(330px, 86vw);
+    height: 205px;
+  }
+
+  .goldprint-video-date-section {
+    padding: 58px 14px 66px;
+  }
+
+  .goldprint-video-date-subtitle {
+    margin: 18px auto 28px;
+    max-width: 92vw;
+  }
+
+  .goldprint-video-scratch-grid {
+    width: min(100%, 390px);
+    gap: 10px;
+  }
+
+  .goldprint-video-scratch-value {
+    font-size: clamp(21px, 6vw, 34px);
+  }
+
+  .goldprint-video-scratch-label {
+    margin-top: 13px;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+  }
+
+  .goldprint-video-letter-section {
+    min-height: calc(100vh + 520px);
+    min-height: calc(100svh + 520px);
+    min-height: calc(100dvh + 520px);
+    padding: 92px 2px 0;
+    margin-bottom: 0 !important;
+  }
+
+  .goldprint-video-letter-sticky {
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+  }
+
+  .goldprint-video-envelope-scene {
+    width: min(100vw, 405px);
+    height: min(600px, 88vh);
+    height: min(600px, 88svh);
+    height: min(600px, 88dvh);
+    max-height: 88vh;
+    max-height: 88svh;
+    max-height: 88dvh;
+  }
+
+  .goldprint-video-letter-stack {
+    bottom: clamp(188px, 32vh, 218px);
+    width: 79%;
+  }
+
+  .goldprint-video-swan-wrap {
+    top: 2px;
+    width: 76%;
+  }
+
+  .goldprint-video-swan-wrap-left {
+    right: calc(50% - 118px);
+  }
+
+  .goldprint-video-swan-wrap-right {
+    left: calc(50% - 118px);
+  }
+}
+
+@media (max-width: 380px) {
+  .goldprint-video-hero-content {
+    margin-top: -3vh;
+    padding: 0 14px;
+  }
+
+  .goldprint-video-hero-name-box {
+    width: min(92vw, 350px);
+    padding: 26px 18px 22px;
+  }
+
+  .goldprint-video-hero-svg {
+    width: min(300px, 84vw);
+    height: 190px;
+  }
+
+  .goldprint-video-scratch-grid {
+    width: min(100%, 350px);
+    gap: 8px;
+  }
+
+  .goldprint-video-letter-section {
+    min-height: calc(100vh + 540px);
+    min-height: calc(100svh + 540px);
+    min-height: calc(100dvh + 540px);
+  }
+
+  .goldprint-video-envelope-scene {
+    width: min(100vw, 380px);
+    height: min(570px, 88vh);
+    height: min(570px, 88svh);
+    height: min(570px, 88dvh);
+  }
+
+  .goldprint-video-letter-stack {
+    bottom: clamp(178px, 31vh, 205px);
+  }
+
+  .goldprint-video-swan-wrap {
+    width: 78%;
+  }
+
+  .goldprint-video-swan-wrap-left {
+    right: calc(50% - 110px);
+  }
+
+  .goldprint-video-swan-wrap-right {
+    left: calc(50% - 110px);
+  }
+}
+/* ============================================================ */
+/* FIX — REMOVE BIG EMPTY SPACE UNDER LETTER SECTION */
+/* ============================================================ */
+
+.goldprint-video-letter-section {
+  min-height: calc(100svh + 120px);
+  padding: 90px 12px 0;
+  margin-bottom: -120px;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-letter-section {
+    min-height: calc(100svh + 80px);
+    padding: 96px 2px 0;
+    margin-bottom: -180px;
+  }
+
+  .goldprint-video-envelope-scene {
+    height: 560px;
+    max-height: 88svh;
+  }
+
+  .goldprint-video-letter-stack {
+    bottom: 205px;
+  }
+}
+
+@media (max-width: 390px) {
+  .goldprint-video-letter-section {
+    min-height: calc(100svh + 60px);
+    margin-bottom: -210px;
+  }
+
+  .goldprint-video-envelope-scene {
+    height: 535px;
+  }
+
+  .goldprint-video-letter-stack {
+    bottom: 198px;
+  }
+}
+/* ============================================================ */
+/* FINAL FIX — TIGHTEN SPACE UNDER SWAN LETTER SECTION */
+/* ============================================================ */
+
+.goldprint-video-letter-section {
+  min-height: calc(100svh + 40px) !important;
+  padding: 70px 12px 0 !important;
+  margin-bottom: -230px !important;
+}
+
+.goldprint-video-letter-sticky {
+  height: 100svh !important;
+}
+
+.goldprint-video-envelope-scene {
+  height: 540px !important;
+  max-height: 86svh !important;
+}
+
+.goldprint-video-letter-stack {
+  bottom: 195px !important;
+}
+
+/* telefoni */
+@media (max-width: 520px) {
+  .goldprint-video-letter-section {
+    min-height: calc(100svh + 20px) !important;
+    padding: 82px 2px 0 !important;
+    margin-bottom: -285px !important;
+  }
+
+  .goldprint-video-envelope-scene {
+    height: 520px !important;
+    max-height: 86svh !important;
+  }
+
+  .goldprint-video-letter-stack {
+    bottom: 190px !important;
+  }
+
+  .goldprint-video-swan-wrap {
+    top: 0 !important;
+  }
+}
+
+/* manji Android telefoni */
+@media (max-width: 390px) {
+  .goldprint-video-letter-section {
+    min-height: calc(100svh + 10px) !important;
+    margin-bottom: -315px !important;
+  }
+
+  .goldprint-video-envelope-scene {
+    height: 500px !important;
+    max-height: 86svh !important;
+  }
+
+  .goldprint-video-letter-stack {
+    bottom: 182px !important;
+  }
+}
+
+/* jako niski ekrani */
+@media (max-height: 720px) and (max-width: 520px) {
+  .goldprint-video-letter-section {
+    min-height: 100svh !important;
+    margin-bottom: -330px !important;
+  }
+
+  .goldprint-video-envelope-scene {
+    height: 485px !important;
+    max-height: 84svh !important;
+  }
+
+  .goldprint-video-letter-stack {
+    bottom: 176px !important;
+  }
+}
+/* ============================================================ */
+/* FINAL SMALL TWEAK — LETTER SECTION CLOSER TO PROGRAM */
+/* ============================================================ */
+
+.goldprint-video-letter-section {
+  margin-bottom: -270px !important;
+}
+
+@media (max-width: 520px) {
+  .goldprint-video-letter-section {
+    margin-bottom: -400px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .goldprint-video-letter-section {
+    margin-bottom: -400px !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 520px) {
+  .goldprint-video-letter-section {
+    margin-bottom: -395px !important;
+  }
+}
+.goldprint-video-hero-svg-img {
+  display: block;
+  width: min(360px, 86vw);
+  height: auto;
+  max-height: 230px;
+  object-fit: contain;
+
+  margin: 0 auto;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 245, 210, 0.82))
+    drop-shadow(0 2px 0 rgba(86, 50, 8, 0.48))
+    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.38))
+    drop-shadow(0 0 12px rgba(216, 176, 106, 0.22));
+}
+
+@media (max-width: 480px) {
+  .goldprint-video-hero-svg-img {
+    width: min(330px, 90vw);
+    max-height: 205px;
+  }
+}

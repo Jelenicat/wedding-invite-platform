@@ -694,13 +694,11 @@ function GoldPrintVideoInvitationCard({
                   draggable="false"
                 />
 
-                <motion.div
-                  className="goldprint-video-hero-svg"
-                  role="img"
-                  aria-label={`${safeBrideName} & ${safeGroomName}`}
-                  style={{
-                    "--goldprint-video-hero-mask": `url(${heroSvg})`,
-                  }}
+                <motion.img
+                  className="goldprint-video-hero-svg-img"
+                  src={heroSvg}
+                  alt={`${safeBrideName} & ${safeGroomName}`}
+                  draggable="false"
                   initial={{ opacity: 0, scale: 0.96, y: 16 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{
