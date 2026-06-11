@@ -14341,11 +14341,12 @@ margin-bottom: 2px;
   font-weight: 700;
 }
 
-/* ============================================================ */
-/* GOLDPRINT RSVP — fireworks for "Dolazim" */
-/* ============================================================ */
+//* ============================================================
+   GOLDPRINT RSVP — fireworks for "Dolazim"
+   ============================================================ */
 
 .goldprint-video-rsvp-success {
+  position: relative;
   overflow: visible;
 }
 
@@ -14387,6 +14388,7 @@ margin-bottom: 2px;
     0 0 16px rgba(185, 130, 40, 0.28);
 }
 
+/* Poruka, ikonica i tekst uvek iznad vatrometa */
 .goldprint-video-rsvp-success-heart,
 .goldprint-video-rsvp-success h3,
 .goldprint-video-rsvp-success p {
@@ -14408,20 +14410,17 @@ margin-bottom: 2px;
   margin-right: auto;
 }
 
-@media (max-width: 520px) {
-  .goldprint-video-rsvp-success.is-coming {
-    min-height: 215px;
-  }
+/* Novi wrapper oko ikonice + Hvala + teksta */
+.goldprint-video-rsvp-success-message {
+  position: relative;
+  z-index: 12;
 
-  .goldprint-video-rsvp-firework {
-    width: 6px;
-    height: 6px;
-  }
-
-  .goldprint-video-rsvp-success-heart {
-    font-size: 48px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
 /* ============================================================
    GOLD PRINT VIDEO RSVP — submitted poruka pola ekrana
    ============================================================ */
@@ -14446,17 +14445,51 @@ margin-bottom: 2px;
   justify-content: center;
 }
 
-/* telefon */
+/* ============================================================
+   TELEFON
+   ============================================================ */
+
 @media (max-width: 520px) {
+  .goldprint-video-rsvp-success.is-coming {
+    min-height: 215px;
+  }
+
+  .goldprint-video-rsvp-success.is-not-coming {
+    min-height: 200px;
+  }
+
+  .goldprint-video-rsvp-firework {
+    width: 6px;
+    height: 6px;
+  }
+
+  .goldprint-video-rsvp-success-heart {
+    font-size: 48px;
+  }
+
   .goldprint-video-rsvp-shell.is-submitted {
-    min-height: 58dvh;
-    min-height: 58svh;
+    min-height: 50dvh;
+    min-height: 50svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .goldprint-video-rsvp-shell.is-submitted .goldprint-video-rsvp-success {
-    min-height: 54dvh;
-    min-height: 54svh;
-    padding-top: 34px;
-    padding-bottom: 18px;
+    min-height: 46dvh;
+    min-height: 46svh;
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* OVO spušta baš tekstualnu poruku niže na telefonu */
+  .goldprint-video-rsvp-success-message {
+    transform: translateY(72px);
   }
 }

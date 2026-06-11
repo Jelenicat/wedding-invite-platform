@@ -30,6 +30,7 @@ function GoldPrintVideoRSVP({
   const [submittedAnswer, setSubmittedAnswer] = useState("");
 
   const rsvpSuccessRef = useRef(null);
+  const rsvpMessageRef = useRef(null);
 
   const isCyrillic = script === "cyrillic";
   const showRsvpPhotoBlock = details?.hideRsvpPhotoBlock !== true;
@@ -84,31 +85,22 @@ function GoldPrintVideoRSVP({
     if (!submitted) return;
 
     const scrollTimer = setTimeout(() => {
-      const element = rsvpSuccessRef.current;
+      const element = rsvpMessageRef.current;
       if (!element) return;
 
       const rect = element.getBoundingClientRect();
-
-      const isPhone = window.innerWidth <= 520;
-
-      /*
-        Na telefonu spuštamo poruku malo niže.
-        Ako ti i dalje bude visoko, povećaj 0.12 na 0.16.
-      */
-      const phoneLowerOffset = isPhone ? window.innerHeight * 0.12 : 0;
 
       const targetTop =
         window.scrollY +
         rect.top +
         rect.height / 2 -
-        window.innerHeight / 2 -
-        phoneLowerOffset;
+        window.innerHeight / 2;
 
       window.scrollTo({
         top: Math.max(targetTop, 0),
         behavior: "smooth",
       });
-    }, 220);
+    }, 350);
 
     return () => clearTimeout(scrollTimer);
   }, [submitted]);
@@ -291,34 +283,39 @@ function GoldPrintVideoRSVP({
                 </div>
               )}
 
-              <motion.div
-                className="goldprint-video-rsvp-success-heart"
-                initial={{ scale: 0, rotate: -15 }}
-                animate={
-                  isComing
-                    ? { scale: [0, 1.25, 1], rotate: [0, 8, -8, 0] }
-                    : { scale: [0, 1.15, 1], rotate: [0, -6, 6, 0] }
-                }
-                transition={{ duration: 0.9 }}
+              <div
+                ref={rsvpMessageRef}
+                className="goldprint-video-rsvp-success-message"
               >
-                {isComing ? "🎆" : "🥂"}
-              </motion.div>
+                <motion.div
+                  className="goldprint-video-rsvp-success-heart"
+                  initial={{ scale: 0, rotate: -15 }}
+                  animate={
+                    isComing
+                      ? { scale: [0, 1.25, 1], rotate: [0, 8, -8, 0] }
+                      : { scale: [0, 1.15, 1], rotate: [0, -6, 6, 0] }
+                  }
+                  transition={{ duration: 0.9 }}
+                >
+                  {isComing ? "🎆" : "🥂"}
+                </motion.div>
 
-              <motion.h3
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15, duration: 0.45 }}
-              >
-                {labels.thanks}
-              </motion.h3>
+                <motion.h3
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.45 }}
+                >
+                  {labels.thanks}
+                </motion.h3>
 
-              <motion.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.28, duration: 0.45 }}
-              >
-                {isComing ? labels.successYes : labels.successNo}
-              </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.28, duration: 0.45 }}
+                >
+                  {isComing ? labels.successYes : labels.successNo}
+                </motion.p>
+              </div>
 
               {isComing && (
                 <div className="goldprint-video-rsvp-confetti-wrap">
