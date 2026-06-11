@@ -14422,3 +14422,41 @@ margin-bottom: 2px;
     font-size: 48px;
   }
 }
+/* ============================================================
+   GOLD PRINT VIDEO RSVP — submitted poruka pola ekrana
+   ============================================================ */
+
+.goldprint-video-rsvp-shell.is-submitted {
+  min-height: 52dvh;
+  min-height: 52svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goldprint-video-rsvp-shell.is-submitted .goldprint-video-rsvp-success {
+  width: min(100%, 560px);
+  min-height: 48dvh;
+  min-height: 48svh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* telefon */
+@media (max-width: 520px) {
+  .goldprint-video-rsvp-shell.is-submitted {
+    min-height: 52dvh;
+    min-height: 52svh;
+  }
+
+  .goldprint-video-rsvp-shell.is-submitted .goldprint-video-rsvp-success {
+    min-height: 48dvh;
+    min-height: 48svh;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+}

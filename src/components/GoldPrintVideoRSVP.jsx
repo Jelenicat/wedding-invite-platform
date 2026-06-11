@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   collection,
   addDoc,
@@ -28,6 +28,8 @@ function GoldPrintVideoRSVP({
   const [status, setStatus] = useState("idle");
   const [submitted, setSubmitted] = useState(false);
   const [submittedAnswer, setSubmittedAnswer] = useState("");
+
+  const rsvpSuccessRef = useRef(null);
 
   const isCyrillic = script === "cyrillic";
   const showRsvpPhotoBlock = details?.hideRsvpPhotoBlock !== true;
@@ -72,22 +74,34 @@ function GoldPrintVideoRSVP({
 
   const rsvpSubtitle = details?.note || details?.rsvpText || labels.subtitle;
 
+  const isComing = submittedAnswer === "yes";
+
+  const shouldShowPhotoBlock =
+    showRsvpPhotoBlock &&
+    (!submitted ? form.attending === "yes" : submittedAnswer === "yes");
+
   useEffect(() => {
     if (!submitted) return;
 
-    const timer = setTimeout(() => {
-      setSubmitted(false);
-      setSubmittedAnswer("");
-      setStatus("idle");
+    const scrollTimer = setTimeout(() => {
+      const element = rsvpSuccessRef.current;
+      if (!element) return;
 
-      setForm({
-        name: "",
-        attending: "",
-        guests: 1,
+      const rect = element.getBoundingClientRect();
+
+      const targetTop =
+        window.scrollY +
+        rect.top +
+        rect.height / 2 -
+        window.innerHeight / 2;
+
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
+        behavior: "smooth",
       });
-    }, 4200);
+    }, 220);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(scrollTimer);
   }, [submitted]);
 
   const handleChange = (field, value) => {
@@ -176,16 +190,12 @@ function GoldPrintVideoRSVP({
     }
   };
 
-  const isComing = submittedAnswer === "yes";
-
-  const shouldShowPhotoBlock =
-    showRsvpPhotoBlock &&
-    (!submitted ? form.attending === "yes" : submittedAnswer === "yes");
-
   return (
     <section className="goldprint-video-rsvp-section">
       <motion.div
-        className="goldprint-video-rsvp-shell"
+        className={`goldprint-video-rsvp-shell ${
+          submitted ? "is-submitted" : ""
+        }`}
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
@@ -194,6 +204,7 @@ function GoldPrintVideoRSVP({
         <AnimatePresence mode="wait">
           {submitted ? (
             <motion.div
+              ref={rsvpSuccessRef}
               key="success"
               className={`goldprint-video-rsvp-success ${
                 isComing ? "is-coming" : "is-not-coming"
