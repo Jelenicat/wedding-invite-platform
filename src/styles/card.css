@@ -12796,7 +12796,7 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
 .goldprint-video-timeline-content {
   position: relative;
   z-index: 2;
-  max-width: 170px;
+  max-width: 185px;
   text-align: left;
 }
 
@@ -13007,7 +13007,7 @@ font-family: "Great Vibes", "Allura", "Tangerine", cursive;
   }
 
   .goldprint-video-timeline-content {
-    max-width: 145px;
+    max-width: 160px;
   }
 
   .goldprint-video-timeline-row.is-right .goldprint-video-timeline-content {
