@@ -4563,6 +4563,83 @@ events: [
     note: "Молимо Вас да свој долазак потврдите до 10. јула .2026..",
   }),
 },
+
+{
+  slug: "jasmina-sinisa",
+  type: "wedding",
+  template: "silk",
+
+  brideName: "Jasmina",
+  groomName: "Siniša",
+
+  // ovde zameni kad budeš imala njihov video/muziku
+  videoSrc: "/videos/jasmina-sinisa.mp4",
+  // musicSrc: "/music/jasmina-sinisa.mp3",
+
+  fontMode: "light",
+
+  weddingDate: "13 SEP 2026",
+  weddingTime: "15:00",
+  venue: "Fruška 151, Sremski Karlovci",
+
+  backgroundImage: "/images/jasmina-sinisa-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "13 SEP 2026",
+    dateISO: "2026-09-13T15:00:00+02:00",
+
+    showCalendarButton: true,
+
+    events: [
+      {
+        label: "Okupljanje svatova",
+        time: "15:00",
+        icon: "gathering",
+        location: "Fruška 151, Sremski Karlovci",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Fruska+151+Sremski+Karlovci",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:00",
+        icon: "civil",
+        location: "Fruška 151, Sremski Karlovci",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Fruska+151+Sremski+Karlovci",
+      },
+      {
+        label: "Proslava",
+        time: "16:30",
+        icon: "restaurant",
+        location: "Fruška 151, Sremski Karlovci",
+        note: "Nakon ceremonije nastavljamo sa slavljem.",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Fruska+151+Sremski+Karlovci",
+      },
+      {
+        label: "Završetak proslave",
+        time: "23:00",
+        icon: "party",
+        location: "Fruška 151, Sremski Karlovci",
+      },
+    ],
+
+    showDressCode: false,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [],
+    dressCodeNote: "",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Fruska+151+Sremski+Karlovci",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 20.08.2026.",
+    rsvpDeadline: "20.08.2026.",
+    rsvpDeadlineISO: "2026-08-20",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

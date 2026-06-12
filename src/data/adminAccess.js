@@ -32,6 +32,7 @@ const adminAccess = {
      "milica-nikola-gavrilo":"milica123",
      "benedikt-stela":"stela123",
      "nikolina-velibor":"nikolina123",
+     "jasmina-sinisa":"jasmina123",
      
 };
 
