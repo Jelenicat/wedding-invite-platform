@@ -13818,3 +13818,86 @@
     display: none !important;
   }
 }
+/* ============================================================
+   PROGRAM DANA — ornament iznad i ispod teksta FINAL
+   ============================================================ */
+
+.goldprint-video-events-wide-ornament-wrap {
+  width: 100% !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+
+  transform: none !important;
+  overflow: visible !important;
+}
+
+/* bitno: poništava stari left:50% i translateX(-95%) */
+.goldprint-video-events-wide-ornament {
+  display: block !important;
+
+  width: min(220px, 62vw) !important;
+  max-width: 220px !important;
+  height: auto !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* gornji ornament — isti, samo okrenut */
+.goldprint-video-events-wide-ornament-wrap-top {
+  margin: 0 auto 14px !important;
+}
+
+.goldprint-video-events-wide-ornament-top {
+  transform: rotate(180deg) !important;
+  transform-origin: center center !important;
+}
+
+/* tekst između */
+.goldprint-video-events-note {
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+}
+
+/* donji ornament — normalan */
+.goldprint-video-events-wide-ornament-wrap-bottom {
+  margin: 0 auto 0 !important;
+}
+
+.goldprint-video-events-wide-ornament-bottom {
+  transform: none !important;
+  transform-origin: center center !important;
+}
+
+/* telefon */
+@media (max-width: 520px) {
+  .goldprint-video-events-wide-ornament {
+    width: min(200px, 58vw) !important;
+    max-width: 200px !important;
+  }
+
+  .goldprint-video-events-wide-ornament-wrap-top {
+    margin: 0 auto 5px !important;
+  }
+
+  .goldprint-video-events-note {
+    margin-bottom: 5px !important;
+  }
+
+  .goldprint-video-events-wide-ornament-wrap-bottom {
+    margin: 0 auto 0 !important;
+  }
+}

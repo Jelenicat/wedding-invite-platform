@@ -644,40 +644,59 @@ function AnimatedEventsSection({ events = [], details = {} }) {
           })}
         </div>
 
-        <motion.div
-          className="goldprint-video-events-wide-ornament-wrap"
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{
-            duration: 0.9,
-            delay: 0.05,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-         
-        </motion.div>
+      <motion.div
+  className="goldprint-video-events-wide-ornament-wrap goldprint-video-events-wide-ornament-wrap-top"
+  initial={{ opacity: 0, y: 14 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.35 }}
+  transition={{
+    duration: 0.9,
+    delay: 0.05,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+  <img
+    className="goldprint-video-events-wide-ornament goldprint-video-events-wide-ornament-top"
+    src={programOrnamentSvg}
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+</motion.div>
 
-        <motion.p
-          className="goldprint-video-events-note"
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{
-            duration: 0.9,
-            delay: 0.12,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          {programText}
-        </motion.p>
-         <img
-            className="goldprint-video-events-wide-ornament"
-            src={programOrnamentSvg}
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
+<motion.p
+  className="goldprint-video-events-note"
+  initial={{ opacity: 0, y: 18 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.35 }}
+  transition={{
+    duration: 0.9,
+    delay: 0.12,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+  {programText}
+</motion.p>
+
+<motion.div
+  className="goldprint-video-events-wide-ornament-wrap goldprint-video-events-wide-ornament-wrap-bottom"
+  initial={{ opacity: 0, y: 14 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.35 }}
+  transition={{
+    duration: 0.9,
+    delay: 0.15,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+  <img
+    className="goldprint-video-events-wide-ornament goldprint-video-events-wide-ornament-bottom"
+    src={programOrnamentSvg}
+    alt=""
+    aria-hidden="true"
+    draggable="false"
+  />
+</motion.div>
       </div>
     </section>
   );

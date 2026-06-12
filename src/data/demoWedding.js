@@ -4479,7 +4479,7 @@ musicSrc: "/music/jovana-dusan.mp3",
   videoSrc: "/videos/nikolina-velibor-intro.mp4",
   musicSrc: "/music/nikolina-velibor.mp3",
 
-  weddingDate: "18 СЕП 2026",
+  weddingDate: "2 АВГ 2026",
   weddingTime: "12:00",
   venue: "Херцеговачка Грачаница",
 
@@ -4496,8 +4496,8 @@ musicSrc: "/music/jovana-dusan.mp3",
 
     heroText: "вjенчање",
 
-    date: "18 СЕП 2026",
-    dateISO: "2026-09-18T12:00:00+02:00",
+    date: "2 АВГ 2026",
+    dateISO: "2026-08-02T12:00:00+02:00",
 
     showCalendarButton: true,
 
@@ -4512,25 +4512,21 @@ musicSrc: "/music/jovana-dusan.mp3",
     letterText2:
       "Под окриљем љубави која нас покреће, желимо да крунишемо наш заједнички пут и закорачимо у нови почетак.",
 
-    events: [
+events: [
   {
     label: "Окупљање гостију",
     time: "12:00h - 12:45h",
     icon: "gathering",
     location: "Хотел Bellevue, Требиње",
-    description:
-      "Почетак окупљања и драги сусрети прије церемоније.",
-    mapLink:
-      "https://maps.google.com/?q=Hotel+Bellevue+Trebinje",
+    description: "Почетак окупљања и драги сусрети прије церемоније.",
+    mapLink: "https://maps.google.com/?q=Hotel+Bellevue+Trebinje",
   },
   {
     label: "Црквено вјенчање",
     time: "14:30h",
     icon: "church",
-    location:
-      "Црква Пресвете Богородице, Херцеговачка Грачаница",
-    description:
-      "Круна наше љубави и почетак новог животног поглавља.",
+    location: "Црква Пресвете Богородице, Херцеговачка Грачаница",
+    description: "Круна наше љубави и почетак новог животног поглавља.",
     mapLink:
       "https://maps.google.com/?q=Crkva+Presvete+Bogorodice+Hercegovacka+Gracanica",
   },
@@ -4538,22 +4534,25 @@ musicSrc: "/music/jovana-dusan.mp3",
     label: "Фотографисање",
     time: "16:30h",
     icon: "camera",
-    location:
-      "По повратку са црквеног вјенчања",
+    location: "По повратку са црквеног вјенчања",
   },
   {
     label: "Свечани ручак / вечера",
     time: "17:30h",
     icon: "restaurant",
-    location:
-      "Прослава са породицом и пријатељима",
+    location: "Прослава са породицом и пријатељима",
   },
   {
-    label: "Торта и први плес",
+    label: "Први плес",
+    time: "18:30h",
+    icon: "music",
+    location: "Наш први плес & Почетак журке",
+  },
+  {
+    label: "Торта",
     time: "21:00h",
     icon: "cake",
-    location:
-      "Слатки тренутак који ћемо подијелити са вама уз плес и музику",
+    location: "Слатки тренутак који ћемо подијелити са вама",
   },
 ],
     showDressCode: false,
@@ -4561,7 +4560,7 @@ musicSrc: "/music/jovana-dusan.mp3",
     mapLink:
       "https://maps.google.com/?q=Crkva+Presvete+Bogorodice+Hercegovacka+Gracanica",
 
-    note: "Молимо вас да свој долазак потврдите до 10. јула .2026..",
+    note: "Молимо Вас да свој долазак потврдите до 10. јула .2026..",
   }),
 },
   // =========================
