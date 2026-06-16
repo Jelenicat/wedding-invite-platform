@@ -15437,3 +15437,7 @@
 
   color: rgba(90, 50, 26, 0.72);
 }
+.cyrillic-svg-silk-card .csvg-calendar-add-btn {
+  appearance: none;
+  -webkit-appearance: none;
+}

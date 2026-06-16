@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { addToCalendar } from "../utils/calendar";
 
 function getTimeLeft(targetDate) {
   const target = new Date(targetDate).getTime();
@@ -28,17 +29,6 @@ function getTimeLeft(targetDate) {
   };
 }
 
-function formatGoogleDate(date) {
-  const d = new Date(date);
-
-  if (Number.isNaN(d.getTime())) return "";
-
-  return d
-    .toISOString()
-    .replace(/[-:]/g, "")
-    .replace(/\.\d{3}/, "");
-}
-
 function CyrillicSvgSilkCountdown({
   weddingDate,
   details = {},
@@ -61,21 +51,16 @@ function CyrillicSvgSilkCountdown({
     return () => clearInterval(interval);
   }, [countdownDate]);
 
-  const startDate = details.dateISO || weddingDate;
-  const endDate = startDate
-    ? new Date(new Date(startDate).getTime() + 3 * 60 * 60 * 1000)
-    : null;
-
-  const googleCalendarLink =
-    startDate && endDate
-      ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-          `Венчање - ${brideName} и ${groomName}`
-        )}&dates=${formatGoogleDate(startDate)}/${formatGoogleDate(
-          endDate
-        )}&details=${encodeURIComponent(
-          "Са радошћу вас очекујемо на нашем венчању."
-        )}&location=${encodeURIComponent(details.venue || "")}`
-      : "#";
+  const handleCalendarClick = () => {
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: countdownDate,
+      venue: details?.venue,
+      mapLink: details?.mapLink,
+      note: details?.note,
+    });
+  };
 
   return (
     <motion.div
@@ -123,14 +108,13 @@ function CyrillicSvgSilkCountdown({
 
       {showCalendarButton && (
         <div className="csvg-calendar-add-wrap">
-          <a
-            href={googleCalendarLink}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="button"
             className="csvg-calendar-add-btn"
+            onClick={handleCalendarClick}
           >
             Додај у календар
-          </a>
+          </button>
 
           <p className="csvg-calendar-save-text">
             Сачувајте датум венчања у свом телефону
