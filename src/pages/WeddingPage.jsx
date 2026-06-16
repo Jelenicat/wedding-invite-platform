@@ -73,6 +73,8 @@ import MinimalGoldIntro from "../components/MinimalGoldIntro";
 import MinimalGoldInvitationCard from "../components/MinimalGoldInvitationCard";
 import GoldPrintVideoIntro from "../components/GoldPrintVideoIntro";
 import GoldPrintVideoInvitationCard from "../components/GoldPrintVideoInvitationCard";
+import CyrillicSvgSilkIntro from "../components/CyrillicSvgSilkIntro";
+import CyrillicSvgSilkInvitationCard from "../components/CyrillicSvgSilkInvitationCard";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -238,6 +240,10 @@ const TEMPLATE_COMPONENTS = {
   Intro: GoldPrintVideoIntro,
   Invitation: GoldPrintVideoInvitationCard,
 },
+"cyrillic-svg-silk": {
+  Intro: CyrillicSvgSilkIntro,
+  Invitation: CyrillicSvgSilkInvitationCard,
+},
 };
 
 function WeddingPage() {
@@ -397,6 +403,7 @@ const handleIntroEnter = () => {
     script: invitation.script,
     babyImage: invitation.babyImage,
     partyGender: invitation.partyGender,
+    introNamesSvg: invitation.introNamesSvg,
   };
 
   const invitationProps = {

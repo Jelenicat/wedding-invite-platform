@@ -28,6 +28,8 @@ dressCodeMenPalette = [],
   dressCodeMen,
   mapLink,
   note,
+    fixedBackgroundImage,
+  foreverSvg,
   editorialImage1,
   editorialImage2,
   editorialImage3,
@@ -90,6 +92,8 @@ dressCodeMenPalette,
   dressCodeMen,
   mapLink,
   note,
+    fixedBackgroundImage,
+  foreverSvg,
   editorialImage1,
   editorialImage2,
   editorialImage3,
@@ -4339,134 +4343,7 @@ events: [
     rsvpDeadlineISO: "2026-09-28",
   }),
 },
-{
-  slug: "jovana-dusan",
-  type: "wedding",
-  template: "silk",
-  script: "cyrillic",
 
-  brideName: "Јована",
-  groomName: "Душан",
-musicSrc: "/music/jovana-dusan.mp3",
-  videoSrc: "/videos/jovana-dusan.mp4",
-  fontMode: "light",
-
-  weddingDate: "08 НОВ 2026",
-  weddingTime: "12:00",
-  venue: "Краљево",
-
-  backgroundImage: "/images/jovana-dusan-minimal.jpg",
-
-  details: createDetails({
-    welcomeText:
-      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
-
-    date: "08 НОВ 2026",
-    dateISO: "2026-11-08T12:00:00+01:00",
-
-    showCalendarButton: true,
-
-    events: [
-      {
-        label: "Окупљање гостију",
-        time: "12:00",
-        icon: "gathering",
-        location: "Породична кућа Дуњић, Ушћанских рудара 5, Краљево",
-        mapLink:
-          "https://www.google.com/maps/place/43.705014,20.682968/data=!4m6!3m5!1s0!7e2!8m2!3d43.705014!4d20.682968!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjIyLjQYACD67A0qgQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTlCAlJT&skid=01924b79-b71d-4264-aa61-f0925d66406a",
-      },
-      {
-        label: "Црквено венчање",
-        time: "14:00",
-        icon: "church",
-        location: "Храм Светог Саве, Краљево",
-        mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Save+Kraljevo",
-      },
-      {
-        label: "Ресторан",
-        time: "16:00",
-        icon: "restaurant",
-        location: "Талас Ресорт, Краљево",
-        mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
-      },
-    ],
-
-    showDressCode: false,
-
-    mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
-
-    note: "Молимо вас да свој долазак потврдите до 20. октобра.",
-    rsvpDeadline: "20.10.2026.",
-    rsvpDeadlineISO: "2026-10-20",
-  }),
-},
-{
-  slug: "jovana-dusan-1",
-  type: "wedding",
-  template: "silk",
-  script: "cyrillic",
-
-  brideName: "Јована",
-  groomName: "Душан",
-musicSrc: "/music/jovana-dusan.mp3",
-  videoSrc: "/videos/jovana-dusan.mp4",
-  fontMode: "light",
-
-  weddingDate: "08 НОВ 2026",
-  weddingTime: "12:00",
-  venue: "Краљево",
-
-  backgroundImage: "/images/jovana-dusan-minimal-1.jpg",
-
-  details: createDetails({
-    welcomeText:
-      "Биће нам изузетно драго да својим присуством улепшате наш посебан дан.",
-
-    date: "08 НОВ 2026",
-    dateISO: "2026-11-08T12:00:00+01:00",
-
-    showCalendarButton: true,
-
-    events: [
-      {
-        label: "Окупљање гостију",
-        time: "12:00",
-        icon: "gathering",
-        location: "Породична кућа Дуњић, Ушћанских рудара 5, Краљево",
-        mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Uscanskih+rudara+5+Kraljevo",
-      },
-      {
-        label: "Црквено венчање",
-        time: "14:00",
-        icon: "church",
-        location: "Храм Светог Саве, Краљево",
-        mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Save+Kraljevo",
-      },
-      {
-        label: "Сала",
-        time: "16:00",
-        icon: "restaurant",
-        location: "Талас Ресорт, Краљево",
-        mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
-      },
-    ],
-
-    showDressCode: false,
-
-    mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Talas+Resort+Kraljevo",
-
-    note: "Молимо вас да свој долазак потврдите до 20. октобра.",
-    rsvpDeadline: "20.10.2026.",
-    rsvpDeadlineISO: "2026-10-20",
-  }),
-},
 {
   slug: "nikolina-velibor",
   type: "wedding",
@@ -4639,6 +4516,77 @@ events: [
     rsvpDeadline: "20.08.2026.",
     rsvpDeadlineISO: "2026-08-20",
   }),
+},
+{
+  slug: "jovana-dusan",
+  type: "wedding",
+  template: "cyrillic-svg-silk",
+
+  brideName: "Јована",
+  groomName: "Душан",
+  script: "cyrillic",
+  fontMode: "light",
+
+  weddingDate: "8 NOV 2026",
+  weddingTime: "12:00",
+  venue: "Краљево",
+
+  introNamesSvg: "/images/names/jovana-dusan.svg",
+  videoSrc: "/videos/jovana-dusan.mp4",
+musicSrc: "/music/jovana-dusan.mp3",
+  details: {
+    date: "8. новембар 2026.",
+    dateText: "8. новембар 2026.",
+    dateISO: "2026-11-08T12:00:00+01:00",
+
+    rsvpDeadline: "20. октобар 2026.",
+    rsvpDeadlineISO: "2026-10-20",
+
+    fixedBackgroundImage: "/images/cyrillic-svg-silk/paper-bg.jpg",
+
+    foreverSvg: "/images/names/zauvek.svg",
+    namesSvg: "/images/names/jovana-dusan-main.svg",
+
+    welcomeText:
+      "Са радошћу вас позивамо да увеличате наше венчање.",
+
+    note:
+      "Молимо вас да свој долазак потврдите до 20. октобра.",
+
+    events: [
+      {
+        label: "Скуп сватова",
+        time: "12.00ч",
+        icon: "gathering",
+        location: "Породична кућа Дуњић",
+        address: "Ушћанских рудара 5, Краљево",
+        mapLink:
+          "https://maps.google.com/?q=Uscanskih+rudara+5+Kraljevo",
+        buttonText: "Погледај локацију",
+      },
+      {
+        label: "Црквено венчање",
+        time: "14.00ч",
+        icon: "church",
+        location: "Храм Светог Саве, Краљево",
+        mapLink:
+          "https://maps.google.com/?q=Hram+Svetog+Save+Kraljevo",
+        buttonText: "Погледај локацију",
+      },
+      {
+        label: "Свечана сала",
+        time: "16.00ч",
+        icon: "restaurant",
+        location: "Talas Resort, Краљево",
+        mapLink:
+          "https://maps.google.com/?q=Talas+Resort+Kraljevo",
+        buttonText: "Погледај локацију",
+      },
+    ],
+
+    showDressCode: false,
+    showCalendarButton: true,
+  },
 },
   // =========================
   // BIRTHDAY TEMPLATES

@@ -7176,3 +7176,65 @@ color: #8e7f73;
     gap: 4px;
   }
 }
+
+/* =========================
+   CYRILLIC SVG SILK INTRO
+========================= */
+
+.cyrillic-svg-silk-intro .cyrillic-svg-names-wrap {
+  width: min(400px, 92vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cyrillic-svg-silk-intro .cyrillic-svg-names {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 26px rgba(0, 0, 0, 0.18));
+}
+
+.cyrillic-svg-silk-intro .cyrillic-svg-names-fallback {
+  font-family: "Great Vibes", cursive;
+  font-size: 68px;
+  line-height: 0.95;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.cyrillic-svg-silk-intro .cyrillic-svg-names-fallback span {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  opacity: 0.78;
+}
+
+/* Ako je fontMode dark */
+.cyrillic-svg-silk-intro .silk-top.dark,
+.cyrillic-svg-silk-intro .silk-date.dark {
+  color: rgba(36, 31, 27, 0.78);
+}
+
+.cyrillic-svg-silk-intro .silk-enter.dark {
+  color: rgba(36, 31, 27, 0.88);
+  border-color: rgba(36, 31, 27, 0.62);
+}
+
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-intro .cyrillic-svg-names-wrap {
+    width: min(430px, 104vw);
+  }
+
+  .cyrillic-svg-silk-intro .cyrillic-svg-names {
+    max-height: 260px;
+  }
+
+  .cyrillic-svg-silk-intro .cyrillic-svg-names-fallback {
+    font-size: 58px;
+  }
+
+  .cyrillic-svg-silk-intro .cyrillic-svg-names-fallback span {
+    font-size: 25px;
+  }
+}
