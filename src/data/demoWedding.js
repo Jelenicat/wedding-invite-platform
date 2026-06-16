@@ -762,7 +762,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   details: createDetails({
     welcomeText:
       "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
-
+ imageShape: "vertical", 
     date: "12 MAY 2026",
     dateISO: "2026-05-12T17:00:00+02:00",
 
