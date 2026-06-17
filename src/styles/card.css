@@ -15777,3 +15777,100 @@
   margin: 10px 0 0 !important;
   text-align: right !important;
 }
+/* ============================================================
+   CYRILLIC SVG SILK — još detalja + elegantni chevrons
+   ============================================================ */
+
+.cyrillic-svg-silk-card .csvg-scroll-hint {
+  margin-top: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0.88;
+  animation: csvgScrollHintMove 1.7s ease-in-out infinite;
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-text {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--csvg-brown-dark);
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-chevrons {
+  width: 48px;
+  height: 28px;
+  position: relative;
+  display: block;
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-chevrons span {
+  position: absolute;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border-right: 2px solid rgba(90, 50, 26, 0.78);
+  border-bottom: 2px solid rgba(90, 50, 26, 0.78);
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 2px;
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-chevrons span:first-child {
+  top: -8px;
+  opacity: 0.72;
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-chevrons span:last-child {
+  top: 8px;
+  opacity: 0.95;
+}
+
+@keyframes csvgScrollHintMove {
+  0% {
+    transform: translateY(0);
+    opacity: 0.52;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.52;
+  }
+}
+
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-card .csvg-scroll-hint {
+    margin-top: 76px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-scroll-text {
+    font-size: 14px;
+    letter-spacing: 2.6px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-scroll-chevrons {
+    width: 46px;
+    height: 27px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-scroll-chevrons span {
+    width: 28px;
+    height: 28px;
+    border-width: 1.5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cyrillic-svg-silk-card .csvg-scroll-hint {
+    margin-top: 62px;
+  }
+}

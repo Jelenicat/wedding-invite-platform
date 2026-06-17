@@ -87,7 +87,11 @@ function CyrillicSvgSilkInvitationCard({
 
 <div className="csvg-scroll-hint" aria-hidden="true">
   <span className="csvg-scroll-text">још детаља</span>
-  <span className="csvg-scroll-arrow">v</span>
+
+  <span className="csvg-scroll-chevrons">
+    <span></span>
+    <span></span>
+  </span>
 </div>
         </motion.div>
       </section>
