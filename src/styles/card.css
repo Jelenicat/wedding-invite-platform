@@ -15729,12 +15729,12 @@
   }
 
   .cyrillic-svg-silk-card .csvg-scroll-text {
-    font-size: 14px;
+    font-size: 8px;
     letter-spacing: 2.6px;
   }
 
   .cyrillic-svg-silk-card .csvg-scroll-arrow {
-    font-size: 27px;
+    font-size: 17px;
   }
 }
 
@@ -15864,7 +15864,7 @@
   }
 
   .cyrillic-svg-silk-card .csvg-scroll-text {
-    font-size: 14px;
+    font-size: 10px;
     letter-spacing: 2.6px;
   }
 
@@ -15874,14 +15874,14 @@
   }
 
   .cyrillic-svg-silk-card .csvg-scroll-chevrons span {
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     border-width: 1.5px;
   }
 }
 
 @media (max-width: 420px) {
   .cyrillic-svg-silk-card .csvg-scroll-hint {
-    margin-top: 62px;
+    margin-top: 52px;
   }
 }
