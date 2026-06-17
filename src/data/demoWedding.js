@@ -4544,8 +4544,8 @@ musicSrc: "/music/jovana-dusan-1.mp3",
 
     fixedBackgroundImage: "/images/cyrillic-svg-silk/paper-bg.jpg",
 
-    foreverSvg: "/images/names/zauvek.svg",
-    namesSvg: "/images/names/jovana-dusan-main.svg",
+    foreverSvg: "/images/names/zauvek.png",
+    namesSvg: "/images/names/jovana-dusan-main.png",
 
     welcomeText:
       "Са радошћу вас позивамо да увеличате наше венчање.",
