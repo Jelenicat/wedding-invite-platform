@@ -7407,6 +7407,22 @@ color: #8e7f73;
 
   .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .cyrillic-svg-names-wrap,
   .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .cyrillic-svg-names-wrap {
-    top: -24px !important;
+    top: 2px !important;
+  }
+}
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .cyrillic-svg-names-wrap,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .cyrillic-svg-names-wrap {
+    position: relative !important;
+    top: 10px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .cyrillic-svg-names-wrap,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .cyrillic-svg-names-wrap {
+    top: 60px !important;
   }
 }
