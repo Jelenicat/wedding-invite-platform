@@ -13928,11 +13928,14 @@
 
 .cyrillic-svg-silk-card .csvg-fixed-bg {
   position: fixed;
-  inset: 0;
-  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
+  z-index: 0;
   width: 100vw;
-  height: 100dvh;
+  height: 120vh;
 
   background-image: var(--csvg-fixed-bg);
   background-size: cover;
@@ -13940,8 +13943,15 @@
   background-repeat: no-repeat;
 
   pointer-events: none;
-  transform: translateZ(0);
+
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.cyrillic-svg-silk-card {
+  position: relative;
+  isolation: isolate;
+  background-color: #f5efe5;
 }
 .cyrillic-svg-silk-card {
   position: relative;
