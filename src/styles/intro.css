@@ -7368,3 +7368,45 @@ color: #8e7f73;
   margin-top: auto !important;
   margin-bottom: 32px !important;
 }
+/* ============================================================
+   JOVANA & DUŠAN — telefon: pozivnica + imena više gore
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .silk-content,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .silk-content {
+    padding-top: 34px !important;
+    padding-bottom: 54px !important;
+  }
+
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .silk-top,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .silk-top {
+    margin-bottom: 4px !important;
+  }
+
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .cyrillic-svg-names-wrap,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .cyrillic-svg-names-wrap {
+    position: relative !important;
+    top: -18px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .silk-date,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .silk-date {
+    margin-top: auto !important;
+    margin-bottom: 28px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .silk-content,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .silk-content {
+    padding-top: 28px !important;
+  }
+
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan .cyrillic-svg-names-wrap,
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan-1 .cyrillic-svg-names-wrap {
+    top: -24px !important;
+  }
+}
