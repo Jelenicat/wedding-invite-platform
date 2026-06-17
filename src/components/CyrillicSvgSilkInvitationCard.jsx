@@ -49,7 +49,7 @@ function CyrillicSvgSilkInvitationCard({
             </p>
 
             <p className="csvg-quote-source">
-              - песма над песмама 3,4
+              - Песма над песмама 3,4
             </p>
           </div>
 
@@ -82,8 +82,13 @@ function CyrillicSvgSilkInvitationCard({
           </div>
 
           <p className="csvg-invite-text">
-            вас позивају да увеличате њихово венчање
-          </p>
+  вас позивају да увеличате њихово венчање
+</p>
+
+<div className="csvg-scroll-hint" aria-hidden="true">
+  <span className="csvg-scroll-text">још детаља</span>
+  <span className="csvg-scroll-arrow">v</span>
+</div>
         </motion.div>
       </section>
 
@@ -108,15 +113,15 @@ function CyrillicSvgSilkInvitationCard({
             <span />
           </div>
 
-          <div className="csvg-week-days">
-            <span>ПН</span>
-            <span>УТ</span>
-            <span>СР</span>
-            <span>ЧТ</span>
-            <span>ПТ</span>
-            <span>СБ</span>
-            <span>НД</span>
-          </div>
+       <div className="csvg-week-days">
+  <span>ПОН</span>
+  <span>УТО</span>
+  <span>СРЕ</span>
+  <span>ЧЕТ</span>
+  <span>ПЕТ</span>
+  <span>СУБ</span>
+  <span>НЕД</span>
+</div>
 
           <div className="csvg-calendar-days">
             <span>2</span>

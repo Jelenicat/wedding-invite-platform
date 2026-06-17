@@ -15441,3 +15441,329 @@
   appearance: none;
   -webkit-appearance: none;
 }
+/* ============================================================
+   CYRILLIC SVG SILK — CLIENT FIX HERO + CALENDAR
+   ============================================================ */
+
+/* PRVA STRANA — citat više gore, Zauvek odvojen */
+.cyrillic-svg-silk-card .csvg-hero-section {
+  align-items: flex-start;
+}
+
+.cyrillic-svg-silk-card .csvg-hero-inner {
+  min-height: calc(100svh - 56px);
+  justify-content: flex-start;
+  padding-top: clamp(38px, 7vh, 76px);
+  padding-bottom: 28px;
+}
+
+/* Citat */
+.cyrillic-svg-silk-card .csvg-quote-block {
+  width: min(420px, 100%);
+  margin: 0 auto 46px;
+  text-align: left;
+}
+
+.cyrillic-svg-silk-card .csvg-quote {
+  margin: 0;
+  text-align: left;
+}
+
+.cyrillic-svg-silk-card .csvg-quote-source {
+  display: block;
+  margin: 8px 0 0;
+  text-align: right;
+}
+
+/* Da Zauvek ne bude zalepljeno za citat */
+.cyrillic-svg-silk-card .csvg-forever-wrap {
+  margin-top: 8px;
+}
+
+/* Vas pozivaju — malo više dole od imena */
+.cyrillic-svg-silk-card .csvg-invite-text {
+  margin-top: 34px;
+  margin-bottom: 0;
+}
+
+/* Strelica za skrol */
+.cyrillic-svg-silk-card .csvg-scroll-hint {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.72;
+  animation: csvgScrollHint 1.65s ease-in-out infinite;
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-arrow {
+  display: block;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--csvg-brown-dark);
+}
+
+@keyframes csvgScrollHint {
+  0% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(7px);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+}
+
+/* KALENDAR — ravnanje dana i brojeva */
+.cyrillic-svg-silk-card .csvg-week-days,
+.cyrillic-svg-silk-card .csvg-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+.cyrillic-svg-silk-card .csvg-week-days span,
+.cyrillic-svg-silk-card .csvg-calendar-days span {
+  width: 100%;
+  min-height: 36px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cyrillic-svg-silk-card .csvg-week-days span {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.cyrillic-svg-silk-card .csvg-calendar-days span {
+  font-size: 18px;
+}
+
+.cyrillic-svg-silk-card .csvg-calendar-days span.is-active {
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  margin: 0 auto;
+  border-radius: 999px;
+  flex: 0 0 36px;
+}
+
+/* MOBILE FINO PODEŠAVANJE */
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-card .csvg-hero-inner {
+    min-height: calc(100svh - 56px);
+    justify-content: flex-start;
+    padding-top: clamp(34px, 6vh, 62px);
+  }
+
+  .cyrillic-svg-silk-card .csvg-quote-block {
+    margin-bottom: 42px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-invite-text {
+    margin-top: 30px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-scroll-hint {
+    margin-top: 16px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-week-days span {
+    font-size: 9px;
+    letter-spacing: 0.05em;
+  }
+
+  .cyrillic-svg-silk-card .csvg-calendar-days span {
+    min-height: 35px;
+    font-size: 20px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-calendar-days span.is-active {
+    width: 35px;
+    height: 35px;
+    min-height: 35px;
+    flex-basis: 35px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cyrillic-svg-silk-card .csvg-quote-block {
+    width: min(360px, 100%);
+    margin-bottom: 38px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-week-days span {
+    font-size: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  .cyrillic-svg-silk-card .csvg-calendar-days span {
+    min-height: 33px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-calendar-days span.is-active {
+    width: 33px;
+    height: 33px;
+    min-height: 33px;
+    flex-basis: 33px;
+  }
+}
+/* KALENDAR — brojevi u istoj ravni */
+.cyrillic-svg-silk-card .csvg-calendar-days span {
+   font-family: "Playfair Display", serif !important;
+  font-variant-numeric: lining-nums tabular-nums !important;
+  font-feature-settings: "lnum" 1, "tnum" 1 !important;
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-variant-numeric: lining-nums tabular-nums !important;
+  font-feature-settings: "lnum" 1, "tnum" 1 !important;
+}
+
+/* aktivni broj 8 da ostane centriran u krugu */
+.cyrillic-svg-silk-card .csvg-calendar-days span.is-active {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 36px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+}
+/* ============================================================
+   CYRILLIC SVG SILK — još detalja + V scroll hint
+   ============================================================ */
+
+.cyrillic-svg-silk-card .csvg-scroll-hint {
+  margin-top: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  opacity: 0.86;
+  animation: csvgScrollHintMove 1.65s ease-in-out infinite;
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-text {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--csvg-brown-dark);
+}
+
+.cyrillic-svg-silk-card .csvg-scroll-arrow {
+  display: block;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--csvg-brown-dark);
+}
+
+@keyframes csvgScrollHintMove {
+  0% {
+    transform: translateY(0);
+    opacity: 0.52;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.52;
+  }
+}
+
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-card .csvg-scroll-hint {
+    margin-top: 86px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-scroll-text {
+    font-size: 14px;
+    letter-spacing: 2.6px;
+  }
+
+  .cyrillic-svg-silk-card .csvg-scroll-arrow {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cyrillic-svg-silk-card .csvg-scroll-hint {
+    margin-top: 82px;
+  }
+}
+/* ============================================================
+   CYRILLIC SVG SILK — citat centriran, izvor desno
+   ============================================================ */
+
+.cyrillic-svg-silk-card .csvg-quote-block {
+  width: min(440px, 100%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.cyrillic-svg-silk-card .csvg-quote {
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.cyrillic-svg-silk-card .csvg-quote-source {
+  width: 100% !important;
+  display: block !important;
+  margin: 8px 0 0 !important;
+  text-align: right !important;
+}
+/* ============================================================
+   CYRILLIC SVG SILK — citat odvojen od ostatka
+   ============================================================ */
+
+.cyrillic-svg-silk-card .csvg-quote-block {
+  width: min(440px, 100%) !important;
+  margin: 0 auto 72px !important;
+  text-align: center !important;
+}
+
+.cyrillic-svg-silk-card .csvg-quote {
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.cyrillic-svg-silk-card .csvg-quote-source {
+  width: 100% !important;
+  display: block !important;
+  margin: 10px 0 0 !important;
+  text-align: right !important;
+}

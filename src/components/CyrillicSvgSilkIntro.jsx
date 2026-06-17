@@ -71,8 +71,14 @@ function CyrillicSvgSilkIntro({
     }
   }
 
+  const displayDay = Number.isNaN(Number(day)) ? day : String(Number(day));
+
   return (
-    <section className={`silk-intro cyrillic-svg-silk-intro silk-slug-${slug || ""}`}>
+    <section
+      className={`silk-intro cyrillic-svg-silk-intro silk-slug-${
+        slug || ""
+      }`}
+    >
       <video
         ref={videoRef}
         className="silk-video"
@@ -119,9 +125,9 @@ function CyrillicSvgSilkIntro({
         <p className={`silk-date ${fontMode}`}>
           {month}
           <br />
-          {day}
+          {displayDay}.
           <br />
-          {year}
+          {year}.
         </p>
 
         <button className={`silk-enter ${fontMode}`} onClick={onEnter}>

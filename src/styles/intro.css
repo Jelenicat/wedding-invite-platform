@@ -7238,3 +7238,39 @@ color: #8e7f73;
     font-size: 25px;
   }
 }
+/* ============================================================
+   JOVANA & DUŠAN — intro imena iznad glave
+   ============================================================ */
+
+.cyrillic-svg-silk-intro.silk-slug-jovana-dusan
+  .cyrillic-svg-names-wrap {
+  position: relative !important;
+  top: -38px !important;
+  transform: none !important;
+  margin-bottom: -28px !important;
+  z-index: 5 !important;
+}
+
+.cyrillic-svg-silk-intro.silk-slug-jovana-dusan
+  .cyrillic-svg-names {
+  position: relative !important;
+  top: 0 !important;
+}
+
+/* Tablet / telefon */
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan
+    .cyrillic-svg-names-wrap {
+    top: -42px !important;
+    margin-bottom: -34px !important;
+  }
+}
+
+/* Manji telefoni */
+@media (max-width: 420px) {
+  .cyrillic-svg-silk-intro.silk-slug-jovana-dusan
+    .cyrillic-svg-names-wrap {
+    top: -58px !important;
+    margin-bottom: -44px !important;
+  }
+}

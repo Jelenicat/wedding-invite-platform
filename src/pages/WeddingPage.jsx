@@ -261,17 +261,58 @@ function WeddingPage() {
     return demoWedding.find((item) => item.slug === slug);
   }, [slug]);
 
-  useEffect(() => {
-    return () => {
-      if (introTimeoutRef.current) {
-        clearTimeout(introTimeoutRef.current);
-      }
+useEffect(() => {
+  let wasPlayingBeforeHidden = false;
 
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-    };
-  }, []);
+  const pauseMusic = () => {
+    if (audioRef.current && !audioRef.current.paused) {
+      wasPlayingBeforeHidden = true;
+      audioRef.current.pause();
+    }
+  };
+
+  const resumeMusic = () => {
+    if (!wasPlayingBeforeHidden) return;
+    if (!audioRef.current) return;
+
+    audioRef.current.muted = false;
+
+    audioRef.current
+      .play()
+      .then(() => {
+        setMusicStarted(true);
+        wasPlayingBeforeHidden = false;
+      })
+      .catch((error) => {
+        console.error("Muzika nije ponovo pokrenuta:", error);
+      });
+  };
+
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      pauseMusic();
+    } else {
+      resumeMusic();
+    }
+  };
+
+  window.addEventListener("pagehide", pauseMusic);
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+
+  return () => {
+    if (introTimeoutRef.current) {
+      clearTimeout(introTimeoutRef.current);
+    }
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
+    window.removeEventListener("pagehide", pauseMusic);
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+  };
+}, []);
 
   useEffect(() => {
     if (!invitation) return;
@@ -343,10 +384,14 @@ useEffect(() => {
 const playInvitationMusic = () => {
   if (!invitation.musicSrc || !audioRef.current || musicStarted) return;
 
-  audioRef.current.volume = 0.45;
+  const musicVolume =
+    templateKey === "cyrillic-svg-silk" ? 0.32 : 0.45;
 
-  audioRef.current
-    .play()
+audioRef.current.muted = false;
+audioRef.current.volume = musicVolume;
+
+audioRef.current
+  .play()
     .then(() => {
       setMusicStarted(true);
     })

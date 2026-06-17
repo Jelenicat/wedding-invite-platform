@@ -4533,7 +4533,7 @@ events: [
 
   introNamesSvg: "/images/names/jovana-dusan.svg",
   videoSrc: "/videos/jovana-dusan.mp4",
-musicSrc: "/music/jovana-dusan.mp3",
+musicSrc: "/music/jovana-dusan-1.mp3",
   details: {
     date: "8. новембар 2026.",
     dateText: "8. новембар 2026.",
