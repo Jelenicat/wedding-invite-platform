@@ -4539,13 +4539,13 @@ musicSrc: "/music/jovana-dusan-1.mp3",
     dateText: "8. новембар 2026.",
     dateISO: "2026-11-08T12:00:00+01:00",
 
-    rsvpDeadline: "20. октобара 2026.",
+    rsvpDeadline: "20. октобра 2026.",
     rsvpDeadlineISO: "2026-10-20",
 
     fixedBackgroundImage: "/images/cyrillic-svg-silk/paper-bg.jpg",
 
-    foreverSvg: "/images/names/zauvek.png",
-    namesSvg: "/images/names/jovana-dusan-main.png",
+    foreverSvg: "/images/names/zauvek.svg",
+    namesSvg: "/images/names/jovana-dusan-main.svg",
 
     welcomeText:
       "Са радошћу вас позивамо да увеличате наше венчање.",
