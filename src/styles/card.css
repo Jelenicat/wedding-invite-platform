@@ -13927,20 +13927,21 @@
 }
 
 .cyrillic-svg-silk-card .csvg-fixed-bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
 
-  width: 100%;
-  min-height: 100%;
-  height: auto;
+  width: 100vw;
+  height: 100dvh;
 
   background-image: var(--csvg-fixed-bg);
-  background-size: 100% auto;
+  background-size: cover;
   background-position: center top;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
 
   pointer-events: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .cyrillic-svg-silk-card {
   position: relative;
@@ -14309,7 +14310,7 @@
   font-weight: 600;
   letter-spacing: 1px;
 
-  color: rgba(127, 79, 42, 0.28);
+  color: rgba(127, 79, 42, 0.58);
 }
 
 /* naslov događaja */
