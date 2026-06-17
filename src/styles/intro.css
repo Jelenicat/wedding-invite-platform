@@ -7286,5 +7286,85 @@ color: #8e7f73;
 
 /* vrlo blag tamni sloj preko videa */
 .cyrillic-svg-silk-intro .silk-overlay {
-  background: rgba(0, 0, 0, 0.2) !important;
+  background: rgba(0, 0, 0, 0.27) !important;
+}
+/* ============================================================
+   CYRILLIC SVG SILK INTRO — tamno smeđi video ton
+   ============================================================ */
+
+.cyrillic-svg-silk-intro .silk-video {
+  filter: 
+    brightness(0.68)
+    sepia(0.28)
+    saturate(0.82)
+    hue-rotate(-8deg)
+    blur(0.45px);
+
+  transform: scale(1.01);
+  transform-origin: center;
+}
+
+/* tamno smeđi sloj preko videa */
+.cyrillic-svg-silk-intro .silk-overlay {
+  background:
+    linear-gradient(
+      rgba(58, 32, 18, 0.18),
+      rgba(58, 32, 18, 0.22)
+    ) !important;
+}
+/* ============================================================
+   CYRILLIC SVG SILK INTRO — raspored elemenata
+   ============================================================ */
+
+.cyrillic-svg-silk-intro .silk-content {
+  justify-content: flex-start !important;
+  padding-top: clamp(48px, 8vh, 86px) !important;
+  padding-bottom: clamp(42px, 7vh, 76px) !important;
+}
+
+.cyrillic-svg-silk-intro .silk-top {
+  margin-bottom: 10px !important;
+}
+
+.cyrillic-svg-silk-intro .cyrillic-svg-names-wrap {
+  margin-top: 0 !important;
+  margin-bottom: auto !important;
+}
+
+.cyrillic-svg-silk-intro .silk-date {
+  margin-top: auto !important;
+  margin-bottom: 28px !important;
+}
+@media (max-width: 768px) {
+  .cyrillic-svg-silk-intro .silk-content {
+    padding-top: 58px !important;
+    padding-bottom: 54px !important;
+  }
+
+  .cyrillic-svg-silk-intro .silk-date {
+    margin-bottom: 24px !important;
+  }
+}
+/* ============================================================
+   CYRILLIC SVG SILK INTRO — bolji raspored elemenata
+   ============================================================ */
+
+.cyrillic-svg-silk-intro .silk-content {
+  justify-content: flex-start !important;
+  padding-top: clamp(72px, 11vh, 110px) !important;
+  padding-bottom: clamp(46px, 7vh, 72px) !important;
+}
+
+.cyrillic-svg-silk-intro .silk-top {
+  margin-bottom: 12px !important;
+}
+
+.cyrillic-svg-silk-intro .cyrillic-svg-names-wrap {
+  margin-top: 58px !important;
+  margin-bottom: 0 !important;
+}
+
+.cyrillic-svg-silk-intro .silk-date {
+  margin-top: auto !important;
+  margin-bottom: 32px !important;
 }
