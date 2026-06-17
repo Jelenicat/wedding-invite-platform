@@ -13926,18 +13926,28 @@
   background: #f5efe5;
 }
 
-/* FIKSNA POZADINA ZA CELU POZIVNICU */
 .cyrillic-svg-silk-card .csvg-fixed-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
 
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+
   background-image: var(--csvg-fixed-bg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: repeat-y;
 
   pointer-events: none;
+}
+.cyrillic-svg-silk-card {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: visible;
+  background-color: #f5efe5;
 }
 
 /* BLAGI SLOJ PREKO POZADINE */
@@ -15751,7 +15761,7 @@
 
 .cyrillic-svg-silk-card .csvg-quote-block {
   width: min(440px, 100%) !important;
-  margin: 0 auto 72px !important;
+  margin: 0 auto 130px !important;
   text-align: center !important;
 }
 
