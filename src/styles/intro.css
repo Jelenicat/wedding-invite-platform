@@ -7274,3 +7274,17 @@ color: #8e7f73;
     margin-bottom: -44px !important;
   }
 }
+/* ============================================================
+   CYRILLIC SVG SILK INTRO — tamniji video + blagi blur
+   ============================================================ */
+
+.cyrillic-svg-silk-intro .silk-video {
+  filter: brightness(0.82) blur(0.6px) saturate(0.96);
+  transform: scale(1.012);
+  transform-origin: center;
+}
+
+/* vrlo blag tamni sloj preko videa */
+.cyrillic-svg-silk-intro .silk-overlay {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
