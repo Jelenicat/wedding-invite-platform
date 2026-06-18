@@ -1561,12 +1561,12 @@ backgroundColor: "#f3ece6",
   template: "silk",
   brideName: "Jovana",
   groomName: "Nikola",
-  videoSrc: "/videos/jovana-nikola.mp4",
+  videoSrc: "/videos/jovana-nikola-2.mp4",
   fontMode: "dark",
   weddingDate: "06 SEP 2026",
   weddingTime: "17:00",
   venue: "Beograd",
-  backgroundImage: "/images/jovana-nikola-minimal.jpg",
+  backgroundImage: "/images/jovana-nikola-minimal-1.jpg",
   details: createDetails({
     welcomeText:
       "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
@@ -2168,7 +2168,7 @@ backgroundColor: "#f3ece6",
   weddingDate: "24 AVG 2026",
   weddingTime: "16:00",
   venue: "Hotel Moskva, Beograd",
-  backgroundImage: "/images/milica-ognjen-minimal.jpg",
+  backgroundImage: "/images/milica-ognjen-minimal-1.jpg",
   musicSrc: "/music/milica-aleksandar.mp3",
   details: createDetails({
  
