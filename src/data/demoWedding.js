@@ -952,62 +952,128 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   slug: "ena-aleksa",
   type: "wedding",
   template: "photo-script",
-  brideName: "Ена",
-  script: "cyrillic",
-  groomName: "Алекса",
-  videoSrc: "/videos/wedding-Ena-Aleksa2.mp4",
-  weddingDate: "18 СЕП 2026",
+  script: "latin",
+
+  brideName: "Ena",
+  groomName: "Aleksa",
+
+  videoSrc: "/videos/wedding-Ena-Aleksa-3.mp4",
+
+  weddingDate: "18 SEP 2026",
   weddingTime: "17:00",
-  venue: "Београд",
+  venue: "Beograd",
+
   details: createDetails({
-    welcomeText: "Радујемо се да овај дан поделимо са вама.",
-    date: "18 СЕП 2026",
+    theme: {
+namesGradient: `linear-gradient(
+  115deg,
+  #5f3a0f 0%,
+  #9a6a22 16%,
+  #d6ad52 34%,
+  #fff3bd 48%,
+  #f7dc8d 56%,
+  #c89532 70%,
+  #8a5b18 86%,
+  #4f300b 100%
+)`,
+
+      buttonGradient: `linear-gradient(
+        135deg,
+        #7a541c 0%,
+        #d6b46a 48%,
+        #fff1b8 100%
+      )`,
+
+      introAccent: "#d6b46a",
+      introMainText: "#f3df9f",
+      introButtonText: "#1f1609",
+      introButtonBorder: "rgba(255, 232, 160, 0.55)",
+
+      cardAccent: "#d6b46a",
+      cardTitle: "#d6b46a",
+      cardKicker: "#d6b46a",
+      cardDivider: "rgba(214, 180, 106, 0.75)",
+
+      cardEventTitle: "#f3df9f",
+      cardDotRing: "rgba(214, 180, 106, 0.18)",
+      cardLineTop: "rgba(214, 180, 106, 0.55)",
+      cardLineBottom: "rgba(214, 180, 106, 0.12)",
+
+      locationButtonBg: `linear-gradient(
+        135deg,
+        rgba(120, 82, 28, 0.42) 0%,
+        rgba(214, 180, 106, 0.24) 45%,
+        rgba(255, 232, 160, 0.18) 100%
+      )`,
+      locationButtonBorder: "rgba(214, 180, 106, 0.42)",
+      locationButtonTextColor: "#f7e7b2",
+
+      rsvpButtonBg: `linear-gradient(
+        135deg,
+        #7a541c 0%,
+        #d6b46a 48%,
+        #fff1b8 100%
+      )`,
+      rsvpButtonBorder: "rgba(255, 232, 160, 0.55)",
+      rsvpButtonText: "#1f1609",
+
+      rsvpDividerAccent: "rgba(214, 180, 106, 0.55)",
+      rsvpInputBorderFocus: "rgba(214, 180, 106, 0.55)",
+      rsvpChoiceHoverBorder: "rgba(214, 180, 106, 0.35)",
+      rsvpChoiceActiveBorder: "rgba(214, 180, 106, 0.55)",
+
+      countdownDividerTop: "rgba(214, 180, 106, 0.55)",
+      countdownNumber: "#f3df9f",
+    },
+
+    welcomeText: "Radujemo se da ovaj dan podelimo sa vama.",
+    date: "18 SEP 2026",
     dateISO: "2026-09-18T17:00:00+02:00",
 
     events: [
       {
-        label: "Окупљање гостију",
+        label: "Okupljanje gostiju",
         time: "15:00",
         icon: "gathering",
-        location: "Хотел Хајат, Београд",
+        location: "Hotel Hyatt, Beograd",
         mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
       },
       {
-        label: "Црквено венчање",
+        label: "Crkveno venčanje",
         time: "16:30",
         icon: "church",
-        location: "Црква Светог Марка, Београд",
+        location: "Crkva Svetog Marka, Beograd",
         mapLink: "https://maps.google.com/?q=Crkva+Svetog+Marka+Beograd",
       },
       {
-        label: "Грађанско венчање",
+        label: "Građansko venčanje",
         time: "17:00",
         icon: "civil",
-        location: "Хотел Хајат, Београд",
+        location: "Hotel Hyatt, Beograd",
         mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
       },
       {
-        label: "Почетак банкета",
+        label: "Početak banketa",
         time: "17:30",
         icon: "restaurant",
-        location: "Свечана сала, Хајат",
+        location: "Svečana sala, Hyatt",
         mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
       },
       {
-        label: "Афтер парти",
+        label: "After party",
         time: "22:00",
         icon: "party",
-        location: "Лаунџ бар, Хајат",
+        location: "Lounge bar, Hyatt",
         mapLink: "https://maps.google.com/?q=Hotel+Hyatt+Beograd",
       },
     ],
 
     editorialImage1: "/images/couple-blackwhite1.jpg",
 
-    dressCodeTitle: "Дрес код",
+    dressCodeTitle: "Dress code",
     dressCodePalette: ["#2a2a2a", "#6e6461", "#b9a39b", "#d6c4bb"],
-    dressCodeNote: "Елегантни, загасити и неутрални тонови.",
-    note: "Молимо вас да свој долазак потврдите на време.",
+    dressCodeNote: "Elegantni, zagasiti i neutralni tonovi.",
+    note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
 // =========================

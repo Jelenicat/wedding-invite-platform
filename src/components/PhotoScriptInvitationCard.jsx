@@ -22,6 +22,10 @@ function PhotoScriptInvitationCard({
   const themeStyles = {
     "--photo-script-card-accent":
       theme.cardAccent || theme.introAccent || "#cb7474",
+      "--photo-script-names-gradient":
+  theme.namesGradient || theme.textGradient || "none",
+"--photo-script-title-gradient":
+  theme.titleGradient || theme.namesGradient || theme.textGradient || "none",
     "--photo-script-card-text-main":
       theme.cardTextMain || "rgba(255, 255, 255, 0.84)",
     "--photo-script-card-text-soft":
@@ -102,15 +106,18 @@ function PhotoScriptInvitationCard({
 
   const hasCustomScriptFont = Boolean(theme.scriptFont);
   const hasCustomNameFont = Boolean(theme.nameFont);
-
+const hasGradientText = Boolean(
+  theme.namesGradient || theme.textGradient || theme.titleGradient
+);
   return (
     <>
       <motion.section
-        className={[
-          "photo-script-invitation",
-          hasCustomScriptFont ? "has-custom-script-font" : "",
-          hasCustomNameFont ? "has-custom-name-font" : "",
-        ]
+     className={[
+  "photo-script-invitation",
+  hasCustomScriptFont ? "has-custom-script-font" : "",
+  hasCustomNameFont ? "has-custom-name-font" : "",
+  hasGradientText ? "has-gradient-text" : "",
+]
           .filter(Boolean)
           .join(" ")}
         style={themeStyles}

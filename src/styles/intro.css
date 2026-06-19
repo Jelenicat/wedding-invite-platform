@@ -1155,7 +1155,26 @@ html {
     max-width: 260px;
   }
 }
+/* ============================================================
+   PHOTO SCRIPT INTRO — THEME GRADIENT SUPPORT
+   ============================================================ */
 
+.photo-script-intro.has-gradient-names .photo-script-names .name,
+.photo-script-intro.has-gradient-names .photo-script-and {
+  background: var(--photo-script-names-gradient);
+  background-size: 180% 180%;
+  background-position: center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.photo-script-intro.has-gradient-button .photo-script-button {
+  background: var(--photo-script-button-gradient);
+}
 /* CARD */
 .photo-card-intro {
   position: relative;
