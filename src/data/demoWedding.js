@@ -4654,6 +4654,71 @@ musicSrc: "/music/jovana-dusan-1.mp3",
     showCalendarButton: true,
   },
 },
+{
+  slug: "jovana-stefan",
+  type: "wedding",
+  template: "silk",
+
+  brideName: "Jovana",
+  groomName: "Stefan",
+
+  // ako nemaš video još, obriši ovu liniju ili je zakomentariši
+  videoSrc: "/videos/jovana-stefan.mp4",
+
+  fontMode: "light",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "13:00",
+  venue: "Wind Rose Jagodina",
+
+  // zameni pravom slikom kad je budeš imala
+  backgroundImage: "/images/jovana-stefan-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T13:00:00+02:00",
+
+    showCalendarButton: true,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "13:00",
+        icon: "church",
+        location: "Hram Svetih arhangela Mihaila i Gavrila, Jagodina",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Svetih+arhangela+Mihaila+i+Gavrila+Jagodina",
+      },
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Wind Rose, Jagodina",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Wind+Rose+Jagodina",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Wind Rose, Jagodina",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Wind+Rose+Jagodina",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Wind+Rose+Jagodina",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 10.08.2026.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 10.08.2026.",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
