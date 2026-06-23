@@ -141,7 +141,13 @@ function MinimalInvitationCard({
           {details.date && (
             <div className="minimal-invitation-date-block">
               <span className="minimal-invitation-date-label">{t.date}</span>
-              <p className="minimal-invitation-date">{details.date}</p>
+              <p className="minimal-invitation-date">
+{slug === "jovana-stefan"
+  ? details.date
+      .replace(/^(\d{1,2})(\s)/, "$1.$2")
+      .replace(/(\d{4})$/, "$1.")
+  : details.date}
+</p>
             </div>
           )}
 

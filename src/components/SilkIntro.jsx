@@ -153,13 +153,13 @@ function SilkIntro({
           </h1>
         )}
 
-        <p className={`silk-date ${fontMode}`}>
-          {month}
-          <br />
-          {day}
-          <br />
-          {year}
-        </p>
+ <p className={`silk-date ${fontMode}`}>
+  {month}
+  <br />
+  {slug === "jovana-stefan" ? `${day}.` : day}
+  <br />
+  {slug === "jovana-stefan" ? `${year}.` : year}
+</p>
 
         <button className={`silk-enter ${fontMode}`} onClick={onEnter}>
           {t.button}
