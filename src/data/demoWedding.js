@@ -4876,7 +4876,7 @@ musicSrc: "/music/jovana-dusan-1.mp3",
   weddingTime: "18:00",
   venue: "Igraonica Maštograd",
 
-  videoSrc: "/videos/ana-rodjendan-intro.mp4",
+  videoSrc: "/videos/ana-rodjendan-intro-1.mp4",
   babyImage: "/images/ana-beba.svg",
   
   introText: "Pozivamo vas da zajedno proslavimo Anin prvi rođendan.",
@@ -4896,7 +4896,7 @@ musicSrc: "/music/jovana-dusan-1.mp3",
   weddingTime: "18:00",
   venue: "Igraonica Maštograd",
 
-  videoSrc: "/videos/nikola-rodjendan-intro.mp4",
+  videoSrc: "/videos/nikola-rodjendan-intro-1.mp4",
   babyImage: "/images/nikola-beba.svg",
   
   introText: "Pozivamo vas da zajedno proslavimo Anin prvi rođendan.",
