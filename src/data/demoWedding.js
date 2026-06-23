@@ -4648,6 +4648,15 @@ musicSrc: "/music/jovana-dusan-1.mp3",
           "https://maps.google.com/?q=Talas+Resort+Kraljevo",
         buttonText: "Погледај локацију",
       },
+       {
+        label: "Грађанско венчање",
+        time: "17.00ч",
+        icon: "rings",
+        location: "Talas Resort, Краљево",
+        mapLink:
+          "https://maps.google.com/?q=Talas+Resort+Kraljevo",
+        buttonText: "Погледај локацију",
+      },
     ],
 
     showDressCode: false,
