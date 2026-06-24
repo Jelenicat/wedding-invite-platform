@@ -4727,6 +4727,42 @@ color: #8e7f73;
 .df-intro-button:hover {
   background: rgba(244, 238, 232, 0.12);
 }
+.df-intro-names,
+.df-intro-names em,
+.df-intro-button {
+  background: linear-gradient(
+    135deg,
+    #fff3b0 0%,
+    #d6b46a 28%,
+    #f8e7a1 52%,
+    #b8872f 76%,
+    #fff1a8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.df-intro-names {
+  text-shadow: none;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.75));
+}
+
+.df-intro-kicker,
+.df-intro-date {
+  color: rgba(232, 203, 137, 0.86);
+}
+
+.df-intro-button {
+  border: 1px solid rgba(214, 180, 106, 0.55);
+  background-color: rgba(10, 10, 10, 0.46);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.48);
+}
+
+.df-intro-button:hover {
+  background-color: rgba(214, 180, 106, 0.12);
+}
 /* ============================================================
    IntroHeart.css — image card + luxury glass heart button
    ============================================================ */

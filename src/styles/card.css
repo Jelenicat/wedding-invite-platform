@@ -9417,6 +9417,92 @@
     font-size: 13px;
   }
 }
+.df-card-page {
+  --df-gold-gradient: linear-gradient(
+    135deg,
+    #fff3b0 0%,
+    #d6b46a 28%,
+    #f8e7a1 52%,
+    #b8872f 76%,
+    #fff1a8 100%
+  );
+}
+
+/* Glavni zlatni gradient tekst */
+.df-card-names,
+.df-card-names em,
+.df-card-map-button {
+  background-image: var(--df-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Imena da ne izgube dubinu */
+.df-card-names {
+  text-shadow: none;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.78));
+}
+
+/* Sitni tekst neka bude champagne/gold, elegantnije nego full gradient */
+.df-card-kicker,
+.df-card-date,
+.df-card-text,
+.df-card-section-title,
+.df-card-event-time,
+.df-card-event-label,
+.df-card-event-location,
+.df-card-location,
+.df-card-location span,
+.df-card-location strong,
+.df-card-note,
+.df-card-dress-info span,
+.df-card-dress-info p {
+  color: rgba(232, 203, 137, 0.86);
+}
+
+/* Linkovi lokacije */
+.df-card-event-location-link {
+  color: rgba(232, 203, 137, 0.9);
+  border-bottom-color: rgba(214, 180, 106, 0.42);
+}
+
+.df-card-event-location-link:hover {
+  color: #fff1a8;
+  border-bottom-color: rgba(248, 231, 161, 0.75);
+}
+
+/* Divideri zlatni */
+.df-card-divider {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(214, 180, 106, 0.62),
+    transparent
+  );
+}
+
+.df-card-event-line {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(214, 180, 106, 0.52),
+    transparent
+  );
+}
+
+/* Dugme */
+.df-card-map-button {
+  border: 1px solid rgba(214, 180, 106, 0.55);
+  background-color: rgba(10, 10, 10, 0.42);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.46);
+}
+
+.df-card-map-button:hover {
+  background-color: rgba(214, 180, 106, 0.12);
+  border-color: rgba(248, 231, 161, 0.78);
+}
  /* ============================= */
 /* ITALIAN LAKE VIDEO TEMPLATE   */
 /* ============================= */

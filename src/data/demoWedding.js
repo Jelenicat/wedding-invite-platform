@@ -61,6 +61,9 @@ italianVariant,
   swanLeft,
   swanRight,
 scheduleBackground,
+introBabyCircleSvg,
+introOrnamentTopSvg,
+introOrnamentBottomSvg,
 hideRsvpPhotoBlock = false,
 sliderImages = [],
   showCalendarButton = false,
@@ -125,6 +128,9 @@ italianVariant,
   swanLeft,
   swanRight,
 scheduleBackground,
+introBabyCircleSvg,
+introOrnamentTopSvg,
+introOrnamentBottomSvg,
 hideRsvpPhotoBlock,
   sliderImages,
   showCalendarButton,
@@ -4884,6 +4890,123 @@ musicSrc: "/music/jovana-dusan-1.mp3",
   details: createDetails({
     dateISO: "2026-09-01T18:00:00+02:00",
     note: "Molimo vas da potvrdite dolazak.",
+  }),
+},
+{
+  slug: "ana-prvi-rodjendan",
+  type: "birthday",
+  template: "birthday-baby-luxury",
+
+  brideName: "Ana",
+
+  weddingDate: "15.09.2026.",
+  weddingTime: "17:00",
+  venue: "Restoran Romantična noć 2, Kaluđerica",
+
+  videoSrc: "/videos/ana-rodjendan-intro-1.mp4",
+
+  backgroundImage: "/images/ana-prvi-rodjendan-fallback.jpg",
+
+  details: createDetails({
+    introOrnamentTopSvg: "/images/birthday/ana/ornament-top.svg",
+    introOrnamentBottomSvg: "/images/birthday/ana/ornament-bottom.svg",
+
+    theme: {
+      babyMain: "#ae6f60",
+      babySoft: "#ead7bf",
+      babyLight: "#fff6f1",
+      babyMuted: "#a4695e",
+      babyBorder: "rgba(198, 131, 101, 0.52)",
+      babyShadow: "rgba(154, 94, 76, 0.18)",
+    },
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da zajedno proslavimo Anin prvi rođendan.",
+
+    date: "15.09.2026.",
+    dateISO: "2026-09-15T17:00:00+02:00",
+
+    rsvpText:
+      "Radovaćemo se da zajedno proslavimo Anin prvi rođendan.",
+
+    venue: "Restoran Romantična noć 2, Kaluđerica",
+
+    events: [
+      {
+        label: "Krštenje",
+        time: "14:30",
+        icon: "church",
+        location: "Crkva Sv. Luka, Krnjača",
+        mapLink: "https://maps.google.com/?q=Crkva+Sv.+Luka+Krnjaca",
+      },
+      {
+        label: "Proslava",
+        time: "16:00",
+        icon: "cake",
+        location: "Restoran Romantična noć 2, Kaluđerica",
+        mapLink:
+          "https://maps.google.com/?q=Restoran%20Romanti%C4%8Dna%20no%C4%87%202%20Kalu%C4%91erica",
+      },
+    ],
+
+    showCalendarButton: true,
+    showDressCode: false,
+    note: "Dolazak je potrebno potvrditi do 01.09.2026.",
+  }),
+},
+
+{
+  slug: "nikola-prvi-rodjendan",
+  type: "birthday",
+  template: "birthday-baby-luxury",
+
+  brideName: "Nikola",
+
+  weddingDate: "15.09.2026.",
+  weddingTime: "17:00",
+  venue: "Restoran Primer",
+
+  videoSrc: "/videos/nikola-rodjendan-intro-1.mp4",
+
+  backgroundImage: "/images/nikola-prvi-rodjendan-fallback.jpg",
+
+  details: createDetails({
+    introOrnamentTopSvg: "/images/birthday/nikola/ornament-top.svg",
+    introOrnamentBottomSvg: "/images/birthday/nikola/ornament-bottom.svg",
+
+   theme: {
+  babyMain: "#8a5f3d",
+  babySoft: "#ead7bf",
+  babyLight: "#fff8ef",
+  babyMuted: "#7a5a43",
+  babyBorder: "rgba(138, 95, 61, 0.42)",
+  babyShadow: "rgba(112, 78, 48, 0.18)",
+},
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da zajedno proslavimo Nikolin prvi rođendan.",
+
+    date: "15.09.2026.",
+    dateISO: "2026-09-15T17:00:00+02:00",
+
+    rsvpText:
+      "Radovaćemo se da zajedno proslavimo Nikolin prvi rođendan.",
+
+    venue: "Restoran Primer",
+
+    events: [
+      {
+        label: "Rođendan",
+        time: "17:00",
+        icon: "cake",
+        location: "Restoran Primer",
+        mapLink: "https://maps.google.com/?q=Restoran+Primer",
+      },
+    ],
+
+    showCalendarButton: true,
+    showDressCode: false,
+    note: "Dolazak je potrebno potvrditi do 01.09.2026.",
   }),
 },
 {

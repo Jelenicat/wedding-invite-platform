@@ -989,3 +989,192 @@ font-size: clamp(124px, 33vw, 184px);
     letter-spacing: 3px;
   }
 }
+/* ============================= */
+/* BIRTHDAY BABY LUXURY INTRO */
+/* ============================= */
+
+.bbaby-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--bbaby-light, #f7eee6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bbaby-bg-video,
+.bbaby-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bbaby-bg-video {
+  object-fit: cover;
+}
+
+.bbaby-bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+.bbaby-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 430px);
+  min-height: 100svh;
+  padding: 56px 24px 46px;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bbaby-content-centered {
+  justify-content: center;
+}
+
+.bbaby-content-centered::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(82vw, 350px);
+  height: 330px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+
+  filter: blur(4px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bbaby-ornament {
+  display: block;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 5px 8px color-mix(in srgb, var(--bbaby-main, #ae6f60) 24%, transparent))
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.65));
+}
+
+.bbaby-ornament-top {
+  width: min(118px, 31vw);
+  margin: 0 0 16px;
+  opacity: 0.95;
+}
+
+.bbaby-name {
+  margin: 0;
+  font-family: "Allura", "Great Vibes", "Cormorant Garamond", cursive;
+  font-size: clamp(96px, 27vw, 142px);
+  line-height: 0.78;
+  font-weight: 400;
+  color: var(--bbaby-main, #ae6f60);
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.78),
+    0 12px 24px color-mix(in srgb, var(--bbaby-main, #ae6f60) 22%, transparent);
+}
+
+.bbaby-subtitle {
+  margin: 22px 0 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(25px, 6.8vw, 34px);
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+  color: var(--bbaby-muted, #a4695e);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7),
+    0 8px 14px color-mix(in srgb, var(--bbaby-main, #ae6f60) 14%, transparent);
+}
+
+.bbaby-ornament-bottom {
+  width: min(245px, 62vw);
+  margin: 0 0 64px;
+  opacity: 0.98;
+}
+
+.bbaby-button {
+  width: min(100%, 318px);
+  min-height: 62px;
+  border-radius: 999px;
+  border: 1px solid var(--bbaby-border, rgba(198, 131, 101, 0.52));
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bbaby-light, #fff6f1) 92%, white 8%),
+      color-mix(in srgb, var(--bbaby-soft, #f6becd) 32%, white 68%)
+    );
+  color: var(--bbaby-muted, #a86a5d);
+  font-family: "Cinzel", "Cormorant Garamond", serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow:
+    0 18px 38px var(--bbaby-shadow, rgba(154, 94, 76, 0.18)),
+    inset 0 0 20px rgba(255, 255, 255, 0.55);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.bbaby-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 24px 46px color-mix(in srgb, var(--bbaby-main, #ae6f60) 26%, transparent),
+    inset 0 0 24px rgba(255, 255, 255, 0.65);
+}
+
+.bbaby-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 390px) {
+  .bbaby-content {
+    padding: 48px 20px 40px;
+  }
+
+  .bbaby-content-centered::before {
+    top: 50%;
+    width: min(86vw, 330px);
+    height: 300px;
+  }
+
+  .bbaby-ornament-top {
+    width: min(108px, 30vw);
+    margin-bottom: 14px;
+  }
+
+  .bbaby-name {
+    font-size: clamp(88px, 25vw, 120px);
+  }
+
+  .bbaby-subtitle {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    font-size: 25px;
+    letter-spacing: 1.4px;
+  }
+
+  .bbaby-ornament-bottom {
+    width: min(224px, 61vw);
+    margin-bottom: 56px;
+  }
+
+  .bbaby-button {
+    width: min(100%, 305px);
+    min-height: 58px;
+    font-size: 12px;
+    letter-spacing: 2.6px;
+  }
+}

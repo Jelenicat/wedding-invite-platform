@@ -82,6 +82,8 @@ import BirthdayGlassIntro from "../components/BirthdayGlassIntro";
 import BirthdayGlassInvitationCard from "../components/BirthdayGlassInvitationCard";
 import BirthdayMarbleIntro from "../components/BirthdayMarbleIntro";
 import BirthdayMarbleInvitationCard from "../components/BirthdayMarbleInvitationCard";
+import BirthdayBabyIntro from "../components/BirthdayBabyIntro";
+import BirthdayBabyInvitationCard from "../components/BirthdayBabyInvitationCard";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -243,6 +245,10 @@ const TEMPLATE_COMPONENTS = {
 "cyrillic-svg-silk": {
   Intro: CyrillicSvgSilkIntro,
   Invitation: CyrillicSvgSilkInvitationCard,
+},
+"birthday-baby-luxury": {
+  Intro: BirthdayBabyIntro,
+  Invitation: BirthdayBabyInvitationCard,
 },
 };
 
