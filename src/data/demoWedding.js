@@ -4971,8 +4971,8 @@ musicSrc: "/music/jovana-dusan-1.mp3",
   backgroundImage: "/images/nikola-prvi-rodjendan-fallback.jpg",
 
   details: createDetails({
-    introOrnamentTopSvg: "/images/birthday/nikola/ornament-top.svg",
-    introOrnamentBottomSvg: "/images/birthday/nikola/ornament-bottom.svg",
+    introOrnamentTopSvg: "/images/birthday/ana/ornament-top.svg",
+    introOrnamentBottomSvg: "/images/birthday/ana/ornament-bottom.svg",
 
    theme: {
   babyMain: "#8a5f3d",
