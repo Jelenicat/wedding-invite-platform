@@ -4851,7 +4851,7 @@ musicSrc: "/music/teodora-branislav.mp3",
         icon: "church",
         location: "Hram Preobraženja Gospodnjeg",
         mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Hram+Preobrazenja+Gospodnjeg",
+          "https://www.google.com/maps/place/%D0%A5%D1%80%D0%B0%D0%BC+%D0%9F%D1%80%D0%B5%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D1%9A%D0%B0+%D0%93%D0%BE%D1%81%D0%BF%D0%BE%D0%B4%D1%9A%D0%B5%D0%B3/@44.790724,20.4839501,699m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a707ca8676db3:0x8108329da96527e0!8m2!3d44.790724!4d20.486525!16s%2Fg%2F1z449_5ln?entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D",
       },
       {
         label: "Skup gostiju",

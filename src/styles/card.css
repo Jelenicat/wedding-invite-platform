@@ -6875,6 +6875,23 @@
     font-size: 50px;
   }
 }
+@media (max-width: 380px) {
+  .editorial-title {
+    font-size: 36px;
+  }
+
+  .editorial-hero-date {
+    font-size: 30px;
+  }
+
+  .editorial-time {
+    font-size: 31px;
+  }
+
+  .editorial-monogram {
+    font-size: 50px;
+  }
+}
 .passport-card-page {
   position: relative;
   min-height: 100vh;
