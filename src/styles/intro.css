@@ -5458,7 +5458,7 @@ color: #8e7f73;
 .mag-intro {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100svh;
   height: 100svh;
   overflow: hidden;
   background: #111;
@@ -5510,9 +5510,9 @@ color: #8e7f73;
   position: relative;
   z-index: 2;
   width: min(100%, 520px);
-  min-height: 100vh;
+  min-height: 100svh;
   height: 100svh;
-  padding: 30px 24px 30px;
+  padding: 30px 24px calc(18px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -5599,7 +5599,7 @@ color: #8e7f73;
 
 .mag-intro-names {
   margin-top: auto;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .mag-intro-script {
@@ -5636,7 +5636,7 @@ color: #8e7f73;
 .mag-intro-date-block {
   position: absolute;
   right: 24px;
-  bottom: 250px;
+  bottom: 190px;
   text-align: center;
   color: rgba(255, 255, 255, 0.94);
   text-shadow: 0 8px 22px rgba(0, 0, 0, 0.42);
@@ -5673,11 +5673,12 @@ color: #8e7f73;
 
 .mag-intro-button {
   position: relative;
-  margin-top: 18px;
-  margin-bottom: 80px;
+  margin-top: 14px;
+  margin-bottom: 0;
   width: 100%;
   max-width: 100%;
-  height: 64px;
+  height: 58px;
+  flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.97);
@@ -5696,7 +5697,7 @@ color: #8e7f73;
 .mag-intro-button span {
   position: absolute;
   left: 50%;
-  bottom: 14px;
+  bottom: 12px;
   width: 38px;
   height: 1px;
   transform: translateX(-50%);
@@ -5711,7 +5712,7 @@ color: #8e7f73;
 
 @media (min-width: 768px) {
   .mag-intro-content {
-    padding: 42px 28px 32px;
+    padding: 42px 28px calc(24px + env(safe-area-inset-bottom));
   }
 
   .mag-intro-title {
@@ -5725,7 +5726,7 @@ color: #8e7f73;
   }
 
   .mag-intro-names {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .mag-intro-script {
@@ -5739,7 +5740,7 @@ color: #8e7f73;
 
   .mag-intro-date-block {
     right: 28px;
-    bottom: 235px;
+    bottom: 198px;
   }
 
   .mag-intro-date-block strong {
@@ -5755,9 +5756,9 @@ color: #8e7f73;
   }
 
   .mag-intro-button {
-    margin-top: 22px;
-    margin-bottom: 82px;
-    height: 66px;
+    margin-top: 16px;
+    margin-bottom: 0;
+    height: 62px;
     font-size: 12px;
   }
 }
@@ -5766,7 +5767,7 @@ color: #8e7f73;
 
 @media (max-width: 390px) {
   .mag-intro-content {
-    padding: 24px 18px 24px;
+    padding: 24px 18px calc(16px + env(safe-area-inset-bottom));
   }
 
   .mag-intro-title {
@@ -5800,7 +5801,7 @@ color: #8e7f73;
 
   .mag-intro-date-block {
     right: 18px;
-    bottom: 232px;
+    bottom: 178px;
   }
 
   .mag-intro-date-block strong {
@@ -5816,8 +5817,8 @@ color: #8e7f73;
   }
 
   .mag-intro-button {
-    margin-bottom: 72px;
-    height: 60px;
+    margin-bottom: 0;
+    height: 56px;
     font-size: 10px;
     letter-spacing: 0.24em;
   }
@@ -5828,7 +5829,7 @@ color: #8e7f73;
 @media (max-height: 740px) {
   .mag-intro-content {
     padding-top: 22px;
-    padding-bottom: 22px;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
   }
 
   .mag-intro-left-copy {
@@ -5836,15 +5837,15 @@ color: #8e7f73;
   }
 
   .mag-intro-names {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .mag-intro-date-block {
-    bottom: 218px;
+    bottom: 168px;
   }
 
   .mag-intro-button {
-    margin-bottom: 54px;
+    margin-bottom: 0;
   }
 }
 
@@ -5880,7 +5881,7 @@ color: #8e7f73;
   }
 
   .mag-intro-date-block {
-    bottom: 198px;
+    bottom: 152px;
   }
 
   .mag-intro-date-block strong {
@@ -5896,8 +5897,8 @@ color: #8e7f73;
   }
 
   .mag-intro-button {
-    height: 56px;
-    margin-bottom: 42px;
+    height: 54px;
+    margin-bottom: 0;
   }
 }
 /* ============================= */
