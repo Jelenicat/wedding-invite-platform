@@ -7951,7 +7951,19 @@ margin-bottom: 2px;
   background: #1f1b18;
   color: #f5f1ec;
 }
+.editorial-rsvp-field {
+  width: 100%;
+}
 
+.editorial-rsvp-label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #2f2b28;
+  text-align: left;
+}
 /* =========================
    EDITORIAL COUNTDOWN (FLAT)
 ========================= */
@@ -8020,7 +8032,70 @@ margin-bottom: 2px;
   line-height: 1.35;
   color: rgba(42, 38, 35, 0.72);
 }
+.editorial-countdown-note {
+  max-width: 260px;
+  margin: 22px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  line-height: 1.45;
+  font-style: italic;
+  color: rgba(42, 38, 35, 0.68);
+  text-align: center;
+}
+.editorial-countdown-calendar-box {
+  margin-top: 26px;
+  text-align: center;
+}
 
+.editorial-countdown-calendar-btn {
+  appearance: none;
+  border: 1px solid rgba(47, 43, 40, 0.34);
+  background: #1f1b18;
+  color: #f5f1ec;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 12px 26px rgba(31, 27, 24, 0.18);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.editorial-countdown-calendar-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+  box-shadow: 0 16px 32px rgba(31, 27, 24, 0.24);
+}
+
+.editorial-countdown-calendar-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(31, 27, 24, 0.16);
+}
+
+.editorial-countdown-calendar-btn span {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.editorial-countdown-calendar-hint {
+  max-width: 240px;
+  margin: 10px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(42, 38, 35, 0.58);
+  text-align: center;
+}
 /* =========================
    MOBILE
 ========================= */

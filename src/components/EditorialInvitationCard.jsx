@@ -6,14 +6,13 @@ export default function EditorialInvitationCard({
   brideName,
   groomName,
   weddingDate,
-  details,
+  details = {},
   image1,
   venue,
+  slug,
+  type,
 }) {
   const events = details?.events || [];
-  const event1 = events[0];
-  const event2 = events[1];
-  const event3 = events[2];
 
   const dressWomen = details?.dressCodeWomen || "";
   const dressMen = details?.dressCodeMen || "";
@@ -22,12 +21,8 @@ export default function EditorialInvitationCard({
     venue ||
     details?.venue ||
     details?.restaurantVenue ||
-    event3?.location ||
-    event2?.location ||
-    event1?.location ||
+    events?.[events.length - 1]?.location ||
     "";
-
-  const monogram = `${brideName?.[0] || ""}${groomName?.[0] || ""}`;
 
   return (
     <section className="editorial-card">
@@ -39,7 +34,7 @@ export default function EditorialInvitationCard({
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
-          {/* HERO */}
+          {/* UVOD */}
           <section className="editorial-hero">
             <p className="editorial-hero-top">
               Ljubav je najveći
@@ -60,7 +55,7 @@ export default function EditorialInvitationCard({
             </p>
           </section>
 
-          {/* LOCATION */}
+          {/* LOKACIJA */}
           <section className="editorial-section editorial-location-section">
             <h2 className="editorial-title">LOKACIJA</h2>
             <div className="editorial-script">restoran</div>
@@ -77,103 +72,136 @@ export default function EditorialInvitationCard({
 
             <div className="editorial-location-text">
               {locationText ? (
-                <p>{locationText}</p>
+                <div className="editorial-location-stack">
+                  <div className="editorial-location-name-row">
+                    {details?.mapLink ? (
+                      <a
+                        href={details.mapLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="editorial-location-main-link"
+                      >
+                        {locationText}
+                      </a>
+                    ) : (
+                      <span className="editorial-location-main-link">
+                        {locationText}
+                      </span>
+                    )}
+                  </div>
+
+                  {details?.mapLink && (
+                    <div className="editorial-location-button-row">
+                      <a
+                        href={details.mapLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="editorial-map-link"
+                      >
+                        Otvori lokaciju
+                      </a>
+                    </div>
+                  )}
+                </div>
               ) : (
                 <p style={{ opacity: 0.5 }}>Lokacija uskoro</p>
               )}
-
-              {details?.mapLink && (
-                <a
-                  href={details.mapLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="editorial-map-link"
-                >
-                  Otvori lokaciju
-                </a>
-              )}
             </div>
-
-          
           </section>
 
-          {/* TIMING */}
+          {/* RASPORED */}
           {!!events.length && (
             <section className="editorial-section editorial-timing-section">
               <h2 className="editorial-title">RASPORED</h2>
-              <div className="editorial-script">timeline</div>
+              <div className="editorial-script">raspored</div>
 
               <div className="editorial-timeline">
                 <div className="editorial-timeline-line" />
 
-                {event1 && (
-                  <div className="editorial-timeline-item">
-                    <div className="editorial-time">{event1.time}</div>
-                    <div className="editorial-time-label">{event1.label}</div>
-                    {event1.location && (
-                      <div className="editorial-time-location">
-                        {event1.location}
-                      </div>
+                {events.map((event, index) => (
+                  <div
+                    className="editorial-timeline-item"
+                    key={`${event.time || "event"}-${index}`}
+                  >
+                    {event.time && (
+                      <div className="editorial-time">{event.time}</div>
                     )}
-                  </div>
-                )}
 
-                {event2 && (
-                  <div className="editorial-timeline-item">
-                    <div className="editorial-time">{event2.time}</div>
-                    <div className="editorial-time-label">{event2.label}</div>
-                    {event2.location && (
-                      <div className="editorial-time-location">
-                        {event2.location}
+                    {event.label && (
+                      <div className="editorial-time-label">
+                        {event.label}
                       </div>
                     )}
-                  </div>
-                )}
 
-                {event3 && (
-                  <div className="editorial-timeline-item">
-                    <div className="editorial-time">{event3.time}</div>
-                    <div className="editorial-time-label">{event3.label}</div>
-                    {event3.location && (
-                      <div className="editorial-time-location">
-                        {event3.location}
-                      </div>
-                    )}
+                    {event.location &&
+                      (event.mapLink ? (
+                        <a
+                          href={event.mapLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="editorial-time-location editorial-time-location-link"
+                        >
+                          {event.location}
+                        </a>
+                      ) : (
+                        <div className="editorial-time-location">
+                          {event.location}
+                        </div>
+                      ))}
                   </div>
-                )}
+                ))}
               </div>
             </section>
           )}
 
-          {/* DRESS CODE */}
-          <section className="editorial-section editorial-dress-section">
-            <h2 className="editorial-title editorial-dress-title">
-              DRESS
-              <br />
-              CODE
-            </h2>
+          {/* KOD OBLAČENJA */}
+          {details?.showDressCode && (
+            <section className="editorial-section editorial-dress-section">
+              <h2 className="editorial-title editorial-dress-title">
+                KOD
+                <br />
+                OBLAČENJA
+              </h2>
 
-            <div className="editorial-dress-copy">
-              {dressWomen && <p>{dressWomen}</p>}
-              {dressMen && <p>{dressMen}</p>}
-              {!dressWomen && !dressMen && (
-                <p>Elegantna garderoba u crnim i neutralnim tonovima.</p>
-              )}
-            </div>
+              <div className="editorial-dress-copy">
+                {dressWomen && <p>{dressWomen}</p>}
+                {dressMen && <p>{dressMen}</p>}
 
-            <div className="editorial-color-row">
-              <span className="editorial-color editorial-color-light" />
-              <span className="editorial-color editorial-color-dark" />
-            </div>
+                {!dressWomen && !dressMen && details?.dressCodeNote && (
+                  <p>{details.dressCodeNote}</p>
+                )}
 
-            <div className="editorial-color-label">TOTAL BLACK</div>
-          </section>
+                {!dressWomen && !dressMen && !details?.dressCodeNote && (
+                  <p>Elegantna garderoba u skladu sa stilom proslave.</p>
+                )}
+              </div>
 
-          {/* RSVP */}
-          <EditorialRSVP brideName={brideName} groomName={groomName} />
+              <div className="editorial-color-row">
+                <span className="editorial-color editorial-color-light" />
+                <span className="editorial-color editorial-color-dark" />
+              </div>
 
-          {/* COUNTDOWN */}
-          <EditorialCountdown targetDate={details?.dateISO} />
+              <div className="editorial-color-label">CRNI TONOVI</div>
+            </section>
+          )}
+
+          {/* POTVRDA DOLASKA */}
+          <EditorialRSVP
+            slug={slug}
+            eventType={type || "wedding"}
+            brideName={brideName}
+            groomName={groomName}
+          />
+
+          {/* ODBROJAVANJE */}
+         <EditorialCountdown
+  targetDate={details?.dateISO}
+  brideName={brideName}
+  groomName={groomName}
+  details={details}
+  script={details?.script || "latin"}
+  slug={slug}
+/>
         </motion.div>
       </div>
     </section>

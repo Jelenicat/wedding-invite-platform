@@ -129,39 +129,7 @@ function MagazineEditorialIntro({
           <span />
         </motion.button>
 
-        <motion.div
-          className="mag-intro-bottom"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.45, duration: 0.9 }}
-        >
-          <div className="mag-intro-barcode">
-            <i />
-            <i />
-            <i className="wide" />
-            <i />
-            <i />
-            <i className="wide" />
-            <i />
-            <i />
-            <i />
-            <i className="wide" />
-            <i />
-            <i />
-            <i className="wide" />
-            <i />
-            <i />
-            <i />
-            <em>{ticketNumber}</em>
-          </div>
-
-          <div className="mag-intro-follow">
-            Pozivnica
-            <br />
-            se otvara.
-            <span />
-          </div>
-        </motion.div>
+        
       </motion.div>
     </section>
   );

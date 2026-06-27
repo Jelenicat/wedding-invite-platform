@@ -1,14 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../firebase";
 
-export default function EditorialRSVP({ brideName, groomName }) {
+export default function EditorialRSVP({
+  slug,
+  eventType,
+  brideName,
+  groomName,
+}) {
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
-    guests: 1,
+    guests: "1",
   });
 
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!submitted) return;
+
+    const timer = setTimeout(() => {
+      setSubmitted(false);
+      setFormData({
+        fullName: "",
+        attending: "",
+        guests: "1",
+      });
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [submitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,14 +47,7 @@ export default function EditorialRSVP({ brideName, groomName }) {
         return {
           ...prev,
           attending: value,
-          guests: value === "da" ? prev.guests || 1 : 0,
-        };
-      }
-
-      if (name === "guests") {
-        return {
-          ...prev,
-          guests: Number(value),
+          guests: value === "da" ? prev.guests || "1" : "",
         };
       }
 
@@ -36,26 +58,61 @@ export default function EditorialRSVP({ brideName, groomName }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
-      ...formData,
-      guests: formData.attending === "da" ? formData.guests : 0,
-    };
+    if (!slug || !eventType) {
+      alert("Nedostaje slug ili tip događaja.");
+      return;
+    }
 
-    console.log("RSVP podaci:", payload);
+    if (!formData.fullName.trim()) {
+      alert("Unesite ime i prezime.");
+      return;
+    }
 
-    setSubmitted(true);
+    if (!formData.attending) {
+      alert("Izaberite da li dolazite.");
+      return;
+    }
 
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        fullName: "",
-        attending: "",
-        guests: 1,
+    const guestsCount = Number(formData.guests);
+
+    if (formData.attending === "da") {
+      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+        alert("Unesite ispravan broj osoba.");
+        return;
+      }
+    }
+
+    setLoading(true);
+
+    try {
+      await setDoc(
+        doc(db, "events", slug),
+        {
+          slug,
+          eventType,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+
+      await addDoc(collection(db, "events", slug, "rsvps"), {
+        eventType,
+        fullName: formData.fullName.trim(),
+        attending: formData.attending,
+        guests: formData.attending === "da" ? guestsCount : 0,
+        createdAt: serverTimestamp(),
       });
-    }, 3000);
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Greška pri slanju RSVP:", error);
+      alert("Došlo je do greške pri slanju.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,8 +124,8 @@ export default function EditorialRSVP({ brideName, groomName }) {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="editorial-rsvp-title">RSVP</h2>
-        <div className="editorial-rsvp-script">confirm attendance</div>
+        <h2 className="editorial-rsvp-title">POTVRDA DOLASKA</h2>
+        <div className="editorial-rsvp-script">potvrdite prisustvo</div>
 
         <p className="editorial-rsvp-text">
           Molimo vas da potvrdite dolazak na proslavu
@@ -135,21 +192,32 @@ export default function EditorialRSVP({ brideName, groomName }) {
               </div>
 
               {formData.attending === "da" && (
-                <input
-                  type="number"
-                  name="guests"
-                  min="1"
-                  max="10"
-                  value={formData.guests}
-                  onChange={handleChange}
-                  className="editorial-rsvp-input"
-                  placeholder="Broj gostiju"
-                  required
-                />
+                <div className="editorial-rsvp-field">
+                  <label className="editorial-rsvp-label" htmlFor="guests">
+                    Broj gostiju
+                  </label>
+
+                  <input
+                    id="guests"
+                    type="number"
+                    name="guests"
+                    min="1"
+                    max="10"
+                    value={formData.guests}
+                    onChange={handleChange}
+                    className="editorial-rsvp-input"
+                    placeholder="Unesite broj gostiju"
+                    required
+                  />
+                </div>
               )}
 
-              <button type="submit" className="editorial-rsvp-button">
-                Potvrdi dolazak
+              <button
+                type="submit"
+                className="editorial-rsvp-button"
+                disabled={loading}
+              >
+                {loading ? "Slanje..." : "Pošalji potvrdu"}
               </button>
             </motion.form>
           )}

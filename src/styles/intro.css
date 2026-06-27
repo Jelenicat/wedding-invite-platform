@@ -5459,6 +5459,7 @@ color: #8e7f73;
   position: relative;
   width: 100%;
   min-height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background: #111;
   color: #fff;
@@ -5473,28 +5474,22 @@ color: #8e7f73;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  filter: grayscale(1) contrast(1.06) brightness(0.82);
   transform-origin: center;
 }
 
 .mag-intro-overlay {
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background:
     linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.08) 25%,
-      rgba(0, 0, 0, 0.22) 58%,
-      rgba(0, 0, 0, 0.66) 100%
-    ),
-    radial-gradient(
-      circle at 70% 42%,
-      rgba(255, 255, 255, 0.05),
-      rgba(0, 0, 0, 0.22) 55%,
-      rgba(0, 0, 0, 0.58) 100%
+      rgba(0, 0, 0, 0.28) 0%,
+      rgba(0, 0, 0, 0.18) 18%,
+      rgba(0, 0, 0, 0.05) 38%,
+      rgba(0, 0, 0, 0.04) 58%,
+      rgba(0, 0, 0, 0.1) 100%
     );
-  pointer-events: none;
 }
 
 .mag-intro-grain {
@@ -5516,6 +5511,7 @@ color: #8e7f73;
   z-index: 2;
   width: min(100%, 520px);
   min-height: 100vh;
+  height: 100svh;
   padding: 30px 24px 30px;
   display: flex;
   flex-direction: column;
@@ -5533,8 +5529,10 @@ color: #8e7f73;
   line-height: 0.9;
   letter-spacing: -0.05em;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+  color: rgba(255, 255, 255, 0.98);
+  text-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.45),
+    0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
 .mag-intro-issue {
@@ -5549,6 +5547,9 @@ color: #8e7f73;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.82);
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.48),
+    0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
 .mag-intro-issue span:not(:last-child)::after {
@@ -5565,6 +5566,9 @@ color: #8e7f73;
   font-style: italic;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.9);
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.48),
+    0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
 .mag-intro-left-copy {
@@ -5576,6 +5580,9 @@ color: #8e7f73;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.88);
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.48),
+    0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
 .mag-intro-left-copy p {
@@ -5624,7 +5631,8 @@ color: #8e7f73;
   font-style: italic;
 }
 
-/* DESNI DATUM SAD NIJE VIŠE PREVIŠE NISKO */
+/* DATUM DESNO */
+
 .mag-intro-date-block {
   position: absolute;
   right: 24px;
@@ -5662,9 +5670,11 @@ color: #8e7f73;
 }
 
 /* DUGME */
+
 .mag-intro-button {
   position: relative;
   margin-top: 18px;
+  margin-bottom: 80px;
   width: 100%;
   max-width: 100%;
   height: 64px;
@@ -5697,69 +5707,8 @@ color: #8e7f73;
   background: rgba(255, 255, 255, 0.12);
 }
 
-.mag-intro-bottom {
-  margin-top: 22px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.mag-intro-barcode {
-  width: 126px;
-  height: 58px;
-  padding: 7px 8px 5px;
-  background: rgba(255, 255, 255, 0.92);
-  display: flex;
-  align-items: stretch;
-  gap: 3px;
-  position: relative;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.26);
-  box-sizing: border-box;
-}
-
-.mag-intro-barcode i {
-  display: block;
-  width: 3px;
-  height: 36px;
-  background: #111;
-}
-
-.mag-intro-barcode i.wide {
-  width: 7px;
-}
-
-.mag-intro-barcode em {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 3px;
-  text-align: center;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-style: normal;
-  font-size: 9px;
-  letter-spacing: 0.26em;
-  color: #111;
-}
-
-.mag-intro-follow {
-  text-align: right;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 18px;
-  line-height: 1.02;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.mag-intro-follow span {
-  display: block;
-  width: 42px;
-  height: 1px;
-  margin: 8px 0 0 auto;
-  background: rgba(255, 255, 255, 0.5);
-}
-
 /* TABLET / DESKTOP */
+
 @media (min-width: 768px) {
   .mag-intro-content {
     padding: 42px 28px 32px;
@@ -5807,16 +5756,14 @@ color: #8e7f73;
 
   .mag-intro-button {
     margin-top: 22px;
+    margin-bottom: 82px;
     height: 66px;
     font-size: 12px;
-  }
-
-  .mag-intro-bottom {
-    margin-top: 24px;
   }
 }
 
 /* BAŠ USKI TELEFONI */
+
 @media (max-width: 390px) {
   .mag-intro-content {
     padding: 24px 18px 24px;
@@ -5869,18 +5816,88 @@ color: #8e7f73;
   }
 
   .mag-intro-button {
+    margin-bottom: 72px;
     height: 60px;
     font-size: 10px;
     letter-spacing: 0.24em;
   }
+}
 
-  .mag-intro-barcode {
-    width: 108px;
-    height: 52px;
+/* NIŽI TELEFONI - DA SVE STANE NA JEDAN EKRAN */
+
+@media (max-height: 740px) {
+  .mag-intro-content {
+    padding-top: 22px;
+    padding-bottom: 22px;
   }
 
-  .mag-intro-follow {
-    font-size: 16px;
+  .mag-intro-left-copy {
+    margin-top: 34px;
+  }
+
+  .mag-intro-names {
+    margin-bottom: 16px;
+  }
+
+  .mag-intro-date-block {
+    bottom: 218px;
+  }
+
+  .mag-intro-button {
+    margin-bottom: 54px;
+  }
+}
+
+@media (max-height: 680px) {
+  .mag-intro-title {
+    font-size: 44px;
+  }
+
+  .mag-intro-issue {
+    font-size: 7px;
+  }
+
+  .mag-intro-magazine {
+    font-size: 20px;
+  }
+
+  .mag-intro-left-copy {
+    margin-top: 28px;
+    font-size: 8px;
+    line-height: 1.6;
+  }
+
+  .mag-intro-left-copy span {
+    margin: 12px 0;
+  }
+
+  .mag-intro-script {
+    font-size: 28px;
+  }
+
+  .mag-intro-couple {
+    font-size: 32px;
+  }
+
+  .mag-intro-date-block {
+    bottom: 198px;
+  }
+
+  .mag-intro-date-block strong {
+    font-size: 42px;
+  }
+
+  .mag-intro-date-block span {
+    font-size: 18px;
+  }
+
+  .mag-intro-date-block small {
+    font-size: 13px;
+  }
+
+  .mag-intro-button {
+    height: 56px;
+    margin-bottom: 42px;
   }
 }
 /* ============================= */

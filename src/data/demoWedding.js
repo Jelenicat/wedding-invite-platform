@@ -2826,13 +2826,86 @@ backgroundColor: "#f3ece6",
       },
     ],
 
-    showDressCode: false,
+    showDressCode: true,
 
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=EKOPARK+Event+catering+center+Staska+Sondermajera+18v+Beograd",
 
     note: "Molimo vas da svoj dolazak potvrdite do 20.08.2026.",
     rsvpDeadline: "20.08.2026.",
+  }),
+},
+{
+  slug: "lara-mateja",
+  type: "wedding",
+  template: "magazine-editorial",
+
+  brideName: "Lara",
+  groomName: "Mateja",
+
+  weddingDate: "12 SEP 2026",
+  weddingTime: "11:00",
+  venue: "Restoran Glamour",
+
+  backgroundImage: "/images/lara-mateja-intro-bg.png",
+  image1: "/images/nevena-pedja/location.jpg",
+  musicSrc: "/music/lara-mateja.mp3",
+
+  details: createDetails({
+    backgroundImage: "/images/magazine-intro-bg.png",
+
+    ticketNumber: "120926LM",
+
+    welcomeText:
+      "Radujemo se da ovaj poseban dan podelimo sa vama.",
+
+    date: "12 SEP 2026",
+    dateISO: "2026-09-12T11:00:00+02:00",
+
+    venue: "Restoran Glamour",
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Skup svatova kod mladoženje",
+        time: "11:00",
+        icon: "gathering",
+        location: "Porodična kuća mladoženje",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "13:30",
+        icon: "church",
+        location: "Hram Svetog Save",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Save+Beograd",
+      },
+      {
+        label: "Skup gostiju",
+        time: "15:30",
+        icon: "gathering",
+        location: "Restoran Glamour",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Glamour",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:00",
+        icon: "civil",
+        location: "Restoran Glamour",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Glamour",
+      },
+    ],
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Glamour",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
+    rsvpDeadline: "01.09.2026.",
+    rsvpDeadlineISO: "2026-09-01",
   }),
 },
 {
@@ -4732,6 +4805,78 @@ musicSrc: "/music/jovana-dusan-1.mp3",
 
     note: "Molimo vas da svoj dolazak potvrdite do 10.08.2026.",
     rsvpText: "Molimo vas da svoj dolazak potvrdite do 10.08.2026.",
+  }),
+},
+{
+  slug: "teodora-branislav",
+  type: "wedding",
+  template: "magazine-editorial",
+
+  brideName: "Teodora",
+  groomName: "Branislav",
+
+  weddingDate: "29 AVG 2026",
+  weddingTime: "10:00",
+  venue: "Hotel Hedonic",
+
+  backgroundImage: "/images/teodora-branislav-intro-bg.png",
+ image1: "/images/nevena-pedja/location.jpg", // dodaj samo ako imaš sliku
+musicSrc: "/music/teodora-branislav.mp3",
+  details: createDetails({
+    backgroundImage: "/images/magazine-intro-bg.png",
+
+    ticketNumber: "290826TB",
+
+    welcomeText:
+      "Radujemo se da ovaj poseban dan podelimo sa vama.",
+
+    date: "29 AVG 2026",
+    dateISO: "2026-08-29T10:00:00+02:00",
+
+    venue: "Hotel Hedonic",
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Skup svatova",
+        time: "10:00",
+        icon: "gathering",
+        location: "Kod mladoženje",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "13:00",
+        icon: "church",
+        location: "Hram Preobraženja Gospodnjeg",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Preobrazenja+Gospodnjeg",
+      },
+      {
+        label: "Skup gostiju",
+        time: "15:00",
+        icon: "gathering",
+        location: "Hotel Hedonic",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Hedonic",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:00",
+        icon: "civil",
+        location: "Hotel Hedonic",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Hedonic",
+      },
+    ],
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Hotel+Hedonic",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 14.08.2026.",
+    rsvpDeadline: "14.08.2026.",
+    rsvpDeadlineISO: "2026-08-14",
   }),
 },
   // =========================
