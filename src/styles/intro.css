@@ -7574,6 +7574,7 @@ color: #8e7f73;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .pc-card::before,
@@ -7669,13 +7670,13 @@ color: #8e7f73;
   filter: none;
 }
 
-/* TEKST */
+/* CENTRALNI SADRŽAJ */
 
 .pc-main-copy {
   position: relative;
   z-index: 3;
   width: 100%;
-  margin-top: clamp(76px, 11svh, 106px);
+  margin-top: 0;
   text-align: center;
   text-transform: uppercase;
   flex-shrink: 0;
@@ -7716,7 +7717,7 @@ color: #8e7f73;
   z-index: 3;
   width: clamp(250px, 78vw, 318px);
   height: clamp(225px, 34svh, 300px);
-  margin-top: clamp(8px, 1.7svh, 16px);
+  margin-top: clamp(18px, 3svh, 28px);
   flex-shrink: 0;
 }
 
@@ -7772,8 +7773,8 @@ color: #8e7f73;
 .pc-enter-button {
   position: relative;
   z-index: 5;
-  margin-top: auto;
-  margin-bottom: clamp(18px, 3.5svh, 32px);
+  margin-top: clamp(18px, 3svh, 28px);
+  margin-bottom: 0;
   min-width: 208px;
   min-height: 52px;
   padding: 0 22px;
@@ -7894,7 +7895,7 @@ color: #8e7f73;
   }
 
   .pc-main-copy {
-    margin-top: clamp(70px, 10svh, 92px);
+    margin-top: 0;
   }
 
   .pc-name {
@@ -7917,7 +7918,7 @@ color: #8e7f73;
   .pc-heart-stage {
     width: clamp(238px, 78vw, 292px);
     height: clamp(210px, 33svh, 270px);
-    margin-top: 8px;
+    margin-top: clamp(16px, 2.6svh, 24px);
   }
 
   .pc-big-heart {
@@ -7942,7 +7943,8 @@ color: #8e7f73;
     padding: 0 18px;
     font-size: 0.58rem;
     letter-spacing: 0.17em;
-    margin-bottom: 20px;
+    margin-top: clamp(16px, 2.6svh, 24px);
+    margin-bottom: 0;
   }
 }
 
@@ -7955,7 +7957,7 @@ color: #8e7f73;
   }
 
   .pc-main-copy {
-    margin-top: 66px;
+    margin-top: 0;
   }
 
   .pc-name {
@@ -7976,7 +7978,7 @@ color: #8e7f73;
   .pc-heart-stage {
     width: 250px;
     height: 218px;
-    margin-top: 6px;
+    margin-top: 14px;
   }
 
   .pc-big-heart {
@@ -7997,7 +7999,8 @@ color: #8e7f73;
 
   .pc-enter-button {
     min-height: 48px;
-    margin-bottom: 16px;
+    margin-top: 14px;
+    margin-bottom: 0;
   }
 }
 
@@ -8005,7 +8008,7 @@ color: #8e7f73;
 
 @media (max-height: 680px) and (max-width: 430px) {
   .pc-main-copy {
-    margin-top: 58px;
+    margin-top: 0;
   }
 
   .pc-name {
@@ -8019,7 +8022,7 @@ color: #8e7f73;
   .pc-heart-stage {
     width: 230px;
     height: 198px;
-    margin-top: 4px;
+    margin-top: 12px;
   }
 
   .pc-big-heart {
@@ -8037,7 +8040,8 @@ color: #8e7f73;
   .pc-enter-button {
     min-width: 188px;
     min-height: 46px;
-    margin-bottom: 14px;
+    margin-top: 12px;
+    margin-bottom: 0;
   }
 }
 
