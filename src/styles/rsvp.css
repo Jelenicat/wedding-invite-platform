@@ -14895,3 +14895,596 @@ margin-bottom: 2px;
     letter-spacing: 0 !important;
   }
 }
+/* =========================
+   PLAYING CARD RSVP
+========================= */
+
+.pc-rsvp-section,
+.pc-countdown-section {
+  width: 100%;
+  background: #ffffff;
+  color: #111111;
+  display: flex;
+  justify-content: center;
+}
+
+.pc-rsvp-shell,
+.pc-countdown-shell {
+  width: min(100%, 430px);
+  padding: 22px 16px 0;
+  background: #ffffff;
+}
+
+.pc-rsvp-card,
+.pc-countdown-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 76px 26px 86px;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.055),
+    0 3px 10px rgba(0, 0, 0, 0.035);
+}
+
+.pc-rsvp-frame,
+.pc-countdown-frame {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(146, 7, 13, 0.28);
+  border-radius: 22px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pc-rsvp-card::before,
+.pc-countdown-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 38%,
+      rgba(255, 255, 255, 0.8) 47%,
+      transparent 56%,
+      transparent 100%
+    );
+  transform: translateX(-120%);
+  animation: pcSectionShine 6s ease-in-out 1.2s infinite;
+  z-index: 1;
+}
+
+/* UGLOVI KARTE */
+
+.pc-rsvp-corner,
+.pc-countdown-corner {
+  position: absolute;
+  z-index: 3;
+  width: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #92070d;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pc-rsvp-corner span,
+.pc-countdown-corner span {
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+}
+
+.pc-rsvp-corner small,
+.pc-countdown-corner small {
+  margin-top: 4px;
+  font-size: 2rem;
+  line-height: 0.72;
+}
+
+.pc-rsvp-corner-top,
+.pc-countdown-corner-top {
+  top: 22px;
+  left: 26px;
+}
+
+.pc-rsvp-corner-bottom,
+.pc-countdown-corner-bottom {
+  right: 26px;
+  bottom: 26px;
+  transform: rotate(180deg);
+}
+
+.pc-rsvp-content,
+.pc-countdown-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* HEADER */
+
+.pc-rsvp-kicker,
+.pc-countdown-kicker {
+  margin: 32px 0 16px;
+  font-family: "Montserrat", "Inter", Arial, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.62);
+}
+
+.pc-rsvp-hearts,
+.pc-countdown-hearts {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  margin-bottom: 22px;
+  color: #92070d;
+}
+
+.pc-rsvp-hearts span,
+.pc-countdown-hearts span {
+  display: inline-block;
+  font-size: 1rem;
+  animation: pcHeartTinyPulse 2.6s ease-in-out infinite;
+}
+
+.pc-rsvp-hearts span:nth-child(2),
+.pc-countdown-hearts span:nth-child(2) {
+  font-size: 1.35rem;
+  animation-delay: 0.2s;
+}
+
+.pc-rsvp-hearts span:nth-child(3),
+.pc-countdown-hearts span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.pc-rsvp-content h2 {
+  margin: 0;
+  font-family: "Montserrat", "Inter", Arial, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.9);
+}
+
+.pc-rsvp-subtitle {
+  max-width: 280px;
+  margin: 18px auto 30px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: rgba(17, 17, 17, 0.68);
+}
+
+/* FORM */
+
+.pc-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 26px;
+}
+
+.pc-rsvp-field {
+  text-align: left;
+}
+
+.pc-rsvp-field label,
+.pc-rsvp-choice-block > p {
+  display: block;
+  margin: 0 0 8px;
+  font-family: "Montserrat", "Inter", Arial, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.62);
+}
+
+.pc-rsvp-field input {
+  width: 100%;
+  min-height: 48px;
+  border: none;
+  border-bottom: 1px solid rgba(146, 7, 13, 0.36);
+  border-radius: 0;
+  background: transparent;
+  color: rgba(17, 17, 17, 0.9);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  outline: none;
+  padding: 0 2px;
+}
+
+.pc-rsvp-field input::placeholder {
+  color: rgba(17, 17, 17, 0.35);
+}
+
+.pc-rsvp-field input:focus {
+  border-bottom-color: rgba(146, 7, 13, 0.9);
+}
+
+.pc-rsvp-choice-block {
+  text-align: left;
+}
+
+.pc-rsvp-choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pc-rsvp-choice {
+  min-height: 94px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 18px;
+  background: #ffffff;
+  color: rgba(17, 17, 17, 0.8);
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+.pc-rsvp-choice strong {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "Montserrat", "Inter", Arial, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.86);
+}
+
+.pc-rsvp-choice span {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.96rem;
+  line-height: 1.25;
+  color: rgba(17, 17, 17, 0.58);
+}
+
+.pc-rsvp-choice:hover,
+.pc-rsvp-choice.is-active {
+  transform: translateY(-2px);
+  border-color: rgba(146, 7, 13, 0.55);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.055);
+}
+
+.pc-rsvp-choice.is-active {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(146, 7, 13, 0.045), transparent 62%),
+    #ffffff;
+}
+
+.pc-rsvp-choice.is-active strong {
+  color: #92070d;
+}
+
+.pc-rsvp-submit,
+.pc-countdown-calendar-btn {
+  position: relative;
+  min-height: 52px;
+  border: 1px solid rgba(146, 7, 13, 0.78);
+  border-radius: 12px;
+  background: #ffffff;
+  color: rgba(17, 17, 17, 0.86);
+  font-family: "Montserrat", "Inter", Arial, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.pc-rsvp-submit {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 18px;
+}
+
+.pc-rsvp-submit span,
+.pc-countdown-calendar-btn span {
+  color: #92070d;
+  font-size: 1rem;
+}
+
+.pc-rsvp-submit:hover,
+.pc-countdown-calendar-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(146, 7, 13, 1);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.065);
+}
+
+.pc-rsvp-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+
+/* RSVP SUCCESS */
+
+.pc-rsvp-success {
+  position: relative;
+  z-index: 2;
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pc-rsvp-success-heart {
+  color: #92070d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 5.8rem;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.pc-rsvp-success h3 {
+  margin: 0;
+  font-family: "Montserrat", "Inter", Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  text-transform: uppercase;
+}
+
+.pc-rsvp-success p {
+  max-width: 250px;
+  margin: 14px auto 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  color: rgba(17, 17, 17, 0.64);
+}
+
+.pc-rsvp-confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.pc-rsvp-confetti span {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  color: #92070d;
+  font-size: 0.75rem;
+}
+
+/* =========================
+   PLAYING CARD COUNTDOWN
+========================= */
+
+.pc-countdown-card {
+  padding-bottom: 86px;
+}
+
+.pc-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  margin-top: 30px;
+  padding-bottom: 22px;
+}
+
+.pc-countdown-item {
+  position: relative;
+  min-height: 92px;
+  padding: 15px 6px 13px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 18px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.pc-countdown-item::after {
+  content: "♥";
+  position: absolute;
+  right: 6px;
+  bottom: 3px;
+  color: rgba(146, 7, 13, 0.06);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.1rem;
+  line-height: 1;
+}
+
+.pc-countdown-item span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.55rem;
+  line-height: 1;
+  color: #92070d;
+}
+
+.pc-countdown-item small {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 8px;
+  font-family: "Montserrat", "Inter", Arial, sans-serif;
+  font-size: 0.54rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.58);
+}
+
+.pc-countdown-note {
+  max-width: 280px;
+  margin: 24px auto 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: rgba(17, 17, 17, 0.68);
+}
+
+.pc-countdown-calendar-box {
+  margin-top: 26px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pc-countdown-calendar-btn {
+  width: 100%;
+  max-width: 240px;
+}
+
+.pc-countdown-calendar-box p {
+  max-width: 250px;
+  margin: 12px auto 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.96rem;
+  line-height: 1.4;
+  color: rgba(17, 17, 17, 0.54);
+}
+
+/* ANIMATIONS */
+
+@keyframes pcSectionShine {
+  0%, 38% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+
+  48% {
+    opacity: 0.5;
+  }
+
+  62%, 100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes pcHeartTinyPulse {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.82;
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.12);
+    opacity: 1;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 380px) {
+  .pc-rsvp-shell,
+  .pc-countdown-shell {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .pc-rsvp-card,
+  .pc-countdown-card {
+    padding: 72px 22px 82px;
+    border-radius: 24px;
+  }
+
+  .pc-rsvp-frame,
+  .pc-countdown-frame {
+    inset: 12px;
+    border-radius: 18px;
+  }
+
+  .pc-rsvp-corner-top,
+  .pc-countdown-corner-top {
+    top: 20px;
+    left: 22px;
+  }
+
+  .pc-rsvp-corner-bottom,
+  .pc-countdown-corner-bottom {
+    right: 22px;
+    bottom: 22px;
+  }
+
+  .pc-rsvp-corner span,
+  .pc-countdown-corner span {
+    font-size: 2.15rem;
+  }
+
+  .pc-rsvp-corner small,
+  .pc-countdown-corner small {
+    font-size: 1.9rem;
+  }
+
+  .pc-rsvp-kicker,
+  .pc-countdown-kicker {
+    margin-top: 30px;
+  }
+
+  .pc-rsvp-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pc-countdown-grid {
+    gap: 7px;
+  }
+
+  .pc-countdown-item {
+    min-height: 84px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .pc-countdown-item span {
+    font-size: 1.35rem;
+  }
+
+  .pc-countdown-item small {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+}
+/* FORCE WHITE RSVP / COUNTDOWN BACKGROUND */
+
+.pc-rsvp-section,
+.pc-countdown-section {
+  background: #ffffff !important;
+}
+
+.pc-rsvp-shell,
+.pc-countdown-shell {
+  background: #ffffff !important;
+}
+
+.pc-rsvp-card,
+.pc-countdown-card,
+.pc-rsvp-choice,
+.pc-countdown-item {
+  background: #ffffff !important;
+}

@@ -2909,6 +2909,65 @@ backgroundColor: "#f3ece6",
   }),
 },
 {
+  slug: "milena-luka",
+  type: "wedding",
+  template: "playing-card",
+
+  brideName: "Milena",
+  groomName: "Luka",
+
+  weddingDate: "14 SEP 2026",
+  weddingTime: "17:00",
+  venue: "Beograd",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "14 SEP 2026",
+    dateISO: "2026-09-14T17:00:00+02:00",
+
+    venue: "Beograd",
+
+    showCalendarButton: true,
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:30",
+        icon: "gathering",
+        location: "Beograd",
+        address: "Beograd",
+        mapLink: "https://maps.google.com/?q=Beograd",
+        buttonText: "Pogledaj lokaciju",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Beograd",
+        address: "Beograd",
+        mapLink: "https://maps.google.com/?q=Beograd",
+        buttonText: "Pogledaj lokaciju",
+      },
+      {
+        label: "Večera i proslava",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Beograd",
+        address: "Beograd",
+        mapLink: "https://maps.google.com/?q=Beograd",
+        buttonText: "Pogledaj lokaciju",
+      },
+    ],
+
+    mapLink: "https://maps.google.com/?q=Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 1. septembra.",
+  }),
+},
+{
   slug: "tamara-viktor-calla",
   type: "wedding",
   template: "calla-lace",

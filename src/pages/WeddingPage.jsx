@@ -64,6 +64,8 @@ import ElegantBlackInvitationCard from "../components/ElegantBlackInvitationCard
 import DarkFloralIntro from "../components/DarkFloralIntro";
 import DarkFloralInvitationCard from "../components/DarkFloralInvitationCard";
 import IntroHeart from "../components/IntroHeart";
+import PlayingCardIntro from "../components/PlayingCardIntro";
+import PlayingCardInvitationCard from "../components/PlayingCardInvitationCard";
 import MagazineEditorialIntro from "../components/MagazineEditorialIntro";
 import CallaLaceIntro from "../components/CallaLaceIntro";
 import CallaLaceInvitationCard from "../components/CallaLaceInvitationCard";
@@ -249,6 +251,10 @@ const TEMPLATE_COMPONENTS = {
 "birthday-baby-luxury": {
   Intro: BirthdayBabyIntro,
   Invitation: BirthdayBabyInvitationCard,
+},
+"playing-card": {
+  Intro: PlayingCardIntro,
+  Invitation: PlayingCardInvitationCard,
 },
 };
 
