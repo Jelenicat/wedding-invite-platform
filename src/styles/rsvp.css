@@ -15492,3 +15492,500 @@ margin-bottom: 2px;
 .pc-countdown-item {
   background: #ffffff !important;
 }
+
+/* ===============================
+   DOROTEJA MARKO - RSVP GOLD
+   samo za slug doroteja-marko
+   pozadine se ne menjaju
+================================= */
+
+.passport-rsvp-section--doroteja-marko {
+  --dm-gold-gradient: linear-gradient(
+    115deg,
+    #7a4b12 0%,
+    #b98228 18%,
+   
+    #d4a647 66%,
+    #8a5b18 100%
+  );
+}
+
+/* TEKST */
+.passport-rsvp-section--doroteja-marko
+  :is(
+    .passport-rsvp-title,
+    .passport-rsvp-subtitle,
+    .passport-rsvp-label,
+    .passport-rsvp-option-text,
+    .passport-rsvp-success h3,
+    .passport-rsvp-success p
+  ) {
+  background: var(--dm-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  color: transparent;
+  text-shadow: none;
+}
+
+/* INPUT TEKST */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-input {
+  color: #9b681f;
+  border-color: rgba(185, 130, 40, 0.38);
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-input::placeholder {
+  color: rgba(155, 104, 31, 0.48);
+}
+
+/* LINIJE */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-topline span,
+.passport-rsvp-section--doroteja-marko .passport-rsvp-heart-line,
+.passport-rsvp-section--doroteja-marko .passport-rsvp-divider {
+  background: var(--dm-gold-gradient) !important;
+}
+
+/* GRADIENT IKONICE */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-gold-mask-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+
+  background: var(--dm-gold-gradient);
+
+  -webkit-mask-image: var(--passport-rsvp-gold-mask);
+  mask-image: var(--passport-rsvp-gold-mask);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  filter: none !important;
+}
+
+/* TOP AVION */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-plane {
+  width: 30px;
+  height: 30px;
+}
+
+/* SRCE */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-heart {
+  width: 28px;
+  height: 28px;
+}
+
+/* SUCCESS SRCE */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-success-heart {
+  width: 34px;
+  height: 34px;
+}
+
+/* OPTION IKONICE */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-option-icon {
+  width: 52px;
+  height: 52px;
+}
+
+/* RADIO KRUG */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-radio {
+  border-color: rgba(185, 130, 40, 0.6);
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-option.active .passport-rsvp-radio {
+  background: var(--dm-gold-gradient);
+  border-color: rgba(185, 130, 40, 0.85);
+}
+
+/* OPTION BORDER */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-option {
+  border-color: rgba(185, 130, 40, 0.28);
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-option.active {
+  border-color: rgba(185, 130, 40, 0.65);
+}
+
+/* SUBMIT DUGME - bez menjanja pozadine sekcije */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-submit {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: transparent;
+
+  box-shadow:
+    0 14px 34px rgba(120, 80, 25, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-submit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.6px;
+  pointer-events: none;
+
+  background: var(--dm-gold-gradient);
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-submit {
+  background-image: var(--dm-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-submit:disabled {
+  opacity: 0.5;
+}
+/* ==========================================
+   DOROTEJA MARKO - TANJE RSVP LINIJE
+   ne dira aviončić
+========================================== */
+
+/* Gornje linije pored aviončića - samo prazni spanovi, ne avion */
+.passport-rsvp-section--doroteja-marko
+  .passport-rsvp-topline
+  > span:not(.passport-rsvp-plane):not(.passport-rsvp-gold-mask-icon) {
+  position: relative;
+  height: 8px;
+  background: transparent !important;
+  overflow: visible;
+}
+
+.passport-rsvp-section--doroteja-marko
+  .passport-rsvp-topline
+  > span:not(.passport-rsvp-plane):not(.passport-rsvp-gold-mask-icon)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.2px;
+  border-radius: 999px;
+  background: var(--dm-gold-gradient);
+  clip-path: polygon(0 50%, 10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%);
+}
+
+/* Aviončić ostaje normalne veličine */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-plane {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  display: inline-block !important;
+  flex: 0 0 34px !important;
+
+  background: var(--dm-gold-gradient);
+
+  -webkit-mask-image: var(--passport-rsvp-gold-mask);
+  mask-image: var(--passport-rsvp-gold-mask);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* Linije oko srca */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-heart-line {
+  position: relative;
+  height: 8px;
+  background: transparent !important;
+  overflow: visible;
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-heart-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.2px;
+  border-radius: 999px;
+  background: var(--dm-gold-gradient);
+  clip-path: polygon(0 50%, 10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%);
+}
+
+/* Divider ispod teksta */
+.passport-rsvp-section--doroteja-marko .passport-rsvp-divider {
+  position: relative;
+  height: 8px;
+  background: transparent !important;
+  overflow: visible;
+}
+
+.passport-rsvp-section--doroteja-marko .passport-rsvp-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.2px;
+  border-radius: 999px;
+  background: var(--dm-gold-gradient);
+  clip-path: polygon(0 50%, 6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%);
+}
+
+/* ===============================
+   DOROTEJA MARKO - COUNTDOWN GOLD
+   samo za slug doroteja-marko
+   pozadine se ne menjaju
+================================= */
+
+.passport-countdown-section--doroteja-marko {
+  --dm-gold-gradient: linear-gradient(
+    115deg,
+    #7a4b12 0%,
+    #b98228 18%,
+   
+    #d4a647 66%,
+    #8a5b18 100%
+  );
+}
+
+/* TEKST */
+.passport-countdown-section--doroteja-marko
+  :is(
+    .passport-countdown-title,
+    .passport-countdown-subtitle,
+    .passport-countdown-expired,
+    .passport-countdown-number,
+    .passport-countdown-label,
+    .passport-countdown-calendar-hint
+  ) {
+  background: var(--dm-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  color: transparent;
+  text-shadow: none;
+}
+
+/* TANKE LINIJE PORED AVIONA - ne dira aviončić */
+.passport-countdown-section--doroteja-marko
+  .passport-countdown-topline
+  > span:not(.passport-countdown-plane):not(.passport-countdown-gold-mask-icon) {
+  position: relative;
+  height: 8px;
+  background: transparent !important;
+  overflow: visible;
+}
+
+.passport-countdown-section--doroteja-marko
+  .passport-countdown-topline
+  > span:not(.passport-countdown-plane):not(.passport-countdown-gold-mask-icon)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.2px;
+  border-radius: 999px;
+  background: var(--dm-gold-gradient);
+  clip-path: polygon(0 50%, 10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%);
+}
+
+/* AVIONČIĆ GORE - ostaje img, da ne postane mali */
+.passport-countdown-section--doroteja-marko .passport-countdown-plane {
+  display: block !important;
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  flex: 0 0 34px !important;
+  opacity: 1 !important;
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(49%)
+    sepia(63%)
+    saturate(630%)
+    hue-rotate(8deg)
+    brightness(97%)
+    contrast(94%)
+    drop-shadow(0 1px 2px rgba(122, 75, 18, 0.22)) !important;
+}
+
+/* LINIJE OKO SRCA */
+.passport-countdown-section--doroteja-marko .passport-countdown-heart-line {
+  position: relative;
+  height: 8px;
+  background: transparent !important;
+  overflow: visible;
+}
+
+.passport-countdown-section--doroteja-marko .passport-countdown-heart-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.2px;
+  border-radius: 999px;
+  background: var(--dm-gold-gradient);
+  clip-path: polygon(0 50%, 10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%);
+}
+
+/* SRCE KAO GRADIENT MASKA */
+.passport-countdown-section--doroteja-marko .passport-countdown-gold-mask-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+
+  background: var(--dm-gold-gradient);
+
+  -webkit-mask-image: var(--passport-countdown-gold-mask);
+  mask-image: var(--passport-countdown-gold-mask);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  filter: none !important;
+}
+
+.passport-countdown-section--doroteja-marko .passport-countdown-heart {
+  width: 28px;
+  height: 28px;
+}
+
+/* KARTICE SA BROJEVIMA - samo border zlatni, bez promene pozadine */
+.passport-countdown-section--doroteja-marko .passport-countdown-item {
+  border-color: rgba(185, 130, 40, 0.35);
+}
+
+/* DUGME KALENDAR - zlatni tekst i okvir, pozadina ostaje nežna */
+.passport-countdown-section--doroteja-marko .passport-countdown-calendar-btn {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: transparent;
+
+  box-shadow:
+    0 14px 34px rgba(120, 80, 25, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  background-image: var(--dm-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.passport-countdown-section--doroteja-marko .passport-countdown-calendar-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+
+  background: var(--dm-gold-gradient);
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+/* CALENDAR IKONICA - samo doroteja-marko */
+.passport-countdown-section--doroteja-marko .passport-countdown-calendar-icon {
+  position: relative;
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  border-radius: 6px;
+  margin-right: 2px;
+}
+
+/* gradient okvir ikonice */
+.passport-countdown-section--doroteja-marko
+  .passport-countdown-calendar-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: var(--dm-gold-gradient);
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* gornja linija kalendara */
+.passport-countdown-section--doroteja-marko
+  .passport-countdown-calendar-icon::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 6px;
+  height: 1.2px;
+  border-radius: 999px;
+  background: var(--dm-gold-gradient);
+}
+
+/* male linije u kalendaru */
+.passport-countdown-section--doroteja-marko
+  .passport-countdown-calendar-icon
+  span {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 11px;
+  height: 1.1px;
+  border-radius: 999px;
+  background: var(--dm-gold-gradient);
+  box-shadow: 0 4px 0 rgba(185, 130, 40, 0.55);
+}
+
+/* tekst dugmeta */
+.passport-countdown-section--doroteja-marko .passport-countdown-calendar-text {
+  background: var(--dm-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  color: transparent;
+}

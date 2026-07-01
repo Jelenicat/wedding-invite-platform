@@ -27,6 +27,11 @@ function PassportIntro({
   const introBg = backgroundImage || `/images/passport/${slug}-bg.jpg`;
   const introPassport = passportImage || `/images/passport/${slug}.svg`;
 
+  const isDorotejaMarko = slug === "doroteja-marko";
+
+  // Overlay se skida SAMO za ovaj slug
+  const hideIntroOverlay = isDorotejaMarko;
+
   const passportIntroThemeStyle = {
     "--passport-intro-main": theme.main || "#b18d53",
     "--passport-intro-main-dark": theme.mainDark || "#7a674f",
@@ -95,7 +100,9 @@ function PassportIntro({
 
   return (
     <motion.section
-      className="passport-intro"
+      className={`passport-intro ${
+        isDorotejaMarko ? "passport-intro--doroteja-marko" : ""
+      }`}
       initial={{ opacity: 1 }}
       animate={
         isLeaving
@@ -108,7 +115,7 @@ function PassportIntro({
         ...passportIntroThemeStyle,
       }}
     >
-      <div className="passport-intro-overlay" />
+      {!hideIntroOverlay && <div className="passport-intro-overlay" />}
 
       <motion.div
         className="passport-intro-content"

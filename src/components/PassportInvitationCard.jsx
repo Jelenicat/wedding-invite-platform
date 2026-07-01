@@ -5,6 +5,76 @@ import "../styles/rsvp.css";
 import PassportRSVP from "./PassportRSVP";
 import PassportCountdown from "./PassportCountdown";
 
+const PassportIcon = ({
+  src,
+  className = "",
+  alt = "",
+  useGold = false,
+  style,
+  ...props
+}) => {
+  if (!useGold) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        {...props}
+      />
+    );
+  }
+
+  return (
+    <span
+      className={`${className} passport-gold-mask-icon`}
+      style={{
+        ...style,
+        "--passport-gold-mask": `url(${src})`,
+      }}
+      {...props}
+      aria-hidden={props["aria-hidden"] ?? true}
+      role={!props["aria-hidden"] && alt ? "img" : undefined}
+      aria-label={!props["aria-hidden"] && alt ? alt : undefined}
+    />
+  );
+};
+
+const PassportMotionIcon = ({
+  src,
+  className = "",
+  alt = "",
+  useGold = false,
+  style,
+  ...props
+}) => {
+  if (!useGold) {
+    return (
+      <motion.img
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        {...props}
+      />
+    );
+  }
+
+  return (
+    <motion.span
+      className={`${className} passport-gold-mask-icon`}
+      style={{
+        ...style,
+        "--passport-gold-mask": `url(${src})`,
+      }}
+      {...props}
+      aria-hidden={props["aria-hidden"] ?? true}
+      role={!props["aria-hidden"] && alt ? "img" : undefined}
+      aria-label={!props["aria-hidden"] && alt ? alt : undefined}
+    />
+  );
+};
+
 function PassportInvitationCard({
   brideName,
   groomName,
@@ -16,6 +86,8 @@ function PassportInvitationCard({
 }) {
   const events = details.events || [];
   const theme = details.theme || {};
+
+  const isDorotejaMarko = slug === "doroteja-marko";
 
   const lineWrapRef = useRef(null);
   const planeRef = useRef(null);
@@ -126,6 +198,12 @@ function PassportInvitationCard({
     const label = (event.label || "").toLowerCase();
     const icon = (event.icon || "").toLowerCase();
 
+    // Samo za Doroteja & Marko - druga ikonica za "Kod mlade"
+    // Ostali passport slugovi, npr. jovana-caslav, ostaju netaknuti.
+    if (slug === "doroteja-marko" && icon === "guests") {
+      return "/images/passport/guests.svg";
+    }
+
     if (
       icon === "gathering" ||
       label.includes("okupljanje") ||
@@ -181,7 +259,12 @@ function PassportInvitationCard({
 
   return (
     <>
-      <section className="passport-card-page" style={passportThemeStyle}>
+      <section
+        className={`passport-card-page ${
+          isDorotejaMarko ? "passport-card-page--doroteja-marko" : ""
+        }`}
+        style={passportThemeStyle}
+      >
         <div className="passport-card-bg-overlay" />
 
         <motion.div
@@ -261,9 +344,12 @@ function PassportInvitationCard({
                 transition={{ duration: 0.65, delay: 0.22 }}
               >
                 <span />
-                <motion.img
+
+                <PassportMotionIcon
                   src="/images/passport/heart-mini.svg"
                   alt=""
+                  useGold={isDorotejaMarko}
+                  className="passport-ticket-divider-heart"
                   aria-hidden="true"
                   animate={{ scale: [1, 1.08, 1] }}
                   transition={{
@@ -272,6 +358,7 @@ function PassportInvitationCard({
                     ease: "easeInOut",
                   }}
                 />
+
                 <span />
               </motion.div>
 
@@ -357,7 +444,10 @@ function PassportInvitationCard({
                   alt=""
                   className="passport-ticket-route-heart"
                   aria-hidden="true"
-                  animate={{ scale: [1, 1.05, 1], opacity: [0.92, 1, 0.92] }}
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    opacity: [0.92, 1, 0.92],
+                  }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
@@ -501,9 +591,10 @@ function PassportInvitationCard({
                               delay: index * 0.08 + 0.1,
                             }}
                           >
-                            <img
+                            <PassportIcon
                               src={getEventIcon(event)}
                               alt=""
+                              useGold={isDorotejaMarko}
                               className="passport-ticket-event-icon"
                               aria-hidden="true"
                             />
@@ -554,11 +645,16 @@ function PassportInvitationCard({
               viewport={{ once: true }}
               transition={{ duration: 0.55 }}
             >
-              <motion.img
+              <PassportMotionIcon
                 src="/images/passport/heart-mini.svg"
                 alt=""
+                useGold={isDorotejaMarko}
+                className="passport-ticket-love-heart"
                 aria-hidden="true"
-                animate={{ scale: [1, 1.12, 1], opacity: [0.92, 1, 0.92] }}
+                animate={{
+                  scale: [1, 1.12, 1],
+                  opacity: [0.92, 1, 0.92],
+                }}
                 transition={{
                   duration: 2.8,
                   repeat: Infinity,

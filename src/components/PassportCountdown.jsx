@@ -3,6 +3,41 @@ import { motion } from "framer-motion";
 import "../styles/rsvp.css";
 import { addToCalendar } from "../utils/calendar";
 
+const PassportCountdownMotionIcon = ({
+  src,
+  className = "",
+  alt = "",
+  useGold = false,
+  style,
+  ...props
+}) => {
+  if (!useGold) {
+    return (
+      <motion.img
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        {...props}
+      />
+    );
+  }
+
+  return (
+    <motion.span
+      className={`${className} passport-countdown-gold-mask-icon`}
+      style={{
+        ...style,
+        "--passport-countdown-gold-mask": `url(${src})`,
+      }}
+      {...props}
+      aria-hidden={props["aria-hidden"] ?? true}
+      role={!props["aria-hidden"] && alt ? "img" : undefined}
+      aria-label={!props["aria-hidden"] && alt ? alt : undefined}
+    />
+  );
+};
+
 function PassportCountdown({
   targetDate,
   slug = "",
@@ -11,6 +46,8 @@ function PassportCountdown({
   groomName,
   details = {},
 }) {
+  const isDorotejaMarko = slug === "doroteja-marko";
+
   const countdownBg = useMemo(() => {
     return `/images/passport/${slug}-card-bg.jpg`;
   }, [slug]);
@@ -93,7 +130,9 @@ function PassportCountdown({
 
   return (
     <section
-      className="passport-countdown-section"
+      className={`passport-countdown-section ${
+        isDorotejaMarko ? "passport-countdown-section--doroteja-marko" : ""
+      }`}
       style={passportCountdownThemeStyle}
     >
       <motion.div
@@ -125,6 +164,7 @@ function PassportCountdown({
             transition={{ duration: 0.55 }}
           >
             <span />
+
             <motion.img
               src="/images/passport/plane-mini.svg"
               alt=""
@@ -137,6 +177,7 @@ function PassportCountdown({
                 ease: "easeInOut",
               }}
             />
+
             <span />
           </motion.div>
 
@@ -158,10 +199,12 @@ function PassportCountdown({
             transition={{ duration: 0.6, delay: 0.08 }}
           >
             <span className="passport-countdown-heart-line" />
-            <motion.img
+
+            <PassportCountdownMotionIcon
               src="/images/passport/heart-mini.svg"
               alt=""
               aria-hidden="true"
+              useGold={isDorotejaMarko}
               className="passport-countdown-heart"
               animate={{ scale: [1, 1.08, 1], opacity: [0.9, 1, 0.9] }}
               transition={{
@@ -170,6 +213,7 @@ function PassportCountdown({
                 ease: "easeInOut",
               }}
             />
+
             <span className="passport-countdown-heart-line" />
           </motion.div>
 
@@ -239,14 +283,23 @@ function PassportCountdown({
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.18 }}
           >
-            <button
-              type="button"
-              className="passport-countdown-calendar-btn"
-              onClick={handleCalendarClick}
-            >
-              <span>📅</span>
-              Dodaj u kalendar
-            </button>
+       <button
+  type="button"
+  className="passport-countdown-calendar-btn"
+  onClick={handleCalendarClick}
+>
+  {isDorotejaMarko ? (
+    <span className="passport-countdown-calendar-icon" aria-hidden="true">
+      <span />
+    </span>
+  ) : (
+    <span aria-hidden="true">📅</span>
+  )}
+
+  <span className="passport-countdown-calendar-text">
+    Dodaj u kalendar
+  </span>
+</button>
 
             <p className="passport-countdown-calendar-hint">
               Sačuvajte datum venčanja u svom telefonu.

@@ -10,6 +10,76 @@ import {
 } from "firebase/firestore";
 import "../styles/rsvp.css";
 
+const PassportRsvpIcon = ({
+  src,
+  className = "",
+  alt = "",
+  useGold = false,
+  style,
+  ...props
+}) => {
+  if (!useGold) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        {...props}
+      />
+    );
+  }
+
+  return (
+    <span
+      className={`${className} passport-rsvp-gold-mask-icon`}
+      style={{
+        ...style,
+        "--passport-rsvp-gold-mask": `url(${src})`,
+      }}
+      {...props}
+      aria-hidden={props["aria-hidden"] ?? true}
+      role={!props["aria-hidden"] && alt ? "img" : undefined}
+      aria-label={!props["aria-hidden"] && alt ? alt : undefined}
+    />
+  );
+};
+
+const PassportRsvpMotionIcon = ({
+  src,
+  className = "",
+  alt = "",
+  useGold = false,
+  style,
+  ...props
+}) => {
+  if (!useGold) {
+    return (
+      <motion.img
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        {...props}
+      />
+    );
+  }
+
+  return (
+    <motion.span
+      className={`${className} passport-rsvp-gold-mask-icon`}
+      style={{
+        ...style,
+        "--passport-rsvp-gold-mask": `url(${src})`,
+      }}
+      {...props}
+      aria-hidden={props["aria-hidden"] ?? true}
+      role={!props["aria-hidden"] && alt ? "img" : undefined}
+      aria-label={!props["aria-hidden"] && alt ? alt : undefined}
+    />
+  );
+};
+
 function PassportRSVP({
   slug,
   eventType = "wedding",
@@ -25,12 +95,14 @@ function PassportRSVP({
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-const rsvpBg = useMemo(() => {
-  return `/images/passport/${slug}-card-bg.jpg`;
-}, [slug]);
+  const isDorotejaMarko = slug === "doroteja-marko";
 
-const rsvpSubtitle =
-  details.note || "Molimo vas da potvrdite svoj dolazak";
+  const rsvpBg = useMemo(() => {
+    return `/images/passport/${slug}-card-bg.jpg`;
+  }, [slug]);
+
+  const rsvpSubtitle =
+    details.note || "Molimo vas da potvrdite svoj dolazak";
 
   const passportRsvpThemeStyle = {
     "--passport-rsvp-bg": `url(${rsvpBg})`,
@@ -115,7 +187,12 @@ const rsvpSubtitle =
   };
 
   return (
-    <section className="passport-rsvp-section" style={passportRsvpThemeStyle}>
+    <section
+      className={`passport-rsvp-section ${
+        isDorotejaMarko ? "passport-rsvp-section--doroteja-marko" : ""
+      }`}
+      style={passportRsvpThemeStyle}
+    >
       <motion.div
         className="passport-rsvp-card"
         initial={{ opacity: 0, y: 36, scale: 0.985 }}
@@ -145,10 +222,12 @@ const rsvpSubtitle =
             transition={{ duration: 0.55 }}
           >
             <span />
-            <motion.img
+            <PassportRsvpMotionIcon
               src="/images/passport/plane-mini.svg"
               alt=""
+              useGold={isDorotejaMarko}
               className="passport-rsvp-plane"
+              aria-hidden="true"
               animate={{ y: [0, -3, 0], rotate: [0, -4, 0] }}
               transition={{
                 duration: 4.8,
@@ -177,10 +256,12 @@ const rsvpSubtitle =
             transition={{ duration: 0.6, delay: 0.08 }}
           >
             <span className="passport-rsvp-heart-line" />
-            <motion.img
+            <PassportRsvpMotionIcon
               src="/images/passport/heart-mini.svg"
               alt=""
+              useGold={isDorotejaMarko}
               className="passport-rsvp-heart"
+              aria-hidden="true"
               animate={{ scale: [1, 1.08, 1], opacity: [0.9, 1, 0.9] }}
               transition={{
                 duration: 2.6,
@@ -219,9 +300,12 @@ const rsvpSubtitle =
                 exit={{ opacity: 0, y: -18, scale: 0.96 }}
                 transition={{ duration: 0.4 }}
               >
-                <motion.img
+                <PassportRsvpMotionIcon
                   src="/images/passport/heart-mini.svg"
                   alt=""
+                  useGold={isDorotejaMarko}
+                  className="passport-rsvp-success-heart"
+                  aria-hidden="true"
                   animate={{ scale: [1, 1.12, 1] }}
                   transition={{
                     duration: 1.8,
@@ -271,10 +355,12 @@ const rsvpSubtitle =
                   >
                     <span className="passport-rsvp-option-left">
                       <span className="passport-rsvp-radio" />
-                      <img
+                      <PassportRsvpIcon
                         src="/images/passport/guests.svg"
                         alt=""
+                        useGold={isDorotejaMarko}
                         className="passport-rsvp-option-icon"
+                        aria-hidden="true"
                       />
                     </span>
                     <span className="passport-rsvp-option-text">
@@ -294,10 +380,12 @@ const rsvpSubtitle =
                   >
                     <span className="passport-rsvp-option-left">
                       <span className="passport-rsvp-radio" />
-                      <img
+                      <PassportRsvpIcon
                         src="/images/passport/icons/close.svg"
                         alt=""
+                        useGold={isDorotejaMarko}
                         className="passport-rsvp-option-icon"
+                        aria-hidden="true"
                       />
                     </span>
                     <span className="passport-rsvp-option-text">

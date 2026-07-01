@@ -4938,6 +4938,86 @@ musicSrc: "/music/teodora-branislav.mp3",
     rsvpDeadlineISO: "2026-08-14",
   }),
 },
+{
+  slug: "doroteja-marko",
+  type: "wedding",
+  template: "passport",
+
+  brideName: "Doroteja",
+  groomName: "Marko",
+
+  weddingDate: "30 AVG 2026",
+  weddingTime: "16:00",
+  venue: "Hotel „Sloboda”, Odžaci",
+
+musicSrc: "/music/jovana-caslav.mp3",
+
+  details: createDetails({
+    cardBackground: "/images/passport/doroteja-marko-card-bg.jpg",
+
+    ticketNumber: "300826DM",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "30.08.2026.",
+    dateISO: "2026-08-30T16:00:00+02:00",
+
+    venue: "Hotel „Sloboda”, Odžaci",
+
+    showCalendarButton: true,
+    showDressCode: false,
+
+    
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "11:00",
+        icon: "gathering",
+        location: "Kod mladoženje",
+      },
+      {
+        label: "Skup gostiju",
+        time: "12:00",
+        icon: "guests",
+        location: "Kod mlade",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "14:00",
+        icon: "church",
+        location: "Hram svetih apostola Petra i Pavla",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+svetih+apostola+Petra+i+Pavla+Odzaci",
+      },
+      {
+        label: "Skup u sali",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Hotel „Sloboda”, Odžaci",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Sloboda+Odzaci",
+      },
+      {
+        label: "Građansko venčanje u sali",
+        time: "17:00",
+        icon: "civil",
+        location: "Hotel „Sloboda”, Odžaci",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Sloboda+Odzaci",
+      },
+    ],
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Hotel+Sloboda+Odzaci",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 30. jula.",
+    rsvpText: "Dolazak je potrebno potvrditi do 30. jula.",
+    rsvpDeadline: "30.07.2026.",
+    rsvpDeadlineISO: "2026-07-30",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

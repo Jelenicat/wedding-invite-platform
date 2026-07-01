@@ -16907,3 +16907,189 @@
 .pci-note-card {
   background: #ffffff !important;
 }
+/* ===============================
+   DOROTEJA MARKO - GOLD DETAILS
+   samo za slug doroteja-marko
+   pozadine se ne menjaju
+================================= */
+
+.passport-card-page--doroteja-marko {
+  --dm-gold-gradient: linear-gradient(
+    115deg,
+    #7a4b12 0%,
+    #b98228 18%,
+   
+    #d4a647 66%,
+    #8a5b18 100%
+  );
+}
+
+/* TEKST */
+.passport-card-page--doroteja-marko
+  :is(
+    .passport-ticket-band-text,
+    .passport-ticket-kicker,
+    .passport-ticket-subkicker,
+    .passport-ticket-title,
+    .passport-ticket-subtitle,
+    .passport-ticket-name-line,
+    .passport-ticket-ampersand,
+    .passport-ticket-date-badge,
+    .passport-ticket-stamp-inner span,
+    .passport-ticket-events-title-text,
+    .passport-ticket-event-time,
+    .passport-ticket-event-label,
+    .passport-ticket-event-location,
+    .passport-ticket-love-line span,
+    .passport-ticket-bottom-barcode-text
+  ) {
+  background: var(--dm-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  color: transparent;
+  text-shadow: none;
+}
+
+/* LINK LOKACIJE */
+.passport-card-page--doroteja-marko .passport-ticket-event-location-link {
+  text-decoration-color: rgba(185, 130, 40, 0.45);
+}
+
+/* HORIZONTALNE CRTICE */
+.passport-card-page--doroteja-marko .passport-ticket-divider span,
+.passport-card-page--doroteja-marko .passport-ticket-events-title-line {
+  background: var(--dm-gold-gradient) !important;
+}
+
+/* BARCODE CRTICE */
+.passport-card-page--doroteja-marko .passport-band-line,
+.passport-card-page--doroteja-marko .passport-bottom-bar-line {
+  background: var(--dm-gold-gradient) !important;
+}
+
+/* LEVA VERTIKALNA ISPREKIDANA LINIJA */
+.passport-card-page--doroteja-marko .passport-ticket-flight-line {
+  background: repeating-linear-gradient(
+    to bottom,
+    #8a5b18 0px,
+    #d4a647 10px,
+    #fff3bd 18px,
+    #b98228 26px,
+    transparent 26px,
+    transparent 42px
+  ) !important;
+}
+
+/* STAMP OKVIR */
+.passport-card-page--doroteja-marko .passport-ticket-stamp,
+.passport-card-page--doroteja-marko .passport-ticket-stamp-inner {
+  border-color: rgba(185, 130, 40, 0.55);
+}
+
+/* NOTCH / CORNER DETALJI */
+.passport-card-page--doroteja-marko .passport-ticket-corner,
+.passport-card-page--doroteja-marko .passport-ticket-notch {
+  border-color: rgba(185, 130, 40, 0.45);
+}
+
+/* GRADIENT MASKA ZA SRCA I EVENT IKONICE */
+.passport-card-page--doroteja-marko .passport-gold-mask-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+
+  background: var(--dm-gold-gradient);
+
+  -webkit-mask-image: var(--passport-gold-mask);
+  mask-image: var(--passport-gold-mask);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  filter: none !important;
+}
+
+/* SRCE U DIVIDERU */
+.passport-card-page--doroteja-marko .passport-ticket-divider-heart {
+  width: 18px;
+  height: 18px;
+}
+
+/* SRCE DOLE */
+.passport-card-page--doroteja-marko .passport-ticket-love-heart {
+  width: 18px;
+  height: 18px;
+}
+
+/* EVENT IKONICE */
+.passport-card-page--doroteja-marko .passport-ticket-event-icon {
+  width: 58px;
+  height: 58px;
+}
+
+/* OKVIR OKO EVENT IKONICE */
+.passport-card-page--doroteja-marko .passport-ticket-event-icon-wrap {
+  border-color: rgba(185, 130, 40, 0.35);
+}
+
+/* AVIONI - ne diramo poziciju, samo zlatni ton */
+.passport-card-page--doroteja-marko
+  :is(
+    .passport-ticket-band-plane,
+    .passport-ticket-small-plane,
+    .passport-ticket-route-heart,
+    .passport-ticket-flight-plane
+  ) {
+  opacity: 1 !important;
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(49%)
+    sepia(63%)
+    saturate(630%)
+    hue-rotate(8deg)
+    brightness(97%)
+    contrast(94%)
+    drop-shadow(0 1px 2px rgba(122, 75, 18, 0.22)) !important;
+}
+
+/* GORNJI AVIONČIĆ - čuva postojeću absolute poziciju iz template-a */
+.passport-card-page--doroteja-marko .passport-ticket-band-plane {
+  display: block !important;
+  width: 48px;
+  height: 48px;
+  z-index: 5;
+}
+
+/* DONJI AVIONČIĆ */
+.passport-card-page--doroteja-marko .passport-ticket-small-plane {
+  display: block !important;
+  width: 150px;
+  height: 180px;
+}
+
+/* ROUTE HEART */
+.passport-card-page--doroteja-marko .passport-ticket-route-heart {
+  display: block !important;
+  width: 26px;
+  height: auto;
+}
+
+/* AVION NA TIMELINE-U */
+.passport-card-page--doroteja-marko .passport-ticket-flight-plane {
+  display: block !important;
+  width: 45px;
+  height: 102px;
+}
+/* Ako centralni notch upada u RASPORED, sakrij ga samo ovde */
+.passport-card-page--doroteja-marko .passport-ticket-notch-top {
+  display: none !important;
+}
