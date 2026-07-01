@@ -16155,33 +16155,36 @@
   display: none;
 }
 
-/* UGLOVI KARTE */
+/* UGLOVI KARTE - ISTO KAO INTRO */
 
 .pci-corner {
   position: absolute;
   z-index: 4;
-  width: 32px;
+  width: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 5px;
   color: var(--pci-red);
-  font-family: "Cormorant Garamond", Georgia, serif;
   line-height: 1;
+  text-shadow: none;
   pointer-events: none;
   animation: pciCornerFade 0.9s ease both;
 }
 
 .pci-corner span {
-  font-size: 2.3rem;
-  font-weight: 700;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.1rem, 9vw, 2.75rem);
   line-height: 0.82;
+  font-weight: 700;
   letter-spacing: -0.05em;
 }
 
 .pci-corner small {
-  margin-top: 4px;
-  font-size: 2rem;
-  line-height: 0.72;
+  margin-top: 0;
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  line-height: 0.75;
+  filter: none;
 }
 
 .pci-corner-top {
@@ -16853,11 +16856,11 @@
   }
 
   .pci-corner span {
-    font-size: 2.15rem;
+    font-size: 2.05rem;
   }
 
   .pci-corner small {
-    font-size: 1.9rem;
+    font-size: 1.85rem;
   }
 
   .pci-hero {
@@ -16890,25 +16893,14 @@
     text-indent: 0.24em;
   }
 }
-/* FORCE WHITE BACKGROUND FOR PLAYING CARD TEMPLATE */
 
-.playing-card-invitation,
-.playing-card-invitation *,
-.pc-rsvp-section,
-.pc-countdown-section,
-.pc-rsvp-shell,
-.pc-countdown-shell {
-  background-color: #ffffff;
-}
+/* FORCE WHITE BACKGROUND FOR PLAYING CARD TEMPLATE */
 
 .playing-card-invitation {
   background: #ffffff !important;
 }
 
-.pci-page-inner {
-  background: #ffffff !important;
-}
-
+.pci-page-inner,
 .pci-main-card,
 .pci-section,
 .pci-event-card,
