@@ -71,12 +71,17 @@ function MinimalCountdown({
       venue: details?.venue,
       mapLink: details?.mapLink,
       note: details?.note,
+      durationHours: details?.calendarDurationHours,
     });
   };
 
   if (!timeLeft) {
     return (
-    <section className={`minimal-countdown-section minimal-countdown-slug-${slug || ""}`}>
+      <section
+        className={`minimal-countdown-section minimal-countdown-slug-${
+          slug || ""
+        }`}
+      >
         <div className="minimal-countdown-inner">
           <p className="minimal-countdown-kicker">{t.arrived}</p>
 
@@ -109,8 +114,10 @@ function MinimalCountdown({
   ];
 
   return (
-   <motion.section
-  className={`minimal-countdown-section minimal-countdown-slug-${slug || ""}`}
+    <motion.section
+      className={`minimal-countdown-section minimal-countdown-slug-${
+        slug || ""
+      }`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}

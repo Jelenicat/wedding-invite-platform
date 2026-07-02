@@ -8,13 +8,17 @@ export function addToCalendar({
   eventType = "wedding",
   age,
   eventTitle,
+  durationHours = 6,
 }) {
   if (!dateISO) return;
 
   const startDate = new Date(dateISO);
-  const endDate = new Date(startDate.getTime() + 6 * 60 * 60 * 1000);
 
   if (Number.isNaN(startDate.getTime())) return;
+
+  const endDate = new Date(
+    startDate.getTime() + durationHours * 60 * 60 * 1000
+  );
 
   const formatICSDate = (date) =>
     date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";

@@ -67,6 +67,7 @@ introOrnamentBottomSvg,
 hideRsvpPhotoBlock = false,
 sliderImages = [],
   showCalendarButton = false,
+  calendarDurationHours,
 }) => ({
   backgroundImage,
   theme,
@@ -134,6 +135,7 @@ introOrnamentBottomSvg,
 hideRsvpPhotoBlock,
   sliderImages,
   showCalendarButton,
+  calendarDurationHours,
 });
 const demoWedding = [
   {
@@ -5110,7 +5112,7 @@ rsvpOptions: {
 
   venue: "Hotel-Restoran Madera",
   showCalendarButton: true,
-
+calendarDurationHours: 7,
  events: [
   {
     label: "Doček gostiju",
