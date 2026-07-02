@@ -17093,3 +17093,120 @@
 .passport-card-page--doroteja-marko .passport-ticket-notch-top {
   display: none !important;
 }
+/* =========================
+   ANDRIJANA & MARKO
+   lepši raspored bez ponavljanja lokacije
+========================= */
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-program-editorial,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-program-editorial {
+  max-width: 318px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-script-title,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-script-title {
+  margin-bottom: 20px;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline {
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline-row,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline-row {
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 2px 0;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline-icon,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline-icon img,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline-icon img {
+  width: 38px;
+  height: 38px;
+  opacity: 0.76;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline-line,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline-line {
+  height: 32px;
+  margin-top: 6px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 100, 92, 0.28),
+    rgba(110, 100, 92, 0.08)
+  );
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline-right,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline-right {
+  padding-top: 3px;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline-time,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline-time {
+  margin: 0 0 4px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.96rem;
+  letter-spacing: 0.12em;
+  color: #7c736d;
+  font-weight: 600;
+}
+
+.minimal-invitation-card.minimal-slug-andrijana-marko
+  .minimal-timeline-title,
+.minimal-invitation-card.minimal-slug-andrijana-marko-1
+  .minimal-timeline-title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #4f4843;
+}
+
+.minimal-timeline-location-below {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #8f857d;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(143, 133, 125, 0.35);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.minimal-timeline-location-below:hover {
+  opacity: 0.75;
+  transform: translateY(-1px);
+  border-bottom-color: rgba(143, 133, 125, 0.65);
+}

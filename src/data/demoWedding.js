@@ -5096,65 +5096,125 @@ musicSrc: "/music/jovana-nikola.mp3",
   weddingTime: "19:00",
   venue: "Hotel-Restoran Madera",
 
-  backgroundImage: "/images/jovana-nikola-minimal-1.jpg",
+  backgroundImage: "/images/andrijana-marko-minimal-1.jpg",
 musicSrc: "/music/andrijana-marko.mp3",
-  details: createDetails({
-    welcomeText:
-      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+ details: createDetails({
+  welcomeText:
+    "Pozivamo Vas da sa nama podelite radost našeg venčanja i krunisanja ljubavi koju već dugo živimo, čuvamo i zajedno gradimo.",
 
-    date: "16 AVG 2026",
-    dateISO: "2026-08-16T19:00:00+02:00",
+  date: "16 AVG 2026",
+  dateISO: "2026-08-16T19:00:00+02:00",
 
-    showCalendarButton: true,
+  venue: "Hotel-Restoran Madera",
+  showCalendarButton: true,
 
-    events: [
-      {
-        label: "Doček gostiju",
-        time: "19:00",
-        icon: "gathering",
-        location: "Hotel-Restoran Madera",
-        mapLink:
-          "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
-      },
-      {
-        label: "Građansko venčanje",
-        time: "20:00",
-        icon: "civil",
-        location: "Hotel-Restoran Madera",
-        mapLink:
-          "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
-      },
-      {
-        label: "Večera",
-        time: "21:30",
-        icon: "restaurant",
-        location: "Hotel-Restoran Madera",
-        mapLink:
-          "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
-      },
-      {
-        label: "Torta",
-        time: "00:00",
-        icon: "cake",
-        location: "Hotel-Restoran Madera",
-        mapLink:
-          "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
-      },
-    ],
-
-    showDressCode: true,
-    dressCodeTitle: "Dress code",
-    dressCodePalette: [],
-  dressCodeNote: "Svečano i elegantno, u stilu koji vam najviše prija.",
-
+ events: [
+  {
+    label: "Doček gostiju",
+    time: "19:00",
+    icon: "gathering",
+    location: "Hotel-Restoran Madera",
     mapLink:
       "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+  },
+  {
+    label: "Građansko venčanje",
+    time: "20:00",
+    icon: "civil",
+  },
+  {
+    label: "Večera",
+    time: "21:30",
+    icon: "vecera",
+  },
+  {
+    label: "Torta",
+    time: "00:00",
+    icon: "ceremony",
+  },
+],
 
-    note: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
-    rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
-    rsvpDeadline: "01.08.2026.",
-    rsvpDeadlineISO: "2026-08-01",
-  }),
+  showDressCode: true,
+  dressCodeTitle: "Dress code",
+  dressCodePalette: [],
+  dressCodeNote: "Svečano i elegantno, u stilu koji vam najviše prija.",
+
+  mapLink:
+    "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+
+  note: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
+  rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
+  rsvpDeadline: "01.08.2026.",
+  rsvpDeadlineISO: "2026-08-01",
+}),
+},
+{
+  slug: "andrijana-marko-1",
+  type: "wedding",
+  template: "silk",
+
+  brideName: "Andrijana",
+  groomName: "Marko",
+
+  videoSrc: "/videos/jovana-stefan.mp4",
+
+  fontMode: "light",
+
+  weddingDate: "16 AVG 2026",
+  weddingTime: "19:00",
+  venue: "Hotel-Restoran Madera",
+
+  backgroundImage: "/images/aleksandra-luka-minimal-1.jpg",
+musicSrc: "/music/andrijana-marko.mp3",
+ details: createDetails({
+  welcomeText:
+    "Pozivamo Vas da sa nama podelite radost našeg venčanja i krunisanja ljubavi koju već dugo živimo, čuvamo i zajedno gradimo.",
+
+  date: "16 AVG 2026",
+  dateISO: "2026-08-16T19:00:00+02:00",
+
+  venue: "Hotel-Restoran Madera",
+  showCalendarButton: true,
+
+ events: [
+  {
+    label: "Doček gostiju",
+    time: "19:00",
+    icon: "gathering",
+    location: "Hotel-Restoran Madera",
+    mapLink:
+      "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+  },
+  {
+    label: "Građansko venčanje",
+    time: "20:00",
+    icon: "civil",
+  },
+  {
+    label: "Večera",
+    time: "21:30",
+    icon: "vecera",
+  },
+  {
+    label: "Torta",
+    time: "00:00",
+    icon: "ceremony",
+  },
+],
+
+  showDressCode: true,
+  dressCodeTitle: "Dress code",
+  dressCodePalette: [],
+  dressCodeNote: "Svečano i elegantno, u stilu koji vam najviše prija.",
+
+  mapLink:
+    "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+
+  note: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
+  rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
+  rsvpDeadline: "01.08.2026.",
+  rsvpDeadlineISO: "2026-08-01",
+}),
 },
   // =========================
   // BIRTHDAY TEMPLATES

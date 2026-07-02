@@ -19,6 +19,8 @@ function MinimalInvitationCard({
   const finalBg = backgroundImage || "/images/minimal-bg.jpg";
 
   const shouldUseNamesSvg = slug === "jovana-dusan-1";
+  const isAndrijanaMarko =
+  slug === "andrijana-marko" || slug === "andrijana-marko-1";
 
   const t =
     script === "cyrillic"
@@ -54,6 +56,8 @@ function MinimalInvitationCard({
     rings: "/icons/rings.svg",
     angel: "/icons/angel.svg",
     dresscode: "/icons/dresscode.svg",
+    cake: "/icons/cake.svg",
+      vecera: "/icons/vecera.svg",
   };
 
   const timelineItems =
@@ -142,12 +146,12 @@ function MinimalInvitationCard({
             <div className="minimal-invitation-date-block">
               <span className="minimal-invitation-date-label">{t.date}</span>
               <p className="minimal-invitation-date">
-{slug === "jovana-stefan"
-  ? details.date
-      .replace(/^(\d{1,2})(\s)/, "$1.$2")
-      .replace(/(\d{4})$/, "$1.")
-  : details.date}
-</p>
+                {slug === "jovana-stefan"
+                  ? details.date
+                      .replace(/^(\d{1,2})(\s)/, "$1.$2")
+                      .replace(/(\d{4})$/, "$1.")
+                  : details.date}
+              </p>
             </div>
           )}
 
@@ -183,7 +187,8 @@ function MinimalInvitationCard({
                     <div className="minimal-timeline-right">
                       <p className="minimal-timeline-time">
                         {event.time}
-                        {event.location && (
+
+                        {!isAndrijanaMarko && event.location && (
                           <>
                             <span className="minimal-timeline-separator">
                               {" "}
@@ -209,6 +214,22 @@ function MinimalInvitationCard({
                       <h4 className="minimal-timeline-title">
                         {event.label}
                       </h4>
+
+                      {isAndrijanaMarko && event.location && (
+                        <a
+                          href={
+                            event.mapLink ||
+                            `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                              event.location
+                            )}`
+                          }
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="minimal-timeline-location-below"
+                        >
+                          {event.location}
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 ))}
