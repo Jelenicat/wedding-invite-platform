@@ -16,7 +16,7 @@ function GuestPreferencesPage() {
   const [loading, setLoading] = useState(true);
   const [guests, setGuests] = useState([]);
   const [search, setSearch] = useState("");
-  const [filterType, setFilterType] = useState("both");
+  const [filterType, setFilterType] = useState("all");
   const [exportStatus, setExportStatus] = useState({
     type: "",
     message: "",
@@ -31,9 +31,69 @@ function GuestPreferencesPage() {
   );
 
   const rsvpOptions = invitation?.details?.rsvpOptions || {};
+
   const hasFoodPreferences = Boolean(rsvpOptions.foodPreferences);
   const hasMusicWish = Boolean(rsvpOptions.musicWish);
-  const hasSpecialOptions = hasFoodPreferences || hasMusicWish;
+  const hasFastingOption = Boolean(rsvpOptions.fasting);
+
+  const hasSpecialOptions =
+    hasFoodPreferences || hasMusicWish || hasFastingOption;
+
+  const getFastingLabel = (value) => {
+    if (value === "posti") return "Posti";
+    if (value === "ne_posti") return "Ne posti";
+    return "";
+  };
+
+  const hasTextValue = (value) => {
+    return typeof value === "string" && value.trim() !== "";
+  };
+
+  const getAttendanceLabel = (guest) => {
+    if (guest.attending === "da") return "Dolazi";
+    if (guest.attending === "ne") return "Ne dolazi";
+    return "Bez odgovora";
+  };
+
+  const getFilterLabel = () => {
+    if (filterType === "food") return "Hrana";
+    if (filterType === "music") return "Muzika";
+    if (filterType === "fasting") return "Post";
+    if (filterType === "both") return "Hrana i muzika";
+    return "Sve";
+  };
+
+  const getExportTitle = () => {
+    if (filterType === "food") return "Napomene za hranu";
+    if (filterType === "music") return "Muzičke želje";
+    if (filterType === "fasting") return "Post gostiju";
+    if (filterType === "both") return "Napomene za hranu i muzičke želje";
+    return "Posebne RSVP poruke";
+  };
+
+  const getExportCountLabel = () => {
+    if (filterType === "food") return "Ukupno napomena za hranu";
+    if (filterType === "music") return "Ukupno muzičkih želja";
+    if (filterType === "fasting") return "Ukupno odgovora za post";
+    if (filterType === "both") return "Ukupno gostiju sa obe poruke";
+    return "Ukupno posebnih odgovora";
+  };
+
+  const getExportButtonText = () => {
+    if (filterType === "food") return "hranu";
+    if (filterType === "music") return "muziku";
+    if (filterType === "fasting") return "post";
+    if (filterType === "both") return "oba";
+    return "sve";
+  };
+
+  const escapeHtml = (value = "") =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
   useEffect(() => {
     const savedAccess = localStorage.getItem(`admin-access-${slug}`);
@@ -48,6 +108,8 @@ function GuestPreferencesPage() {
       return;
     }
 
+    setLoading(true);
+
     const rsvpsRef = collection(db, "events", slug, "rsvps");
 
     const unsubscribe = onSnapshot(
@@ -60,14 +122,14 @@ function GuestPreferencesPage() {
           }))
           .filter((guest) => {
             const hasFood =
-              typeof guest.foodPreferences === "string" &&
-              guest.foodPreferences.trim() !== "";
+              hasFoodPreferences && hasTextValue(guest.foodPreferences);
 
-            const hasMusic =
-              typeof guest.musicWish === "string" &&
-              guest.musicWish.trim() !== "";
+            const hasMusic = hasMusicWish && hasTextValue(guest.musicWish);
 
-            return hasFood || hasMusic;
+            const hasFasting =
+              hasFastingOption && hasTextValue(guest.fasting);
+
+            return hasFood || hasMusic || hasFasting;
           })
           .sort((a, b) => {
             const aTime = a.createdAt?.seconds || 0;
@@ -85,19 +147,27 @@ function GuestPreferencesPage() {
     );
 
     return () => unsubscribe();
-  }, [slug, isAuthorized, hasSpecialOptions]);
+  }, [
+    slug,
+    isAuthorized,
+    hasSpecialOptions,
+    hasFoodPreferences,
+    hasMusicWish,
+    hasFastingOption,
+  ]);
 
   useEffect(() => {
-    if (filterType === "food" && !hasFoodPreferences) {
-      setFilterType(hasMusicWish ? "music" : "both");
+    const availableFilters = ["all"];
+
+    if (hasFoodPreferences) availableFilters.push("food");
+    if (hasMusicWish) availableFilters.push("music");
+    if (hasFastingOption) availableFilters.push("fasting");
+    if (hasFoodPreferences && hasMusicWish) availableFilters.push("both");
+
+    if (!availableFilters.includes(filterType)) {
+      setFilterType("all");
     }
-    if (filterType === "music" && !hasMusicWish) {
-      setFilterType(hasFoodPreferences ? "food" : "both");
-    }
-    if (filterType === "both" && (!hasFoodPreferences || !hasMusicWish)) {
-      setFilterType(hasFoodPreferences ? "food" : "music");
-    }
-  }, [filterType, hasFoodPreferences, hasMusicWish]);
+  }, [filterType, hasFoodPreferences, hasMusicWish, hasFastingOption]);
 
   useEffect(() => {
     if (!exportStatus.message) return;
@@ -110,47 +180,51 @@ function GuestPreferencesPage() {
   }, [exportStatus]);
 
   const stats = useMemo(() => {
-    const foodCount = guests.filter(
-      (g) =>
-        typeof g.foodPreferences === "string" &&
-        g.foodPreferences.trim() !== ""
-    ).length;
+    const foodCount = hasFoodPreferences
+      ? guests.filter((g) => hasTextValue(g.foodPreferences)).length
+      : 0;
 
-    const musicCount = guests.filter(
-      (g) => typeof g.musicWish === "string" && g.musicWish.trim() !== ""
-    ).length;
+    const musicCount = hasMusicWish
+      ? guests.filter((g) => hasTextValue(g.musicWish)).length
+      : 0;
 
-    const bothCount = guests.filter((g) => {
-      const hasFood =
-        typeof g.foodPreferences === "string" &&
-        g.foodPreferences.trim() !== "";
-      const hasMusic =
-        typeof g.musicWish === "string" && g.musicWish.trim() !== "";
-      return hasFood && hasMusic;
-    }).length;
+    const fastingCount = hasFastingOption
+      ? guests.filter((g) => hasTextValue(g.fasting)).length
+      : 0;
+
+    const bothCount =
+      hasFoodPreferences && hasMusicWish
+        ? guests.filter((g) => {
+            const hasFood = hasTextValue(g.foodPreferences);
+            const hasMusic = hasTextValue(g.musicWish);
+            return hasFood && hasMusic;
+          }).length
+        : 0;
 
     return {
       foodCount,
       musicCount,
+      fastingCount,
       bothCount,
       total: guests.length,
     };
-  }, [guests]);
+  }, [guests, hasFoodPreferences, hasMusicWish, hasFastingOption]);
 
   const filteredGuests = useMemo(() => {
     const normalized = search.trim().toLowerCase();
 
     return guests.filter((guest) => {
       const hasFood =
-        typeof guest.foodPreferences === "string" &&
-        guest.foodPreferences.trim() !== "";
+        hasFoodPreferences && hasTextValue(guest.foodPreferences);
 
-      const hasMusic =
-        typeof guest.musicWish === "string" &&
-        guest.musicWish.trim() !== "";
+      const hasMusic = hasMusicWish && hasTextValue(guest.musicWish);
+
+      const hasFasting =
+        hasFastingOption && hasTextValue(guest.fasting);
 
       if (filterType === "food" && !hasFood) return false;
       if (filterType === "music" && !hasMusic) return false;
+      if (filterType === "fasting" && !hasFasting) return false;
       if (filterType === "both" && !(hasFood && hasMusic)) return false;
 
       if (!normalized) return true;
@@ -167,9 +241,20 @@ function GuestPreferencesPage() {
         .toLowerCase()
         .includes(normalized);
 
-      return nameMatch || foodMatch || musicMatch;
+      const fastingMatch = getFastingLabel(guest.fasting)
+        .toLowerCase()
+        .includes(normalized);
+
+      return nameMatch || foodMatch || musicMatch || fastingMatch;
     });
-  }, [guests, search, filterType]);
+  }, [
+    guests,
+    search,
+    filterType,
+    hasFoodPreferences,
+    hasMusicWish,
+    hasFastingOption,
+  ]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -196,7 +281,9 @@ function GuestPreferencesPage() {
 
   const formatDate = (timestamp) => {
     if (!timestamp?.seconds) return "—";
+
     const date = new Date(timestamp.seconds * 1000);
+
     return new Intl.DateTimeFormat("sr-RS", {
       day: "numeric",
       month: "long",
@@ -206,536 +293,544 @@ function GuestPreferencesPage() {
     }).format(date);
   };
 
-  const getAttendanceLabel = (guest) => {
-    if (guest.attending === "da") return "Dolazi";
-    if (guest.attending === "ne") return "Ne dolazi";
-    return "Bez odgovora";
-  };
+  const handleExportPreferencesPDF = async () => {
+    if (isExporting) return;
 
-  const getExportTitle = () => {
-    if (filterType === "food") return "Napomene za hranu";
-    if (filterType === "music") return "Muzičke želje";
-    return "Napomene za hranu i muzičke želje";
-  };
+    setExportStatus({ type: "", message: "" });
 
-  const getExportCountLabel = () => {
-    if (filterType === "food") return "Ukupno napomena za hranu";
-    if (filterType === "music") return "Ukupno muzičkih želja";
-    return "Ukupno gostiju sa obe poruke";
-  };
+    if (!filteredGuests.length) {
+      setExportStatus({
+        type: "warning",
+        message: "Nema podataka za eksport za trenutno izabrani filter.",
+      });
+      return;
+    }
 
-  const escapeHtml = (value = "") =>
-    String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    setIsExporting(true);
 
-const handleExportPreferencesPDF = async () => {
-  if (isExporting) return;
+    let element = null;
 
-  setExportStatus({ type: "", message: "" });
+    try {
+      const formattedDate = new Date().toLocaleString("sr-RS", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
 
-  if (!filteredGuests.length) {
-    setExportStatus({
-      type: "warning",
-      message: "Nema podataka za eksport za trenutno izabrani filter.",
-    });
-    return;
-  }
+      const chunkArray = (array, size) => {
+        const chunks = [];
 
-  setIsExporting(true);
+        for (let i = 0; i < array.length; i += size) {
+          chunks.push(array.slice(i, i + size));
+        }
 
-  try {
-    const formattedDate = new Date().toLocaleString("sr-RS", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+        return chunks;
+      };
 
-    const escapeHtml = (value = "") =>
-      String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+      const guestsPerPage = 8;
+      const guestChunks = chunkArray(filteredGuests, guestsPerPage);
+      const totalPages = guestChunks.length;
 
-    const chunkArray = (array, size) => {
-      const chunks = [];
-      for (let i = 0; i < array.length; i += size) {
-        chunks.push(array.slice(i, i + size));
-      }
-      return chunks;
-    };
+      const pagesHtml = guestChunks
+        .map((guestChunk, pageIndex) => {
+          const printableRows = guestChunk
+            .map((guest, localIndex) => {
+              const globalIndex = pageIndex * guestsPerPage + localIndex;
 
-    // Kartice su velike, zato nemoj mnogo po strani
-    const guestsPerPage = 8;
-    const guestChunks = chunkArray(filteredGuests, guestsPerPage);
-    const totalPages = guestChunks.length;
+              const hasFood =
+                hasFoodPreferences && hasTextValue(guest.foodPreferences);
 
-    const pagesHtml = guestChunks
-      .map((guestChunk, pageIndex) => {
-        const printableRows = guestChunk
-          .map((guest, localIndex) => {
-            const globalIndex = pageIndex * guestsPerPage + localIndex;
-            const hasFood =
-              typeof guest.foodPreferences === "string" &&
-              guest.foodPreferences.trim() !== "";
+              const hasMusic =
+                hasMusicWish && hasTextValue(guest.musicWish);
 
-            const hasMusic =
-              typeof guest.musicWish === "string" &&
-              guest.musicWish.trim() !== "";
+              const hasFasting =
+                hasFastingOption && hasTextValue(guest.fasting);
 
-            const showFoodBlock =
-              (filterType === "food" && hasFood) ||
-              (filterType === "both" && hasFood);
+              const showFoodBlock =
+                hasFood &&
+                (filterType === "all" ||
+                  filterType === "food" ||
+                  filterType === "both");
 
-            const showMusicBlock =
-              (filterType === "music" && hasMusic) ||
-              (filterType === "both" && hasMusic);
+              const showMusicBlock =
+                hasMusic &&
+                (filterType === "all" ||
+                  filterType === "music" ||
+                  filterType === "both");
 
-            return `
-              <section class="guest-card">
-                <div class="guest-head">
-                  <div>
-                    <div class="guest-index">Gost ${globalIndex + 1}</div>
-                    <h2>${escapeHtml(guest.fullName || "Bez imena")}</h2>
-                    <div class="guest-meta">
-                      <span class="meta-badge">${escapeHtml(
-                        getAttendanceLabel(guest)
-                      )}</span>
-                      ${
-                        guest.attending === "da"
-                          ? `<span class="meta-badge">${Number(guest.guests) || 0} osoba</span>`
-                          : ""
-                      }
-                      <span class="meta-date">Poslato: ${escapeHtml(
-                        formatDate(guest.createdAt)
-                      )}</span>
+              const showFastingBlock =
+                hasFasting &&
+                (filterType === "all" || filterType === "fasting");
+
+              return `
+                <section class="guest-card">
+                  <div class="guest-head">
+                    <div>
+                      <div class="guest-index">Gost ${globalIndex + 1}</div>
+
+                      <h2>${escapeHtml(guest.fullName || "Bez imena")}</h2>
+
+                      <div class="guest-meta">
+                        <span class="meta-badge">${escapeHtml(
+                          getAttendanceLabel(guest)
+                        )}</span>
+
+                        ${
+                          guest.attending === "da"
+                            ? `<span class="meta-badge">${
+                                Number(guest.guests) || 0
+                              } osoba</span>`
+                            : ""
+                        }
+
+                        <span class="meta-date">Poslato: ${escapeHtml(
+                          formatDate(guest.createdAt)
+                        )}</span>
+                      </div>
+                    </div>
+
+                    <div class="tag-wrap">
+                      ${hasFood ? `<span class="tag">Hrana</span>` : ""}
+                      ${hasMusic ? `<span class="tag">Muzika</span>` : ""}
+                      ${hasFasting ? `<span class="tag">Post</span>` : ""}
                     </div>
                   </div>
 
-                  <div class="tag-wrap">
-                    ${hasFood ? `<span class="tag">Hrana</span>` : ""}
-                    ${hasMusic ? `<span class="tag">Muzika</span>` : ""}
-                  </div>
-                </div>
-
-                ${
-                  showFoodBlock
-                    ? `
-                  <div class="answer-block">
-                    <div class="answer-label">Napomena za hranu</div>
-                    <div class="answer-value">${escapeHtml(
-                      guest.foodPreferences?.trim() || "—"
-                    )}</div>
-                  </div>
-                `
-                    : ""
-                }
-
-                ${
-                  showMusicBlock
-                    ? `
-                  <div class="answer-block">
-                    <div class="answer-label">Muzička želja</div>
-                    <div class="answer-value">${escapeHtml(
-                      guest.musicWish?.trim() || "—"
-                    )}</div>
-                  </div>
-                `
-                    : ""
-                }
-              </section>
-            `;
-          })
-          .join("");
-
-        return `
-          <section class="pdf-page ${pageIndex < totalPages - 1 ? "page-break" : ""}">
-            <div class="pdf-shell">
-              <section class="hero">
-                <div class="hero-topline">Guest Preferences Export</div>
-                <h1>${escapeHtml(getExportTitle())}</h1>
-                <div class="hero-subtitle">
-                  Događaj: <strong>${escapeHtml(slug)}</strong><br />
-                  Generisano: ${escapeHtml(formattedDate)}<br />
-                  Filter: <strong>${escapeHtml(
-                    filterType === "food"
-                      ? "Hrana"
-                      : filterType === "music"
-                      ? "Muzika"
-                      : "Oba"
-                  )}</strong><br />
-                  Strana: <strong>${pageIndex + 1} / ${totalPages}</strong>
-                </div>
-              </section>
-
-              ${
-                pageIndex === 0
-                  ? `
-                <div class="summary-grid">
-                  <div class="summary-card">
-                    <div class="summary-label">${escapeHtml(
-                      getExportCountLabel()
-                    )}</div>
-                    <div class="summary-value">${filteredGuests.length}</div>
-                    <div class="summary-note">Trenutni prikaz za eksport</div>
-                  </div>
-
-                  <div class="summary-card">
-                    <div class="summary-label">Ukupno poruka</div>
-                    <div class="summary-value">${stats.total}</div>
-                    <div class="summary-note">Svi gosti sa napomenama</div>
-                  </div>
-
-                  <div class="summary-card">
-                    <div class="summary-label">Pretraga</div>
-                    <div class="summary-value">${search.trim() ? "Da" : "Ne"}</div>
-                    <div class="summary-note">
-                      ${
-                        search.trim()
-                          ? `Upit: "${escapeHtml(search.trim())}"`
-                          : "Bez dodatne pretrage"
-                      }
+                  ${
+                    showFoodBlock
+                      ? `
+                    <div class="answer-block">
+                      <div class="answer-label">Napomena za hranu</div>
+                      <div class="answer-value">${escapeHtml(
+                        guest.foodPreferences?.trim() || "—"
+                      )}</div>
                     </div>
-                  </div>
-                </div>
-              `
-                  : ""
-              }
+                  `
+                      : ""
+                  }
 
-              <div class="section-wrap">
-                <div class="section-title-row">
-                  <div class="section-title">Pregled gostiju</div>
-                </div>
+                  ${
+                    showMusicBlock
+                      ? `
+                    <div class="answer-block">
+                      <div class="answer-label">Muzička želja</div>
+                      <div class="answer-value">${escapeHtml(
+                        guest.musicWish?.trim() || "—"
+                      )}</div>
+                    </div>
+                  `
+                      : ""
+                  }
 
-                <section class="guest-list">
-                  ${printableRows}
+                  ${
+                    showFastingBlock
+                      ? `
+                    <div class="answer-block">
+                      <div class="answer-label">Post</div>
+                      <div class="answer-value">${escapeHtml(
+                        getFastingLabel(guest.fasting) || "—"
+                      )}</div>
+                    </div>
+                  `
+                      : ""
+                  }
                 </section>
+              `;
+            })
+            .join("");
+
+          return `
+            <section class="pdf-page ${
+              pageIndex < totalPages - 1 ? "page-break" : ""
+            }">
+              <div class="pdf-shell">
+                <section class="hero">
+                  <div class="hero-topline">Guest Preferences Export</div>
+
+                  <h1>${escapeHtml(getExportTitle())}</h1>
+
+                  <div class="hero-subtitle">
+                    Događaj: <strong>${escapeHtml(slug)}</strong><br />
+                    Generisano: ${escapeHtml(formattedDate)}<br />
+                    Filter: <strong>${escapeHtml(getFilterLabel())}</strong><br />
+                    Strana: <strong>${pageIndex + 1} / ${totalPages}</strong>
+                  </div>
+                </section>
+
+                ${
+                  pageIndex === 0
+                    ? `
+                  <div class="summary-grid">
+                    <div class="summary-card">
+                      <div class="summary-label">${escapeHtml(
+                        getExportCountLabel()
+                      )}</div>
+                      <div class="summary-value">${filteredGuests.length}</div>
+                      <div class="summary-note">Trenutni prikaz za eksport</div>
+                    </div>
+
+                    <div class="summary-card">
+                      <div class="summary-label">Ukupno posebnih odgovora</div>
+                      <div class="summary-value">${stats.total}</div>
+                      <div class="summary-note">Svi gosti sa dodatnim odgovorima</div>
+                    </div>
+
+                    <div class="summary-card">
+                      <div class="summary-label">Pretraga</div>
+                      <div class="summary-value">${
+                        search.trim() ? "Da" : "Ne"
+                      }</div>
+                      <div class="summary-note">
+                        ${
+                          search.trim()
+                            ? `Upit: "${escapeHtml(search.trim())}"`
+                            : "Bez dodatne pretrage"
+                        }
+                      </div>
+                    </div>
+                  </div>
+                `
+                    : ""
+                }
+
+                <div class="section-wrap">
+                  <div class="section-title-row">
+                    <div class="section-title">Pregled gostiju</div>
+                  </div>
+
+                  <section class="guest-list">
+                    ${printableRows}
+                  </section>
+                </div>
+
+                <div class="footer">
+                  <div class="footer-line"></div>
+                  Eksportovano iz admin panela za događaj <strong>${escapeHtml(
+                    slug
+                  )}</strong>
+                </div>
               </div>
+            </section>
+          `;
+        })
+        .join("");
 
-              <div class="footer">
-                <div class="footer-line"></div>
-                Eksportovano iz admin panela za događaj <strong>${escapeHtml(
-                  slug
-                )}</strong>
-              </div>
-            </div>
-          </section>
-        `;
-      })
-      .join("");
+      element = document.createElement("div");
+      element.style.width = "100%";
+      element.style.maxWidth = "794px";
+      element.style.margin = "0 auto";
+      element.style.background = "#f6efe8";
+      element.style.padding = "12px";
+      element.style.boxSizing = "border-box";
 
-    const element = document.createElement("div");
-    element.style.width = "100%";
-    element.style.maxWidth = "794px";
-    element.style.margin = "0 auto";
-    element.style.background = "#f6efe8";
-    element.style.padding = "12px";
-    element.style.boxSizing = "border-box";
+      element.innerHTML = `
+        <div class="pdf-root">
+          <style>
+            * {
+              box-sizing: border-box;
+            }
 
-    element.innerHTML = `
-      <div class="pdf-root">
-        <style>
-          * {
-            box-sizing: border-box;
-          }
+            .pdf-root {
+              width: 100%;
+              margin: 0 auto;
+              color: #5f4b3f;
+              font-family: Georgia, "Times New Roman", serif;
+            }
 
-          .pdf-root {
-            width: 100%;
-            margin: 0 auto;
-            color: #5f4b3f;
-            font-family: Georgia, "Times New Roman", serif;
-          }
+            .pdf-page {
+              width: 100%;
+            }
 
-          .pdf-page {
-            width: 100%;
-          }
+            .page-break {
+              page-break-after: always;
+              break-after: page;
+              margin-bottom: 12px;
+            }
 
-          .page-break {
-            page-break-after: always;
-            break-after: page;
-            margin-bottom: 12px;
-          }
+            .pdf-shell {
+              background: #ffffff;
+              border: 1px solid #e5d6c8;
+              border-radius: 24px;
+              overflow: hidden;
+            }
 
-          .pdf-shell {
-            background: #ffffff;
-            border: 1px solid #e5d6c8;
-            border-radius: 24px;
-            overflow: hidden;
-          }
+            .hero {
+              padding: 22px 20px 16px;
+              border-bottom: 1px solid rgba(190, 162, 139, 0.22);
+              background: #f8f2ec;
+            }
 
-          .hero {
-            padding: 22px 20px 16px;
-            border-bottom: 1px solid rgba(190, 162, 139, 0.22);
-            background: #f8f2ec;
-          }
+            .hero-topline {
+              font-size: 10px;
+              letter-spacing: 0.22em;
+              text-transform: uppercase;
+              color: #a1775f;
+              margin-bottom: 12px;
+            }
 
-          .hero-topline {
-            font-size: 10px;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: #a1775f;
-            margin-bottom: 12px;
-          }
+            .hero h1 {
+              margin: 0;
+              font-size: 28px;
+              line-height: 1.1;
+              font-weight: 700;
+              color: #6b5447;
+            }
 
-          .hero h1 {
-            margin: 0;
-            font-size: 28px;
-            line-height: 1.1;
-            font-weight: 700;
-            color: #6b5447;
-          }
+            .hero-subtitle {
+              margin-top: 10px;
+              font-size: 13px;
+              line-height: 1.6;
+              color: #756255;
+            }
 
-          .hero-subtitle {
-            margin-top: 10px;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #756255;
-          }
+            .summary-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 10px;
+              padding: 14px 20px 4px;
+            }
 
-          .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            padding: 14px 20px 4px;
-          }
+            .summary-card {
+              background: #ffffff;
+              border: 1px solid #e6d8cb;
+              border-radius: 16px;
+              padding: 14px;
+            }
 
-          .summary-card {
-            background: #ffffff;
-            border: 1px solid #e6d8cb;
-            border-radius: 16px;
-            padding: 14px;
-          }
+            .summary-label {
+              margin: 0 0 8px;
+              font-size: 10px;
+              text-transform: uppercase;
+              letter-spacing: 0.14em;
+              color: #90715d;
+            }
 
-          .summary-label {
-            margin: 0 0 8px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            color: #90715d;
-          }
+            .summary-value {
+              margin: 0;
+              font-size: 22px;
+              font-weight: 700;
+              color: #6b5447;
+              line-height: 1;
+            }
 
-          .summary-value {
-            margin: 0;
-            font-size: 22px;
-            font-weight: 700;
-            color: #6b5447;
-            line-height: 1;
-          }
+            .summary-note {
+              margin-top: 6px;
+              font-size: 12px;
+              color: #7b675b;
+              line-height: 1.4;
+            }
 
-          .summary-note {
-            margin-top: 6px;
-            font-size: 12px;
-            color: #7b675b;
-            line-height: 1.4;
-          }
+            .section-wrap {
+              padding: 14px 20px 20px;
+            }
 
-          .section-wrap {
-            padding: 14px 20px 20px;
-          }
+            .section-title-row {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 12px;
+            }
 
-          .section-title-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-          }
+            .section-title-row::before,
+            .section-title-row::after {
+              content: "";
+              flex: 1;
+              height: 1px;
+              background: #dbc8b8;
+            }
 
-          .section-title-row::before,
-          .section-title-row::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #dbc8b8;
-          }
+            .section-title {
+              font-size: 11px;
+              text-transform: uppercase;
+              letter-spacing: 0.2em;
+              color: #a1775f;
+              white-space: nowrap;
+            }
 
-          .section-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: #a1775f;
-            white-space: nowrap;
-          }
+            .guest-list {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 12px;
+            }
 
-          .guest-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-          }
+            .guest-card {
+              background: #ffffff;
+              border: 1px solid #e5d6c8;
+              border-radius: 18px;
+              padding: 16px 16px 14px;
+              page-break-inside: avoid;
+              break-inside: avoid;
+            }
 
-          .guest-card {
-            background: #ffffff;
-            border: 1px solid #e5d6c8;
-            border-radius: 18px;
-            padding: 16px 16px 14px;
-            page-break-inside: avoid;
-            break-inside: avoid;
-          }
+            .guest-head {
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 12px;
+              flex-wrap: wrap;
+            }
 
-          .guest-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            flex-wrap: wrap;
-          }
+            .guest-index {
+              font-size: 10px;
+              text-transform: uppercase;
+              letter-spacing: 0.16em;
+              color: #7b675b;
+              margin-bottom: 6px;
+            }
 
-          .guest-index {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: #7b675b;
-            margin-bottom: 6px;
-          }
+            .guest-card h2 {
+              margin: 0;
+              font-size: 22px;
+              line-height: 1.12;
+              color: #6b5447;
+            }
 
-          .guest-card h2 {
-            margin: 0;
-            font-size: 22px;
-            line-height: 1.12;
-            color: #6b5447;
-          }
+            .guest-meta {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 6px;
+              margin-top: 10px;
+              align-items: center;
+            }
 
-          .guest-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-            align-items: center;
-          }
+            .meta-badge {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              min-height: 28px;
+              padding: 5px 9px;
+              border-radius: 999px;
+              background: #f4e8e1;
+              color: #7a5549;
+              font-size: 11px;
+              font-weight: 700;
+              border: 1px solid #ead6cb;
+              white-space: nowrap;
+            }
 
-          .meta-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 28px;
-            padding: 5px 9px;
-            border-radius: 999px;
-            background: #f4e8e1;
-            color: #7a5549;
-            font-size: 11px;
-            font-weight: 700;
-            border: 1px solid #ead6cb;
-            white-space: nowrap;
-          }
+            .meta-date {
+              font-size: 11px;
+              color: #7b675b;
+            }
 
-          .meta-date {
-            font-size: 11px;
-            color: #7b675b;
-          }
+            .tag-wrap {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 6px;
+            }
 
-          .tag-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-          }
+            .tag {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              min-height: 28px;
+              padding: 5px 9px;
+              border-radius: 999px;
+              background: #f7f1ea;
+              color: #6c5a4f;
+              font-size: 11px;
+              font-weight: 700;
+              border: 1px solid #eadfd6;
+              white-space: nowrap;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            }
 
-          .tag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 28px;
-            padding: 5px 9px;
-            border-radius: 999px;
-            background: #f7f1ea;
-            color: #6c5a4f;
-            font-size: 11px;
-            font-weight: 700;
-            border: 1px solid #eadfd6;
-            white-space: nowrap;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-          }
+            .answer-block {
+              margin-top: 14px;
+              padding-top: 14px;
+              border-top: 1px solid #f0e7df;
+            }
 
-          .answer-block {
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 1px solid #f0e7df;
-          }
+            .answer-label {
+              font-size: 10px;
+              text-transform: uppercase;
+              letter-spacing: 0.12em;
+              color: #7b675b;
+              margin-bottom: 6px;
+            }
 
-          .answer-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #7b675b;
-            margin-bottom: 6px;
-          }
+            .answer-value {
+              font-size: 14px;
+              line-height: 1.6;
+              color: #5f4b3f;
+              white-space: pre-wrap;
+            }
 
-          .answer-value {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #5f4b3f;
-            white-space: pre-wrap;
-          }
+            .footer {
+              padding: 0 20px 18px;
+              text-align: center;
+              font-size: 11px;
+              color: #8a776a;
+            }
 
-          .footer {
-            padding: 0 20px 18px;
-            text-align: center;
-            font-size: 11px;
-            color: #8a776a;
-          }
+            .footer-line {
+              height: 1px;
+              background: #e0d0c3;
+              margin-bottom: 10px;
+            }
+          </style>
 
-          .footer-line {
-            height: 1px;
-            background: #e0d0c3;
-            margin-bottom: 10px;
-          }
-        </style>
+          ${pagesHtml}
+        </div>
+      `;
 
-        ${pagesHtml}
-      </div>
-    `;
+      await html2pdf()
+        .set({
+          margin: [4, 4, 4, 4],
+          filename: `preferences-${slug}-${filterType}.pdf`,
+          image: { type: "jpeg", quality: 0.9 },
+          html2canvas: {
+            scale: 1.35,
+            useCORS: true,
+            backgroundColor: "#f6efe8",
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+          },
+          pagebreak: {
+            mode: ["css", "legacy"],
+          },
+        })
+        .from(element)
+        .save();
 
-    await html2pdf()
-      .set({
-        margin: [4, 4, 4, 4],
-        filename: `preferences-${slug}-${filterType}.pdf`,
-        image: { type: "jpeg", quality: 0.9 },
-        html2canvas: {
-          scale: 1.35,
-          useCORS: true,
-          backgroundColor: "#f6efe8",
-        },
-        jsPDF: {
-          unit: "mm",
-          format: "a4",
-          orientation: "portrait",
-        },
-        pagebreak: {
-          mode: ["css", "legacy"],
-        },
-      })
-      .from(element)
-      .save();
+      setExportStatus({
+        type: "success",
+        message: "PDF je uspešno preuzet.",
+      });
+    } catch (error) {
+      console.error("Greška pri eksportu PDF-a:", error);
 
-    setExportStatus({
-      type: "success",
-      message: "PDF je uspešno preuzet.",
-    });
-  } catch (error) {
-    console.error("Greška pri eksportu PDF-a:", error);
-    setExportStatus({
-      type: "error",
-      message: "Došlo je do greške pri kreiranju PDF fajla.",
-    });
-  } finally {
-    setIsExporting(false);
-  }
-};
+      setExportStatus({
+        type: "error",
+        message: "Došlo je do greške pri kreiranju PDF fajla.",
+      });
+    } finally {
+      if (element) {
+        element.remove();
+      }
+
+      setIsExporting(false);
+    }
+  };
+
   if (!isAuthorized) {
     return (
       <div style={styles.page}>
         <div style={styles.loginCard}>
           <p style={styles.kicker}>Admin pristup</p>
+
           <h1 style={styles.title}>Posebne RSVP poruke</h1>
+
           <p style={styles.subtitle}>
-            Pregledaj napomene za hranu i muzičke želje gostiju.
+            Pregledaj napomene za hranu, muzičke želje i post gostiju.
           </p>
+
           <p style={styles.slug}>Događaj: {slug}</p>
 
           <form onSubmit={handleLogin} style={styles.form}>
@@ -743,6 +838,7 @@ const handleExportPreferencesPDF = async () => {
               <label htmlFor="admin-password" style={styles.label}>
                 Lozinka
               </label>
+
               <input
                 id="admin-password"
                 type="password"
@@ -770,10 +866,14 @@ const handleExportPreferencesPDF = async () => {
       <div style={styles.page}>
         <div style={styles.card}>
           <p style={styles.kicker}>Admin panel</p>
+
           <h1 style={styles.title}>Posebne RSVP poruke</h1>
+
           <p style={styles.emptyTitle}>Nema dodatnih opcija za ovaj događaj</p>
+
           <p style={styles.emptyText}>
-            Za ovaj slug nisu uključene napomene za hranu ili muzičke želje.
+            Za ovaj slug nisu uključene napomene za hranu, muzičke želje ili
+            post.
           </p>
 
           <div style={styles.actions}>
@@ -803,7 +903,7 @@ const handleExportPreferencesPDF = async () => {
       <div style={styles.page}>
         <div style={styles.card}>
           <h1 style={styles.title}>Učitavanje...</h1>
-          <p style={styles.emptyText}>Pripremam posebne RSVP poruke.</p>
+          <p style={styles.emptyText}>Pripremam posebne RSVP odgovore.</p>
         </div>
       </div>
     );
@@ -815,10 +915,14 @@ const handleExportPreferencesPDF = async () => {
         <div style={styles.headerTop}>
           <div>
             <p style={styles.kicker}>Admin panel</p>
+
             <h1 style={styles.title}>Posebne RSVP poruke</h1>
+
             <p style={styles.subtitle}>
-              Na jednom mestu vidiš napomene za hranu i muzičke želje gostiju.
+              Na jednom mestu vidiš napomene za hranu, muzičke želje i post
+              gostiju.
             </p>
+
             <p style={styles.slug}>Događaj: {slug}</p>
           </div>
 
@@ -840,15 +944,7 @@ const handleExportPreferencesPDF = async () => {
               onClick={handleExportPreferencesPDF}
               disabled={isExporting}
             >
-              {isExporting
-                ? "Priprema..."
-                : `Preuzmi ${
-                    filterType === "food"
-                      ? "hranu"
-                      : filterType === "music"
-                      ? "muziku"
-                      : "oba"
-                  }`}
+              {isExporting ? "Priprema..." : `Preuzmi ${getExportButtonText()}`}
             </button>
 
             <button
@@ -893,18 +989,26 @@ const handleExportPreferencesPDF = async () => {
             </div>
           )}
 
+          {hasFastingOption && (
+            <div style={styles.statBox}>
+              <span style={styles.statIcon}>♨</span>
+              <span style={styles.statNumber}>{stats.fastingCount}</span>
+              <span style={styles.statLabel}>Post</span>
+            </div>
+          )}
+
           {hasFoodPreferences && hasMusicWish && (
             <div style={styles.statBox}>
               <span style={styles.statIcon}>♡</span>
               <span style={styles.statNumber}>{stats.bothCount}</span>
-              <span style={styles.statLabel}>Obe poruke</span>
+              <span style={styles.statLabel}>Hrana i muzika</span>
             </div>
           )}
 
           <div style={styles.statBox}>
             <span style={styles.statIcon}>✦</span>
             <span style={styles.statNumber}>{stats.total}</span>
-            <span style={styles.statLabel}>Ukupno poruka</span>
+            <span style={styles.statLabel}>Ukupno posebnih odgovora</span>
           </div>
         </div>
       </div>
@@ -915,19 +1019,32 @@ const handleExportPreferencesPDF = async () => {
             <label htmlFor="guest-search" style={styles.label}>
               Pretraga
             </label>
+
             <input
               id="guest-search"
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Pretraži po imenu ili sadržaju poruke"
+              placeholder="Pretraži po imenu, sadržaju poruke ili postu"
               style={styles.input}
             />
           </div>
 
           <div style={styles.field}>
             <label style={styles.label}>Filter</label>
+
             <div style={styles.filterGrid}>
+              <button
+                type="button"
+                onClick={() => setFilterType("all")}
+                style={{
+                  ...styles.filterButton,
+                  ...(filterType === "all" ? styles.filterButtonActive : {}),
+                }}
+              >
+                Sve
+              </button>
+
               {hasFoodPreferences && (
                 <button
                   type="button"
@@ -954,6 +1071,21 @@ const handleExportPreferencesPDF = async () => {
                 </button>
               )}
 
+              {hasFastingOption && (
+                <button
+                  type="button"
+                  onClick={() => setFilterType("fasting")}
+                  style={{
+                    ...styles.filterButton,
+                    ...(filterType === "fasting"
+                      ? styles.filterButtonActive
+                      : {}),
+                  }}
+                >
+                  Post
+                </button>
+              )}
+
               {hasFoodPreferences && hasMusicWish && (
                 <button
                   type="button"
@@ -963,7 +1095,7 @@ const handleExportPreferencesPDF = async () => {
                     ...(filterType === "both" ? styles.filterButtonActive : {}),
                   }}
                 >
-                  Oba
+                  Hrana + muzika
                 </button>
               )}
             </div>
@@ -975,6 +1107,7 @@ const handleExportPreferencesPDF = async () => {
         {filteredGuests.length === 0 ? (
           <div style={styles.emptyState}>
             <p style={styles.emptyTitle}>Nema rezultata</p>
+
             <p style={styles.emptyText}>
               Nema gostiju koji odgovaraju trenutnoj pretrazi ili filteru.
             </p>
@@ -983,20 +1116,29 @@ const handleExportPreferencesPDF = async () => {
           <div style={styles.list}>
             {filteredGuests.map((guest) => {
               const hasFood =
-                typeof guest.foodPreferences === "string" &&
-                guest.foodPreferences.trim() !== "";
+                hasFoodPreferences && hasTextValue(guest.foodPreferences);
 
               const hasMusic =
-                typeof guest.musicWish === "string" &&
-                guest.musicWish.trim() !== "";
+                hasMusicWish && hasTextValue(guest.musicWish);
+
+              const hasFasting =
+                hasFastingOption && hasTextValue(guest.fasting);
 
               const showFoodBlock =
-                (filterType === "food" && hasFood) ||
-                (filterType === "both" && hasFood);
+                hasFood &&
+                (filterType === "all" ||
+                  filterType === "food" ||
+                  filterType === "both");
 
               const showMusicBlock =
-                (filterType === "music" && hasMusic) ||
-                (filterType === "both" && hasMusic);
+                hasMusic &&
+                (filterType === "all" ||
+                  filterType === "music" ||
+                  filterType === "both");
+
+              const showFastingBlock =
+                hasFasting &&
+                (filterType === "all" || filterType === "fasting");
 
               return (
                 <div key={guest.id} style={styles.guestRow}>
@@ -1026,6 +1168,7 @@ const handleExportPreferencesPDF = async () => {
                     <div style={styles.tagRow}>
                       {hasFood && <span style={styles.softTag}>Hrana</span>}
                       {hasMusic && <span style={styles.softTag}>Muzika</span>}
+                      {hasFasting && <span style={styles.softTag}>Post</span>}
                     </div>
                   </div>
 
@@ -1043,6 +1186,15 @@ const handleExportPreferencesPDF = async () => {
                       <p style={styles.answerLabel}>Muzička želja</p>
                       <p style={styles.answerValue}>
                         {guest.musicWish?.trim()}
+                      </p>
+                    </div>
+                  )}
+
+                  {showFastingBlock && (
+                    <div style={styles.answerBlock}>
+                      <p style={styles.answerLabel}>Post</p>
+                      <p style={styles.answerValue}>
+                        {getFastingLabel(guest.fasting)}
                       </p>
                     </div>
                   )}
@@ -1275,7 +1427,7 @@ const styles = {
   },
   filterGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))",
     gap: "10px",
     width: "100%",
   },

@@ -9,8 +9,15 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import "../styles/rsvp.css";
-import { addToCalendar } from "../utils/calendar";
-function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = "latin" }) {
+
+function MinimalRSVP({
+  slug,
+  eventType,
+  brideName,
+  groomName,
+  details = {},
+  script = "latin",
+}) {
   const t =
     script === "cyrillic"
       ? {
@@ -18,6 +25,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
           enterName: "Унесите име и презиме.",
           chooseAttendance: "Изаберите да ли долазите.",
           invalidGuests: "Унесите исправан број особа.",
+          chooseFasting: "Изаберите да ли постите.",
           submitError: "Дошло је до грешке при слању.",
           thanks: "Хвала!",
           success: "Ваша потврда је успешно послата.",
@@ -32,6 +40,9 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
           no: "Не долазим",
           noText: "Нажалост нисам у могућности",
           guests: "Број особа",
+          fasting: "Да ли постите?",
+          fastingYes: "Постим",
+          fastingNo: "Не постим",
           sending: "Слање...",
           submit: "Пошаљи потврду",
         }
@@ -40,6 +51,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
           enterName: "Unesite ime i prezime.",
           chooseAttendance: "Izaberite da li dolazite.",
           invalidGuests: "Unesite ispravan broj osoba.",
+          chooseFasting: "Izaberite da li postite.",
           submitError: "Došlo je do greške pri slanju.",
           thanks: "Hvala!",
           success: "Vaša potvrda je uspešno poslata.",
@@ -54,14 +66,21 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
           no: "Ne dolazim",
           noText: "Nažalost nisam u mogućnosti",
           guests: "Broj osoba",
+          fasting: "Da li postite?",
+          fastingYes: "Postim",
+          fastingNo: "Ne postim",
           sending: "Slanje...",
           submit: "Pošalji potvrdu",
         };
+
+  const rsvpOptions = details?.rsvpOptions || {};
+  const showFastingOption = Boolean(rsvpOptions.fasting);
 
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
     guests: "1",
+    fasting: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -75,6 +94,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
           fullName: "",
           attending: "",
           guests: "1",
+          fasting: "",
         });
       }, 3000);
 
@@ -96,6 +116,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
       ...prev,
       attending: value,
       guests: value === "da" ? prev.guests || "1" : "",
+      fasting: value === "da" ? prev.fasting : "",
     }));
   };
 
@@ -124,6 +145,11 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
         alert(t.invalidGuests);
         return;
       }
+
+      if (showFastingOption && !formData.fasting) {
+        alert(t.chooseFasting);
+        return;
+      }
     }
 
     setLoading(true);
@@ -144,6 +170,10 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
         fullName: formData.fullName.trim(),
         attending: formData.attending,
         guests: formData.attending === "da" ? guestsCount : 0,
+        fasting:
+          formData.attending === "da" && showFastingOption
+            ? formData.fasting
+            : "",
         createdAt: serverTimestamp(),
       });
 
@@ -158,7 +188,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
 
   return (
     <motion.section
-  className={`minimal-rsvp-section minimal-rsvp-slug-${slug || ""}`}
+      className={`minimal-rsvp-section minimal-rsvp-slug-${slug || ""}`}
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
@@ -245,9 +275,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
 
                 <h2 className="minimal-rsvp-title">{t.title}</h2>
 
-                <p className="minimal-rsvp-subtitle">
-                  {t.subtitle}
-                </p>
+                <p className="minimal-rsvp-subtitle">{t.subtitle}</p>
 
                 <div className="minimal-rsvp-divider" />
 
@@ -292,9 +320,7 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
                         onClick={() => handleAttendanceSelect("ne")}
                       >
                         <span className="minimal-choice-title">{t.no}</span>
-                        <span className="minimal-choice-text">
-                          {t.noText}
-                        </span>
+                        <span className="minimal-choice-text">{t.noText}</span>
                       </button>
                     </div>
                   </div>
@@ -330,6 +356,60 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
                     )}
                   </AnimatePresence>
 
+                  <AnimatePresence initial={false}>
+                    {formData.attending === "da" && showFastingOption && (
+                      <motion.div
+                        className="minimal-rsvp-choice-block minimal-rsvp-fasting-block"
+                        initial={{ opacity: 0, height: 0, y: 6 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -4 }}
+                        transition={{ duration: 0.25 }}
+                      >
+                        <p className="minimal-rsvp-choice-label">
+                          {t.fasting}
+                        </p>
+
+                        <div className="minimal-rsvp-choice-grid">
+                          <button
+                            type="button"
+                            className={`minimal-choice-card ${
+                              formData.fasting === "posti" ? "is-active" : ""
+                            }`}
+                            onClick={() =>
+                              setFormData((prev) => ({
+                                ...prev,
+                                fasting: "posti",
+                              }))
+                            }
+                          >
+                            <span className="minimal-choice-title">
+                              {t.fastingYes}
+                            </span>
+                          </button>
+
+                          <button
+                            type="button"
+                            className={`minimal-choice-card ${
+                              formData.fasting === "ne_posti"
+                                ? "is-active"
+                                : ""
+                            }`}
+                            onClick={() =>
+                              setFormData((prev) => ({
+                                ...prev,
+                                fasting: "ne_posti",
+                              }))
+                            }
+                          >
+                            <span className="minimal-choice-title">
+                              {t.fastingNo}
+                            </span>
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
                   <button
                     type="submit"
                     className="minimal-rsvp-button"
@@ -339,7 +419,6 @@ function MinimalRSVP({ slug, eventType, brideName, groomName, details, script = 
                   </button>
                 </form>
               </motion.div>
-              
             )}
           </AnimatePresence>
         </motion.div>

@@ -8,12 +8,13 @@ import {
   doc,
   setDoc,
   onSnapshot,
+  getDocs,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
 import demoWedding from "../data/demoWedding";
 import html2pdf from "html2pdf.js";
-import { getDocs } from "firebase/firestore";
+
 function AdminPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -21,7 +22,8 @@ function AdminPage() {
   const [password, setPassword] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [authError, setAuthError] = useState("");
-const [isExportingPdf, setIsExportingPdf] = useState(false);
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+
   const [guests, setGuests] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -29,7 +31,9 @@ const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [manualGuest, setManualGuest] = useState({
     fullName: "",
     guests: "1",
+    fasting: "",
   });
+
   const [addingGuest, setAddingGuest] = useState(false);
 
   const [showExpenses, setShowExpenses] = useState(false);
@@ -47,7 +51,8 @@ const [isExportingPdf, setIsExportingPdf] = useState(false);
   });
 
   const [guestSearch, setGuestSearch] = useState("");
-const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
   const [messageModal, setMessageModal] = useState({
     isOpen: false,
     title: "",
@@ -78,13 +83,15 @@ const [debouncedSearch, setDebouncedSearch] = useState("");
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setDebouncedSearch(guestSearch);
-  }, 300);
 
-  return () => clearTimeout(timer);
-}, [guestSearch]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(guestSearch);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [guestSearch]);
+
   const expectedPassword = adminAccess[slug];
 
   const invitation = useMemo(() => {
@@ -92,8 +99,12 @@ useEffect(() => {
   }, [slug]);
 
   const rsvpOptions = invitation?.details?.rsvpOptions || {};
+  const hasFastingOption = Boolean(rsvpOptions.fasting);
+
   const hasGuestPreferencesPage =
-    Boolean(rsvpOptions.foodPreferences) || Boolean(rsvpOptions.musicWish);
+    Boolean(rsvpOptions.foodPreferences) ||
+    Boolean(rsvpOptions.musicWish) ||
+    hasFastingOption;
 
   const sanitizeNumberInput = (value) => {
     return value.replace(/[^\d]/g, "");
@@ -102,6 +113,12 @@ useEffect(() => {
   const formatNumberForDisplay = (value) => {
     if (!value) return "";
     return new Intl.NumberFormat("sr-RS").format(Number(value));
+  };
+
+  const getFastingLabel = (value) => {
+    if (value === "posti") return "Posti";
+    if (value === "ne_posti") return "Ne posti";
+    return "";
   };
 
   const openMessageModal = ({ title, text, variant = "default" }) => {
@@ -162,113 +179,113 @@ useEffect(() => {
     }
   }, [slug]);
 
- useEffect(() => {
-  if (!slug || !isAuthorized) return;
+  useEffect(() => {
+    if (!slug || !isAuthorized) return;
 
-  setLoading(true);
-  setError("");
+    setLoading(true);
+    setError("");
 
-  const rsvpsRef = collection(db, "events", slug, "rsvps");
-  const eventRef = doc(db, "events", slug);
-  const expensesRef = collection(db, "events", slug, "expenses");
+    const rsvpsRef = collection(db, "events", slug, "rsvps");
+    const eventRef = doc(db, "events", slug);
+    const expensesRef = collection(db, "events", slug, "expenses");
 
-  let guestsLoaded = false;
-  let expensesLoaded = false;
-  let budgetLoaded = false;
+    let guestsLoaded = false;
+    let expensesLoaded = false;
+    let budgetLoaded = false;
 
-  const stopLoadingIfReady = () => {
-    if (guestsLoaded && expensesLoaded && budgetLoaded) {
-      setLoading(false);
-    }
-  };
+    const stopLoadingIfReady = () => {
+      if (guestsLoaded && expensesLoaded && budgetLoaded) {
+        setLoading(false);
+      }
+    };
 
-  const getTimestampMs = (item) => {
-    if (typeof item?.createdAt?.toMillis === "function") {
-      return item.createdAt.toMillis();
-    }
+    const getTimestampMs = (item) => {
+      if (typeof item?.createdAt?.toMillis === "function") {
+        return item.createdAt.toMillis();
+      }
 
-    if (typeof item?.updatedAt?.toMillis === "function") {
-      return item.updatedAt.toMillis();
-    }
+      if (typeof item?.updatedAt?.toMillis === "function") {
+        return item.updatedAt.toMillis();
+      }
 
-    return 0;
-  };
+      return 0;
+    };
 
-  const unsubscribeGuests = onSnapshot(
-    rsvpsRef,
-    (snapshot) => {
-      const data = snapshot.docs
-        .map((docItem) => ({
-          id: docItem.id,
-          ...docItem.data(),
-        }))
-        .sort((a, b) => getTimestampMs(b) - getTimestampMs(a));
+    const unsubscribeGuests = onSnapshot(
+      rsvpsRef,
+      (snapshot) => {
+        const data = snapshot.docs
+          .map((docItem) => ({
+            id: docItem.id,
+            ...docItem.data(),
+          }))
+          .sort((a, b) => getTimestampMs(b) - getTimestampMs(a));
 
-      setGuests(data);
-      guestsLoaded = true;
-      stopLoadingIfReady();
-    },
-    (err) => {
-      console.error("Greška pri realtime učitavanju gostiju:", err);
-      setError("Došlo je do greške pri učitavanju odgovora.");
-      guestsLoaded = true;
-      stopLoadingIfReady();
-    }
-  );
+        setGuests(data);
+        guestsLoaded = true;
+        stopLoadingIfReady();
+      },
+      (err) => {
+        console.error("Greška pri realtime učitavanju gostiju:", err);
+        setError("Došlo je do greške pri učitavanju odgovora.");
+        guestsLoaded = true;
+        stopLoadingIfReady();
+      }
+    );
 
-  const unsubscribeEvent = onSnapshot(
-    eventRef,
-    (snapshot) => {
-      if (snapshot.exists()) {
-        const eventData = snapshot.data();
-        const savedBudget = eventData?.budget;
+    const unsubscribeEvent = onSnapshot(
+      eventRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          const eventData = snapshot.data();
+          const savedBudget = eventData?.budget;
 
-        if (typeof savedBudget === "number") {
-          setBudget(savedBudget);
+          if (typeof savedBudget === "number") {
+            setBudget(savedBudget);
+          } else {
+            setBudget(null);
+          }
         } else {
           setBudget(null);
         }
-      } else {
-        setBudget(null);
+
+        budgetLoaded = true;
+        stopLoadingIfReady();
+      },
+      (err) => {
+        console.error("Greška pri realtime učitavanju budžeta:", err);
+        budgetLoaded = true;
+        stopLoadingIfReady();
       }
+    );
 
-      budgetLoaded = true;
-      stopLoadingIfReady();
-    },
-    (err) => {
-      console.error("Greška pri realtime učitavanju budžeta:", err);
-      budgetLoaded = true;
-      stopLoadingIfReady();
-    }
-  );
+    const unsubscribeExpenses = onSnapshot(
+      expensesRef,
+      (snapshot) => {
+        const expensesData = snapshot.docs
+          .map((docItem) => ({
+            id: docItem.id,
+            ...docItem.data(),
+          }))
+          .sort((a, b) => getTimestampMs(b) - getTimestampMs(a));
 
-  const unsubscribeExpenses = onSnapshot(
-    expensesRef,
-    (snapshot) => {
-      const expensesData = snapshot.docs
-        .map((docItem) => ({
-          id: docItem.id,
-          ...docItem.data(),
-        }))
-        .sort((a, b) => getTimestampMs(b) - getTimestampMs(a));
+        setExpenses(expensesData);
+        expensesLoaded = true;
+        stopLoadingIfReady();
+      },
+      (err) => {
+        console.error("Greška pri realtime učitavanju troškova:", err);
+        expensesLoaded = true;
+        stopLoadingIfReady();
+      }
+    );
 
-      setExpenses(expensesData);
-      expensesLoaded = true;
-      stopLoadingIfReady();
-    },
-    (err) => {
-      console.error("Greška pri realtime učitavanju troškova:", err);
-      expensesLoaded = true;
-      stopLoadingIfReady();
-    }
-  );
-
-  return () => {
-    unsubscribeGuests();
-    unsubscribeEvent();
-    unsubscribeExpenses();
-  };
-}, [slug, isAuthorized]);
+    return () => {
+      unsubscribeGuests();
+      unsubscribeEvent();
+      unsubscribeExpenses();
+    };
+  }, [slug, isAuthorized]);
 
   useEffect(() => {
     if (budget === null) {
@@ -333,6 +350,15 @@ useEffect(() => {
       return;
     }
 
+    if (hasFastingOption && !manualGuest.fasting) {
+      openMessageModal({
+        title: "Nedostaje informacija za post",
+        text: "Izaberi da li gost posti ili ne posti.",
+        variant: "warning",
+      });
+      return;
+    }
+
     if (!slug) {
       openMessageModal({
         title: "Nedostaje događaj",
@@ -360,6 +386,7 @@ useEffect(() => {
         fullName: manualGuest.fullName.trim(),
         attending: "da",
         guests: guestsCount,
+        fasting: hasFastingOption ? manualGuest.fasting : "",
         source: "admin",
         createdAt: serverTimestamp(),
       });
@@ -367,6 +394,7 @@ useEffect(() => {
       setManualGuest({
         fullName: "",
         guests: "1",
+        fasting: "",
       });
 
       openMessageModal({
@@ -580,31 +608,29 @@ useEffect(() => {
     try {
       setConfirmModal((prev) => ({ ...prev, loading: true }));
 
-  if (actionType === "deleteGuest") {
-  const guestId = payload.guestId;
+      if (actionType === "deleteGuest") {
+        const guestId = payload.guestId;
 
-  // 1. obriši iz rsvps
-  await deleteDoc(doc(db, "events", slug, "rsvps", guestId));
+        await deleteDoc(doc(db, "events", slug, "rsvps", guestId));
 
-  // 2. obriši iz tableGuests
-  const tableGuestsRef = collection(db, "events", slug, "tableGuests");
-  const snapshot = await getDocs(tableGuestsRef);
+        const tableGuestsRef = collection(db, "events", slug, "tableGuests");
+        const snapshot = await getDocs(tableGuestsRef);
 
-  for (const docItem of snapshot.docs) {
-    if (docItem.data().guestId === guestId) {
-      await deleteDoc(doc(db, "events", slug, "tableGuests", docItem.id));
-    }
-  }
+        for (const docItem of snapshot.docs) {
+          if (docItem.data().guestId === guestId) {
+            await deleteDoc(doc(db, "events", slug, "tableGuests", docItem.id));
+          }
+        }
 
-  closeConfirmModal();
-  openMessageModal({
-    title: "Gost je obrisan",
-    text: "Gost je uklonjen i iz rasporeda sedenja.",
-    variant: "success",
-  });
+        closeConfirmModal();
+        openMessageModal({
+          title: "Gost je obrisan",
+          text: "Gost je uklonjen i iz rasporeda sedenja.",
+          variant: "success",
+        });
 
-  return;
-}
+        return;
+      }
 
       if (actionType === "deleteExpense") {
         await deleteDoc(doc(db, "events", slug, "expenses", payload.expenseId));
@@ -653,16 +679,25 @@ useEffect(() => {
     }).format(Number(value) || 0);
   };
 
- const normalizedSearch = debouncedSearch.trim().toLowerCase();
+  const normalizedSearch = debouncedSearch.trim().toLowerCase();
 
   const comingGuests = useMemo(
     () =>
-      guests.filter(
-        (guest) =>
-          guest.attending === "da" &&
-          (!normalizedSearch ||
-            (guest.fullName || "").toLowerCase().includes(normalizedSearch))
-      ),
+      guests.filter((guest) => {
+        if (guest.attending !== "da") return false;
+
+        if (!normalizedSearch) return true;
+
+        const nameMatch = (guest.fullName || "")
+          .toLowerCase()
+          .includes(normalizedSearch);
+
+        const fastingMatch = getFastingLabel(guest.fasting)
+          .toLowerCase()
+          .includes(normalizedSearch);
+
+        return nameMatch || fastingMatch;
+      }),
     [guests, normalizedSearch]
   );
 
@@ -705,436 +740,465 @@ useEffect(() => {
     return Math.min((totalExpenses / budget) * 100, 100);
   }, [budget, totalExpenses]);
 
-const handleExportPDF = async () => {
-  if (isExportingPdf) return;
+  const handleExportPDF = async () => {
+    if (isExportingPdf) return;
 
-  const exportGuests = guests.filter((guest) => guest.attending === "da");
+    const exportGuests = guests.filter((guest) => guest.attending === "da");
 
-  if (!exportGuests.length) {
-    openMessageModal({
-      title: "Nema podataka za eksport",
-      text: "Trenutno nema gostiju koji dolaze.",
-      variant: "warning",
-    });
-    return;
-  }
-
-  setIsExportingPdf(true);
-
-  const element = document.createElement("div");
-
-  try {
-    const totalConfirmed = exportGuests.reduce((sum, guest) => {
-      return sum + (Number(guest.guests) || 0);
-    }, 0);
-
-    const totalDeclined = guests.filter(
-      (guest) => guest.attending === "ne"
-    ).length;
-
-    const formattedDate = new Date().toLocaleString("sr-RS", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-
-    const escapeHtml = (value = "") =>
-      String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-    const chunkArray = (array, size) => {
-      const chunks = [];
-      for (let i = 0; i < array.length; i += size) {
-        chunks.push(array.slice(i, i + size));
-      }
-      return chunks;
-    };
-
-    const guestsPerPage = 20;
-    const guestChunks = chunkArray(exportGuests, guestsPerPage);
-    const totalPages = guestChunks.length;
-
-    const pagesHtml = guestChunks
-      .map((guestChunk, pageIndex) => {
-        const guestRows = guestChunk
-          .map(
-            (guest, rowIndex) => `
-              <tr>
-                <td class="col-index">${pageIndex * guestsPerPage + rowIndex + 1}.</td>
-                <td class="col-name">${escapeHtml(guest.fullName || "")}</td>
-                <td class="col-count">${Number(guest.guests) || 0}</td>
-                <td class="col-source">
-                  ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
-                </td>
-                <td class="col-date">${escapeHtml(
-                  formatDate(guest.createdAt) || "—"
-                )}</td>
-              </tr>
-            `
-          )
-          .join("");
-
-        return `
-          <section class="pdf-page ${pageIndex < totalPages - 1 ? "page-break" : ""}">
-            <div class="pdf-shell">
-              <div class="hero">
-                <div class="topline">Wedding admin export</div>
-                <h1 class="title">Spisak potvrđenih gostiju</h1>
-                <p class="subtitle">
-                  Događaj: <strong>${escapeHtml(slug)}</strong><br />
-                  Generisano: ${escapeHtml(formattedDate)}<br />
-                  Strana: <strong>${pageIndex + 1} / ${totalPages}</strong>
-                </p>
-              </div>
-
-              ${
-                pageIndex === 0
-                  ? `
-                <div class="summary-grid">
-                  <div class="summary-card">
-                    <p class="summary-label">Potvrđeni odgovori</p>
-                    <p class="summary-value">${exportGuests.length}</p>
-                  </div>
-
-                  <div class="summary-card">
-                    <p class="summary-label">Ukupno osoba</p>
-                    <p class="summary-value">${totalConfirmed}</p>
-                  </div>
-
-                  <div class="summary-card">
-                    <p class="summary-label">Ne dolaze</p>
-                    <p class="summary-value">${totalDeclined}</p>
-                  </div>
-                </div>
-              `
-                  : ""
-              }
-
-              <div class="section-wrap">
-                <div class="section-title-row">
-                  <div class="section-title">Lista gostiju</div>
-                </div>
-
-                <div class="table-card">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Ime i prezime</th>
-                        <th style="text-align:right;">Broj osoba</th>
-                        <th>Izvor</th>
-                        <th>Datum odgovora</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${guestRows}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div class="footer">
-                <div class="footer-line"></div>
-                Dokument generisan iz admin panela
-              </div>
-            </div>
-          </section>
-        `;
-      })
-      .join("");
-
-    element.style.width = "100%";
-    element.style.maxWidth = "794px";
-    element.style.margin = "0 auto";
-    element.style.background = "#f6efe8";
-    element.style.padding = "12px";
-    element.style.boxSizing = "border-box";
-
-    element.innerHTML = `
-      <div class="pdf-root">
-        <style>
-          * {
-            box-sizing: border-box;
-          }
-
-          .pdf-root {
-            width: 100%;
-            margin: 0 auto;
-            color: #5f4b3f;
-            font-family: Georgia, "Times New Roman", serif;
-          }
-
-          .pdf-page {
-            width: 100%;
-          }
-
-          .page-break {
-            page-break-after: always;
-            break-after: page;
-            margin-bottom: 12px;
-          }
-
-          .pdf-shell {
-            background: #ffffff;
-            border: 1px solid #e5d6c8;
-            border-radius: 24px;
-            overflow: hidden;
-          }
-
-          .hero {
-            padding: 22px 20px 16px;
-            border-bottom: 1px solid rgba(190, 162, 139, 0.22);
-            background: #f8f2ec;
-          }
-
-          .topline {
-            font-size: 10px;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: #a1775f;
-            margin-bottom: 12px;
-          }
-
-          .title {
-            margin: 0;
-            font-size: 28px;
-            line-height: 1.1;
-            font-weight: 700;
-            color: #6b5447;
-          }
-
-          .subtitle {
-            margin: 10px 0 0;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #756255;
-          }
-
-          .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            padding: 14px 20px 4px;
-          }
-
-          .summary-card {
-            background: #ffffff;
-            border: 1px solid #e6d8cb;
-            border-radius: 16px;
-            padding: 14px;
-          }
-
-          .summary-label {
-            margin: 0 0 8px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            color: #90715d;
-          }
-
-          .summary-value {
-            margin: 0;
-            font-size: 22px;
-            font-weight: 700;
-            color: #6b5447;
-            line-height: 1;
-          }
-
-          .section-wrap {
-            padding: 14px 20px 20px;
-          }
-
-          .section-title-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-          }
-
-          .section-title-row::before,
-          .section-title-row::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #dbc8b8;
-          }
-
-          .section-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: #a1775f;
-          }
-
-          .table-card {
-            background: #ffffff;
-            border: 1px solid #e5d6c8;
-            border-radius: 18px;
-            padding: 12px;
-          }
-
-          table {
-            width: 100%;
-            border-collapse: collapse;
-          }
-
-          thead {
-            display: table-header-group;
-          }
-
-          tr,
-          td,
-          th,
-          tbody tr {
-            page-break-inside: avoid;
-            break-inside: avoid;
-          }
-
-          thead th {
-            text-align: left;
-            padding: 8px 5px 10px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #8b7364;
-            border-bottom: 1px solid #eaded3;
-          }
-
-          tbody td {
-            padding: 7px 5px;
-            font-size: 12px;
-            border-bottom: 1px solid #f1e8e0;
-            vertical-align: top;
-          }
-
-          tbody tr:last-child td {
-            border-bottom: none;
-          }
-
-          .col-index {
-            width: 42px;
-            color: #9a8374;
-          }
-
-          .col-name {
-            font-weight: 700;
-            color: #6b5447;
-          }
-
-          .col-count {
-            width: 80px;
-            text-align: right;
-            font-weight: 700;
-          }
-
-          .col-source {
-            width: 120px;
-            color: #7a675b;
-          }
-
-          .col-date {
-            width: 135px;
-            color: #7a675b;
-          }
-
-          .footer {
-            padding: 0 20px 18px;
-            text-align: center;
-            font-size: 11px;
-            color: #8a776a;
-          }
-
-          .footer-line {
-            height: 1px;
-            background: #e0d0c3;
-            margin-bottom: 10px;
-          }
-        </style>
-
-        ${pagesHtml}
-      </div>
-    `;
-
-    await html2pdf()
-      .set({
-        margin: [4, 4, 4, 4],
-        filename: `spisak-gostiju-${slug}.pdf`,
-        image: { type: "jpeg", quality: 0.9 },
-        html2canvas: {
-          scale: 1,
-          useCORS: true,
-          backgroundColor: "#f6efe8",
-        },
-        jsPDF: {
-          unit: "mm",
-          format: "a4",
-          orientation: "portrait",
-        },
-        pagebreak: {
-          mode: ["css", "legacy"],
-        },
-      })
-      .from(element)
-      .save();
-  } catch (error) {
-    console.error("PDF export failed:", error);
-
-    try {
-      const htmlDocument = `
-        <!DOCTYPE html>
-        <html lang="sr">
-          <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Spisak gostiju - ${slug}</title>
-          </head>
-          <body style="margin:0; background:#f6efe8;">
-            ${element.innerHTML}
-          </body>
-        </html>
-      `;
-
-      const blob = new Blob([htmlDocument], {
-        type: "text/html;charset=utf-8;",
-      });
-
-      const url = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `spisak-gostiju-${slug}.html`;
-
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-
+    if (!exportGuests.length) {
       openMessageModal({
-        title: "PDF nije uspeo",
-        text: "Preuzet je HTML fajl koji možete otvoriti i sačuvati ili odštampati kao PDF.",
+        title: "Nema podataka za eksport",
+        text: "Trenutno nema gostiju koji dolaze.",
         variant: "warning",
       });
-    } catch (fallbackError) {
-      console.error("Fallback export failed:", fallbackError);
-
-      openMessageModal({
-        title: "Eksport nije uspeo",
-        text: "Došlo je do greške pri eksportu. Pokušajte ponovo.",
-        variant: "danger",
-      });
+      return;
     }
-  } finally {
-  element.remove();
-  setIsExportingPdf(false);
+
+    setIsExportingPdf(true);
+
+    const element = document.createElement("div");
+
+    try {
+      const totalConfirmed = exportGuests.reduce((sum, guest) => {
+        return sum + (Number(guest.guests) || 0);
+      }, 0);
+
+      const totalDeclined = guests.filter(
+        (guest) => guest.attending === "ne"
+      ).length;
+
+      const formattedDate = new Date().toLocaleString("sr-RS", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      const escapeHtml = (value = "") =>
+        String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+
+      const chunkArray = (array, size) => {
+        const chunks = [];
+        for (let i = 0; i < array.length; i += size) {
+          chunks.push(array.slice(i, i + size));
+        }
+        return chunks;
+      };
+
+      const guestsPerPage = 20;
+      const guestChunks = chunkArray(exportGuests, guestsPerPage);
+      const totalPages = guestChunks.length;
+
+      const pagesHtml = guestChunks
+        .map((guestChunk, pageIndex) => {
+          const guestRows = guestChunk
+            .map(
+              (guest, rowIndex) => `
+                <tr>
+                  <td class="col-index">
+                    ${pageIndex * guestsPerPage + rowIndex + 1}.
+                  </td>
+
+                  <td class="col-name">
+                    ${escapeHtml(guest.fullName || "")}
+                  </td>
+
+             <td class="col-count">
+  ${Number(guest.guests) || 0}
+</td>
+
+${
+  hasFastingOption
+    ? `
+      <td class="col-fasting">
+        ${escapeHtml(getFastingLabel(guest.fasting) || "—")}
+      </td>
+    `
+    : ""
 }
-};
+
+<td class="col-source">
+                    ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
+                  </td>
+
+                  <td class="col-date">
+                    ${escapeHtml(formatDate(guest.createdAt) || "—")}
+                  </td>
+                </tr>
+              `
+            )
+            .join("");
+
+          return `
+            <section class="pdf-page ${
+              pageIndex < totalPages - 1 ? "page-break" : ""
+            }">
+              <div class="pdf-shell">
+                <div class="hero">
+                  <div class="topline">Wedding admin export</div>
+                  <h1 class="title">Spisak potvrđenih gostiju</h1>
+                  <p class="subtitle">
+                    Događaj: <strong>${escapeHtml(slug)}</strong><br />
+                    Generisano: ${escapeHtml(formattedDate)}<br />
+                    Strana: <strong>${pageIndex + 1} / ${totalPages}</strong>
+                  </p>
+                </div>
+
+                ${
+                  pageIndex === 0
+                    ? `
+                  <div class="summary-grid">
+                    <div class="summary-card">
+                      <p class="summary-label">Potvrđeni odgovori</p>
+                      <p class="summary-value">${exportGuests.length}</p>
+                    </div>
+
+                    <div class="summary-card">
+                      <p class="summary-label">Ukupno osoba</p>
+                      <p class="summary-value">${totalConfirmed}</p>
+                    </div>
+
+                    <div class="summary-card">
+                      <p class="summary-label">Ne dolaze</p>
+                      <p class="summary-value">${totalDeclined}</p>
+                    </div>
+                  </div>
+                `
+                    : ""
+                }
+
+                <div class="section-wrap">
+                  <div class="section-title-row">
+                    <div class="section-title">Lista gostiju</div>
+                  </div>
+
+                  <div class="table-card">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Ime i prezime</th>
+                  <th style="text-align:right;">Broj osoba</th>
+${hasFastingOption ? `<th>Post</th>` : ""}
+<th>Izvor</th>
+                          <th>Datum odgovora</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${guestRows}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="footer">
+                  <div class="footer-line"></div>
+                  Dokument generisan iz admin panela
+                </div>
+              </div>
+            </section>
+          `;
+        })
+        .join("");
+
+      element.style.width = "100%";
+      element.style.maxWidth = "794px";
+      element.style.margin = "0 auto";
+      element.style.background = "#f6efe8";
+      element.style.padding = "12px";
+      element.style.boxSizing = "border-box";
+
+      element.innerHTML = `
+        <div class="pdf-root">
+          <style>
+            * {
+              box-sizing: border-box;
+            }
+
+            .pdf-root {
+              width: 100%;
+              margin: 0 auto;
+              color: #5f4b3f;
+              font-family: Georgia, "Times New Roman", serif;
+            }
+
+            .pdf-page {
+              width: 100%;
+            }
+
+            .page-break {
+              page-break-after: always;
+              break-after: page;
+              margin-bottom: 12px;
+            }
+
+            .pdf-shell {
+              background: #ffffff;
+              border: 1px solid #e5d6c8;
+              border-radius: 24px;
+              overflow: hidden;
+            }
+
+            .hero {
+              padding: 22px 20px 16px;
+              border-bottom: 1px solid rgba(190, 162, 139, 0.22);
+              background: #f8f2ec;
+            }
+
+            .topline {
+              font-size: 10px;
+              letter-spacing: 0.22em;
+              text-transform: uppercase;
+              color: #a1775f;
+              margin-bottom: 12px;
+            }
+
+            .title {
+              margin: 0;
+              font-size: 28px;
+              line-height: 1.1;
+              font-weight: 700;
+              color: #6b5447;
+            }
+
+            .subtitle {
+              margin: 10px 0 0;
+              font-size: 13px;
+              line-height: 1.6;
+              color: #756255;
+            }
+
+            .summary-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 10px;
+              padding: 14px 20px 4px;
+            }
+
+            .summary-card {
+              background: #ffffff;
+              border: 1px solid #e6d8cb;
+              border-radius: 16px;
+              padding: 14px;
+            }
+
+            .summary-label {
+              margin: 0 0 8px;
+              font-size: 10px;
+              text-transform: uppercase;
+              letter-spacing: 0.14em;
+              color: #90715d;
+            }
+
+            .summary-value {
+              margin: 0;
+              font-size: 22px;
+              font-weight: 700;
+              color: #6b5447;
+              line-height: 1;
+            }
+
+            .section-wrap {
+              padding: 14px 20px 20px;
+            }
+
+            .section-title-row {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 12px;
+            }
+
+            .section-title-row::before,
+            .section-title-row::after {
+              content: "";
+              flex: 1;
+              height: 1px;
+              background: #dbc8b8;
+            }
+
+            .section-title {
+              font-size: 11px;
+              text-transform: uppercase;
+              letter-spacing: 0.2em;
+              color: #a1775f;
+            }
+
+            .table-card {
+              background: #ffffff;
+              border: 1px solid #e5d6c8;
+              border-radius: 18px;
+              padding: 12px;
+            }
+
+            table {
+              width: 100%;
+              border-collapse: collapse;
+            }
+
+            thead {
+              display: table-header-group;
+            }
+
+            tr,
+            td,
+            th,
+            tbody tr {
+              page-break-inside: avoid;
+              break-inside: avoid;
+            }
+
+            thead th {
+              text-align: left;
+              padding: 8px 5px 10px;
+              font-size: 9px;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+              color: #8b7364;
+              border-bottom: 1px solid #eaded3;
+            }
+
+            tbody td {
+              padding: 7px 5px;
+              font-size: 11px;
+              border-bottom: 1px solid #f1e8e0;
+              vertical-align: top;
+            }
+
+            tbody tr:last-child td {
+              border-bottom: none;
+            }
+
+            .col-index {
+              width: 34px;
+              color: #9a8374;
+            }
+
+            .col-name {
+              font-weight: 700;
+              color: #6b5447;
+            }
+
+            .col-count {
+              width: 62px;
+              text-align: right;
+              font-weight: 700;
+            }
+
+            .col-fasting {
+              width: 72px;
+              color: #7a675b;
+            }
+
+            .col-source {
+              width: 92px;
+              color: #7a675b;
+            }
+
+            .col-date {
+              width: 120px;
+              color: #7a675b;
+            }
+
+            .footer {
+              padding: 0 20px 18px;
+              text-align: center;
+              font-size: 11px;
+              color: #8a776a;
+            }
+
+            .footer-line {
+              height: 1px;
+              background: #e0d0c3;
+              margin-bottom: 10px;
+            }
+          </style>
+
+          ${pagesHtml}
+        </div>
+      `;
+
+      await html2pdf()
+        .set({
+          margin: [4, 4, 4, 4],
+          filename: `spisak-gostiju-${slug}.pdf`,
+          image: { type: "jpeg", quality: 0.9 },
+          html2canvas: {
+            scale: 1,
+            useCORS: true,
+            backgroundColor: "#f6efe8",
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+          },
+          pagebreak: {
+            mode: ["css", "legacy"],
+          },
+        })
+        .from(element)
+        .save();
+    } catch (error) {
+      console.error("PDF export failed:", error);
+
+      try {
+        const htmlDocument = `
+          <!DOCTYPE html>
+          <html lang="sr">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Spisak gostiju - ${slug}</title>
+            </head>
+            <body style="margin:0; background:#f6efe8;">
+              ${element.innerHTML}
+            </body>
+          </html>
+        `;
+
+        const blob = new Blob([htmlDocument], {
+          type: "text/html;charset=utf-8;",
+        });
+
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `spisak-gostiju-${slug}.html`;
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        openMessageModal({
+          title: "PDF nije uspeo",
+          text: "Preuzet je HTML fajl koji možete otvoriti i sačuvati ili odštampati kao PDF.",
+          variant: "warning",
+        });
+      } catch (fallbackError) {
+        console.error("Fallback export failed:", fallbackError);
+
+        openMessageModal({
+          title: "Eksport nije uspeo",
+          text: "Došlo je do greške pri eksportu. Pokušajte ponovo.",
+          variant: "danger",
+        });
+      }
+    } finally {
+      element.remove();
+      setIsExportingPdf(false);
+    }
+  };
+
   const getModalAccentStyle = (variant) => {
     if (variant === "success") {
       return {
@@ -1195,7 +1259,12 @@ const handleExportPDF = async () => {
   if (!isAuthorized) {
     return (
       <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
-        <div style={{ ...styles.loginCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
+        <div
+          style={{
+            ...styles.loginCard,
+            ...(isMobile ? styles.sectionCardMobile : {}),
+          }}
+        >
           <p style={styles.kicker}>Admin pristup</p>
           <h1 style={styles.title}>Prijava</h1>
           <p style={styles.slug}>Događaj: {slug}</p>
@@ -1230,7 +1299,12 @@ const handleExportPDF = async () => {
   if (loading) {
     return (
       <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
-        <div style={{ ...styles.headerCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
+        <div
+          style={{
+            ...styles.headerCard,
+            ...(isMobile ? styles.sectionCardMobile : {}),
+          }}
+        >
           <h1 style={styles.title}>Admin panel</h1>
           <p>Učitavanje...</p>
         </div>
@@ -1241,7 +1315,12 @@ const handleExportPDF = async () => {
   if (error) {
     return (
       <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
-        <div style={{ ...styles.headerCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
+        <div
+          style={{
+            ...styles.headerCard,
+            ...(isMobile ? styles.sectionCardMobile : {}),
+          }}
+        >
           <h1 style={styles.title}>Admin panel</h1>
           <p style={styles.error}>{error}</p>
         </div>
@@ -1252,15 +1331,30 @@ const handleExportPDF = async () => {
   return (
     <>
       <div style={{ ...styles.page, ...(isMobile ? styles.pageMobile : {}) }}>
-        <div style={{ ...styles.headerCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
-          <div style={{ ...styles.headerTop, ...(isMobile ? styles.headerTopMobile : {}) }}>
+        <div
+          style={{
+            ...styles.headerCard,
+            ...(isMobile ? styles.sectionCardMobile : {}),
+          }}
+        >
+          <div
+            style={{
+              ...styles.headerTop,
+              ...(isMobile ? styles.headerTopMobile : {}),
+            }}
+          >
             <div>
               <p style={styles.kicker}>Admin panel</p>
               <h1 style={styles.title}>Pregled odgovora</h1>
               <p style={styles.slug}>Događaj: {slug}</p>
             </div>
 
-            <div style={{ ...styles.actions, ...(isMobile ? styles.actionsMobile : {}) }}>
+            <div
+              style={{
+                ...styles.actions,
+                ...(isMobile ? styles.actionsMobile : {}),
+              }}
+            >
               <button
                 type="button"
                 onClick={() => navigate(`/admin/${slug}/seating`)}
@@ -1296,20 +1390,20 @@ const handleExportPDF = async () => {
                 {showExpenses ? "Zatvori troškove" : "Troškovi"}
               </button>
 
-   <button
-  type="button"
-  onClick={handleExportPDF}
-  disabled={isExportingPdf}
-  {...getPressableProps(
-    {
-      ...styles.exportButton,
-      ...(isExportingPdf ? styles.exportButtonDisabled : {}),
-    },
-    isMobile ? styles.topButtonMobile : {}
-  )}
->
-  {isExportingPdf ? "Priprema PDF..." : "Preuzmi PDF"}
-</button>
+              <button
+                type="button"
+                onClick={handleExportPDF}
+                disabled={isExportingPdf}
+                {...getPressableProps(
+                  {
+                    ...styles.exportButton,
+                    ...(isExportingPdf ? styles.exportButtonDisabled : {}),
+                  },
+                  isMobile ? styles.topButtonMobile : {}
+                )}
+              >
+                {isExportingPdf ? "Priprema PDF..." : "Preuzmi PDF"}
+              </button>
 
               <button
                 type="button"
@@ -1355,7 +1449,12 @@ const handleExportPDF = async () => {
         </div>
 
         {showExpenses && (
-          <div style={{ ...styles.expensesCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
+          <div
+            style={{
+              ...styles.expensesCard,
+              ...(isMobile ? styles.sectionCardMobile : {}),
+            }}
+          >
             <div style={styles.expensesTop}>
               <div>
                 <p style={styles.manualKicker}>Planiranje</p>
@@ -1440,8 +1539,11 @@ const handleExportPDF = async () => {
               <div style={styles.budgetProgressTop}>
                 <div>
                   <p style={styles.progressKicker}>Praćenje budžeta</p>
-                  <h3 style={styles.progressTitle}>Potrošnja u odnosu na plan</h3>
+                  <h3 style={styles.progressTitle}>
+                    Potrošnja u odnosu na plan
+                  </h3>
                 </div>
+
                 <div
                   style={{
                     ...styles.progressBadge,
@@ -1486,8 +1588,12 @@ const handleExportPDF = async () => {
                 {typeof budget !== "number"
                   ? "Postavi budžet da bi odmah videla koliko je već potrošeno i koliko je ostalo."
                   : remainingBudget < 0
-                  ? `Troškovi su premašili plan za ${formatCurrency(Math.abs(remainingBudget))}.`
-                  : `Do sada je potrošeno ${formatCurrency(totalExpenses)}, a ostalo je još ${formatCurrency(remainingBudget)}.`}
+                  ? `Troškovi su premašili plan za ${formatCurrency(
+                      Math.abs(remainingBudget)
+                    )}.`
+                  : `Do sada je potrošeno ${formatCurrency(
+                      totalExpenses
+                    )}, a ostalo je još ${formatCurrency(remainingBudget)}.`}
               </p>
             </div>
 
@@ -1568,14 +1674,17 @@ const handleExportPDF = async () => {
                       <div style={styles.guestRowTop}>
                         <div>
                           <p style={styles.guestName}>{expense.title}</p>
+
                           <p style={styles.guestMeta}>
                             Iznos: {formatCurrency(expense.amount)}
                           </p>
+
                           {expense.category && (
                             <p style={styles.guestMeta}>
                               Kategorija: {expense.category}
                             </p>
                           )}
+
                           <p style={styles.guestMeta}>
                             Datum: {formatDate(expense.createdAt)}
                           </p>
@@ -1599,7 +1708,12 @@ const handleExportPDF = async () => {
           </div>
         )}
 
-        <div style={{ ...styles.manualCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
+        <div
+          style={{
+            ...styles.manualCard,
+            ...(isMobile ? styles.sectionCardMobile : {}),
+          }}
+        >
           <p style={styles.manualKicker}>Ručni unos</p>
           <h2 style={styles.sectionTitle}>Dodaj gosta koji dolazi</h2>
 
@@ -1637,6 +1751,27 @@ const handleExportPDF = async () => {
               />
             </div>
 
+            {hasFastingOption && (
+              <div style={styles.field}>
+                <label htmlFor="manual-fasting" style={styles.label}>
+                  Da li posti?
+                </label>
+
+                <select
+                  id="manual-fasting"
+                  name="fasting"
+                  value={manualGuest.fasting}
+                  onChange={handleManualGuestChange}
+                  style={styles.input}
+                  required
+                >
+                  <option value="">Izaberi opciju</option>
+                  <option value="posti">Posti</option>
+                  <option value="ne_posti">Ne posti</option>
+                </select>
+              </div>
+            )}
+
             <button
               type="submit"
               {...getPressableProps(
@@ -1647,11 +1782,15 @@ const handleExportPDF = async () => {
             >
               {addingGuest ? "Dodavanje..." : "Dodaj gosta"}
             </button>
-
           </form>
         </div>
 
-        <div style={{ ...styles.searchCard, ...(isMobile ? styles.sectionCardMobile : {}) }}>
+        <div
+          style={{
+            ...styles.searchCard,
+            ...(isMobile ? styles.sectionCardMobile : {}),
+          }}
+        >
           <div style={styles.searchField}>
             <label htmlFor="guest-search" style={styles.label}>
               Pretraga gostiju
@@ -1661,7 +1800,11 @@ const handleExportPDF = async () => {
               type="text"
               value={guestSearch}
               onChange={(e) => setGuestSearch(e.target.value)}
-              placeholder="Pretraži po imenu i prezimenu"
+             placeholder={
+  hasFastingOption
+    ? "Pretraži po imenu, prezimenu ili postu"
+    : "Pretraži po imenu i prezimenu"
+}
               style={styles.input}
             />
           </div>
@@ -1685,9 +1828,17 @@ const handleExportPDF = async () => {
                       <div style={styles.guestRowTop}>
                         <div>
                           <p style={styles.guestName}>{guest.fullName}</p>
+
                           <p style={styles.guestMeta}>
                             Broj osoba: {guest.guests || 0}
                           </p>
+
+                       {hasFastingOption && guest.fasting && (
+  <p style={styles.guestMeta}>
+    Post: {getFastingLabel(guest.fasting)}
+  </p>
+)}
+
                           {guest.source === "admin" && (
                             <p style={styles.manualBadge}>Ručno dodat</p>
                           )}
@@ -1881,10 +2032,10 @@ const styles = {
     border: "1px solid rgba(120, 90, 70, 0.12)",
   },
   exportButtonDisabled: {
-  opacity: 0.7,
-  cursor: "not-allowed",
-  boxShadow: "none",
-},
+    opacity: 0.7,
+    cursor: "not-allowed",
+    boxShadow: "none",
+  },
   searchCard: {
     maxWidth: "1100px",
     margin: "0 auto 24px",
@@ -2041,7 +2192,8 @@ const styles = {
     whiteSpace: "normal",
     textAlign: "center",
     boxShadow: "0 8px 18px rgba(184,130,111,0.25)",
-    transition: "transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease",
+    transition:
+      "transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease",
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",

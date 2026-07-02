@@ -5104,6 +5104,9 @@ musicSrc: "/music/andrijana-marko.mp3",
 
   date: "16 AVG 2026",
   dateISO: "2026-08-16T19:00:00+02:00",
+rsvpOptions: {
+  fasting: true,
+},
 
   venue: "Hotel-Restoran Madera",
   showCalendarButton: true,
@@ -5113,7 +5116,7 @@ musicSrc: "/music/andrijana-marko.mp3",
     label: "Doček gostiju",
     time: "19:00",
     icon: "gathering",
-    location: "Hotel-Restoran Madera",
+    location: "Hotel-Restoran Madera, pored bazena",
     mapLink:
       "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
   },
@@ -5172,6 +5175,9 @@ musicSrc: "/music/andrijana-marko.mp3",
 
   date: "16 AVG 2026",
   dateISO: "2026-08-16T19:00:00+02:00",
+rsvpOptions: {
+  fasting: true,
+},
 
   venue: "Hotel-Restoran Madera",
   showCalendarButton: true,
@@ -5181,7 +5187,7 @@ musicSrc: "/music/andrijana-marko.mp3",
     label: "Doček gostiju",
     time: "19:00",
     icon: "gathering",
-    location: "Hotel-Restoran Madera",
+    location: "Hotel-Restoran Madera, pored bazena",
     mapLink:
       "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
   },
