@@ -5175,7 +5175,7 @@ calendarDurationHours: 7,
   videoSrc: "/videos/marija-petar.mp4",
   musicSrc: "/music/marija-petar.mp3",
 
-  fontMode: "light",
+  fontMode: "dark",
 
   weddingDate: "24 OKT 2026",
   weddingTime: "13:00",
