@@ -5168,29 +5168,30 @@ calendarDurationHours: 7,
   slug: "marija-petar",
   type: "wedding",
   template: "silk",
+  script: "cyrillic",
 
-  brideName: "Marija",
-  groomName: "Petar",
+  brideName: "Марија",
+  groomName: "Петар",
 
   videoSrc: "/videos/marija-petar.mp4",
   musicSrc: "/music/marija-petar.mp3",
 
   fontMode: "dark",
 
-  weddingDate: "24 OKT 2026",
+  weddingDate: "24 ОКТ 2026",
   weddingTime: "13:00",
-  venue: "Mesečev konak",
+  venue: "Месечев конак",
 
   backgroundImage: "/images/marija-petar-minimal.jpg",
 
   details: createDetails({
     welcomeText:
-      "Naša priča dobija novo poglavlje, zato vas sa radošću pozivamo da budete deo naše uspomene.",
+      "Наша прича добија ново поглавље, зато вас са радошћу позивамо да будете део наше успомене.",
 
     date: "24.10.2026.",
     dateISO: "2026-10-24T13:00:00+02:00",
 
-    venue: "Mesečev konak",
+    venue: "Месечев конак",
 
     showCalendarButton: true,
     calendarDurationHours: 9,
@@ -5227,8 +5228,6 @@ calendarDurationHours: 7,
               time: "1:00 PM",
               icon: "gathering",
               location: "Cvetković family home",
-              mapLink:
-                "https://www.google.com/maps/search/?api=1&query=Porodicna+kuca+Cvetkovic+Nis",
             },
             {
               label: "Civil wedding ceremony",
@@ -5261,26 +5260,24 @@ calendarDurationHours: 7,
 
     events: [
       {
-        label: "Skup svatova",
+        label: "Скуп сватова",
         time: "13:00",
         icon: "gathering",
-        location: "Porodična kuća Cvetković",
-        mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Porodicna+kuca+Cvetkovic+Nis",
+        location: "Породична кућа Цветковић",
       },
       {
-        label: "Ceremonija opštinskog venčanja",
+        label: "Церемонија општинског венчања",
         time: "15:30",
         icon: "civil",
-        location: "Oficirski dom",
+        location: "Официрски дом",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Oficirski+dom+Nis",
       },
       {
-        label: "Okupljanje gostiju",
+        label: "Окупљање гостију",
         time: "17:00",
         icon: "restaurant",
-        location: "Restoran „Mesečev konak”",
+        location: "Ресторан „Месечев конак”",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
       },
@@ -5291,8 +5288,8 @@ calendarDurationHours: 7,
     dressCodePalette: [],
     dressCodeNote: "",
 
-    note: "Molimo vas da svoj dolazak potvrdite do 10.10.2026. godine.",
-    rsvpText: "Molimo vas da svoj dolazak potvrdite do 10.10.2026. godine.",
+    note: "Молимо вас да свој долазак потврдите до 10.10.2026. године.",
+    rsvpText: "Молимо вас да свој долазак потврдите до 10.10.2026. године.",
     rsvpDeadline: "10.10.2026.",
     rsvpDeadlineISO: "2026-10-10",
   }),

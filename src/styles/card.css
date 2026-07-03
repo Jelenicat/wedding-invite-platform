@@ -17231,3 +17231,10 @@
 .minimal-slug-marija-petar .minimal-invitation-overlay {
   background: rgba(255, 255, 255, 0.08);
 }
+/* Marija & Petar — porodična kuća nije klikabilna */
+.minimal-slug-marija-petar .minimal-timeline-row:first-child
+  .minimal-timeline-location-link {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}
