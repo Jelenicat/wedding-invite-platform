@@ -13,6 +13,7 @@ function MinimalInvitationCard({
   slug,
   type,
   script = "latin",
+  language = "sr",
 }) {
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
@@ -20,28 +21,38 @@ function MinimalInvitationCard({
 
   const shouldUseNamesSvg = slug === "jovana-dusan-1";
   const isAndrijanaMarko =
-  slug === "andrijana-marko" || slug === "andrijana-marko-1";
+    slug === "andrijana-marko" || slug === "andrijana-marko-1";
 
   const t =
-    script === "cyrillic"
+    language === "en"
       ? {
-          invitation: "Позивница",
-          date: "Датум",
-          plan: "План венчања",
-          dressCode: "Дрес код",
-          women: "Даме:",
-          men: "Мушкарци:",
-          location: "Погледај локацију",
-        }
-      : {
-          invitation: "Pozivnica",
-          date: "Datum",
-          plan: "Plan venčanja",
+          invitation: "Invitation",
+          date: "Date",
+          plan: "Wedding timeline",
           dressCode: "Dress code",
-          women: "Dame:",
-          men: "Muškarci:",
-          location: "Pogledaj lokaciju",
-        };
+          women: "Ladies:",
+          men: "Gentlemen:",
+          location: "View location",
+        }
+      : script === "cyrillic"
+        ? {
+            invitation: "Позивница",
+            date: "Датум",
+            plan: "План венчања",
+            dressCode: "Дрес код",
+            women: "Даме:",
+            men: "Мушкарци:",
+            location: "Погледај локацију",
+          }
+        : {
+            invitation: "Pozivnica",
+            date: "Datum",
+            plan: "Plan venčanja",
+            dressCode: "Dress code",
+            women: "Dame:",
+            men: "Muškarci:",
+            location: "Pogledaj lokaciju",
+          };
 
   const iconMap = {
     gathering: "/icons/gathering.svg",
@@ -57,7 +68,7 @@ function MinimalInvitationCard({
     angel: "/icons/angel.svg",
     dresscode: "/icons/dresscode.svg",
     cake: "/icons/cake.svg",
-      vecera: "/icons/vecera.svg",
+    vecera: "/icons/vecera.svg",
   };
 
   const timelineItems =
@@ -99,7 +110,7 @@ function MinimalInvitationCard({
           {shouldUseNamesSvg ? (
             <div
               className="minimal-names-svg-wrap"
-              aria-label={`${safeBrideName} и ${safeGroomName}`}
+              aria-label={`${safeBrideName} & ${safeGroomName}`}
             >
               <span className="minimal-names-svg-mask" />
             </div>
@@ -310,6 +321,7 @@ function MinimalInvitationCard({
         groomName={safeGroomName}
         details={details}
         script={script}
+        language={language}
       />
 
       {details.dateISO && (
@@ -320,6 +332,7 @@ function MinimalInvitationCard({
           details={details}
           script={script}
           slug={slug}
+          language={language}
         />
       )}
     </>

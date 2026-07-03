@@ -56,7 +56,7 @@ import EnvelopeSplitIntroV2 from "../components/EnvelopeSplitIntroV2";
 import EnvelopeSideSplitIntroV2 from "../components/EnvelopeSideSplitIntroV2";
 import EnvelopeSideSplitV2InvitationCard from "../components/EnvelopeSideSplitV2InvitationCard";
 import PassportIntro from "../components/PassportIntro";
-import PassportInvitationCard from "../components/PassportInvitationCard"; // (ili šta već nazoveš)
+import PassportInvitationCard from "../components/PassportInvitationCard";
 import ElegantWhiteIntro from "../components/ElegantWhiteIntro";
 import EleganWhiteInvitationCard from "../components/EleganWhiteInvitationCard";
 import ElegantBlackIntro from "../components/ElegantBlackIntro";
@@ -161,102 +161,147 @@ const TEMPLATE_COMPONENTS = {
     Invitation: MinimalInvitationCard,
   },
   "silk-date-flow": {
-  Intro: SilkIntro,
-  Invitation: SilkDateFlowInvitationCard,
-},
+    Intro: SilkIntro,
+    Invitation: SilkDateFlowInvitationCard,
+  },
   "silk-minimal-split": {
-  Intro: SilkIntro,
-  Invitation: MinimalInvitationCardSplit,
-},
+    Intro: SilkIntro,
+    Invitation: MinimalInvitationCardSplit,
+  },
   "envelope-split": {
     Intro: EnvelopeSplitIntro,
     Invitation: MinimalInvitationCard,
   },
   "envelope-side-split": {
-  Intro: EnvelopeSideSplitIntro,
-  Invitation: FloralInvitationCard,
-},
- passport: {
+    Intro: EnvelopeSideSplitIntro,
+    Invitation: FloralInvitationCard,
+  },
+  passport: {
     Intro: PassportIntro,
     Invitation: PassportInvitationCard,
   },
   "elegant-white": {
-  Intro: ElegantWhiteIntro,
-   Invitation: EleganWhiteInvitationCard,// privremeno koristi neki postojeći
-},
-"elegant-black": {
-  Intro: ElegantBlackIntro,
-  Invitation: ElegantBlackInvitationCard,
-},
-"birthday-party": {
-  Intro: BirthdayPartyIntro,
-  Invitation: BirthdaySplitInvitationCard,
-},
-"envelope-split-v2": {
-  Intro: EnvelopeSplitIntroV2,
-  Invitation: FloralInvitationCard,
-},
-"envelope-side-split-v2": {
-  Intro: EnvelopeSideSplitIntroV2,
-  Invitation: EnvelopeSideSplitV2InvitationCard,
-},
-"birthday-luxury": {
-  Intro: BirthdayLuxuryIntro,
-  Invitation: BirthdayLuxuryInvitationCard,
-},
-"birthday-glass-luxury": {
-  Intro: BirthdayGlassIntro,
-  Invitation: BirthdayGlassInvitationCard,
-},
-"birthday-marble-luxury": {
-  Intro: BirthdayMarbleIntro,
-  Invitation: BirthdayMarbleInvitationCard,
-},
-"dark-floral": {
-  Intro: DarkFloralIntro,
-  Invitation: DarkFloralInvitationCard,
-},
+    Intro: ElegantWhiteIntro,
+    Invitation: EleganWhiteInvitationCard,
+  },
+  "elegant-black": {
+    Intro: ElegantBlackIntro,
+    Invitation: ElegantBlackInvitationCard,
+  },
+  "birthday-party": {
+    Intro: BirthdayPartyIntro,
+    Invitation: BirthdaySplitInvitationCard,
+  },
+  "envelope-split-v2": {
+    Intro: EnvelopeSplitIntroV2,
+    Invitation: FloralInvitationCard,
+  },
+  "envelope-side-split-v2": {
+    Intro: EnvelopeSideSplitIntroV2,
+    Invitation: EnvelopeSideSplitV2InvitationCard,
+  },
+  "birthday-luxury": {
+    Intro: BirthdayLuxuryIntro,
+    Invitation: BirthdayLuxuryInvitationCard,
+  },
+  "birthday-glass-luxury": {
+    Intro: BirthdayGlassIntro,
+    Invitation: BirthdayGlassInvitationCard,
+  },
+  "birthday-marble-luxury": {
+    Intro: BirthdayMarbleIntro,
+    Invitation: BirthdayMarbleInvitationCard,
+  },
+  "dark-floral": {
+    Intro: DarkFloralIntro,
+    Invitation: DarkFloralInvitationCard,
+  },
   "heart-floral": {
     Intro: IntroHeart,
     Invitation: FloralInvitationCard,
   },
   "magazine-editorial": {
-  Intro: MagazineEditorialIntro,
-  Invitation: EditorialInvitationCard,
-},
-"calla-lace": {
-  Intro: CallaLaceIntro,
-  Invitation: CallaLaceInvitationCard,
-},
-"italian-envelope-video": {
-  Intro: ItalianIntro,
-  Invitation: ItalianInvitationCard,
-},
-"wedding-baptism-silk": {
-  Intro: WeddingBaptismSilkIntro,
-  Invitation: MinimalInvitationCard,
-},
-"minimal-gold": {
-  Intro: MinimalGoldIntro,
-  Invitation: MinimalGoldInvitationCard,
-},
-"gold-print-video": {
-  Intro: GoldPrintVideoIntro,
-  Invitation: GoldPrintVideoInvitationCard,
-},
-"cyrillic-svg-silk": {
-  Intro: CyrillicSvgSilkIntro,
-  Invitation: CyrillicSvgSilkInvitationCard,
-},
-"birthday-baby-luxury": {
-  Intro: BirthdayBabyIntro,
-  Invitation: BirthdayBabyInvitationCard,
-},
-"playing-card": {
-  Intro: PlayingCardIntro,
-  Invitation: PlayingCardInvitationCard,
-},
+    Intro: MagazineEditorialIntro,
+    Invitation: EditorialInvitationCard,
+  },
+  "calla-lace": {
+    Intro: CallaLaceIntro,
+    Invitation: CallaLaceInvitationCard,
+  },
+  "italian-envelope-video": {
+    Intro: ItalianIntro,
+    Invitation: ItalianInvitationCard,
+  },
+  "wedding-baptism-silk": {
+    Intro: WeddingBaptismSilkIntro,
+    Invitation: MinimalInvitationCard,
+  },
+  "minimal-gold": {
+    Intro: MinimalGoldIntro,
+    Invitation: MinimalGoldInvitationCard,
+  },
+  "gold-print-video": {
+    Intro: GoldPrintVideoIntro,
+    Invitation: GoldPrintVideoInvitationCard,
+  },
+  "cyrillic-svg-silk": {
+    Intro: CyrillicSvgSilkIntro,
+    Invitation: CyrillicSvgSilkInvitationCard,
+  },
+  "birthday-baby-luxury": {
+    Intro: BirthdayBabyIntro,
+    Invitation: BirthdayBabyInvitationCard,
+  },
+  "playing-card": {
+    Intro: PlayingCardIntro,
+    Invitation: PlayingCardInvitationCard,
+  },
 };
+
+const isObject = (value) =>
+  value && typeof value === "object" && !Array.isArray(value);
+
+function deepMerge(base, override) {
+  if (Array.isArray(base) && Array.isArray(override)) {
+    const maxLength = Math.max(base.length, override.length);
+
+    return Array.from({ length: maxLength }, (_, index) => {
+      if (override[index] === undefined) return base[index];
+      if (base[index] === undefined) return override[index];
+
+      return deepMerge(base[index], override[index]);
+    });
+  }
+
+  if (isObject(base) && isObject(override)) {
+    return Object.keys(override).reduce(
+      (acc, key) => {
+        acc[key] = deepMerge(acc[key], override[key]);
+        return acc;
+      },
+      { ...base }
+    );
+  }
+
+  return override !== undefined ? override : base;
+}
+
+function getLocalizedInvitation(invitation, language) {
+  if (!invitation) return invitation;
+
+  const translations = invitation.details?.translations || {};
+  const translation = translations[language];
+
+  if (!translation) return invitation;
+
+  const { details: translatedDetails, ...rootTranslation } = translation;
+
+  return {
+    ...invitation,
+    ...rootTranslation,
+    details: deepMerge(invitation.details || {}, translatedDetails || {}),
+  };
+}
 
 function WeddingPage() {
   const { slug } = useParams();
@@ -265,6 +310,7 @@ function WeddingPage() {
   const [showInvitation, setShowInvitation] = useState(false);
   const [musicStarted, setMusicStarted] = useState(false);
   const [envelopeRevealed, setEnvelopeRevealed] = useState(false);
+  const [language, setLanguage] = useState("sr");
 
   const introTimeoutRef = useRef(null);
   const audioRef = useRef(null);
@@ -273,58 +319,58 @@ function WeddingPage() {
     return demoWedding.find((item) => item.slug === slug);
   }, [slug]);
 
-useEffect(() => {
-  let wasPlayingBeforeHidden = false;
+  useEffect(() => {
+    let wasPlayingBeforeHidden = false;
 
-  const pauseMusic = () => {
-    if (audioRef.current && !audioRef.current.paused) {
-      wasPlayingBeforeHidden = true;
-      audioRef.current.pause();
-    }
-  };
+    const pauseMusic = () => {
+      if (audioRef.current && !audioRef.current.paused) {
+        wasPlayingBeforeHidden = true;
+        audioRef.current.pause();
+      }
+    };
 
-  const resumeMusic = () => {
-    if (!wasPlayingBeforeHidden) return;
-    if (!audioRef.current) return;
+    const resumeMusic = () => {
+      if (!wasPlayingBeforeHidden) return;
+      if (!audioRef.current) return;
 
-    audioRef.current.muted = false;
+      audioRef.current.muted = false;
 
-    audioRef.current
-      .play()
-      .then(() => {
-        setMusicStarted(true);
-        wasPlayingBeforeHidden = false;
-      })
-      .catch((error) => {
-        console.error("Muzika nije ponovo pokrenuta:", error);
-      });
-  };
+      audioRef.current
+        .play()
+        .then(() => {
+          setMusicStarted(true);
+          wasPlayingBeforeHidden = false;
+        })
+        .catch((error) => {
+          console.error("Muzika nije ponovo pokrenuta:", error);
+        });
+    };
 
-  const handleVisibilityChange = () => {
-    if (document.hidden) {
-      pauseMusic();
-    } else {
-      resumeMusic();
-    }
-  };
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        pauseMusic();
+      } else {
+        resumeMusic();
+      }
+    };
 
-  window.addEventListener("pagehide", pauseMusic);
-  document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("pagehide", pauseMusic);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
-  return () => {
-    if (introTimeoutRef.current) {
-      clearTimeout(introTimeoutRef.current);
-    }
+    return () => {
+      if (introTimeoutRef.current) {
+        clearTimeout(introTimeoutRef.current);
+      }
 
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
 
-    window.removeEventListener("pagehide", pauseMusic);
-    document.removeEventListener("visibilitychange", handleVisibilityChange);
-  };
-}, []);
+      window.removeEventListener("pagehide", pauseMusic);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
 
   useEffect(() => {
     if (!invitation) return;
@@ -338,6 +384,7 @@ useEffect(() => {
     setShowInvitation(false);
     setMusicStarted(false);
     setEnvelopeRevealed(false);
+    setLanguage(invitation.details?.defaultLanguage || "sr");
 
     if (introTimeoutRef.current) {
       clearTimeout(introTimeoutRef.current);
@@ -347,45 +394,48 @@ useEffect(() => {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       audioRef.current.muted = false;
-      
     }
   }, [invitation]);
-useEffect(() => {
-  if (!invitation) return;
 
-  const templateKey = invitation.template || "envelope";
+  useEffect(() => {
+    if (!invitation) return;
 
-  // Samo Angel template — ostali ostaju po starom
-  if (templateKey !== "angel") return;
+    const templateKey = invitation.template || "envelope";
 
-  // Ako nema muzike ili je već pokrenuta, ne dodajemo listenere
-  if (!invitation.musicSrc || musicStarted) return;
+    // Samo Angel template — ostali ostaju po starom
+    if (templateKey !== "angel") return;
 
-  const events = ["click", "touchstart", "wheel"];
+    // Ako nema muzike ili je već pokrenuta, ne dodajemo listenere
+    if (!invitation.musicSrc || musicStarted) return;
 
-  const handleFirstInteraction = () => {
-    playInvitationMusic();
+    const events = ["click", "touchstart", "wheel"];
+
+    const handleFirstInteraction = () => {
+      playInvitationMusic();
+
+      events.forEach((eventName) => {
+        document.removeEventListener(eventName, handleFirstInteraction);
+      });
+    };
 
     events.forEach((eventName) => {
-      document.removeEventListener(eventName, handleFirstInteraction);
+      document.addEventListener(eventName, handleFirstInteraction, {
+        passive: true,
+      });
     });
-  };
 
-  events.forEach((eventName) => {
-    document.addEventListener(eventName, handleFirstInteraction, {
-      passive: true,
-    });
-  });
+    return () => {
+      events.forEach((eventName) => {
+        document.removeEventListener(eventName, handleFirstInteraction);
+      });
+    };
+  }, [invitation, musicStarted]);
 
-  return () => {
-    events.forEach((eventName) => {
-      document.removeEventListener(eventName, handleFirstInteraction);
-    });
-  };
-}, [invitation, musicStarted]);
   if (!invitation) {
     return <div className="wedding-page">Pozivnica nije pronađena.</div>;
   }
+
+  const localizedInvitation = getLocalizedInvitation(invitation, language);
 
   const templateKey = invitation.template || "envelope";
   const template =
@@ -393,134 +443,172 @@ useEffect(() => {
 
   const IntroComponent = template.Intro;
   const InvitationComponent = template.Invitation;
-const playInvitationMusic = () => {
-  if (!invitation.musicSrc || !audioRef.current || musicStarted) return;
 
-  const musicVolume =
-    templateKey === "cyrillic-svg-silk" ? 0.32 : 0.45;
+  const playInvitationMusic = () => {
+    if (!invitation.musicSrc || !audioRef.current || musicStarted) return;
 
-audioRef.current.muted = false;
-audioRef.current.volume = musicVolume;
+    const musicVolume = templateKey === "cyrillic-svg-silk" ? 0.32 : 0.45;
 
-audioRef.current
-  .play()
-    .then(() => {
-      setMusicStarted(true);
-    })
-    .catch((error) => {
-      console.error("Muzika nije pokrenuta:", error);
-    });
-};
-const handleIntroOpen = () => {
-  setIsIntroOpen(true);
+    audioRef.current.muted = false;
+    audioRef.current.volume = musicVolume;
 
-  // Muzika kreće tek nakon korisničkog klika/tapa
-  playInvitationMusic();
+    audioRef.current
+      .play()
+      .then(() => {
+        setMusicStarted(true);
+      })
+      .catch((error) => {
+        console.error("Muzika nije pokrenuta:", error);
+      });
+  };
 
-  if (introTimeoutRef.current) {
-    clearTimeout(introTimeoutRef.current);
-  }
+  const handleIntroOpen = () => {
+    setIsIntroOpen(true);
 
-  introTimeoutRef.current = setTimeout(() => {
+    // Muzika kreće tek nakon korisničkog klika/tapa
+    playInvitationMusic();
+
+    if (introTimeoutRef.current) {
+      clearTimeout(introTimeoutRef.current);
+    }
+
+    introTimeoutRef.current = setTimeout(() => {
+      setShowInvitation(true);
+    }, 1600);
+  };
+
+  const handleIntroEnter = () => {
+    if (introTimeoutRef.current) {
+      clearTimeout(introTimeoutRef.current);
+    }
+
+    playInvitationMusic();
+
     setShowInvitation(true);
-  }, 1600);
-};
-const handleIntroEnter = () => {
-  if (introTimeoutRef.current) {
-    clearTimeout(introTimeoutRef.current);
-  }
+  };
 
-  playInvitationMusic();
+  const canSwitchLanguage =
+    invitation.details?.showLanguageSwitcher &&
+    invitation.details?.translations &&
+    Object.keys(invitation.details.translations).length > 0;
 
-  setShowInvitation(true);
-};
+  const languageLabels = invitation.details?.languageLabels || {
+    sr: "SR",
+    en: "EN",
+  };
+
+  const languages = invitation.details?.languages || [
+    "sr",
+    ...Object.keys(invitation.details?.translations || {}),
+  ];
 
   const introProps = {
-    brideName: invitation.brideName,
-    groomName: invitation.groomName,
-    childName: invitation.childName,
-    backgroundImage: invitation.backgroundImage,
-    weddingDate: invitation.weddingDate,
-    weddingTime: invitation.weddingTime,
-    venue: invitation.venue,
-    introText: invitation.introText,
-    videoSrc: invitation.videoSrc,
-    image: invitation.image,
-    imageSrc: invitation.image,
-    image1: invitation.image1,
-    image2: invitation.image2,
-    image3: invitation.image3,
+    brideName: localizedInvitation.brideName,
+    groomName: localizedInvitation.groomName,
+    childName: localizedInvitation.childName,
+    backgroundImage: localizedInvitation.backgroundImage,
+    weddingDate: localizedInvitation.weddingDate,
+    weddingTime: localizedInvitation.weddingTime,
+    venue: localizedInvitation.venue,
+    introText: localizedInvitation.introText,
+    videoSrc: localizedInvitation.videoSrc,
+    image: localizedInvitation.image,
+    imageSrc: localizedInvitation.image,
+    image1: localizedInvitation.image1,
+    image2: localizedInvitation.image2,
+    image3: localizedInvitation.image3,
     onEnter: handleIntroEnter,
     isOpen: isIntroOpen,
     onOpen: handleIntroOpen,
-    slug: invitation.slug,
-    introPreviewImage: invitation.introPreviewImage,
-    fontMode: invitation.fontMode,
-    details: invitation.details,
-    script: invitation.script,
-    babyImage: invitation.babyImage,
-    partyGender: invitation.partyGender,
-    introNamesSvg: invitation.introNamesSvg,
+    slug: localizedInvitation.slug,
+    introPreviewImage: localizedInvitation.introPreviewImage,
+    fontMode: localizedInvitation.fontMode,
+    details: localizedInvitation.details,
+    script: localizedInvitation.script,
+    babyImage: localizedInvitation.babyImage,
+    partyGender: localizedInvitation.partyGender,
+    introNamesSvg: localizedInvitation.introNamesSvg,
+
+    // LANGUAGE SWITCHER — prosleđuje se intro template-u
+    language,
+    onLanguageChange: setLanguage,
+    showLanguageSwitcher: canSwitchLanguage,
+    languages,
+    languageLabels,
   };
 
   const invitationProps = {
-    brideName: invitation.brideName,
-    groomName: invitation.groomName,
-    childName: invitation.childName,
-    weddingDate: invitation.weddingDate,
-    weddingTime: invitation.weddingTime,
-    venue: invitation.venue,
-    details: invitation.details,
-    backgroundImage: invitation.backgroundImage,
-    image: invitation.image,
-    imageSrc: invitation.image,
-    videoSrc: invitation.videoSrc,
-    rsvpVideoSrc: invitation.rsvpVideoSrc,
-    slug: invitation.slug,
-    type: invitation.type,
-    image1: invitation.image1,
-    image2: invitation.image2,
-    image3: invitation.image3,
-    script: invitation.script,
+    brideName: localizedInvitation.brideName,
+    groomName: localizedInvitation.groomName,
+    childName: localizedInvitation.childName,
+    weddingDate: localizedInvitation.weddingDate,
+    weddingTime: localizedInvitation.weddingTime,
+    venue: localizedInvitation.venue,
+    details: localizedInvitation.details,
+    backgroundImage: localizedInvitation.backgroundImage,
+    image: localizedInvitation.image,
+    imageSrc: localizedInvitation.image,
+    videoSrc: localizedInvitation.videoSrc,
+    rsvpVideoSrc: localizedInvitation.rsvpVideoSrc,
+    slug: localizedInvitation.slug,
+    type: localizedInvitation.type,
+    image1: localizedInvitation.image1,
+    image2: localizedInvitation.image2,
+    image3: localizedInvitation.image3,
+    script: localizedInvitation.script,
+
+    // Korisno kasnije ako želiš da i invitation card koristi jezik
+    language,
   };
 
-const audioNode = invitation.musicSrc ? (
-<audio ref={audioRef} loop preload="none">
-    <source src={invitation.musicSrc} type="audio/mpeg" />
-  </audio>
-) : null;
-const angelMusicButton =
-  templateKey === "angel" && invitation.musicSrc ? (
-    <button
-      type="button"
-      className={`angel-music-floating-btn ${
-        musicStarted ? "is-playing" : ""
-      }`}
-      onClick={playInvitationMusic}
-      aria-label={musicStarted ? "Muzika svira" : "Pusti muziku"}
-    >
-      <span>♪</span>
-      {musicStarted ? "Muzika svira" : "Pusti muziku"}
-    </button>
+  const audioNode = invitation.musicSrc ? (
+    <audio ref={audioRef} loop preload="none">
+      <source src={invitation.musicSrc} type="audio/mpeg" />
+    </audio>
   ) : null;
- if (templateKey === "angel" || templateKey === "classic") {
-  return (
-    <div className="wedding-page">
-      {audioNode}
-      {angelMusicButton}
-      <IntroComponent {...introProps} />
-      <InvitationComponent {...invitationProps} />
-    </div>
-  );
-}
 
-if (
-  templateKey === "envelope-split" ||
-  templateKey === "envelope-split-v2" ||
-  templateKey === "envelope-side-split" ||
-  templateKey === "envelope-side-split-v2" ||
-  templateKey === "italian-envelope-video"
-) {
+  const angelMusicText =
+    language === "en"
+      ? musicStarted
+        ? "Music playing"
+        : "Play music"
+      : musicStarted
+        ? "Muzika svira"
+        : "Pusti muziku";
+
+  const angelMusicButton =
+    templateKey === "angel" && invitation.musicSrc ? (
+      <button
+        type="button"
+        className={`angel-music-floating-btn ${
+          musicStarted ? "is-playing" : ""
+        }`}
+        onClick={playInvitationMusic}
+        aria-label={angelMusicText}
+      >
+        <span>♪</span>
+        {angelMusicText}
+      </button>
+    ) : null;
+
+  if (templateKey === "angel" || templateKey === "classic") {
+    return (
+      <div className="wedding-page">
+        {audioNode}
+        {angelMusicButton}
+        <IntroComponent {...introProps} />
+        <InvitationComponent {...invitationProps} />
+      </div>
+    );
+  }
+
+  if (
+    templateKey === "envelope-split" ||
+    templateKey === "envelope-split-v2" ||
+    templateKey === "envelope-side-split" ||
+    templateKey === "envelope-side-split-v2" ||
+    templateKey === "italian-envelope-video"
+  ) {
     return (
       <div className="wedding-page">
         {audioNode}
@@ -533,12 +621,12 @@ if (
           <InvitationComponent {...invitationProps} />
         </div>
 
-     <IntroComponent
-  {...introProps}
-  onStartMusic={playInvitationMusic}
-  onEnter={handleIntroEnter}
-  onReveal={() => setEnvelopeRevealed(true)}
-/>
+        <IntroComponent
+          {...introProps}
+          onStartMusic={playInvitationMusic}
+          onEnter={handleIntroEnter}
+          onReveal={() => setEnvelopeRevealed(true)}
+        />
       </div>
     );
   }

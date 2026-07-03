@@ -17210,3 +17210,24 @@
   transform: translateY(-1px);
   border-bottom-color: rgba(143, 133, 125, 0.65);
 }
+
+/* =========================
+   MARIJA PETAR — PROVIDNIJA KARTICA
+========================= */
+
+.minimal-slug-marija-petar .minimal-invitation-paper {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  box-shadow:
+    0 24px 60px rgba(40, 30, 24, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.minimal-slug-marija-petar .minimal-invitation-frame {
+  border-color: rgba(190, 120, 165, 0.32);
+}
+.minimal-slug-marija-petar .minimal-invitation-overlay {
+  background: rgba(255, 255, 255, 0.08);
+}

@@ -10,10 +10,18 @@ function SilkIntro({
   weddingDate,
   script = "latin",
   slug,
+
+  // LANGUAGE SWITCHER
+  language = "sr",
+  onLanguageChange,
+  showLanguageSwitcher = false,
+  languages = ["sr", "en"],
+  languageLabels = { sr: "SR", en: "EN" },
 }) {
   const videoRef = useRef(null);
 
   const shouldUseIntroNamesSvg = slug === "jovana-dusan-1";
+  const isEnglish = language === "en";
 
   useEffect(() => {
     const video = videoRef.current;
@@ -54,6 +62,24 @@ function SilkIntro({
     DEC: "decembar",
   };
 
+  const monthMapEnglish = {
+    JAN: "January",
+    FEB: "February",
+    MAR: "March",
+    APR: "April",
+    MAY: "May",
+    MAJ: "May",
+    JUN: "June",
+    JUL: "July",
+    AVG: "August",
+    AUG: "August",
+    SEP: "September",
+    OCT: "October",
+    OKT: "October",
+    NOV: "November",
+    DEC: "December",
+  };
+
   const monthMapCyrillic = {
     JAN: "јануар",
     FEB: "фебруар",
@@ -74,9 +100,18 @@ function SilkIntro({
     DEC: "децембар",
   };
 
-  const monthMap = script === "cyrillic" ? monthMapCyrillic : monthMapLatin;
+  const monthMap = isEnglish
+    ? monthMapEnglish
+    : script === "cyrillic"
+      ? monthMapCyrillic
+      : monthMapLatin;
 
-  let month = script === "cyrillic" ? "септембар" : "septembar";
+  let month = isEnglish
+    ? "September"
+    : script === "cyrillic"
+      ? "септембар"
+      : "septembar";
+
   let day = "06";
   let year = "2026";
 
@@ -96,8 +131,12 @@ function SilkIntro({
     }
   }
 
-  const t =
-    script === "cyrillic"
+  const t = isEnglish
+    ? {
+        top: "Wedding invitation",
+        button: "View invitation",
+      }
+    : script === "cyrillic"
       ? {
           top: "Позивница за венчање",
           button: "Погледај позивницу",
@@ -122,6 +161,23 @@ function SilkIntro({
       />
 
       <div className="silk-overlay" />
+
+      {showLanguageSwitcher && (
+        <div className={`silk-language-switcher ${fontMode}`}>
+          {languages.map((lang) => (
+            <button
+              key={lang}
+              type="button"
+              className={`silk-language-btn ${
+                language === lang ? "is-active" : ""
+              }`}
+              onClick={() => onLanguageChange?.(lang)}
+            >
+              {languageLabels[lang] || lang.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
 
       <motion.div
         className="silk-content"
@@ -153,13 +209,13 @@ function SilkIntro({
           </h1>
         )}
 
- <p className={`silk-date ${fontMode}`}>
-  {month}
-  <br />
-  {slug === "jovana-stefan" ? `${day}.` : day}
-  <br />
-  {slug === "jovana-stefan" ? `${year}.` : year}
-</p>
+        <p className={`silk-date ${fontMode}`}>
+          {month}
+          <br />
+          {slug === "jovana-stefan" ? `${day}.` : day}
+          <br />
+          {slug === "jovana-stefan" ? `${year}.` : year}
+        </p>
 
         <button className={`silk-enter ${fontMode}`} onClick={onEnter}>
           {t.button}

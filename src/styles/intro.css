@@ -8147,3 +8147,86 @@ color: #8e7f73;
     border-radius: 0;
   }
 }
+/* =========================
+   SILK LANGUAGE SWITCHER
+========================= */
+
+.silk-language-switcher {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 20;
+
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 8px 24px rgba(40, 30, 24, 0.12);
+}
+
+.silk-language-switcher.light {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.silk-language-switcher.dark {
+  background: rgba(36, 31, 27, 0.08);
+  border: 1px solid rgba(36, 31, 27, 0.2);
+}
+
+.silk-language-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 10px;
+
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+  transition:
+    background 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.silk-language-switcher.light .silk-language-btn {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.silk-language-switcher.dark .silk-language-btn {
+  color: rgba(36, 31, 27, 0.82);
+}
+
+.silk-language-switcher.light .silk-language-btn.is-active {
+  background: rgba(255, 255, 255, 0.92);
+  color: #2f2a26;
+}
+
+.silk-language-switcher.dark .silk-language-btn.is-active {
+  background: rgba(36, 31, 27, 0.88);
+  color: #ffffff;
+}
+
+.silk-language-btn:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 480px) {
+  .silk-language-switcher {
+    top: max(14px, env(safe-area-inset-top));
+    right: 14px;
+  }
+
+  .silk-language-btn {
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+}

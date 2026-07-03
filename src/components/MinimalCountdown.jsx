@@ -10,31 +10,44 @@ function MinimalCountdown({
   details = {},
   script = "latin",
   slug,
+  language = "sr",
 }) {
   const t =
-    script === "cyrillic"
+    language === "en"
       ? {
-          arrived: "Дан венчања је стигао",
-          remaining: "До венчања је остало",
-          days: "дана",
-          hours: "сати",
-          minutes: "мин",
-          seconds: "сек",
-          note: "Једва чекамо да заједно обележимо овај посебан тренутак.",
-          addCalendar: "Додај у календар",
-          calendarHint: "Сачувајте датум венчања у свом телефону.",
-        }
-      : {
-          arrived: "Dan venčanja je stigao",
-          remaining: "Do venčanja je ostalo",
-          days: "dana",
-          hours: "sati",
+          arrived: "The wedding day has arrived",
+          remaining: "Time until the wedding",
+          days: "days",
+          hours: "hours",
           minutes: "min",
-          seconds: "sek",
-          note: "Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.",
-          addCalendar: "Dodaj u kalendar",
-          calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
-        };
+          seconds: "sec",
+          note: "We can’t wait to celebrate this special moment together.",
+          addCalendar: "Add to calendar",
+          calendarHint: "Save the wedding date on your phone.",
+        }
+      : script === "cyrillic"
+        ? {
+            arrived: "Дан венчања је стигао",
+            remaining: "До венчања је остало",
+            days: "дана",
+            hours: "сати",
+            minutes: "мин",
+            seconds: "сек",
+            note: "Једва чекамо да заједно обележимо овај посебан тренутак.",
+            addCalendar: "Додај у календар",
+            calendarHint: "Сачувајте датум венчања у свом телефону.",
+          }
+        : {
+            arrived: "Dan venčanja je stigao",
+            remaining: "Do venčanja je ostalo",
+            days: "dana",
+            hours: "sati",
+            minutes: "min",
+            seconds: "sek",
+            note: "Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.",
+            addCalendar: "Dodaj u kalendar",
+            calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
+          };
 
   const showCalendarButton = details?.showCalendarButton === true;
 
@@ -72,6 +85,7 @@ function MinimalCountdown({
       mapLink: details?.mapLink,
       note: details?.note,
       durationHours: details?.calendarDurationHours,
+      language,
     });
   };
 

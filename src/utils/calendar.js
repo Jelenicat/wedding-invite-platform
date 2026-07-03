@@ -9,6 +9,7 @@ export function addToCalendar({
   age,
   eventTitle,
   durationHours = 6,
+  language = "sr",
 }) {
   if (!dateISO) return;
 
@@ -23,13 +24,19 @@ export function addToCalendar({
   const formatICSDate = (date) =>
     date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 
-  const safeName = brideName || "Pozivnica";
+  const isEnglish = language === "en";
+
+  const safeName = brideName || (isEnglish ? "Invitation" : "Pozivnica");
 
   const title =
     eventTitle ||
     (eventType === "birthday"
-      ? `${safeName} - ${age ? `${age}. rođendan` : "rođendan"}`
-      : `Venčanje - ${brideName || ""} & ${groomName || ""}`);
+      ? isEnglish
+        ? `${safeName} - ${age ? `${age}th birthday` : "birthday"}`
+        : `${safeName} - ${age ? `${age}. rođendan` : "rođendan"}`
+      : isEnglish
+        ? `Wedding - ${brideName || ""} & ${groomName || ""}`
+        : `Venčanje - ${brideName || ""} & ${groomName || ""}`);
 
   const fileName =
     eventType === "birthday"
@@ -38,12 +45,12 @@ export function addToCalendar({
 
   const prodId =
     eventType === "birthday"
-      ? "-//Moja Pozivnica//Birthday Invitation//SR"
-      : "-//Moja Pozivnica//Wedding Invitation//SR";
+      ? `-//Moja Pozivnica//Birthday Invitation//${isEnglish ? "EN" : "SR"}`
+      : `-//Moja Pozivnica//Wedding Invitation//${isEnglish ? "EN" : "SR"}`;
 
   const description = [
-    note || "Radujemo se vašem dolasku.",
-    mapLink ? `Lokacija: ${mapLink}` : "",
+    note || (isEnglish ? "We look forward to seeing you." : "Radujemo se vašem dolasku."),
+    mapLink ? `${isEnglish ? "Location" : "Lokacija"}: ${mapLink}` : "",
   ]
     .filter(Boolean)
     .join("\\n");

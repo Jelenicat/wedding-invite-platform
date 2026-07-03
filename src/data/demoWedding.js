@@ -68,6 +68,11 @@ hideRsvpPhotoBlock = false,
 sliderImages = [],
   showCalendarButton = false,
   calendarDurationHours,
+ showLanguageSwitcher = false,
+defaultLanguage = "sr",
+languages = ["sr", "en"],
+languageLabels = { sr: "SR", en: "EN" },
+translations = {},
 }) => ({
   backgroundImage,
   theme,
@@ -136,6 +141,11 @@ hideRsvpPhotoBlock,
   sliderImages,
   showCalendarButton,
   calendarDurationHours,
+showLanguageSwitcher,
+defaultLanguage,
+languages,
+languageLabels,
+translations,
 });
 const demoWedding = [
   {
@@ -5153,76 +5163,121 @@ calendarDurationHours: 7,
   rsvpDeadlineISO: "2026-08-01",
 }),
 },
+
 {
-  slug: "andrijana-marko-1",
+  slug: "marija-petar",
   type: "wedding",
   template: "silk",
 
-  brideName: "Andrijana",
-  groomName: "Marko",
+  brideName: "Marija",
+  groomName: "Petar",
 
-  videoSrc: "/videos/jovana-stefan.mp4",
+  videoSrc: "/videos/marija-petar.mp4",
+  musicSrc: "/music/marija-petar.mp3",
 
   fontMode: "light",
 
-  weddingDate: "16 AVG 2026",
-  weddingTime: "19:00",
-  venue: "Hotel-Restoran Madera",
+  weddingDate: "24 OKT 2026",
+  weddingTime: "13:00",
+  venue: "Mesečev konak",
 
-  backgroundImage: "/images/aleksandra-luka-minimal-1.jpg",
-musicSrc: "/music/andrijana-marko.mp3",
- details: createDetails({
-  welcomeText:
-    "Pozivamo Vas da sa nama podelite radost našeg venčanja i krunisanja ljubavi koju već dugo živimo, čuvamo i zajedno gradimo.",
+  backgroundImage: "/images/marija-petar-minimal.jpg",
 
-  date: "16 AVG 2026",
-  dateISO: "2026-08-16T19:00:00+02:00",
-rsvpOptions: {
-  fasting: true,
-},
+  details: createDetails({
+    welcomeText:
+      "Naša priča dobija novo poglavlje, zato vas sa radošću pozivamo da budete deo naše uspomene.",
 
-  venue: "Hotel-Restoran Madera",
-  showCalendarButton: true,
+    date: "24.10.2026.",
+    dateISO: "2026-10-24T13:00:00+02:00",
 
- events: [
-  {
-    label: "Doček gostiju",
-    time: "19:00",
-    icon: "gathering",
-    location: "Hotel-Restoran Madera, pored bazena",
-    mapLink:
-      "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
-  },
-  {
-    label: "Građansko venčanje",
-    time: "20:00",
-    icon: "civil",
-  },
-  {
-    label: "Večera",
-    time: "21:30",
-    icon: "vecera",
-  },
-  {
-    label: "Torta",
-    time: "00:00",
-    icon: "ceremony",
-  },
-],
+    venue: "Mesečev konak",
 
-  showDressCode: true,
-  dressCodeTitle: "Dress code",
-  dressCodePalette: [],
-  dressCodeNote: "Svečano i elegantno, u stilu koji vam najviše prija.",
+    showCalendarButton: true,
+    calendarDurationHours: 9,
 
-  mapLink:
-    "https://www.google.com/maps/place/Hotel-Restoran+Madera/@43.2556178,21.8643691,718m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755bb2b0b017195:0x1da2df081511f09e!8m2!3d43.2556178!4d21.8643691!16s%2Fg%2F11hdvr4w80?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+    showLanguageSwitcher: true,
+    defaultLanguage: "sr",
+    languages: ["sr", "en"],
+    languageLabels: {
+      sr: "SR",
+      en: "EN",
+    },
 
-  note: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
-  rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
-  rsvpDeadline: "01.08.2026.",
-  rsvpDeadlineISO: "2026-08-01",
-}),
+    translations: {
+      en: {
+        brideName: "Marija",
+        groomName: "Petar",
+        weddingDate: "24 OCT 2026",
+        weddingTime: "1:00 PM",
+        venue: "Mesečev konak",
+
+        details: {
+          welcomeText:
+            "Our story begins a new chapter, and we joyfully invite you to be part of our special memory.",
+
+          date: "24 OCT 2026",
+          venue: "Mesečev konak",
+
+          events: [
+            {
+              label: "Gathering at the Cvetković family home",
+              time: "1:00 PM",
+              icon: "gathering",
+              location: "Cvetković family home",
+            },
+            {
+              label: "Civil wedding ceremony",
+              time: "3:30 PM",
+              icon: "civil",
+              location: "Oficirski dom",
+            },
+            {
+              label: "Guest gathering",
+              time: "5:00 PM",
+              icon: "restaurant",
+              location: "Restaurant Mesečev konak",
+            },
+          ],
+
+          note: "Please confirm your attendance by October 10, 2026.",
+          rsvpText: "Please confirm your attendance by October 10, 2026.",
+          rsvpDeadline: "10 OCT 2026",
+          rsvpDeadlineISO: "2026-10-10",
+        },
+      },
+    },
+
+    events: [
+      {
+        label: "Skup svatova",
+        time: "13:00",
+        icon: "gathering",
+        location: "Porodična kuća Cvetković",
+      },
+      {
+        label: "Ceremonija opštinskog venčanja",
+        time: "15:30",
+        icon: "civil",
+        location: "Oficirski dom",
+      },
+      {
+        label: "Okupljanje gostiju",
+        time: "17:00",
+        icon: "restaurant",
+        location: "Restoran „Mesečev konak”",
+      },
+    ],
+
+    showDressCode: false,
+    dressCodeTitle: "",
+    dressCodePalette: [],
+    dressCodeNote: "",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 10.10.2026. godine.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 10.10.2026. godine.",
+    rsvpDeadline: "10.10.2026.",
+    rsvpDeadlineISO: "2026-10-10",
+  }),
 },
   // =========================
   // BIRTHDAY TEMPLATES
