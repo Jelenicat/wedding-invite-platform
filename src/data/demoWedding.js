@@ -5195,6 +5195,9 @@ calendarDurationHours: 7,
     showCalendarButton: true,
     calendarDurationHours: 9,
 
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+
     showLanguageSwitcher: true,
     defaultLanguage: "sr",
     languages: ["sr", "en"],
@@ -5224,20 +5227,29 @@ calendarDurationHours: 7,
               time: "1:00 PM",
               icon: "gathering",
               location: "Cvetković family home",
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Porodicna+kuca+Cvetkovic+Nis",
             },
             {
               label: "Civil wedding ceremony",
               time: "3:30 PM",
               icon: "civil",
               location: "Oficirski dom",
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Oficirski+dom+Nis",
             },
             {
               label: "Guest gathering",
               time: "5:00 PM",
               icon: "restaurant",
               location: "Restaurant Mesečev konak",
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
             },
           ],
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
 
           note: "Please confirm your attendance by October 10, 2026.",
           rsvpText: "Please confirm your attendance by October 10, 2026.",
@@ -5253,18 +5265,24 @@ calendarDurationHours: 7,
         time: "13:00",
         icon: "gathering",
         location: "Porodična kuća Cvetković",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Porodicna+kuca+Cvetkovic+Nis",
       },
       {
         label: "Ceremonija opštinskog venčanja",
         time: "15:30",
         icon: "civil",
         location: "Oficirski dom",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Oficirski+dom+Nis",
       },
       {
         label: "Okupljanje gostiju",
         time: "17:00",
         icon: "restaurant",
         location: "Restoran „Mesečev konak”",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
       },
     ],
 
