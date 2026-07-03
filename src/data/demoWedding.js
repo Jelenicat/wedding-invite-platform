@@ -5209,6 +5209,8 @@ calendarDurationHours: 7,
 
     translations: {
       en: {
+        script: "latin",
+
         brideName: "Marija",
         groomName: "Petar",
         weddingDate: "24 OCT 2026",
