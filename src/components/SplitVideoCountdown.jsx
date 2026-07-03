@@ -8,7 +8,40 @@ function SplitVideoCountdown({
   brideName,
   groomName,
   details = {},
+  script = "latin",
+  slug = "",
 }) {
+  const isCyrillic =
+    script === "cyrillic" ||
+    details.script === "cyrillic" ||
+    /[А-Яа-яЉЊЋЂЏђћљњџ]/.test(`${brideName || ""} ${groomName || ""}`);
+
+  const t = isCyrillic
+    ? {
+        arrivedKicker: "Наш дан је стигао",
+        arrivedTitle: "Дан венчања је стигао",
+        remaining: "До венчања је остало",
+        days: "дана",
+        hours: "сати",
+        minutes: "мин",
+        seconds: "сек",
+        note: "Видимо се да заједно направимо успомене за памћење.",
+        calendarButton: "Додај у календар",
+        calendarHint: "Сачувајте датум венчања у свом телефону.",
+      }
+    : {
+        arrivedKicker: "Naš dan je stigao",
+        arrivedTitle: "Dan venčanja je stigao",
+        remaining: "Do venčanja je ostalo",
+        days: "dana",
+        hours: "sati",
+        minutes: "min",
+        seconds: "sek",
+        note: "Vidimo se da zajedno napravimo uspomene za pamćenje.",
+        calendarButton: "Dodaj u kalendar",
+        calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
+      };
+
   const calculateTimeLeft = () => {
     const difference =
       new Date(targetDate).getTime() - new Date().getTime();
@@ -36,12 +69,17 @@ function SplitVideoCountdown({
     "--countdown-accent": theme.accent || "#8f8a64",
     "--countdown-accent-strong": theme.accentStrong || "#6e5a4e",
     "--countdown-card-bg": theme.cardBg || "rgba(255, 255, 255, 0.34)",
-    "--countdown-card-border": theme.cardBorder || "rgba(145, 122, 108, 0.10)",
+    "--countdown-card-border":
+      theme.cardBorder || "rgba(145, 122, 108, 0.10)",
     "--countdown-divider": theme.dividerLine || "rgba(145, 122, 108, 0.38)",
     "--countdown-vignette": theme.vignetteColor || "rgba(0, 0, 0, 0.04)",
     "--countdown-shadow-soft": "rgba(88, 71, 60, 0.06)",
     "--countdown-shadow-hover": "rgba(88, 71, 60, 0.08)",
   };
+
+  const sectionClassName = `split-video-countdown-section ${
+    isCyrillic ? "split-video-countdown-section--cyrillic" : ""
+  } ${slug ? `split-video-countdown-${slug}` : ""}`;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,24 +113,23 @@ function SplitVideoCountdown({
           onClick={handleCalendarClick}
         >
           <span>📅</span>
-          Dodaj u kalendar
+          {t.calendarButton}
         </button>
 
-        <p className="split-video-calendar-hint">
-          Sačuvajte datum venčanja u svom telefonu.
-        </p>
+        <p className="split-video-calendar-hint">{t.calendarHint}</p>
       </div>
     );
   };
 
   if (!timeLeft) {
     return (
-      <section className="split-video-countdown-section" style={themeStyles}>
+      <section className={sectionClassName} style={themeStyles}>
         <div className="split-video-countdown-paper">
           <div className="split-video-countdown-inner">
-            <p className="split-video-countdown-kicker">Naš dan je stigao</p>
+            <p className="split-video-countdown-kicker">{t.arrivedKicker}</p>
+
             <h3 className="split-video-countdown-finished">
-              Dan venčanja je stigao
+              {t.arrivedTitle}
             </h3>
 
             <CalendarButton />
@@ -103,15 +140,15 @@ function SplitVideoCountdown({
   }
 
   const items = [
-    { value: format(timeLeft.days), label: "dana" },
-    { value: format(timeLeft.hours), label: "sati" },
-    { value: format(timeLeft.minutes), label: "min" },
-    { value: format(timeLeft.seconds), label: "sek" },
+    { value: format(timeLeft.days), label: t.days },
+    { value: format(timeLeft.hours), label: t.hours },
+    { value: format(timeLeft.minutes), label: t.minutes },
+    { value: format(timeLeft.seconds), label: t.seconds },
   ];
 
   return (
     <motion.section
-      className="split-video-countdown-section"
+      className={sectionClassName}
       style={themeStyles}
       initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -127,7 +164,7 @@ function SplitVideoCountdown({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Do venčanja je ostalo
+            {t.remaining}
           </motion.p>
 
           <motion.div
@@ -172,7 +209,7 @@ function SplitVideoCountdown({
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.15 }}
           >
-            Vidimo se da zajedno napravimo uspomene za pamćenje.
+            {t.note}
           </motion.p>
 
           <CalendarButton />

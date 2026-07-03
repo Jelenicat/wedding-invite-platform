@@ -10,26 +10,110 @@ function SplitVideoInvitationCard({
   details = {},
   slug,
   type,
+  script = "latin",
 }) {
-  const safeBrideName = brideName || "Bride";
-  const safeGroomName = groomName || "Groom";
+  const isCyrillic =
+    script === "cyrillic" ||
+    details.script === "cyrillic" ||
+    /[А-Яа-яЉЊЋЂЏђћљњџ]/.test(`${brideName || ""} ${groomName || ""}`);
+
+  const safeBrideName = brideName || (isCyrillic ? "Млада" : "Bride");
+  const safeGroomName = groomName || (isCyrillic ? "Младожења" : "Groom");
+
+  const t = isCyrillic
+    ? {
+        welcome: "Добро дошли",
+        day: "Дан",
+        year: "Година",
+        location: "Локација",
+        map: "Погледај мапу",
+        dressCode: "Дрес код",
+      }
+    : {
+        welcome: "Dobrodošli",
+        day: "Dan",
+        year: "Godina",
+        location: "Lokacija",
+        map: "Pogledaj mapu",
+        dressCode: "Dress code",
+      };
+
+  const getDateParts = () => {
+    const monthNamesLatin = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAJ",
+      "JUN",
+      "JUL",
+      "AVG",
+      "SEP",
+      "OKT",
+      "NOV",
+      "DEC",
+    ];
+
+    const monthNamesCyrillic = [
+      "ЈАН",
+      "ФЕБ",
+      "МАР",
+      "АПР",
+      "МАЈ",
+      "ЈУН",
+      "ЈУЛ",
+      "АВГ",
+      "СЕП",
+      "ОКТ",
+      "НОВ",
+      "ДЕЦ",
+    ];
+
+    const monthNames = isCyrillic ? monthNamesCyrillic : monthNamesLatin;
+
+    if (details.date) {
+      const cleanDate = details.date.trim();
+
+      const spacedParts = cleanDate.split(/\s+/).filter(Boolean);
+      if (spacedParts.length >= 3) {
+        return [spacedParts[0], spacedParts[1], spacedParts[2]];
+      }
+
+      const numericDate = cleanDate.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+      if (numericDate) {
+        const day = numericDate[1];
+        const monthIndex = Number(numericDate[2]) - 1;
+        const year = numericDate[3];
+
+        return [day, monthNames[monthIndex] || numericDate[2], year];
+      }
+    }
+
+    if (details.dateISO) {
+      const isoDate = details.dateISO.match(/^(\d{4})-(\d{2})-(\d{2})/);
+
+      if (isoDate) {
+        const year = isoDate[1];
+        const monthIndex = Number(isoDate[2]) - 1;
+        const day = String(Number(isoDate[3]));
+
+        return [day, monthNames[monthIndex] || isoDate[2], year];
+      }
+    }
+
+    return isCyrillic ? ["18", "СЕП", "2026"] : ["18", "SEP", "2026"];
+  };
+
+  const [day, month, year] = getDateParts();
 
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
 
-  const dateParts = details.date
-    ? details.date.split(" ")
-    : ["18", "SEP", "2026"];
-
-  const [day = "18", month = "SEP", year = "2026"] = dateParts;
-
   const shouldShowDressCode =
     details.showDressCode &&
-    (
-      details.dressCodeTitle ||
+    (details.dressCodeTitle ||
       details.dressCodeNote ||
-      details.dressCodePalette?.length > 0
-    );
+      details.dressCodePalette?.length > 0);
 
   const backgroundImage =
     details.backgroundImage || "/images/paper-texture1.jpg";
@@ -57,12 +141,12 @@ function SplitVideoInvitationCard({
     "--split-card-border": theme.cardBorder || "rgba(145, 122, 108, 0.12)",
     "--split-frame-border": theme.frameBorder || "rgba(145, 122, 108, 0.15)",
     "--split-divider-line": theme.dividerLine || "rgba(145, 122, 108, 0.4)",
-"--split-divider-line-soft": "rgba(145, 122, 108, 0)",
-"--split-flow-line": theme.flowLine || "rgba(145, 122, 108, 0.55)",
-"--split-node-ring": theme.nodeRing || "rgba(143, 138, 100, 0.12)",
-"--split-shadow-soft": "rgba(0, 0, 0, 0.02)",
-"--split-shadow-strong": "rgba(0, 0, 0, 0.06)",
-"--split-palette-hover": "rgba(88, 71, 60, 0.08)",
+    "--split-divider-line-soft": "rgba(145, 122, 108, 0)",
+    "--split-flow-line": theme.flowLine || "rgba(145, 122, 108, 0.55)",
+    "--split-node-ring": theme.nodeRing || "rgba(143, 138, 100, 0.12)",
+    "--split-shadow-soft": "rgba(0, 0, 0, 0.02)",
+    "--split-shadow-strong": "rgba(0, 0, 0, 0.06)",
+    "--split-palette-hover": "rgba(88, 71, 60, 0.08)",
   };
 
   const fadeUp = {
@@ -73,8 +157,10 @@ function SplitVideoInvitationCard({
 
   return (
     <>
-     <motion.section
-  className={`split-video-invitation split-video-${slug || ""}`}
+      <motion.section
+        className={`split-video-invitation split-video-${slug || ""} ${
+          isCyrillic ? "split-video-invitation--cyrillic" : ""
+        }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -107,7 +193,7 @@ function SplitVideoInvitationCard({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.12 }}
             >
-              Dobrodošli
+              {t.welcome}
             </motion.p>
 
             {details.welcomeText && (
@@ -131,7 +217,7 @@ function SplitVideoInvitationCard({
 
               <div className="split-video-calendar-grid">
                 <div className="split-video-calendar-col">
-                  <span className="split-video-calendar-label">Dan</span>
+                  <span className="split-video-calendar-label">{t.day}</span>
                   <span className="split-video-calendar-value">{day}</span>
                 </div>
 
@@ -144,11 +230,12 @@ function SplitVideoInvitationCard({
                   >
                     ♡
                   </motion.span>
+
                   <span className="split-video-calendar-month">{month}</span>
                 </div>
 
                 <div className="split-video-calendar-col">
-                  <span className="split-video-calendar-label">Godina</span>
+                  <span className="split-video-calendar-label">{t.year}</span>
                   <span className="split-video-calendar-value">{year}</span>
                 </div>
               </div>
@@ -188,6 +275,7 @@ function SplitVideoInvitationCard({
                         delay: index * 0.08 + 0.08,
                       }}
                     />
+
                     <div className="split-video-flow-curve" />
 
                     <div className="split-video-flow-content">
@@ -228,7 +316,7 @@ function SplitVideoInvitationCard({
                 {...fadeUp}
                 transition={{ duration: 0.65 }}
               >
-                <h3 className="split-video-section-script">Lokacija</h3>
+                <h3 className="split-video-section-script">{t.location}</h3>
 
                 {details.venue && (
                   <p className="split-video-location-text">{details.venue}</p>
@@ -241,7 +329,7 @@ function SplitVideoInvitationCard({
                     rel="noreferrer"
                     className="split-video-location-link"
                   >
-                    Pogledaj mapu
+                    {t.map}
                   </a>
                 )}
               </motion.div>
@@ -254,7 +342,7 @@ function SplitVideoInvitationCard({
                 transition={{ duration: 0.65 }}
               >
                 <h3 className="split-video-section-script">
-                  {details.dressCodeTitle || "Dress code"}
+                  {details.dressCodeTitle || t.dressCode}
                 </h3>
 
                 {details.dressCodeNote && (
@@ -294,20 +382,23 @@ function SplitVideoInvitationCard({
         </div>
       </motion.section>
 
-     <SplitVideoRSVP
-  slug={slug}
-  eventType={type}
-  details={details}
-/>
-      {details.dateISO && (
-  <SplitVideoCountdown
-    targetDate={details.dateISO}
-    brideName={safeBrideName}
-    groomName={safeGroomName}
-    details={details}
-  />
-)}
+      <SplitVideoRSVP
+        slug={slug}
+        eventType={type}
+        details={details}
+        script={script}
+      />
 
+      {details.dateISO && (
+        <SplitVideoCountdown
+          targetDate={details.dateISO}
+          brideName={safeBrideName}
+          groomName={safeGroomName}
+          details={details}
+          script={script}
+          slug={slug}
+        />
+      )}
     </>
   );
 }

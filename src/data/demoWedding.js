@@ -5296,6 +5296,97 @@ calendarDurationHours: 7,
     rsvpDeadlineISO: "2026-10-10",
   }),
 },
+
+{
+  slug: "mina-dragan",
+  type: "wedding",
+  template: "split-video",
+  script: "cyrillic",
+
+  brideName: "Мина",
+  groomName: "Драган",
+
+  videoSrc: "/videos/mina-dragan.mp4",
+  musicSrc: "/music/mina-dragan.mp3",
+
+  weddingDate: "12 СЕП 2026",
+  weddingTime: "09:00",
+  venue: "Сала „Гранд”, Ново Село",
+
+  introText: "Радујемо се да овај дан поделимо са вама.",
+
+  details: createDetails({
+    backgroundImage: "/images/mina-dragan-split-1.jpg",
+
+   welcomeText:
+  "Пре годину дана започела је наша најлепша прича… \n\nА сада је време да започнемо ново поглавље.\n\nСа великом радошћу позивамо вас да будете део нашег венчања и својим присуством улепшате наш најважнији дан.",
+
+    date: "12 СЕП 2026",
+    dateISO: "2026-09-12T09:00:00+02:00",
+
+    showCalendarButton: true,
+    calendarDurationHours: 9,
+
+    events: [
+      {
+        label: "Скуп сватова",
+        time: "09:00",
+        icon: "gathering",
+        location: "Код породице Рајковић",
+        note: "Окупљање сватова",
+      },
+      {
+        label: "Скуп сватова",
+        time: "10:00",
+        icon: "gathering",
+        location: "Код породице Ивановић",
+        note: "Окупљање сватова",
+      },
+      {
+        label: "Венчање",
+        time: "12:30",
+        icon: "church",
+        location: "Храм Пресвете Богородице",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Presvete+Bogorodice",
+        note: "Свечани чин венчања у храму.",
+      },
+      {
+        label: "Свечани ручак",
+        time: "15:00",
+        icon: "restaurant",
+        location: "Сала „Гранд”, Ново Село",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Sala+Grand+Novo+Selo",
+        note: "Свечани ручак у сали „Гранд”.",
+      },
+      {
+        label: "Грађанско венчање",
+        time: "16:15",
+        icon: "civil",
+        location: "Сала „Гранд”, Ново Село",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Sala+Grand+Novo+Selo",
+        note: "Грађанско венчање.",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Стил облачења",
+    dressCodePalette: [],
+    dressCodeNote:
+      "Обуците шта вам најлепше стоји, а понесите добро расположење.",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Sala+Grand+Novo+Selo",
+
+    note: "Молимо вас да свој долазак потврдите до 20. августа 2026.",
+    rsvpText: "Молимо вас да свој долазак потврдите до 20. августа 2026.",
+    rsvpDeadline: "20.08.2026.",
+    rsvpDeadlineISO: "2026-08-20",
+    rsvpSignature: "Породице Рајковић и Ивановић",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

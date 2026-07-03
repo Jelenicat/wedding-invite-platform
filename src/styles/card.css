@@ -3384,6 +3384,579 @@
   letter-spacing: 0.08em;
   font-style: normal;
 }
+
+/* =========================
+   SPLIT VIDEO INVITATION - CYRILLIC
+========================= */
+
+.split-video-invitation--cyrillic .split-video-invitation-names.top {
+  font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(3.2rem, 9vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: 0.045em;
+  font-weight: 500;
+}
+
+.split-video-invitation--cyrillic .split-video-name {
+  font-weight: 500;
+}
+
+.split-video-invitation--cyrillic .split-video-invitation-and.block {
+  font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+  font-size: 0.54em;
+  line-height: 1;
+  font-style: italic;
+  letter-spacing: 0;
+  margin: 8px 0 10px;
+  opacity: 0.66;
+}
+
+.split-video-invitation--cyrillic .split-video-kicker,
+.split-video-invitation--cyrillic .split-video-section-script,
+.split-video-invitation--cyrillic .split-video-flow-title,
+.split-video-invitation--cyrillic .split-video-calendar-value,
+.split-video-invitation--cyrillic .split-video-calendar-month {
+  font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+}
+
+.split-video-invitation--cyrillic .split-video-kicker {
+  font-size: 1.75rem;
+  letter-spacing: 0.03em;
+}
+
+.split-video-invitation--cyrillic .split-video-calendar-label {
+  letter-spacing: 0.12em;
+}
+
+.split-video-invitation--cyrillic .split-video-calendar-month {
+  letter-spacing: 0.1em;
+}
+
+.split-video-invitation--cyrillic .split-video-flow-title {
+  font-size: 1.65rem;
+  line-height: 1.08;
+  font-style: italic;
+}
+
+.split-video-invitation--cyrillic .split-video-location-link {
+  letter-spacing: 0.1em;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .split-video-invitation--cyrillic .split-video-invitation-names.top {
+    font-size: clamp(2.65rem, 13.5vw, 3.6rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .split-video-invitation--cyrillic .split-video-invitation-and.block {
+    font-size: 0.46em;
+    margin: 6px 0 8px;
+  }
+
+  .split-video-invitation--cyrillic .split-video-kicker {
+    font-size: 1.75rem;
+  }
+
+  .split-video-invitation--cyrillic .split-video-text {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .split-video-invitation--cyrillic .split-video-calendar-label {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  .split-video-invitation--cyrillic .split-video-calendar-month {
+    font-size: 1.05rem;
+  }
+
+  .split-video-invitation--cyrillic .split-video-flow-title {
+    font-size: 1.55rem;
+  }
+
+  .split-video-invitation--cyrillic .split-video-location-link {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* MALI TELEFONI */
+@media (max-width: 360px) {
+  .split-video-invitation--cyrillic .split-video-invitation-names.top {
+    font-size: clamp(2.35rem, 12.5vw, 3.2rem);
+    letter-spacing: 0.02em;
+  }
+
+  .split-video-invitation--cyrillic .split-video-calendar-grid {
+    gap: 6px;
+  }
+
+  .split-video-invitation--cyrillic .split-video-calendar-col-center {
+    min-width: 92px;
+  }
+
+  .split-video-invitation--cyrillic .split-video-calendar-label {
+    font-size: 11px;
+  }
+
+  .split-video-invitation--cyrillic .split-video-calendar-value {
+    font-size: 1.75rem;
+  }
+
+  .split-video-invitation--cyrillic .split-video-section-script {
+    font-size: 1.55rem;
+  }
+}
+
+/* =========================
+   SPLIT VIDEO - MINA DRAGAN ONLY
+========================= */
+
+.split-video-mina-dragan .split-video-paper::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.42),
+    rgba(255, 255, 255, 0.62)
+  );
+}
+
+.split-video-mina-dragan .split-video-paper::after {
+  background: radial-gradient(
+    circle at center,
+    transparent 42%,
+    rgba(255, 255, 255, 0.28) 100%
+  );
+}
+
+.split-video-mina-dragan .split-video-paper-inner {
+  padding: 64px 24px 58px;
+  animation: none;
+}
+
+.split-video-mina-dragan .split-video-paper-inner::before {
+  inset: 18px 14px;
+  border-color: rgba(122, 106, 92, 0.13);
+}
+
+.split-video-mina-dragan .split-video-invitation-names.top {
+  margin-bottom: 8px;
+  font-size: clamp(3.4rem, 9vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: 0.035em;
+  color: #735f52;
+  text-shadow: none;
+  animation: none;
+}
+
+.split-video-mina-dragan .split-video-invitation-and.block {
+  font-size: 0.45em;
+  margin: 6px 0 4px;
+  color: #927d6e;
+  opacity: 0.72;
+}
+
+.split-video-mina-dragan .split-video-kicker {
+  margin-bottom: 14px;
+  font-size: 1.55rem;
+  line-height: 1;
+  color: #7a6658;
+  letter-spacing: 0.03em;
+}
+
+.split-video-mina-dragan .split-video-text {
+  max-width: 305px;
+  margin: 0 auto 24px;
+  font-size: 15.5px;
+  line-height: 1.72;
+  font-style: normal;
+  font-weight: 500;
+  color: #6e5d52;
+  white-space: pre-line;
+}
+
+.split-video-mina-dragan .split-video-calendar {
+  max-width: 270px;
+  margin: 0 auto 22px;
+}
+
+.split-video-mina-dragan .split-video-calendar-line {
+  margin-bottom: 12px;
+  opacity: 0.45;
+}
+
+.split-video-mina-dragan .split-video-calendar-label {
+  font-size: 12px;
+  color: #8e7c70;
+}
+
+.split-video-mina-dragan .split-video-calendar-value {
+  font-size: 2.1rem;
+  color: #756356;
+}
+
+.split-video-mina-dragan .split-video-calendar-month {
+  color: #7b6b60;
+}
+
+.split-video-mina-dragan .split-video-calendar-heart,
+.split-video-mina-dragan .split-video-love-mark {
+  color: #999463;
+}
+
+.split-video-mina-dragan .split-video-love-mark {
+  margin: 2px auto 18px;
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+.split-video-mina-dragan .split-video-flow {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.split-video-mina-dragan .split-video-flow-item {
+  padding-bottom: 34px;
+}
+
+.split-video-mina-dragan .split-video-flow-item:last-child {
+  padding-bottom: 10px;
+}
+
+.split-video-mina-dragan .split-video-flow-node {
+  top: 4px;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  background: #999463;
+  box-shadow: 0 0 0 6px rgba(153, 148, 99, 0.13);
+}
+
+.split-video-mina-dragan .split-video-flow-curve {
+  display: none;
+}
+
+.split-video-mina-dragan .split-video-flow-content {
+  padding-top: 32px;
+}
+
+.split-video-mina-dragan .split-video-flow-title {
+  margin-bottom: 6px;
+  font-size: 1.55rem;
+  line-height: 1.08;
+  color: #6f5d52;
+}
+
+.split-video-mina-dragan .split-video-flow-time {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #876f61;
+}
+
+.split-video-mina-dragan .split-video-flow-location {
+  max-width: 260px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #74675f;
+}
+
+.split-video-mina-dragan .split-video-flow-note {
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .split-video-mina-dragan .split-video-paper-inner {
+    max-width: 350px;
+    padding: 54px 22px 44px;
+  }
+
+  .split-video-mina-dragan .split-video-invitation-names.top {
+    font-size: clamp(2.85rem, 13vw, 3.7rem);
+    line-height: 1;
+    letter-spacing: 0.025em;
+  }
+
+  .split-video-mina-dragan .split-video-kicker {
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+  }
+
+  .split-video-mina-dragan .split-video-text {
+    max-width: 286px;
+    margin-bottom: 24px;
+    font-size: 14.8px;
+    line-height: 1.68;
+  }
+
+  .split-video-mina-dragan .split-video-calendar {
+    max-width: 260px;
+    margin-bottom: 20px;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-label {
+    font-size: 11px;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-value {
+    font-size: 1.85rem;
+  }
+
+  .split-video-mina-dragan .split-video-flow-item {
+    padding-bottom: 30px;
+  }
+
+  .split-video-mina-dragan .split-video-flow-title {
+    font-size: 1.45rem;
+  }
+
+  .split-video-mina-dragan .split-video-flow-location {
+    font-size: 13px;
+  }
+}
+
+/* MALI TELEFONI */
+@media (max-width: 360px) {
+  .split-video-mina-dragan .split-video-paper-inner {
+    padding: 48px 18px 40px;
+  }
+
+  .split-video-mina-dragan .split-video-invitation-names.top {
+    font-size: clamp(2.55rem, 12.5vw, 3.25rem);
+  }
+
+  .split-video-mina-dragan .split-video-text {
+    max-width: 268px;
+    font-size: 14px;
+    line-height: 1.62;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-grid {
+    gap: 6px;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-col-center {
+    min-width: 88px;
+  }
+}
+/* =========================
+   MINA DRAGAN - CLEAN ELEGANT STYLE
+   samo za ovaj slug
+========================= */
+
+.split-video-mina-dragan .split-video-paper-inner {
+  padding-top: 58px;
+}
+
+/* IMENA OSTAJU ELEGANTNA */
+.split-video-mina-dragan .split-video-invitation-names.top,
+.split-video-mina-dragan .split-video-name,
+.split-video-mina-dragan .split-video-invitation-and.block {
+  font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+  color: #80695d;
+  text-shadow: none;
+}
+
+.split-video-mina-dragan .split-video-invitation-names.top {
+  margin-bottom: 10px;
+  font-size: clamp(3.6rem, 9vw, 5.1rem);
+  line-height: 0.98;
+  letter-spacing: 0.035em;
+}
+
+.split-video-mina-dragan .split-video-invitation-and.block {
+  font-size: 0.42em;
+  margin: 4px 0 2px;
+  opacity: 0.65;
+}
+
+/* DOBRO DOŠLI - NEŽNO, ALI NE PREVIŠE PISANO */
+.split-video-mina-dragan .split-video-kicker {
+  margin: 0 auto 20px;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 1.7rem;
+  line-height: 1;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #7a6257;
+}
+
+/* UVODNI TEKST - ČITLJIVO */
+.split-video-mina-dragan .split-video-text {
+  max-width: 310px;
+  margin: 0 auto 30px;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 16.5px;
+  line-height: 1.62;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #6d5d54;
+  white-space: pre-line;
+}
+
+/* KALENDAR - NE PISANI FONT */
+.split-video-mina-dragan .split-video-calendar {
+  max-width: 270px;
+  margin-bottom: 24px;
+}
+
+.split-video-mina-dragan .split-video-calendar-label {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8a7a70;
+}
+
+.split-video-mina-dragan .split-video-calendar-value,
+.split-video-mina-dragan .split-video-calendar-month {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  color: #7a665c;
+}
+
+.split-video-mina-dragan .split-video-calendar-value {
+  font-size: 2rem;
+}
+
+.split-video-mina-dragan .split-video-calendar-month {
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+}
+
+/* RASPORED - ČISTIJI */
+.split-video-mina-dragan .split-video-flow-title {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 1.75rem;
+  line-height: 1.05;
+  font-style: italic;
+  font-weight: 500;
+  color: #735f55;
+}
+
+.split-video-mina-dragan .split-video-flow-time {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: #8a7366;
+}
+
+.split-video-mina-dragan .split-video-flow-location {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  max-width: 260px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: #70635b;
+}
+
+.split-video-mina-dragan .split-video-flow-note {
+  display: none;
+}
+
+/* DOTOVI */
+.split-video-mina-dragan .split-video-love-mark {
+  margin: 2px auto 20px;
+  font-size: 17px;
+  color: #999463;
+  opacity: 0.8;
+}
+
+.split-video-mina-dragan .split-video-flow-node {
+  background: #999463;
+  box-shadow: 0 0 0 6px rgba(153, 148, 99, 0.12);
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .split-video-mina-dragan .split-video-paper-inner {
+    padding: 52px 22px 44px;
+  }
+
+  .split-video-mina-dragan .split-video-invitation-names.top {
+    font-size: clamp(3.25rem, 14.5vw, 4.35rem);
+    line-height: 0.98;
+  }
+
+  .split-video-mina-dragan .split-video-kicker {
+    font-size: 1.85rem;
+    margin-bottom: 18px;
+  }
+
+  .split-video-mina-dragan .split-video-text {
+    max-width: 300px;
+    font-size: 17px;
+    line-height: 1.58;
+    margin-bottom: 30px;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-label {
+    font-size: 12px;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-value {
+    font-size: 2.1rem;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-month {
+    font-size: 1.22rem;
+  }
+
+  .split-video-mina-dragan .split-video-flow-title {
+    font-size: 1.85rem;
+  }
+
+  .split-video-mina-dragan .split-video-flow-time {
+    font-size: 20px;
+  }
+
+  .split-video-mina-dragan .split-video-flow-location {
+    font-size: 18px;
+    line-height: 1.45;
+  }
+}
+
+/* MALI TELEFONI */
+@media (max-width: 360px) {
+  .split-video-mina-dragan .split-video-invitation-names.top {
+    font-size: clamp(2.9rem, 13.5vw, 3.65rem);
+  }
+
+  .split-video-mina-dragan .split-video-kicker {
+    font-size: 1.65rem;
+  }
+
+  .split-video-mina-dragan .split-video-text {
+    max-width: 280px;
+    font-size: 15.8px;
+    line-height: 1.55;
+  }
+
+  .split-video-mina-dragan .split-video-calendar-value {
+    font-size: 1.95rem;
+  }
+
+  .split-video-mina-dragan .split-video-flow-title {
+    font-size: 1.65rem;
+  }
+
+  .split-video-mina-dragan .split-video-flow-time {
+    font-size: 20px;
+  }
+
+  .split-video-mina-dragan .split-video-flow-location {
+    font-size: 18px;
+  }
+}
+/* Sakrij "Добро дошли" samo za Mina & Dragan */
+.split-video-mina-dragan .split-video-kicker {
+  display: none;
+}
+.split-video-mina-dragan .split-video-text {
+  margin-top: 22px;
+}
 /* =========================
    ENVELOPE INVITATION CARD
 ========================= */

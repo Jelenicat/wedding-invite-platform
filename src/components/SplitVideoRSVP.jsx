@@ -10,7 +10,42 @@ import {
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
-function SplitVideoRSVP({ slug, eventType, details = {} }) {
+function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
+  const isCyrillic =
+    script === "cyrillic" || details.script === "cyrillic";
+
+  const t = isCyrillic
+    ? {
+        thankYou: "Хвала!",
+        success: "Ваша потврда је успешно послата.",
+        title: "Потврдите долазак",
+        subtitle: "Биће нам изузетна част да будете део нашег дана.",
+        fullName: "Име и презиме",
+        fullNamePlaceholder: "Унесите име и презиме",
+        choiceLabel: "Да ли долазите?",
+        yes: "Долазим",
+        no: "Не долазим",
+        guests: "Број особа",
+        loading: "Слање...",
+        submit: "Пошаљи потврду",
+        error: "Грешка при слању RSVP:",
+      }
+    : {
+        thankYou: "Hvala!",
+        success: "Vaša potvrda je uspešno poslata.",
+        title: "Potvrdite dolazak",
+        subtitle: "Biće nam izuzetna čast da budete deo našeg dana.",
+        fullName: "Ime i prezime",
+        fullNamePlaceholder: "Unesite ime i prezime",
+        choiceLabel: "Da li dolazite?",
+        yes: "Dolazim",
+        no: "Ne dolazim",
+        guests: "Broj osoba",
+        loading: "Slanje...",
+        submit: "Pošalji potvrdu",
+        error: "Greška pri slanju RSVP:",
+      };
+
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
@@ -23,14 +58,14 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
   const theme = details.theme || {};
 
   const themeStyles = {
-   "--rsvp-bg": theme.backgroundColor || "#f3ece6",
+    "--rsvp-bg": theme.backgroundColor || "#f3ece6",
     "--rsvp-main-text": theme.mainText || "#6f5b4f",
     "--rsvp-soft-text": theme.softText || "#87756a",
     "--rsvp-muted-text": theme.mutedText || "#8c7a6f",
-"--rsvp-accent": theme.accent || "#8f8a64",
-"--rsvp-accent-strong": theme.accentStrong || "#6e5a4e",
-"--rsvp-button-bg": theme.rsvpButtonBg || theme.accent || "#8f8a64",
-"--rsvp-button-text": theme.rsvpButtonText || theme.buttonText || "#fffaf5",
+    "--rsvp-accent": theme.accent || "#8f8a64",
+    "--rsvp-accent-strong": theme.accentStrong || "#6e5a4e",
+    "--rsvp-button-bg": theme.rsvpButtonBg || theme.accent || "#8f8a64",
+    "--rsvp-button-text": theme.rsvpButtonText || theme.buttonText || "#fffaf5",
     "--rsvp-card-bg": theme.cardBg || "rgba(255,255,255,0.34)",
     "--rsvp-card-border": theme.cardBorder || "rgba(145,122,108,0.12)",
     "--rsvp-frame-border": theme.frameBorder || "rgba(145,122,108,0.12)",
@@ -42,6 +77,10 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
     "--rsvp-vignette": theme.vignetteColor || "rgba(0, 0, 0, 0.04)",
     "--rsvp-node-ring": theme.nodeRing || "rgba(143,138,100,0.12)",
   };
+
+  const sectionClassName = `split-video-rsvp-section ${
+    isCyrillic ? "split-video-rsvp-section--cyrillic" : ""
+  } ${slug ? `split-video-rsvp-${slug}` : ""}`;
 
   useEffect(() => {
     if (submitted) {
@@ -113,7 +152,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
 
       setSubmitted(true);
     } catch (error) {
-      console.error("Greška pri slanju RSVP:", error);
+      console.error(t.error, error);
     } finally {
       setLoading(false);
     }
@@ -121,7 +160,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
 
   return (
     <motion.section
-      className="split-video-rsvp-section"
+      className={sectionClassName}
       style={themeStyles}
       initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -154,7 +193,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
                 >
-                  Hvala!
+                  {t.thankYou}
                 </motion.h2>
 
                 <motion.p
@@ -162,7 +201,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  Vaša potvrda je uspešno poslata.
+                  {t.success}
                 </motion.p>
 
                 <div className="split-video-confetti-wrap">
@@ -207,7 +246,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  Potvrdite dolazak
+                  {t.title}
                 </motion.h2>
 
                 <motion.p
@@ -215,7 +254,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  Biće nam izuzetna čast da budete deo našeg dana.
+                  {t.subtitle}
                 </motion.p>
 
                 <div className="split-video-rsvp-divider" />
@@ -226,13 +265,13 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                     initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
-                    <label>Ime i prezime</label>
+                    <label>{t.fullName}</label>
                     <input
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      placeholder="Unesite ime i prezime"
+                      placeholder={t.fullNamePlaceholder}
                       required
                     />
                   </motion.div>
@@ -243,7 +282,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                     animate={{ opacity: 1, y: 0 }}
                   >
                     <p className="split-video-rsvp-choice-label">
-                      Da li dolazite?
+                      {t.choiceLabel}
                     </p>
 
                     <div className="split-video-rsvp-choice-grid">
@@ -254,7 +293,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                         }`}
                         onClick={() => handleAttendanceSelect("da")}
                       >
-                        Dolazim
+                        {t.yes}
                       </button>
 
                       <button
@@ -264,7 +303,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                         }`}
                         onClick={() => handleAttendanceSelect("ne")}
                       >
-                        Ne dolazim
+                        {t.no}
                       </button>
                     </div>
                   </motion.div>
@@ -275,7 +314,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                       initial={{ opacity: 0, y: 14 }}
                       animate={{ opacity: 1, y: 0 }}
                     >
-                      <label>Broj osoba</label>
+                      <label>{t.guests}</label>
                       <input
                         type="number"
                         name="guests"
@@ -294,7 +333,7 @@ function SplitVideoRSVP({ slug, eventType, details = {} }) {
                     disabled={loading}
                     whileTap={{ scale: 0.96 }}
                   >
-                    {loading ? "Slanje..." : "Pošalji potvrdu"}
+                    {loading ? t.loading : t.submit}
                   </motion.button>
                 </form>
               </motion.div>

@@ -1688,6 +1688,92 @@ html {
   z-index: 1;
 }
 
+/* =========================
+   SPLIT VIDEO INTRO - CYRILLIC
+========================= */
+
+.split-video-intro--cyrillic .split-names {
+  font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(4.4rem, 12vw, 7.2rem);
+  line-height: 0.96;
+  letter-spacing: 0.045em;
+  font-weight: 500;
+  color: var(--intro-main-text);
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.22),
+    0 8px 28px var(--intro-text-shadow);
+}
+
+.split-video-intro--cyrillic .split-names span {
+  font-weight: 500;
+}
+
+.split-video-intro--cyrillic .split-and {
+  font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+  font-size: 0.46em;
+  line-height: 1;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 8px 0 10px;
+  color: var(--intro-accent);
+  opacity: 0.92;
+}
+
+.split-video-intro--cyrillic .split-btn {
+  font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 13px 26px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .split-video-intro--cyrillic .split-names {
+    width: 100%;
+    padding: 0 18px;
+    font-size: clamp(3rem, 15vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .split-video-intro--cyrillic .split-and {
+    font-size: 0.44em;
+    margin: 7px 0 9px;
+    letter-spacing: 0;
+  }
+
+  .split-video-intro--cyrillic .split-btn {
+    min-width: 205px;
+    max-width: calc(100% - 38px);
+    padding: 12px 18px;
+    font-size: 10px;
+    letter-spacing: 0.09em;
+  }
+}
+
+/* MALI TELEFONI */
+@media (max-width: 360px) {
+  .split-video-intro--cyrillic .split-names {
+    font-size: clamp(2.65rem, 13.5vw, 3.45rem);
+    letter-spacing: 0.025em;
+  }
+
+  .split-video-intro--cyrillic .split-and {
+    font-size: 0.42em;
+    margin: 6px 0 8px;
+    letter-spacing: 0;
+  }
+
+  .split-video-intro--cyrillic .split-btn {
+    min-width: 188px;
+    padding: 11px 15px;
+    font-size: 9.3px;
+    letter-spacing: 0.07em;
+  }
+}
 @media (max-width: 480px) {
   .split-play {
     width: 68px;
