@@ -3186,6 +3186,171 @@ rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
     note: "Molimo vas da svoj dolazak potvrdite na vreme.",
   }),
 },
+{
+  slug: "nadja-ivan",
+  type: "wedding",
+  template: "silk",
+  script: "cyrillic",
+
+  brideName: "Нађа",
+  groomName: "Иван",
+
+  videoSrc: "/videos/nadja-ivan.mp4",
+
+
+  fontMode: "light",
+
+  weddingDate: "1 АВГ 2026",
+  weddingTime: "14:00",
+  venue: "Вила Лаванда",
+
+  backgroundImage: "/images/nadja-ivan-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Са радошћу вас позивамо да будете део нашег најлепшег дана и да заједно прославимо почетак нашег новог поглавља.",
+
+    date: "01.08.2026.",
+    dateISO: "2026-08-01T14:00:00+02:00",
+
+    venue: "Вила Лаванда",
+
+    showCalendarButton: true,
+    calendarDurationHours: 9,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Vila+Lavanda",
+
+    showLanguageSwitcher: true,
+    defaultLanguage: "sr",
+    languages: ["sr", "en"],
+    languageLabels: {
+      sr: "SR",
+      en: "EN",
+    },
+
+    translations: {
+      en: {
+        script: "latin",
+
+        brideName: "Nadja",
+        groomName: "Ivan",
+
+        weddingDate: "1 AUG 2026",
+        weddingTime: "2:00 PM",
+        venue: "Villa Lavanda",
+
+        details: {
+          welcomeText:
+            "With great joy, we invite you to be part of our most beautiful day and celebrate the beginning of our new chapter together.",
+
+          date: "1 AUG 2026",
+          venue: "Villa Lavanda",
+
+          events: [
+            {
+              label: "Gathering at the bride's family home",
+              time: "2:00 PM",
+              icon: "gathering",
+              location: "Bride's family home",
+            },
+            {
+              label: "Church wedding ceremony",
+              time: "4:00 PM",
+              icon: "church",
+              location: "Church of Saint Nicholas",
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Church+of+Saint+Nicholas",
+            },
+            {
+              label: "Guest gathering",
+              time: "5:30 PM",
+              icon: "restaurant",
+              location: "Villa Lavanda",
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Villa+Lavanda",
+            },
+            {
+              label: "Civil wedding ceremony",
+              time: "6:30 PM",
+              icon: "civil",
+              location: "Villa Lavanda",
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Villa+Lavanda",
+            },
+            {
+              label: "Dinner and celebration",
+              time: "7:30 PM",
+              icon: "restaurant",
+              location: "Villa Lavanda",
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Villa+Lavanda",
+            },
+          ],
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Villa+Lavanda",
+
+          note: "Please confirm your attendance by July 15, 2026.",
+          rsvpText: "Please confirm your attendance by July 15, 2026.",
+          rsvpDeadline: "15 JUL 2026",
+          rsvpDeadlineISO: "2026-07-15",
+        },
+      },
+    },
+
+    events: [
+      {
+        label: "Скуп код младе",
+        time: "14:00",
+        icon: "gathering",
+        location: "Породична кућа младе",
+      },
+      {
+        label: "Црквено венчање",
+        time: "16:00",
+        icon: "church",
+        location: "Црква Светог Николе",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole",
+      },
+      {
+        label: "Окупљање гостију",
+        time: "17:30",
+        icon: "gathering",
+        location: "Вила Лаванда",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Lavanda",
+      },
+      {
+        label: "Грађанско венчање",
+        time: "18:30",
+        icon: "civil",
+        location: "Вила Лаванда",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Lavanda",
+      },
+      {
+        label: "Вечера и прослава",
+        time: "19:30",
+        icon: "restaurant",
+        location: "Вила Лаванда",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Lavanda",
+      },
+    ],
+
+    showDressCode: false,
+    dressCodeTitle: "",
+    dressCodePalette: [],
+    dressCodeNote: "",
+
+    note: "Молимо вас да свој долазак потврдите до 15.07.2026. године.",
+    rsvpText: "Молимо вас да свој долазак потврдите до 15.07.2026. године.",
+    rsvpDeadline: "15.07.2026.",
+    rsvpDeadlineISO: "2026-07-15",
+  }),
+},
 // =========================
 // Klijenti
 // =========================
@@ -5385,6 +5550,87 @@ calendarDurationHours: 7,
     rsvpDeadline: "20.08.2026.",
     rsvpDeadlineISO: "2026-08-20",
     rsvpSignature: "Породице Рајковић и Ивановић",
+  }),
+},
+
+{
+  slug: "nina-andrija",
+  type: "wedding",
+  template: "silk",
+ 
+
+  brideName: "Nina",
+  groomName: "Andrija",
+
+  videoSrc: "/videos/jovana-nikola-4.mp4",
+
+
+  fontMode: "light",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "10:00",
+  venue: "Woodland Resort, Kragujevac",
+
+  backgroundImage: "/images/jovana-nikola-minimal-1.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću pozivamo Vas da sa nama proslavite naš dan ljubavi.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T10:00:00+02:00",
+
+    showCalendarButton: true,
+    calendarDurationHours: 12,
+
+    events: [
+      {
+        label: "Skup svatova",
+        time: "10:00",
+        icon: "gathering",
+        location: "Kod porodice Radovanović",
+      },
+      {
+        label: "Skup svatova",
+        time: "11:30",
+        icon: "gathering",
+        location: "Kod porodice Savić",
+      },
+      {
+        label: "Crkveno venčanje",
+        time: "13:00",
+        icon: "church",
+        location: "Svetouspenski saborni hram, Kragujevac",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Svetouspenski+saborni+hram+Kragujevac",
+      },
+      {
+        label: "Koktel dobrodošlice i okupljanje gostiju",
+        time: "15:00",
+        icon: "gathering",
+        location: "Woodland Resort",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Woodland+Resort+Kragujevac",
+      },
+      {
+        label: "Svečani ručak",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Woodland Resort",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Woodland+Resort+Kragujevac",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Woodland+Resort+Kragujevac",
+
+    note: "Molimo Vas da svoj dolazak potvrdite do 15. avgusta 2026. godine.",
+    rsvpText: "Molimo Vas da svoj dolazak potvrdite do 15. avgusta 2026. godine.",
+    rsvpDeadline: "15.08.2026.",
+    rsvpDeadlineISO: "2026-08-15",
   }),
 },
   // =========================

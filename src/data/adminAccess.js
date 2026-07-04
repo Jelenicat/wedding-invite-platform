@@ -42,6 +42,7 @@ const adminAccess = {
       "andrijana-marko-1":"andrijana123",
       "marija-petar":"marija123",
       "mina-dragan":"mina123",
+      "nina-andrija":"nina123",
      
 };
 
