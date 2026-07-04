@@ -22,6 +22,7 @@ function SilkIntro({
 
   const shouldUseIntroNamesSvg = slug === "jovana-dusan-1";
   const isEnglish = language === "en";
+const isWeddingPartySlug = slug === "jovana-stefan";
 
   useEffect(() => {
     const video = videoRef.current;
@@ -185,7 +186,9 @@ function SilkIntro({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <p className={`silk-top ${fontMode}`}>{t.top}</p>
+        <p className={`silk-top ${fontMode}`}>
+  {isWeddingPartySlug ? "Wedding party" : t.top}
+</p>
 
         {shouldUseIntroNamesSvg ? (
           <div
