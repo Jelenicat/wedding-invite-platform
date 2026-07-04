@@ -5563,7 +5563,7 @@ calendarDurationHours: 7,
   groomName: "Andrija",
 
   videoSrc: "/videos/jovana-nikola-4.mp4",
-
+musicSrc: "/music/nina-andrija.mp3",
 
   fontMode: "light",
 
