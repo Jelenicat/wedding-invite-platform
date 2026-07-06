@@ -1510,12 +1510,12 @@ backgroundColor: "#f3ece6",
   template: "silk",
   brideName: "Ivona",
   groomName: "Aleksa",
-  videoSrc: "/videos/ivona-aleksa-3.mp4",
-  fontMode: "light",
+  videoSrc: "/videos/ivona-aleksa-5.mp4",
+  fontMode: "dark",
   weddingDate: "06 SEP 2026",
   weddingTime: "17:00",
   venue: "Beograd",
-  backgroundImage: "/images/ivona-aleksa-minimal-1.jpg",
+  backgroundImage: "/images/ivona-aleksa-minimal-2.jpg",
   details: createDetails({
     welcomeText:
       "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
@@ -5631,6 +5631,145 @@ musicSrc: "/music/nina-andrija.mp3",
     rsvpText: "Molimo Vas da svoj dolazak potvrdite do 15. avgusta 2026. godine.",
     rsvpDeadline: "15.08.2026.",
     rsvpDeadlineISO: "2026-08-15",
+  }),
+},
+
+{
+  slug: "marina-ilija",
+  type: "wedding",
+  template: "silk",
+
+  brideName: "Marina",
+  groomName: "Ilija",
+
+  videoSrc: "/videos/jovana-stefan.mp4",
+  musicSrc: "/music/mina-dragan.mp3",
+
+  fontMode: "light",
+
+  weddingDate: "13 SEP 2026",
+  weddingTime: "15:30",
+  venue: "Restoran Belwood wedding centar Ada",
+
+  backgroundImage: "/images/jovana-stefan-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "13 SEP 2026",
+    dateISO: "2026-09-13T15:30:00+02:00",
+
+    venue: "Restoran Belwood wedding centar Ada",
+
+    showCalendarButton: true,
+    calendarDurationHours: 9,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "15:30",
+        icon: "church",
+        location: "Saborna crkva",
+        mapLink:
+          "https://www.google.com/maps?q=Cathedral+Church+of+Saint+Michael+the+Archangel,+Tomb+of+Vuk+Karadzic,+Kneza+Sime+Markovi%C4%87a,+Beograd+11000&ftid=0x475a654db6ac097d:0x98763d658b7a685f&entry=gps&shh=CAE&lucs=,94297699,94231188,94280568,47071704,94218641,94282134,100813464,94286869&g_ep=CAISEjI2LjI1LjMuOTMyMTI1MTg3MBgAIIgnKkksOTQyOTc2OTksOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsMTAwODEzNDY0LDk0Mjg2ODY5QgJSUw%3D%3D&skid=cc9aa62e-1347-42ff-9079-757c736be7b5&g_st=ii",
+      },
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Restoran Belwood wedding centar Ada",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Belwood+wedding+centar+Ada+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Restoran Belwood wedding centar Ada",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Belwood+wedding+centar+Ada+Beograd",
+      },
+    ],
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [],
+    dressCodeNote:
+      "Svečano i elegantno, u stilu koji vam najviše odgovara i prija.",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Belwood+wedding+centar+Ada+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
+    rsvpDeadline: "01.09.2026.",
+    rsvpDeadlineISO: "2026-09-01",
+  }),
+},
+
+{
+  slug: "jovana-aleksandar",
+  type: "wedding",
+  template: "silk",
+
+  brideName: "Jovana",
+  groomName: "Aleksandar",
+
+  videoSrc: "/videos/jovana-stefan.mp4",
+  musicSrc: "/music/jovana-aleksandar.mp3",
+ uploadCoverImage: "/images/upload/jovana-aleksandar-upload.jpg",
+  fontMode: "light",
+
+  weddingDate: "16 AVG 2026",
+  weddingTime: "17:00",
+  venue: "Restoran Vidikovac, Niš",
+
+  backgroundImage: "/images/jovana-stefan-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "16.08.2026.",
+    dateISO: "2026-08-16T17:00:00+02:00",
+
+    venue: "Restoran Vidikovac, Niš",
+
+    showCalendarButton: true,
+    calendarDurationHours: 7,
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "17:00",
+        icon: "gathering",
+        location: "Restoran Vidikovac, Niš",
+        mapLink:
+          "https://www.google.rs/maps/place/Hotel+Vidikovac/@43.3049147,21.9114184,17z/data=!3m1!4b1!4m9!3m8!1s0x4755b16d66585f8d:0xbb8adf1b3cab20ad!5m2!4m1!1i2!8m2!3d43.3049147!4d21.9114184!16s%2Fg%2F11fkw8qhyf?hl=en&entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "18:00",
+        icon: "civil",
+        location: "Restoran Vidikovac, Niš",
+        mapLink:
+          "https://www.google.rs/maps/place/Hotel+Vidikovac/@43.3049147,21.9114184,17z/data=!3m1!4b1!4m9!3m8!1s0x4755b16d66585f8d:0xbb8adf1b3cab20ad!5m2!4m1!1i2!8m2!3d43.3049147!4d21.9114184!16s%2Fg%2F11fkw8qhyf?hl=en&entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+      },
+    ],
+
+    showDressCode: false,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: [],
+    dressCodeNote: "",
+
+    mapLink:
+      "https://www.google.rs/maps/place/Hotel+Vidikovac/@43.3049147,21.9114184,17z/data=!3m1!4b1!4m9!3m8!1s0x4755b16d66585f8d:0xbb8adf1b3cab20ad!5m2!4m1!1i2!8m2!3d43.3049147!4d21.9114184!16s%2Fg%2F11fkw8qhyf?hl=en&entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.08.2026.",
+    rsvpDeadline: "01.08.2026.",
+    rsvpDeadlineISO: "2026-08-01",
   }),
 },
   // =========================
