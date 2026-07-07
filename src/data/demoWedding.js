@@ -849,7 +849,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   template: "photo-script",
   brideName: "Ivana",
   groomName: "Filip",
-  videoSrc: "/videos/wedding-if3.mp4",
+  videoSrc: "/videos/wedding-if4.mp4",
   weddingDate: "18 SEP 2026",
   weddingTime: "17:00",
   venue: "Beograd",
@@ -975,7 +975,7 @@ uploadCoverImage: "/images/upload/sanja-milos-upload.jpg",
   brideName: "Ena",
   groomName: "Aleksa",
 
-  videoSrc: "/videos/wedding-Ena-Aleksa-3.mp4",
+  videoSrc: "/videos/wedding-Ena-Aleksa-4.mp4",
 
   weddingDate: "18 SEP 2026",
   weddingTime: "17:00",
@@ -995,16 +995,11 @@ namesGradient: `linear-gradient(
   #4f300b 100%
 )`,
 
-      buttonGradient: `linear-gradient(
-        135deg,
-        #7a541c 0%,
-        #d6b46a 48%,
-        #fff1b8 100%
-      )`,
+    
 
       introAccent: "#d6b46a",
       introMainText: "#f3df9f",
-      introButtonText: "#1f1609",
+      introButtonText: "#d6ad52",
       introButtonBorder: "rgba(255, 232, 160, 0.55)",
 
       cardAccent: "#d6b46a",
