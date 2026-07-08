@@ -5856,7 +5856,7 @@ rsvpOptions: {
       introAccent: "#ffffff",
       introButtonBg: "rgba(255,255,255,0.18)",
       introButtonBorder: "rgba(255,255,255,0.34)",
-      introButtonText: "#ffffff",
+      introButtonText: "#2a2a2a",
     },
   }),
 },
