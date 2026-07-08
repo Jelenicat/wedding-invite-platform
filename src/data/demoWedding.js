@@ -5886,7 +5886,7 @@ rsvpOptions: {
     venue: "Diamond Garden, Beograd",
 
     showCalendarButton: true,
-    calendarDurationHours: 11,
+    calendarDurationHours: 10,
 
     events: [
       {
