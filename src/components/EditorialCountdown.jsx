@@ -37,6 +37,11 @@ export default function EditorialCountdown({
 
   const showCalendarButton = details?.showCalendarButton === true;
 
+  const countdownNote =
+    slug === "aleksandra-aleksa"
+      ? "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan."
+      : "Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.";
+
   const calculateTimeLeft = () => {
     if (!targetDate) return null;
 
@@ -72,6 +77,7 @@ export default function EditorialCountdown({
       venue: details?.venue,
       mapLink: details?.mapLink,
       note: details?.note,
+      durationHours: details?.calendarDurationHours,
     });
   };
 
@@ -163,9 +169,9 @@ export default function EditorialCountdown({
             </motion.div>
           ))}
         </div>
-<p className="editorial-countdown-note">
-  Jedva čekamo da zajedno obeležimo ovaj poseban trenutak.
-</p>
+
+        <p className="editorial-countdown-note">{countdownNote}</p>
+
         {showCalendarButton && (
           <div className="editorial-countdown-calendar-box">
             <button

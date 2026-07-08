@@ -17878,3 +17878,254 @@
 .editorial-card--aleksandra-aleksa .editorial-time-location {
   margin-top: 6px;
 }
+
+/* =========================
+   ALEKSANDRA & ALEKSA
+   Hero tekst u crnom delu
+========================= */
+
+.editorial-card--aleksandra-aleksa {
+  --aa-cream: #efe4d0;
+  --aa-soft-cream: rgba(239, 228, 208, 0.88);
+  --aa-muted-cream: rgba(239, 228, 208, 0.66);
+  --aa-gold: #b99655;
+}
+
+/* crni deo bez jakog svetla gore */
+.editorial-card--aleksandra-aleksa .editorial-hero {
+  background:
+    linear-gradient(
+      180deg,
+      #211f1c 0%,
+      #1b1917 48%,
+      #161513 100%
+    );
+  color: var(--aa-cream);
+}
+
+/* sklanjamo A & A gore */
+.editorial-card--aleksandra-aleksa .editorial-hero-monogram {
+  display: none;
+}
+
+/* Aleksandra ♡ Aleksa */
+.editorial-card--aleksandra-aleksa .editorial-hero-names {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-bottom: 28px;
+
+  font-family: "Italianno", "Great Vibes", "Tangerine", cursive;
+  font-size: clamp(3.2rem, 13vw, 4.8rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+
+  color: var(--aa-cream);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.42);
+  white-space: nowrap;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-hero-heart {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-style: normal;
+  color: var(--aa-gold);
+  opacity: 0.9;
+  transform: translateY(-4px);
+}
+
+/* tekst ispod imena */
+.editorial-card--aleksandra-aleksa .editorial-hero-welcome {
+  max-width: 285px;
+  margin: 0 auto 24px;
+
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 1.45;
+  font-style: italic;
+  font-weight: 400;
+
+  color: var(--aa-soft-cream);
+}
+
+/* DATUM */
+.editorial-card--aleksandra-aleksa .editorial-hero-date-label {
+  margin-bottom: 10px;
+
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+
+  color: var(--aa-muted-cream);
+}
+
+/* 03 OKT 2026 */
+.editorial-card--aleksandra-aleksa .editorial-hero-date {
+  color: var(--aa-cream);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+/* A & A gore */
+.editorial-card--aleksandra-aleksa .editorial-hero-monogram {
+  display: block;
+  margin-bottom: 18px;
+
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+
+  color: rgba(185, 150, 85, 0.82);
+}
+
+/* Ikonice u rasporedu samo za Aleksandra & Aleksa */
+.editorial-card--aleksandra-aleksa .editorial-event-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 8px auto 10px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+/* =========================
+   ALEKSANDRA & ALEKSA
+   Belo-zlatna koverta akcenti
+========================= */
+
+.editorial-card--aleksandra-aleksa {
+  --aa-cream: #efe4d0;
+  --aa-soft-cream: rgba(239, 228, 208, 0.88);
+  --aa-muted-cream: rgba(239, 228, 208, 0.68);
+  --aa-gold: #b99655;
+  --aa-soft-gold: rgba(185, 150, 85, 0.82);
+  --aa-pale-gold: rgba(185, 150, 85, 0.28);
+}
+
+/* Naslovi sekcija: Lokacija, Raspored, Potvrda, Odbrojavanje */
+.editorial-card--aleksandra-aleksa .editorial-title,
+.editorial-card--aleksandra-aleksa .editorial-rsvp-title,
+.editorial-card--aleksandra-aleksa .editorial-countdown-title {
+  color: #3b332c;
+}
+
+/* Pisani mali tekst ispod naslova */
+.editorial-card--aleksandra-aleksa .editorial-script,
+.editorial-card--aleksandra-aleksa .editorial-rsvp-script,
+.editorial-card--aleksandra-aleksa .editorial-countdown-script {
+  color: var(--aa-soft-gold);
+}
+
+/* Lokacija */
+.editorial-card--aleksandra-aleksa .editorial-location-main-link {
+  color: #3b332c;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-map-link {
+  color: var(--aa-gold);
+  border-bottom-color: var(--aa-pale-gold);
+  letter-spacing: 0.16em;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-map-link:hover {
+  color: #8f6f36;
+  border-bottom-color: var(--aa-gold);
+}
+
+/* Slika lokacije - malo toplija ivica */
+.editorial-card--aleksandra-aleksa .editorial-location-image-wrap {
+  box-shadow:
+    0 16px 35px rgba(70, 55, 35, 0.12),
+    0 0 0 1px rgba(185, 150, 85, 0.16);
+}
+
+/* Raspored */
+.editorial-card--aleksandra-aleksa .editorial-timeline-line {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--aa-pale-gold),
+    transparent
+  );
+}
+
+.editorial-card--aleksandra-aleksa .editorial-time {
+  color: var(--aa-gold);
+}
+
+.editorial-card--aleksandra-aleksa .editorial-time-label {
+  color: #3b332c;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-time-location {
+  color: rgba(59, 51, 44, 0.76);
+}
+
+.editorial-card--aleksandra-aleksa .editorial-time-location-link {
+  border-bottom-color: rgba(185, 150, 85, 0.28);
+}
+
+/* Ikonice u rasporedu */
+.editorial-card--aleksandra-aleksa .editorial-event-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 8px auto 10px;
+  object-fit: contain;
+  opacity: 0.88;
+  filter: sepia(35%) saturate(120%) brightness(0.85);
+}
+
+/* RSVP tekst */
+.editorial-card--aleksandra-aleksa .editorial-rsvp-text {
+  color: rgba(59, 51, 44, 0.78);
+}
+
+.editorial-card--aleksandra-aleksa .editorial-rsvp-text br + * {
+  color: var(--aa-gold);
+}
+
+/* RSVP inputi */
+.editorial-card--aleksandra-aleksa .editorial-rsvp-form input,
+.editorial-card--aleksandra-aleksa .editorial-rsvp-form select {
+  border-color: rgba(185, 150, 85, 0.28);
+}
+
+.editorial-card--aleksandra-aleksa .editorial-rsvp-form input:focus,
+.editorial-card--aleksandra-aleksa .editorial-rsvp-form select:focus {
+  border-color: var(--aa-gold);
+}
+
+/* RSVP dugme */
+.editorial-card--aleksandra-aleksa .editorial-rsvp-submit {
+  background: linear-gradient(135deg, #b99655, #d7bd7d);
+  color: #fffaf0;
+  box-shadow: 0 12px 28px rgba(185, 150, 85, 0.26);
+}
+
+/* Odbrojavanje */
+.editorial-card--aleksandra-aleksa .editorial-countdown-number {
+  color: var(--aa-gold);
+}
+
+.editorial-card--aleksandra-aleksa .editorial-countdown-label {
+  color: rgba(59, 51, 44, 0.64);
+}
+
+.editorial-card--aleksandra-aleksa .editorial-countdown-note {
+  color: rgba(59, 51, 44, 0.76);
+}
+
+/* Dodaj u kalendar */
+.editorial-card--aleksandra-aleksa .editorial-countdown-calendar-btn {
+  background: linear-gradient(135deg, #b99655, #d7bd7d);
+  color: #fffaf0;
+  box-shadow: 0 12px 28px rgba(185, 150, 85, 0.24);
+}
+
+.editorial-card--aleksandra-aleksa .editorial-countdown-calendar-hint {
+  color: rgba(59, 51, 44, 0.6);
+}

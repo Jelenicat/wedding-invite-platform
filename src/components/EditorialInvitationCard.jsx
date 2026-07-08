@@ -13,6 +13,7 @@ export default function EditorialInvitationCard({
   type,
 }) {
   const events = details?.events || [];
+  const isAleksandraAleksa = slug === "aleksandra-aleksa";
 
   const dressWomen = details?.dressCodeWomen || "";
   const dressMen = details?.dressCodeMen || "";
@@ -24,12 +25,52 @@ export default function EditorialInvitationCard({
     events?.[events.length - 1]?.location ||
     "";
 
+  const getAleksandraAleksaEventIcon = (event) => {
+  if (!isAleksandraAleksa) return null;
+
+  const label = event?.label?.toLowerCase() || "";
+  const icon = event?.icon || "";
+
+  if (icon === "church" || label.includes("crkven")) {
+    return "/icons/crkva.svg";
+  }
+
+  if (
+    icon === "gathering" ||
+    label.includes("okupljanje") ||
+    label.includes("skup")
+  ) {
+    return "/icons/gathering.svg";
+  }
+
+  if (
+    icon === "civil" ||
+    label.includes("građansko") ||
+    label.includes("gradjansko")
+  ) {
+    return "/icons/civil.svg";
+  }
+
+  if (
+    icon === "restaurant" ||
+    icon === "dinner" ||
+    label.includes("restoran") ||
+    label.includes("večera") ||
+    label.includes("vecera") ||
+    label.includes("proslava")
+  ) {
+    return "/icons/restaurant.svg";
+  }
+
+  return null;
+};
+
   return (
     <section
-  className={`editorial-card ${
-    slug ? `editorial-card--${slug}` : ""
-  }`}
->
+      className={`editorial-card ${
+        slug ? `editorial-card--${slug}` : ""
+      }`}
+    >
       <div className="editorial-card-shell">
         <motion.div
           className="editorial-card-inner"
@@ -40,23 +81,46 @@ export default function EditorialInvitationCard({
         >
           {/* UVOD */}
           <section className="editorial-hero">
-            <p className="editorial-hero-top">
-              Ljubav je najveći
-              <br />
-              trenutak koji želimo sa vama da
-              <br />
-              podelimo na našem posebnom danu
-            </p>
+            {isAleksandraAleksa ? (
+              <>
+                <div className="editorial-hero-monogram">A &amp; A</div>
 
-            <div className="editorial-hero-date">{weddingDate}</div>
+                <div className="editorial-hero-names">
+                  <span>{brideName}</span>
+                  <span className="editorial-hero-heart">♡</span>
+                  <span>{groomName}</span>
+                </div>
 
-            <p className="editorial-hero-bottom">
-              Radujemo se što ćemo
-              <br />
-              zajedno proslaviti početak
-              <br />
-              našeg zajedničkog života
-            </p>
+                <p className="editorial-hero-welcome">
+                  {details?.welcomeText ||
+                    "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan."}
+                </p>
+
+                <div className="editorial-hero-date-label">DATUM</div>
+
+                <div className="editorial-hero-date">{weddingDate}</div>
+              </>
+            ) : (
+              <>
+                <p className="editorial-hero-top">
+                  Ljubav je najveći
+                  <br />
+                  trenutak koji želimo sa vama da
+                  <br />
+                  podelimo na našem posebnom danu
+                </p>
+
+                <div className="editorial-hero-date">{weddingDate}</div>
+
+                <p className="editorial-hero-bottom">
+                  Radujemo se što ćemo
+                  <br />
+                  zajedno proslaviti početak
+                  <br />
+                  našeg zajedničkog života
+                </p>
+              </>
+            )}
           </section>
 
           {/* LOKACIJA */}
@@ -122,38 +186,50 @@ export default function EditorialInvitationCard({
               <div className="editorial-timeline">
                 <div className="editorial-timeline-line" />
 
-                {events.map((event, index) => (
-                  <div
-                    className="editorial-timeline-item"
-                    key={`${event.time || "event"}-${index}`}
-                  >
-                    {event.time && (
-                      <div className="editorial-time">{event.time}</div>
-                    )}
+                {events.map((event, index) => {
+                  const eventIconSrc = getAleksandraAleksaEventIcon(event);
 
-                    {event.label && (
-                      <div className="editorial-time-label">
-                        {event.label}
-                      </div>
-                    )}
+                  return (
+                    <div
+                      className="editorial-timeline-item"
+                      key={`${event.time || "event"}-${index}`}
+                    >
+                      {event.time && (
+                        <div className="editorial-time">{event.time}</div>
+                      )}
 
-                    {event.location &&
-                      (event.mapLink ? (
-                        <a
-                          href={event.mapLink}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="editorial-time-location editorial-time-location-link"
-                        >
-                          {event.location}
-                        </a>
-                      ) : (
-                        <div className="editorial-time-location">
-                          {event.location}
+                      {eventIconSrc && (
+                        <img
+                          src={eventIconSrc}
+                          alt=""
+                          className="editorial-event-icon"
+                        />
+                      )}
+
+                      {event.label && (
+                        <div className="editorial-time-label">
+                          {event.label}
                         </div>
-                      ))}
-                  </div>
-                ))}
+                      )}
+
+                      {event.location &&
+                        (event.mapLink ? (
+                          <a
+                            href={event.mapLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="editorial-time-location editorial-time-location-link"
+                          >
+                            {event.location}
+                          </a>
+                        ) : (
+                          <div className="editorial-time-location">
+                            {event.location}
+                          </div>
+                        ))}
+                    </div>
+                  );
+                })}
               </div>
             </section>
           )}
@@ -190,23 +266,23 @@ export default function EditorialInvitationCard({
           )}
 
           {/* POTVRDA DOLASKA */}
-         <EditorialRSVP
-  slug={slug}
-  eventType={type || "wedding"}
-  brideName={brideName}
-  groomName={groomName}
-    note={details?.note}
-/>
+          <EditorialRSVP
+            slug={slug}
+            eventType={type || "wedding"}
+            brideName={brideName}
+            groomName={groomName}
+            note={details?.note}
+          />
 
           {/* ODBROJAVANJE */}
-         <EditorialCountdown
-  targetDate={details?.dateISO}
-  brideName={brideName}
-  groomName={groomName}
-  details={details}
-  script={details?.script || "latin"}
-  slug={slug}
-/>
+          <EditorialCountdown
+            targetDate={details?.dateISO}
+            brideName={brideName}
+            groomName={groomName}
+            details={details}
+            script={details?.script || "latin"}
+            slug={slug}
+          />
         </motion.div>
       </div>
     </section>
