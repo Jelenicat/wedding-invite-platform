@@ -14,6 +14,7 @@ export default function EditorialRSVP({
   eventType,
   brideName,
   groomName,
+  note,
 }) {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -127,11 +128,11 @@ export default function EditorialRSVP({
         <h2 className="editorial-rsvp-title">POTVRDA DOLASKA</h2>
         <div className="editorial-rsvp-script">potvrdite prisustvo</div>
 
-        <p className="editorial-rsvp-text">
-          Molimo vas da potvrdite dolazak na proslavu
-          <br />
-          {brideName} & {groomName}
-        </p>
+ <p className="editorial-rsvp-text">
+  {note || "Molimo vas da potvrdite dolazak na proslavu"}
+  <br />
+  {brideName} & {groomName}
+</p>
 
         <AnimatePresence mode="wait">
           {submitted ? (

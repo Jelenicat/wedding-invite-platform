@@ -77,6 +77,7 @@ import GoldPrintVideoIntro from "../components/GoldPrintVideoIntro";
 import GoldPrintVideoInvitationCard from "../components/GoldPrintVideoInvitationCard";
 import CyrillicSvgSilkIntro from "../components/CyrillicSvgSilkIntro";
 import CyrillicSvgSilkInvitationCard from "../components/CyrillicSvgSilkInvitationCard";
+import PhotoCardSplitInvitationCard from "../components/PhotoCardSplitInvitationCard";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -256,6 +257,15 @@ const TEMPLATE_COMPONENTS = {
     Intro: PlayingCardIntro,
     Invitation: PlayingCardInvitationCard,
   },
+  "photo-card-split-video": {
+  Intro: SplitVideoIntro,
+  Invitation: PhotoCardSplitInvitationCard,
+},
+"envelope-split-v2-editorial": {
+  Intro: EnvelopeSplitIntroV2,
+  Invitation: EditorialInvitationCard,
+},
+
 };
 
 const isObject = (value) =>
@@ -605,6 +615,7 @@ function WeddingPage() {
   if (
     templateKey === "envelope-split" ||
     templateKey === "envelope-split-v2" ||
+    templateKey === "envelope-split-v2-editorial" ||
     templateKey === "envelope-side-split" ||
     templateKey === "envelope-side-split-v2" ||
     templateKey === "italian-envelope-video"

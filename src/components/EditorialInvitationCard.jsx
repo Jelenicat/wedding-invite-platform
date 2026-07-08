@@ -25,7 +25,11 @@ export default function EditorialInvitationCard({
     "";
 
   return (
-    <section className="editorial-card">
+    <section
+  className={`editorial-card ${
+    slug ? `editorial-card--${slug}` : ""
+  }`}
+>
       <div className="editorial-card-shell">
         <motion.div
           className="editorial-card-inner"
@@ -186,12 +190,13 @@ export default function EditorialInvitationCard({
           )}
 
           {/* POTVRDA DOLASKA */}
-          <EditorialRSVP
-            slug={slug}
-            eventType={type || "wedding"}
-            brideName={brideName}
-            groomName={groomName}
-          />
+         <EditorialRSVP
+  slug={slug}
+  eventType={type || "wedding"}
+  brideName={brideName}
+  groomName={groomName}
+    note={details?.note}
+/>
 
           {/* ODBROJAVANJE */}
          <EditorialCountdown

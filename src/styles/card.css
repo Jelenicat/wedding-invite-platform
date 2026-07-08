@@ -17811,3 +17811,70 @@
   cursor: default;
   text-decoration: none;
 }
+
+/* Opcionalno: malo lepši razmak za photo-card bez slike */
+.photo-card-no-photo .photo-card-kicker {
+  margin-bottom: 26px;
+}
+
+.photo-card-no-photo .photo-card-invitation-names {
+  margin-bottom: 18px;
+  font-size: clamp(48px, 13vw, 62px);
+}
+
+.photo-card-no-photo .photo-card-paper {
+  padding-top: 34px;
+}
+
+@media (max-width: 480px) {
+  .photo-card-no-photo .photo-card-invitation-names {
+    font-size: 44px;
+  }
+}
+
+/* =========================
+   DIJANA & PAVLE - MOBILE ONLY
+========================= */
+
+@media (max-width: 480px) {
+  .photo-card-invitation.photo-card-dijana-pavle .photo-card-invitation-names {
+    font-size: 52px;
+    line-height: 1.02;
+    margin-bottom: 20px;
+  }
+
+  .photo-card-invitation.photo-card-dijana-pavle .photo-card-invitation-text {
+    font-size: 15.5px;
+    line-height: 1.85;
+    max-width: 300px;
+    margin-bottom: 28px;
+  }
+}
+
+/* Samo Aleksandra & Aleksa - linija ostaje, ali ne preseca tekst */
+.editorial-card--aleksandra-aleksa .editorial-timeline-line {
+  z-index: 0;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-timeline-item {
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-time,
+.editorial-card--aleksandra-aleksa .editorial-time-label,
+.editorial-card--aleksandra-aleksa .editorial-time-location {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  background: #f5f1ec;
+  padding: 0 10px;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-time {
+  padding-bottom: 2px;
+}
+
+.editorial-card--aleksandra-aleksa .editorial-time-location {
+  margin-top: 6px;
+}

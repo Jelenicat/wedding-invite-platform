@@ -5725,7 +5725,9 @@ musicSrc: "/music/nina-andrija.mp3",
   details: createDetails({
     welcomeText:
       "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
-
+rsvpOptions: {
+  fasting: true,
+},
     date: "16.08.2026.",
     dateISO: "2026-08-16T17:00:00+02:00",
 
@@ -5767,6 +5769,166 @@ musicSrc: "/music/nina-andrija.mp3",
     rsvpDeadlineISO: "2026-08-01",
   }),
 },
+
+{
+  slug: "dijana-pavle",
+  type: "wedding",
+  template: "photo-card-split-video",
+
+  brideName: "Dijana",
+  groomName: "Pavle",
+
+  videoSrc: "/videos/dijana-pavle.mp4",
+  musicSrc: "/music/dijana-pavle.mp3",
+
+  weddingDate: "10 OKT 2026",
+  weddingTime: "16:00",
+  venue: "Glamoure Event Center",
+
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "10 OKT 2026",
+    dateISO: "2026-10-10T16:00:00+02:00",
+
+    venue: "Glamoure Event Center",
+
+    showCalendarButton: true,
+    calendarDurationHours: 9,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "13:30",
+        icon: "church",
+        location: "Saborna crkva",
+        mapLink:
+          "https://www.google.com/maps?q=Cathedral+Church+of+Saint+Michael+the+Archangel,+Tomb+of+Vuk+Karadzic,+Kneza+Sime+Markovi%C4%87a,+Beograd+11000&ftid=0x475a654db6ac097d:0x98763d658b7a685f&entry=gps&shh=CAE&lucs=,94297699,94231188,94280568,47071704,94218641,94282134,100813464,94286869&g_ep=CAISEjI2LjI1LjMuOTMyMTI1MTg3MBgAIIgnKkksOTQyOTc2OTksOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsMTAwODEzNDY0LDk0Mjg2ODY5QgJSUw%3D%3D&skid=cc9aa62e-1347-42ff-9079-757c736be7b5&g_st=ii",
+      },
+      {
+        label: "Skup gostiju",
+        time: "15:00",
+        icon: "gathering",
+        location: "Glamoure Event Center",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Glamoure+Event+Center",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "16:00",
+        icon: "civil",
+        location: "Glamoure Event Center",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Glamoure+Event+Center",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Glamoure+Event+Center",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 30.09.2026.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 30.09.2026.",
+    rsvpDeadline: "30.09.2026.",
+    rsvpDeadlineISO: "2026-09-30",
+
+    theme: {
+      backgroundColor: "#f7efe9",
+      mainText: "#5f544d",
+      softText: "#7c7068",
+      mutedText: "#8d7d72",
+      accent: "#b11c3f",
+      accentStrong: "#981835",
+      buttonText: "#ffffff",
+      rsvpButtonBg: "#981835",
+      rsvpButtonText: "#ffffff",
+      cardBg: "rgba(255,255,255,0.45)",
+      cardBorder: "rgba(152,24,53,0.14)",
+      dividerLine: "rgba(152,24,53,0.28)",
+      paperOverlayTop: "rgba(255,250,245,0.98)",
+      paperOverlayBottom: "rgba(244,236,229,0.98)",
+
+      introMainText: "#ffffff",
+      introAccent: "#ffffff",
+      introButtonBg: "rgba(255,255,255,0.18)",
+      introButtonBorder: "rgba(255,255,255,0.34)",
+      introButtonText: "#ffffff",
+    },
+  }),
+},
+
+{
+  slug: "aleksandra-aleksa",
+  type: "wedding",
+  template: "envelope-split-v2-editorial",
+
+  brideName: "Aleksandra",
+  groomName: "Aleksa",
+
+  weddingDate: "03 OKT 2026",
+  weddingTime: "15:00",
+  venue: "Diamond Garden, Beograd",
+
+  image1: "/images/nevena-pedja/location.jpg", // zameni kad budeš imala pravu sliku
+  musicSrc: "/music/aleksandra-aleksa.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "03.10.2026.",
+    dateISO: "2026-10-03T15:00:00+02:00",
+
+    venue: "Diamond Garden, Beograd",
+
+    showCalendarButton: true,
+    calendarDurationHours: 9,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        icon: "church",
+        location: "Crkva Svetog Save, Vračar",
+        mapLink:
+          "https://www.google.com/maps?vet=10CAAQoqAOahcKEwig05DH_cKVAxUAAAAAHQAAAAAQDA..i&pvq=Cg0vZy8xMWp6eWdsbGN2IgsKBWNya3ZhEAIYAw&lqi=Chljcmt2YSBzdmV0b2cgc2F2ZSBiZW9ncmFkSPqSpdf7sICACFovEAAYABgBGAIYAyIZY3JrdmEgc3ZldG9nIHNhdmUgYmVvZ3JhZCoECAIQADICc3KSAQ9vcnRob2RveF9jaHVyY2g&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=rs&sa=X&ftid=0x475a710f60dbaab5:0xcc14c28de0839597",
+      },
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Diamond Garden, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Diamond+Garden+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Diamond Garden, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Diamond+Garden+Beograd",
+      },
+    ],
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Diamond+Garden+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 15.09.2026.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 15.09.2026.",
+    rsvpDeadline: "15.09.2026.",
+    rsvpDeadlineISO: "2026-09-15",
+
+    showRsvpText: true,
+  }),
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
