@@ -18163,3 +18163,7 @@
   transform: none;
   margin: 2px 0 4px;
 }
+/* Samo mladoženjino ime malo ulevo */
+.editorial-card--aleksandra-aleksa .editorial-hero-names span:last-child {
+  transform: translateX(-14px);
+}
