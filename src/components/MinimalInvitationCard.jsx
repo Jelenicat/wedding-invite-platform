@@ -23,6 +23,20 @@ function MinimalInvitationCard({
   const isAndrijanaMarko =
     slug === "andrijana-marko" || slug === "andrijana-marko-1";
 
+  const isJovanaAleksandarSlug = slug === "jovana-aleksandar";
+
+  const splitPersonName = (fullName = "") => {
+    const parts = fullName.trim().split(/\s+/);
+
+    return {
+      firstName: parts[0] || "",
+      lastName: parts.slice(1).join(" "),
+    };
+  };
+
+  const brideCardName = splitPersonName(safeBrideName);
+  const groomCardName = splitPersonName(safeGroomName);
+
   const t =
     language === "en"
       ? {
@@ -120,32 +134,83 @@ function MinimalInvitationCard({
                 script === "cyrillic"
                   ? "minimal-invitation-names-cyrillic"
                   : ""
-              }`}
+              } ${isJovanaAleksandarSlug ? "minimal-invitation-names-full" : ""}`}
             >
-              <span>{safeBrideName}</span>
+              {isJovanaAleksandarSlug ? (
+                <>
+                  <span className="minimal-person-name">
+                    <span className="minimal-person-first">
+                      {brideCardName.firstName}
+                    </span>
 
-              <span className="minimal-invitation-amp">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path
-                    d="M12 20
-                    c-6-4.5-9-7.5-9-11
-                    c0-2.5 2-4.5 4.5-4.5
-                    c1.5 0 3 .8 4.5 2.3
-                    c1.5-1.5 3-2.3 4.5-2.3
-                    C19 4.5 21 6.5 21 9
-                    c0 3.5-3 6.5-9 11z"
-                  />
-                </svg>
-              </span>
+                    {brideCardName.lastName && (
+                      <span className="minimal-person-last">
+                        {brideCardName.lastName}
+                      </span>
+                    )}
+                  </span>
 
-              <span>{safeGroomName}</span>
+                  <span className="minimal-invitation-amp minimal-invitation-amp-full">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path
+                        d="M12 20
+                        c-6-4.5-9-7.5-9-11
+                        c0-2.5 2-4.5 4.5-4.5
+                        c1.5 0 3 .8 4.5 2.3
+                        c1.5-1.5 3-2.3 4.5-2.3
+                        C19 4.5 21 6.5 21 9
+                        c0 3.5-3 6.5-9 11z"
+                      />
+                    </svg>
+                  </span>
+
+                  <span className="minimal-person-name minimal-person-name-groom">
+                    <span className="minimal-person-first">
+                      {groomCardName.firstName}
+                    </span>
+
+                    {groomCardName.lastName && (
+                      <span className="minimal-person-last">
+                        {groomCardName.lastName}
+                      </span>
+                    )}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>{safeBrideName}</span>
+
+                  <span className="minimal-invitation-amp">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path
+                        d="M12 20
+                        c-6-4.5-9-7.5-9-11
+                        c0-2.5 2-4.5 4.5-4.5
+                        c1.5 0 3 .8 4.5 2.3
+                        c1.5-1.5 3-2.3 4.5-2.3
+                        C19 4.5 21 6.5 21 9
+                        c0 3.5-3 6.5-9 11z"
+                      />
+                    </svg>
+                  </span>
+
+                  <span>{safeGroomName}</span>
+                </>
+              )}
             </h1>
           )}
 

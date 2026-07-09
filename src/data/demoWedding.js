@@ -5708,8 +5708,8 @@ musicSrc: "/music/nina-andrija.mp3",
   type: "wedding",
   template: "silk",
 
-  brideName: "Jovana",
-  groomName: "Aleksandar",
+  brideName: "Jovana Nikolić",
+  groomName: "Aleksandar Vukosavljević",
 
   videoSrc: "/videos/jovana-stefan.mp4",
   musicSrc: "/music/jovana-aleksandar.mp3",

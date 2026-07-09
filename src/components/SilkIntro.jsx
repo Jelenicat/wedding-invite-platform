@@ -22,7 +22,20 @@ function SilkIntro({
 
   const shouldUseIntroNamesSvg = slug === "jovana-dusan-1";
   const isEnglish = language === "en";
-const isWeddingPartySlug = slug === "jovana-stefan";
+  const isWeddingPartySlug = slug === "jovana-stefan";
+  const isJovanaAleksandarSlug = slug === "jovana-aleksandar";
+
+  const splitPersonName = (fullName = "") => {
+    const parts = fullName.trim().split(/\s+/);
+
+    return {
+      firstName: parts[0] || "",
+      lastName: parts.slice(1).join(" "),
+    };
+  };
+
+  const brideIntroName = splitPersonName(brideName);
+  const groomIntroName = splitPersonName(groomName);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -187,8 +200,8 @@ const isWeddingPartySlug = slug === "jovana-stefan";
         transition={{ duration: 1 }}
       >
         <p className={`silk-top ${fontMode}`}>
-  {isWeddingPartySlug ? "Wedding party" : t.top}
-</p>
+          {isWeddingPartySlug ? "Wedding party" : t.top}
+        </p>
 
         {shouldUseIntroNamesSvg ? (
           <div
@@ -201,14 +214,46 @@ const isWeddingPartySlug = slug === "jovana-stefan";
           <h1
             className={`silk-names ${
               script === "cyrillic" ? "silk-names-cyrillic" : ""
-            }`}
+            } ${isJovanaAleksandarSlug ? "silk-names-full" : ""}`}
             style={{ color: textColor }}
           >
-            {brideName}
-            <br />
-            <span className="silk-amp">&</span>
-            <br />
-            {groomName}
+            {isJovanaAleksandarSlug ? (
+              <>
+                <span className="silk-person-name">
+                  <span className="silk-person-first">
+                    {brideIntroName.firstName}
+                  </span>
+
+                  {brideIntroName.lastName && (
+                    <span className="silk-person-last">
+                      {brideIntroName.lastName}
+                    </span>
+                  )}
+                </span>
+
+                <span className="silk-amp silk-amp-full">&</span>
+
+                <span className="silk-person-name silk-person-name-groom">
+                  <span className="silk-person-first">
+                    {groomIntroName.firstName}
+                  </span>
+
+                  {groomIntroName.lastName && (
+                    <span className="silk-person-last">
+                      {groomIntroName.lastName}
+                    </span>
+                  )}
+                </span>
+              </>
+            ) : (
+              <>
+                {brideName}
+                <br />
+                <span className="silk-amp">&</span>
+                <br />
+                {groomName}
+              </>
+            )}
           </h1>
         )}
 
