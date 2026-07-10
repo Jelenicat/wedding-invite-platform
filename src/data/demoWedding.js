@@ -4731,6 +4731,7 @@ events: [
 
   videoSrc: "/videos/nikolina-velibor-intro.mp4",
   musicSrc: "/music/nikolina-velibor.mp3",
+uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
 
   weddingDate: "2 АВГ 2026",
   weddingTime: "12:00",
