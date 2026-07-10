@@ -998,17 +998,21 @@ function WeddingUpload() {
           <div className="upload-hero-image-wrap">
             <img
               src={coverImage}
-              alt={`${wedding.brideName} ${wedding.groomName || ""}`}
+            alt={`${wedding.brideNameLatin || wedding.brideName} ${
+  wedding.groomNameLatin || wedding.groomName || ""
+}`}
               className="upload-hero-image"
             />
             <div className="upload-hero-image-overlay" />
           </div>
 
           <div className="upload-hero-content">
-            <p className="upload-hero-kicker">
-              {wedding.brideName}
-              {wedding.groomName ? ` & ${wedding.groomName}` : ""}
-            </p>
+         <p className="upload-hero-kicker">
+  {wedding.brideNameLatin || wedding.brideName}
+  {wedding.groomName
+    ? ` & ${wedding.groomNameLatin || wedding.groomName}`
+    : ""}
+</p>
 
             <div className="upload-hero-divider" />
 

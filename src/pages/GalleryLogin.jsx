@@ -51,10 +51,12 @@ function GalleryLogin() {
       <div className="gallery-auth-card">
         <p className="gallery-auth-kicker">Privatna galerija</p>
 
-        <h1 className="gallery-auth-title">
-          {wedding.brideName}
-          {wedding.groomName ? ` & ${wedding.groomName}` : ""}
-        </h1>
+     <h1 className="gallery-auth-title">
+  {wedding.brideNameLatin || wedding.brideName}
+  {wedding.groomName
+    ? ` & ${wedding.groomNameLatin || wedding.groomName}`
+    : ""}
+</h1>
 
         <p className="gallery-auth-text">
           Unesite šifru kako biste otvorili galeriju fotografija sa vašeg dana.

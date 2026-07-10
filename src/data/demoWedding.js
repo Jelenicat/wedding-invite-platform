@@ -4728,7 +4728,8 @@ events: [
 
   brideName: "Николина",
   groomName: "Велибор",
-
+brideNameLatin: "Nikolina",
+  groomNameLatin: "Velibor",
   videoSrc: "/videos/nikolina-velibor-intro.mp4",
   musicSrc: "/music/nikolina-velibor.mp3",
 uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",

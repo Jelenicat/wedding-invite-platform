@@ -811,8 +811,10 @@ function WeddingGallery() {
           <div>
             <p className="gallery-auth-kicker">Privatna galerija</p>
             <h1 className="gallery-collection-title">
-              {wedding.brideName}
-              {wedding.groomName ? ` & ${wedding.groomName}` : ""}
+             {wedding.brideNameLatin || wedding.brideName}
+{wedding.groomName
+  ? ` & ${wedding.groomNameLatin || wedding.groomName}`
+  : ""}
             </h1>
             <p className="gallery-collection-text">
               Sve fotografije koje su gosti poslali na jednom mestu.
