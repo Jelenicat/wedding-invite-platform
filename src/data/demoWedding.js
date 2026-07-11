@@ -3817,6 +3817,7 @@ dressCodeNote:
   venue: "Talas Resort",
  musicSrc: "/music/marija-milan.mp3",
   backgroundImage: "/images/floral-marija-milan.jpg",
+uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
 
   details: createDetails({
     welcomeText:
