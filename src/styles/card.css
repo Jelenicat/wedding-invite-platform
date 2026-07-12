@@ -18415,3 +18415,23 @@ margin-top: -5.5rem !important;
   top: 0.65rem;
   bottom: 0.5rem;
 }
+/* =========================
+   DOROTEJA & DRAGAN
+   Oblaci niže samo na telefonu
+========================= */
+
+@media (max-width: 520px) {
+  .italian-card-page.italian-slug-doroteja-dragan .italian-event-cloud {
+    width: 138vw;
+  }
+
+  .italian-card-page.italian-slug-doroteja-dragan .italian-event-cloud-left {
+    left: -52vw;
+    top: 30%;
+  }
+
+  .italian-card-page.italian-slug-doroteja-dragan .italian-event-cloud-right {
+    right: -56vw;
+    bottom: -18%;
+  }
+}
