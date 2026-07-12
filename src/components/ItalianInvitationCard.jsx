@@ -616,7 +616,7 @@ function ItalianInvitationCard({
                   </span>
 
                   <span className="italian-date-caption-secondary">
-                    i krštenje njihovog sina Stefana
+                    i krštenje našeg sina Stefana
                   </span>
                 </p>
               </>
