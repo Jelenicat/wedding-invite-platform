@@ -262,7 +262,12 @@ function ConfettiBurst({ active }) {
   );
 }
 
-function EnvelopeLetterSection({ brideName, groomName, details = {} }) {
+function EnvelopeLetterSection({
+  brideName,
+  groomName,
+  details = {},
+  showStefan = false,
+}) {
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -331,6 +336,12 @@ function EnvelopeLetterSection({ brideName, groomName, details = {} }) {
 
               <p className="italian-letter-signature">
                 {brideName} & {groomName}
+
+                {showStefan && (
+                  <span className="italian-letter-signature-stefan">
+                    sa Stefanom
+                  </span>
+                )}
               </p>
             </div>
           </motion.div>
@@ -486,13 +497,15 @@ function ItalianInvitationCard({
   const safeBrideName = brideName || "Bride";
   const safeGroomName = groomName || "Groom";
 
+  const isDorotejaDragan = slug === "doroteja-dragan";
+
   const dateText = details?.date || weddingDate;
 
-const heroText =
-  details?.heroText || details?.invitationText || "se venčavaju";
+  const heroText =
+    details?.heroText || details?.invitationText || "se venčavaju";
 
-const heroScriptText = details?.heroScriptText || "";
-const heroSubText = details?.heroSubText || "";
+  const heroScriptText = details?.heroScriptText || "";
+  const heroSubText = details?.heroSubText || "";
 
   const events = details?.events || [];
   const dateParts = getDateParts(dateText);
@@ -555,19 +568,19 @@ const heroSubText = details?.heroSubText || "";
               {safeBrideName} <span>&</span> {safeGroomName}
             </div>
 
-          <div className="italian-subtitle">{heroText}</div>
+            <div className="italian-subtitle">{heroText}</div>
 
-{heroScriptText && (
-  <div className="italian-names italian-hero-script-text">
-    {heroScriptText}
-  </div>
-)}
+            {heroScriptText && (
+              <div className="italian-names italian-hero-script-text">
+                {heroScriptText}
+              </div>
+            )}
 
-{heroSubText && (
-  <div className="italian-subtitle italian-subtitle-extra">
-    {heroSubText}
-  </div>
-)}
+            {heroSubText && (
+              <div className="italian-subtitle italian-subtitle-extra">
+                {heroSubText}
+              </div>
+            )}
           </motion.div>
         </section>
 
@@ -581,43 +594,85 @@ const heroSubText = details?.heroSubText || "";
           >
             <h2 className="italian-date-title">Datum</h2>
 
-            <p className="italian-date-subtitle">
-              ✦ Ogrebi da otkriješ datum ✦
-            </p>
+            {isDorotejaDragan ? (
+              <>
+                <div className="italian-plain-date">
+                  <span className="italian-plain-date-day">{dateParts.day}</span>
+                  <span className="italian-plain-date-month">
+                    {dateParts.month}
+                  </span>
+                  <span className="italian-plain-date-year">{dateParts.year}</span>
+                </div>
 
-            <div className="italian-date-reveal-wrap">
-              <ConfettiBurst active={showConfetti} />
+                <div className="italian-date-occasion" aria-hidden="true">
+                  <span className="italian-date-occasion-line" />
+                  <span className="italian-date-occasion-symbol">◆</span>
+                  <span className="italian-date-occasion-line" />
+                </div>
 
-              <div className="italian-scratch-grid">
-                <ScratchCard
-                  value={dateParts.day}
-                  label="DAN"
-                  variant={scratchVariant}
-                  onReveal={handleDatePartReveal}
-                />
+                <p className="italian-date-caption">
+                  <span className="italian-date-caption-main">
+                    Venčanje Doroteje i Dragana
+                  </span>
 
-                <ScratchCard
-                  value={dateParts.month}
-                  label="MESEC"
-                  variant={scratchVariant}
-                  onReveal={handleDatePartReveal}
-                />
+                  <span className="italian-date-caption-secondary">
+                    i krštenje njihovog sina Stefana
+                  </span>
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="italian-date-subtitle">
+                  ✦ Ogrebi da otkriješ datum ✦
+                </p>
 
-                <ScratchCard
-                  value={dateParts.year}
-                  label="GODINA"
-                  variant={scratchVariant}
-                  onReveal={handleDatePartReveal}
-                />
-              </div>
-            </div>
+                <div className="italian-date-reveal-wrap">
+                  <ConfettiBurst active={showConfetti} />
+
+                  <div className="italian-scratch-grid">
+                    <ScratchCard
+                      value={dateParts.day}
+                      label="DAN"
+                      variant={scratchVariant}
+                      onReveal={handleDatePartReveal}
+                    />
+
+                    <ScratchCard
+                      value={dateParts.month}
+                      label="MESEC"
+                      variant={scratchVariant}
+                      onReveal={handleDatePartReveal}
+                    />
+
+                    <ScratchCard
+                      value={dateParts.year}
+                      label="GODINA"
+                      variant={scratchVariant}
+                      onReveal={handleDatePartReveal}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </motion.div>
         </section>
 
         <EnvelopeLetterSection
           brideName={safeBrideName}
           groomName={safeGroomName}
-          details={details}
+          showStefan={isDorotejaDragan}
+          details={
+            isDorotejaDragan
+              ? {
+                  ...details,
+                  letterIntro: "Dragi naši,",
+                  letterText1:
+                    "Sa velikom radošću pozivamo vas da budete deo jednog posebnog dana – dana našeg venčanja i Stefanovog krštenja.",
+                  letterText2:
+                    "Biće nam neizmerna čast da ove nezaboravne trenutke ljubavi i porodične sreće podelimo upravo sa vama.",
+                }
+              : details
+          }
         />
 
         {events.length > 0 && (
@@ -635,14 +690,14 @@ const heroSubText = details?.heroSubText || "";
       />
 
       {details?.dateISO && (
-    <ItalianCountdown
-  targetDate={details.dateISO}
-  brideName={safeBrideName}
-  groomName={safeGroomName}
-  details={details}
-  script={script}
-  slug={slug}
-/>
+        <ItalianCountdown
+          targetDate={details.dateISO}
+          brideName={safeBrideName}
+          groomName={safeGroomName}
+          details={details}
+          script={script}
+          slug={slug}
+        />
       )}
     </>
   );
