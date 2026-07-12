@@ -582,6 +582,59 @@ function ItalianInvitationCard({
               </div>
             )}
           </motion.div>
+
+          {isDorotejaDragan && (
+            <motion.button
+              type="button"
+              className="italian-scroll-indicator"
+              onClick={() => {
+                document
+                  .querySelector(
+                    ".italian-slug-doroteja-dragan .italian-date-section"
+                  )
+                  ?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+              }}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                y: [0, 8, 0],
+              }}
+              transition={{
+                opacity: {
+                  duration: 1,
+                  delay: 1.6,
+                },
+                y: {
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }}
+              aria-label="Prikaži još sadržaja"
+            >
+              <span className="italian-scroll-indicator-text">
+                Još sadržaja
+              </span>
+
+              <svg
+                className="italian-scroll-indicator-arrow"
+                viewBox="0 0 32 18"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 4L16 14L28 4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.button>
+          )}
         </section>
 
         <section className="italian-date-section">
