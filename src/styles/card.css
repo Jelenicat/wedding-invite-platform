@@ -18227,3 +18227,191 @@
   width: 22px;
   height: 22px;
 }
+
+.italian-subtitle-extra {
+  margin-top: 0.15rem;
+  font-size: clamp(1.15rem, 4.6vw, 1.9rem);
+  letter-spacing: 0.03em;
+}
+.italian-slug-doroteja-dragan .italian-hero-content {
+  transform: translateY(-2.2rem);
+}
+
+.italian-slug-doroteja-dragan .italian-names {
+  margin-bottom: 1.15rem;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle {
+  font-size: clamp(1.05rem, 4vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle-extra {
+  margin-top: 0.45rem;
+  font-size: clamp(1rem, 3.8vw, 1.45rem);
+  line-height: 1.15;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.italian-slug-doroteja-dragan .italian-hero-content {
+  margin-top: -2rem;
+}
+
+.italian-slug-doroteja-dragan .italian-names {
+  margin-bottom: 1.05rem;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle {
+  font-size: clamp(1rem, 3.7vw, 1.45rem);
+  line-height: 1.05;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.italian-slug-doroteja-dragan .italian-hero-script-text {
+  margin-top: 0.45rem;
+  margin-bottom: 0.25rem;
+  font-size: clamp(2rem, 8vw, 3.6rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle-extra {
+  margin-top: 0.15rem;
+  font-size: clamp(1rem, 3.7vw, 1.45rem);
+  line-height: 1.05;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.italian-slug-doroteja-dragan .italian-names {
+  font-size: clamp(3.1rem, 12vw, 5.2rem);
+  margin-bottom: 1rem;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle {
+  font-size: clamp(0.95rem, 3.4vw, 1.35rem);
+  line-height: 1.05;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.italian-slug-doroteja-dragan .italian-hero-script-text {
+  margin-top: 0.35rem;
+  margin-bottom: 0.25rem;
+  font-size: clamp(2.05rem, 7.4vw, 3.4rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle-extra {
+  margin-top: 0.1rem;
+}
+.italian-slug-doroteja-dragan .italian-names {
+  font-size: clamp(3.8rem, 14.5vw, 6.2rem);
+  margin-bottom: 1.15rem;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle {
+  font-size: clamp(1.15rem, 4.4vw, 1.75rem);
+  line-height: 1.05;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.italian-slug-doroteja-dragan .italian-hero-script-text {
+  margin-top: 0.45rem;
+  margin-bottom: 0.35rem;
+  font-size: clamp(2.65rem, 9.5vw, 4.3rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.italian-slug-doroteja-dragan .italian-subtitle-extra {
+  margin-top: 0.15rem;
+  font-size: clamp(1.15rem, 4.4vw, 1.75rem);
+}
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-location {
+  font-size: clamp(1.08rem, 4.2vw, 1.45rem);
+  line-height: 1.35;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-map {
+  font-size: clamp(0.98rem, 3.6vw, 1.2rem);
+  margin-top: 0.65rem;
+}
+/* =========================
+   DOROTEJA & DRAGAN
+   Kraća linija + RSVP bliže
+========================= */
+
+/* skrati vremensku liniju */
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-line {
+  top: 20px;
+  bottom: 85px;
+}
+
+/* malo zbij program dana */
+.italian-card-page.italian-slug-doroteja-dragan .italian-events-section {
+  padding-bottom: 0 !important;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-events-inner {
+  padding-bottom: 0 !important;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-row {
+  margin-bottom: 1rem;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-row:last-child {
+  margin-bottom: 0;
+}
+
+/* približi RSVP odmah posle ovog sluga */
+.italian-card-page.italian-slug-doroteja-dragan + .italian-rsvp-section {
+margin-top: -8.5rem !important;
+  padding-top: 0 !important;
+}
+/* =========================
+   DOROTEJA & DRAGAN
+   Poravnanje kockica sa događajima
+========================= */
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline {
+  min-height: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-row {
+  align-items: start;
+  min-height: 150px;
+  margin-bottom: 0.8rem;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-row:last-child {
+  margin-bottom: 0;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-dot {
+  margin: 0.65rem auto 0;
+}
+
+.italian-card-page.italian-slug-doroteja-dragan .italian-timeline-line {
+  top: 0.65rem;
+  bottom: 0.5rem;
+}

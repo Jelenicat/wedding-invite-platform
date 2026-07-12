@@ -37,6 +37,7 @@ function ItalianCountdown({
   groomName,
   details = {},
   script = "latin",
+  slug,
 }) {
   const targetDate = details?.dateISO;
 
@@ -47,6 +48,7 @@ function ItalianCountdown({
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(targetDate));
 
   const isCyrillic = script === "cyrillic";
+  const isDorotejaDragan = slug === "doroteja-dragan";
 
   const italianVariantClass = details?.italianVariant
     ? `italian-${details.italianVariant}`
@@ -54,20 +56,30 @@ function ItalianCountdown({
 
   const labels = useMemo(
     () => ({
-      title: isCyrillic ? "До венчања" : "Do venčanja",
+      title: isDorotejaDragan
+        ? "Do proslave"
+        : isCyrillic
+          ? "До венчања"
+          : "Do venčanja",
+
       finished: isCyrillic
         ? "Дан венчања је стигао"
         : "Dan venčanja je stigao",
+
       days: isCyrillic ? "дана" : "dana",
       hours: isCyrillic ? "сати" : "sati",
       minutes: isCyrillic ? "минута" : "minuta",
       seconds: isCyrillic ? "секунди" : "sekundi",
+
       addCalendar: isCyrillic ? "Додај у календар" : "Dodaj u kalendar",
-      calendarHint: isCyrillic
-        ? "Сачувајте датум венчања у свом телефону."
-        : "Sačuvajte datum venčanja u svom telefonu.",
+
+      calendarHint: isDorotejaDragan
+        ? "Sačuvajte datum venčanja i krštenja u svom telefonu."
+        : isCyrillic
+          ? "Сачувајте датум венчања у свом телефону."
+          : "Sačuvajte datum venčanja u svom telefonu.",
     }),
-    [isCyrillic]
+    [isCyrillic, isDorotejaDragan]
   );
 
   useEffect(() => {

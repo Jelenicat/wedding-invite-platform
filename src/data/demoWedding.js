@@ -64,6 +64,8 @@ scheduleBackground,
 introBabyCircleSvg,
 introOrnamentTopSvg,
 introOrnamentBottomSvg,
+heroScriptText,
+heroSubText,
 hideRsvpPhotoBlock = false,
 sliderImages = [],
   showCalendarButton = false,
@@ -137,6 +139,8 @@ scheduleBackground,
 introBabyCircleSvg,
 introOrnamentTopSvg,
 introOrnamentBottomSvg,
+heroScriptText,
+heroSubText,
 hideRsvpPhotoBlock,
   sliderImages,
   showCalendarButton,
@@ -5931,7 +5935,82 @@ rsvpOptions: {
     showRsvpText: true,
   }),
 },
+{
+  slug: "doroteja-dragan",
+  type: "wedding",
+  template: "italian-envelope-video",
 
+  brideName: "Doroteja",
+  groomName: "Dragan",
+
+  weddingDate: "25.09.2026.",
+  weddingTime: "15:00",
+  venue: "Sala Faena, Ada Ciganlija",
+
+  videoSrc: "/videos/tamara-ratko.mp4",
+  musicSrc: "/music/doroteja-dragan.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da zajedno proslavimo venčanje Doroteje i Dragana i Stefanovo krštenje.",
+
+    heroText: "VENČANJE",
+    heroScriptText: "Stefanovo",
+    heroSubText: "KRŠTENJE",
+
+    showCalendarButton: true,
+    calendarDurationHours: 8,
+
+    date: "25.09.2026.",
+    dateISO: "2026-09-25T15:00:00+02:00",
+
+    cloudLeft: "/images/italian-clouds/cloud-left.svg",
+    cloudRight: "/images/italian-clouds/cloud-right.svg",
+
+    hideRsvpPhotoBlock: true,
+
+
+    letterIntro: "Dragi naši,",
+
+    letterText1:
+      "Sa velikom radošću vas pozivamo da budete deo venčanja Doroteje i Dragana.",
+
+    letterText2:
+      "Istog dana proslavljamo i Stefanovo krštenje, zato će nam biti posebno drago da ovaj dan podelimo sa vama.",
+
+    events: [
+      {
+        label: "Venčanje i krštenje",
+        time: "15:00",
+        icon: "church",
+        location: "Crkva Svetog Marka, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Marka+Beograd",
+      },
+      {
+        label: "Proslava",
+        time: "17:00",
+        icon: "restaurant",
+        location: "Sala Faena, Ada Ciganlija",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Sala+Faena+Ada+Ciganlija+Beograd",
+      },
+    ],
+
+    showDressCode: false,
+    dressCodeTitle: "",
+    dressCodePalette: [],
+    dressCodeNote: "",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Sala+Faena+Ada+Ciganlija+Beograd",
+
+    note: "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
+    rsvpText: "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
+    rsvpDeadline: "01.09.2026.",
+    rsvpDeadlineISO: "2026-09-01",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

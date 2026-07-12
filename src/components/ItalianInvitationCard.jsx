@@ -488,8 +488,11 @@ function ItalianInvitationCard({
 
   const dateText = details?.date || weddingDate;
 
-  const heroText =
-    details?.heroText || details?.invitationText || "se venčavaju";
+const heroText =
+  details?.heroText || details?.invitationText || "se venčavaju";
+
+const heroScriptText = details?.heroScriptText || "";
+const heroSubText = details?.heroSubText || "";
 
   const events = details?.events || [];
   const dateParts = getDateParts(dateText);
@@ -552,7 +555,19 @@ function ItalianInvitationCard({
               {safeBrideName} <span>&</span> {safeGroomName}
             </div>
 
-            <div className="italian-subtitle">{heroText}</div>
+          <div className="italian-subtitle">{heroText}</div>
+
+{heroScriptText && (
+  <div className="italian-names italian-hero-script-text">
+    {heroScriptText}
+  </div>
+)}
+
+{heroSubText && (
+  <div className="italian-subtitle italian-subtitle-extra">
+    {heroSubText}
+  </div>
+)}
           </motion.div>
         </section>
 
@@ -620,13 +635,14 @@ function ItalianInvitationCard({
       />
 
       {details?.dateISO && (
-        <ItalianCountdown
-          targetDate={details.dateISO}
-          brideName={safeBrideName}
-          groomName={safeGroomName}
-          details={details}
-          script={script}
-        />
+    <ItalianCountdown
+  targetDate={details.dateISO}
+  brideName={safeBrideName}
+  groomName={safeGroomName}
+  details={details}
+  script={script}
+  slug={slug}
+/>
       )}
     </>
   );
