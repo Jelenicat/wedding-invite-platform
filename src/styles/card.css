@@ -18425,13 +18425,15 @@ margin-top: -5.5rem !important;
     width: 138vw;
   }
 
+  /* Donji levi oblak */
   .italian-card-page.italian-slug-doroteja-dragan .italian-event-cloud-left {
     left: -52vw;
-    top: 30%;
+    top: 38%;
   }
 
+  /* Gornji desni oblak */
   .italian-card-page.italian-slug-doroteja-dragan .italian-event-cloud-right {
     right: -56vw;
-    bottom: -8%;
+    bottom: -20%;
   }
 }
