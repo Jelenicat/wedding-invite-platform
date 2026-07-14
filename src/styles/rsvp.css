@@ -16209,3 +16209,380 @@ margin-bottom: 2px;
 
   color: transparent;
 }
+
+/* =========================================
+   NIKOLETA & MARKO
+   RSVP + COUNTDOWN
+   Krem / zlatno / braon
+   Samo slug: nikoleta-marko
+========================================= */
+
+/* =========================================
+   ZAJEDNIČKE BOJE
+========================================= */
+
+.split-video-rsvp-section.split-video-rsvp-nikoleta-marko,
+.split-video-countdown-section.split-video-countdown-nikoleta-marko {
+  --rsvp-bg: #f7f3eb !important;
+  --rsvp-main-text: #4d4338 !important;
+  --rsvp-soft-text: #665747 !important;
+  --rsvp-muted-text: #766858 !important;
+  --rsvp-accent: #b3924d !important;
+  --rsvp-accent-strong: #8e6d2e !important;
+  --rsvp-button-bg: #b3924d !important;
+  --rsvp-button-text: #ffffff !important;
+  --rsvp-card-bg: rgba(255, 249, 241, 0.82) !important;
+  --rsvp-card-border: rgba(179, 146, 77, 0.22) !important;
+  --rsvp-frame-border: rgba(179, 146, 77, 0.18) !important;
+  --rsvp-divider: rgba(179, 146, 77, 0.48) !important;
+  --rsvp-overlay-top: rgba(248, 243, 233, 0.97) !important;
+  --rsvp-overlay-bottom: rgba(238, 227, 210, 0.97) !important;
+  --rsvp-vignette: rgba(77, 67, 56, 0.04) !important;
+  --rsvp-node-ring: rgba(179, 146, 77, 0.14) !important;
+
+  --countdown-bg: #f7f3eb !important;
+  --countdown-main-text: #4d4338 !important;
+  --countdown-soft-text: #665747 !important;
+  --countdown-muted-text: #766858 !important;
+  --countdown-accent: #b3924d !important;
+  --countdown-accent-strong: #8e6d2e !important;
+  --countdown-card-bg: rgba(255, 249, 241, 0.82) !important;
+  --countdown-card-border: rgba(179, 146, 77, 0.22) !important;
+  --countdown-divider: rgba(179, 146, 77, 0.48) !important;
+  --countdown-vignette: rgba(77, 67, 56, 0.04) !important;
+  --countdown-shadow-soft: rgba(77, 67, 56, 0.07) !important;
+  --countdown-shadow-hover: rgba(77, 67, 56, 0.1) !important;
+}
+
+/* =========================================
+   RSVP POZADINA
+========================================= */
+
+.split-video-rsvp-section.split-video-rsvp-nikoleta-marko {
+  background:
+    linear-gradient(
+      180deg,
+      #f7f3eb 0%,
+      #f1e8da 100%
+    ) !important;
+
+  color: #4d4338 !important;
+}
+
+/* RSVP kartica */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-box {
+  background: rgba(255, 249, 241, 0.84) !important;
+  border: 1px solid rgba(179, 146, 77, 0.22) !important;
+
+  box-shadow:
+    0 22px 55px rgba(77, 67, 56, 0.12),
+    0 7px 20px rgba(77, 67, 56, 0.06) !important;
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* Uklanja eventualne crvene detalje */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-box::before,
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-box::after {
+  border-color: rgba(179, 146, 77, 0.18) !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* RSVP mali natpis */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-kicker {
+  color: #8e6d2e !important;
+  text-shadow: none !important;
+}
+
+/*
+  Isti pisani font kao na invitation card-u.
+  Koristi se na glavnom RSVP naslovu.
+*/
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-title {
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-size: clamp(2.8rem, 10vw, 4.3rem) !important;
+  font-weight: 400 !important;
+  line-height: 1;
+  letter-spacing: 0 !important;
+
+  color: #8e6d2e !important;
+  text-shadow: none !important;
+}
+
+/* Podnaslov */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-subtitle {
+  color: #665747 !important;
+}
+
+/* Razdelna linija */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-divider {
+  background: rgba(179, 146, 77, 0.48) !important;
+  box-shadow: none !important;
+}
+
+/* Labele */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-field label,
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-choice-label {
+  color: #4d4338 !important;
+}
+
+/* Input polja */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-field input {
+  color: #4d4338 !important;
+
+  background: rgba(255, 252, 247, 0.82) !important;
+  border: 1px solid rgba(179, 146, 77, 0.24) !important;
+
+  box-shadow: none !important;
+}
+
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-field input::placeholder {
+  color: rgba(102, 87, 71, 0.62) !important;
+}
+
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-field input:focus {
+  border-color: #b3924d !important;
+
+  box-shadow:
+    0 0 0 3px rgba(179, 146, 77, 0.12) !important;
+
+  outline: none;
+}
+
+/* Dolazim / Ne dolazim */
+.split-video-rsvp-nikoleta-marko
+  .split-video-choice-card {
+  color: #665747 !important;
+
+  background: rgba(255, 252, 247, 0.76) !important;
+  border: 1px solid rgba(179, 146, 77, 0.2) !important;
+
+  box-shadow: none !important;
+}
+
+.split-video-rsvp-nikoleta-marko
+  .split-video-choice-card:hover {
+  color: #8e6d2e !important;
+
+  background: rgba(255, 249, 241, 0.96) !important;
+  border-color: rgba(179, 146, 77, 0.42) !important;
+
+  box-shadow: none !important;
+}
+
+/* Izabrana opcija */
+.split-video-rsvp-nikoleta-marko
+  .split-video-choice-card.is-active {
+  color: #ffffff !important;
+
+  background: #b3924d !important;
+  border-color: #b3924d !important;
+
+  box-shadow:
+    0 10px 24px rgba(77, 67, 56, 0.12) !important;
+}
+
+/* Dugme za slanje */
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-button {
+  color: #ffffff !important;
+
+  background: linear-gradient(
+    135deg,
+    #8e6d2e 0%,
+    #b3924d 52%,
+    #c7aa67 100%
+  ) !important;
+
+  border: 1px solid rgba(142, 109, 46, 0.28) !important;
+
+  box-shadow:
+    0 12px 28px rgba(77, 67, 56, 0.14) !important;
+}
+
+.split-video-rsvp-nikoleta-marko
+  .split-video-rsvp-button:hover {
+  background: linear-gradient(
+    135deg,
+    #7d5e27 0%,
+    #a9853f 52%,
+    #bfa15f 100%
+  ) !important;
+
+  box-shadow:
+    0 15px 32px rgba(77, 67, 56, 0.17) !important;
+}
+
+/* Uspešno poslata potvrda */
+.split-video-rsvp-nikoleta-marko
+  .split-video-success h2 {
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-size: clamp(3rem, 11vw, 4.5rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+
+  color: #8e6d2e !important;
+  text-shadow: none !important;
+}
+
+.split-video-rsvp-nikoleta-marko
+  .split-video-success p {
+  color: #665747 !important;
+}
+
+/* Konfete zlatne umesto crvenih */
+.split-video-rsvp-nikoleta-marko
+  .split-video-confetti {
+  background: #b3924d !important;
+}
+
+/* =========================================
+   COUNTDOWN POZADINA
+========================================= */
+
+.split-video-countdown-section.split-video-countdown-nikoleta-marko {
+  background:
+    linear-gradient(
+      180deg,
+      #f1e8da 0%,
+      #f7f3eb 100%
+    ) !important;
+
+  color: #4d4338 !important;
+}
+
+/* Countdown kartica */
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-paper {
+  background: rgba(255, 249, 241, 0.84) !important;
+  border: 1px solid rgba(179, 146, 77, 0.22) !important;
+
+  box-shadow:
+    0 22px 55px rgba(77, 67, 56, 0.11),
+    0 7px 20px rgba(77, 67, 56, 0.06) !important;
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-paper::before,
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-paper::after {
+  border-color: rgba(179, 146, 77, 0.18) !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/*
+  Pisani font kao u invitation card-u.
+  Prikazuje se na tekstu „До венчања је остало“.
+*/
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-kicker,
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-finished {
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-size: clamp(2.7rem, 10vw, 4.2rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.05;
+  letter-spacing: 0 !important;
+
+  color: #8e6d2e !important;
+  text-shadow: none !important;
+}
+
+/* Razdelna linija */
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-divider {
+  background: rgba(179, 146, 77, 0.48) !important;
+  box-shadow: none !important;
+}
+
+/* Brojevi */
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-item span {
+  color: #8e6d2e !important;
+  text-shadow: none !important;
+}
+
+/* Dani, sati, minuti, sekunde */
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-item small {
+  color: #665747 !important;
+}
+
+/* Tekst ispod countdown-a */
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-note {
+  color: #665747 !important;
+}
+
+/* Dugme kalendara, ako se nekada uključi */
+.split-video-countdown-nikoleta-marko
+  .split-video-calendar-btn {
+  color: #8e6d2e !important;
+
+  background: rgba(255, 250, 243, 0.72) !important;
+  border: 1px solid rgba(179, 146, 77, 0.3) !important;
+
+  box-shadow: none !important;
+}
+
+.split-video-countdown-nikoleta-marko
+  .split-video-calendar-btn:hover {
+  color: #ffffff !important;
+
+  background: #b3924d !important;
+  border-color: #b3924d !important;
+
+  box-shadow: none !important;
+}
+
+.split-video-countdown-nikoleta-marko
+  .split-video-calendar-hint {
+  color: #766858 !important;
+}
+
+/* =========================================
+   TELEFON
+========================================= */
+
+@media (max-width: 600px) {
+  .split-video-rsvp-nikoleta-marko
+    .split-video-rsvp-box,
+  .split-video-countdown-nikoleta-marko
+    .split-video-countdown-paper {
+    background: rgba(255, 249, 241, 0.86) !important;
+
+    box-shadow:
+      0 18px 42px rgba(77, 67, 56, 0.1),
+      0 5px 16px rgba(77, 67, 56, 0.05) !important;
+  }
+
+  .split-video-rsvp-nikoleta-marko
+    .split-video-rsvp-title {
+    font-size: clamp(2.2rem, 10vw, 3.1rem) !important;
+  }
+
+  .split-video-countdown-nikoleta-marko
+    .split-video-countdown-kicker,
+  .split-video-countdown-nikoleta-marko
+    .split-video-countdown-finished {
+    font-size: clamp(2.6rem, 12vw, 3.7rem) !important;
+  }
+}

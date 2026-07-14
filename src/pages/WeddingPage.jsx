@@ -266,6 +266,11 @@ const TEMPLATE_COMPONENTS = {
   Invitation: EditorialInvitationCard,
 },
 
+"envelope-split-v2-photo-card": {
+  Intro: EnvelopeSplitIntroV2,
+  Invitation: PhotoCardSplitInvitationCard,
+},
+
 };
 
 const isObject = (value) =>
@@ -615,6 +620,7 @@ function WeddingPage() {
   if (
     templateKey === "envelope-split" ||
     templateKey === "envelope-split-v2" ||
+     templateKey === "envelope-split-v2-photo-card" ||
     templateKey === "envelope-split-v2-editorial" ||
     templateKey === "envelope-side-split" ||
     templateKey === "envelope-side-split-v2" ||

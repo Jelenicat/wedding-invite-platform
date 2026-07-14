@@ -6011,6 +6011,116 @@ rsvpOptions: {
     rsvpDeadlineISO: "2026-09-01",
   }),
 },
+
+{
+  slug: "nikoleta-marko",
+  type: "wedding",
+  template: "envelope-split-v2-photo-card",
+  script: "cyrillic",
+
+  brideName: "Николета",
+  groomName: "Марко",
+
+  weddingDate: "10 ОКТ 2026",
+  weddingTime: "12:00",
+  venue: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
+musicSrc: "/music/nikoleta-marko.mp3",
+  /*
+    Фотографија која се приказује преко целог екрана
+    након отварања коверте.
+  */
+  introPreviewImage: "/images/nikoleta-marko/intro.jpg",
+
+  details: {
+    cardBackgroundImage: "/images/nikoleta-marko/card-bg.jpg",
+
+   welcomeText:
+  "Драга родбино и пријатељи, имамо савршен разлог да Вас окупимо. Тога дана ћемо се венчати. Гласно и јасно „ДА“ изговорићемо два пута. Први пут у Цркви Рођења Пресвете Богородице, други пут у ресторану „Језеро“. Волели бисмо да то чујете лично.",
+
+    date: "10 ОКТ 2026",
+    dateISO: "2026-10-10T12:00:00+02:00",
+
+    venue: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Jezero+Ada+Ciganlija+Beograd",
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+  events: [
+  {
+    label: "Окупљање сватова породице Илић",
+    time: "12:00",
+    icon: "gathering",
+    location: "Палмира Тољатија 22а, Нови Београд",
+  mapLink:
+  "https://www.google.com/maps/search/?api=1&query=Palmira+Toljatija+22a+Novi+Beograd",
+  },
+  {
+    label: "Окупљање сватова породице Кецојевић",
+    time: "12:30",
+    icon: "gathering",
+    location: "Ресторан „Пивница“, Земун",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Pivnica+Zemun",
+  },
+  {
+    label: "Црквено венчање",
+    time: "14:15",
+    icon: "church",
+    location:
+      "Црква Рођења Пресвете Богородице, Рајачићева, Земун",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Crkva+Rodjenja+Presvete+Bogorodice+Rajaciceva+Zemun",
+  },
+  {
+    label: "Окупљање гостију",
+    time: "16:00",
+    icon: "restaurant",
+    location: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Jezero+Ada+Ciganlija+Beograd",
+  },
+  {
+    label: "Грађанско венчање",
+    time: "16:30",
+    icon: "civil",
+    location: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Jezero+Ada+Ciganlija+Beograd",
+  },
+],
+
+    rsvpDeadline: "10.09.2026.",
+    rsvpDeadlineISO: "2026-09-10",
+
+    rsvpText:
+      "Молимо вас да свој долазак потврдите до 10.09.2026.",
+
+    note:
+      "Молимо вас да свој долазак потврдите до 10.09.2026.",
+
+    theme: {
+      backgroundColor: "#f7f3eb",
+
+      mainText: "#4d4338",
+      softText: "#766858",
+      mutedText: "#8b7c69",
+
+      accent: "#b3924d",
+      accentStrong: "#8e6d2e",
+
+      cardBg: "rgba(255,255,255,0.70)",
+      cardBorder: "rgba(179,146,77,0.20)",
+      frameBorder: "rgba(179,146,77,0.18)",
+      dividerLine: "rgba(179,146,77,0.44)",
+
+      rsvpButtonBg: "#b3924d",
+      rsvpButtonText: "#ffffff",
+    },
+  },
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

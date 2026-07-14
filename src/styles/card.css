@@ -18783,3 +18783,488 @@
     font-size: 1.05rem;
   }
 }
+
+/* =========================================
+   NIKOLETA & MARKO
+   Slug: nikoleta-marko
+   Krem / zlatno / braon dizajn
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko {
+  --nm-cream: #f7f3eb;
+  --nm-paper: rgba(255, 249, 241, 0.76);
+
+  --nm-brown: #4d4338;
+  --nm-soft-brown: #665747;
+  --nm-muted-brown: #766858;
+
+  --nm-gold: #b3924d;
+  --nm-dark-gold: #8e6d2e;
+
+  --nm-gold-soft: rgba(179, 146, 77, 0.22);
+  --nm-gold-line: rgba(179, 146, 77, 0.55);
+
+  position: relative;
+  overflow: hidden;
+
+  color: var(--nm-brown);
+  background-color: var(--nm-cream);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* =========================================
+   POZADINSKA SLIKA I OVERLAY
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(248, 243, 233, 0.3) 0%,
+    rgba(244, 236, 223, 0.5) 48%,
+    rgba(238, 227, 210, 0.65) 100%
+  ) !important;
+}
+
+/* =========================================
+   GLAVNA PAPIRNA KARTICA
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-paper {
+  position: relative;
+
+  background: var(--nm-paper) !important;
+  border: 1px solid var(--nm-gold-soft) !important;
+
+  box-shadow:
+    0 24px 60px rgba(77, 67, 56, 0.13),
+    0 7px 22px rgba(77, 67, 56, 0.07) !important;
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-paper::before {
+  border-color: rgba(179, 146, 77, 0.18) !important;
+}
+
+/* =========================================
+   NATPIS „ПОЗИВНИЦА“
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-kicker {
+  color: var(--nm-dark-gold) !important;
+  text-shadow: none !important;
+}
+
+/* =========================================
+   IMENA MLADENACA
+   Isti pisani font kao naslovi događaja
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  margin: 1rem auto 1.6rem;
+
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-size: clamp(4rem, 13vw, 7rem) !important;
+  font-weight: 400 !important;
+  font-style: normal;
+  line-height: 0.84;
+  letter-spacing: 0 !important;
+
+  text-align: center;
+  color: var(--nm-brown) !important;
+  text-shadow: none !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names
+  > span {
+  display: block;
+
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-weight: 400 !important;
+  font-style: normal;
+  line-height: inherit;
+  letter-spacing: 0 !important;
+
+  color: var(--nm-brown) !important;
+  text-shadow: none !important;
+}
+
+/* Zlatni znak & */
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names
+  .photo-card-invitation-and {
+  margin: 0.08rem 0;
+
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-size: 0.48em !important;
+  line-height: 0.8;
+
+  color: var(--nm-gold) !important;
+}
+
+/* =========================================
+   UVODNI TEKST
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-text {
+  color: var(--nm-brown) !important;
+  text-shadow: none !important;
+}
+
+/* =========================================
+   KALENDAR
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-calendar-month {
+  color: var(--nm-brown) !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-calendar-day {
+  color: var(--nm-muted-brown) !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-calendar-day.is-active {
+  color: #ffffff !important;
+  background: var(--nm-gold) !important;
+  border-color: var(--nm-gold) !important;
+  box-shadow: none !important;
+}
+
+/* =========================================
+   RASPORED DOGAĐAJA
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-timeline {
+  position: relative;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-timeline-center {
+  position: relative;
+}
+
+/* Vreme događaja */
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-time {
+  color: var(--nm-dark-gold) !important;
+  text-shadow: none !important;
+}
+
+/* Pisani naslovi događaja */
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-event-title {
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-weight: 400 !important;
+
+  color: var(--nm-brown) !important;
+  text-shadow: none !important;
+}
+
+/* Tekst lokacija */
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-inline {
+  color: var(--nm-soft-brown) !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-inline.is-link {
+  color: #7a5d28 !important;
+  text-decoration-color: rgba(142, 109, 46, 0.4);
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-inline.is-link:hover {
+  color: var(--nm-gold) !important;
+}
+
+/* =========================================
+   ZLATNA TAČKA I VERTIKALNA LINIJA
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-dot {
+  position: relative;
+  z-index: 3;
+
+  background: var(--nm-gold) !important;
+  border-color: rgba(142, 109, 46, 0.24) !important;
+  box-shadow: none !important;
+}
+
+/*
+  Linija ima prazan prostor oko ikonice
+  i više ne prolazi kroz samu ikonicu.
+*/
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-line {
+  z-index: 1;
+
+  background: linear-gradient(
+    to bottom,
+    var(--nm-gold-line) 0%,
+    var(--nm-gold-line) calc(50% - 38px),
+
+    transparent calc(50% - 38px),
+    transparent calc(50% + 38px),
+
+    var(--nm-gold-line) calc(50% + 38px),
+    var(--nm-gold-line) 100%
+  ) !important;
+}
+
+/* =========================================
+   IKONICE
+   Bez kruga, okvira, pozadine i senke
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-icon {
+  position: relative;
+  z-index: 2;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-icon::before,
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-icon::after {
+  display: none !important;
+  content: none !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-icon
+  img {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+  filter: none;
+}
+
+/* =========================================
+   SEKCIJA „ЧЕКАМО ВАС“
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-box {
+  background: rgba(255, 250, 244, 0.84) !important;
+  border: 1px solid rgba(179, 146, 77, 0.18) !important;
+
+  box-shadow:
+    0 18px 42px rgba(77, 67, 56, 0.11),
+    0 5px 16px rgba(77, 67, 56, 0.06) !important;
+
+  filter: none !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-box::before,
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-box::after {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Naslov „Чекамо вас“ */
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-title {
+  font-family: "Allura", "Great Vibes", cursive !important;
+
+  color: var(--nm-dark-gold) !important;
+  text-shadow: none !important;
+}
+
+/* Adresa */
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-text {
+  color: var(--nm-brown) !important;
+}
+
+/* Dugme za lokaciju */
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-link {
+  color: var(--nm-dark-gold) !important;
+
+  background: rgba(255, 250, 243, 0.62) !important;
+  border: 1px solid rgba(179, 146, 77, 0.28) !important;
+
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-location-link:hover {
+  color: #ffffff !important;
+
+  background: var(--nm-gold) !important;
+  border-color: var(--nm-gold) !important;
+
+  box-shadow: none !important;
+}
+
+/* =========================================
+   NAPOMENA ISPOD LOKACIJE
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-note {
+  color: var(--nm-brown) !important;
+  text-shadow: none !important;
+}
+
+/* =========================================
+   DRESS CODE
+   Ako se naknadno uključi
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-dresscode {
+  background: rgba(255, 250, 244, 0.74) !important;
+  border: 1px solid rgba(179, 146, 77, 0.18) !important;
+
+  box-shadow: none !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-dresscode-title {
+  color: var(--nm-dark-gold) !important;
+  text-shadow: none !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-dresscode-note {
+  color: var(--nm-brown) !important;
+}
+
+/* =========================================
+   TELEFON
+========================================= */
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-paper {
+    background: rgba(255, 249, 241, 0.72) !important;
+
+    box-shadow:
+      0 18px 42px rgba(77, 67, 56, 0.12),
+      0 5px 16px rgba(77, 67, 56, 0.06) !important;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-names {
+    margin: 0.9rem auto 1.4rem;
+
+    font-size: clamp(3.4rem, 15vw, 5.1rem) !important;
+    line-height: 0.84;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-names
+    .photo-card-invitation-and {
+    font-size: 0.45em !important;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-editorial-line {
+    background: linear-gradient(
+      to bottom,
+      var(--nm-gold-line) 0%,
+      var(--nm-gold-line) calc(50% - 36px),
+
+      transparent calc(50% - 36px),
+      transparent calc(50% + 36px),
+
+      var(--nm-gold-line) calc(50% + 36px),
+      var(--nm-gold-line) 100%
+    ) !important;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-editorial-location-box {
+    background: rgba(255, 250, 244, 0.86) !important;
+  }
+}
+
+/* =========================================
+   NIKOLETA & MARKO
+   Countdown bez pisanog fonta
+========================================= */
+
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-kicker,
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-finished {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+
+  color: #8e6d2e !important;
+  text-align: center;
+  text-shadow: none !important;
+}
+
+/* „До венчања је остало“ */
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-kicker {
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: clamp(1.7rem, 6vw, 2.4rem) !important;
+  line-height: 1.2 !important;
+}
+
+/* Tekst kada stigne datum */
+.split-video-countdown-nikoleta-marko
+  .split-video-countdown-finished {
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: clamp(1.9rem, 6.5vw, 2.7rem) !important;
+  line-height: 1.18 !important;
+}
+
+@media (max-width: 600px) {
+  .split-video-countdown-nikoleta-marko
+    .split-video-countdown-kicker {
+    max-width: 290px;
+    font-size: 1.85rem !important;
+  }
+
+  .split-video-countdown-nikoleta-marko
+    .split-video-countdown-finished {
+    max-width: 290px;
+    font-size: 2.05rem !important;
+  }
+}
