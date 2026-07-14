@@ -19496,12 +19496,3 @@
   overflow: visible;
 }
 
-@media (max-width: 600px) {
-  .photo-card-invitation.photo-card-nikoleta-marko
-    .photo-card-invitation-heart {
-    width: 1rem !important;
-    height: 1.2rem !important;
-    margin: 0 0.08rem;
-    transform: translateY(0.03rem);
-  }
-}
