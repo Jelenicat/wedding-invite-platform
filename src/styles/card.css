@@ -19542,3 +19542,76 @@
     margin: 0 !important;
   }
 }
+
+/* =========================================
+   NIKOLETA & MARKO
+   Imena i srce u jednom redu na telefonu
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 1rem auto 1.6rem !important;
+
+  gap: 0.18rem !important;
+  white-space: nowrap !important;
+
+  font-size: clamp(2.4rem, 8vw, 4.8rem) !important;
+  line-height: 1 !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names
+  > span {
+  display: inline-flex !important;
+  width: auto !important;
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-heart {
+  width: 21px !important;
+  height: 21px !important;
+  margin: 0 !important;
+  flex: 0 0 21px !important;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  color: #9a7d3d !important;
+  transform: translateY(0.04rem);
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-heart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-names {
+    width: fit-content !important;
+    max-width: calc(100vw - 64px) !important;
+
+    gap: 0.12rem !important;
+    font-size: clamp(1.85rem, 8.2vw, 2.9rem) !important;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-heart {
+    width: 18px !important;
+    height: 18px !important;
+    flex-basis: 18px !important;
+  }
+}
