@@ -8621,8 +8621,8 @@ color: #8e7f73;
 
   .envelope-split-nikoleta-marko
     .nm-envelope-preview-names::before {
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
 
   .envelope-split-nikoleta-marko
