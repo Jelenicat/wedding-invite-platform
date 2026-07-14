@@ -19496,3 +19496,49 @@
   overflow: visible;
 }
 
+/* =========================================
+   NIKOLETA & MARKO
+   Srce bez velikog bočnog razmaka
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names {
+  gap: 0.12rem !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-heart {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+  width: 24px !important;
+  height: 24px !important;
+
+  margin: 0 !important;
+  color: #9a7d3d !important;
+  transform: translateY(0.05rem);
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-heart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-names {
+    gap: 0.06rem !important;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-heart {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 !important;
+  }
+}

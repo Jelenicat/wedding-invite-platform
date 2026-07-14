@@ -170,21 +170,26 @@ function PhotoCardSplitInvitationCard({
               <>
                 <span>{safeBrideName}</span>
 
-                <span
+               <span
   className="photo-card-invitation-heart"
   aria-hidden="true"
 >
   <svg
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <path
-      d="M12 20.2S4.8 15.8 3.1 11.5C1.8 8.2 3.8 5 7.1 5c2 0 3.7 1.1 4.9 2.7C13.2 6.1 14.9 5 16.9 5c3.3 0 5.3 3.2 4 6.5C19.2 15.8 12 20.2 12 20.2Z"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.35"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M12 20
+      c-6-4.5-9-7.5-9-11
+      c0-2.5 2-4.5 4.5-4.5
+      c1.5 0 3 .8 4.5 2.3
+      c1.5-1.5 3-2.3 4.5-2.3
+      C19 4.5 21 6.5 21 9
+      c0 3.5-3 6.5-9 11z"
     />
   </svg>
 </span>
