@@ -6058,7 +6058,7 @@ musicSrc: "/music/nikoleta-marko.mp3",
     label: "Окупљање сватова породице Кецојевић",
     time: "12:30",
     icon: "party",
-    location: "Ресторан „Пивница“, Земун",
+    location: "Ресторан „Стара Пивница“, Земун",
     mapLink:
       "https://www.google.com/maps/place/stara+pivnica+bezanijska+2/data=!4m2!3m1!1s0x475a655ea82a5f13:0x93f2f3ecd9bea105?sa=X&ved=1t:242&ictx=111",
   },

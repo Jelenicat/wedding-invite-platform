@@ -8523,9 +8523,9 @@ color: #8e7f73;
 
 /* =========================================
    NIKOLETA & MARKO
-   Imena preko fotografije
-   Isti font kao „Čekamo vas“
-   Samo slug: nikoleta-marko
+   Blagi blur preko slike + imena preko
+   imena braonkasto-zlatkasta, & belo
+   samo slug: nikoleta-marko
 ========================================= */
 
 .envelope-split-nikoleta-marko
@@ -8547,13 +8547,33 @@ color: #8e7f73;
   padding: 1.5rem;
   text-align: center;
   pointer-events: none;
+  overflow: hidden;
+}
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-names::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
   background: linear-gradient(
     180deg,
-    rgba(23, 18, 13, 0.03) 0%,
-    rgba(23, 18, 13, 0.08) 45%,
-    rgba(23, 18, 13, 0.2) 100%
+    rgba(255, 250, 242, 0.08) 0%,
+    rgba(86, 67, 40, 0.08) 45%,
+    rgba(58, 43, 24, 0.14) 100%
   );
+}
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-name,
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-and {
+  position: relative;
+  z-index: 1;
 }
 
 .envelope-split-nikoleta-marko
@@ -8567,11 +8587,11 @@ color: #8e7f73;
   line-height: 0.82;
   letter-spacing: 0;
 
-  color: #fffaf1;
+  color: #b3924d;
 
   text-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.52),
-    0 10px 30px rgba(0, 0, 0, 0.3);
+    0 2px 8px rgba(0, 0, 0, 0.38),
+    0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .envelope-split-nikoleta-marko
@@ -8586,17 +8606,23 @@ color: #8e7f73;
   font-weight: 400 !important;
   line-height: 0.8;
 
-  color: #ead7a7;
+  color: #fffaf1;
 
   text-shadow:
-    0 2px 7px rgba(0, 0, 0, 0.48),
-    0 8px 22px rgba(0, 0, 0, 0.25);
+    0 2px 7px rgba(0, 0, 0, 0.34),
+    0 6px 18px rgba(0, 0, 0, 0.16);
 }
 
 @media (max-width: 600px) {
   .envelope-split-nikoleta-marko
     .nm-envelope-preview-names {
     padding: 1rem;
+  }
+
+  .envelope-split-nikoleta-marko
+    .nm-envelope-preview-names::before {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 
   .envelope-split-nikoleta-marko
@@ -8610,4 +8636,14 @@ color: #8e7f73;
     margin: 0.22rem 0 0.16rem;
     font-size: clamp(2rem, 9vw, 2.8rem);
   }
+}
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-name {
+  color: #fffaf1;
+}
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-and {
+  color: #b3924d;
 }
