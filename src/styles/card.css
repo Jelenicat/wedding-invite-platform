@@ -19613,5 +19613,104 @@
     width: 18px !important;
     height: 18px !important;
     flex-basis: 18px !important;
+
+  }
+}
+
+/* =========================================
+   NIKOLETA & MARKO
+   Imena i srce u jednom redu
+   Font ostaje nepromenjen
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-names {
+  display: grid !important;
+  grid-template-columns: max-content 18px max-content !important;
+  align-items: center !important;
+  justify-content: center !important;
+  column-gap: 3px !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 1rem auto 1.6rem !important;
+  padding: 0 !important;
+
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: clamp(2.4rem, 8vw, 4.8rem) !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+
+  white-space: nowrap !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-names
+  > span {
+  display: block !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: inherit !important;
+  letter-spacing: 0 !important;
+
+  white-space: nowrap !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-names
+  .photo-card-invitation-heart {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(2px) !important;
+
+  color: #9a7d3d !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-names
+  .photo-card-invitation-heart
+  svg {
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-names {
+    grid-template-columns: max-content 15px max-content !important;
+    column-gap: 2px !important;
+
+    font-size: clamp(1.9rem, 8.2vw, 2.1rem) !important;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-names
+    .photo-card-invitation-heart,
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-names
+    .photo-card-invitation-heart
+    svg {
+    width: 15px !important;
+    height: 15px !important;
+    min-width: 15px !important;
   }
 }

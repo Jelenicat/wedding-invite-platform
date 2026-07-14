@@ -165,7 +165,11 @@ function PhotoCardSplitInvitationCard({
             {labels.invitation}
           </p>
 
-          <h1 className="photo-card-invitation-names">
+        <h1
+  className={`photo-card-invitation-names ${
+    isNikoletaMarko ? "photo-card-nm-names" : ""
+  }`}
+>
             {isNikoletaMarko ? (
               <>
                 <span>{safeBrideName}</span>
