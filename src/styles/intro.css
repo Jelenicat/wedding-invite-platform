@@ -8520,3 +8520,94 @@ color: #8e7f73;
     object-position: center;
   }
 }
+
+/* =========================================
+   NIKOLETA & MARKO
+   Imena preko fotografije
+   Isti font kao „Čekamo vas“
+   Samo slug: nikoleta-marko
+========================================= */
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-layer {
+  position: absolute;
+}
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-names {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem;
+  text-align: center;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(23, 18, 13, 0.03) 0%,
+    rgba(23, 18, 13, 0.08) 45%,
+    rgba(23, 18, 13, 0.2) 100%
+  );
+}
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-name {
+  display: block;
+
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 0.82;
+  letter-spacing: 0;
+
+  color: #fffaf1;
+
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.52),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.envelope-split-nikoleta-marko
+  .nm-envelope-preview-and {
+  display: block;
+
+  margin: 0.32rem 0 0.25rem;
+
+  font-family: "Allura", "Great Vibes", cursive !important;
+  font-size: clamp(2.3rem, 6vw, 3.6rem);
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 0.8;
+
+  color: #ead7a7;
+
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.48),
+    0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 600px) {
+  .envelope-split-nikoleta-marko
+    .nm-envelope-preview-names {
+    padding: 1rem;
+  }
+
+  .envelope-split-nikoleta-marko
+    .nm-envelope-preview-name {
+    font-size: clamp(3.5rem, 17vw, 5.2rem);
+    line-height: 0.84;
+  }
+
+  .envelope-split-nikoleta-marko
+    .nm-envelope-preview-and {
+    margin: 0.22rem 0 0.16rem;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+}

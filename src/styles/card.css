@@ -1,3 +1,4 @@
+
 /* =========================
    FLORAL INVITATION CARD - EDITORIAL
 ========================= */
@@ -19266,5 +19267,241 @@
     .split-video-countdown-finished {
     max-width: 290px;
     font-size: 2.05rem !important;
+  }
+}
+/* =========================================
+   NIKOLETA & MARKO
+   Naslovi događaja kao na slici
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-editorial-event-title {
+  font-family: "Cormorant Garamond", serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+
+  font-size: clamp(1.45rem, 4.7vw, 1.95rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0.01em !important;
+
+  color: #6f6558 !important;
+  text-shadow: none !important;
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-editorial-event-title {
+    font-size: clamp(1.35rem, 5.8vw, 1.75rem) !important;
+    line-height: 1.08 !important;
+  }
+}
+
+/* =========================================
+   NIKOLETA & MARKO
+   Poseban prikaz datuma
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 2.2rem auto 3rem;
+  text-align: center;
+  color: #6f6558;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-date-day {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(4.5rem, 14vw, 7rem);
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+
+  color: #9a7d3d;
+
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55),
+    0 8px 24px rgba(105, 84, 48, 0.08);
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-date-month {
+  margin-top: 1rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.45rem, 4.8vw, 2rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+  color: #6f6558;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-date::after {
+  content: "";
+  display: block;
+
+  width: 74px;
+  height: 1px;
+  margin-top: 1.2rem;
+
+  background: rgba(154, 125, 61, 0.6);
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-date {
+    margin: 1.8rem auto 2.6rem;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-date-day {
+    font-size: clamp(4.2rem, 21vw, 5.8rem);
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-date-month {
+    font-size: clamp(1.4rem, 6vw, 1.75rem);
+  }
+}
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-date-month {
+  margin-top: 1rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.55rem, 5vw, 2.1rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+  color: #6f6558;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-nm-date-year {
+  margin-top: 0.35rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.16em;
+  color: #8b7c69;
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-date-month {
+    font-size: clamp(1.45rem, 6vw, 1.8rem);
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-nm-date-year {
+    font-size: clamp(1rem, 4.5vw, 1.25rem);
+  }
+}
+
+/* =========================================
+   NIKOLETA & MARKO
+   Imena u jednom redu sa srcem
+========================================= */
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+
+  width: 100%;
+  gap: 0.42rem;
+  white-space: nowrap;
+  text-align: center;
+
+  font-size: clamp(2.6rem, 8.2vw, 5rem) !important;
+  line-height: 1 !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-names
+  > span {
+  display: inline-block !important;
+  width: auto !important;
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-heart {
+  flex: 0 0 auto;
+
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 0.48em !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+
+  margin: 0 0.06rem;
+  color: #b3924d !important;
+
+  transform: translateY(-0.02em);
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-names {
+    gap: 0.24rem;
+
+    font-size: clamp(1.95rem, 9.4vw, 3.2rem) !important;
+    line-height: 1 !important;
+  }
+
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-heart {
+    font-size: 0.44em !important;
+    margin: 0 0.02rem;
+  }
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-heart {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+  width: 1.05rem !important;
+  height: 1.05rem !important;
+
+  margin: 0 0.12rem;
+  color: #9a7d3d !important;
+
+  transform: translateY(0.05rem);
+}
+
+.photo-card-invitation.photo-card-nikoleta-marko
+  .photo-card-invitation-heart
+  svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@media (max-width: 600px) {
+  .photo-card-invitation.photo-card-nikoleta-marko
+    .photo-card-invitation-heart {
+    width: 1rem !important;
+    height: 1.2rem !important;
+    margin: 0 0.5rem;
+    transform: translateY(0.03rem);
   }
 }

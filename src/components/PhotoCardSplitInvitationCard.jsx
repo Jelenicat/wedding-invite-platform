@@ -89,6 +89,33 @@ function PhotoCardSplitInvitationCard({
 
     const year = date.getFullYear();
 
+    /*
+      Samo za Nikoletu i Marka:
+
+      10
+      Октобар
+      2026
+
+      Ostali slugovi zadržavaju postojeći mini-kalendar.
+    */
+    if (isNikoletaMarko) {
+      return (
+        <div className="photo-card-nm-date">
+          <div className="photo-card-nm-date-day">
+            {day}
+          </div>
+
+          <div className="photo-card-nm-date-month">
+            {month}
+          </div>
+
+          <div className="photo-card-nm-date-year">
+            {year}
+          </div>
+        </div>
+      );
+    }
+
     const nearbyDays = [
       day - 2,
       day - 1,
@@ -139,13 +166,42 @@ function PhotoCardSplitInvitationCard({
           </p>
 
           <h1 className="photo-card-invitation-names">
-            <span>{safeBrideName}</span>
+            {isNikoletaMarko ? (
+              <>
+                <span>{safeBrideName}</span>
 
-            <span className="photo-card-invitation-and">
-              &
-            </span>
+                <span
+  className="photo-card-invitation-heart"
+  aria-hidden="true"
+>
+  <svg
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 20.2S4.8 15.8 3.1 11.5C1.8 8.2 3.8 5 7.1 5c2 0 3.7 1.1 4.9 2.7C13.2 6.1 14.9 5 16.9 5c3.3 0 5.3 3.2 4 6.5C19.2 15.8 12 20.2 12 20.2Z"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.35"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+</span>
 
-            <span>{safeGroomName}</span>
+                <span>{safeGroomName}</span>
+              </>
+            ) : (
+              <>
+                <span>{safeBrideName}</span>
+
+                <span className="photo-card-invitation-and">
+                  &
+                </span>
+
+                <span>{safeGroomName}</span>
+              </>
+            )}
           </h1>
 
           {details.welcomeText && (

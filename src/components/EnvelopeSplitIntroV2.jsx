@@ -9,6 +9,8 @@ function EnvelopeSplitIntroV2({
   slug,
   backgroundImage,
   introPreviewImage,
+  brideName,
+  groomName,
 }) {
   const [opened, setOpened] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -21,10 +23,8 @@ function EnvelopeSplitIntroV2({
   const bottomImage = `/images/envelope/${slug}-bottom.svg`;
 
   /*
-    Poseban prikaz fotografije važi samo za ovaj slug.
-
-    Svi ostali slugovi koji koriste EnvelopeSplitIntroV2
-    nastavljaju da rade kao do sada.
+    Fotografija i imena preko fotografije
+    prikazuju se samo za slug nikoleta-marko.
   */
   const isNikoletaMarko =
     slug === "nikoleta-marko" && Boolean(introPreviewImage);
@@ -54,8 +54,8 @@ function EnvelopeSplitIntroV2({
     }
 
     /*
-      Preview fotografiju učitavamo samo za Nikoletu i Marka.
-      Kod ostalih slugova se potpuno ignoriše.
+      Preview fotografija učitava se samo
+      za Nikoletu i Marka.
     */
     if (isNikoletaMarko && introPreviewImage) {
       imagesToLoad.push(introPreviewImage);
@@ -100,7 +100,6 @@ function EnvelopeSplitIntroV2({
 
     setOpened(true);
 
-    // Muzika kreće odmah nakon klika/tapa.
     onStartMusic?.();
 
     if (isNikoletaMarko) {
@@ -108,10 +107,10 @@ function EnvelopeSplitIntroV2({
         Samo Nikoleta i Marko:
 
         1. Koverta počinje da se otvara.
-        2. Pojavljuje se fotografija mladenaca.
+        2. Pojavljuje se fotografija sa imenima.
         3. Fotografija ostaje kratko prikazana.
-        4. Invitation card se otkriva iza nje.
-        5. Intro se zatim potpuno uklanja.
+        4. Invitation card se otkriva.
+        5. Intro se uklanja.
       */
 
       addTimer(() => {
@@ -132,7 +131,6 @@ function EnvelopeSplitIntroV2({
 
     /*
       Originalno ponašanje za sve ostale slugove.
-      Invitation card se odmah otkriva iza koverte.
     */
     onReveal?.();
 
@@ -164,18 +162,11 @@ function EnvelopeSplitIntroV2({
       transition={
         isNikoletaMarko
           ? {
-              /*
-                Kod Nikoleta–Marko intro ostaje vidljiv duže,
-                kako bi fotografija mogla kratko da se prikaže.
-              */
               duration: 1.7,
               ease: [0.22, 1, 0.36, 1],
               delay: opened ? 3.3 : 0,
             }
           : {
-              /*
-                Originalna animacija za sve ostale slugove.
-              */
               duration: 3.8,
               ease: [0.22, 1, 0.36, 1],
               delay: opened ? 1.6 : 0,
@@ -210,9 +201,28 @@ function EnvelopeSplitIntroV2({
         >
           <img
             src={introPreviewImage}
-            alt={`${slug} fotografija`}
+            alt={`${brideName || "Николета"} и ${
+              groomName || "Марко"
+            }`}
             className="nm-envelope-preview-card"
           />
+
+          <div
+            className="nm-envelope-preview-names"
+            aria-hidden="true"
+          >
+            <span className="nm-envelope-preview-name">
+              {brideName || "Николета"}
+            </span>
+
+            <span className="nm-envelope-preview-and">
+              &
+            </span>
+
+            <span className="nm-envelope-preview-name">
+              {groomName || "Марко"}
+            </span>
+          </div>
         </motion.div>
       )}
 
