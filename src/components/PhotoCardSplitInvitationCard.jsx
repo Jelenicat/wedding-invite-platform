@@ -99,22 +99,18 @@ function PhotoCardSplitInvitationCard({
       Ostali slugovi zadržavaju postojeći mini-kalendar.
     */
     if (isNikoletaMarko) {
-      return (
-        <div className="photo-card-nm-date">
-          <div className="photo-card-nm-date-day">
-            {day}
-          </div>
+  const formattedDate = `${String(day).padStart(2, "0")}.${String(
+    date.getMonth() + 1
+  ).padStart(2, "0")}.${year}.`;
 
-          <div className="photo-card-nm-date-month">
-            {month}
-          </div>
-
-          <div className="photo-card-nm-date-year">
-            {year}
-          </div>
-        </div>
-      );
-    }
+  return (
+    <div className="photo-card-nm-date photo-card-nm-date-single">
+      <div className="photo-card-nm-date-day photo-card-nm-date-full">
+        {formattedDate}
+      </div>
+    </div>
+  );
+}
 
     const nearbyDays = [
       day - 2,

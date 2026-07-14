@@ -6040,10 +6040,7 @@ musicSrc: "/music/nikoleta-marko.mp3",
     date: "10 ОКТ 2026",
     dateISO: "2026-10-10T12:00:00+02:00",
 
-    venue: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
-
-    mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Restoran+Jezero+Ada+Ciganlija+Beograd",
+   
 
     showCalendarButton: false,
     showDressCode: false,
