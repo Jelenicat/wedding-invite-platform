@@ -3350,6 +3350,182 @@ rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
     rsvpDeadlineISO: "2026-07-15",
   }),
 },
+
+{
+  slug: "milica-nemanja-photo",
+  type: "wedding",
+  template: "silk-photo-script",
+  script: "latin",
+
+  brideName: "Milica",
+  groomName: "Nemanja",
+
+  // Silk intro
+  backgroundImage: "/images/silk-intro.jpg",
+  videoSrc: "/videos/milica-nemanja-1.mp4",
+
+  // Muzika — izbriši ako je nećeš
+  musicSrc: "/music/wedding-song.mp3",
+
+  weddingDate: "12. septembar 2026.",
+  weddingTime: "16:00",
+  venue: "Vila Jelena",
+
+  introText:
+    "Sa radošću vas pozivamo da budete deo našeg dana.",
+
+  details: {
+    script: "latin",
+
+    dateISO: "2026-09-12T16:00:00+02:00",
+    dateDisplay: "12.09.2026.",
+
+    // Fotografija u pozadini invitation card-a
+    cardBackgroundImage: "/images/invitation-background.jpg",
+
+    // Možeš potpuno da izbrišeš ovu stavku.
+    // Tada će automatski biti center.
+    cardBackgroundPosition: "center",
+
+    // Fotografija u pozadini RSVP-a i countdown-a
+    sectionBackgroundImage: "/images/invitation-background.jpg",
+    sectionBackgroundPosition: "center",
+
+    // Srce između imena
+    nameConnector: "heart",
+
+    invitationKicker: "Pozivnica za venčanje",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate početak našeg zajedničkog života.",
+
+    events: [
+      {
+        time: "14:30",
+        label: "Crkveno venčanje",
+        location: "Hram Svetog Save",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Save",
+        icon: "church",
+      },
+      {
+        time: "16:00",
+        label: "Okupljanje gostiju",
+        location: "Vila Jelena",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Jelena",
+        icon: "gathering",
+      },
+      {
+        time: "17:00",
+        label: "Građansko venčanje",
+        location: "Vila Jelena",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Jelena",
+        icon: "civil",
+      },
+      {
+        time: "18:00",
+        label: "Večera i proslava",
+        location: "Vila Jelena",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Jelena",
+        icon: "party",
+      },
+    ],
+
+    // Donji blok sa glavnom lokacijom
+    locationTitle: "Čekamo vas",
+    locationPrefix: "na adresi",
+
+    venue: "Vila Jelena",
+    venueAddress: "Bulevar venčanja 12, Beograd",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Vila+Jelena",
+
+    mapButtonText: "Pogledaj lokaciju",
+
+    // Dress code
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+    dressCodeNote: "Svečano i elegantno",
+
+    dressCodePalette: [
+      "#e8dfd2",
+      "#c5ad91",
+      "#826d5f",
+      "#4f463f",
+    ],
+
+    note:
+      "Molimo vas da dolazak potvrdite najkasnije do 20. avgusta 2026.",
+
+    // RSVP
+    rsvpKicker: "Potvrda dolaska",
+    rsvpTitle: "Radujemo se vašem odgovoru",
+
+    rsvpSubtitle:
+      "Molimo vas da potvrdite dolazak najkasnije do 20. avgusta.",
+
+    rsvpButtonText: "Pošalji potvrdu",
+    rsvpMaxGuests: 10,
+
+    // Postim / ne postim
+    showFastingOption: true,
+
+    // Countdown
+    countdownKicker: "Odbrojavamo zajedno",
+    countdownTitle: "Do našeg dana je ostalo",
+
+    countdownNote:
+      "Jedva čekamo da ovaj poseban trenutak podelimo sa vama.",
+
+    countdownFinishedTitle: "Naš dan je stigao",
+    countdownFinishedNote: "Vidimo se na proslavi!",
+
+    // Dodavanje događaja u kalendar
+    showCalendarButton: true,
+    calendarButtonText: "Dodaj u kalendar",
+
+    calendarHint:
+      "Sačuvajte datum venčanja u svom telefonu.",
+
+theme: {
+  backgroundColor: "#e9e2d8",
+
+  // Osnovni tekst
+  mainText: "#5b514a",
+  softText: "#786c64",
+  mutedText: "#978a80",
+
+  // Imena, srce, vremena i detalji
+  accent: "#c2a078",
+  accentStrong: "#916842",
+
+  onAccent: "#fffaf3",
+
+  locationSoftText: "#916842",
+
+  // Providna kartica
+ cardPaper: "rgba(255, 255, 255, 0.30)",
+  cardBorder: "rgba(113, 91, 74, 0.22)",
+  cardInnerBorder: "rgba(113, 91, 74, 0.15)",
+  cardShadow: "rgba(55, 43, 35, 0.14)",
+
+  // Filter preko fotografije
+  cardPhotoOverlay: "rgba(245, 240, 233, 0.01)",
+  cardPhotoOverlayBottom: "rgba(245, 237, 229, 0.30)",
+
+  // RSVP i countdown
+  sectionOverlay: "rgba(255, 255, 255, 0.30)",
+  cardBg: "rgba(255, 252, 247, 0.48)",
+  inputBg: "rgba(255, 253, 249, 0.62)",
+
+  rsvpButtonText: "#fffaf3",
+},
+  },
+},
 // =========================
 // Klijenti
 // =========================

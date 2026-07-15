@@ -49,6 +49,8 @@ import ClassicInvitationCard from "../components/ClassicInvitationCard";
 import EditorialIntro from "../components/EditorialIntro";
 import EditorialInvitationCard from "../components/EditorialInvitationCard";
 import SilkIntro from "../components/SilkIntro";
+import SilkPhotoInvitationCard from "../components/SilkPhotoInvitationCard";
+
 import SilkDateFlowInvitationCard from "../components/SilkDateFlowInvitationCard";
 import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
 import EnvelopeSideSplitIntro from "../components/EnvelopeSideSplitIntro";
@@ -270,6 +272,11 @@ const TEMPLATE_COMPONENTS = {
   Intro: EnvelopeSplitIntroV2,
   Invitation: PhotoCardSplitInvitationCard,
 },
+
+  "silk-photo-script": {
+    Intro: SilkIntro,
+    Invitation: SilkPhotoInvitationCard,
+  },
 
 };
 
