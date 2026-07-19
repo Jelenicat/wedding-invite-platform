@@ -15,20 +15,27 @@ function BirthdaySplitInvitationCard({
   videoSrc,
   script,
 }) {
-  const activeScript = script || details?.script || "latin";
-  const isCyrillic = activeScript === "cyrillic";
+  const activeScript =
+    script ||
+    details?.script ||
+    "latin";
 
-  const name = brideName || (isCyrillic ? "Нина" : "Nina");
+  const isCyrillic =
+    activeScript === "cyrillic";
+
+  const name =
+    brideName ||
+    (isCyrillic ? "Нина" : "Nina");
 
   /*
-   * Ako u slugu postoji videoSrc, koristi njega.
-   * Ako ne postoji, ostaje stari način:
+   * Eva koristi videoSrc iz sluga.
+   * Ostali slugovi zadržavaju stari način:
    * /videos/ime-sluga.mp4
    */
-const videoPath =
-  slug === "eva-1"
-    ? videoSrc || `/videos/${slug}.mp4`
-    : `/videos/${slug}.mp4`;
+  const videoPath =
+    slug === "eva-1"
+      ? videoSrc || `/videos/${slug}.mp4`
+      : `/videos/${slug}.mp4`;
 
   const displayedDate =
     details?.date ||
@@ -40,12 +47,15 @@ const videoPath =
     .trim()
     .split(" ");
 
-  const dayValue = dateParts[0] || "24";
+  const dayValue =
+    dateParts[0] || "24";
+
   const month =
     dateParts[1] ||
     (isCyrillic ? "СЕП" : "SEP");
 
-  const day = Number.parseInt(dayValue, 10);
+  const day =
+    Number.parseInt(dayValue, 10);
 
   const subtitle = isCyrillic
     ? "слави свој рођендан"
@@ -58,6 +68,102 @@ const videoPath =
   const calendarDays = isCyrillic
     ? ["По", "Ут", "Ср", "Че", "Пе", "Су", "Не"]
     : ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+
+  /*
+   * Pravi raspored kalendara samo za Evu.
+   * Datum se čita iz details.dateISO.
+   */
+  const isEvaSlug =
+    slug === "eva-1";
+
+  const isoDateParts =
+    details?.dateISO
+      ?.slice(0, 10)
+      .split("-")
+      .map(Number) || [];
+
+  const eventYear =
+    isoDateParts[0];
+
+  const eventMonth =
+    isoDateParts[1];
+
+  const eventDay =
+    isoDateParts[2];
+
+  const hasValidEventDate =
+    Number.isInteger(eventYear) &&
+    Number.isInteger(eventMonth) &&
+    Number.isInteger(eventDay);
+
+  /*
+   * JavaScript:
+   * 0 = nedelja
+   * 1 = ponedeljak
+   *
+   * Naš kalendar:
+   * 0 = ponedeljak
+   * 6 = nedelja
+   */
+  const firstDayOfMonth =
+    hasValidEventDate
+      ? new Date(
+          Date.UTC(
+            eventYear,
+            eventMonth - 1,
+            1
+          )
+        ).getUTCDay()
+      : 1;
+
+  const mondayFirstOffset =
+    (firstDayOfMonth + 6) % 7;
+
+  const daysInMonth =
+    hasValidEventDate
+      ? new Date(
+          Date.UTC(
+            eventYear,
+            eventMonth,
+            0
+          )
+        ).getUTCDate()
+      : 30;
+
+  /*
+   * Eva dobija prazna polja pre prvog dana
+   * meseca, kako bi dani bili ispod pravog
+   * dana u nedelji.
+   *
+   * Ostali slugovi ostaju po starom.
+   */
+  const calendarDates =
+    isEvaSlug && hasValidEventDate
+      ? [
+          ...Array.from(
+            {
+              length: mondayFirstOffset,
+            },
+            () => null
+          ),
+          ...Array.from(
+            {
+              length: daysInMonth,
+            },
+            (_, index) => index + 1
+          ),
+        ]
+      : Array.from(
+          {
+            length: 30,
+          },
+          (_, index) => index + 1
+        );
+
+  const activeCalendarDay =
+    isEvaSlug && hasValidEventDate
+      ? eventDay
+      : day;
 
   const locationLink =
     details?.mapLink ||
@@ -121,29 +227,41 @@ const videoPath =
             </div>
 
             <div className="calendar-days">
-              {calendarDays.map((calendarDay) => (
-                <span key={calendarDay}>
-                  {calendarDay}
-                </span>
-              ))}
+              {calendarDays.map(
+                (calendarDay) => (
+                  <span key={calendarDay}>
+                    {calendarDay}
+                  </span>
+                )
+              )}
             </div>
 
             <div className="calendar-grid">
-              {Array.from(
-                { length: 30 },
-                (_, index) => index + 1
-              ).map((calendarDate) => (
-                <div
-                  key={calendarDate}
-                  className={`calendar-cell ${
-                    calendarDate === day
-                      ? "active"
-                      : ""
-                  }`}
-                >
-                  {calendarDate}
-                </div>
-              ))}
+              {calendarDates.map(
+                (calendarDate, index) => (
+                  <div
+                    key={
+                      calendarDate !== null
+                        ? `calendar-day-${calendarDate}`
+                        : `calendar-empty-${index}`
+                    }
+                    className={[
+                      "calendar-cell",
+                      calendarDate === null
+                        ? "is-empty"
+                        : "",
+                      calendarDate ===
+                      activeCalendarDay
+                        ? "active"
+                        : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
+                    {calendarDate ?? ""}
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -236,15 +354,15 @@ const videoPath =
         script={activeScript}
       />
 
-    <BirthdaySplitCountdown
-  slug={slug}
-  targetDate={details?.dateISO}
-  backgroundImage={backgroundImage}
-  script={activeScript}
-  brideName={brideName}
-  venue={venue}
-  details={details}
-/>
+      <BirthdaySplitCountdown
+        slug={slug}
+        targetDate={details?.dateISO}
+        backgroundImage={backgroundImage}
+        script={activeScript}
+        brideName={brideName}
+        venue={venue}
+        details={details}
+      />
     </>
   );
 }
