@@ -21406,3 +21406,128 @@ font-family: "Italianno", cursive;
 
   color: #8b6c65;
 }
+
+/* =========================================
+   EVA — MANJA I PROVIDNIJA KARTICA NA TELEFONU
+   Samo slug: eva-1
+========================================= */
+
+@media (max-width: 480px) {
+  .birthday-video-invitation.birthday-video-eva-1 {
+    padding: 34px 0;
+    box-sizing: border-box;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-card {
+    width: 82%;
+    max-width: 320px;
+
+    padding: 22px 16px 24px;
+    box-sizing: border-box;
+
+    border-radius: 24px;
+    border: 1px solid rgba(184, 126, 137, 0.2);
+
+    background: rgba(255, 252, 252, 0.8);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    box-shadow:
+      0 18px 40px rgba(153, 102, 113, 0.11),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  /* Ime */
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-name {
+    margin: 0 0 6px;
+    font-size: 4rem;
+    line-height: 0.9;
+  }
+
+  /* Tekst ispod imena */
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-subtitle {
+    margin: 0 0 18px;
+    font-size: 1.05rem;
+  }
+
+  /* Kalendar */
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-calendar {
+    max-width: 270px;
+    margin: 0 auto 14px;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .calendar-month {
+    margin-bottom: 6px;
+    font-size: 11px;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .calendar-days {
+    font-size: 9px;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .calendar-grid {
+    gap: 2px;
+    margin-top: 4px;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .calendar-cell {
+    padding: 5px 3px;
+    font-size: 10px;
+  }
+
+  /* Mesto i vreme */
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-info {
+    width: min(100%, 270px);
+    margin: 1rem auto 0;
+    gap: 0.5rem;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-item {
+    min-height: 42px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-item:not(a) {
+    font-size: 1.08rem;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-item-icon {
+    width: 19px;
+    height: 19px;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-item-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Završni tekstovi */
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-welcome {
+    margin-top: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-note {
+    max-width: 260px;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+}
