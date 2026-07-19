@@ -2406,6 +2406,13 @@ html {
     font-size: 22px;
   }
 }
+
+@media (max-width: 420px) {
+  .birthday-one-location,
+  .birthday-one-rsvp {
+    font-size: 22px;
+  }
+}
 /* =========================
    BIRTHDAY ONE WORD INTRO
    inspired by editorial "ONE" layout

@@ -6,6 +6,8 @@ import "../styles/rsvp.css";
 
 function BirthdayGalleryInvitationCard({
   brideName,
+  brideNameLatin,
+  brideNameCyrillic,
   weddingDate,
   weddingTime,
   venue,
@@ -16,26 +18,155 @@ function BirthdayGalleryInvitationCard({
   backgroundImage,
   slug,
   type,
+  script,
 }) {
-  const name = brideName || "Viktor";
+  const activeScript = script || details?.script || "latin";
+  const isCyrillic = activeScript === "cyrillic";
 
-  const dateParts = weddingDate?.split(" ") || [];
+  const cardConfig = details?.birthdayGalleryCard || {};
+  const colors = cardConfig?.colors || {};
+
+  const getLocalizedText = (value, fallback = "") => {
+    if (!value) return fallback;
+
+    if (typeof value === "object") {
+      return (
+        value[activeScript] ||
+        value.latin ||
+        value.cyrillic ||
+        fallback
+      );
+    }
+
+    return value;
+  };
+
+  const name = isCyrillic
+    ? brideNameCyrillic ||
+      details?.brideNameCyrillic ||
+      brideName ||
+      "Виктор"
+    : brideNameLatin ||
+      details?.brideNameLatin ||
+      brideName ||
+      "Viktor";
+
+  const defaultTexts = isCyrillic
+    ? {
+        kicker: "РОЂЕНДАНСКО СЛАВЉЕ",
+        subtitle: "Прослава првог рођендана",
+        saveTheDate: "САЧУВАЈТЕ ДАТУМ",
+        when: "Када",
+        where: "Где",
+        note: "Напомена",
+        timeConnector: "у",
+        footer:
+          "Радујемо се да заједно обележимо овај посебан дан.",
+      }
+    : {
+        kicker: "ROĐENDANSKO SLAVLJE",
+        subtitle: "Proslava prvog rođendana",
+        saveTheDate: "SAČUVAJTE DATUM",
+        when: "Kada",
+        where: "Gde",
+        note: "Napomena",
+        timeConnector: "u",
+        footer:
+          "Radujemo se da zajedno obeležimo ovaj poseban dan.",
+      };
+
+  const customTexts = cardConfig?.texts?.[activeScript] || {};
+
+  const texts = {
+    ...defaultTexts,
+    ...customTexts,
+  };
+
+  const locationText = getLocalizedText(
+    cardConfig?.locationText,
+    venue
+  );
+
+  const noteText = getLocalizedText(
+    cardConfig?.note,
+    getLocalizedText(details?.note)
+  );
+
+  const footerText = getLocalizedText(
+    cardConfig?.footerText,
+    texts.footer
+  );
+
+  const activeBackgroundImage =
+    cardConfig?.backgroundImage || backgroundImage;
+
+  const dateParts = weddingDate?.trim().split(/\s+/) || [];
+
   const day = dateParts[0] || "10";
-  const month = dateParts[1] || "SEP";
+  const month = dateParts[1] || (isCyrillic ? "СЕП" : "SEP");
   const year = dateParts[2] || "2026";
 
+  const themeStyle = {
+    "--birthday-gallery-page-bg":
+      colors.background || "#f7f4ee",
+
+    "--birthday-gallery-text":
+      colors.text || "#2f251f",
+
+    "--birthday-gallery-muted-text":
+      colors.secondaryText || "#8f8176",
+
+    "--birthday-gallery-accent":
+      colors.accent || "#b49778",
+
+    "--birthday-gallery-overlay":
+      colors.overlay || "rgba(247, 244, 238, 0.42)",
+
+    "--birthday-gallery-info-bg":
+      colors.infoBackground || "rgba(255, 255, 255, 0.62)",
+
+    "--birthday-gallery-info-border":
+      colors.infoBorder || "rgba(100, 78, 62, 0.15)",
+
+    "--birthday-gallery-divider":
+      colors.divider || "rgba(100, 78, 62, 0.18)",
+
+    "--birthday-gallery-button-bg":
+      colors.buttonBackground || "#2f241d",
+
+    "--birthday-gallery-button-text":
+      colors.buttonText || "#ffffff",
+
+    "--birthday-gallery-button-border":
+      colors.buttonBorder ||
+      colors.buttonBackground ||
+      "#2f241d",
+
+    "--birthday-gallery-glow-one":
+      colors.glowOne || "rgba(255, 255, 255, 0.48)",
+
+    "--birthday-gallery-glow-two":
+      colors.glowTwo || "rgba(200, 176, 150, 0.18)",
+  };
+
   return (
-    <>
+    <div
+      className={`birthday-gallery-page birthday-gallery-page-${activeScript}`}
+      style={themeStyle}
+    >
       <section
-        className="birthday-gallery-card"
+        className={`birthday-gallery-card birthday-gallery-card-${activeScript}`}
         style={
-          backgroundImage
-            ? { "--birthday-card-bg": `url(${backgroundImage})` }
+          activeBackgroundImage
+            ? {
+                "--birthday-card-bg": `url(${activeBackgroundImage})`,
+              }
             : undefined
         }
       >
         <div className="birthday-gallery-bg-image" />
         <div className="birthday-gallery-bg-overlay" />
+
         <div className="birthday-gallery-glow birthday-gallery-glow-one" />
         <div className="birthday-gallery-glow birthday-gallery-glow-two" />
 
@@ -52,11 +183,19 @@ function BirthdayGalleryInvitationCard({
             transition={{ delay: 0.08, duration: 0.8 }}
           >
             <div className="birthday-gallery-slider-track">
-              {[image1, image2, image3, image1, image2, image3].map((img, i) => (
-                <div className="birthday-gallery-slide" key={i}>
-                  <img src={img} alt={`${name} ${i + 1}`} />
-                </div>
-              ))}
+              {[image1, image2, image3, image1, image2, image3]
+                .filter(Boolean)
+                .map((img, index) => (
+                  <div
+                    className="birthday-gallery-slide"
+                    key={`${img}-${index}`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${name} ${index + 1}`}
+                    />
+                  </div>
+                ))}
             </div>
           </motion.div>
 
@@ -66,9 +205,17 @@ function BirthdayGalleryInvitationCard({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.18, duration: 0.7 }}
           >
-            <p className="birthday-gallery-kicker">BIRTHDAY CELEBRATION</p>
-            <h1 className="birthday-gallery-title">{name}</h1>
-            <p className="birthday-gallery-subtitle">First birthday celebration</p>
+            <p className="birthday-gallery-kicker">
+              {texts.kicker}
+            </p>
+
+            <h1 className="birthday-gallery-title">
+              {name}
+            </h1>
+
+            <p className="birthday-gallery-subtitle">
+              {texts.subtitle}
+            </p>
           </motion.div>
 
           <motion.div
@@ -77,11 +224,23 @@ function BirthdayGalleryInvitationCard({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.34, duration: 0.65 }}
           >
-            <div className="birthday-gallery-calendar-top">SAVE THE DATE</div>
+            <div className="birthday-gallery-calendar-top">
+              {texts.saveTheDate}
+            </div>
+
             <div className="birthday-gallery-calendar-body">
-              <span className="birthday-gallery-calendar-month">{month}</span>
-              <span className="birthday-gallery-calendar-day">{day}</span>
-              <span className="birthday-gallery-calendar-year">{year}</span>
+              <span className="birthday-gallery-calendar-month">
+                {month}
+              </span>
+
+              <span className="birthday-gallery-calendar-day">
+                {day}
+              </span>
+
+              <span className="birthday-gallery-calendar-year">
+                {year}
+              </span>
+
               <div className="birthday-gallery-calendar-ring" />
             </div>
           </motion.div>
@@ -93,25 +252,41 @@ function BirthdayGalleryInvitationCard({
             transition={{ delay: 0.48, duration: 0.7 }}
           >
             <div className="birthday-gallery-info-row">
-              <span className="birthday-gallery-info-label">Kada</span>
+              <span className="birthday-gallery-info-label">
+                {texts.when}
+              </span>
+
               <p className="birthday-gallery-info-value">
-                {weddingDate} u {weddingTime}
+                {weddingDate} {texts.timeConnector} {weddingTime}
               </p>
             </div>
 
             <div className="birthday-gallery-info-divider" />
 
-            <div className="birthday-gallery-info-row">
-              <span className="birthday-gallery-info-label">Gde</span>
-              <p className="birthday-gallery-info-value">{venue}</p>
-            </div>
+            {locationText && (
+              <div className="birthday-gallery-info-row">
+                <span className="birthday-gallery-info-label">
+                  {texts.where}
+                </span>
 
-            {details?.note && (
+                <p className="birthday-gallery-info-value">
+                  {locationText}
+                </p>
+              </div>
+            )}
+
+            {noteText && (
               <>
                 <div className="birthday-gallery-info-divider" />
+
                 <div className="birthday-gallery-info-row">
-                  <span className="birthday-gallery-info-label">Napomena</span>
-                  <p className="birthday-gallery-info-value">{details.note}</p>
+                  <span className="birthday-gallery-info-label">
+                    {texts.note}
+                  </span>
+
+                  <p className="birthday-gallery-info-value">
+                    {noteText}
+                  </p>
                 </div>
               </>
             )}
@@ -123,7 +298,7 @@ function BirthdayGalleryInvitationCard({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.65, duration: 0.6 }}
           >
-            Radujemo se da zajedno obeležimo ovaj poseban dan.
+            {footerText}
           </motion.p>
         </motion.div>
       </section>
@@ -131,13 +306,20 @@ function BirthdayGalleryInvitationCard({
       <BirthdayGalleryRSVP
         slug={slug}
         eventType={type}
-        brideName={brideName}
+        brideName={name}
         details={details}
-        backgroundImage={backgroundImage}
+        backgroundImage={activeBackgroundImage}
+        script={activeScript}
       />
 
-      {details.dateISO && <BirthdayGalleryCountdown targetDate={details.dateISO} />}
-    </>
+      {details?.dateISO && (
+        <BirthdayGalleryCountdown
+          targetDate={details.dateISO}
+          details={details}
+          script={activeScript}
+        />
+      )}
+    </div>
   );
 }
 
