@@ -82,6 +82,7 @@ import CyrillicSvgSilkInvitationCard from "../components/CyrillicSvgSilkInvitati
 import PhotoCardSplitInvitationCard from "../components/PhotoCardSplitInvitationCard";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
+import BirthdayEvaIntro from "../components/BirthdayEvaIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
 import BirthdayGlassIntro from "../components/BirthdayGlassIntro";
 import BirthdayGlassInvitationCard from "../components/BirthdayGlassInvitationCard";
@@ -277,7 +278,10 @@ const TEMPLATE_COMPONENTS = {
     Intro: SilkIntro,
     Invitation: SilkPhotoInvitationCard,
   },
-
+"birthday-eva": {
+  Intro: BirthdayEvaIntro,
+  Invitation: BirthdaySplitInvitationCard,
+},
 };
 
 const isObject = (value) =>

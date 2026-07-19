@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   collection,
   addDoc,
@@ -7,8 +7,31 @@ import {
   doc,
   setDoc,
 } from "firebase/firestore";
+
 import { db } from "../firebase";
 import "../styles/rsvp.css";
+
+function getPossessiveName(name, isCyrillic) {
+  const normalizedName = String(name || "").trim();
+
+  if (!normalizedName) {
+    return isCyrillic ? "Евин" : "Evin";
+  }
+
+  if (isCyrillic) {
+    if (/[аА]$/.test(normalizedName)) {
+      return `${normalizedName.slice(0, -1)}ин`;
+    }
+
+    return `${normalizedName}ов`;
+  }
+
+  if (/[aA]$/.test(normalizedName)) {
+    return `${normalizedName.slice(0, -1)}in`;
+  }
+
+  return `${normalizedName}ov`;
+}
 
 function BirthdaySplitRSVP({
   slug,
@@ -16,8 +39,93 @@ function BirthdaySplitRSVP({
   brideName,
   details = {},
   backgroundImage,
+  script,
 }) {
-  const name = brideName || "Nina";
+  const activeScript =
+    script ||
+    details?.script ||
+    "latin";
+
+  const isCyrillic = activeScript === "cyrillic";
+
+  const name =
+    brideName ||
+    (isCyrillic ? "Ева" : "Eva");
+
+  const possessiveName = getPossessiveName(
+    name,
+    isCyrillic
+  );
+
+  const text = isCyrillic
+    ? {
+        missingEvent: "Недостају подаци о догађају.",
+        enterFullName: "Унесите име и презиме.",
+        chooseAttendance: "Изаберите да ли долазите.",
+        invalidGuests: "Унесите исправан број особа.",
+        sendError: "Дошло је до грешке при слању.",
+
+        successTitle: "Хвала!",
+        successText: "Ваша потврда је успешно послата.",
+
+        kicker: "ПОТВРДА",
+        title: "Потврдите долазак",
+        subtitle: `Радоваћемо се да заједно прославимо ${possessiveName} рођендан.`,
+
+        fullNameLabel: "Име и презиме",
+        fullNamePlaceholder: "Унесите име и презиме",
+
+        attendanceQuestion: "Да ли долазите?",
+
+        attendingYes: "Долазим",
+        attendingYesText: "Биће ми задовољство",
+
+        attendingNo: "Не долазим",
+        attendingNoText: "Нажалост, нисам у могућности",
+
+        guestsLabel: "Број особа",
+
+        sending: "Слање...",
+        submit: "Пошаљи потврду",
+      }
+    : {
+        missingEvent: "Nedostaju podaci o događaju.",
+        enterFullName: "Unesite ime i prezime.",
+        chooseAttendance: "Izaberite da li dolazite.",
+        invalidGuests: "Unesite ispravan broj osoba.",
+        sendError: "Došlo je do greške pri slanju.",
+
+        successTitle: "Hvala!",
+        successText: "Vaša potvrda je uspešno poslata.",
+
+        kicker: "RSVP",
+        title: "Potvrdite dolazak",
+        subtitle: `Radovaćemo se da zajedno proslavimo ${possessiveName} rođendan.`,
+
+        fullNameLabel: "Ime i prezime",
+        fullNamePlaceholder: "Unesite ime i prezime",
+
+        attendanceQuestion: "Da li dolazite?",
+
+        attendingYes: "Dolazim",
+        attendingYesText: "Biće mi zadovoljstvo",
+
+        attendingNo: "Ne dolazim",
+        attendingNoText: "Nažalost, nisam u mogućnosti",
+
+        guestsLabel: "Broj osoba",
+
+        sending: "Slanje...",
+        submit: "Pošalji potvrdu",
+      };
+
+  const subtitle =
+    details?.rsvpSubtitle ||
+    text.subtitle;
+
+  const slugClass = slug
+    ? `birthday-split-rsvp-${slug}`
+    : "";
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -29,60 +137,68 @@ function BirthdaySplitRSVP({
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    if (submitted) {
-      const timer = setTimeout(() => {
-        setSubmitted(false);
-        setFormData({
-          fullName: "",
-          attending: "",
-          guests: "1",
-        });
-      }, 3000);
+    if (!submitted) return undefined;
 
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => {
+      setSubmitted(false);
+
+      setFormData({
+        fullName: "",
+        attending: "",
+        guests: "1",
+      });
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, [submitted]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name: fieldName, value } = event.target;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
+    setFormData((previousData) => ({
+      ...previousData,
+      [fieldName]: value,
     }));
   };
 
   const handleAttendanceSelect = (value) => {
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((previousData) => ({
+      ...previousData,
       attending: value,
-      guests: value === "da" ? prev.guests || "1" : "",
+      guests:
+        value === "da"
+          ? previousData.guests || "1"
+          : "",
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     if (!slug || !eventType) {
-      alert("Nedostaje slug ili tip događaja.");
+      alert(text.missingEvent);
       return;
     }
 
     if (!formData.fullName.trim()) {
-      alert("Unesite ime i prezime.");
+      alert(text.enterFullName);
       return;
     }
 
     if (!formData.attending) {
-      alert("Izaberite da li dolazite.");
+      alert(text.chooseAttendance);
       return;
     }
 
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
-      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
-        alert("Unesite ispravan broj osoba.");
+      if (
+        !formData.guests ||
+        Number.isNaN(guestsCount) ||
+        guestsCount < 1
+      ) {
+        alert(text.invalidGuests);
         return;
       }
     }
@@ -97,21 +213,29 @@ function BirthdaySplitRSVP({
           eventType,
           updatedAt: serverTimestamp(),
         },
-        { merge: true }
+        {
+          merge: true,
+        }
       );
 
-      await addDoc(collection(db, "events", slug, "rsvps"), {
-        eventType,
-        fullName: formData.fullName.trim(),
-        attending: formData.attending,
-        guests: formData.attending === "da" ? guestsCount : 0,
-        createdAt: serverTimestamp(),
-      });
+      await addDoc(
+        collection(db, "events", slug, "rsvps"),
+        {
+          eventType,
+          fullName: formData.fullName.trim(),
+          attending: formData.attending,
+          guests:
+            formData.attending === "da"
+              ? guestsCount
+              : 0,
+          createdAt: serverTimestamp(),
+        }
+      );
 
       setSubmitted(true);
     } catch (error) {
       console.error("Greška pri slanju RSVP:", error);
-      alert("Došlo je do greške pri slanju.");
+      alert(text.sendError);
     } finally {
       setLoading(false);
     }
@@ -119,14 +243,36 @@ function BirthdaySplitRSVP({
 
   return (
     <motion.section
-      className="birthday-split-rsvp-section"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.8 }}
+      className={[
+        "birthday-split-rsvp-section",
+        slugClass,
+        isCyrillic
+          ? "birthday-split-rsvp-cyrillic"
+          : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      lang={isCyrillic ? "sr-Cyrl" : "sr-Latn"}
+      initial={{
+        opacity: 0,
+        y: 24,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
+      transition={{
+        duration: 0.8,
+      }}
       style={
         backgroundImage
-          ? { "--birthday-split-rsvp-bg": `url(${backgroundImage})` }
+          ? {
+              "--birthday-split-rsvp-bg": `url(${backgroundImage})`,
+            }
           : undefined
       }
     >
@@ -140,40 +286,78 @@ function BirthdaySplitRSVP({
               <motion.div
                 key="success"
                 className="birthday-split-rsvp-success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{
+                  opacity: 0,
+                  scale: 0.95,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                }}
               >
                 <motion.div
                   className="birthday-split-rsvp-success-heart"
-                  initial={{ scale: 0, rotate: -15 }}
-                  animate={{ scale: [0, 1.2, 1], rotate: [0, 8, -8, 0] }}
-                  transition={{ duration: 0.9 }}
+                  initial={{
+                    scale: 0,
+                    rotate: -15,
+                  }}
+                  animate={{
+                    scale: [0, 1.2, 1],
+                    rotate: [0, 8, -8, 0],
+                  }}
+                  transition={{
+                    duration: 0.9,
+                  }}
                 >
                   💌
                 </motion.div>
 
                 <motion.h3
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.45 }}
+                  initial={{
+                    opacity: 0,
+                    y: 8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.15,
+                    duration: 0.45,
+                  }}
                 >
-                  Hvala!
+                  {text.successTitle}
                 </motion.h3>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.28, duration: 0.45 }}
+                  initial={{
+                    opacity: 0,
+                    y: 8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.28,
+                    duration: 0.45,
+                  }}
                 >
-                  Vaša potvrda je uspešno poslata.
+                  {text.successText}
                 </motion.p>
 
                 <div className="birthday-split-confetti-wrap">
-                  {Array.from({ length: 18 }).map((_, i) => (
+                  {Array.from({
+                    length: 18,
+                  }).map((_, index) => (
                     <motion.span
-                      key={i}
+                      key={index}
                       className="birthday-split-confetti"
                       initial={{
                         opacity: 0,
@@ -183,14 +367,17 @@ function BirthdaySplitRSVP({
                       }}
                       animate={{
                         opacity: [0, 1, 1, 0],
-                        y: 110 + (i % 4) * 8,
-                        x: (i - 9) * 10,
+                        y:
+                          110 +
+                          (index % 4) * 8,
+                        x:
+                          (index - 9) * 10,
                         scale: [0.6, 1, 0.9],
                         rotate: [0, 120, 240],
                       }}
                       transition={{
                         duration: 1.6,
-                        delay: i * 0.04,
+                        delay: index * 0.04,
                         ease: "easeOut",
                       }}
                     />
@@ -200,71 +387,97 @@ function BirthdaySplitRSVP({
             ) : (
               <motion.div
                 key="form"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
               >
-                <p className="birthday-split-rsvp-kicker">RSVP</p>
-
-                <h2 className="birthday-split-rsvp-title">Potvrdite dolazak</h2>
-
-                <p className="birthday-split-rsvp-subtitle">
-                  Radovaćemo se da zajedno proslavimo {name}in rođendan.
+                <p className="birthday-split-rsvp-kicker">
+                  {text.kicker}
                 </p>
 
-                {details?.note && (
+                <h2 className="birthday-split-rsvp-title">
+                  {text.title}
+                </h2>
+
+                <p className="birthday-split-rsvp-subtitle">
+                  {subtitle}
+                </p>
+
+                {details?.note && slug !== "eva-1" && (
                   <div className="birthday-split-rsvp-note">
                     {details.note}
                   </div>
                 )}
 
-                <form className="birthday-split-rsvp-form" onSubmit={handleSubmit}>
+                <form
+                  className="birthday-split-rsvp-form"
+                  onSubmit={handleSubmit}
+                >
                   <div className="birthday-split-rsvp-field">
-                    <label htmlFor="birthday-split-fullName">Ime i prezime</label>
+                    <label htmlFor="birthday-split-fullName">
+                      {text.fullNameLabel}
+                    </label>
+
                     <input
                       id="birthday-split-fullName"
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      placeholder="Unesite ime i prezime"
+                      placeholder={text.fullNamePlaceholder}
                       required
                     />
                   </div>
 
                   <div className="birthday-split-rsvp-choice-block">
                     <p className="birthday-split-rsvp-choice-label">
-                      Da li dolazite?
+                      {text.attendanceQuestion}
                     </p>
 
                     <div className="birthday-split-rsvp-choice-grid">
                       <button
                         type="button"
                         className={`birthday-split-choice-card ${
-                          formData.attending === "da" ? "is-active" : ""
+                          formData.attending === "da"
+                            ? "is-active"
+                            : ""
                         }`}
-                        onClick={() => handleAttendanceSelect("da")}
+                        onClick={() =>
+                          handleAttendanceSelect("da")
+                        }
                       >
                         <span className="birthday-split-choice-title">
-                          Dolazim
+                          {text.attendingYes}
                         </span>
+
                         <span className="birthday-split-choice-text">
-                          Biće mi zadovoljstvo
+                          {text.attendingYesText}
                         </span>
                       </button>
 
                       <button
                         type="button"
                         className={`birthday-split-choice-card ${
-                          formData.attending === "ne" ? "is-active" : ""
+                          formData.attending === "ne"
+                            ? "is-active"
+                            : ""
                         }`}
-                        onClick={() => handleAttendanceSelect("ne")}
+                        onClick={() =>
+                          handleAttendanceSelect("ne")
+                        }
                       >
                         <span className="birthday-split-choice-title">
-                          Ne dolazim
+                          {text.attendingNo}
                         </span>
+
                         <span className="birthday-split-choice-text">
-                          Nažalost nisam u mogućnosti
+                          {text.attendingNoText}
                         </span>
                       </button>
                     </div>
@@ -281,12 +494,29 @@ function BirthdaySplitRSVP({
                     {formData.attending === "da" && (
                       <motion.div
                         className="birthday-split-rsvp-field"
-                        initial={{ opacity: 0, height: 0, y: 6 }}
-                        animate={{ opacity: 1, height: "auto", y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -4 }}
-                        transition={{ duration: 0.25 }}
+                        initial={{
+                          opacity: 0,
+                          height: 0,
+                          y: 6,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          height: "auto",
+                          y: 0,
+                        }}
+                        exit={{
+                          opacity: 0,
+                          height: 0,
+                          y: -4,
+                        }}
+                        transition={{
+                          duration: 0.25,
+                        }}
                       >
-                        <label htmlFor="birthday-split-guests">Broj osoba</label>
+                        <label htmlFor="birthday-split-guests">
+                          {text.guestsLabel}
+                        </label>
+
                         <input
                           id="birthday-split-guests"
                           type="number"
@@ -306,7 +536,9 @@ function BirthdaySplitRSVP({
                     className="birthday-split-rsvp-button"
                     disabled={loading}
                   >
-                    {loading ? "Slanje..." : "Pošalji potvrdu"}
+                    {loading
+                      ? text.sending
+                      : text.submit}
                   </button>
                 </form>
               </motion.div>

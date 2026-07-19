@@ -6294,6 +6294,41 @@ musicSrc: "/music/nikoleta-marko.mp3",
     },
   },
 },
+
+{
+  slug: "eva-1",
+  type: "birthday",
+  template: "birthday-eva",
+  script: "cyrillic",
+
+  brideName: "Ева",
+  title: "Први рођендан",
+videoSrc: "/videos/eva-1.mp4",
+  weddingDate: "13. август 2026.",
+  weddingTime: "17:00",
+  venue: "„Вила Вико”",
+musicSrc: "/music/eva-1.mp3",
+  introPreviewImage: "/images/eva/eva-intro-bg.png",
+  babyImage: "/images/eva/eva-bear.svg",
+  introText: "слави свој први рођендан",
+
+  backgroundImage: "/images/eva/eva-bg.png",
+
+  details: createDetails({
+    welcomeText: "Радујемо се Вашем доласку!",
+
+    date: "13. август 2026.",
+    dateISO: "2026-08-13T17:00:00+02:00",
+
+    venue: "„Вила Вико”",
+
+    note: "Молимо вас да долазак потврдите до 3. августа.",
+    rsvpText: "Молимо вас да долазак потврдите до 3. августа.",
+
+    showCalendarButton: true,
+    calendarDurationHours: 4,
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

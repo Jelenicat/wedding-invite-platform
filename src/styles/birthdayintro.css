@@ -1178,3 +1178,307 @@ font-size: clamp(124px, 33vw, 184px);
     letter-spacing: 2.6px;
   }
 }
+
+/* =========================================
+   EVA — INTRO ZA PRVI ROĐENDAN
+   Sve klase su posebno prefiksovane kako
+   ne bi uticale na druge slugove/template-e.
+========================================= */
+
+.birthday-eva-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  background: #fbf0f3;
+  color: #594238;
+  isolation: isolate;
+}
+
+.birthday-eva-intro-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.birthday-eva-intro-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(69vw, 500px);
+  min-height: 76vh;
+  min-height: 76svh;
+  margin-top: 10vh;
+  margin-top: 10svh;
+  padding: clamp(3.4rem, 8vh, 5.8rem) 0.45rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  text-align: center;
+}
+
+.birthday-eva-intro-name {
+  margin: 0 0 clamp(0.1rem, 0.8vh, 0.45rem);
+
+  font-family: "Italianno", "Great Vibes", "Cormorant Garamond", cursive;
+  font-size: clamp(4.4rem, 15vw, 7.2rem);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: 0.01em;
+
+  color: #5a4034;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.birthday-eva-intro-bear-wrap {
+  width: 100%;
+  height: clamp(155px, 24vh, 280px);
+  height: clamp(155px, 24svh, 280px);
+  margin: 0 auto clamp(0.15rem, 0.9vh, 0.55rem);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.birthday-eva-intro-bear-wrap.is-empty {
+  /* Čuva raspored dok ne ubaciš SVG mede. */
+  min-height: clamp(155px, 24vh, 280px);
+}
+
+.birthday-eva-intro-bear {
+  display: block;
+  width: auto;
+  max-width: min(78%, 270px);
+  height: 100%;
+  object-fit: contain;
+
+  filter: drop-shadow(0 10px 16px rgba(120, 83, 66, 0.08));
+  user-select: none;
+  pointer-events: none;
+}
+
+.birthday-eva-intro-sentence {
+  margin: 0;
+  max-width: 290px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.02rem, 4.2vw, 1.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.25;
+
+  color: #634a3f;
+}
+
+.birthday-eva-intro-date {
+  margin-top: clamp(0.55rem, 1.5vh, 0.95rem);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.28rem, 5.4vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+
+  color: #594238;
+}
+
+.birthday-eva-intro-date strong {
+  font: inherit;
+  font-weight: 600;
+}
+
+.birthday-eva-intro-button {
+  margin-top: clamp(0.9rem, 2.1vh, 1.35rem);
+  padding: 0.72rem 1.55rem 0.68rem;
+
+  appearance: none;
+  border: 1px solid rgba(89, 66, 56, 0.82);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.88rem, 3.5vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #594238;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 8px 22px rgba(104, 72, 61, 0.06);
+
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.birthday-eva-intro-button:hover {
+  background: rgba(255, 255, 255, 0.36);
+  border-color: #594238;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 10px 26px rgba(104, 72, 61, 0.1);
+}
+
+.birthday-eva-intro-button:focus-visible {
+  outline: 2px solid rgba(89, 66, 56, 0.5);
+  outline-offset: 4px;
+}
+
+/* Dodatak za BirthdaySplitInvitationCard — prikazuje tekst i kalendar. */
+.birthday-video-welcome {
+  max-width: 350px;
+  margin: 18px auto 4px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.02rem, 3vw, 1.24rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+}
+
+.birthday-video-calendar-btn {
+  margin: 18px auto 0;
+  padding: 11px 20px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #fff;
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.birthday-video-calendar-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.birthday-video-calendar-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.88);
+  outline-offset: 3px;
+}
+
+.birthday-video-bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+}
+
+@media (max-width: 480px) {
+  .birthday-eva-intro-content {
+    width: 70vw;
+    margin-top: 9.5svh;
+    padding-top: clamp(3.8rem, 8svh, 4.8rem);
+  }
+
+  .birthday-eva-intro-name {
+    font-size: clamp(4.15rem, 17vw, 5.8rem);
+  }
+
+  .birthday-eva-intro-bear-wrap,
+  .birthday-eva-intro-bear-wrap.is-empty {
+    height: clamp(150px, 23svh, 215px);
+    min-height: clamp(150px, 23svh, 215px);
+  }
+
+  .birthday-eva-intro-bear {
+    max-width: 84%;
+  }
+
+  .birthday-eva-intro-button {
+    padding-inline: 1.25rem;
+    letter-spacing: 0.065em;
+  }
+}
+
+@media (max-height: 700px) {
+  .birthday-eva-intro-content {
+    margin-top: 8svh;
+    padding-top: 3.5rem;
+  }
+
+  .birthday-eva-intro-name {
+    font-size: clamp(3.8rem, 13vh, 5.2rem);
+  }
+
+  .birthday-eva-intro-bear-wrap,
+  .birthday-eva-intro-bear-wrap.is-empty {
+    height: 21svh;
+    min-height: 135px;
+  }
+
+  .birthday-eva-intro-sentence {
+    font-size: 1rem;
+  }
+
+  .birthday-eva-intro-date {
+    margin-top: 0.45rem;
+    font-size: 1.25rem;
+  }
+
+  .birthday-eva-intro-button {
+    margin-top: 0.7rem;
+    padding-top: 0.62rem;
+    padding-bottom: 0.58rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .birthday-eva-intro *,
+  .birthday-video-calendar-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.calendar-cell-empty {
+  visibility: hidden;
+  pointer-events: none;
+}

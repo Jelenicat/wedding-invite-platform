@@ -21178,3 +21178,231 @@ font-family: "Italianno", cursive;
     font-size: 1.1rem;
   }
 }
+
+/* =========================================
+   EVA — lepši prikaz mesta i vremena
+   Samo slug: eva-1
+========================================= */
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-info {
+  width: min(100%, 290px);
+  margin: 1.8rem auto 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-item {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+
+  box-sizing: border-box;
+  border: 1px solid rgba(111, 79, 69, 0.18);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.34);
+  color: #6f4f45;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-align: center;
+
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 7px 18px rgba(115, 77, 65, 0.05);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-item-icon {
+  flex: 0 0 auto;
+
+  width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9b756b;
+}
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-item-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-item span:last-child {
+  display: inline-block;
+}
+
+/* Vreme malo istaknutije */
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-item:not(a) {
+  font-size: 1.18rem;
+  letter-spacing: 0.06em;
+}
+
+/* Potvrda dolaska odvaja se od mesta i vremena */
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-note {
+  margin-top: 1rem;
+  max-width: 310px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #876d65;
+  text-align: center;
+}
+
+@media (max-width: 390px) {
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-info {
+    width: min(100%, 270px);
+    gap: 0.55rem;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-item {
+    min-height: 46px;
+    padding: 0.65rem 0.85rem;
+    font-size: 1.06rem;
+  }
+
+  .birthday-video-invitation.birthday-video-eva-1
+    .birthday-video-item:not(a) {
+    font-size: 1.14rem;
+  }
+}
+
+/* =========================================
+   EVA — dodatno ulepšavanje invitation card-a
+   Samo slug: eva-1
+========================================= */
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-card {
+  border: 1px solid rgba(184, 126, 137, 0.18);
+
+  background: rgba(255, 252, 252, 0.93);
+
+  box-shadow:
+    0 24px 55px rgba(153, 102, 113, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* Ime deteta */
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-name {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(4rem, 14vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #65483f;
+}
+
+/* Rečenica ispod imena */
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-subtitle {
+  margin-top: 0.9rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.18rem;
+  font-style: italic;
+  font-weight: 500;
+
+  color: #72564e;
+}
+
+/* Mesec */
+.birthday-video-invitation.birthday-video-eva-1
+  .calendar-month {
+  color: #a57c76;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+}
+
+/* Aktivni datum */
+.birthday-video-invitation.birthday-video-eva-1
+  .calendar-cell.active {
+  border-color: #a7726d;
+
+  background: rgba(246, 218, 225, 0.72);
+  color: #65483f;
+
+  box-shadow:
+    0 5px 12px rgba(159, 103, 112, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Mesto i vreme */
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-item {
+  border-color: rgba(172, 117, 119, 0.26);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(253, 244, 246, 0.66)
+    );
+
+  color: #76544b;
+
+  box-shadow:
+    0 9px 20px rgba(151, 102, 109, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-item-icon {
+  color: #b07d76;
+}
+
+/* Ovo je trenutno skoro nevidljivo — obavezno promeniti */
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-welcome {
+  margin-top: 1.4rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.4;
+
+  color: #b07982;
+  text-shadow: none;
+}
+
+/* Potvrda dolaska */
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-note {
+  margin-top: 1.2rem;
+
+  font-size: 1.02rem;
+  line-height: 1.45;
+
+  color: #8b6c65;
+}

@@ -16586,3 +16586,681 @@ margin-bottom: 2px;
     font-size: clamp(2.6rem, 12vw, 3.7rem) !important;
   }
 }
+
+/* =========================================
+   EVA — RSVP
+   Samo slug: eva-1
+========================================= */
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1 {
+  min-height: 100dvh;
+  color: #694d45;
+  background: #f9ecef;
+}
+
+/* Pozadinska slika */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-bg {
+  background-image: var(--birthday-split-rsvp-bg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+}
+
+/* Nežan beli/roze filter */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 251, 0.01),
+      rgba(250, 235, 239, 0.01)
+    );
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-wrap {
+  width: 100%;
+  padding: 54px 18px;
+  box-sizing: border-box;
+}
+
+/* Glavna kartica */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-card {
+  width: min(100%, 390px);
+  margin: 0 auto;
+  padding: 36px 24px 32px;
+  box-sizing: border-box;
+
+  border: 1px solid rgba(176, 121, 126, 0.2);
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 253, 253, 0.95),
+      rgba(255, 247, 249, 0.93)
+    );
+
+  box-shadow:
+    0 26px 58px rgba(143, 92, 103, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+/* Mali naslov */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-kicker {
+  margin-bottom: 10px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+
+  color: #b27d7c;
+}
+
+/* Naslov */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.15rem, 8vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.05;
+
+  color: #65483f;
+}
+
+/* Tekst ispod naslova */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-subtitle {
+  max-width: 300px;
+  margin: 14px auto 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.5;
+
+  color: #856860;
+}
+
+/* Rok za potvrdu */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-note {
+  max-width: 300px;
+  margin: 20px auto 24px;
+  padding: 12px 16px;
+
+  border: 1px solid rgba(179, 126, 130, 0.18);
+  border-radius: 18px;
+
+  background: rgba(250, 228, 234, 0.5);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.96rem;
+  line-height: 1.45;
+
+  color: #8a6862;
+}
+
+/* Forma */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-form {
+  gap: 20px;
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-field label,
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-choice-label {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: #70534b;
+}
+
+/* Inputi */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-field input {
+  min-height: 52px;
+  padding: 0 16px;
+
+  border: 1px solid rgba(172, 117, 121, 0.24);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.78);
+  color: #65483f;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 7px 18px rgba(139, 90, 99, 0.04);
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-field input::placeholder {
+  color: rgba(112, 83, 75, 0.55);
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-field input:focus {
+  outline: none;
+  border-color: #b47b7d;
+
+  box-shadow:
+    0 0 0 3px rgba(214, 164, 174, 0.17),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Dolazim / Ne dolazim */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-choice-card {
+  min-height: 100px;
+  padding: 15px 12px;
+
+  border: 1px solid rgba(172, 117, 121, 0.2);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(253, 241, 244, 0.68)
+    );
+
+  color: #76574f;
+
+  box-shadow:
+    0 9px 20px rgba(143, 94, 103, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-choice-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(172, 117, 121, 0.38);
+}
+
+/* Izabrana opcija */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-choice-card.is-active {
+  border-color: #b4777b;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(248, 222, 228, 0.9),
+      rgba(245, 211, 219, 0.76)
+    );
+
+  box-shadow:
+    0 12px 26px rgba(151, 91, 104, 0.13),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.52);
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-choice-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+
+  color: #65483f;
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-choice-text {
+  margin-top: 5px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.87rem;
+  line-height: 1.35;
+
+  color: #93766e;
+}
+
+/* Glavno dugme */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-button {
+  min-height: 54px;
+  margin-top: 4px;
+
+  border: 1px solid #a96f72;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #bd8586,
+      #a96f72
+    );
+
+  color: #fffafb;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  box-shadow:
+    0 13px 28px rgba(156, 91, 99, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      180deg,
+      #c38c8d,
+      #ad7376
+    );
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+/* Uspešno poslata potvrda */
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-success h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+
+  color: #65483f;
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-rsvp-success p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+
+  color: #856860;
+}
+
+.birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+  .birthday-split-confetti {
+  background: #d99ba8;
+}
+
+@media (max-width: 480px) {
+  .birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+    .birthday-split-rsvp-wrap {
+    padding: 38px 14px;
+  }
+
+  .birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+    .birthday-split-rsvp-card {
+    padding: 30px 18px 26px;
+    border-radius: 28px;
+  }
+
+  .birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+    .birthday-split-rsvp-title {
+    font-size: 2.15rem;
+  }
+
+  .birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+    .birthday-split-rsvp-subtitle {
+    max-width: 280px;
+    font-size: 1rem;
+  }
+
+  .birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+    .birthday-split-choice-card {
+    min-height: 94px;
+    padding: 13px 9px;
+  }
+
+  .birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+    .birthday-split-choice-title {
+    font-size: 1.05rem;
+  }
+
+  .birthday-split-rsvp-section.birthday-split-rsvp-eva-1
+    .birthday-split-choice-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================================
+   EVA — COUNTDOWN
+   Samo slug: eva-1
+========================================= */
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1 {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  justify-content: flex-start;
+  padding-top: 10px;
+  box-sizing: border-box;
+
+  background: #f9ecef;
+  color: #65483f;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: var(
+    --birthday-split-countdown-bg
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: scale(1.02);
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 251, 0.64),
+      rgba(249, 232, 237, 0.8)
+    );
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-card {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 390px);
+  padding: 38px 24px 34px;
+  box-sizing: border-box;
+
+  border: 1px solid rgba(176, 121, 126, 0.2);
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 253, 253, 0.95),
+      rgba(255, 247, 249, 0.93)
+    );
+
+  text-align: center;
+
+  box-shadow:
+    0 26px 58px rgba(143, 92, 103, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-kicker {
+  margin: 0 0 10px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+
+  color: #b27d7c;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-title {
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: clamp(2.1rem, 8vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.05;
+
+  color: #65483f;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-subtitle {
+  max-width: 310px;
+  margin: 15px auto 28px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: 1.06rem;
+  font-style: italic;
+  line-height: 1.5;
+
+  color: #856860;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-unit {
+  min-width: 0;
+  padding: 14px 4px 12px;
+
+  border: 1px solid rgba(176, 119, 124, 0.16);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(251, 234, 239, 0.62)
+    );
+
+  box-shadow:
+    0 9px 20px rgba(143, 94, 103, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-number {
+  display: block;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: clamp(1.65rem, 7vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1;
+
+  color: #76544b;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-label {
+  display: block;
+  margin-top: 7px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: 0.72rem;
+  line-height: 1.1;
+
+  color: #aa7b79;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-finished {
+  margin: 18px auto 0;
+  padding: 16px 18px;
+
+  border: 1px solid rgba(176, 119, 124, 0.2);
+  border-radius: 18px;
+
+  background: rgba(250, 228, 234, 0.58);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  color: #76544b;
+}
+
+/* Opciono dugme za kalendar */
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-calendar-button {
+  width: min(100%, 270px);
+  min-height: 54px;
+  margin: 28px auto 0;
+  padding: 11px 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 1px solid #a96f72;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #bd8586,
+      #a96f72
+    );
+
+  color: #fffafb;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 13px 28px rgba(156, 91, 99, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-calendar-button:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #c38c8d,
+      #ad7376
+    );
+
+  box-shadow:
+    0 16px 32px rgba(156, 91, 99, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-calendar-icon {
+  width: 21px;
+  height: 21px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.birthday-split-countdown-section.birthday-split-countdown-eva-1
+  .birthday-split-countdown-calendar-icon
+  svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1 {
+    padding: 38px 14px;
+  }
+
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1
+    .birthday-split-countdown-card {
+    padding: 32px 17px 28px;
+    border-radius: 28px;
+  }
+
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1
+    .birthday-split-countdown-title {
+    font-size: 2.1rem;
+  }
+
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1
+    .birthday-split-countdown-subtitle {
+    max-width: 285px;
+    font-size: 1rem;
+  }
+
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1
+    .birthday-split-countdown-grid {
+    gap: 6px;
+  }
+
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1
+    .birthday-split-countdown-unit {
+    padding: 13px 2px 11px;
+    border-radius: 16px;
+  }
+
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1
+    .birthday-split-countdown-number {
+    font-size: 1.7rem;
+  }
+
+  .birthday-split-countdown-section.birthday-split-countdown-eva-1
+    .birthday-split-countdown-label {
+    font-size: 0.65rem;
+  }
+}
