@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Marck+Script&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Display:wght@400;500;600;700&display=swap");
 
 .blux-intro {
   position: relative;
@@ -1481,4 +1481,51 @@ font-size: clamp(124px, 33vw, 184px);
 .calendar-cell-empty {
   visibility: hidden;
   pointer-events: none;
+}
+
+/* =========================================
+   EVA — ELEGANTNIJI TEKST I DATUM
+========================================= */
+
+.birthday-eva-intro-sentence {
+  margin: 0;
+  max-width: 320px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.18rem, 4.8vw, 1.5rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.015em;
+
+  color: #694c40;
+}
+
+.birthday-eva-intro-date {
+  margin-top: clamp(0.55rem, 1.5vh, 0.9rem);
+
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.42rem;
+
+  white-space: nowrap;
+
+  font-family: "Noto Serif Display", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.15rem, 4.7vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+
+  color: #594238;
+}
+
+.birthday-eva-intro-date span,
+.birthday-eva-intro-date strong {
+  display: inline;
+  margin: 0;
+  font: inherit;
+  font-weight: 600;
 }

@@ -21531,3 +21531,14 @@ font-family: "Italianno", cursive;
     line-height: 1.35;
   }
 }
+
+.birthday-video-invitation.birthday-video-eva-1
+  .birthday-video-subtitle {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.18rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #694c40;
+}
