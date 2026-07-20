@@ -6407,7 +6407,7 @@ musicSrc: "/music/eva-1.mp3",
          OPŠTE BOJE
       ========================= */
 
-      backgroundColor: "#6C7450",
+      backgroundColor: "#B2BC9A",
 
       mainText: "#343923",
       softText: "#656B4E",
