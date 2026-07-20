@@ -168,6 +168,21 @@ function BirthdayGalleryInvitationCard({
     );
 
   /*
+   * Samo za Tadiju deo lokacije
+   * koji je u zagradi ide u novi red.
+   *
+   * Restoran Bolji život 2
+   * (Elektronska industrija)
+   */
+  const tadijaLocationParts =
+    slug === "tadija-1" &&
+    typeof locationText === "string"
+      ? locationText.match(
+          /^(.*?)\s*(\([^)]*\))$/
+        )
+      : null;
+
+  /*
    * Napomena sa glavne kartice.
    */
   const noteText =
@@ -658,7 +673,21 @@ function BirthdayGalleryInvitationCard({
                   </span>
 
                   <p className="birthday-gallery-info-value">
-                    {locationText}
+                    {tadijaLocationParts ? (
+                      <>
+                        <span>
+                          {tadijaLocationParts[1].trim()}
+                        </span>
+
+                        <br />
+
+                        <span>
+                          {tadijaLocationParts[2].trim()}
+                        </span>
+                      </>
+                    ) : (
+                      locationText
+                    )}
                   </p>
                 </div>
               </>

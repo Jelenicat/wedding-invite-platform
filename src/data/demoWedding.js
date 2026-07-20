@@ -6387,7 +6387,7 @@ musicSrc: "/music/eva-1.mp3",
       "Lete dani kao ptica, prođe jedna godinica. Došao je i taj dan, Tadija slavi prvi rođendan!",
 
     venue:
-      "Restoran Bolji život 2 (Elektronska industrija)",
+      "Restoran Bolji život 2                                         (Elektronska industrija)",
 
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=Restoran+Bolji+zivot+2+Elektronska+industrija",
