@@ -441,10 +441,48 @@ function BirthdayGalleryInvitationCard({
       ? details.sliderImages.filter(Boolean)
       : [];
 
-  const originalSliderImages =
+  /*
+   * Osnovni niz slika pre posebnog
+   * podešavanja redosleda.
+   */
+  const sliderSourceImages =
     configuredSliderImages.length > 0
       ? configuredSliderImages
       : fallbackImages;
+
+  /*
+   * Samo za slug tadija-1 tražimo sliku
+   * tadija-1-5 i prebacujemo je na prvo mesto.
+   */
+  const tadijaFirstImageIndex =
+    slug === "tadija-1"
+      ? sliderSourceImages.findIndex(
+          (img) =>
+            String(img).includes(
+              "tadija-1-5"
+            )
+        )
+      : -1;
+
+  /*
+   * Ostali slugovi zadržavaju postojeći
+   * redosled slika.
+   */
+  const originalSliderImages =
+    slug === "tadija-1" &&
+    tadijaFirstImageIndex !== -1
+      ? [
+          sliderSourceImages[
+            tadijaFirstImageIndex
+          ],
+
+          ...sliderSourceImages.filter(
+            (_, index) =>
+              index !==
+              tadijaFirstImageIndex
+          ),
+        ]
+      : sliderSourceImages;
 
   /*
    * Slike se dupliraju zbog
