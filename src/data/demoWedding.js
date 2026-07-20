@@ -66,6 +66,11 @@ introOrnamentTopSvg,
 introOrnamentBottomSvg,
 heroScriptText,
 heroSubText,
+birthdayIntro,
+birthdayGalleryCard,
+birthdayGalleryRSVP,
+birthdayGalleryCountdown,
+age,
 hideRsvpPhotoBlock = false,
 sliderImages = [],
   showCalendarButton = false,
@@ -141,6 +146,11 @@ introOrnamentTopSvg,
 introOrnamentBottomSvg,
 heroScriptText,
 heroSubText,
+birthdayIntro,
+birthdayGalleryCard,
+birthdayGalleryRSVP,
+birthdayGalleryCountdown,
+age,
 hideRsvpPhotoBlock,
   sliderImages,
   showCalendarButton,
@@ -6327,6 +6337,294 @@ musicSrc: "/music/eva-1.mp3",
 
     showCalendarButton: true,
     calendarDurationHours: 4,
+  }),
+},
+
+{
+  slug: "tadija-1",
+  type: "birthday",
+  template: "birthday-gallery",
+  script: "latin",
+
+  brideName: "Tadija",
+
+  weddingDate: "25 SEP 2026",
+  weddingTime: "17:00",
+
+  venue:
+    "Restoran Bolji život 2 (Elektronska industrija)",
+
+  backgroundImage: "/images/tadija-1-bg.jpg",
+musicSrc: "/music/eva-1.mp3",
+  /*
+   * Ove tri slike ostaju kao fallback
+   * za delove template-a koji koriste
+   * image1, image2 i image3.
+   */
+  image1: "/images/tadija-1/tadija-1-1.jpg",
+  image2: "/images/tadija-1/tadija-1-2.jpg",
+  image3: "/images/tadija-1/tadija-1-3.jpg",
+
+  details: createDetails({
+    age: 1,
+
+    /*
+     * Slider koristi svih šest slika.
+     */
+    sliderImages: [
+      "/images/tadija-1/tadija-1-1.jpg",
+      "/images/tadija-1/tadija-1-2.jpg",
+      "/images/tadija-1/tadija-1-3.jpg",
+      "/images/tadija-1/tadija-1-4.jpg",
+      "/images/tadija-1/tadija-1-5.jpg",
+      "/images/tadija-1/tadija-1-6.jpg",
+    ],
+
+    date: "25.09.2026.",
+    dateISO: "2026-09-25T17:00:00+02:00",
+
+    welcomeText:
+      "Lete dani kao ptica, prođe jedna godinica. Došao je i taj dan, Tadija slavi prvi rođendan!",
+
+    venue:
+      "Restoran Bolji život 2 (Elektronska industrija)",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Bolji+zivot+2+Elektronska+industrija",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite najkasnije do 15.09.2026.",
+
+    rsvpDeadline: "15.09.2026.",
+    rsvpDeadlineISO: "2026-09-15",
+
+    /* =========================
+       SVE BOJE TEMPLATE-A
+    ========================= */
+
+    theme: {
+      /* =========================
+         OPŠTE BOJE
+      ========================= */
+
+      backgroundColor: "#6C7450",
+
+      mainText: "#343923",
+      softText: "#656B4E",
+      mutedText: "#858A6A",
+
+      accent: "#B5985F",
+      accentStrong: "#947641",
+
+      buttonBackground: "#4A332A",
+      buttonText: "#FFF9F0",
+      buttonBorder: "#4A332A",
+
+      /* =========================
+         INTRO
+      ========================= */
+
+      introCardBackground:
+        "rgba(255, 250, 239, 0.06)",
+
+      introMainText: "#3D2B24",
+      introSoftText: "#FFF8EA",
+      introAccent: "#D6BE89",
+
+      introButtonBg: "#3D2B24",
+      introButtonText: "#FFF9F0",
+
+      introButtonBorder:
+        "rgba(255, 249, 240, 0.22)",
+
+      /* =========================
+         GLAVNA KARTICA
+      ========================= */
+
+      cardMainText: "#4A332A",
+      cardSoftText: "#3D2B24",
+      cardAccent: "#3D2B24",
+
+      cardKickerText: "#4A332A",
+      cardTitleText: "#3D2B24",
+      cardSubtitleText: "#4A332A",
+
+      cardCalendarText: "#4A332A",
+      cardCalendarDayText: "#3D2B24",
+
+      cardInfoLabelText: "#947641",
+      cardInfoValueText: "#343923",
+
+      cardFooterText: "#4A332A",
+
+      cardOverlay:
+        "rgba(71, 78, 47, 0.16)",
+
+      cardSurfaceBackground:
+        "rgba(255, 252, 244, 0.08)",
+
+      cardSurfaceBorder:
+        "rgba(255, 252, 244, 0.12)",
+
+      cardInfoBackground:
+        "rgba(250, 246, 235, 0.92)",
+
+      cardInfoBorder:
+        "rgba(71, 78, 47, 0.18)",
+
+      cardDivider:
+        "rgba(71, 78, 47, 0.20)",
+
+      cardCalendarHeaderBackground:
+        "#4A332A",
+
+      cardCalendarHeaderText:
+        "#FFF9F0",
+
+      cardCalendarBackground:
+        "rgba(250, 246, 235, 0.94)",
+
+      cardCalendarBorder:
+        "rgba(71, 78, 47, 0.18)",
+
+      cardCalendarDayBackground:
+        "linear-gradient(180deg, #F7F1E2 0%, #EDE3CB 100%)",
+
+      cardCalendarRing:
+        "rgba(181, 152, 95, 0.30)",
+
+      cardButtonBackground: "#4A332A",
+      cardButtonText: "#FFF9F0",
+      cardButtonBorder: "#4A332A",
+
+      cardGlowOne:
+        "rgba(237, 224, 187, 0.28)",
+
+      cardGlowTwo:
+        "rgba(150, 158, 103, 0.20)",
+
+      /* =========================
+         RSVP
+      ========================= */
+
+      rsvpPageBackground: "#6C7450",
+
+      rsvpMainText: "#343923",
+      rsvpSoftText: "#656B4E",
+      rsvpAccent: "#9B7D48",
+
+      rsvpKickerText: "#9B7D48",
+      rsvpTitleText: "#343923",
+      rsvpSubtitleText: "#656B4E",
+
+      rsvpLabelText: "#343923",
+
+      rsvpInputText: "#343923",
+      rsvpPlaceholderText: "#858A6A",
+
+      rsvpChoiceTitleText: "#343923",
+      rsvpChoiceText: "#656B4E",
+
+      rsvpOverlay:
+        "rgba(82, 90, 55, 0.22)",
+
+      rsvpCardBackground:
+        "rgba(250, 246, 235, 0.94)",
+
+      rsvpCardBorder:
+        "rgba(71, 78, 47, 0.18)",
+
+      rsvpInputBackground:
+        "rgba(255, 252, 244, 0.90)",
+
+      rsvpInputBorder:
+        "rgba(71, 78, 47, 0.23)",
+
+      rsvpChoiceBackground:
+        "rgba(255, 252, 244, 0.72)",
+
+      rsvpChoiceActiveBackground:
+        "rgba(108, 116, 80, 0.16)",
+
+      rsvpChoiceActiveBorder: "#7C855C",
+
+      rsvpDivider:
+        "rgba(71, 78, 47, 0.18)",
+
+      rsvpButtonBackground: "#4A332A",
+      rsvpButtonText: "#FFF9F0",
+      rsvpButtonBorder: "#4A332A",
+
+      rsvpSuccess: "#8C7040",
+      rsvpSuccessTitleText: "#343923",
+      rsvpSuccessText: "#656B4E",
+
+      /* =========================
+         COUNTDOWN
+      ========================= */
+
+      countdownPageBackground: "#6C7450",
+
+      countdownMainText: "#343923",
+      countdownSoftText: "#656B4E",
+      countdownAccent: "#9B7D48",
+
+      countdownKickerText: "#9B7D48",
+      countdownTitleText: "#343923",
+      countdownSubtitleText: "#656B4E",
+
+      countdownNumberText: "#343923",
+      countdownLabelText: "#656B4E",
+
+      countdownFinishedText: "#343923",
+
+      countdownOverlay:
+        "rgba(82, 90, 55, 0.22)",
+
+      countdownCardBackground:
+        "rgba(250, 246, 235, 0.92)",
+
+      countdownCardBorder:
+        "rgba(71, 78, 47, 0.18)",
+
+      countdownUnitBackground:
+        "rgba(255, 252, 244, 0.72)",
+
+      countdownUnitBorder:
+        "rgba(71, 78, 47, 0.18)",
+
+      countdownButtonBackground: "#4A332A",
+      countdownButtonText: "#FFF9F0",
+      countdownButtonBorder: "#4A332A",
+
+      countdownGlowOne:
+        "rgba(237, 224, 187, 0.26)",
+
+      countdownGlowTwo:
+        "rgba(150, 158, 103, 0.18)",
+    },
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    birthdayIntro: {
+      buttonText: "Otvorite pozivnicu",
+    },
+
+    /* =========================
+       COUNTDOWN I KALENDAR
+    ========================= */
+
+    birthdayGalleryCountdown: {
+      showCalendarButton: true,
+
+      /*
+       * Događaj u kalendaru traje
+       * od 17:00 do 21:00.
+       */
+      calendarDurationHours: 4,
+    },
   }),
 },
   // =========================

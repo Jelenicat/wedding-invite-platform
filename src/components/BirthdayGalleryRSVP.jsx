@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  collection,
   addDoc,
-  serverTimestamp,
+  collection,
   doc,
+  serverTimestamp,
   setDoc,
 } from "firebase/firestore";
+
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
@@ -20,12 +21,35 @@ function BirthdayGalleryRSVP({
   backgroundImage,
   script,
 }) {
-  const activeScript = script || details?.script || "latin";
-  const isCyrillic = activeScript === "cyrillic";
+  const activeScript =
+    script || details?.script || "latin";
 
-  const rsvpConfig = details?.birthdayGalleryRSVP || {};
-  const colors = rsvpConfig?.colors || {};
-  const customTexts = rsvpConfig?.texts?.[activeScript] || {};
+  const isCyrillic =
+    activeScript === "cyrillic";
+
+  /*
+   * Ostaje zbog kompatibilnosti sa starim slugovima.
+   *
+   * Za nove slugove ovaj objekat nije obavezan.
+   */
+  const rsvpConfig =
+    details?.birthdayGalleryRSVP || {};
+
+  /*
+   * Sve nove boje čitamo iz zajedničke teme.
+   */
+  const theme =
+    details?.theme || {};
+
+  /*
+   * Podrška za stare slugove koji koriste:
+   *
+   * birthdayGalleryRSVP: {
+   *   colors: {}
+   * }
+   */
+  const legacyColors =
+    rsvpConfig?.colors || {};
 
   const name = isCyrillic
     ? brideNameCyrillic ||
@@ -37,148 +61,367 @@ function BirthdayGalleryRSVP({
       brideName ||
       "Viktor";
 
+  /*
+   * Podrazumevani tekstovi već postoje u komponenti,
+   * pa ne moraju da se ponavljaju u demoWedding slugu.
+   */
   const defaultTexts = isCyrillic
     ? {
         title: "Потврдите долазак",
+
         subtitle:
           "Биће нам велико задовољство да заједно прославимо овај посебан дан.",
 
-        fullNameLabel: "Име и презиме",
-        fullNamePlaceholder: "Унесите име и презиме",
+        fullNameLabel:
+          "Име и презиме",
 
-        attendanceQuestion: "Да ли долазите?",
+        fullNamePlaceholder:
+          "Унесите име и презиме",
 
-        attendingTitle: "Долазим",
-        attendingText: "Радујем се прослави",
+        attendanceQuestion:
+          "Да ли долазите?",
 
-        notAttendingTitle: "Не долазим",
-        notAttendingText: "Нажалост, нисам у могућности",
+        attendingTitle:
+          "Долазим",
 
-        guestsLabel: "Број особа",
+        attendingText:
+          "Радујем се прослави",
 
-        submit: "Пошаљи потврду",
-        loading: "Слање...",
+        notAttendingTitle:
+          "Не долазим",
 
-        successTitle: "Хвала!",
-        successText: "Ваша потврда је успешно послата.",
+        notAttendingText:
+          "Нажалост, нисам у могућности",
 
-        missingEvent: "Недостаје slug или тип догађаја.",
-        missingName: "Унесите име и презиме.",
-        missingAttendance: "Изаберите да ли долазите.",
-        invalidGuests: "Унесите исправан број особа.",
-        submitError: "Дошло је до грешке при слању.",
+        guestsLabel:
+          "Број особа",
+
+        submit:
+          "Пошаљи потврду",
+
+        loading:
+          "Слање...",
+
+        successTitle:
+          "Хвала!",
+
+        successText:
+          "Ваша потврда је успешно послата.",
+
+        missingEvent:
+          "Недостаје slug или тип догађаја.",
+
+        missingName:
+          "Унесите име и презиме.",
+
+        missingAttendance:
+          "Изаберите да ли долазите.",
+
+        invalidGuests:
+          "Унесите исправан број особа.",
+
+        submitError:
+          "Дошло је до грешке при слању.",
       }
     : {
-        title: "Potvrdite dolazak",
+        title:
+          "Potvrdite dolazak",
+
         subtitle:
           "Biće nam veliko zadovoljstvo da zajedno proslavimo ovaj poseban dan.",
 
-        fullNameLabel: "Ime i prezime",
-        fullNamePlaceholder: "Unesite ime i prezime",
+        fullNameLabel:
+          "Ime i prezime",
 
-        attendanceQuestion: "Da li dolazite?",
+        fullNamePlaceholder:
+          "Unesite ime i prezime",
 
-        attendingTitle: "Dolazim",
-        attendingText: "Radujem se proslavi",
+        attendanceQuestion:
+          "Da li dolazite?",
 
-        notAttendingTitle: "Ne dolazim",
-        notAttendingText: "Nažalost, nisam u mogućnosti",
+        attendingTitle:
+          "Dolazim",
 
-        guestsLabel: "Broj osoba",
+        attendingText:
+          "Radujem se proslavi",
 
-        submit: "Pošalji potvrdu",
-        loading: "Slanje...",
+        notAttendingTitle:
+          "Ne dolazim",
 
-        successTitle: "Hvala!",
-        successText: "Vaša potvrda je uspešno poslata.",
+        notAttendingText:
+          "Nažalost, nisam u mogućnosti",
 
-        missingEvent: "Nedostaje slug ili tip događaja.",
-        missingName: "Unesite ime i prezime.",
-        missingAttendance: "Izaberite da li dolazite.",
-        invalidGuests: "Unesite ispravan broj osoba.",
-        submitError: "Došlo je do greške pri slanju.",
+        guestsLabel:
+          "Broj osoba",
+
+        submit:
+          "Pošalji potvrdu",
+
+        loading:
+          "Slanje...",
+
+        successTitle:
+          "Hvala!",
+
+        successText:
+          "Vaša potvrda je uspešno poslata.",
+
+        missingEvent:
+          "Nedostaje slug ili tip događaja.",
+
+        missingName:
+          "Unesite ime i prezime.",
+
+        missingAttendance:
+          "Izaberite da li dolazite.",
+
+        invalidGuests:
+          "Unesite ispravan broj osoba.",
+
+        submitError:
+          "Došlo je do greške pri slanju.",
       };
+
+  /*
+   * Stari slugovi i dalje mogu da imaju posebne tekstove.
+   *
+   * Za Tadiju ovaj deo ne mora da postoji u demoWedding.
+   */
+  const legacyCustomTexts =
+    rsvpConfig?.texts?.[activeScript] || {};
 
   const texts = {
     ...defaultTexts,
-    ...customTexts,
+    ...legacyCustomTexts,
   };
 
-  const activeBackgroundImage =
-    rsvpConfig?.backgroundImage || backgroundImage;
+  const showName =
+    rsvpConfig?.showName === true;
 
+  const activeBackgroundImage =
+    rsvpConfig?.backgroundImage ||
+    backgroundImage ||
+    details?.backgroundImage ||
+    "";
+
+  /*
+   * Sve nove boje prvenstveno se uzimaju iz details.theme.
+   *
+   * legacyColors ostaje kao rezerva za stare slugove.
+   */
   const themeStyle = {
     "--birthday-rsvp-page-bg":
-      colors.background || "#f7f4ee",
+      theme.rsvpPageBackground ||
+      theme.backgroundColor ||
+      legacyColors.background ||
+      "#f7f4ee",
 
     "--birthday-rsvp-overlay":
-      colors.overlay || "rgba(247, 244, 238, 0.62)",
+      theme.rsvpOverlay ||
+      legacyColors.overlay ||
+      "rgba(247, 244, 238, 0.62)",
 
     "--birthday-rsvp-card-bg":
-      colors.cardBackground || "rgba(255, 255, 255, 0.76)",
+      theme.rsvpCardBackground ||
+      legacyColors.cardBackground ||
+      "rgba(255, 255, 255, 0.76)",
 
     "--birthday-rsvp-card-border":
-      colors.cardBorder || "rgba(100, 78, 62, 0.15)",
+      theme.rsvpCardBorder ||
+      legacyColors.cardBorder ||
+      "rgba(100, 78, 62, 0.15)",
 
+    /*
+     * Opšte boje teksta
+     */
     "--birthday-rsvp-text":
-      colors.text || "#2f251f",
+      theme.rsvpMainText ||
+      theme.mainText ||
+      legacyColors.text ||
+      "#2f251f",
 
     "--birthday-rsvp-muted-text":
-      colors.secondaryText || "#89796f",
+      theme.rsvpSoftText ||
+      theme.softText ||
+      legacyColors.secondaryText ||
+      "#89796f",
 
     "--birthday-rsvp-accent":
-      colors.accent || "#b49778",
+      theme.rsvpAccent ||
+      theme.accent ||
+      legacyColors.accent ||
+      "#b49778",
 
+    /*
+     * Pojedinačne boje teksta
+     */
+    "--birthday-rsvp-kicker-text":
+      theme.rsvpKickerText ||
+      theme.rsvpAccent ||
+      theme.accent ||
+      legacyColors.accent ||
+      "#b49778",
+
+    "--birthday-rsvp-title-text":
+      theme.rsvpTitleText ||
+      theme.rsvpMainText ||
+      theme.mainText ||
+      legacyColors.text ||
+      "#2f251f",
+
+    "--birthday-rsvp-subtitle-text":
+      theme.rsvpSubtitleText ||
+      theme.rsvpSoftText ||
+      theme.softText ||
+      legacyColors.secondaryText ||
+      "#89796f",
+
+    "--birthday-rsvp-label-text":
+      theme.rsvpLabelText ||
+      theme.rsvpMainText ||
+      theme.mainText ||
+      legacyColors.text ||
+      "#2f251f",
+
+    "--birthday-rsvp-input-text":
+      theme.rsvpInputText ||
+      theme.rsvpMainText ||
+      theme.mainText ||
+      legacyColors.text ||
+      "#2f251f",
+
+    "--birthday-rsvp-placeholder-text":
+      theme.rsvpPlaceholderText ||
+      theme.rsvpSoftText ||
+      theme.softText ||
+      legacyColors.secondaryText ||
+      "#89796f",
+
+    "--birthday-rsvp-choice-title-text":
+      theme.rsvpChoiceTitleText ||
+      theme.rsvpMainText ||
+      theme.mainText ||
+      legacyColors.text ||
+      "#2f251f",
+
+    "--birthday-rsvp-choice-text":
+      theme.rsvpChoiceText ||
+      theme.rsvpSoftText ||
+      theme.softText ||
+      legacyColors.secondaryText ||
+      "#89796f",
+
+    "--birthday-rsvp-success-title-text":
+      theme.rsvpSuccessTitleText ||
+      theme.rsvpMainText ||
+      theme.mainText ||
+      legacyColors.text ||
+      "#2f251f",
+
+    "--birthday-rsvp-success-text":
+      theme.rsvpSuccessText ||
+      theme.rsvpSoftText ||
+      theme.softText ||
+      legacyColors.secondaryText ||
+      "#89796f",
+
+    /*
+     * Polja forme
+     */
     "--birthday-rsvp-input-bg":
-      colors.inputBackground || "rgba(255, 255, 255, 0.72)",
+      theme.rsvpInputBackground ||
+      legacyColors.inputBackground ||
+      "rgba(255, 255, 255, 0.72)",
 
     "--birthday-rsvp-input-border":
-      colors.inputBorder || "rgba(100, 78, 62, 0.18)",
+      theme.rsvpInputBorder ||
+      legacyColors.inputBorder ||
+      "rgba(100, 78, 62, 0.18)",
 
+    /*
+     * Dolazim / Ne dolazim
+     */
     "--birthday-rsvp-choice-bg":
-      colors.choiceBackground || "rgba(255, 255, 255, 0.45)",
+      theme.rsvpChoiceBackground ||
+      legacyColors.choiceBackground ||
+      "rgba(255, 255, 255, 0.45)",
 
     "--birthday-rsvp-choice-active-bg":
-      colors.choiceActiveBackground || "rgba(180, 151, 120, 0.14)",
+      theme.rsvpChoiceActiveBackground ||
+      legacyColors.choiceActiveBackground ||
+      "rgba(180, 151, 120, 0.14)",
 
     "--birthday-rsvp-choice-active-border":
-      colors.choiceActiveBorder || colors.accent || "#b49778",
+      theme.rsvpChoiceActiveBorder ||
+      theme.rsvpAccent ||
+      theme.accent ||
+      legacyColors.choiceActiveBorder ||
+      legacyColors.accent ||
+      "#b49778",
 
     "--birthday-rsvp-divider":
-      colors.divider || "rgba(100, 78, 62, 0.16)",
+      theme.rsvpDivider ||
+      legacyColors.divider ||
+      "rgba(100, 78, 62, 0.16)",
 
+    /*
+     * Dugme
+     */
     "--birthday-rsvp-button-bg":
-      colors.buttonBackground || "#2f241d",
-
-    "--birthday-rsvp-button-text":
-      colors.buttonText || "#ffffff",
-
-    "--birthday-rsvp-button-border":
-      colors.buttonBorder ||
-      colors.buttonBackground ||
+      theme.rsvpButtonBackground ||
+      theme.buttonBackground ||
+      legacyColors.buttonBackground ||
       "#2f241d",
 
+    "--birthday-rsvp-button-text":
+      theme.rsvpButtonText ||
+      theme.buttonText ||
+      legacyColors.buttonText ||
+      "#ffffff",
+
+    "--birthday-rsvp-button-border":
+      theme.rsvpButtonBorder ||
+      theme.buttonBorder ||
+      legacyColors.buttonBorder ||
+      legacyColors.buttonBackground ||
+      "#2f241d",
+
+    /*
+     * Uspešno slanje
+     */
     "--birthday-rsvp-success":
-      colors.success || colors.accent || "#b49778",
+      theme.rsvpSuccess ||
+      theme.rsvpAccent ||
+      theme.accent ||
+      legacyColors.success ||
+      legacyColors.accent ||
+      "#b49778",
 
     ...(activeBackgroundImage
       ? {
-          "--birthday-rsvp-bg": `url(${activeBackgroundImage})`,
+          "--birthday-rsvp-bg":
+            `url(${activeBackgroundImage})`,
         }
       : {}),
   };
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    attending: "",
-    guests: "1",
-  });
+  const [formData, setFormData] =
+    useState({
+      fullName: "",
+      attending: "",
+      guests: "1",
+    });
 
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] =
+    useState(false);
+
+  const [submitted, setSubmitted] =
+    useState(false);
 
   useEffect(() => {
-    if (!submitted) return undefined;
+    if (!submitted) {
+      return undefined;
+    }
 
     const timer = setTimeout(() => {
       setSubmitted(false);
@@ -190,11 +433,16 @@ function BirthdayGalleryRSVP({
       });
     }, 3000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [submitted]);
 
   const handleChange = (event) => {
-    const { name: fieldName, value } = event.target;
+    const {
+      name: fieldName,
+      value,
+    } = event.target;
 
     setFormData((previousData) => ({
       ...previousData,
@@ -202,11 +450,18 @@ function BirthdayGalleryRSVP({
     }));
   };
 
-  const handleAttendanceSelect = (value) => {
+  const handleAttendanceSelect = (
+    value
+  ) => {
     setFormData((previousData) => ({
       ...previousData,
+
       attending: value,
-      guests: value === "da" ? previousData.guests || "1" : "",
+
+      guests:
+        value === "da"
+          ? previousData.guests || "1"
+          : "",
     }));
   };
 
@@ -228,13 +483,16 @@ function BirthdayGalleryRSVP({
       return;
     }
 
-    const guestsCount = Number(formData.guests);
+    const guestsCount =
+      Number(formData.guests);
 
     if (
       formData.attending === "da" &&
-      (!formData.guests ||
+      (
+        !formData.guests ||
         Number.isNaN(guestsCount) ||
-        guestsCount < 1)
+        guestsCount < 1
+      )
     ) {
       alert(texts.invalidGuests);
       return;
@@ -248,22 +506,47 @@ function BirthdayGalleryRSVP({
         {
           slug,
           eventType,
-          updatedAt: serverTimestamp(),
+          updatedAt:
+            serverTimestamp(),
         },
-        { merge: true }
+        {
+          merge: true,
+        }
       );
 
-      await addDoc(collection(db, "events", slug, "rsvps"), {
-        eventType,
-        fullName: formData.fullName.trim(),
-        attending: formData.attending,
-        guests: formData.attending === "da" ? guestsCount : 0,
-        createdAt: serverTimestamp(),
-      });
+      await addDoc(
+        collection(
+          db,
+          "events",
+          slug,
+          "rsvps"
+        ),
+        {
+          eventType,
+
+          fullName:
+            formData.fullName.trim(),
+
+          attending:
+            formData.attending,
+
+          guests:
+            formData.attending === "da"
+              ? guestsCount
+              : 0,
+
+          createdAt:
+            serverTimestamp(),
+        }
+      );
 
       setSubmitted(true);
     } catch (error) {
-      console.error("Greška pri slanju RSVP:", error);
+      console.error(
+        "Greška pri slanju RSVP:",
+        error
+      );
+
       alert(texts.submitError);
     } finally {
       setLoading(false);
@@ -273,13 +556,26 @@ function BirthdayGalleryRSVP({
   return (
     <motion.section
       className={`birthday-rsvp-section birthday-rsvp-section-${activeScript}`}
-      initial={{ opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      initial={{
+        opacity: 0,
+        y: 26,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.8,
+      }}
+      viewport={{
+        once: true,
+      }}
       style={themeStyle}
     >
-      <div className="birthday-rsvp-bg-image" />
+      {activeBackgroundImage && (
+        <div className="birthday-rsvp-bg-image" />
+      )}
+
       <div className="birthday-rsvp-overlay" />
 
       <div className="birthday-rsvp-shell">
@@ -289,41 +585,82 @@ function BirthdayGalleryRSVP({
               <motion.div
                 key="success"
                 className="birthday-rsvp-success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{
+                  opacity: 0,
+                  scale: 0.95,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                }}
               >
                 <motion.div
                   className="birthday-rsvp-success-heart"
-                  initial={{ scale: 0, rotate: -15 }}
+                  initial={{
+                    scale: 0,
+                    rotate: -15,
+                  }}
                   animate={{
                     scale: [0, 1.2, 1],
-                    rotate: [0, 8, -8, 0],
+
+                    rotate: [
+                      0,
+                      8,
+                      -8,
+                      0,
+                    ],
                   }}
-                  transition={{ duration: 0.9 }}
+                  transition={{
+                    duration: 0.9,
+                  }}
                 >
                   💌
                 </motion.div>
 
                 <motion.h3
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.45 }}
+                  initial={{
+                    opacity: 0,
+                    y: 8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.15,
+                    duration: 0.45,
+                  }}
                 >
                   {texts.successTitle}
                 </motion.h3>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.28, duration: 0.45 }}
+                  initial={{
+                    opacity: 0,
+                    y: 8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.28,
+                    duration: 0.45,
+                  }}
                 >
                   {texts.successText}
                 </motion.p>
 
                 <div className="birthday-confetti-wrap">
-                  {Array.from({ length: 18 }).map((_, index) => (
+                  {Array.from({
+                    length: 18,
+                  }).map((_, index) => (
                     <motion.span
                       key={index}
                       className="birthday-confetti"
@@ -334,15 +671,38 @@ function BirthdayGalleryRSVP({
                         scale: 0.6,
                       }}
                       animate={{
-                        opacity: [0, 1, 1, 0],
-                        y: 110 + (index % 4) * 8,
-                        x: (index - 9) * 10,
-                        scale: [0.6, 1, 0.9],
-                        rotate: [0, 120, 240],
+                        opacity: [
+                          0,
+                          1,
+                          1,
+                          0,
+                        ],
+
+                        y:
+                          110 +
+                          (index % 4) * 8,
+
+                        x:
+                          (index - 9) * 10,
+
+                        scale: [
+                          0.6,
+                          1,
+                          0.9,
+                        ],
+
+                        rotate: [
+                          0,
+                          120,
+                          240,
+                        ],
                       }}
                       transition={{
                         duration: 1.6,
-                        delay: index * 0.04,
+
+                        delay:
+                          index * 0.04,
+
                         ease: "easeOut",
                       }}
                     />
@@ -352,11 +712,19 @@ function BirthdayGalleryRSVP({
             ) : (
               <motion.div
                 key="form"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
               >
-                <p className="birthday-rsvp-kicker">RSVP</p>
+                <p className="birthday-rsvp-kicker">
+                  RSVP
+                </p>
 
                 <h2 className="birthday-rsvp-title">
                   {texts.title}
@@ -366,20 +734,10 @@ function BirthdayGalleryRSVP({
                   {texts.subtitle}
                 </p>
 
-                {rsvpConfig?.showName && (
+                {showName && (
                   <p className="birthday-rsvp-child-name">
                     {name}
                   </p>
-                )}
-
-                {rsvpConfig?.note && (
-                  <div className="birthday-rsvp-note">
-                    {typeof rsvpConfig.note === "object"
-                      ? rsvpConfig.note[activeScript] ||
-                        rsvpConfig.note.latin ||
-                        rsvpConfig.note.cyrillic
-                      : rsvpConfig.note}
-                  </div>
                 )}
 
                 <div className="birthday-rsvp-divider" />
@@ -389,7 +747,9 @@ function BirthdayGalleryRSVP({
                   onSubmit={handleSubmit}
                 >
                   <div className="birthday-rsvp-field">
-                    <label htmlFor={`birthday-fullName-${slug}`}>
+                    <label
+                      htmlFor={`birthday-fullName-${slug}`}
+                    >
                       {texts.fullNameLabel}
                     </label>
 
@@ -397,16 +757,24 @@ function BirthdayGalleryRSVP({
                       id={`birthday-fullName-${slug}`}
                       type="text"
                       name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      placeholder={texts.fullNamePlaceholder}
+                      value={
+                        formData.fullName
+                      }
+                      onChange={
+                        handleChange
+                      }
+                      placeholder={
+                        texts.fullNamePlaceholder
+                      }
                       required
                     />
                   </div>
 
                   <div className="birthday-rsvp-choice-block">
                     <p className="birthday-rsvp-choice-label">
-                      {texts.attendanceQuestion}
+                      {
+                        texts.attendanceQuestion
+                      }
                     </p>
 
                     <div className="birthday-rsvp-choice-grid">
@@ -418,15 +786,21 @@ function BirthdayGalleryRSVP({
                             : ""
                         }`}
                         onClick={() =>
-                          handleAttendanceSelect("da")
+                          handleAttendanceSelect(
+                            "da"
+                          )
                         }
                       >
                         <span className="birthday-choice-title">
-                          {texts.attendingTitle}
+                          {
+                            texts.attendingTitle
+                          }
                         </span>
 
                         <span className="birthday-choice-text">
-                          {texts.attendingText}
+                          {
+                            texts.attendingText
+                          }
                         </span>
                       </button>
 
@@ -438,15 +812,21 @@ function BirthdayGalleryRSVP({
                             : ""
                         }`}
                         onClick={() =>
-                          handleAttendanceSelect("ne")
+                          handleAttendanceSelect(
+                            "ne"
+                          )
                         }
                       >
                         <span className="birthday-choice-title">
-                          {texts.notAttendingTitle}
+                          {
+                            texts.notAttendingTitle
+                          }
                         </span>
 
                         <span className="birthday-choice-text">
-                          {texts.notAttendingText}
+                          {
+                            texts.notAttendingText
+                          }
                         </span>
                       </button>
                     </div>
@@ -455,7 +835,9 @@ function BirthdayGalleryRSVP({
                   <input
                     type="hidden"
                     name="attending"
-                    value={formData.attending}
+                    value={
+                      formData.attending
+                    }
                     required
                   />
 
@@ -478,9 +860,13 @@ function BirthdayGalleryRSVP({
                           height: 0,
                           y: -4,
                         }}
-                        transition={{ duration: 0.25 }}
+                        transition={{
+                          duration: 0.25,
+                        }}
                       >
-                        <label htmlFor={`birthday-guests-${slug}`}>
+                        <label
+                          htmlFor={`birthday-guests-${slug}`}
+                        >
                           {texts.guestsLabel}
                         </label>
 
@@ -490,8 +876,12 @@ function BirthdayGalleryRSVP({
                           name="guests"
                           min="1"
                           max="10"
-                          value={formData.guests}
-                          onChange={handleChange}
+                          value={
+                            formData.guests
+                          }
+                          onChange={
+                            handleChange
+                          }
                           required
                         />
                       </motion.div>
@@ -503,7 +893,9 @@ function BirthdayGalleryRSVP({
                     className="birthday-rsvp-button"
                     disabled={loading}
                   >
-                    {loading ? texts.loading : texts.submit}
+                    {loading
+                      ? texts.loading
+                      : texts.submit}
                   </button>
                 </form>
               </motion.div>

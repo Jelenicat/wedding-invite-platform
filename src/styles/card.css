@@ -21542,3 +21542,205 @@ font-family: "Italianno", cursive;
   letter-spacing: 0.01em;
   color: #694c40;
 }
+
+/* =========================================
+   BIRTHDAY GALLERY — THEME VARIABLES
+========================================= */
+
+.birthday-gallery-page {
+  background:
+    var(
+      --birthday-gallery-page-bg,
+      #f7f4ee
+    );
+}
+
+.birthday-gallery-card {
+  color:
+    var(
+      --birthday-gallery-text,
+      #2f251f
+    );
+}
+
+.birthday-gallery-bg-overlay {
+  background:
+    var(
+      --birthday-gallery-overlay,
+      rgba(247, 244, 238, 0.42)
+    );
+}
+
+.birthday-gallery-inner {
+  background-color:
+    var(
+      --birthday-gallery-inner-bg,
+      rgba(255, 255, 255, 0.08)
+    );
+
+  border-color:
+    var(
+      --birthday-gallery-inner-border,
+      rgba(100, 78, 62, 0.15)
+    );
+}
+
+.birthday-gallery-kicker {
+  color:
+    var(
+      --birthday-gallery-kicker-text,
+      #7d6655
+    );
+}
+
+.birthday-gallery-title {
+  color:
+    var(
+      --birthday-gallery-title-text,
+      #2d221c
+    );
+}
+
+.birthday-gallery-subtitle {
+  color:
+    var(
+      --birthday-gallery-subtitle-text,
+      #62674a
+    );
+}
+
+.birthday-gallery-calendar-top {
+  background:
+    var(
+      --birthday-gallery-calendar-header-bg,
+      #2f241d
+    );
+
+  color:
+    var(
+      --birthday-gallery-calendar-header-text,
+      #ffffff
+    );
+}
+
+.birthday-gallery-calendar-body {
+  background:
+    var(
+      --birthday-gallery-calendar-body-bg,
+      rgba(255, 255, 255, 0.9)
+    );
+
+  border-color:
+    var(
+      --birthday-gallery-calendar-body-border,
+      rgba(122, 100, 84, 0.12)
+    );
+}
+
+.birthday-gallery-calendar-month,
+.birthday-gallery-calendar-year {
+  color:
+    var(
+      --birthday-gallery-calendar-text,
+      #2f241d
+    );
+}
+
+.birthday-gallery-calendar-day {
+  color:
+    var(
+      --birthday-gallery-calendar-day-text,
+      #2f251f
+    );
+
+  background:
+    var(
+      --birthday-gallery-calendar-day-bg,
+      linear-gradient(
+        180deg,
+        #f7efe7 0%,
+        #efe2d5 100%
+      )
+    );
+}
+
+.birthday-gallery-calendar-ring {
+  background:
+    var(
+      --birthday-gallery-calendar-ring,
+      rgba(143, 115, 96, 0.18)
+    );
+}
+
+.birthday-gallery-info-card {
+  background:
+    var(
+      --birthday-gallery-info-bg,
+      rgba(255, 255, 255, 0.62)
+    );
+
+  border-color:
+    var(
+      --birthday-gallery-info-border,
+      rgba(100, 78, 62, 0.15)
+    );
+}
+
+.birthday-gallery-info-label {
+  color:
+    var(
+      --birthday-gallery-info-label-text,
+      #8e7562
+    );
+}
+
+.birthday-gallery-info-value {
+  color:
+    var(
+      --birthday-gallery-info-value-text,
+      #2d221c
+    );
+}
+
+.birthday-gallery-info-divider {
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      var(
+          --birthday-gallery-divider,
+          rgba(100, 78, 62, 0.18)
+        )
+        20%,
+      var(
+          --birthday-gallery-divider,
+          rgba(100, 78, 62, 0.18)
+        )
+        80%,
+      transparent 100%
+    );
+}
+
+.birthday-gallery-footer {
+  color:
+    var(
+      --birthday-gallery-footer-text,
+      #6e584a
+    );
+}
+
+.birthday-gallery-glow-one {
+  background:
+    var(
+      --birthday-gallery-glow-one,
+      rgba(255, 255, 255, 0.48)
+    );
+}
+
+.birthday-gallery-glow-two {
+  background:
+    var(
+      --birthday-gallery-glow-two,
+      rgba(200, 176, 150, 0.18)
+    );
+}

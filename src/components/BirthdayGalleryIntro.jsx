@@ -17,83 +17,125 @@ function BirthdayGalleryIntro({
   const activeScript = script || details?.script || "latin";
   const isCyrillic = activeScript === "cyrillic";
 
+  const getLocalizedText = (value, fallback = "") => {
+    if (!value) return fallback;
+
+    if (typeof value === "object") {
+      return (
+        value[activeScript] ||
+        value.latin ||
+        value.cyrillic ||
+        fallback
+      );
+    }
+
+    return value;
+  };
+
   const name = isCyrillic
     ? brideNameCyrillic ||
       details?.brideNameCyrillic ||
       brideName ||
-      "Џејмс"
+      "Тадија"
     : brideNameLatin ||
       details?.brideNameLatin ||
       brideName ||
-      "James";
+      "Tadija";
 
   const content = isCyrillic
     ? {
         fills: "пуни",
-        defaultMessage: "Употпуните мој велики дан",
+        defaultWelcomeText:
+          "Са великом радошћу вас позивамо да заједно прославимо овај посебан дан.",
         openButton: "Отворите позивницу",
         timeConnector: "у",
       }
     : {
         fills: "puni",
-        defaultMessage: "Upotpunite moj veliki dan",
+        defaultWelcomeText:
+          "Sa velikom radošću vas pozivamo da zajedno proslavimo ovaj poseban dan.",
         openButton: "Otvorite pozivnicu",
         timeConnector: "u",
       };
 
   /*
-   * Tekst koji se prikazuje umesto naziva restorana.
-   * Postavlja se posebno u slugu.
+   * Ispod datuma prikazuje se samo welcomeText.
+   *
+   * Može biti običan tekst:
+   * welcomeText: "Tekst..."
+   *
+   * Ili tekst za oba pisma:
+   * welcomeText: {
+   *   latin: "Tekst...",
+   *   cyrillic: "Текст...",
+   * }
    */
-  const introLocationText =
-    details?.birthdayIntro?.locationText ||
-    details?.introLocationText ||
-    "";
+  const welcomeText = getLocalizedText(
+    details?.welcomeText,
+    content.defaultWelcomeText
+  );
 
   /*
-   * Završna poruka takođe može biti posebna za svaki slug.
+   * Tekst dugmeta je automatski latinica/ćirilica,
+   * ali može opciono da se promeni u slugu.
    */
-  const introMessage =
-    details?.birthdayIntro?.message ||
-    details?.introMessage ||
-    content.defaultMessage;
+  const buttonText = getLocalizedText(
+    details?.birthdayIntro?.buttonText,
+    content.openButton
+  );
 
   /*
-   * Boje se postavljaju kroz CSS promenljive.
-   * Ako nisu navedene u slugu, koriste se postojeće/default boje.
+   * Sve boje uzimaju se iz details.theme.
    */
-  const introColors = details?.birthdayIntro?.colors || {};
+  const theme = details?.theme || {};
 
   const introStyle = {
     "--birthday-intro-background":
-      introColors.background || "#f1e6dc",
+      theme.backgroundColor || "#55613A",
 
     "--birthday-intro-card-background":
-      introColors.cardBackground || "rgba(255, 255, 255, 0.82)",
+      theme.introCardBackground ||
+      "rgba(246, 241, 228, 0.12)",
 
     "--birthday-intro-text":
-      introColors.text || "#49362f",
+      theme.introMainText ||
+      theme.mainText ||
+      "#F6F1E4",
 
     "--birthday-intro-secondary-text":
-      introColors.secondaryText || introColors.text || "#705c53",
+      theme.introSoftText ||
+      theme.softText ||
+      theme.introMainText ||
+      theme.mainText ||
+      "#EFE6CF",
 
     "--birthday-intro-accent":
-      introColors.accent || "#a87b67",
+      theme.introAccent ||
+      theme.accent ||
+      "#B79A5D",
 
     "--birthday-intro-button-background":
-      introColors.buttonBackground || "#49362f",
+      theme.introButtonBg ||
+      theme.buttonBackground ||
+      "#434D2D",
 
     "--birthday-intro-button-text":
-      introColors.buttonText || "#ffffff",
+      theme.introButtonText ||
+      theme.buttonText ||
+      "#FFFDF7",
 
     "--birthday-intro-button-border":
-      introColors.buttonBorder ||
-      introColors.buttonBackground ||
-      "#49362f",
+      theme.introButtonBorder ||
+      theme.introButtonBg ||
+      theme.buttonBackground ||
+      "#434D2D",
   };
 
   return (
-    <section className="birthday-one-intro" style={introStyle}>
+    <section
+      className={`birthday-one-intro birthday-one-intro-${activeScript}`}
+      style={introStyle}
+    >
       <motion.div
         className="birthday-one-card"
         initial={{ opacity: 0, y: 18 }}
@@ -104,7 +146,10 @@ function BirthdayGalleryIntro({
           className="birthday-one-name"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.12, duration: 0.65 }}
+          transition={{
+            delay: 0.12,
+            duration: 0.65,
+          }}
         >
           {name}
         </motion.h1>
@@ -113,29 +158,56 @@ function BirthdayGalleryIntro({
           className="birthday-one-subtitle"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.25, duration: 0.55 }}
+          transition={{
+            delay: 0.25,
+            duration: 0.55,
+          }}
         >
           {content.fills}
         </motion.p>
 
         <motion.div
           className="birthday-one-shape"
-          initial={{ opacity: 0, scale: 0.985 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.35, duration: 0.7 }}
+          initial={{
+            opacity: 0,
+            scale: 0.985,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            delay: 0.35,
+            duration: 0.7,
+          }}
         >
           <div className="birthday-one-collage">
-            <div className="birthday-one-photo birthday-one-photo-top">
-              <img src={image1} alt={`${name} 1`} />
-            </div>
+            {image1 && (
+              <div className="birthday-one-photo birthday-one-photo-top">
+                <img
+                  src={image1}
+                  alt={`${name} 1`}
+                />
+              </div>
+            )}
 
-            <div className="birthday-one-photo birthday-one-photo-middle">
-              <img src={image2} alt={`${name} 2`} />
-            </div>
+            {image2 && (
+              <div className="birthday-one-photo birthday-one-photo-middle">
+                <img
+                  src={image2}
+                  alt={`${name} 2`}
+                />
+              </div>
+            )}
 
-            <div className="birthday-one-photo birthday-one-photo-bottom">
-              <img src={image3} alt={`${name} 3`} />
-            </div>
+            {image3 && (
+              <div className="birthday-one-photo birthday-one-photo-bottom">
+                <img
+                  src={image3}
+                  alt={`${name} 3`}
+                />
+              </div>
+            )}
           </div>
         </motion.div>
 
@@ -143,30 +215,40 @@ function BirthdayGalleryIntro({
           className="birthday-one-info"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.55 }}
+          transition={{
+            delay: 0.7,
+            duration: 0.55,
+          }}
         >
           <p className="birthday-one-date">
             {weddingDate} {content.timeConnector} {weddingTime}
           </p>
 
-          {introLocationText && (
-            <p className="birthday-one-location">
-              {introLocationText}
+          {welcomeText && (
+            <p className="birthday-one-welcome">
+              {welcomeText}
             </p>
           )}
-
-          <p className="birthday-one-rsvp">{introMessage}</p>
         </motion.div>
 
         <motion.button
           type="button"
           className="birthday-one-button"
           onClick={onEnter}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.55 }}
+          initial={{
+            opacity: 0,
+            y: 10,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.9,
+            duration: 0.55,
+          }}
         >
-          {content.openButton}
+          {buttonText}
         </motion.button>
       </motion.div>
     </section>

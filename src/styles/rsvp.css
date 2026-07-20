@@ -17560,3 +17560,363 @@ margin-bottom: 2px;
     font-size: 12px;
   }
 }
+
+/* =========================================
+   BIRTHDAY RSVP — THEME VARIABLES
+========================================= */
+
+.birthday-rsvp-section {
+  background-color:
+    var(
+      --birthday-rsvp-page-bg,
+      #f7f4ee
+    );
+}
+
+.birthday-rsvp-bg-image {
+  background-image:
+    var(--birthday-rsvp-bg);
+}
+
+.birthday-rsvp-overlay {
+  background:
+    var(
+      --birthday-rsvp-overlay,
+      rgba(247, 244, 238, 0.62)
+    );
+}
+
+.birthday-rsvp-card {
+  background:
+    var(
+      --birthday-rsvp-card-bg,
+      rgba(255, 255, 255, 0.76)
+    );
+
+  border-color:
+    var(
+      --birthday-rsvp-card-border,
+      rgba(100, 78, 62, 0.15)
+    );
+
+  color:
+    var(
+      --birthday-rsvp-text,
+      #2f251f
+    );
+}
+
+.birthday-rsvp-kicker {
+  color:
+    var(
+      --birthday-rsvp-kicker-text,
+      #b49778
+    );
+}
+
+.birthday-rsvp-title {
+  color:
+    var(
+      --birthday-rsvp-title-text,
+      #2f251f
+    );
+}
+
+.birthday-rsvp-subtitle {
+  color:
+    var(
+      --birthday-rsvp-subtitle-text,
+      #89796f
+    );
+}
+
+.birthday-rsvp-child-name {
+  color:
+    var(
+      --birthday-rsvp-accent,
+      #b49778
+    );
+}
+
+.birthday-rsvp-note {
+  color:
+    var(
+      --birthday-rsvp-note-text,
+      #89796f
+    );
+}
+
+.birthday-rsvp-divider {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(
+        --birthday-rsvp-divider,
+        rgba(100, 78, 62, 0.16)
+      ),
+      transparent
+    );
+}
+
+.birthday-rsvp-field label,
+.birthday-rsvp-choice-label {
+  color:
+    var(
+      --birthday-rsvp-label-text,
+      #2f251f
+    );
+}
+
+.birthday-rsvp-field input {
+  background:
+    var(
+      --birthday-rsvp-input-bg,
+      rgba(255, 255, 255, 0.72)
+    );
+
+  border-color:
+    var(
+      --birthday-rsvp-input-border,
+      rgba(100, 78, 62, 0.18)
+    );
+
+  color:
+    var(
+      --birthday-rsvp-input-text,
+      #2f251f
+    );
+}
+
+.birthday-rsvp-field input::placeholder {
+  color:
+    var(
+      --birthday-rsvp-placeholder-text,
+      #89796f
+    );
+}
+
+.birthday-choice-card {
+  background:
+    var(
+      --birthday-rsvp-choice-bg,
+      rgba(255, 255, 255, 0.45)
+    );
+}
+
+.birthday-choice-card.is-active {
+  background:
+    var(
+      --birthday-rsvp-choice-active-bg,
+      rgba(180, 151, 120, 0.14)
+    );
+
+  border-color:
+    var(
+      --birthday-rsvp-choice-active-border,
+      #b49778
+    );
+}
+
+.birthday-choice-title {
+  color:
+    var(
+      --birthday-rsvp-choice-title-text,
+      #2f251f
+    );
+}
+
+.birthday-choice-text {
+  color:
+    var(
+      --birthday-rsvp-choice-text,
+      #89796f
+    );
+}
+
+.birthday-rsvp-button {
+  background:
+    var(
+      --birthday-rsvp-button-bg,
+      #2f241d
+    );
+
+  color:
+    var(
+      --birthday-rsvp-button-text,
+      #ffffff
+    );
+
+  border-color:
+    var(
+      --birthday-rsvp-button-border,
+      #2f241d
+    );
+}
+
+.birthday-rsvp-success-heart {
+  color:
+    var(
+      --birthday-rsvp-success,
+      #b49778
+    );
+}
+
+.birthday-rsvp-success h3 {
+  color:
+    var(
+      --birthday-rsvp-success-title-text,
+      #2f251f
+    );
+}
+
+.birthday-rsvp-success p {
+  color:
+    var(
+      --birthday-rsvp-success-text,
+      #89796f
+    );
+}
+
+/* =========================================
+   BIRTHDAY COUNTDOWN — THEME VARIABLES
+========================================= */
+
+.birthday-countdown-section {
+  background-color:
+    var(
+      --birthday-countdown-page-bg,
+      #f7f4ee
+    );
+}
+
+.birthday-countdown-bg-image {
+  background-image:
+    var(--birthday-countdown-bg);
+}
+
+.birthday-countdown-overlay {
+  background:
+    var(
+      --birthday-countdown-overlay,
+      rgba(247, 244, 238, 0.62)
+    );
+}
+
+.birthday-countdown-card {
+  background:
+    var(
+      --birthday-countdown-card-bg,
+      rgba(255, 255, 255, 0.72)
+    );
+
+  border-color:
+    var(
+      --birthday-countdown-card-border,
+      rgba(100, 78, 62, 0.15)
+    );
+
+  color:
+    var(
+      --birthday-countdown-text,
+      #2f251f
+    );
+}
+
+.birthday-countdown-kicker {
+  color:
+    var(
+      --birthday-countdown-kicker-text,
+      #b49778
+    );
+}
+
+.birthday-countdown-title {
+  color:
+    var(
+      --birthday-countdown-title-text,
+      #2f251f
+    );
+}
+
+.birthday-countdown-subtitle {
+  color:
+    var(
+      --birthday-countdown-subtitle-text,
+      #89796f
+    );
+}
+
+.birthday-countdown-unit {
+  background:
+    var(
+      --birthday-countdown-unit-bg,
+      rgba(255, 255, 255, 0.48)
+    );
+
+  border-color:
+    var(
+      --birthday-countdown-unit-border,
+      rgba(100, 78, 62, 0.15)
+    );
+}
+
+.birthday-countdown-number {
+  color:
+    var(
+      --birthday-countdown-number-text,
+      #2f251f
+    );
+}
+
+.birthday-countdown-label {
+  color:
+    var(
+      --birthday-countdown-label-text,
+      #89796f
+    );
+}
+
+.birthday-countdown-finished {
+  color:
+    var(
+      --birthday-countdown-finished-text,
+      #2f251f
+    );
+}
+
+.birthday-countdown-calendar-button {
+  background:
+    var(
+      --birthday-countdown-button-bg,
+      #2f241d
+    );
+
+  color:
+    var(
+      --birthday-countdown-button-text,
+      #ffffff
+    );
+
+  border-color:
+    var(
+      --birthday-countdown-button-border,
+      #2f241d
+    );
+}
+
+.birthday-countdown-glow-one {
+  background:
+    var(
+      --birthday-countdown-glow-one,
+      rgba(255, 255, 255, 0.48)
+    );
+}
+
+.birthday-countdown-glow-two {
+  background:
+    var(
+      --birthday-countdown-glow-two,
+      rgba(200, 176, 150, 0.18)
+    );
+}
