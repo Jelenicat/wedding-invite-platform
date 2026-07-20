@@ -8727,6 +8727,7 @@ color: #8e7f73;
     --birthday-intro-text,
     #f0e6d3
   );
+
   opacity: 0.78;
 }
 
@@ -8757,9 +8758,224 @@ color: #8e7f73;
       #fff9f0
     );
 
-  border: 1px solid
+  border:
+    1px solid
     var(
       --birthday-intro-button-border,
       rgba(255, 249, 240, 0.22)
     );
+}
+
+/* =========================================
+   BIRTHDAY GALLERY INTRO
+
+   Zadržava postojeći izgled i raspored.
+   Ceo sadržaj se samo proporcionalno
+   smanjuje kada je ekran niži.
+
+   Važi za sve BirthdayGalleryIntro slugove.
+========================================= */
+
+.birthday-gallery-intro {
+  --birthday-gallery-intro-scale: 1;
+
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  max-height: 100vh;
+  max-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    max(8px, env(safe-area-inset-top))
+    10px
+    max(8px, env(safe-area-inset-bottom));
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/*
+ * Kartica zadržava svoj originalni raspored.
+ *
+ * Ne koristimo grid i ne razvlačimo karticu
+ * na celu visinu ekrana.
+ */
+.birthday-gallery-intro
+  .birthday-one-card {
+  flex: 0 0 auto;
+
+  width: min(100%, 520px);
+
+  height: auto;
+  min-height: 0;
+  max-height: none;
+
+  margin: 0;
+
+  box-sizing: border-box;
+  overflow: visible;
+
+  /*
+   * Koristimo zasebno CSS scale svojstvo
+   * kako ne bismo prepisali Framer Motion
+   * transform animacije.
+   */
+  scale:
+    var(
+      --birthday-gallery-intro-scale
+    );
+
+  transform-origin: center center;
+}
+
+/*
+ * Blok sa slikama zadržava postojeću
+ * veličinu, položaj i oblik.
+ */
+.birthday-gallery-intro
+  .birthday-one-shape {
+  flex: 0 0 auto;
+
+  height: auto;
+  min-height: 0;
+  max-height: none;
+
+  overflow: visible;
+}
+
+/*
+ * Ne menjamo postojeći raspored
+ * tri fotografije.
+ */
+.birthday-gallery-intro
+  .birthday-one-collage {
+  flex: 0 0 auto;
+
+  min-height: 0;
+  max-height: none;
+}
+
+/*
+ * Ime, podnaslov, informacije i dugme
+ * ne smeju da se skupljaju pojedinačno.
+ */
+.birthday-gallery-intro
+  .birthday-one-name,
+.birthday-gallery-intro
+  .birthday-one-subtitle,
+.birthday-gallery-intro
+  .birthday-one-info,
+.birthday-gallery-intro
+  .birthday-one-button {
+  flex-shrink: 0;
+}
+
+/* =========================================
+   EKRANI NIŽI OD 900px
+========================================= */
+
+@media (max-height: 900px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.94;
+  }
+}
+
+/* =========================================
+   EKRANI NIŽI OD 840px
+========================================= */
+
+@media (max-height: 840px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.88;
+  }
+}
+
+/* =========================================
+   EKRANI NIŽI OD 780px
+========================================= */
+
+@media (max-height: 780px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.81;
+  }
+}
+
+/* =========================================
+   EKRANI NIŽI OD 720px
+========================================= */
+
+@media (max-height: 720px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.74;
+  }
+}
+
+/* =========================================
+   EKRANI NIŽI OD 660px
+========================================= */
+
+@media (max-height: 660px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.68;
+  }
+}
+
+/* =========================================
+   VEOMA NISKI EKRANI
+========================================= */
+
+@media (max-height: 600px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.61;
+  }
+}
+
+/* =========================================
+   UŽI TELEFONI
+========================================= */
+
+@media (max-width: 390px) {
+  .birthday-gallery-intro
+    .birthday-one-card {
+    width: min(100%, 480px);
+  }
+}
+
+@media (max-width: 390px) and (max-height: 840px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.84;
+  }
+}
+
+@media (max-width: 390px) and (max-height: 740px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.74;
+  }
+}
+
+@media (max-width: 390px) and (max-height: 660px) {
+  .birthday-gallery-intro {
+    --birthday-gallery-intro-scale: 0.65;
+  }
+}
+
+/* =========================================
+   ŠIRI EKRANI
+========================================= */
+
+@media (min-width: 768px) {
+  .birthday-gallery-intro
+    .birthday-one-card {
+    width: min(100%, 600px);
+  }
 }

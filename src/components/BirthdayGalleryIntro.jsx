@@ -132,10 +132,10 @@ function BirthdayGalleryIntro({
   };
 
   return (
-    <section
-      className={`birthday-one-intro birthday-one-intro-${activeScript}`}
-      style={introStyle}
-    >
+   <section
+  className={`birthday-one-intro birthday-gallery-intro birthday-one-intro-${activeScript}`}
+  style={introStyle}
+>
       <motion.div
         className="birthday-one-card"
         initial={{ opacity: 0, y: 18 }}
