@@ -6627,6 +6627,216 @@ musicSrc: "/music/eva-1.mp3",
     },
   }),
 },
+
+{
+  slug: "nina-milan",
+  type: "wedding",
+  template: "split-video",
+
+  brideName: "Nina",
+  groomName: "Milan",
+
+  videoSrc: "/videos/ana-ognjen-1.mp4",
+  musicSrc: "/music/olja-milos.mp3",
+
+  weddingDate: "23 AVG 2026",
+  weddingTime: "16:00",
+  venue: "Garni Hotel Oblačinsko Jezero",
+
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+
+  details: createDetails({
+    backgroundImage: "/images/nina-milan-split.jpg",
+
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "23 AVG 2026",
+    dateISO: "2026-08-23T16:00:00+02:00",
+
+    showCalendarButton: false,
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+        note: "Početak okupljanja i dragi susreti pre ceremonije.",
+      },
+      {
+        label: "Ceremonija građanskog venčanja",
+        time: "17:15",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+        note: "Trenutak kada počinje naše novo poglavlje.",
+      },
+      {
+        label: "Večera",
+        time: "18:00",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+        note: "Veče uz muziku, nazdravljanje i slavlje.",
+      },
+      {
+        label: "Torta",
+        time: "21:00",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+        note: "Slatki trenutak koji ćemo podeliti sa svima vama.",
+      },
+    ],
+
+    theme: {
+      mainText: "#ffffff",
+      softText: "#ffffff",
+      scriptText: "#ffffff",
+      mutedText: "#ffffff",
+
+      accent: "#ffffff",
+      accentStrong: "#ffffff",
+      buttonText: "#000000",
+
+      cardBg: "rgba(255, 255, 255,0.1)",
+      cardBorder: "transparent",
+      frameBorder: "rgba(255, 255, 255, 0.25)",
+
+      paperOverlayTop: "rgba(255,255,255,0.03)",
+      paperOverlayBottom: "rgba(36,59,107,0.06)",
+      vignetteColor: "rgba(123,18,52,0.08)",
+
+      flowLine: "#ffffff",
+      dividerLine: "#ffffff",
+      nodeRing: "rgba(181,144,59,0.16)",
+      backgroundColor: "#000000",
+
+      /* INTRO */
+      introMainText: "#ffffff",
+      introAccent: "#ffffff",
+      introButtonBg: "rgba(255,255,255,0.18)",
+      introButtonBorder: "rgba(255,255,255,0.35)",
+      introButtonText: "#000000",
+      introButtonHoverBg: "rgba(255,255,255,0.28)",
+
+      /* RSVP */
+      rsvpButtonBg: "#a24242",
+      rsvpButtonText: "#ffffff",
+    },
+
+    showDressCode: true,
+    venue: "Garni Hotel Oblačinsko Jezero",
+    dressCodeTitle: "Dress code",
+  dressCodePalette: [
+  "#FFEBC6", // svetlo žuta
+  "#EEE0D3", // svetlo bež
+  "#DBD7D4", // svetlo siva
+  "#9D997E", // maslinasta
+  "#FCF2E9", // krem
+],
+    dressCodeNote:
+      "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+
+    mapLink:
+      "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+
+    note: "Molimo Vas da svoj dolazak potvrdite do 08.08.",
+  }),
+},
+
+{
+  slug: "nina-milan-magazine",
+  type: "wedding",
+  template: "magazine-editorial",
+
+  brideName: "Nina",
+  groomName: "Milan",
+
+  weddingDate: "23 AVG 2026",
+  weddingTime: "16:00",
+  venue: "Garni Hotel Oblačinsko Jezero",
+
+  videoSrc: "/videos/nina-milan-magazine.mp4",
+  image1: "/images/nevena-pedja/location.jpg",
+
+  // Privremena pesma
+  musicSrc: "/music/olja-milos.mp3",
+
+  details: createDetails({
+    ticketNumber: "230826NM",
+
+    welcomeText:
+      "Radujemo se da ovaj poseban dan podelimo sa vama.",
+
+    date: "23 AVG 2026",
+    dateISO: "2026-08-23T16:00:00+02:00",
+
+    venue: "Garni Hotel Oblačinsko Jezero",
+
+    showCalendarButton: false,
+
+    showDressCode: true,
+    dressCodeTitle: "Dress code",
+
+    dressCodeNote:
+      "Molimo vas da birate svetlo žute, svetlo bež, svetlo sive, maslinaste i krem tonove.",
+
+    dressCodePalette: [
+      "#FFEBC6",
+      "#EEE0D3",
+      "#DBD7D4",
+      "#9D997E",
+      "#FCF2E9",
+    ],
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+      },
+      {
+        label: "Ceremonija građanskog venčanja",
+        time: "17:15",
+        icon: "civil",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+      },
+      {
+        label: "Večera",
+        time: "18:00",
+        icon: "restaurant",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+      },
+      {
+        label: "Torta",
+        time: "21:00",
+        icon: "cake",
+        location: "Garni Hotel Oblačinsko Jezero",
+        mapLink:
+          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+      },
+    ],
+
+    mapLink:
+      "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
+
+    note:
+      "Molimo Vas da svoj dolazak potvrdite do 08.08.2026.",
+
+    rsvpDeadline: "08.08.2026.",
+    rsvpDeadlineISO: "2026-08-08",
+  }),
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

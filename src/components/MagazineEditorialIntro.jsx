@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 
 function MagazineEditorialIntro({
+  slug,
   brideName,
   groomName,
   weddingDate,
   backgroundImage,
+  videoSrc,
   details = {},
   onEnter,
 }) {
@@ -12,6 +14,9 @@ function MagazineEditorialIntro({
     backgroundImage ||
     details?.backgroundImage ||
     "/images/magazine-intro-bg.png";
+
+  const hasVideoBackground =
+    slug === "nina-milan-magazine" && Boolean(videoSrc);
 
   const dateText = details?.date || weddingDate || "21 JUL 2026";
 
@@ -28,13 +33,35 @@ function MagazineEditorialIntro({
 
   return (
     <section className="mag-intro">
-      <motion.div
-        className="mag-intro-bg"
-        style={{ backgroundImage: `url(${bg})` }}
-        initial={{ scale: 1.06 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.6, ease: "easeOut" }}
-      />
+      {hasVideoBackground ? (
+        <motion.video
+          className="mag-intro-bg mag-intro-bg-video"
+          src={videoSrc}
+          poster={bg}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.6, ease: "easeOut" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+      ) : (
+        <motion.div
+          className="mag-intro-bg"
+          style={{ backgroundImage: `url(${bg})` }}
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.6, ease: "easeOut" }}
+        />
+      )}
 
       <div className="mag-intro-overlay" />
       <div className="mag-intro-grain" />
@@ -84,7 +111,9 @@ function MagazineEditorialIntro({
         >
           <p>LJUBAVNA PRIČA</p>
           <p>VREDNA SLAVLJA.</p>
+
           <span />
+
           <p>PRIDRUŽITE NAM SE</p>
           <p>NA POČETKU ZAUVEK.</p>
         </motion.div>
@@ -128,8 +157,6 @@ function MagazineEditorialIntro({
           OTVORI POZIVNICU
           <span />
         </motion.button>
-
-        
       </motion.div>
     </section>
   );

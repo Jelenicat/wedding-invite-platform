@@ -18,6 +18,10 @@ export default function EditorialInvitationCard({
   const dressWomen = details?.dressCodeWomen || "";
   const dressMen = details?.dressCodeMen || "";
 
+  const dressCodePalette = Array.isArray(details?.dressCodePalette)
+    ? details.dressCodePalette.filter(Boolean)
+    : [];
+
   const locationText =
     venue ||
     details?.venue ||
@@ -26,44 +30,44 @@ export default function EditorialInvitationCard({
     "";
 
   const getAleksandraAleksaEventIcon = (event) => {
-  if (!isAleksandraAleksa) return null;
+    if (!isAleksandraAleksa) return null;
 
-  const label = event?.label?.toLowerCase() || "";
-  const icon = event?.icon || "";
+    const label = event?.label?.toLowerCase() || "";
+    const icon = event?.icon || "";
 
-  if (icon === "church" || label.includes("crkven")) {
-    return "/icons/crkva.svg";
-  }
+    if (icon === "church" || label.includes("crkven")) {
+      return "/icons/crkva.svg";
+    }
 
-  if (
-    icon === "gathering" ||
-    label.includes("okupljanje") ||
-    label.includes("skup")
-  ) {
-    return "/icons/gathering.svg";
-  }
+    if (
+      icon === "gathering" ||
+      label.includes("okupljanje") ||
+      label.includes("skup")
+    ) {
+      return "/icons/gathering.svg";
+    }
 
-  if (
-    icon === "civil" ||
-    label.includes("građansko") ||
-    label.includes("gradjansko")
-  ) {
-    return "/icons/civil.svg";
-  }
+    if (
+      icon === "civil" ||
+      label.includes("građansko") ||
+      label.includes("gradjansko")
+    ) {
+      return "/icons/civil.svg";
+    }
 
-  if (
-    icon === "restaurant" ||
-    icon === "dinner" ||
-    label.includes("restoran") ||
-    label.includes("večera") ||
-    label.includes("vecera") ||
-    label.includes("proslava")
-  ) {
-    return "/icons/restaurant.svg";
-  }
+    if (
+      icon === "restaurant" ||
+      icon === "dinner" ||
+      label.includes("restoran") ||
+      label.includes("večera") ||
+      label.includes("vecera") ||
+      label.includes("proslava")
+    ) {
+      return "/icons/restaurant.svg";
+    }
 
-  return null;
-};
+    return null;
+  };
 
   return (
     <section
@@ -187,7 +191,8 @@ export default function EditorialInvitationCard({
                 <div className="editorial-timeline-line" />
 
                 {events.map((event, index) => {
-                  const eventIconSrc = getAleksandraAleksaEventIcon(event);
+                  const eventIconSrc =
+                    getAleksandraAleksaEventIcon(event);
 
                   return (
                     <div
@@ -195,7 +200,9 @@ export default function EditorialInvitationCard({
                       key={`${event.time || "event"}-${index}`}
                     >
                       {event.time && (
-                        <div className="editorial-time">{event.time}</div>
+                        <div className="editorial-time">
+                          {event.time}
+                        </div>
                       )}
 
                       {eventIconSrc && (
@@ -244,24 +251,37 @@ export default function EditorialInvitationCard({
               </h2>
 
               <div className="editorial-dress-copy">
-                {dressWomen && <p>{dressWomen}</p>}
-                {dressMen && <p>{dressMen}</p>}
-
-                {!dressWomen && !dressMen && details?.dressCodeNote && (
+                {details?.dressCodeNote && (
                   <p>{details.dressCodeNote}</p>
                 )}
 
-                {!dressWomen && !dressMen && !details?.dressCodeNote && (
-                  <p>Elegantna garderoba u skladu sa stilom proslave.</p>
-                )}
+                {dressWomen && <p>{dressWomen}</p>}
+
+                {dressMen && <p>{dressMen}</p>}
+
+                {!details?.dressCodeNote &&
+                  !dressWomen &&
+                  !dressMen && (
+                    <p>
+                      Elegantna garderoba u skladu sa stilom proslave.
+                    </p>
+                  )}
               </div>
 
-              <div className="editorial-color-row">
-                <span className="editorial-color editorial-color-light" />
-                <span className="editorial-color editorial-color-dark" />
-              </div>
-
-              <div className="editorial-color-label">CRNI TONOVI</div>
+              {dressCodePalette.length > 0 && (
+                <div className="editorial-dress-palette-box">
+                  <div className="editorial-dress-palette">
+                    {dressCodePalette.map((color, index) => (
+                      <span
+                        key={`${color}-${index}`}
+                        className="editorial-dress-palette-dot"
+                        style={{ backgroundColor: color }}
+                        aria-label={`Dress code boja ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </section>
           )}
 
