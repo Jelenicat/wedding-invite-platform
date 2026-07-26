@@ -4900,6 +4900,12 @@ events: [
         icon: "church",
         location: "Svetište sv. Leopolda Bogdana Mandića",
       },
+      {
+         label: "Svadbena svečanost",
+        time: "20:00",
+        icon: "restaurant",
+        location: "Restoran Laguna",
+      },
     ],
 
     showCalendarButton: false,
