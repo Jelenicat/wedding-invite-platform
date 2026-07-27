@@ -6857,7 +6857,7 @@ musicSrc: "/music/eva-1.mp3",
   venue: "Svečana sala Lollywood",
 
   musicSrc:
-    "/music/eva-1.mp3",
+    "/music/elena-18.mp3",
 
   introPreviewImage:
     "/images/elena-intro/background.webp",
@@ -7019,7 +7019,7 @@ musicSrc: "/music/eva-1.mp3",
   venue: "Svečana sala Lollywood",
 
   musicSrc:
-    "/music/eva-1.mp3",
+    "/music/elena-18.mp3",
 
   introPreviewImage:
     "/images/elena-intro-2/background.webp",
@@ -7164,6 +7164,177 @@ musicSrc: "/music/eva-1.mp3",
 
       pageBackground:
         "#efc4b2",
+    },
+  }),
+},
+
+{
+  slug: "elena-18-3",
+  type: "birthday",
+  template: "birthday-intro",
+  script: "latin",
+
+  brideName: "Elena",
+
+  weddingDate: "12.09.2026.",
+  weddingTime: "18:00",
+  venue: "Svečana sala Lollywood",
+
+  musicSrc:
+    "/music/elena-18.mp3",
+
+  introPreviewImage:
+    "/images/elena-intro-3/background.webp",
+
+  details: createDetails({
+    age: 18,
+
+    date:
+      "12.09.2026.",
+
+    dateISO:
+      "2026-09-12T18:00:00+02:00",
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Elenin 18. rođendan.",
+
+    venue:
+      "Svečana sala Lollywood",
+
+    locationName:
+      "Svečana sala Lollywood",
+
+    locationAddress:
+      "Savska 2a, Ostružnica",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Svecana+sala+Lollywood+Savska+2a+Ostruznica",
+
+    showCalendarButton: true,
+
+    showDressCode: true,
+
+    dressCodeTitle:
+      "Dress code",
+
+    dressCodeNote:
+      "Sve boje su dozvoljene osim bele i baby roze.",
+
+    dressCodePalette: [],
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
+
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
+
+    /*
+     * Pozadina invitation card sekcije
+     */
+    cardBackground:
+      "/images/elena-intro-3/elena-card-background.webp",
+
+    /*
+     * Pozadina RSVP sekcije
+     */
+    rsvpImage:
+      "/images/elena-intro-3/elena-rsvp-background.webp",
+
+    /*
+     * Countdown sekcija
+     */
+    birthdayGalleryCountdown: {
+      backgroundImage:
+        "/images/elena-intro-3/elena-countdown-background.webp",
+
+      kicker:
+        "ODBROJAVANJE",
+
+      title:
+        "DO PROSLAVE JE OSTALO",
+
+      finishedTitle:
+        "POSEBAN DAN JE STIGAO",
+
+      finishedText:
+        "Vidimo se na proslavi!",
+
+      calendarButtonText:
+        "DODAJ U KALENDAR",
+
+      calendarHint:
+        "Sačuvajte datum proslave u svom telefonu.",
+
+      showCalendarButton: true,
+    },
+
+    /*
+     * Intro sekcija
+     */
+    birthdayIntro: {
+      backgroundImage:
+        "/images/elena-intro-3/background.webp",
+
+      backgroundPosition:
+        "center top",
+
+      backgroundSize:
+        "cover",
+
+      name:
+        "Elena",
+
+      age:
+        18,
+
+      date:
+        "12.09.2026.",
+
+      birthdayLabel:
+        "ROĐENDAN",
+
+      buttonText:
+        "POGLEDAJ POZIVNICU",
+
+      contentTop:
+        "18.5%",
+
+      buttonBottom:
+        "7.5%",
+
+      /*
+       * Hladnija srebrno-šampanj paleta
+       * samo za ovu treću verziju.
+       */
+      textColor:
+        "#7d7778",
+
+      accentColor:
+        "#aaa2a3",
+
+      nameColor:
+        "#8f8788",
+
+      ageColor:
+        "#8f8788",
+
+      nameGradient:
+        "linear-gradient(180deg, #6f6a6c 0%, #b8b1b2 18%, #f1eeee 38%, #aaa2a4 56%, #7c7577 76%, #c9c2c3 100%)",
+
+      ageGradient:
+        "linear-gradient(180deg, #6d686a 0%, #b5adaf 18%, #eee9ea 38%, #a79fa1 58%, #777173 78%, #c5bdbe 100%)",
+
+      buttonBackground:
+        "rgba(250, 248, 248, 0.8)",
+
+      buttonTextColor:
+        "#777173",
+
+      buttonBorderColor:
+        "rgba(164, 156, 158, 0.48)",
+
+      pageBackground:
+        "#f5efed",
     },
   }),
 },

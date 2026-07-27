@@ -148,9 +148,6 @@ function BirthdayElenaCountdown({
           "ДОДАЈ У КАЛЕНДАР",
         calendarHint:
           "Сачувајте датум прославе у свом телефону.",
-        dateLabel: "ДАТУМ",
-        timeLabel: "ВРЕМЕ",
-        venueLabel: "МЕСТО",
       }
     : {
         kicker: "ODBROJAVANJE",
@@ -167,9 +164,6 @@ function BirthdayElenaCountdown({
           "DODAJ U KALENDAR",
         calendarHint:
           "Sačuvajte datum proslave u svom telefonu.",
-        dateLabel: "DATUM",
-        timeLabel: "VREME",
-        venueLabel: "MESTO",
       };
 
   const countdownBackground =
@@ -201,17 +195,6 @@ function BirthdayElenaCountdown({
   const finishedText =
     countdownConfig?.finishedText ||
     text.finishedText;
-
-  const displayedDate =
-    countdownConfig?.date ||
-    details?.date ||
-    weddingDate ||
-    "";
-
-  const displayedTime =
-    countdownConfig?.time ||
-    weddingTime ||
-    "";
 
   const displayedVenue =
     countdownConfig?.venue ||
@@ -273,22 +256,59 @@ function BirthdayElenaCountdown({
         value: timeLeft.seconds,
       },
     ];
-  }, [timeLeft, text.days, text.hours, text.minutes, text.seconds]);
+  }, [
+    timeLeft,
+    text.days,
+    text.hours,
+    text.minutes,
+    text.seconds,
+  ]);
 
   const handleCalendarClick = () => {
+    const defaultCalendarTitle = isCyrillic
+      ? age === 1
+        ? `${name} — први рођендан`
+        : `${name} — ${age}. рођендан`
+      : age === 1
+        ? `${name} — prvi rođendan`
+        : `${name} — ${age}. rođendan`;
+
+    const defaultCalendarDescription =
+      isCyrillic
+        ? "Радујемо се вашем доласку!"
+        : "Radujemo se vašem dolasku!";
+
     addToCalendar({
       brideName: name,
       groomName: "",
-      dateISO: targetDate,
+
+      dateISO:
+        details?.dateISO ||
+        targetDate,
+
       venue:
         details?.venue ||
         displayedVenue,
+
       mapLink:
         details?.mapLink,
+
       note:
-        details?.note,
+        details?.calendarDescription ||
+        details?.note ||
+        defaultCalendarDescription,
+
       durationHours:
         details?.calendarDurationHours,
+
+      eventType: "birthday",
+      age,
+
+      eventTitle:
+        details?.calendarTitle ||
+        defaultCalendarTitle,
+
+      language: "sr",
     });
   };
 
@@ -351,7 +371,9 @@ function BirthdayElenaCountdown({
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <GemHeart className="birthday-elena-countdown__top-gem" />
+          <GemHeart
+            className="birthday-elena-countdown__top-gem"
+          />
 
           <p className="birthday-elena-countdown__kicker">
             {kicker}
@@ -366,52 +388,49 @@ function BirthdayElenaCountdown({
           <Ornament />
 
           {timeLeft ? (
-            <>
-              <div className="birthday-elena-countdown__grid">
-                {items.map((item) => (
-                  <div
-                    className="birthday-elena-countdown__item"
-                    key={item.key}
+            <div className="birthday-elena-countdown__grid">
+              {items.map((item) => (
+                <div
+                  className="birthday-elena-countdown__item"
+                  key={item.key}
+                >
+                  <AnimatePresence
+                    mode="popLayout"
+                    initial={false}
                   >
-                    <AnimatePresence
-                      mode="popLayout"
-                      initial={false}
+                    <motion.strong
+                      key={item.value}
+                      initial={{
+                        opacity: 0,
+                        y: 8,
+                        scale: 0.96,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: -8,
+                        scale: 0.96,
+                      }}
+                      transition={{
+                        duration: 0.22,
+                      }}
                     >
-                      <motion.strong
-                        key={item.value}
-                        initial={{
-                          opacity: 0,
-                          y: 8,
-                          scale: 0.96,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                          scale: 1,
-                        }}
-                        exit={{
-                          opacity: 0,
-                          y: -8,
-                          scale: 0.96,
-                        }}
-                        transition={{
-                          duration: 0.22,
-                        }}
-                      >
-                        {String(
-                          item.value
-                        ).padStart(2, "0")}
-                      </motion.strong>
-                    </AnimatePresence>
+                      {String(
+                        item.value
+                      ).padStart(2, "0")}
+                    </motion.strong>
+                  </AnimatePresence>
 
-                    <span>
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-            </>
+                  <span>
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           ) : (
             <motion.div
               className="birthday-elena-countdown__finished"
@@ -473,7 +492,6 @@ function BirthdayElenaCountdown({
               </p>
             </motion.div>
           )}
-
         </motion.div>
       </div>
     </motion.section>

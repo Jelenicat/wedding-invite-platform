@@ -143,6 +143,7 @@ function SideFlourish({
 }
 
 function BirthdayIntro({
+  slug,
   brideName,
   weddingDate,
   introPreviewImage,
@@ -271,7 +272,14 @@ function BirthdayIntro({
 
   return (
     <motion.section
-      className="birthday-intro"
+      className={[
+        "birthday-intro",
+        slug
+          ? `birthday-intro--${slug}`
+          : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       style={cssVariables}
       initial={{
         opacity: 0,
@@ -287,7 +295,8 @@ function BirthdayIntro({
       <div
         className="birthday-intro__canvas"
         style={{
-          backgroundImage: `url("${introBackground}")`,
+          backgroundImage:
+            `url("${introBackground}")`,
         }}
       >
         <motion.div
@@ -326,16 +335,16 @@ function BirthdayIntro({
           <div className="birthday-intro__age-row">
             <SideFlourish />
 
-        <div
-  data-text={`${age}.`}
-  className={`birthday-intro__age ${
-    ageGradient !== "none"
-      ? "has-gradient"
-      : ""
-  }`}
->
-  {age}.
-</div>
+            <div
+              data-text={`${age}.`}
+              className={`birthday-intro__age ${
+                ageGradient !== "none"
+                  ? "has-gradient"
+                  : ""
+              }`}
+            >
+              {age}.
+            </div>
 
             <SideFlourish
               mirrored
