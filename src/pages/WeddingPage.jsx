@@ -41,6 +41,8 @@ import BirthdayOneWordInvitationCard from "../components/BirthdayOneWordInvitati
 import BirthdaySplitIntro from "../components/BirthdaySplitIntro";
 import BirthdaySplitInvitationCard from "../components/BirthdaySplitInvitationCard";
 import BirthdayPartyIntro from "../components/BirthdayPartyIntro";
+import BirthdayIntro from "../components/BirthdayIntro";
+import BirthdayElenaInvitationCard from "../components/BirthdayElenaInvitationCard";
 
 import AngelIntro from "../components/AngelIntro";
 import AngelInvitationCard from "../components/AngelInvitationCard";
@@ -281,6 +283,10 @@ const TEMPLATE_COMPONENTS = {
 "birthday-eva": {
   Intro: BirthdayEvaIntro,
   Invitation: BirthdaySplitInvitationCard,
+},
+"birthday-intro": {
+  Intro: BirthdayIntro,
+   Invitation: BirthdayElenaInvitationCard,
 },
 };
 
