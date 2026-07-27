@@ -7185,6 +7185,7 @@ musicSrc: "/music/eva-1.mp3",
 
   introPreviewImage:
     "/images/elena-intro-3/background.webp",
+  uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
 
   details: createDetails({
     age: 18,
