@@ -6856,14 +6856,20 @@ musicSrc: "/music/eva-1.mp3",
   weddingTime: "18:00",
   venue: "Svečana sala Lollywood",
 
+  musicSrc:
+    "/music/eva-1.mp3",
+
   introPreviewImage:
     "/images/elena-intro/background.webp",
 
   details: createDetails({
     age: 18,
 
-    date: "12.09.2026.",
-    dateISO: "2026-09-12T18:00:00+02:00",
+    date:
+      "12.09.2026.",
+
+    dateISO:
+      "2026-09-12T18:00:00+02:00",
 
     welcomeText:
       "Pozivamo vas da zajedno proslavimo Elenin 18. rođendan.",
@@ -6945,8 +6951,11 @@ musicSrc: "/music/eva-1.mp3",
       backgroundImage:
         "/images/elena-intro/background.webp",
 
+      /*
+       * Čuva gornji deo slike na telefonu.
+       */
       backgroundPosition:
-        "center center",
+        "center top",
 
       backgroundSize:
         "cover",
@@ -6978,14 +6987,18 @@ musicSrc: "/music/eva-1.mp3",
       accentColor:
         "#c98a75",
 
+      /*
+       * Nežnije dugme koje se bolje uklapa
+       * sa puder-roze pozadinom.
+       */
       buttonBackground:
-        "rgba(247, 218, 203, 0.96)",
+        "rgba(247, 232, 228, 0.82)",
 
       buttonTextColor:
-        "#845748",
+        "#86615d",
 
       buttonBorderColor:
-        "rgba(190, 123, 101, 0.84)",
+        "rgba(177, 131, 126, 0.52)",
 
       pageBackground:
         "#efc4b2",
@@ -7005,14 +7018,20 @@ musicSrc: "/music/eva-1.mp3",
   weddingTime: "18:00",
   venue: "Svečana sala Lollywood",
 
+  musicSrc:
+    "/music/eva-1.mp3",
+
   introPreviewImage:
     "/images/elena-intro-2/background.webp",
 
   details: createDetails({
     age: 18,
 
-    date: "12.09.2026.",
-    dateISO: "2026-09-12T18:00:00+02:00",
+    date:
+      "12.09.2026.",
+
+    dateISO:
+      "2026-09-12T18:00:00+02:00",
 
     welcomeText:
       "Pozivamo vas da zajedno proslavimo Elenin 18. rođendan.",
@@ -7048,19 +7067,19 @@ musicSrc: "/music/eva-1.mp3",
       "Molimo vas da svoj dolazak potvrdite do 01.09.2026.",
 
     /*
-     * Nova pozadina invitation card sekcije
+     * Pozadina invitation card sekcije
      */
     cardBackground:
       "/images/elena-intro-2/elena-card-background.webp",
 
     /*
-     * Nova pozadina RSVP sekcije
+     * Pozadina RSVP sekcije
      */
     rsvpImage:
       "/images/elena-intro-2/elena-rsvp-background.webp",
 
     /*
-     * Nova pozadina countdown sekcije
+     * Countdown sekcija
      */
     birthdayGalleryCountdown: {
       backgroundImage:
@@ -7088,14 +7107,17 @@ musicSrc: "/music/eva-1.mp3",
     },
 
     /*
-     * Intro sekcija sa novom slikom
+     * Intro sekcija
      */
     birthdayIntro: {
       backgroundImage:
         "/images/elena-intro-2/background.webp",
 
+      /*
+       * Čuva vrh slike na telefonu.
+       */
       backgroundPosition:
-        "center center",
+        "center top",
 
       backgroundSize:
         "cover",
@@ -7127,6 +7149,10 @@ musicSrc: "/music/eva-1.mp3",
       accentColor:
         "#c98a75",
 
+      /*
+       * Nežnije dugme usklađeno
+       * sa puder-roze pozadinom.
+       */
       buttonBackground:
         "rgba(247, 232, 228, 0.82)",
 

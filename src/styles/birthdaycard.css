@@ -4350,3 +4350,85 @@
   > .birthday-elena-card__ornament:first-child {
   visibility: hidden;
 }
+
+/* =========================================
+   ELENA CARD — UŽI RASPORED NA TELEFONU
+========================================= */
+
+@media (max-width: 480px) {
+  .birthday-elena-card__content {
+    width: 100%;
+    max-width: 100%;
+
+    padding:
+      clamp(4.2rem, 8.2svh, 5rem)
+      11%
+      clamp(13rem, 24svh, 15.5rem);
+  }
+
+  .birthday-elena-card__details {
+    width: 92%;
+    max-width: 20rem;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .birthday-elena-card__info-row {
+    width: 100%;
+    min-width: 0;
+
+    grid-template-columns:
+      2.35rem
+      1px
+      minmax(0, 1fr);
+
+    gap: 0.5rem;
+  }
+
+  .birthday-elena-card__info-icon {
+    width: 2.35rem;
+    min-width: 2.35rem;
+  }
+
+  .birthday-elena-card__info-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .birthday-elena-card__info-copy {
+    min-width: 0;
+    max-width: 100%;
+
+    text-align: left;
+
+    overflow-wrap: break-word;
+  }
+
+  .birthday-elena-card__info-copy strong {
+    font-size:
+      clamp(0.96rem, 4vw, 1.12rem);
+  }
+
+  .birthday-elena-card__info-copy span {
+    font-size:
+      clamp(0.84rem, 3.5vw, 0.96rem);
+  }
+
+  .birthday-elena-card__dresscode {
+    width: 88%;
+    max-width: 18rem;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .birthday-elena-card__dresscode p {
+    max-width: 15rem;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-inline: 0.25rem;
+  }
+}
