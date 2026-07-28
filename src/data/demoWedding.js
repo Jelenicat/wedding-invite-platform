@@ -3536,6 +3536,130 @@ theme: {
 },
   },
 },
+{
+  slug: "marko-rodjendan",
+  type: "birthday",
+  template: "birthday-glass-luxury",
+
+  brideName: "Marko",
+
+  weddingDate: "12.09.2026.",
+  weddingTime: "19:00",
+  venue: "Lumière Event Center",
+
+  backgroundImage: "/images/birthday-glass-bg.jpg",
+  introBackgroundImage: "/images/birthday-glass-intro.jpg",
+  musicSrc: "/music/marko-18.mp3",
+  uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
+
+  details: createDetails({
+    age: 18,
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Markov 18. rođendan.",
+
+    date: "12.09.2026.",
+    dateISO: "2026-09-12T19:00:00+02:00",
+
+    rsvpSignature: "Marko",
+
+    venue: "Lumière Event Center",
+    locationName: "Lumière Event Center",
+    locationAddress: "Beograd",
+
+    mapLink:
+      "https://maps.google.com/?q=Lumiere+Event+Center+Beograd",
+
+    note: "Molimo vas da potvrdite dolazak do 01.09.",
+    rsvpDeadline: "01.09.2026.",
+
+    showCalendarButton: true,
+
+    showDressCode: false,
+    dressCodeTitle: "Dress code",
+    dressCodePalette: ["#050403", "#d8aa68", "#f6ead4", "#17311f"],
+    dressCodeNote:
+      "Elegantne kombinacije u tamnim i zlatnim tonovima su dobrodošle.",
+  }),
+},
+
+{
+  slug: "masa-1",
+  type: "birthday",
+  template: "birthday-eva",
+  script: "latin",
+
+  brideName: "Maša",
+  title: "Prvi rođendan",
+
+  videoSrc: "/videos/eva-1.mp4",
+
+  weddingDate: "6. septembar 2026.",
+  weddingTime: "16:00",
+  venue: "Vila Jelena",
+
+  musicSrc: "/music/eva-1.mp3",
+
+  introPreviewImage: "/images/masa/masa-intro-bg.png",
+  babyImage: "/images/masa/masa-bear.svg",
+  introText: "slavi svoj prvi rođendan",
+
+  backgroundImage: "/images/eva/eva-bg.png",
+
+  details: createDetails({
+    welcomeText: "Radujemo se vašem dolasku!",
+
+    date: "6. septembar 2026.",
+    dateISO: "2026-09-06T16:00:00+02:00",
+
+    venue: "Vila Jelena",
+
+    note: "Molimo vas da dolazak potvrdite do 25. avgusta.",
+    rsvpText: "Molimo vas da dolazak potvrdite do 25. avgusta.",
+
+    showCalendarButton: false,
+    calendarDurationHours: 4,
+  }),
+},
+{
+  slug: "jovan-1",
+  type: "birthday",
+  template: "birthday-eva",
+  script: "latin",
+
+  brideName: "Jovan",
+  title: "Prvi rođendan",
+
+  videoSrc: "/videos/vuk-1.mp4",
+
+  weddingDate: "20. septembar 2026.",
+  weddingTime: "17:00",
+  venue: "Sala Garden",
+
+  musicSrc: "/music/eva-1.mp3",
+
+  introPreviewImage: "/images/jovan/jovan-intro-bg.png",
+  babyImage: "/images/jovan/jovan-bear.svg",
+  introText: "slavi svoj prvi rođendan",
+
+    backgroundImage: "/images/eva/eva-bg.png",
+
+  details: createDetails({
+    welcomeText: "Radujemo se vašem dolasku!",
+
+    date: "20. septembar 2026.",
+    dateISO: "2026-09-20T17:00:00+02:00",
+
+    venue: "Sala Garden",
+
+    note: "Molimo vas da dolazak potvrdite do 10. septembra.",
+    rsvpText:
+      "Molimo vas da dolazak potvrdite do 10. septembra.",
+
+    showCalendarButton: false,
+    calendarDurationHours: 4,
+  }),
+},
 // =========================
 // Klijenti
 // =========================
