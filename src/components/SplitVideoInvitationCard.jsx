@@ -28,6 +28,8 @@ function SplitVideoInvitationCard({
         location: "Локација",
         map: "Погледај мапу",
         dressCode: "Дрес код",
+        women: "Даме:",
+        men: "Господа:",
       }
     : {
         welcome: "Dobrodošli",
@@ -36,6 +38,8 @@ function SplitVideoInvitationCard({
         location: "Lokacija",
         map: "Pogledaj mapu",
         dressCode: "Dress code",
+        women: "Dame:",
+        men: "Gospoda:",
       };
 
   const getDateParts = () => {
@@ -109,11 +113,45 @@ function SplitVideoInvitationCard({
   const timelineItems =
     details.events?.filter((item) => item.label || item.time) || [];
 
+  const dressCodeWomenText =
+    typeof details.dressCodeWomen === "string"
+      ? details.dressCodeWomen
+      : "";
+
+  const dressCodeMenText =
+    typeof details.dressCodeMen === "string"
+      ? details.dressCodeMen
+      : "";
+
+  const dressCodeWomenPalette =
+    details.dressCodeWomenPalette?.length > 0
+      ? details.dressCodeWomenPalette
+      : Array.isArray(details.dressCodeWomen)
+        ? details.dressCodeWomen
+        : [];
+
+  const dressCodeMenPalette =
+    details.dressCodeMenPalette?.length > 0
+      ? details.dressCodeMenPalette
+      : Array.isArray(details.dressCodeMen)
+        ? details.dressCodeMen
+        : [];
+
+  const hasWomenDressCode =
+    Boolean(dressCodeWomenText) || dressCodeWomenPalette.length > 0;
+
+  const hasMenDressCode =
+    Boolean(dressCodeMenText) || dressCodeMenPalette.length > 0;
+
+  const hasSeparatedDressCode =
+    hasWomenDressCode || hasMenDressCode;
+
   const shouldShowDressCode =
     details.showDressCode &&
     (details.dressCodeTitle ||
       details.dressCodeNote ||
-      details.dressCodePalette?.length > 0);
+      details.dressCodePalette?.length > 0 ||
+      hasSeparatedDressCode);
 
   const backgroundImage =
     details.backgroundImage || "/images/paper-texture1.jpg";
@@ -351,20 +389,90 @@ function SplitVideoInvitationCard({
                   </p>
                 )}
 
-                {details.dressCodePalette?.length > 0 && (
-                  <div className="split-video-palette">
-                    {details.dressCodePalette.map((color, index) => (
-                      <motion.span
-                        key={index}
-                        className="split-video-palette-dot"
-                        style={{ backgroundColor: color }}
-                        initial={{ opacity: 0, scale: 0.7, y: 8 }}
-                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.35, delay: index * 0.06 }}
-                      />
-                    ))}
-                  </div>
+                {hasSeparatedDressCode ? (
+                  <>
+                    {hasWomenDressCode && (
+                      <div className="split-video-dresscode-role">
+                        <p className="split-video-dresscode-role-title">
+                          {t.women}
+                        </p>
+
+                        {dressCodeWomenText && (
+                          <p className="split-video-dresscode-role-text">
+                            {dressCodeWomenText}
+                          </p>
+                        )}
+
+                        {dressCodeWomenPalette.length > 0 && (
+                          <div className="split-video-palette">
+                            {dressCodeWomenPalette.map((color, index) => (
+                              <motion.span
+                                key={`women-${color}-${index}`}
+                                className="split-video-palette-dot"
+                                style={{ backgroundColor: color }}
+                                initial={{ opacity: 0, scale: 0.7, y: 8 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                  duration: 0.35,
+                                  delay: index * 0.06,
+                                }}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {hasMenDressCode && (
+                      <div className="split-video-dresscode-role split-video-dresscode-role-men">
+                        <p className="split-video-dresscode-role-title">
+                          {t.men}
+                        </p>
+
+                        {dressCodeMenText && (
+                          <p className="split-video-dresscode-role-text">
+                            {dressCodeMenText}
+                          </p>
+                        )}
+
+                        {dressCodeMenPalette.length > 0 && (
+                          <div className="split-video-palette">
+                            {dressCodeMenPalette.map((color, index) => (
+                              <motion.span
+                                key={`men-${color}-${index}`}
+                                className="split-video-palette-dot"
+                                style={{ backgroundColor: color }}
+                                initial={{ opacity: 0, scale: 0.7, y: 8 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                  duration: 0.35,
+                                  delay: index * 0.06,
+                                }}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  details.dressCodePalette?.length > 0 && (
+                    <div className="split-video-palette">
+                      {details.dressCodePalette.map((color, index) => (
+                        <motion.span
+                          key={`${color}-${index}`}
+                          className="split-video-palette-dot"
+                          style={{ backgroundColor: color }}
+                          initial={{ opacity: 0, scale: 0.7, y: 8 }}
+                          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.35, delay: index * 0.06 }}
+                        />
+                      ))}
+                    </div>
+                  )
                 )}
               </motion.div>
             )}

@@ -21826,3 +21826,98 @@ font-family: "Italianno", cursive;
     height: 30px;
   }
 }
+
+.split-video-dresscode-role {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.split-video-dresscode-role-men {
+  margin-top: 1.5rem;
+}
+
+.split-video-dresscode-role-title {
+  margin: 0 0 0.55rem;
+
+  color: var(--split-main-text);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.18rem;
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.split-video-dresscode-role-text {
+  margin: 0 auto 0.8rem;
+  max-width: 30rem;
+  color: var(--split-soft-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Veće dress code boje samo za Nina & Milan */
+.split-video-nina-milan .split-video-palette-dot {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+}
+.editorial-dress-roles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.editorial-dress-role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.editorial-dress-role-title {
+  margin: 0 0 0.65rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1;
+
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+.editorial-dress-role-text {
+  max-width: 290px;
+  margin: 0 0 0.9rem;
+
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.editorial-dress-role .editorial-dress-palette-box {
+  margin-top: 0;
+}
+/* Veći tekst ispod satnice samo za Nina & Milan magazine */
+/* Samo Nina & Milan magazine */
+.editorial-card--nina-milan-magazine .editorial-time-label {
+  max-width: 210px;
+  margin: 0.3rem auto 0;
+
+  font-size: 0.92rem;
+  line-height: 1.25;
+  letter-spacing: 0.09em;
+}
+.editorial-card--nina-milan-magazine .editorial-time-location {
+  font-size: 1rem;
+  line-height: 1.4;
+}

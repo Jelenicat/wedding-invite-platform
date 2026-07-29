@@ -13,36 +13,43 @@ function MagazineEditorialIntro({
 }) {
   const [videoReady, setVideoReady] = useState(false);
 
+  const isNinaMilanMagazine =
+    slug === "nina-milan-magazine";
+
   const bg =
     backgroundImage ||
     details?.backgroundImage ||
     "/images/magazine-intro-bg.png";
 
   const hasVideoBackground =
-    slug === "nina-milan-magazine" && Boolean(videoSrc);
+    isNinaMilanMagazine && Boolean(videoSrc);
 
   useEffect(() => {
     setVideoReady(false);
   }, [slug, videoSrc]);
 
-  const dateText = details?.date || weddingDate || "21 JUL 2026";
+  const dateText =
+    details?.date ||
+    weddingDate ||
+    "21 JUL 2026";
 
-  const [day = "21", month = "JUL", year = "2026"] = dateText
-    .replaceAll(".", "")
-    .split(" ")
-    .filter(Boolean);
-
-  const ticketNumber =
-    details?.ticketNumber ||
-    `${String(day).padStart(2, "0")}${month || "JUL"}${year || ""}`
-      .replace(/\s/g, "")
-      .toUpperCase();
+  const [day = "21", month = "JUL", year = "2026"] =
+    dateText
+      .replaceAll(".", "")
+      .split(" ")
+      .filter(Boolean);
 
   return (
     <section
-      className="mag-intro"
+      className={`mag-intro ${
+        isNinaMilanMagazine
+          ? "mag-intro--nina-milan-magazine"
+          : ""
+      }`}
       style={{
-        backgroundColor: hasVideoBackground ? "#111111" : undefined,
+        backgroundColor: hasVideoBackground
+          ? "#111111"
+          : undefined,
       }}
     >
       {hasVideoBackground ? (
@@ -88,8 +95,12 @@ function MagazineEditorialIntro({
           style={{
             backgroundImage: `url(${bg})`,
           }}
-          initial={{ scale: 1.06 }}
-          animate={{ scale: 1 }}
+          initial={{
+            scale: 1.06,
+          }}
+          animate={{
+            scale: 1,
+          }}
           transition={{
             duration: 1.6,
             ease: "easeOut",
@@ -136,35 +147,45 @@ function MagazineEditorialIntro({
 
           <motion.div
             className="mag-intro-issue"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
             transition={{
               delay: 0.45,
               duration: 0.9,
             }}
           >
             <span>{dateText}</span>
-            <span>VENČANO IZDANJE</span>
+
+            {!isNinaMilanMagazine && (
+              <span>VENČANO IZDANJE</span>
+            )}
+
             <span>ZAUVEK POČINJE</span>
           </motion.div>
 
-          <motion.div
-            className="mag-intro-magazine"
-            initial={{
-              opacity: 0,
-              x: 18,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              delay: 0.55,
-              duration: 0.9,
-            }}
-          >
-            MAGAZIN
-          </motion.div>
+          {!isNinaMilanMagazine && (
+            <motion.div
+              className="mag-intro-magazine"
+              initial={{
+                opacity: 0,
+                x: 18,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{
+                delay: 0.55,
+                duration: 0.9,
+              }}
+            >
+              MAGAZIN
+            </motion.div>
+          )}
         </header>
 
         <motion.div
@@ -206,7 +227,9 @@ function MagazineEditorialIntro({
             duration: 1,
           }}
         >
-          <div className="mag-intro-script">Najlepši dan</div>
+          <div className="mag-intro-script">
+            Najlepši dan
+          </div>
 
           <div className="mag-intro-couple">
             <span>{brideName}</span>
@@ -255,8 +278,12 @@ function MagazineEditorialIntro({
             delay: 1.25,
             duration: 0.85,
           }}
-          whileHover={{ scale: 1.015 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{
+            scale: 1.015,
+          }}
+          whileTap={{
+            scale: 0.98,
+          }}
         >
           OTVORI POZIVNICU
           <span />

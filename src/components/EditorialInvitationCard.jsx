@@ -22,6 +22,33 @@ export default function EditorialInvitationCard({
     ? details.dressCodePalette.filter(Boolean)
     : [];
 
+  const dressCodeWomenPalette = Array.isArray(
+    details?.dressCodeWomenPalette
+  )
+    ? details.dressCodeWomenPalette.filter(Boolean)
+    : [];
+
+  const dressCodeMenPalette = Array.isArray(
+    details?.dressCodeMenPalette
+  )
+    ? details.dressCodeMenPalette.filter(Boolean)
+    : [];
+
+  const hasSeparatedDressCode =
+    Boolean(dressWomen) ||
+    Boolean(dressMen) ||
+    dressCodeWomenPalette.length > 0 ||
+    dressCodeMenPalette.length > 0;
+
+  const shouldShowDressCode =
+    details?.showDressCode &&
+    (details?.dressCodeNote ||
+      dressWomen ||
+      dressMen ||
+      dressCodePalette.length > 0 ||
+      dressCodeWomenPalette.length > 0 ||
+      dressCodeMenPalette.length > 0);
+
   const locationText =
     venue ||
     details?.venue ||
@@ -69,6 +96,27 @@ export default function EditorialInvitationCard({
     return null;
   };
 
+  const renderDressPalette = (palette, className = "") => {
+    if (!palette.length) return null;
+
+    return (
+      <div
+        className={`editorial-dress-palette-box ${className}`.trim()}
+      >
+        <div className="editorial-dress-palette">
+          {palette.map((color, index) => (
+            <span
+              key={`${color}-${index}`}
+              className="editorial-dress-palette-dot"
+              style={{ backgroundColor: color }}
+              aria-label={`Dress code boja ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section
       className={`editorial-card ${
@@ -87,7 +135,9 @@ export default function EditorialInvitationCard({
           <section className="editorial-hero">
             {isAleksandraAleksa ? (
               <>
-                <div className="editorial-hero-monogram">A &amp; A</div>
+                <div className="editorial-hero-monogram">
+                  A &amp; A
+                </div>
 
                 <div className="editorial-hero-names">
                   <span>{brideName}</span>
@@ -100,9 +150,13 @@ export default function EditorialInvitationCard({
                     "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan."}
                 </p>
 
-                <div className="editorial-hero-date-label">DATUM</div>
+                <div className="editorial-hero-date-label">
+                  DATUM
+                </div>
 
-                <div className="editorial-hero-date">{weddingDate}</div>
+                <div className="editorial-hero-date">
+                  {weddingDate}
+                </div>
               </>
             ) : (
               <>
@@ -114,7 +168,9 @@ export default function EditorialInvitationCard({
                   podelimo na našem posebnom danu
                 </p>
 
-                <div className="editorial-hero-date">{weddingDate}</div>
+                <div className="editorial-hero-date">
+                  {weddingDate}
+                </div>
 
                 <p className="editorial-hero-bottom">
                   Radujemo se što ćemo
@@ -176,7 +232,9 @@ export default function EditorialInvitationCard({
                   )}
                 </div>
               ) : (
-                <p style={{ opacity: 0.5 }}>Lokacija uskoro</p>
+                <p style={{ opacity: 0.5 }}>
+                  Lokacija uskoro
+                </p>
               )}
             </div>
           </section>
@@ -242,7 +300,7 @@ export default function EditorialInvitationCard({
           )}
 
           {/* KOD OBLAČENJA */}
-          {details?.showDressCode && (
+          {shouldShowDressCode && (
             <section className="editorial-section editorial-dress-section">
               <h2 className="editorial-title editorial-dress-title">
                 KOD
@@ -250,37 +308,67 @@ export default function EditorialInvitationCard({
                 OBLAČENJA
               </h2>
 
-              <div className="editorial-dress-copy">
-                {details?.dressCodeNote && (
+              {details?.dressCodeNote && (
+                <div className="editorial-dress-copy">
                   <p>{details.dressCodeNote}</p>
-                )}
-
-                {dressWomen && <p>{dressWomen}</p>}
-
-                {dressMen && <p>{dressMen}</p>}
-
-                {!details?.dressCodeNote &&
-                  !dressWomen &&
-                  !dressMen && (
-                    <p>
-                      Elegantna garderoba u skladu sa stilom proslave.
-                    </p>
-                  )}
-              </div>
-
-              {dressCodePalette.length > 0 && (
-                <div className="editorial-dress-palette-box">
-                  <div className="editorial-dress-palette">
-                    {dressCodePalette.map((color, index) => (
-                      <span
-                        key={`${color}-${index}`}
-                        className="editorial-dress-palette-dot"
-                        style={{ backgroundColor: color }}
-                        aria-label={`Dress code boja ${index + 1}`}
-                      />
-                    ))}
-                  </div>
                 </div>
+              )}
+
+              {hasSeparatedDressCode ? (
+                <div className="editorial-dress-roles">
+                  {(dressWomen ||
+                    dressCodeWomenPalette.length > 0) && (
+                    <div className="editorial-dress-role">
+                      <h3 className="editorial-dress-role-title">
+                        Dame
+                      </h3>
+
+                      {dressWomen && (
+                        <p className="editorial-dress-role-text">
+                          {dressWomen}
+                        </p>
+                      )}
+
+                      {renderDressPalette(
+                        dressCodeWomenPalette,
+                        "editorial-dress-palette-box--women"
+                      )}
+                    </div>
+                  )}
+
+                  {(dressMen ||
+                    dressCodeMenPalette.length > 0) && (
+                    <div className="editorial-dress-role editorial-dress-role--men">
+                      <h3 className="editorial-dress-role-title">
+                        Gospoda
+                      </h3>
+
+                      {dressMen && (
+                        <p className="editorial-dress-role-text">
+                          {dressMen}
+                        </p>
+                      )}
+
+                      {renderDressPalette(
+                        dressCodeMenPalette,
+                        "editorial-dress-palette-box--men"
+                      )}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
+                  {!details?.dressCodeNote && (
+                    <div className="editorial-dress-copy">
+                      <p>
+                        Elegantna garderoba u skladu sa stilom
+                        proslave.
+                      </p>
+                    </div>
+                  )}
+
+                  {renderDressPalette(dressCodePalette)}
+                </>
               )}
             </section>
           )}

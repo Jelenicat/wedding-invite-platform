@@ -6766,7 +6766,7 @@ musicSrc: "/music/eva-1.mp3",
   brideName: "Nina",
   groomName: "Milan",
 
-  videoSrc: "/videos/ana-ognjen-1.mp4",
+  videoSrc: "/videos/nina-milan.mp4",
   musicSrc: "/music/olja-milos.mp3",
 
   weddingDate: "23 AVG 2026",
@@ -6790,34 +6790,38 @@ musicSrc: "/music/eva-1.mp3",
       {
         label: "Okupljanje gostiju",
         time: "16:00",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Bašta restorana",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-        note: "Početak okupljanja i dragi susreti pre ceremonije.",
+        note:
+          "Početak okupljanja i dragi susreti pre ceremonije.",
       },
       {
         label: "Ceremonija građanskog venčanja",
         time: "17:15",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Plaža",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-        note: "Trenutak kada počinje naše novo poglavlje.",
+        note:
+          "Trenutak kada počinje naše novo poglavlje.",
       },
       {
         label: "Večera",
         time: "18:00",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Bašta restorana",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-        note: "Veče uz muziku, nazdravljanje i slavlje.",
+        note:
+          "Veče uz muziku, nazdravljanje i slavlje.",
       },
       {
         label: "Torta",
         time: "21:00",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Bašta restorana",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-        note: "Slatki trenutak koji ćemo podeliti sa svima vama.",
+        note:
+          "Slatki trenutak koji ćemo podeliti sa svima vama.",
       },
     ],
 
@@ -6831,26 +6835,26 @@ musicSrc: "/music/eva-1.mp3",
       accentStrong: "#ffffff",
       buttonText: "#000000",
 
-      cardBg: "rgba(255, 255, 255,0.1)",
+      cardBg: "rgba(255, 255, 255, 0.1)",
       cardBorder: "transparent",
       frameBorder: "rgba(255, 255, 255, 0.25)",
 
-      paperOverlayTop: "rgba(255,255,255,0.03)",
-      paperOverlayBottom: "rgba(36,59,107,0.06)",
-      vignetteColor: "rgba(123,18,52,0.08)",
+      paperOverlayTop: "rgba(255, 255, 255, 0.03)",
+      paperOverlayBottom: "rgba(36, 59, 107, 0.06)",
+      vignetteColor: "rgba(123, 18, 52, 0.08)",
 
       flowLine: "#ffffff",
       dividerLine: "#ffffff",
-      nodeRing: "rgba(181,144,59,0.16)",
+      nodeRing: "rgba(181, 144, 59, 0.16)",
       backgroundColor: "#000000",
 
       /* INTRO */
       introMainText: "#ffffff",
       introAccent: "#ffffff",
-      introButtonBg: "rgba(255,255,255,0.18)",
-      introButtonBorder: "rgba(255,255,255,0.35)",
+      introButtonBg: "rgba(255, 255, 255, 0.18)",
+      introButtonBorder: "rgba(255, 255, 255, 0.35)",
       introButtonText: "#000000",
-      introButtonHoverBg: "rgba(255,255,255,0.28)",
+      introButtonHoverBg: "rgba(255, 255, 255, 0.28)",
 
       /* RSVP */
       rsvpButtonBg: "#a24242",
@@ -6858,22 +6862,34 @@ musicSrc: "/music/eva-1.mp3",
     },
 
     showDressCode: true,
-    venue: "Garni Hotel Oblačinsko Jezero",
     dressCodeTitle: "Dress code",
-  dressCodePalette: [
-  "#FFEBC6", // svetlo žuta
-  "#EEE0D3", // svetlo bež
-  "#DBD7D4", // svetlo siva
-  "#9D997E", // maslinasta
-  "#FCF2E9", // krem
-],
+
     dressCodeNote:
-      "Molimo vas da birate nežne, zemljane i puderaste tonove.",
+      "Molimo vas da svojim odevnim kombinacijama ispratite paletu našeg venčanja.",
+
+  
+dressCodeWomenPalette: [
+  "#8F9C70", // maslinasta
+  "#E6D7C4", // svetlo bež
+  "#D4D4D4", // svetlo siva
+  "#FFFCB7", // svetlo žuta
+],
+
+
+dressCodeMenPalette: [
+  "#111111", // crna
+  "#3A3A3A", // tamno siva
+  "#596149", // tamna maslinasta
+  "#D4D4D4", // svetlo siva
+],
+
+    venue: "Garni Hotel Oblačinsko Jezero",
 
     mapLink:
       "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
 
-    note: "Molimo Vas da svoj dolazak potvrdite do 08.08.",
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 08.08.",
   }),
 },
 
@@ -6889,7 +6905,7 @@ musicSrc: "/music/eva-1.mp3",
   weddingTime: "16:00",
   venue: "Garni Hotel Oblačinsko Jezero",
 
-  videoSrc: "/videos/nina-milan-magazine.mp4",
+  videoSrc: "/videos/nina-milan.mp4",
   image1: "/images/nevena-pedja/location.jpg",
 
   // Privremena pesma
@@ -6911,23 +6927,34 @@ musicSrc: "/music/eva-1.mp3",
     showDressCode: true,
     dressCodeTitle: "Dress code",
 
-    dressCodeNote:
-      "Molimo vas da birate svetlo žute, svetlo bež, svetlo sive, maslinaste i krem tonove.",
+ 
 
-    dressCodePalette: [
-      "#FFEBC6",
-      "#EEE0D3",
-      "#DBD7D4",
-      "#9D997E",
-      "#FCF2E9",
-    ],
+
+dressCodeNote:
+  "Molimo vas da svojim odevnim kombinacijama ispratite paletu našeg venčanja.",
+
+dressCodeWomen: "Nežne, zemljane i puderaste nijanse.",
+dressCodeWomenPalette: [
+  "#8F9C70",
+  "#E6D7C4",
+  "#D4D4D4",
+  "#FFFCB7",
+],
+
+dressCodeMen: "Tamni i neutralni tonovi.",
+dressCodeMenPalette: [
+  "#111111",
+  "#3A3A3A",
+  "#596149",
+  "#D4D4D4",
+],
 
     events: [
       {
         label: "Okupljanje gostiju",
         time: "16:00",
         icon: "gathering",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Bašta restorana",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
       },
@@ -6935,7 +6962,7 @@ musicSrc: "/music/eva-1.mp3",
         label: "Ceremonija građanskog venčanja",
         time: "17:15",
         icon: "civil",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Plaža",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
       },
@@ -6943,7 +6970,7 @@ musicSrc: "/music/eva-1.mp3",
         label: "Večera",
         time: "18:00",
         icon: "restaurant",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Bašta restorana",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
       },
@@ -6951,7 +6978,7 @@ musicSrc: "/music/eva-1.mp3",
         label: "Torta",
         time: "21:00",
         icon: "cake",
-        location: "Garni Hotel Oblačinsko Jezero",
+        location: "Bašta restorana",
         mapLink:
           "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
       },
