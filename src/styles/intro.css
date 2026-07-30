@@ -8985,3 +8985,121 @@ color: #8e7f73;
     width: min(100%, 600px);
   }
 }
+
+/* Kontrola muzike samo za Nina & Milan */
+.split-video-intro--nina-milan .split-music-control {
+  position: absolute;
+  z-index: 10;
+
+  top: max(24px, calc(env(safe-area-inset-top) + 16px));
+  right: 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  transform: none !important;
+}
+
+.split-video-intro--nina-milan .split-music-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+
+  background: rgba(20, 20, 20, 0.18);
+
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+
+  color: #ffffff;
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Blago pulsiranje samo dok muzika nije pokrenuta */
+.split-video-intro--nina-milan
+  .split-music-circle:not(.is-playing) {
+  animation: nina-milan-music-pulse 2.2s ease-in-out infinite;
+}
+
+.split-video-intro--nina-milan .split-music-icon {
+  display: block;
+
+  margin-left: 2px;
+
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1;
+
+  color: #ffffff;
+}
+
+.split-video-intro--nina-milan
+  .split-music-circle.is-playing
+  .split-music-icon {
+  margin-left: 0;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.split-video-intro--nina-milan .split-music-label {
+  max-width: 90px;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.1;
+
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+}
+
+.split-video-intro--nina-milan
+  .split-music-circle.is-playing {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.16);
+
+  cursor: default;
+  animation: none;
+}
+
+.split-video-intro--nina-milan
+  .split-music-circle:disabled {
+  opacity: 0.9;
+}
+
+@keyframes nina-milan-music-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 7px 20px rgba(0, 0, 0, 0.18),
+      0 0 0 0 rgba(255, 255, 255, 0.24);
+  }
+
+  50% {
+    box-shadow:
+      0 7px 20px rgba(0, 0, 0, 0.18),
+      0 0 0 7px rgba(255, 255, 255, 0);
+  }
+}

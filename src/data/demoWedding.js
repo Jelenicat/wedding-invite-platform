@@ -6865,12 +6865,12 @@ musicSrc: "/music/eva-1.mp3",
     dressCodeTitle: "Dress code",
 
     dressCodeNote:
-      "Molimo vas da svojim odevnim kombinacijama ispratite paletu našeg venčanja.",
+      "Molimo vas da birate nežne zemljane i puderaste tonove.",
 
   
 dressCodeWomenPalette: [
   "#8F9C70", // maslinasta
-  "#E6D7C4", // svetlo bež
+  "#C7B299", // tamnija bež
   "#D4D4D4", // svetlo siva
   "#FFFCB7", // svetlo žuta
 ],
@@ -6878,9 +6878,12 @@ dressCodeWomenPalette: [
 
 dressCodeMenPalette: [
   "#111111", // crna
-  "#3A3A3A", // tamno siva
+  
   "#8F9C70", // maslinasta
-  "#D4D4D4", // svetlo siva
+  
+  "#C7B299", // tamnija bež
+   "#D4D4D4", // svetlo siva
+  "#FFFFFF", // bela
 ],
 
     venue: "Garni Hotel Oblačinsko Jezero",

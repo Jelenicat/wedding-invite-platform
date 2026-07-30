@@ -476,6 +476,9 @@ function WeddingPage() {
   const IntroComponent = template.Intro;
   const InvitationComponent = template.Invitation;
 
+  // Samo ovaj slug koristi posebno dugme za pokretanje muzike.
+  const usesManualIntroMusic = invitation.slug === "nina-milan";
+
   const playInvitationMusic = () => {
     if (!invitation.musicSrc || !audioRef.current || musicStarted) return;
 
@@ -497,8 +500,10 @@ function WeddingPage() {
   const handleIntroOpen = () => {
     setIsIntroOpen(true);
 
-    // Muzika kreće tek nakon korisničkog klika/tapa
-    playInvitationMusic();
+    // Kod nina-milan muzika se pokreće isključivo posebnim dugmetom.
+    if (!usesManualIntroMusic) {
+      playInvitationMusic();
+    }
 
     if (introTimeoutRef.current) {
       clearTimeout(introTimeoutRef.current);
@@ -514,7 +519,10 @@ function WeddingPage() {
       clearTimeout(introTimeoutRef.current);
     }
 
-    playInvitationMusic();
+    // Kod nina-milan klik na pozivnicu ne pokreće muziku.
+    if (!usesManualIntroMusic) {
+      playInvitationMusic();
+    }
 
     setShowInvitation(true);
   };
@@ -550,6 +558,9 @@ function WeddingPage() {
     image2: localizedInvitation.image2,
     image3: localizedInvitation.image3,
     onEnter: handleIntroEnter,
+    onStartMusic: playInvitationMusic,
+    musicStarted,
+    hasMusic: Boolean(invitation.musicSrc),
     isOpen: isIntroOpen,
     onOpen: handleIntroOpen,
     slug: localizedInvitation.slug,
