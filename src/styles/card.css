@@ -21921,3 +21921,24 @@ font-family: "Italianno", cursive;
   font-size: 1rem;
   line-height: 1.4;
 }
+
+/* Suptilniji naziv lokacije samo za slug nina-milan */
+.split-video-nina-milan .split-video-flow-location {
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  opacity: 0.78;
+}
+
+.split-video-nina-milan .split-video-flow-location.is-link {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.split-video-nina-milan .split-video-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.16);
+  pointer-events: none;
+}
