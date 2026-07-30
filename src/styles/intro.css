@@ -8993,6 +8993,8 @@ color: #8e7f73;
 
   top: max(24px, calc(env(safe-area-inset-top) + 16px));
   right: 18px;
+  left: auto;
+  bottom: auto;
 
   display: flex;
   flex-direction: column;
@@ -9002,6 +9004,7 @@ color: #8e7f73;
   transform: none !important;
 }
 
+/* Kružno dugme */
 .split-video-intro--nina-milan .split-music-circle {
   display: flex;
   align-items: center;
@@ -9010,6 +9013,10 @@ color: #8e7f73;
   width: 48px;
   height: 48px;
   padding: 0;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
 
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 50%;
@@ -9021,10 +9028,13 @@ color: #8e7f73;
 
   color: #ffffff;
   cursor: pointer;
+  touch-action: manipulation;
 
   box-shadow:
     0 7px 20px rgba(0, 0, 0, 0.18),
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  animation: nina-milan-music-pulse 2.2s ease-in-out infinite;
 
   transition:
     background 0.25s ease,
@@ -9032,34 +9042,35 @@ color: #8e7f73;
     box-shadow 0.25s ease;
 }
 
-/* Blago pulsiranje samo dok muzika nije pokrenuta */
-.split-video-intro--nina-milan
-  .split-music-circle:not(.is-playing) {
-  animation: nina-milan-music-pulse 2.2s ease-in-out infinite;
+/* Hover */
+.split-video-intro--nina-milan .split-music-circle:hover {
+  border-color: rgba(255, 255, 255, 1);
+  background: rgba(20, 20, 20, 0.26);
 }
 
+/* Fokus za tastaturu */
+.split-video-intro--nina-milan .split-music-circle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 4px;
+}
+
+/* Beli play trougao napravljen CSS-om */
 .split-video-intro--nina-milan .split-music-icon {
   display: block;
 
-  margin-left: 2px;
+  width: 0;
+  height: 0;
 
-  font-family: Arial, sans-serif;
-  font-size: 0.95rem;
-  line-height: 1;
+  margin-left: 3px;
 
-  color: #ffffff;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid #ffffff;
 }
 
-.split-video-intro--nina-milan
-  .split-music-circle.is-playing
-  .split-music-icon {
-  margin-left: 0;
-  font-family: Georgia, serif;
-  font-size: 1.15rem;
-}
-
+/* Tekst ispod dugmeta */
 .split-video-intro--nina-milan .split-music-label {
-  max-width: 90px;
+  max-width: 100px;
 
   color: rgba(255, 255, 255, 0.96);
 
@@ -9075,20 +9086,7 @@ color: #8e7f73;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
 }
 
-.split-video-intro--nina-milan
-  .split-music-circle.is-playing {
-  border-color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.16);
-
-  cursor: default;
-  animation: none;
-}
-
-.split-video-intro--nina-milan
-  .split-music-circle:disabled {
-  opacity: 0.9;
-}
-
+/* Blago pulsiranje dok dugme postoji */
 @keyframes nina-milan-music-pulse {
   0%,
   100% {
@@ -9101,5 +9099,12 @@ color: #8e7f73;
     box-shadow:
       0 7px 20px rgba(0, 0, 0, 0.18),
       0 0 0 7px rgba(255, 255, 255, 0);
+  }
+}
+
+/* Bez pulsiranja ako korisnik ima isključene animacije */
+@media (prefers-reduced-motion: reduce) {
+  .split-video-intro--nina-milan .split-music-circle {
+    animation: none;
   }
 }

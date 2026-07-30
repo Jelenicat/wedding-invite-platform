@@ -88,8 +88,7 @@ function SplitVideoIntro({
 
   /*
    * Dugme postoji samo za nina-milan.
-   * Nestaje čim se muzika uspešno pokrene
-   * i musicStarted postane true.
+   * Nestaje čim se muzika uspešno pokrene.
    */
   const showMusicButton =
     isNinaMilan &&
@@ -160,9 +159,7 @@ function SplitVideoIntro({
             <span
               className="split-music-icon"
               aria-hidden="true"
-            >
-              ▶
-            </span>
+            />
           </motion.button>
 
           <span className="split-music-label">
