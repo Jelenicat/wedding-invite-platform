@@ -8987,24 +8987,24 @@ color: #8e7f73;
 }
 
 /* Kontrola muzike samo za Nina & Milan */
+/* Kontrola muzike samo za Nina & Milan */
 .split-video-intro--nina-milan .split-music-control {
   position: absolute;
   z-index: 10;
 
-  top: max(24px, calc(env(safe-area-inset-top) + 16px));
-  right: 18px;
-  left: auto;
-  bottom: auto;
+  left: 0;
+  right: 0;
+  bottom: calc(env(safe-area-inset-bottom) + 105px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 7px;
 
-  transform: none !important;
+  width: max-content;
+  margin: 0 auto;
 }
-
-/* Kružno dugme */
+/* Kružno dugme iznad teksta */
 .split-video-intro--nina-milan .split-music-circle {
   display: flex;
   align-items: center;
@@ -9018,23 +9018,23 @@ color: #8e7f73;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
 
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.78);
   border-radius: 50%;
 
-  background: rgba(20, 20, 20, 0.18);
+  background: rgba(255, 255, 255, 0.16);
 
-  backdrop-filter: blur(9px);
-  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   color: #ffffff;
   cursor: pointer;
   touch-action: manipulation;
 
   box-shadow:
-    0 7px 20px rgba(0, 0, 0, 0.18),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    0 8px 24px rgba(0, 0, 0, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 
-  animation: nina-milan-music-pulse 2.2s ease-in-out infinite;
+  animation: nina-milan-music-pulse 2.4s ease-in-out infinite;
 
   transition:
     background 0.25s ease,
@@ -9044,8 +9044,8 @@ color: #8e7f73;
 
 /* Hover */
 .split-video-intro--nina-milan .split-music-circle:hover {
-  border-color: rgba(255, 255, 255, 1);
-  background: rgba(20, 20, 20, 0.26);
+  border-color: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.23);
 }
 
 /* Fokus za tastaturu */
@@ -9054,9 +9054,10 @@ color: #8e7f73;
   outline-offset: 4px;
 }
 
-/* Beli play trougao napravljen CSS-om */
+/* Beli play trougao */
 .split-video-intro--nina-milan .split-music-icon {
   display: block;
+  flex: 0 0 auto;
 
   width: 0;
   height: 0;
@@ -9068,37 +9069,40 @@ color: #8e7f73;
   border-left: 11px solid #ffffff;
 }
 
-/* Tekst ispod dugmeta */
+/* Tekst ispod kružnog dugmeta */
 .split-video-intro--nina-milan .split-music-label {
-  max-width: 100px;
+  display: block;
 
-  color: rgba(255, 255, 255, 0.96);
+  max-width: 110px;
+
+  color: rgba(255, 255, 255, 0.98);
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
   line-height: 1.1;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
 
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
-/* Blago pulsiranje dok dugme postoji */
+/* Diskretno pulsiranje */
 @keyframes nina-milan-music-pulse {
   0%,
   100% {
     box-shadow:
-      0 7px 20px rgba(0, 0, 0, 0.18),
-      0 0 0 0 rgba(255, 255, 255, 0.24);
+      0 8px 24px rgba(0, 0, 0, 0.14),
+      0 0 0 0 rgba(255, 255, 255, 0.2);
   }
 
   50% {
     box-shadow:
-      0 7px 20px rgba(0, 0, 0, 0.18),
-      0 0 0 7px rgba(255, 255, 255, 0);
+      0 8px 24px rgba(0, 0, 0, 0.14),
+      0 0 0 6px rgba(255, 255, 255, 0);
   }
 }
 

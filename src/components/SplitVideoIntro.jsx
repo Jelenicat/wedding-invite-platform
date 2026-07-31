@@ -126,17 +126,17 @@ function SplitVideoIntro({
         <span>{groomName}</span>
       </div>
 
-      {/* Kontrola muzike samo za slug nina-milan */}
+      {/* Dugme za muziku samo za slug nina-milan */}
       {showMusicButton && (
         <motion.div
           className="split-music-control"
           initial={{
             opacity: 0,
-            scale: 0.85,
+            y: 14,
           }}
           animate={{
             opacity: 1,
-            scale: 1,
+            y: 0,
           }}
           transition={{
             delay: 0.45,

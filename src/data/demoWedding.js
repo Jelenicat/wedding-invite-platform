@@ -6767,7 +6767,7 @@ musicSrc: "/music/eva-1.mp3",
   groomName: "Milan",
 
   videoSrc: "/videos/nina-milan.mp4",
-  musicSrc: "/music/olja-milos.mp3",
+  musicSrc: "/music/nina-milan.mp3",
 
   weddingDate: "23 AVG 2026",
   weddingTime: "16:00",
