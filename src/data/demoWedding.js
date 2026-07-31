@@ -6768,7 +6768,7 @@ musicSrc: "/music/eva-1.mp3",
 
   videoSrc: "/videos/nina-milan.mp4",
   musicSrc: "/music/nina-milan.mp3",
-
+ uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
   weddingDate: "23 AVG 2026",
   weddingTime: "16:00",
   venue: "Garni Hotel Oblačinsko Jezero",
