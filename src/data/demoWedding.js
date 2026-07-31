@@ -6865,7 +6865,7 @@ musicSrc: "/music/eva-1.mp3",
     dressCodeTitle: "Dress code",
 
     dressCodeNote:
-      "Molimo vas da birate nežne zemljane i puderaste tonove.",
+      "Birajte nežne zemljane i puderaste tonove.",
 
   
 dressCodeWomenPalette: [
@@ -6895,109 +6895,6 @@ dressCodeMenPalette: [
       "Molimo vas da svoj dolazak potvrdite do 08.08.",
   }),
 },
-
-{
-  slug: "nina-milan-magazine",
-  type: "wedding",
-  template: "magazine-editorial",
-
-  brideName: "Nina",
-  groomName: "Milan",
-
-  weddingDate: "23 AVG 2026",
-  weddingTime: "16:00",
-  venue: "Garni Hotel Oblačinsko Jezero",
-
-  videoSrc: "/videos/nina-milan.mp4",
-  image1: "/images/nevena-pedja/location.jpg",
-
-  // Privremena pesma
-  musicSrc: "/music/olja-milos.mp3",
-
-  details: createDetails({
-    ticketNumber: "230826NM",
-
-    welcomeText:
-      "Radujemo se da ovaj poseban dan podelimo sa vama.",
-
-    date: "23 AVG 2026",
-    dateISO: "2026-08-23T16:00:00+02:00",
-
-    venue: "Garni Hotel Oblačinsko Jezero",
-
-    showCalendarButton: false,
-
-    showDressCode: true,
-    dressCodeTitle: "Dress code",
-
- 
-
-
-dressCodeNote:
-  "Molimo vas da svojim odevnim kombinacijama ispratite paletu našeg venčanja.",
-
-dressCodeWomen: "Nežne, zemljane i puderaste nijanse.",
-dressCodeWomenPalette: [
-  "#8F9C70",
-  "#E6D7C4",
-  "#D4D4D4",
-  "#FFFCB7",
-],
-
-dressCodeMen: "Tamni i neutralni tonovi.",
-dressCodeMenPalette: [
-  "#111111",
-  "#3A3A3A",
-  "#596149",
-  "#D4D4D4",
-],
-
-    events: [
-      {
-        label: "Okupljanje gostiju",
-        time: "16:00",
-        icon: "gathering",
-        location: "Bašta restorana",
-        mapLink:
-          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-      },
-      {
-        label: "Ceremonija građanskog venčanja",
-        time: "17:15",
-        icon: "civil",
-        location: "Plaža",
-        mapLink:
-          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-      },
-      {
-        label: "Večera",
-        time: "18:00",
-        icon: "restaurant",
-        location: "Bašta restorana",
-        mapLink:
-          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-      },
-      {
-        label: "Torta",
-        time: "21:00",
-        icon: "cake",
-        location: "Bašta restorana",
-        mapLink:
-          "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-      },
-    ],
-
-    mapLink:
-      "https://maps.app.goo.gl/zXUEBhvvcvomiikN9?g_st=ipc",
-
-    note:
-      "Molimo Vas da svoj dolazak potvrdite do 08.08.2026.",
-
-    rsvpDeadline: "08.08.2026.",
-    rsvpDeadlineISO: "2026-08-08",
-  }),
-},
-
 
 
 {
