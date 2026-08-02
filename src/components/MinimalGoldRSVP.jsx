@@ -59,7 +59,7 @@ function MinimalGoldRSVP({
           deadline: "Potvrda dolaska do 28.9.2026.",
           contact: "Kontakt: 097 685 1599",
           fullName: "Ime i prezime (navedite imena svih koji dolaze)",
-          fullNamePlaceholder: "Unesite ime i prezime",
+          fullNamePlaceholder: "Unesite imena i prezimena",
           attendance: "Dolazite li?",
           yes: "Dolazim",
           yesText: "Radujem se slavlju s vama",
