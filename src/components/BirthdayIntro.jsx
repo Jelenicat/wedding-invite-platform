@@ -206,10 +206,7 @@ function BirthdayIntro({
    * Kod Anje se broj prikazuje bez tačke.
    * Kod svih ostalih ostaje postojeći prikaz.
    */
-  const ageText =
-    isAnja18
-      ? `${age}`
-      : `${age}.`;
+  const ageText = `${age}.`;
 
   const introBackground =
     intro.backgroundImage ||

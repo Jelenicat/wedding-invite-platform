@@ -9113,9 +9113,11 @@ color: #8e7f73;
   }
 }
 
-html.marija-nikola-light-mode,
-html.marija-nikola-light-mode body,
-html.marija-nikola-light-mode #root,
-html.marija-nikola-light-mode .wedding-page {
+/* Sprečava automatski dark mode na svim pozivnicama */
+:root,
+html,
+body,
+#root,
+.wedding-page {
   color-scheme: only light !important;
 }

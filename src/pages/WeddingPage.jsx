@@ -462,44 +462,7 @@ function WeddingPage() {
       });
     };
   }, [invitation, musicStarted]);
-useEffect(() => {
-  if (invitation?.slug !== "marija-nikola") return;
 
-  const html = document.documentElement;
-  const body = document.body;
-
-  const previousHtmlColorScheme = html.style.colorScheme;
-  const previousBodyColorScheme = body.style.colorScheme;
-
-  let colorSchemeMeta = document.querySelector(
-    'meta[name="color-scheme"][data-marija-nikola="true"]'
-  );
-
-  if (!colorSchemeMeta) {
-    colorSchemeMeta = document.createElement("meta");
-    colorSchemeMeta.name = "color-scheme";
-    colorSchemeMeta.setAttribute("data-marija-nikola", "true");
-    document.head.appendChild(colorSchemeMeta);
-  }
-
-  colorSchemeMeta.content = "only light";
-
-  html.style.colorScheme = "only light";
-  body.style.colorScheme = "only light";
-
-  html.classList.add("marija-nikola-light-mode");
-  body.classList.add("marija-nikola-light-mode");
-
-  return () => {
-    html.style.colorScheme = previousHtmlColorScheme;
-    body.style.colorScheme = previousBodyColorScheme;
-
-    html.classList.remove("marija-nikola-light-mode");
-    body.classList.remove("marija-nikola-light-mode");
-
-    colorSchemeMeta?.remove();
-  };
-}, [invitation?.slug]);
 
   if (!invitation) {
     return <div className="wedding-page">Pozivnica nije pronađena.</div>;

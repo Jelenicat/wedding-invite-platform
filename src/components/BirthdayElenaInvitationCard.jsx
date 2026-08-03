@@ -347,7 +347,19 @@ function BirthdayElenaInvitationCard({
 
   const welcomeText =
     details?.welcomeText ||
-    `Pozivamo vas da zajedno proslavimo ${name}in 18. rođendan.`;
+    (
+      isAnja18
+        ? "Sa radošću vas pozivamo da zajedno proslavimo Anjin 18. rođendan."
+        : `Pozivamo vas da zajedno proslavimo ${name}in 18. rođendan.`
+    );
+
+  const closingText =
+    details?.closingText ||
+    (
+      isAnja18
+        ? "Vidimo se na proslavi!"
+        : ""
+    );
 
   const locationName =
     details?.locationName ||
@@ -576,7 +588,7 @@ function BirthdayElenaInvitationCard({
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <p>Veselimo se vašem dolasku!</p>
+              <p>{closingText}</p>
 
               <AnjaHeartDivider compact />
             </motion.div>
