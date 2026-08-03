@@ -32,7 +32,7 @@ function MinimalGoldRSVP({
           title: "Потврдите долазак",
           subtitle:
             "Биће нам велико задовољство да својим присуством улепшате наш посебан дан.",
-          deadline: "Потврда доласка до 28.9.2026.",
+          deadline: "Потврда доласка до 20.9.2026.",
           contact: (
             <>
               Контакт:
@@ -65,7 +65,7 @@ function MinimalGoldRSVP({
           title: "Potvrdite dolazak",
           subtitle:
             "Bit će nam veliko zadovoljstvo ako svojim prisustvom uveličate naš poseban dan.",
-          deadline: "Potvrda dolaska do 28.9.2026.",
+          deadline: "Potvrda dolaska do 20.9.2026.",
           contact: (
             <>
               Kontakt:

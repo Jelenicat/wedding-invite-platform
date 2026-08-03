@@ -5036,8 +5036,8 @@ events: [
     showDressCode: false,
 
     note: "A sad ostaju vjera, ufanje i ljubav, ovo troje – ali najveća je među njima ljubav.",
-    rsvpDeadline: "28.09.2026.",
-    rsvpDeadlineISO: "2026-09-28",
+    rsvpDeadline: "20.09.2026.",
+    rsvpDeadlineISO: "2026-09-20",
   }),
 },
 
