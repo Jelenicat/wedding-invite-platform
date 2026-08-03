@@ -166,9 +166,12 @@ function MinimalCountdown({
     radosnicama.
   </p>
 
-  <div className="minimal-marija-nikola-signature">
-    Marija &amp; Nikola
-  </div>
+<div className="minimal-marija-nikola-signature">
+  Marija &amp;
+  <span className="minimal-marija-nikola-signature-nikola">
+    Nikola
+  </span>
+</div>
 </div>
       </motion.div>
     ) : null;

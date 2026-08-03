@@ -3381,3 +3381,304 @@ padding:
     font-size: 33px;
   }
 }
+
+/* =========================================================
+   ANJA — UKLANJANJE VIŠKA VISINE
+   Mora biti poslednji blok u fajlu
+========================================================= */
+
+/* =========================================================
+   SEKCIJE VIŠE NISU PRINUDNO VISOKE CEO EKRAN
+========================================================= */
+
+.birthday-elena-rsvp--anja-18,
+.birthday-elena-countdown--anja-18 {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stage,
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__stage {
+  height: auto !important;
+  min-height: 0 !important;
+
+  align-items: flex-start !important;
+
+  padding:
+    26px
+    9px
+    30px !important;
+}
+
+/* =========================================================
+   RSVP — KRAĆA KARTICA
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__content {
+  height: auto !important;
+  min-height: 0 !important;
+
+  padding: 0 !important;
+
+  flex: none !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__panel {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  padding:
+    27px
+    22px
+    22px !important;
+}
+
+/* Manje praznog prostora između elemenata */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__ornament {
+  margin-top: 13px !important;
+  margin-bottom: 12px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__deadline {
+  margin-bottom: 17px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__form {
+  gap: 11px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__name-field {
+  gap: 7px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__name-field
+  input {
+  height: 50px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice {
+  min-height: 77px !important;
+
+  padding:
+    8px
+    6px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice::before {
+  font-size: 27px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__guests {
+  min-height: 0 !important;
+
+  padding-bottom: 0 !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__guests
+  .birthday-elena-rsvp__ornament {
+  margin-top: 0 !important;
+  margin-bottom: 7px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__guests
+  > p {
+  margin-bottom: 9px !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__submit {
+  min-height: 51px !important;
+}
+
+/* =========================================================
+   COUNTDOWN — UKLANJA PRAZNO ISPOD
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__content {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  flex: none !important;
+
+  justify-content: flex-start !important;
+
+  padding:
+    26px
+    20px
+    19px !important;
+}
+
+/* Gornji elementi kompaktniji */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__kicker::before {
+  margin-bottom: 9px !important;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__title {
+  margin-top: 10px !important;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__ornament {
+  margin-top: 13px !important;
+  margin-bottom: 12px !important;
+}
+
+/* Brojevi zauzimaju manje visine */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__grid {
+  margin:
+    0
+    auto !important;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__item {
+  min-height: 68px !important;
+
+  gap: 5px !important;
+
+  padding:
+    6px
+    2px !important;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__item
+  strong {
+  line-height: 0.88 !important;
+}
+
+/* Kalendar nema dodatni prostor ispod */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar {
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin-top: 14px !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar
+  button {
+  min-height: 51px !important;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar
+  > p {
+  margin:
+    9px
+    auto
+    0 !important;
+
+  padding-bottom: 0 !important;
+}
+
+/* =========================================================
+   MANJI TELEFONI
+========================================================= */
+
+@media (max-width: 390px) {
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__stage,
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__stage {
+    padding:
+      20px
+      6px
+      24px !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__panel {
+    padding:
+      24px
+      17px
+      19px !important;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__content {
+    padding:
+      23px
+      16px
+      17px !important;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__item {
+    min-height: 62px !important;
+  }
+}
+/* =========================================================
+   ANJA — MANJA UKRASNA SRCA
+   Dodaj na sam kraj fajla
+========================================================= */
+
+/* RSVP — srce između linija */
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__ornament::after {
+  width: 28px !important;
+  height: 20px !important;
+
+  font-size: 18px !important;
+}
+
+/* RSVP — srce u success poruci */
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success
+  h2::before {
+  margin-bottom: 13px !important;
+
+  font-size: 26px !important;
+}
+
+/* COUNTDOWN — srce iznad kickera */
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__kicker::before {
+  margin-bottom: 9px !important;
+
+  font-size: 22px !important;
+}
+
+/* COUNTDOWN — srce između linija */
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__ornament::after {
+  width: 28px !important;
+  height: 20px !important;
+
+  font-size: 18px !important;
+}
+
+/* COUNTDOWN — srce u finished bloku */
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__finished::before {
+  margin-bottom: 11px !important;
+
+  font-size: 26px !important;
+}

@@ -7078,7 +7078,7 @@ dressCodeMenPalette: [
   groomName: "Nikola",
 
   videoSrc: "/videos/marija-nikola.mp4",
-  musicSrc:"/music/marija-nikola.mp3",
+  musicSrc:"/music/marija-nikola-1.mp3",
   fontMode: "dark",
 
   weddingDate: "07 NOV 2026",
@@ -7089,7 +7089,7 @@ dressCodeMenPalette: [
 
   details: createDetails({
  welcomeText:
-  "Dragi naši,\nSa velikom radošću i uzbuđenjem, da svojim prisustvom upotpunite naš poseban dan, pozivamo vas na naše venčanje.",
+  "Dragi naši,\nSa velikom radošću i uzbuđenjem, da svojim prisustvom upotpunite naš poseban dan, pozivamo vas na naše venčanje",
 
     date: "07 NOV 2026",
     dateISO: "2026-11-07T14:30:00+01:00",
@@ -7103,12 +7103,12 @@ dressCodeMenPalette: [
         time: "14:30",
         icon: "church",
         location:
-          "Saborni hram Svetog arhangela Mihaila",
+          "Saborna crkva Svetog arhangela Mihaila",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Saborni+hram+Svetog+arhangela+Mihaila+Kneza+Sime+Markovica+3+Beograd",
       },
       {
-        label: "Skup gostiju u restoranu",
+        label: "Svečani prijem u restoranu",
         time: "15:30",
         icon: "gathering",
         location:

@@ -9112,3 +9112,10 @@ color: #8e7f73;
     animation: none;
   }
 }
+
+html.marija-nikola-light-mode,
+html.marija-nikola-light-mode body,
+html.marija-nikola-light-mode #root,
+html.marija-nikola-light-mode .wedding-page {
+  color-scheme: only light !important;
+}
