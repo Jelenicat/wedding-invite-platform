@@ -122,6 +122,23 @@ function CenterDivider() {
   );
 }
 
+function AnjaDivider() {
+  return (
+    <div
+      className="birthday-intro__anja-divider"
+      aria-hidden="true"
+    >
+      <span />
+
+      <span className="birthday-intro__anja-diamond">
+        ◆
+      </span>
+
+      <span />
+    </div>
+  );
+}
+
 function SideFlourish({
   mirrored = false,
 }) {
@@ -154,6 +171,13 @@ function BirthdayIntro({
   const intro =
     details?.birthdayIntro || {};
 
+  /*
+   * Poseban, jednostavniji dizajn
+   * koristi se samo za ovaj slug.
+   */
+  const isAnja18 =
+    slug === "anja-18";
+
   const name =
     intro.name ||
     brideName ||
@@ -177,6 +201,15 @@ function BirthdayIntro({
   const buttonText =
     intro.buttonText ||
     "POGLEDAJ POZIVNICU";
+
+  /*
+   * Kod Anje se broj prikazuje bez tačke.
+   * Kod svih ostalih ostaje postojeći prikaz.
+   */
+  const ageText =
+    isAnja18
+      ? `${age}`
+      : `${age}.`;
 
   const introBackground =
     intro.backgroundImage ||
@@ -315,9 +348,11 @@ function BirthdayIntro({
             ease: "easeOut",
           }}
         >
-          <ScrollOrnament
-            position="top"
-          />
+          {!isAnja18 && (
+            <ScrollOrnament
+              position="top"
+            />
+          )}
 
           <h1
             data-text={name}
@@ -330,25 +365,42 @@ function BirthdayIntro({
             {name}
           </h1>
 
-          <CenterDivider />
+          {isAnja18 ? (
+            <AnjaDivider />
+          ) : (
+            <CenterDivider />
+          )}
 
-          <div className="birthday-intro__age-row">
-            <SideFlourish />
+          <div
+            className={[
+              "birthday-intro__age-row",
+              isAnja18
+                ? "birthday-intro__age-row--simple"
+                : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {!isAnja18 && (
+              <SideFlourish />
+            )}
 
             <div
-              data-text={`${age}.`}
+              data-text={ageText}
               className={`birthday-intro__age ${
                 ageGradient !== "none"
                   ? "has-gradient"
                   : ""
               }`}
             >
-              {age}.
+              {ageText}
             </div>
 
-            <SideFlourish
-              mirrored
-            />
+            {!isAnja18 && (
+              <SideFlourish
+                mirrored
+              />
+            )}
           </div>
 
           <div className="birthday-intro__label">
@@ -359,9 +411,11 @@ function BirthdayIntro({
             {date}
           </div>
 
-          <ScrollOrnament
-            position="bottom"
-          />
+          {!isAnja18 && (
+            <ScrollOrnament
+              position="bottom"
+            />
+          )}
         </motion.div>
 
         <motion.button
@@ -386,12 +440,14 @@ function BirthdayIntro({
             scale: 0.975,
           }}
         >
-          <span
-            className="birthday-intro__button-gem"
-            aria-hidden="true"
-          >
-            <GemHeart />
-          </span>
+          {!isAnja18 && (
+            <span
+              className="birthday-intro__button-gem"
+              aria-hidden="true"
+            >
+              <GemHeart />
+            </span>
+          )}
 
           <span className="birthday-intro__button-copy">
             {buttonText}

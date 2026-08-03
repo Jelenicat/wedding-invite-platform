@@ -1516,3 +1516,1868 @@ padding:
 .birthday-elena-rsvp__success span {
   color: rgba(126, 91, 87, 0.78);
 }
+/* =========================================================
+   ANJA — RSVP
+   Važi samo za slug: anja-18
+========================================================= */
+
+.birthday-elena-rsvp--anja-18 {
+  --anja-rsvp-text: #745d4d;
+  --anja-rsvp-soft: #947765;
+  --anja-rsvp-accent: #b48c6d;
+  --anja-rsvp-accent-dark: #9e7557;
+  --anja-rsvp-line: rgba(169, 132, 103, 0.3);
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+
+  background: #f4eee7;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   RSVP POZADINA
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stage {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100svh;
+
+  padding: 34px 10px 42px !important;
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__background {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    var(--birthday-elena-rsvp-bg);
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 253, 248, 0.02) 0%,
+      rgba(255, 251, 245, 0.05) 50%,
+      rgba(255, 253, 248, 0.03) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   RSVP SADRŽAJ
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__content {
+  position: relative;
+  z-index: 2;
+
+  display: block !important;
+
+  width: min(94vw, 430px) !important;
+  max-width: none !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  flex: 0 0 auto !important;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   RSVP PROVIDNA KARTICA
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__panel,
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success {
+  position: relative;
+
+  display: block !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+  padding: 32px 25px 26px !important;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.58);
+
+  border-radius: 33px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 254, 251, 0.28) 0%,
+      rgba(250, 244, 237, 0.16) 100%
+    );
+
+  box-shadow:
+    0 16px 40px
+      rgba(91, 66, 48, 0.055),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+}
+
+/* Unutrašnji ram */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__panel::before,
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success::before {
+  content: "";
+
+  position: absolute;
+  inset: 7px;
+
+  border:
+    1px solid
+    rgba(174, 139, 111, 0.1);
+
+  border-radius: 26px;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   UKLANJA SVA „POLOMLJENA“ SRCA U RSVP-U
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__gem,
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__outline-heart {
+  display: none !important;
+}
+
+/* =========================================================
+   RSVP NASLOV
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__title {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: none;
+
+  margin: 0 auto;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(27px, 6.6vw, 33px);
+
+  font-weight: 500;
+  line-height: 1.16;
+
+  letter-spacing: 0.14em;
+  padding-left: 0.14em;
+
+  color:
+    var(--anja-rsvp-text) !important;
+
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: none !important;
+}
+
+/* =========================================================
+   RSVP UKRAS SA OBIČNIM SRCEM
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__ornament {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 61%;
+  height: 26px;
+
+  margin: 17px auto 16px;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__ornament
+  > span {
+  display: block;
+  flex: 1;
+
+  height: 1px;
+  margin: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--anja-rsvp-line),
+      transparent
+    );
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__ornament::after {
+  content: "♡";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 26px;
+
+  background:
+    rgba(249, 245, 239, 0.78);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    var(--anja-rsvp-accent);
+
+  transform:
+    translate(-50%, -50%);
+}
+
+/* =========================================================
+   RSVP TEKST ROKA
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__deadline {
+  position: relative;
+  z-index: 1;
+
+  width: 88%;
+  max-width: 315px;
+
+  margin: 0 auto 22px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(16px, 3.9vw, 18px);
+
+  font-weight: 400;
+  line-height: 1.42;
+
+  color:
+    var(--anja-rsvp-soft) !important;
+
+  text-align: center;
+}
+
+/* =========================================================
+   RSVP FORMA
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__form {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  gap: 14px;
+
+  margin: 0;
+}
+
+/* =========================================================
+   IME I PREZIME
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__name-field {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  gap: 9px;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__name-field
+  label {
+  margin-left: 6px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.2em;
+
+  color: #9d785e !important;
+
+  text-transform: uppercase;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__name-field
+  input {
+  display: block;
+
+  width: 100%;
+  height: 54px;
+
+  padding: 0 18px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(169, 128, 96, 0.23) !important;
+
+  border-radius: 18px;
+  outline: none;
+
+  background:
+    rgba(255, 253, 249, 0.22) !important;
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.48);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 17px;
+  font-weight: 400;
+
+  color:
+    var(--anja-rsvp-text) !important;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__name-field
+  input::placeholder {
+  color:
+    rgba(126, 99, 80, 0.52) !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__name-field
+  input:focus {
+  border-color:
+    rgba(161, 116, 82, 0.45) !important;
+
+  background:
+    rgba(255, 254, 251, 0.34) !important;
+
+  box-shadow:
+    0 0 0 3px
+      rgba(178, 139, 106, 0.06),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.56);
+}
+
+/* =========================================================
+   DOLAZIM / NE MOGU DA DOĐEM
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choices {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  width: 100%;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 88px;
+
+  padding: 11px 7px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(169, 128, 96, 0.22) !important;
+
+  border-radius: 18px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background:
+    rgba(255, 253, 249, 0.18) !important;
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.44);
+
+  cursor: pointer;
+
+  text-align: center;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* Obično srce u obe opcije */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice::before {
+  content: "♡";
+
+  display: block;
+
+  margin: 0 auto;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    var(--anja-rsvp-accent-dark);
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice
+  > span {
+  display: block;
+
+  width: 100%;
+  margin: 0 auto;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.25;
+
+  letter-spacing: 0.06em;
+
+  color:
+    var(--anja-rsvp-text) !important;
+
+  white-space: normal;
+  text-align: center;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice--no
+  > span {
+  max-width: 112px;
+}
+
+/* Aktivna opcija */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice.is-active {
+  border-color:
+    rgba(155, 111, 78, 0.4) !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(221, 197, 176, 0.33),
+      rgba(255, 251, 246, 0.21)
+    ) !important;
+
+  box-shadow:
+    0 7px 18px
+      rgba(95, 64, 43, 0.055),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.5);
+
+  transform: translateY(-1px);
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__choice.is-active::before {
+  content: "♥";
+
+  color: #b78e6f;
+}
+
+/* =========================================================
+   BROJ GOSTIJU
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__guests {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  height: auto;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0 0 2px;
+
+  overflow: hidden;
+
+  text-align: center;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__guests
+  .birthday-elena-rsvp__ornament {
+  width: 59%;
+
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__guests
+  > p {
+  margin: 0 0 11px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.17em;
+
+  color: #9e775d !important;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   RSVP BROJAČ + / BROJ / -
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stepper {
+  display: grid !important;
+
+  grid-template-columns:
+    46px
+    68px
+    46px !important;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px !important;
+
+  width: max-content !important;
+  height: auto !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stepper
+  button,
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stepper
+  output {
+  display: grid !important;
+  place-items: center;
+
+  height: 46px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(169, 128, 96, 0.22) !important;
+
+  border-radius: 14px !important;
+
+  background:
+    rgba(255, 253, 249, 0.2) !important;
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.46) !important;
+
+  color:
+    var(--anja-rsvp-text) !important;
+
+  line-height: 1 !important;
+  text-align: center;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stepper
+  button {
+  width: 46px !important;
+
+  font-family:
+    Arial,
+    sans-serif !important;
+
+  font-size: 21px !important;
+  font-weight: 300 !important;
+
+  cursor: pointer;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stepper
+  output {
+  width: 68px !important;
+
+  font-family:
+    Arial,
+    sans-serif !important;
+
+  font-size: 18px !important;
+  font-weight: 400 !important;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__stepper
+  button:disabled {
+  opacity: 0.32;
+
+  cursor: default;
+}
+
+/* =========================================================
+   RSVP DUGME POTVRDI
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__submit {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: 100%;
+  min-height: 55px;
+
+  margin-top: 0;
+  padding: 12px 18px;
+
+  border:
+    1px solid
+    rgba(151, 108, 77, 0.22) !important;
+
+  border-radius: 999px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c5a080 0%,
+      #ad805f 100%
+    ) !important;
+
+  box-shadow:
+    0 10px 22px
+      rgba(94, 62, 40, 0.11),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.24);
+
+  cursor: pointer;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__submit::before {
+  content: "♡";
+
+  display: block;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    rgba(255, 250, 245, 0.92);
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__submit
+  > span {
+  display: block;
+
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.15em;
+
+  color: #fffaf5 !important;
+
+  text-transform: uppercase;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__submit:disabled {
+  opacity: 0.6;
+
+  cursor: wait;
+}
+
+/* =========================================================
+   USPEŠNA POTVRDA
+========================================================= */
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 330px !important;
+
+  text-align: center;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success
+  h2 {
+  margin: 0;
+
+  color:
+    var(--anja-rsvp-text) !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success
+  h2::before {
+  content: "♡";
+
+  display: block;
+
+  margin: 0 auto 17px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    var(--anja-rsvp-accent);
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success
+  p {
+  color:
+    var(--anja-rsvp-soft) !important;
+}
+
+.birthday-elena-rsvp--anja-18
+  .birthday-elena-rsvp__success
+  span {
+  color: #9b7d69 !important;
+}
+
+/* =========================================================
+   RSVP HOVER
+========================================================= */
+
+@media (hover: hover) {
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__choice:hover {
+    border-color:
+      rgba(155, 111, 78, 0.34) !important;
+
+    background:
+      rgba(255, 253, 249, 0.28) !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__submit:hover {
+    background:
+      linear-gradient(
+        180deg,
+        #cba98b 0%,
+        #b48767 100%
+      ) !important;
+
+    transform: translateY(-1px);
+  }
+}
+
+/* =========================================================
+   RSVP MANJI TELEFONI
+========================================================= */
+
+@media (max-width: 390px) {
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__stage {
+    padding:
+      25px
+      6px
+      33px !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__content {
+    width: 96vw !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__panel,
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__success {
+    padding:
+      28px
+      18px
+      23px !important;
+
+    border-radius: 29px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__panel::before,
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__success::before {
+    inset: 6px;
+
+    border-radius: 24px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__title {
+    font-size: 25px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__ornament {
+    margin-top: 15px;
+    margin-bottom: 14px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__deadline {
+    width: 92%;
+
+    margin-bottom: 18px;
+
+    font-size: 15px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__form {
+    gap: 13px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__name-field
+    input {
+    height: 51px;
+
+    font-size: 16px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__choices {
+    gap: 8px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__choice {
+    min-height: 83px;
+
+    padding: 9px 5px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__choice::before {
+    font-size: 28px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__choice
+    > span {
+    font-size: 10.5px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__stepper {
+    grid-template-columns:
+      43px
+      62px
+      43px !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__stepper
+    button {
+    width: 43px !important;
+    height: 43px !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__stepper
+    output {
+    width: 62px !important;
+    height: 43px !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__submit {
+    min-height: 53px;
+  }
+}
+
+/* =========================================================
+   RSVP NISKI EKRANI
+========================================================= */
+
+@media (max-height: 720px) {
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__stage {
+    align-items: flex-start;
+
+    padding:
+      18px
+      6px
+      26px !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__panel {
+    padding-top: 24px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__title {
+    font-size: 23px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__deadline {
+    margin-bottom: 16px;
+
+    font-size: 14px;
+  }
+
+  .birthday-elena-rsvp--anja-18
+    .birthday-elena-rsvp__choice {
+    min-height: 77px;
+  }
+}
+
+
+/* =========================================================
+   ANJA — COUNTDOWN
+   Važi samo za slug: anja-18
+========================================================= */
+
+.birthday-elena-countdown--anja-18 {
+  --anja-countdown-text: #745d4d;
+  --anja-countdown-soft: #987a67;
+  --anja-countdown-accent: #b48c6d;
+  --anja-countdown-accent-dark: #9e7557;
+  --anja-countdown-line:
+    rgba(169, 132, 103, 0.3);
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+
+  background: #f4eee7;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   COUNTDOWN POZADINA
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__stage {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100svh;
+
+  padding: 34px 10px 42px !important;
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__background {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    var(--birthday-elena-countdown-bg);
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 253, 248, 0.02) 0%,
+      rgba(255, 251, 245, 0.05) 48%,
+      rgba(255, 253, 248, 0.03) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   COUNTDOWN PROVIDNA KARTICA
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: min(94vw, 430px) !important;
+  max-width: none !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin: 0 auto !important;
+  padding: 32px 24px 27px !important;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.58);
+
+  border-radius: 33px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 254, 251, 0.28) 0%,
+      rgba(250, 244, 237, 0.16) 100%
+    );
+
+  box-shadow:
+    0 16px 40px
+      rgba(91, 66, 48, 0.055),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__content::before {
+  content: "";
+
+  position: absolute;
+  inset: 7px;
+
+  border:
+    1px solid
+    rgba(174, 139, 111, 0.1);
+
+  border-radius: 26px;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   UKLANJA SVA „POLOMLJENA“ SRCA U COUNTDOWN-U
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__gem,
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__outline-heart {
+  display: none !important;
+}
+
+/* =========================================================
+   COUNTDOWN KICKER
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__kicker {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(11px, 2.8vw, 13px);
+
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.23em;
+  padding-left: 0.23em;
+
+  color: #a17c63 !important;
+
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: none !important;
+}
+
+/* Obično srce iznad */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__kicker::before {
+  content: "♡";
+
+  display: block;
+
+  margin: 0 auto 13px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    var(--anja-countdown-accent);
+}
+
+/* =========================================================
+   COUNTDOWN NASLOV
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__title {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 330px;
+
+  margin: 14px auto 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(26px, 6.4vw, 34px);
+
+  font-weight: 500;
+  line-height: 1.16;
+
+  letter-spacing: 0.1em;
+  padding-left: 0.1em;
+
+  color:
+    var(--anja-countdown-text) !important;
+
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: none !important;
+}
+
+/* =========================================================
+   COUNTDOWN UKRAS
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__ornament {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 62%;
+  height: 27px;
+
+  margin: 18px auto 20px;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__ornament
+  > span {
+  display: block;
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--anja-countdown-line),
+      transparent
+    );
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__ornament::after {
+  content: "♡";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 27px;
+
+  background:
+    rgba(249, 245, 239, 0.78);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    var(--anja-countdown-accent);
+
+  transform:
+    translate(-50%, -50%);
+}
+
+/* =========================================================
+   COUNTDOWN — SVA ČETIRI BROJA U JEDNOM REDU
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__grid {
+  position: relative;
+  z-index: 1;
+
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr)) !important;
+
+  gap: 0 !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 auto !important;
+}
+
+/* Nema zasebnih boksova */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__item {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 92px;
+
+  margin: 0;
+  padding: 10px 3px;
+
+  box-sizing: border-box;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+
+  text-align: center;
+}
+
+/* Linije između vrednosti */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__item:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+  top: 18%;
+  right: 0;
+  bottom: 18%;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(169, 132, 103, 0.28),
+      transparent
+    );
+}
+
+/* Brojevi */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__item
+  strong {
+  display: block;
+
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(35px, 8.5vw, 48px);
+
+  font-weight: 500;
+  line-height: 0.92;
+
+  color:
+    var(--anja-countdown-text) !important;
+
+  font-variant-numeric:
+    tabular-nums;
+
+  text-align: center;
+  text-shadow: none !important;
+}
+
+/* DANA / SATI / MINUTA / SEKUNDI */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__item
+  > span {
+  display: block;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(8px, 2vw, 10px);
+
+  font-weight: 500;
+  line-height: 1.15;
+
+  letter-spacing: 0.08em;
+
+  color:
+    var(--anja-countdown-soft) !important;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   COUNTDOWN ZAVRŠEN
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__finished {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 160px;
+
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(169, 128, 96, 0.13);
+
+  border-radius: 22px;
+
+  background:
+    rgba(255, 253, 249, 0.12);
+
+  text-align: center;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__finished::before {
+  content: "♡";
+
+  display: block;
+
+  margin: 0 auto 15px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    var(--anja-countdown-accent-dark);
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__finished
+  p {
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 19px;
+  line-height: 1.4;
+
+  color:
+    var(--anja-countdown-text) !important;
+}
+
+/* =========================================================
+   KALENDAR
+========================================================= */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  margin: 20px auto 0;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar
+  button {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: 100%;
+  min-height: 55px;
+
+  margin: 0;
+  padding: 12px 18px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(151, 108, 77, 0.22) !important;
+
+  border-radius: 999px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c5a080 0%,
+      #ad805f 100%
+    ) !important;
+
+  box-shadow:
+    0 10px 22px
+      rgba(94, 62, 40, 0.11),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.24);
+
+  cursor: pointer;
+}
+
+/* Obično srce u dugmetu */
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar
+  button::before {
+  content: "♡";
+
+  display: block;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    rgba(255, 250, 245, 0.92);
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar
+  button
+  > span {
+  display: block;
+
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.13em;
+
+  color: #fffaf5 !important;
+
+  text-transform: uppercase;
+}
+
+.birthday-elena-countdown--anja-18
+  .birthday-elena-countdown__calendar
+  > p {
+  width: 86%;
+
+  margin: 13px auto 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(13px, 3.2vw, 15px);
+
+  font-weight: 400;
+  line-height: 1.4;
+
+  color:
+    var(--anja-countdown-soft) !important;
+
+  text-align: center;
+}
+
+/* =========================================================
+   COUNTDOWN HOVER
+========================================================= */
+
+@media (hover: hover) {
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__item:hover {
+    border: 0 !important;
+    background: transparent !important;
+    transform: none !important;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__calendar
+    button:hover {
+    background:
+      linear-gradient(
+        180deg,
+        #cba98b 0%,
+        #b48767 100%
+      ) !important;
+
+    transform: translateY(-1px);
+  }
+}
+
+/* =========================================================
+   COUNTDOWN MANJI TELEFONI
+========================================================= */
+
+@media (max-width: 390px) {
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__stage {
+    padding:
+      25px
+      6px
+      33px !important;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__content {
+    width: 96vw !important;
+
+    padding:
+      28px
+      17px
+      23px !important;
+
+    border-radius: 29px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__content::before {
+    inset: 6px;
+
+    border-radius: 24px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__kicker::before {
+    margin-bottom: 11px;
+
+    font-size: 26px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__title {
+    margin-top: 12px;
+
+    font-size: 24px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__ornament {
+    margin-top: 16px;
+    margin-bottom: 17px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__item {
+    min-height: 80px;
+
+    gap: 6px;
+    padding-inline: 1px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__item
+    strong {
+    font-size:
+      clamp(29px, 7.8vw, 37px);
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__item
+    > span {
+    font-size: 7px;
+    letter-spacing: 0.045em;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__calendar {
+    margin-top: 18px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__calendar
+    button {
+    min-height: 53px;
+  }
+}
+
+/* =========================================================
+   COUNTDOWN NISKI EKRANI
+========================================================= */
+
+@media (max-height: 720px) {
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__stage {
+    align-items: flex-start;
+
+    padding:
+      18px
+      6px
+      26px !important;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__content {
+    padding-top: 24px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__title {
+    font-size: 22px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__item {
+    min-height: 74px;
+  }
+
+  .birthday-elena-countdown--anja-18
+    .birthday-elena-countdown__item
+    strong {
+    font-size: 33px;
+  }
+}

@@ -21960,3 +21960,7 @@ font-family: "Italianno", cursive;
   line-height: 1.45;
   opacity: 0.82;
 }
+/* Samo Marija i Nikola */
+.minimal-slug-marija-nikola .minimal-invitation-text {
+  white-space: pre-line;
+}

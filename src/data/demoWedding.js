@@ -2152,7 +2152,7 @@ backgroundColor: "#f3ece6",
 // ELEGANT BLACK TEMPLATE
 // =========================
 {
-  slug: "marija-nikola",
+  slug: "marija-nikola-1",
   type: "wedding",
   template: "elegant-black",
 
@@ -7065,6 +7065,238 @@ dressCodeMenPalette: [
 
       pageBackground:
         "#f5efed",
+    },
+  }),
+},
+
+{
+  slug: "marija-nikola",
+  type: "wedding",
+  template: "silk",
+
+  brideName: "Marija",
+  groomName: "Nikola",
+
+  videoSrc: "/videos/marija-nikola.mp4",
+  musicSrc:"/music/marija-nikola.mp3",
+  fontMode: "dark",
+
+  weddingDate: "07 NOV 2026",
+  weddingTime: "14:30",
+  venue: "The Dream Event Venue, Beton hala",
+
+  backgroundImage: "/images/marija-nikola-minimal.jpg",
+
+  details: createDetails({
+ welcomeText:
+  "Dragi naši,\nSa velikom radošću i uzbuđenjem, da svojim prisustvom upotpunite naš poseban dan, pozivamo vas na naše venčanje.",
+
+    date: "07 NOV 2026",
+    dateISO: "2026-11-07T14:30:00+01:00",
+
+    showCalendarButton: true,
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Ceremonija crkvenog venčanja",
+        time: "14:30",
+        icon: "church",
+        location:
+          "Saborni hram Svetog arhangela Mihaila",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Saborni+hram+Svetog+arhangela+Mihaila+Kneza+Sime+Markovica+3+Beograd",
+      },
+      {
+        label: "Skup gostiju u restoranu",
+        time: "15:30",
+        icon: "gathering",
+        location:
+          "The Dream Event Venue, Beton hala",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=The+Dream+Event+Venue+Beton+hala+Karadjordjeva+2-4+Beograd",
+      },
+      {
+        label: "Ceremonija građanskog venčanja",
+        time: "16:30",
+        icon: "civil",
+        location:
+          "The Dream Event Venue, Beton hala",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=The+Dream+Event+Venue+Beton+hala+Karadjordjeva+2-4+Beograd",
+      },
+    ],
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=The+Dream+Event+Venue+Beton+hala+Karadjordjeva+2-4+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite najkasnije do 25.10.2026.",
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite najkasnije do 25.10.2026.",
+  }),
+},
+
+{
+  slug: "anja-18",
+  type: "birthday",
+  template: "birthday-intro",
+  script: "latin",
+
+  brideName: "Anja",
+
+  weddingDate: "04.09.2026.",
+  weddingTime: "19:00",
+  venue: "Sala Grand M",
+
+  musicSrc: "/music/eva-1.mp3",
+
+  introPreviewImage:
+    "/images/anja-18/background.webp",
+
+  
+
+  details: createDetails({
+    age: 18,
+
+    date: "04.09.2026.",
+
+    dateISO:
+      "2026-09-04T19:00:00+02:00",
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Anjin 18. rođendan.",
+
+    venue:
+      "Sala Grand M",
+
+    locationName:
+      "Sala Grand M",
+
+    locationAddress:
+      "Novi Bečej",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Sala+Grand+M+Novi+Becej",
+
+    showCalendarButton: true,
+
+    showDressCode: false,
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 28.08.2026.",
+
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite do 28.08.2026.",
+
+    /*
+     * Ista poslata slika koristi se kao pozadina
+     * invitation card sekcije.
+     */
+    cardBackground:
+      "/images/anja-18/card.webp",
+
+    /*
+     * Pozadina RSVP sekcije
+     */
+    rsvpImage:
+      "/images/anja-18/rsvp.webp",
+
+    /*
+     * Countdown sekcija
+     */
+    birthdayGalleryCountdown: {
+      backgroundImage:
+        "/images/anja-18/2.webp",
+
+      kicker:
+        "ODBROJAVANJE",
+
+      title:
+        "DO PROSLAVE JE OSTALO",
+
+      finishedTitle:
+        "POSEBAN DAN JE STIGAO",
+
+      finishedText:
+        "Vidimo se na proslavi!",
+
+      calendarButtonText:
+        "DODAJ U KALENDAR",
+
+      calendarHint:
+        "Sačuvajte datum proslave u svom telefonu.",
+
+      showCalendarButton: true,
+    },
+
+    /*
+     * Intro sekcija
+     */
+    birthdayIntro: {
+      backgroundImage:
+        "/images/anja-18/background.webp",
+
+      backgroundPosition:
+        "center top",
+
+      backgroundSize:
+        "cover",
+
+      name:
+        "Anja",
+
+      age:
+        18,
+
+      date:
+        "04.09.2026.",
+
+      birthdayLabel:
+        "ROĐENDAN",
+
+      buttonText:
+        "POGLEDAJ POZIVNICU",
+
+      contentTop:
+        "18.5%",
+
+      buttonBottom:
+        "7.5%",
+
+      /*
+       * Topla krem i šampanj paleta
+       * prilagođena poslatoj pozadini.
+       */
+      textColor:
+        "#89745f",
+
+      accentColor:
+        "#b99a72",
+
+      nameColor:
+        "#957653",
+
+      ageColor:
+        "#957653",
+
+      nameGradient:
+        "linear-gradient(180deg, #72583f 0%, #b89567 18%, #f5e4bd 38%, #aa8458 57%, #745a40 77%, #c8a777 100%)",
+
+      ageGradient:
+        "linear-gradient(180deg, #72583f 0%, #b89567 18%, #f5e4bd 38%, #aa8458 57%, #745a40 77%, #c8a777 100%)",
+
+      buttonBackground:
+        "rgba(255, 250, 241, 0.82)",
+
+      buttonTextColor:
+        "#80684f",
+
+      buttonBorderColor:
+        "rgba(177, 145, 105, 0.48)",
+
+      pageBackground:
+        "#f3e5d3",
     },
   }),
 },

@@ -23,7 +23,7 @@ function MinimalGoldRSVP({
     script === "cyrillic"
       ? {
           missingSlug: "Недостаје slug или тип догађаја.",
-          enterName: "Унесите име и презиме.",
+          enterName: "Унесите имена и презимена.",
           chooseAttendance: "Изаберите да ли долазите.",
           invalidGuests: "Унесите исправан број особа.",
           submitError: "Дошло је до грешке при слању.",
@@ -33,9 +33,18 @@ function MinimalGoldRSVP({
           subtitle:
             "Биће нам велико задовољство да својим присуством улепшате наш посебан дан.",
           deadline: "Потврда доласка до 28.9.2026.",
-          contact: "Контакт: 097 685 1599",
-          fullName: "Име и презиме",
-          fullNamePlaceholder: "Унесите име и презиме",
+          contact: (
+            <>
+              Контакт:
+              <br />
+              Бенедикт: 097 685 1599
+              <br />
+              Стела: 097 656 8283
+            </>
+          ),
+          fullName:
+            "Име и презиме (наведите имена свих који долазе)",
+          fullNamePlaceholder: "Унесите имена и презимена",
           attendance: "Да ли долазите?",
           yes: "Долазим",
           yesText: "Радујем се што славим са вама",
@@ -47,7 +56,7 @@ function MinimalGoldRSVP({
         }
       : {
           missingSlug: "Nedostaje slug ili tip događaja.",
-          enterName: "Unesite ime i prezime.",
+          enterName: "Unesite imena i prezimena.",
           chooseAttendance: "Odaberite dolazite li.",
           invalidGuests: "Unesite ispravan broj osoba.",
           submitError: "Došlo je do pogreške prilikom slanja.",
@@ -57,8 +66,17 @@ function MinimalGoldRSVP({
           subtitle:
             "Bit će nam veliko zadovoljstvo ako svojim prisustvom uveličate naš poseban dan.",
           deadline: "Potvrda dolaska do 28.9.2026.",
-          contact: "Kontakt: 097 685 1599",
-          fullName: "Ime i prezime (navedite imena svih koji dolaze)",
+          contact: (
+            <>
+              Kontakt:
+              <br />
+              Benedikt: 097 685 1599
+              <br />
+              Stela: 097 656 8283
+            </>
+          ),
+          fullName:
+            "Ime i prezime (navedite imena svih koji dolaze)",
           fullNamePlaceholder: "Unesite imena i prezimena",
           attendance: "Dolazite li?",
           yes: "Dolazim",
@@ -132,7 +150,11 @@ function MinimalGoldRSVP({
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
-      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+      if (
+        !formData.guests ||
+        Number.isNaN(guestsCount) ||
+        guestsCount < 1
+      ) {
         alert(t.invalidGuests);
         return;
       }
@@ -173,7 +195,10 @@ function MinimalGoldRSVP({
       className="minimal-rsvp-section minimal-gold-rsvp-theme"
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="minimal-rsvp-shell">
@@ -197,7 +222,10 @@ function MinimalGoldRSVP({
                 <motion.div
                   className="minimal-rsvp-success-heart"
                   initial={{ scale: 0, rotate: -15 }}
-                  animate={{ scale: [0, 1.2, 1], rotate: [0, 8, -8, 0] }}
+                  animate={{
+                    scale: [0, 1.2, 1],
+                    rotate: [0, 8, -8, 0],
+                  }}
                   transition={{ duration: 0.9 }}
                 >
                   💌
@@ -206,7 +234,10 @@ function MinimalGoldRSVP({
                 <motion.h3
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.45 }}
+                  transition={{
+                    delay: 0.15,
+                    duration: 0.45,
+                  }}
                 >
                   {t.thanks}
                 </motion.h3>
@@ -214,7 +245,10 @@ function MinimalGoldRSVP({
                 <motion.p
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.28, duration: 0.45 }}
+                  transition={{
+                    delay: 0.28,
+                    duration: 0.45,
+                  }}
                 >
                   {t.success}
                 </motion.p>
@@ -255,9 +289,13 @@ function MinimalGoldRSVP({
               >
                 <p className="minimal-rsvp-kicker">RSVP</p>
 
-                <h2 className="minimal-rsvp-title">{t.title}</h2>
+                <h2 className="minimal-rsvp-title">
+                  {t.title}
+                </h2>
 
-                <p className="minimal-rsvp-subtitle">{t.subtitle}</p>
+                <p className="minimal-rsvp-subtitle">
+                  {t.subtitle}
+                </p>
 
                 <p className="minimal-gold-rsvp-deadline">
                   {t.deadline}
@@ -267,7 +305,10 @@ function MinimalGoldRSVP({
 
                 <div className="minimal-rsvp-divider" />
 
-                <form className="minimal-rsvp-form" onSubmit={handleSubmit}>
+                <form
+                  className="minimal-rsvp-form"
+                  onSubmit={handleSubmit}
+                >
                   <div className="minimal-rsvp-field">
                     <label htmlFor="minimal-gold-fullName">
                       {t.fullName}
@@ -293,11 +334,18 @@ function MinimalGoldRSVP({
                       <button
                         type="button"
                         className={`minimal-choice-card ${
-                          formData.attending === "da" ? "is-active" : ""
+                          formData.attending === "da"
+                            ? "is-active"
+                            : ""
                         }`}
-                        onClick={() => handleAttendanceSelect("da")}
+                        onClick={() =>
+                          handleAttendanceSelect("da")
+                        }
                       >
-                        <span className="minimal-choice-title">{t.yes}</span>
+                        <span className="minimal-choice-title">
+                          {t.yes}
+                        </span>
+
                         <span className="minimal-choice-text">
                           {t.yesText}
                         </span>
@@ -306,12 +354,21 @@ function MinimalGoldRSVP({
                       <button
                         type="button"
                         className={`minimal-choice-card ${
-                          formData.attending === "ne" ? "is-active" : ""
+                          formData.attending === "ne"
+                            ? "is-active"
+                            : ""
                         }`}
-                        onClick={() => handleAttendanceSelect("ne")}
+                        onClick={() =>
+                          handleAttendanceSelect("ne")
+                        }
                       >
-                        <span className="minimal-choice-title">{t.no}</span>
-                        <span className="minimal-choice-text">{t.noText}</span>
+                        <span className="minimal-choice-title">
+                          {t.no}
+                        </span>
+
+                        <span className="minimal-choice-text">
+                          {t.noText}
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -327,9 +384,21 @@ function MinimalGoldRSVP({
                     {formData.attending === "da" && (
                       <motion.div
                         className="minimal-rsvp-field"
-                        initial={{ opacity: 0, height: 0, y: 6 }}
-                        animate={{ opacity: 1, height: "auto", y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -4 }}
+                        initial={{
+                          opacity: 0,
+                          height: 0,
+                          y: 6,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          height: "auto",
+                          y: 0,
+                        }}
+                        exit={{
+                          opacity: 0,
+                          height: 0,
+                          y: -4,
+                        }}
                         transition={{ duration: 0.25 }}
                       >
                         <label htmlFor="minimal-gold-guests">
