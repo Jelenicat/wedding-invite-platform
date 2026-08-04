@@ -16,32 +16,47 @@ function EleganWhiteInvitationCard({
 }) {
   const events = details?.events || [];
 
-  const activeScript = script || details?.script || "latin";
-  const isCyrillic = activeScript === "cyrillic";
+  const activeScript =
+    script || details?.script || "latin";
+
+  const isCyrillic =
+    activeScript === "cyrillic";
+
+  const isIvanaDusanSlug =
+    slug === "ivana-dusan";
 
   const copy = isCyrillic
     ? {
-        introLineOne: "Са радошћу вас позивамо",
-        introLineTwo: "да са нама прославите",
+        introLineOne:
+          "Са радошћу вас позивамо",
+        introLineTwo:
+          "да са нама прославите",
         eyebrow: "Наше венчање",
         connector: "и",
         timePrefix: "у",
         timeSuffix: "часова",
-        closing: "Радујемо се вашем доласку!",
+        closing:
+          "Радујемо се вашем доласку!",
         scheduleTitle: "Распоред",
       }
     : {
-        introLineOne: "Sa radošću vas pozivamo",
-        introLineTwo: "da sa nama proslavite",
+        introLineOne:
+          "Sa radošću vas pozivamo",
+        introLineTwo:
+          "da sa nama proslavite",
         eyebrow: "Naše venčanje",
         connector: "i",
         timePrefix: "u",
         timeSuffix: "časova",
-        closing: "Radujemo se vašem dolasku!",
+        closing:
+          "Radujemo se vašem dolasku!",
         scheduleTitle: "Raspored",
       };
 
-  const formatMainDate = (dateString, dateISO) => {
+  const formatMainDate = (
+    dateString,
+    dateISO
+  ) => {
     const dayNames = isCyrillic
       ? [
           "НЕДЕЉА",
@@ -121,69 +136,128 @@ function EleganWhiteInvitationCard({
     let parsedDate = null;
 
     if (dateISO) {
-      const isoDateOnly = String(dateISO).split("T")[0];
-      const [year, month, day] = isoDateOnly
-        .split("-")
-        .map(Number);
+      const isoDateOnly =
+        String(dateISO).split("T")[0];
+
+      const [year, month, day] =
+        isoDateOnly
+          .split("-")
+          .map(Number);
 
       if (year && month && day) {
-        parsedDate = new Date(year, month - 1, day);
+        parsedDate = new Date(
+          year,
+          month - 1,
+          day
+        );
       }
     }
 
     const parts = dateString
-      ? dateString.trim().split(/\s+/)
+      ? dateString
+          .trim()
+          .split(/\s+/)
       : [];
 
     if (
-      (!parsedDate || Number.isNaN(parsedDate.getTime())) &&
+      (!parsedDate ||
+        Number.isNaN(
+          parsedDate.getTime()
+        )) &&
       parts.length >= 3
     ) {
       const day = Number(
-        String(parts[0]).replace(/\D/g, "")
+        String(parts[0]).replace(
+          /\D/g,
+          ""
+        )
       );
 
-      const monthKey = String(parts[1] || "")
+      const monthKey = String(
+        parts[1] || ""
+      )
         .replace(/\./g, "")
         .toUpperCase();
 
-      const month = monthMap[monthKey];
+      const month =
+        monthMap[monthKey];
 
       const year = Number(
-        String(parts[2]).replace(/\D/g, "")
+        String(parts[2]).replace(
+          /\D/g,
+          ""
+        )
       );
 
-      if (day && month !== undefined && year) {
-        parsedDate = new Date(year, month, day);
+      if (
+        day &&
+        month !== undefined &&
+        year
+      ) {
+        parsedDate = new Date(
+          year,
+          month,
+          day
+        );
       }
     }
 
     const dayName =
-      parsedDate && !Number.isNaN(parsedDate.getTime())
-        ? dayNames[parsedDate.getDay()]
+      parsedDate &&
+      !Number.isNaN(
+        parsedDate.getTime()
+      )
+        ? dayNames[
+            parsedDate.getDay()
+          ]
         : "";
 
     if (parts.length >= 3) {
+      const cleanDay = String(
+        parts[0]
+      ).replace(/\.$/, "");
+
+      const cleanMonth = String(
+        parts[1]
+      ).replace(/\.$/, "");
+
+      const cleanYear = String(
+        parts[2]
+      ).replace(/\.$/, "");
+
       return {
         dayName,
-        dayNumber: parts[0],
-        monthYear: `${parts[1]} ${parts[2]}`,
+
+        dayNumber:
+          isIvanaDusanSlug
+            ? `${cleanDay}.`
+            : parts[0],
+
+        monthYear:
+          isIvanaDusanSlug
+            ? `${cleanMonth}. ${cleanYear}.`
+            : `${parts[1]} ${parts[2]}`,
       };
     }
 
     return {
       dayName,
-      dayNumber: dateString || "",
+      dayNumber:
+        dateString || "",
       monthYear: "",
     };
   };
 
-  const dateParts = formatMainDate(
-    details?.date || weddingDate,
-    details?.dateISO
-  );
+  const dateParts =
+    formatMainDate(
+      details?.date ||
+        weddingDate,
+      details?.dateISO
+    );
 
-  const getEventIcon = (event) => {
+  const getEventIcon = (
+    event
+  ) => {
     const label = String(
       event?.label || ""
     ).toLowerCase();
@@ -195,13 +269,23 @@ function EleganWhiteInvitationCard({
     if (
       icon === "guests" ||
       icon === "guest" ||
-      label.includes("prijem gostiju") ||
-      label.includes("пријем гостију") ||
-      label.includes("doček gostiju") ||
-      label.includes("дочек гостију") ||
+      label.includes(
+        "prijem gostiju"
+      ) ||
+      label.includes(
+        "пријем гостију"
+      ) ||
+      label.includes(
+        "doček gostiju"
+      ) ||
+      label.includes(
+        "дочек гостију"
+      ) ||
       label.includes("gosti") ||
       label.includes("гости") ||
-      label.includes("svatova") ||
+      label.includes(
+        "svatova"
+      ) ||
       label.includes("сватова")
     ) {
       return "/images/passport/icons/guests.svg";
@@ -209,8 +293,12 @@ function EleganWhiteInvitationCard({
 
     if (
       icon === "gathering" ||
-      label.includes("okupljanje") ||
-      label.includes("окупљање") ||
+      label.includes(
+        "okupljanje"
+      ) ||
+      label.includes(
+        "окупљање"
+      ) ||
       label.includes("skup") ||
       label.includes("скуп")
     ) {
@@ -219,8 +307,12 @@ function EleganWhiteInvitationCard({
 
     if (
       icon === "church" ||
-      label.includes("crkveno") ||
-      label.includes("црквено") ||
+      label.includes(
+        "crkveno"
+      ) ||
+      label.includes(
+        "црквено"
+      ) ||
       label.includes("храм") ||
       label.includes("црква")
     ) {
@@ -231,23 +323,45 @@ function EleganWhiteInvitationCard({
       icon === "civil" ||
       icon === "rings" ||
       icon === "ceremony" ||
-      label.includes("građansko") ||
-      label.includes("gradjansko") ||
-      label.includes("грађанско") ||
-      label.includes("ceremonija") ||
-      label.includes("церемонија") ||
-      label.includes("venčanje") ||
-      label.includes("venčanja") ||
-      label.includes("венчање") ||
-      label.includes("венчања")
+      label.includes(
+        "građansko"
+      ) ||
+      label.includes(
+        "gradjansko"
+      ) ||
+      label.includes(
+        "грађанско"
+      ) ||
+      label.includes(
+        "ceremonija"
+      ) ||
+      label.includes(
+        "церемонија"
+      ) ||
+      label.includes(
+        "venčanje"
+      ) ||
+      label.includes(
+        "venčanja"
+      ) ||
+      label.includes(
+        "венчање"
+      ) ||
+      label.includes(
+        "венчања"
+      )
     ) {
       return "/images/passport/icons/rings.svg";
     }
 
     if (
       icon === "toast" ||
-      label.includes("zdravica") ||
-      label.includes("здравица") ||
+      label.includes(
+        "zdravica"
+      ) ||
+      label.includes(
+        "здравица"
+      ) ||
       label.includes("koktel") ||
       label.includes("коктел") ||
       label.includes("piće") ||
@@ -263,15 +377,21 @@ function EleganWhiteInvitationCard({
       label.includes("вечера") ||
       label.includes("ručak") ||
       label.includes("ручак") ||
-      label.includes("ресторан")
+      label.includes(
+        "ресторан"
+      )
     ) {
       return "/images/passport/icons/dinner.svg";
     }
 
     if (
       icon === "party" ||
-      label.includes("proslava") ||
-      label.includes("прослава") ||
+      label.includes(
+        "proslava"
+      ) ||
+      label.includes(
+        "прослава"
+      ) ||
       label.includes("after") ||
       label.includes("zabava") ||
       label.includes("забава") ||
@@ -327,7 +447,12 @@ function EleganWhiteInvitationCard({
           }}
           transition={{
             duration: 0.9,
-            ease: [0.22, 1, 0.36, 1],
+            ease: [
+              0.22,
+              1,
+              0.36,
+              1,
+            ],
           }}
         >
           <div className="elegant-white-card-arch">
@@ -359,13 +484,15 @@ function EleganWhiteInvitationCard({
 
                   <div className="elegant-white-monogram">
                     <span>
-                      {brideName?.[0] || "A"}
+                      {brideName?.[0] ||
+                        "A"}
                     </span>
 
                     <span className="elegant-white-monogram-divider" />
 
                     <span>
-                      {groomName?.[0] || "M"}
+                      {groomName?.[0] ||
+                        "M"}
                     </span>
                   </div>
                 </div>
@@ -389,8 +516,17 @@ function EleganWhiteInvitationCard({
                   delay: 0.05,
                 }}
               >
-                <p>{copy.introLineOne}</p>
-                <p>{copy.introLineTwo}</p>
+                <p>
+                  {
+                    copy.introLineOne
+                  }
+                </p>
+
+                <p>
+                  {
+                    copy.introLineTwo
+                  }
+                </p>
               </motion.div>
 
               <motion.h3
@@ -432,7 +568,8 @@ function EleganWhiteInvitationCard({
                   delay: 0.16,
                 }}
                 style={{
-                  transformOrigin: "center",
+                  transformOrigin:
+                    "center",
                 }}
               >
                 <span />
@@ -466,7 +603,9 @@ function EleganWhiteInvitationCard({
                     className="elegant-white-and-icon"
                   />
 
-                  <em>{copy.connector}</em>
+                  <em>
+                    {copy.connector}
+                  </em>
 
                   <img
                     src="/images/elegant-white/iright.svg"
@@ -498,42 +637,55 @@ function EleganWhiteInvitationCard({
                 }}
               >
                 <div className="elegant-white-date-box">
-                  <span>{dateParts.dayName}</span>
+                  <span>
+                    {
+                      dateParts.dayName
+                    }
+                  </span>
                 </div>
 
                 <div className="elegant-white-date-center">
                   <strong>
-                    {dateParts.dayNumber}
+                    {
+                      dateParts.dayNumber
+                    }
                   </strong>
                 </div>
 
                 <div className="elegant-white-date-box">
-                  <span>{dateParts.monthYear}</span>
+                  <span>
+                    {
+                      dateParts.monthYear
+                    }
+                  </span>
                 </div>
               </motion.div>
 
-              <motion.div
-                className="elegant-white-time"
-                initial={{
-                  opacity: 0,
-                  y: 12,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.24,
-                }}
-              >
-                {copy.timePrefix}{" "}
-                {details?.ceremonyTime || weddingTime}{" "}
-                {copy.timeSuffix}
-              </motion.div>
+              {!isIvanaDusanSlug && (
+                <motion.div
+                  className="elegant-white-time"
+                  initial={{
+                    opacity: 0,
+                    y: 12,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.24,
+                  }}
+                >
+                  {copy.timePrefix}{" "}
+                  {details?.ceremonyTime ||
+                    weddingTime}{" "}
+                  {copy.timeSuffix}
+                </motion.div>
+              )}
 
               <motion.div
                 className="elegant-white-closing"
@@ -581,7 +733,12 @@ function EleganWhiteInvitationCard({
             transition={{
               duration: 0.85,
               delay: 0.08,
-              ease: [0.22, 1, 0.36, 1],
+              ease: [
+                0.22,
+                1,
+                0.36,
+                1,
+              ],
             }}
           >
             <div className="elegant-white-schedule-card">
@@ -603,7 +760,9 @@ function EleganWhiteInvitationCard({
                     duration: 0.65,
                   }}
                 >
-                  {copy.scheduleTitle}
+                  {
+                    copy.scheduleTitle
+                  }
                 </motion.h3>
 
                 <div className="elegant-white-schedule-divider">
@@ -615,66 +774,90 @@ function EleganWhiteInvitationCard({
                 <div className="elegant-white-timeline">
                   <div className="elegant-white-timeline-line" />
 
-                  {events.map((event, index) => (
-                    <motion.div
-                      className="elegant-white-event"
-                      key={`${event.label}-${index}`}
-                      initial={{
-                        opacity: 0,
-                        y: 16,
-                      }}
-                      whileInView={{
-                        opacity: 1,
-                        y: 0,
-                      }}
-                      viewport={{
-                        once: true,
-                        amount: 0.5,
-                      }}
-                      transition={{
-                        duration: 0.55,
-                        delay: index * 0.08,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                    >
-                      <div className="elegant-white-event-dot" />
+                  {events.map(
+                    (
+                      event,
+                      index
+                    ) => (
+                      <motion.div
+                        className="elegant-white-event"
+                        key={`${event.label}-${index}`}
+                        initial={{
+                          opacity: 0,
+                          y: 16,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        viewport={{
+                          once: true,
+                          amount: 0.5,
+                        }}
+                        transition={{
+                          duration: 0.55,
+                          delay:
+                            index *
+                            0.08,
+                          ease: [
+                            0.22,
+                            1,
+                            0.36,
+                            1,
+                          ],
+                        }}
+                      >
+                        <div className="elegant-white-event-dot" />
 
-                      <div className="elegant-white-event-icon-wrap">
-                        <img
-                          src={getEventIcon(event)}
-                          alt=""
-                          aria-hidden="true"
-                          className="elegant-white-event-icon"
-                        />
-                      </div>
-
-                      <div className="elegant-white-event-content">
-                        <div className="elegant-white-event-time">
-                          {event.time}
+                        <div className="elegant-white-event-icon-wrap">
+                          <img
+                            src={getEventIcon(
+                              event
+                            )}
+                            alt=""
+                            aria-hidden="true"
+                            className="elegant-white-event-icon"
+                          />
                         </div>
 
-                        <div className="elegant-white-event-label">
-                          {event.label}
-                        </div>
+                        <div className="elegant-white-event-content">
+                          <div className="elegant-white-event-time">
+                            {
+                              event.time
+                            }
+                          </div>
 
-                        {event.location &&
-                          (event.mapLink ? (
-                            <a
-                              href={event.mapLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="elegant-white-event-location elegant-white-event-location-link"
-                            >
-                              {event.location}
-                            </a>
-                          ) : (
-                            <div className="elegant-white-event-location">
-                              {event.location}
-                            </div>
-                          ))}
-                      </div>
-                    </motion.div>
-                  ))}
+                          <div className="elegant-white-event-label">
+                            {
+                              event.label
+                            }
+                          </div>
+
+                          {event.location &&
+                            (event.mapLink ? (
+                              <a
+                                href={
+                                  event.mapLink
+                                }
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="elegant-white-event-location elegant-white-event-location-link"
+                              >
+                                {
+                                  event.location
+                                }
+                              </a>
+                            ) : (
+                              <div className="elegant-white-event-location">
+                                {
+                                  event.location
+                                }
+                              </div>
+                            ))}
+                        </div>
+                      </motion.div>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -691,8 +874,12 @@ function EleganWhiteInvitationCard({
 
       {details?.dateISO && (
         <ElegantWhiteCountdown
-          targetDate={details.dateISO}
-          backgroundImage={details?.backgroundImage}
+          targetDate={
+            details.dateISO
+          }
+          backgroundImage={
+            details?.backgroundImage
+          }
           brideName={brideName}
           groomName={groomName}
           details={details}
