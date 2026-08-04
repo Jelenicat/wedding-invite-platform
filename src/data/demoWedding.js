@@ -7448,6 +7448,78 @@ dressCodeMenPalette: [
   }),
 },
 
+{
+  slug: "ivana-dusan",
+  type: "wedding",
+  template: "silk",
+  script: "latin",
+
+  brideName: "Ivana",
+  groomName: "Dušan",
+
+  videoSrc: "/videos/ivana-dusan.mp4",
+  fontMode: "light",
+
+  weddingDate: "20 SEP 2026",
+  weddingTime: "11:00",
+  venue: "Restoran Zlatiborska noć",
+musicSrc: "/music/jovana-aleksandar.mp3",
+  backgroundImage:
+    "/images/anđela-jovan-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "20 SEP 2026",
+    dateISO: "2026-09-20T11:00:00+02:00",
+
+    venue: "Restoran Zlatiborska noć",
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "11:00",
+        icon: "church",
+        location:
+          "Crkva Svetog Marka, Užice",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Marka+Uzice",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "12:00",
+        icon: "civil",
+        location:
+          "Gradska kuća, Užice",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Gradska+kuca+Uzice",
+      },
+      {
+        label: "Proslava",
+        time: "15:00",
+        icon: "restaurant",
+        location:
+          "Restoran Zlatiborska noć",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Zlatiborska+noc+Uzice",
+      },
+    ],
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Zlatiborska+noc+Uzice",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 5. septembra.",
+
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite do 5. septembra.",
+  }),
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
