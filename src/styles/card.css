@@ -21998,3 +21998,53 @@ font-family: "Italianno", cursive;
     line-height: 0.88;
   }
 }
+
+
+/* Ивана и Душан — isti font kao na intro strani */
+.minimal-invitation-card.minimal-slug-ivana-dusan
+  .minimal-invitation-names {
+  font-family: "Lora", Georgia, serif !important;
+  font-style: italic;
+  font-weight: 400 !important;
+
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+}
+
+/* Imena mladenaca unutar naslova */
+.minimal-invitation-card.minimal-slug-ivana-dusan
+  .minimal-invitation-names
+  > span:not(.minimal-invitation-amp) {
+  font-family: "Lora", Georgia, serif !important;
+  font-style: italic;
+  font-weight: 400 !important;
+
+  font-size: 0.82em;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+}
+
+/* Ivana i Dušan — manje blur efekta na kartici */
+.minimal-invitation-card.minimal-slug-ivana-dusan
+  .minimal-invitation-paper {
+  -webkit-backdrop-filter: blur(3px) !important;
+  backdrop-filter: blur(3px) !important;
+}
+@media (max-width: 480px) {
+  .minimal-invitation-card.minimal-slug-ivana-dusan
+    .minimal-invitation-names {
+    line-height: 0.84;
+  }
+
+  .minimal-invitation-card.minimal-slug-ivana-dusan
+    .minimal-invitation-names
+    > span:not(.minimal-invitation-amp) {
+    font-size: 0.72em;
+    line-height: 0.84;
+  }
+
+  .minimal-invitation-card.minimal-slug-ivana-dusan
+    .minimal-invitation-amp {
+    transform: scale(0.88);
+  }
+}

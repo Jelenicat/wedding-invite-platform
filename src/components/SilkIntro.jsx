@@ -20,13 +20,30 @@ function SilkIntro({
 }) {
   const videoRef = useRef(null);
 
-  const shouldUseIntroNamesSvg = slug === "jovana-dusan-1";
-  const isEnglish = language === "en";
-  const isWeddingPartySlug = slug === "jovana-stefan";
-  const isJovanaAleksandarSlug = slug === "jovana-aleksandar";
+  const shouldUseIntroNamesSvg =
+    slug === "jovana-dusan-1";
+
+  const isEnglish =
+    language === "en";
+
+  const isWeddingPartySlug =
+    slug === "jovana-stefan";
+
+  const isJovanaAleksandarSlug =
+    slug === "jovana-aleksandar";
+
+  const isIvanaDusanSlug =
+    slug === "ivana-dusan";
+
+  /* Tačke iza dana i godine samo za ove slugove */
+  const shouldAddDateDots =
+    slug === "jovana-stefan" ||
+    slug === "ivana-dusan";
 
   const splitPersonName = (fullName = "") => {
-    const parts = fullName.trim().split(/\s+/);
+    const parts = fullName
+      .trim()
+      .split(/\s+/);
 
     return {
       firstName: parts[0] || "",
@@ -34,11 +51,15 @@ function SilkIntro({
     };
   };
 
-  const brideIntroName = splitPersonName(brideName);
-  const groomIntroName = splitPersonName(groomName);
+  const brideIntroName =
+    splitPersonName(brideName);
+
+  const groomIntroName =
+    splitPersonName(groomName);
 
   useEffect(() => {
     const video = videoRef.current;
+
     if (!video) return;
 
     video.muted = true;
@@ -56,7 +77,9 @@ function SilkIntro({
   }, [videoSrc]);
 
   const textColor =
-    fontMode === "dark" ? "#2f2a26" : "rgba(255,255,255,0.92)";
+    fontMode === "dark"
+      ? "#2f2a26"
+      : "rgba(255,255,255,0.92)";
 
   const monthMapLatin = {
     JAN: "januar",
@@ -130,16 +153,25 @@ function SilkIntro({
   let year = "2026";
 
   if (weddingDate) {
-    const parts = weddingDate.trim().split(/\s+/);
+    const parts = weddingDate
+      .trim()
+      .split(/\s+/);
 
     if (parts.length === 3) {
       if (Number.isNaN(Number(parts[0]))) {
-        month = monthMap[parts[0].toUpperCase()] || parts[0];
+        month =
+          monthMap[parts[0].toUpperCase()] ||
+          parts[0];
+
         day = parts[1];
         year = parts[2];
       } else {
         day = parts[0];
-        month = monthMap[parts[1].toUpperCase()] || parts[1];
+
+        month =
+          monthMap[parts[1].toUpperCase()] ||
+          parts[1];
+
         year = parts[2];
       }
     }
@@ -161,7 +193,9 @@ function SilkIntro({
         };
 
   return (
-    <section className={`silk-intro silk-slug-${slug || ""}`}>
+    <section
+      className={`silk-intro silk-slug-${slug || ""}`}
+    >
       <video
         ref={videoRef}
         className="silk-video"
@@ -177,17 +211,24 @@ function SilkIntro({
       <div className="silk-overlay" />
 
       {showLanguageSwitcher && (
-        <div className={`silk-language-switcher ${fontMode}`}>
+        <div
+          className={`silk-language-switcher ${fontMode}`}
+        >
           {languages.map((lang) => (
             <button
               key={lang}
               type="button"
               className={`silk-language-btn ${
-                language === lang ? "is-active" : ""
+                language === lang
+                  ? "is-active"
+                  : ""
               }`}
-              onClick={() => onLanguageChange?.(lang)}
+              onClick={() =>
+                onLanguageChange?.(lang)
+              }
             >
-              {languageLabels[lang] || lang.toUpperCase()}
+              {languageLabels[lang] ||
+                lang.toUpperCase()}
             </button>
           ))}
         </div>
@@ -195,12 +236,22 @@ function SilkIntro({
 
       <motion.div
         className="silk-content"
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        initial={{
+          opacity: 0,
+          y: 12,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+        }}
       >
         <p className={`silk-top ${fontMode}`}>
-          {isWeddingPartySlug ? "Wedding party" : t.top}
+          {isWeddingPartySlug
+            ? "Wedding party"
+            : t.top}
         </p>
 
         {shouldUseIntroNamesSvg ? (
@@ -213,9 +264,21 @@ function SilkIntro({
         ) : (
           <h1
             className={`silk-names ${
-              script === "cyrillic" ? "silk-names-cyrillic" : ""
-            } ${isJovanaAleksandarSlug ? "silk-names-full" : ""}`}
-            style={{ color: textColor }}
+              script === "cyrillic"
+                ? "silk-names-cyrillic"
+                : ""
+            } ${
+              isIvanaDusanSlug
+                ? "silk-names-ivana-dusan"
+                : ""
+            } ${
+              isJovanaAleksandarSlug
+                ? "silk-names-full"
+                : ""
+            }`}
+            style={{
+              color: textColor,
+            }}
           >
             {isJovanaAleksandarSlug ? (
               <>
@@ -231,7 +294,9 @@ function SilkIntro({
                   )}
                 </span>
 
-                <span className="silk-amp silk-amp-full">&</span>
+                <span className="silk-amp silk-amp-full">
+                  &
+                </span>
 
                 <span className="silk-person-name silk-person-name-groom">
                   <span className="silk-person-first">
@@ -248,9 +313,15 @@ function SilkIntro({
             ) : (
               <>
                 {brideName}
+
                 <br />
-                <span className="silk-amp">&</span>
+
+                <span className="silk-amp">
+                  &
+                </span>
+
                 <br />
+
                 {groomName}
               </>
             )}
@@ -259,13 +330,25 @@ function SilkIntro({
 
         <p className={`silk-date ${fontMode}`}>
           {month}
+
           <br />
-          {slug === "jovana-stefan" ? `${day}.` : day}
+
+          {shouldAddDateDots
+            ? `${day}.`
+            : day}
+
           <br />
-          {slug === "jovana-stefan" ? `${year}.` : year}
+
+          {shouldAddDateDots
+            ? `${year}.`
+            : year}
         </p>
 
-        <button className={`silk-enter ${fontMode}`} onClick={onEnter}>
+        <button
+          type="button"
+          className={`silk-enter ${fontMode}`}
+          onClick={onEnter}
+        >
           {t.button}
         </button>
       </motion.div>

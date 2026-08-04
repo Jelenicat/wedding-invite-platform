@@ -7452,58 +7452,57 @@ dressCodeMenPalette: [
   slug: "ivana-dusan",
   type: "wedding",
   template: "silk",
-  script: "latin",
+  script: "cyrillic",
 
-  brideName: "Ivana",
-  groomName: "Dušan",
+  brideName: "Ивана",
+  groomName: "Душан",
 
   videoSrc: "/videos/ivana-dusan.mp4",
+  musicSrc: "/music/jovana-aleksandar.mp3",
+
   fontMode: "light",
 
-  weddingDate: "20 SEP 2026",
+  weddingDate: "20 СЕП 2026",
   weddingTime: "11:00",
-  venue: "Restoran Zlatiborska noć",
-musicSrc: "/music/jovana-aleksandar.mp3",
+  venue: "Ресторан Златиборска ноћ",
+
   backgroundImage:
-    "/images/anđela-jovan-minimal.jpg",
+    "/images/ivana-dusan.jpg",
 
   details: createDetails({
     welcomeText:
-      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate naš poseban dan.",
+      "Са великом радошћу вас позивамо да својим присуством улепшате наш посебан дан.",
 
-    date: "20 SEP 2026",
+    date: "20 СЕП 2026",
     dateISO: "2026-09-20T11:00:00+02:00",
 
-    venue: "Restoran Zlatiborska noć",
+    venue: "Ресторан Златиборска ноћ",
 
     showCalendarButton: false,
     showDressCode: false,
 
     events: [
       {
-        label: "Crkveno venčanje",
+        label: "Црквено венчање",
         time: "11:00",
         icon: "church",
-        location:
-          "Crkva Svetog Marka, Užice",
+        location: "Црква Светог Марка, Ужице",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Marka+Uzice",
       },
       {
-        label: "Građansko venčanje",
+        label: "Грађанско венчање",
         time: "12:00",
         icon: "civil",
-        location:
-          "Gradska kuća, Užice",
+        location: "Градска кућа, Ужице",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Gradska+kuca+Uzice",
       },
       {
-        label: "Proslava",
+        label: "Прослава",
         time: "15:00",
         icon: "restaurant",
-        location:
-          "Restoran Zlatiborska noć",
+        location: "Ресторан Златиборска ноћ",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Restoran+Zlatiborska+noc+Uzice",
       },
@@ -7513,10 +7512,10 @@ musicSrc: "/music/jovana-aleksandar.mp3",
       "https://www.google.com/maps/search/?api=1&query=Restoran+Zlatiborska+noc+Uzice",
 
     note:
-      "Molimo vas da svoj dolazak potvrdite do 5. septembra.",
+      "Молимо вас да свој долазак потврдите до 5. септембра.",
 
     rsvpText:
-      "Molimo vas da svoj dolazak potvrdite do 5. septembra.",
+      "Молимо вас да свој долазак потврдите до 5. септембра.",
   }),
 },
 

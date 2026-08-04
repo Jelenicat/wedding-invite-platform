@@ -9181,3 +9181,32 @@ body,
     line-height: 0.88;
   }
 }
+
+/* Ивана и Душан — drugi ćirilični font samo za ovaj slug */
+.silk-intro.silk-slug-ivana-dusan
+  .silk-names.silk-names-ivana-dusan {
+  font-family: "Lora", Georgia, serif !important;
+  font-style: italic;
+  font-weight: 400;
+
+  font-size: 58px;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+/* znak & */
+.silk-intro.silk-slug-ivana-dusan
+  .silk-names.silk-names-ivana-dusan
+  .silk-amp {
+  font-family: "Lora", Georgia, serif !important;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .silk-intro.silk-slug-ivana-dusan
+    .silk-names.silk-names-ivana-dusan {
+    font-size: 52px;
+    line-height: 1;
+  }
+}
