@@ -9121,3 +9121,39 @@ body,
 .wedding-page {
   color-scheme: only light !important;
 }
+.split-extra-title {
+  display: block;
+
+  width: min(82vw, 420px);
+  margin-top: 16px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: clamp(1.35rem, 4.5vw, 1.8rem);
+  line-height: 1.2;
+  letter-spacing: 0.025em;
+
+  font-style: italic;
+  font-weight: 500;
+
+  color: var(--intro-accent);
+  text-align: center;
+  white-space: normal;
+
+  text-shadow:
+    0 2px 10px var(--intro-text-shadow);
+}
+
+@media (max-width: 480px) {
+  .split-extra-title {
+    width: min(86vw, 320px);
+    margin-top: 14px;
+
+    font-size: 1.3rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+}

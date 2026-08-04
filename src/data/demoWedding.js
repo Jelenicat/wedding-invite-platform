@@ -5523,7 +5523,7 @@ musicSrc: "/music/jovana-caslav.mp3",
 
   videoSrc: "/videos/jovana-nikola-4.mp4",
   fontMode: "light",
-
+  uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
   weddingDate: "13 SEP 2026",
   weddingTime: "10:00",
   venue: "Events centar Anđela, Šabac",
@@ -7300,6 +7300,138 @@ dressCodeMenPalette: [
     },
   }),
 },
+
+{
+  slug: "nevena-aleksandar",
+  type: "wedding",
+  template: "split-video",
+
+  brideName: "Nevena",
+  groomName: "Aleksandar",
+
+  videoSrc: "/videos/nevena-aleksandar.mp4",
+
+  weddingDate: "17 OKT 2026",
+  weddingTime: "08:00",
+  venue: "Imperia Gold, Stepojevac",
+  uploadCoverImage: "/images/upload/birthday-glass-upload.jpg",
+  introText:
+    "Radujemo se da ovaj poseban dan podelimo sa vama.",
+
+  details: createDetails({
+    backgroundImage:
+      "/images/nevena-aleksandar-split.jpg",
+
+    heroText: "i krštenje Vasilija",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da zajedno sa nama proslavite naše venčanje i krštenje Vasilija.",
+
+    date: "17 OKT 2026",
+    dateISO: "2026-10-17T08:00:00+02:00",
+
+    showCalendarButton: true,
+    calendarDurationHours: 10,
+
+    events: [
+  {
+    label: "Skup svatova kod mladoženje",
+    time: "08:00",
+    icon: "gathering",
+    location:
+      "Ugrinovački put 42. deo 12, Altina",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Ugrinovacki+put+42+deo+12+Altina",
+    note:
+      "Okupljanje svatova i priprema za polazak po mladu.",
+  },
+  {
+    label: "Skup svatova kod mlade",
+    time: "09:30",
+    icon: "gathering",
+    location: "Kosjerička 6, Valjevo",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Kosjericka+6+Valjevo",
+    note:
+      "Doček svatova kod mlade i zajedničko okupljanje pred ceremoniju.",
+  },
+  {
+    label:
+      "Crkveno venčanje i krštenje Vasilija",
+    time: "12:30",
+    icon: "church",
+    location:
+      "Crkva Svetog Velikomučenika Georgija, Valjevo",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Velikomucenika+Georgija+Valjevo",
+    note:
+      "Svečani čin crkvenog venčanja i krštenja Vasilija.",
+  },
+  {
+    label: "Svečani ručak",
+    time: "15:00",
+    icon: "restaurant",
+    location: "Imperia Gold, Stepojevac",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Imperia+Gold+Stepojevac",
+    note:
+      "Nakon ceremonije nastavljamo slavlje uz ručak, muziku i najdraže goste.",
+  },
+],
+
+  theme: {
+  mainText: "#7b1234",
+  softText: "#243b6b",
+  scriptText: "#7b1234",
+  mutedText: "#7b1234",
+
+  accent: "#7b1234",
+  accentStrong: "#243b6b",
+  buttonText: "#ffffff",
+
+  cardBg: "rgba(255,255,255,0.28)",
+  cardBorder: "transparent",
+  frameBorder: "rgba(123,18,52,0.20)",
+
+  paperOverlayTop: "rgba(255,255,255,0.03)",
+paperOverlayBottom: "rgba(36,59,107,0.06)",
+  vignetteColor: "rgba(123,18,52,0.08)",
+
+  flowLine: "#7b1234",
+  dividerLine: "rgba(123,18,52,0.25)",
+  nodeRing: "rgba(181,144,59,0.16)",
+backgroundColor: "#f3ece6",
+  /* INTRO */
+  introMainText:"#7b1234",
+  introAccent: "#7b1234",
+  introButtonBg: "rgba(255,255,255,0.18)",
+  introButtonBorder: "rgba(255,255,255,0.35)",
+  introButtonText: "#7b1234",
+  introButtonHoverBg: "rgba(255,255,255,0.28)",
+
+  /* RSVP */
+  rsvpButtonBg: "#7b1234",
+  rsvpButtonText: "#ffffff",
+},
+
+    showDressCode: false,
+    dressCodeTitle: "",
+    dressCodePalette: [],
+    dressCodeNote: "",
+
+    venue: "Imperia Gold, Stepojevac",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Imperia+Gold+Stepojevac",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite najkasnije do 5. oktobra.",
+
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite najkasnije do 5. oktobra.",
+  }),
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

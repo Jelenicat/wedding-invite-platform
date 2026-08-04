@@ -14,6 +14,11 @@ function SplitVideoIntro({
 }) {
   const theme = details.theme || {};
 
+  const introExtraText =
+    typeof details.heroText === "string"
+      ? details.heroText.trim()
+      : "";
+
   const isNinaMilan = slug === "nina-milan";
 
   const isCyrillic =
@@ -124,6 +129,27 @@ function SplitVideoIntro({
         </span>
 
         <span>{groomName}</span>
+
+        {introExtraText && (
+          <motion.span
+            className="split-extra-title"
+            initial={{
+              opacity: 0,
+              y: 10,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.35,
+              duration: 0.6,
+              ease: "easeOut",
+            }}
+          >
+            {introExtraText}
+          </motion.span>
+        )}
       </div>
 
       {/* Dugme za muziku samo za slug nina-milan */}
