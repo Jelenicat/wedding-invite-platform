@@ -7377,7 +7377,7 @@ dressCodeMenPalette: [
         label: "Свечани ручак",
         time: "15:00",
         icon: "restaurant",
-        location: "Империја Голд, Степојевац",
+        location: "Imperia Gold, Степојевац",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Imperia+Gold+Stepojevac",
         note:
@@ -7435,7 +7435,7 @@ dressCodeMenPalette: [
     dressCodePalette: [],
     dressCodeNote: "",
 
-    venue: "Империја Голд, Степојевац",
+    venue: "Imperia Gold, Степојевац",
 
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=Imperia+Gold+Stepojevac",
