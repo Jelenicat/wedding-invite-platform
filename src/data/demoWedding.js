@@ -5313,7 +5313,8 @@ musicSrc: "/music/jovana-dusan-1.mp3",
   weddingDate: "20 SEP 2026",
   weddingTime: "13:00",
   venue: "Wind Rose Jagodina",
-
+  uploadCoverImage:
+    "/images/upload/birthday-glass-upload.jpg",
   // zameni pravom slikom kad je budeš imala
   backgroundImage: "/images/jovana-stefan-minimal.jpg",
 
