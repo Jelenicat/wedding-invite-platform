@@ -122,13 +122,17 @@ function SplitVideoIntro({
       />
 
       <div className="split-names">
-        <span>{brideName}</span>
+        <span className="split-person-name">
+          {brideName}
+        </span>
 
         <span className="split-and">
           {t.and}
         </span>
 
-        <span>{groomName}</span>
+        <span className="split-person-name">
+          {groomName}
+        </span>
 
         {introExtraText && (
           <motion.span

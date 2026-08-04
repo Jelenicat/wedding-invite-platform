@@ -9157,3 +9157,26 @@ body,
     letter-spacing: 0.02em;
   }
 }
+/* Pisana ćirilična imena samo za Nevenu i Aleksandra */
+/* Pisana ćirilična imena samo za Nevenu i Aleksandra */
+.split-video-intro--nevena-aleksandar
+  .split-person-name {
+  font-family: "Great Vibes", cursive !important;
+
+  font-size: 1.08em;
+  font-weight: 200 !important;
+  font-style: normal;
+
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .split-video-intro--nevena-aleksandar
+    .split-person-name {
+    font-size: 0.9em;
+    line-height: 0.72;
+  }
+}

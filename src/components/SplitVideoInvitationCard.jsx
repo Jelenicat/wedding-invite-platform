@@ -22,7 +22,7 @@ function SplitVideoInvitationCard({
 
   const t = isCyrillic
     ? {
-        welcome: "Добро дошли",
+        welcome: "Добродошли",
         day: "Дан",
         year: "Година",
         location: "Локација",

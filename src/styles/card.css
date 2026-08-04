@@ -21964,3 +21964,33 @@ font-family: "Italianno", cursive;
 .minimal-slug-marija-nikola .minimal-invitation-text {
   white-space: pre-line;
 }
+
+/* Невена и Александар — pisani font na vrhu kartice */
+.split-video-nevena-aleksandar
+  .split-video-invitation-names.top
+  .split-video-name {
+  font-family: "Great Vibes", cursive !important;
+  font-weight: 400 !important;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+}
+
+/* Ampersand može ostati u elegantnom serif fontu */
+.split-video-nevena-aleksandar
+  .split-video-invitation-and {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif !important;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .split-video-nevena-aleksandar
+    .split-video-invitation-names.top
+    .split-video-name {
+    line-height: 0.95;
+  }
+}
