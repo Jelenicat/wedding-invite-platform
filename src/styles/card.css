@@ -1,4 +1,4 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400;1,500&display=swap");
 /* =========================
    FLORAL INVITATION CARD - EDITORIAL
 ========================= */
@@ -21965,32 +21965,36 @@ font-family: "Italianno", cursive;
   white-space: pre-line;
 }
 
-/* Невена и Александар — pisani font na vrhu kartice */
+/* Невена и Александар — isti font kao na intro strani */
 .split-video-nevena-aleksandar
   .split-video-invitation-names.top
   .split-video-name {
-  font-family: "Great Vibes", cursive !important;
+  font-family: "Lora", Georgia, serif !important;
+
+  font-size: 0.92em;
   font-weight: 400 !important;
-  font-style: normal;
-  letter-spacing: 0.01em;
+  font-style: italic;
+
   line-height: 0.92;
+  letter-spacing: -0.015em;
+
+  white-space: nowrap;
 }
 
-/* Ampersand može ostati u elegantnom serif fontu */
+/* I znak & u istom stilu */
 .split-video-nevena-aleksandar
   .split-video-invitation-and {
-  font-family:
-    "Cormorant Garamond",
-    Georgia,
-    serif !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-weight: 400 !important;
   font-style: italic;
-  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 @media (max-width: 480px) {
   .split-video-nevena-aleksandar
     .split-video-invitation-names.top
     .split-video-name {
-    line-height: 0.95;
+    font-size: 0.82em;
+    line-height: 0.88;
   }
 }
