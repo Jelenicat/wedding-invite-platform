@@ -7406,7 +7406,7 @@ backgroundColor: "#f3ece6",
   introAccent: "#7b1234",
   introButtonBg: "rgba(255,255,255,0.18)",
   introButtonBorder: "rgba(255,255,255,0.35)",
-  introButtonText: "#7b1234",
+introButtonText: "#ffffff",
   introButtonHoverBg: "rgba(255,255,255,0.28)",
 
   /* RSVP */
