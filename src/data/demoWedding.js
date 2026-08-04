@@ -7503,7 +7503,7 @@ dressCodeMenPalette: [
         label: "Прослава",
         time: "15:00",
         icon: "restaurant",
-        location: "Ресторан Златиборска ноћ",
+       location: "Ресторан „Златиборска ноћ“",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Restoran+Zlatiborska+noc+Uzice",
       },
