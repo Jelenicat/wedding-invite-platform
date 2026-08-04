@@ -7322,10 +7322,10 @@ dressCodeMenPalette: [
     backgroundImage:
       "/images/nevena-aleksandar-split.jpg",
 
-    heroText: "i krštenje Vasilija",
+    heroText: "i krštenje Vasilije",
 
     welcomeText:
-      "Sa velikom radošću vas pozivamo da zajedno sa nama proslavite naše venčanje i krštenje Vasilija.",
+      "Sa velikom radošću vas pozivamo da zajedno sa nama proslavite naše venčanje i krštenje Vasilije.",
 
     date: "17 OKT 2026",
     dateISO: "2026-10-17T08:00:00+02:00",
@@ -7357,7 +7357,7 @@ dressCodeMenPalette: [
   },
   {
     label:
-      "Crkveno venčanje i krštenje Vasilija",
+      "Crkveno venčanje i krštenje Vasilije",
     time: "12:30",
     icon: "church",
     location:
@@ -7365,7 +7365,7 @@ dressCodeMenPalette: [
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Velikomucenika+Georgija+Valjevo",
     note:
-      "Svečani čin crkvenog venčanja i krštenja Vasilija.",
+      "Svečani čin crkvenog venčanja i krštenja Vasilije.",
   },
   {
     label: "Svečani ručak",
