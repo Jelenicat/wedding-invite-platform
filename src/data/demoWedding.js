@@ -2153,7 +2153,7 @@ backgroundColor: "#f3ece6",
 // ELEGANT BLACK TEMPLATE
 // =========================
 {
-  slug: "marija-nikola-1",
+  slug: "marija-nikola-2",
   type: "wedding",
   template: "elegant-black",
 
@@ -7518,6 +7518,143 @@ dressCodeMenPalette: [
     rsvpText:
       "Молимо вас да свој долазак потврдите до 5. септембра.",
   }),
+},
+
+{
+  slug: "marija-nikola-1",
+  type: "wedding",
+  template: "silk-photo-script",
+  script: "latin",
+
+  brideName: "Marija",
+  groomName: "Nikola",
+
+  // Silk intro
+ backgroundImage: "/images/silk-intro.jpg",
+  videoSrc: "/videos/milica-nemanja-1.mp4",
+ musicSrc: "/music/marija-nikola-5.mp3",
+
+  weddingDate: "3. oktobar 2026.",
+  weddingTime: "15:30",
+  venue: "Restoran Švajcarija, Niš",
+
+  introText:
+    "Sa radošću vas pozivamo da budete deo našeg dana.",
+
+  details: {
+    script: "latin",
+
+    dateISO: "2026-10-03T15:30:00+02:00",
+    dateDisplay: "03.10.2026.",
+
+    // Pozadina invitation card-a
+    cardBackgroundImage:
+      "/images/invitation-background.jpg",
+    cardBackgroundPosition: "center",
+
+    // Pozadina RSVP-a i countdown-a
+    sectionBackgroundImage:
+      "/images/invitation-background.jpg",
+    sectionBackgroundPosition: "center",
+
+    nameConnector: "heart",
+
+    invitationKicker: "Pozivnica za venčanje",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate početak našeg zajedničkog života.",
+
+    events: [
+      {
+        time: "15:30",
+        label: "Crkveno venčanje",
+        location: "Naziv crkve, Niš",
+        icon: "church",
+      },
+      {
+        time: "17:00",
+        label: "Okupljanje gostiju",
+        location: "Restoran Švajcarija, Niš",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Svajcarija+Nis",
+        icon: "gathering",
+      },
+  
+    ],
+
+    locationTitle: "Čekamo vas",
+    locationPrefix: "na adresi",
+
+    venue: "Restoran Švajcarija",
+    venueAddress: "Niš",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Svajcarija+Nis",
+
+    mapButtonText: "Pogledaj lokaciju",
+
+    // Bez dress koda
+    showDressCode: false,
+
+    note:
+      "Molimo vas da dolazak potvrdite najkasnije do 1. septembra 2026.",
+
+    // RSVP
+    rsvpKicker: "Potvrda dolaska",
+    rsvpTitle: "Radujemo se vašem odgovoru",
+
+    rsvpSubtitle:
+      "Molimo vas da potvrdite dolazak najkasnije do 1. septembra.",
+
+    rsvpButtonText: "Pošalji potvrdu",
+    rsvpMaxGuests: 10,
+
+    // Countdown
+    countdownKicker: "Odbrojavamo zajedno",
+    countdownTitle: "Do našeg dana je ostalo",
+
+    countdownNote:
+      "Jedva čekamo da ovaj poseban trenutak podelimo sa vama.",
+
+    countdownFinishedTitle: "Naš dan je stigao",
+    countdownFinishedNote: "Vidimo se na proslavi!",
+
+    // Dodavanje u kalendar
+    showCalendarButton: true,
+    calendarButtonText: "Dodaj u kalendar",
+
+    calendarHint:
+      "Sačuvajte datum venčanja u svom telefonu.",
+
+    theme: {
+      backgroundColor: "#e9e2d8",
+
+      mainText: "#5b514a",
+      softText: "#786c64",
+      mutedText: "#978a80",
+
+      accent: "#c2a078",
+      accentStrong: "#916842",
+      onAccent: "#fffaf3",
+
+      locationSoftText: "#916842",
+
+      cardPaper: "rgba(255, 255, 255, 0.30)",
+      cardBorder: "rgba(113, 91, 74, 0.22)",
+      cardInnerBorder: "rgba(113, 91, 74, 0.15)",
+      cardShadow: "rgba(55, 43, 35, 0.14)",
+
+      cardPhotoOverlay: "rgba(245, 240, 233, 0.01)",
+      cardPhotoOverlayBottom:
+        "rgba(245, 237, 229, 0.30)",
+
+      sectionOverlay: "rgba(255, 255, 255, 0.30)",
+      cardBg: "rgba(255, 252, 247, 0.48)",
+      inputBg: "rgba(255, 253, 249, 0.62)",
+
+      rsvpButtonText: "#fffaf3",
+    },
+  },
 },
 
   // =========================
