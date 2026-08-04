@@ -7310,7 +7310,7 @@ dressCodeMenPalette: [
   groomName: "Aleksandar",
 
   videoSrc: "/videos/nevena-aleksandar.mp4",
-
+ musicSrc: "/music/nevena-aleksandar.mp3",
   weddingDate: "17 OKT 2026",
   weddingTime: "08:00",
   venue: "Imperia Gold, Stepojevac",
