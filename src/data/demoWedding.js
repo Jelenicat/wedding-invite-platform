@@ -7451,7 +7451,7 @@ dressCodeMenPalette: [
 {
   slug: "ivana-dusan",
   type: "wedding",
-  template: "silk",
+  template: "silk-elegant-white",
   script: "cyrillic",
 
   brideName: "Ивана",

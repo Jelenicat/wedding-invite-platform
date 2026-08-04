@@ -22048,3 +22048,200 @@ font-family: "Italianno", cursive;
     transform: scale(0.88);
   }
 }
+
+/* ======================================================
+   ELEGANT WHITE INVITATION CARD — ĆIRILICA
+   Aktivira se kada je script: "cyrillic"
+====================================================== */
+
+.elegant-white-card-section--cyrillic,
+.elegant-white-card-section--cyrillic button,
+.elegant-white-card-section--cyrillic a {
+  font-family: "Lora", Georgia, serif;
+}
+
+/* Uvodni tekst */
+.elegant-white-card-section--cyrillic
+  .elegant-white-intro-copy {
+  font-family: "Lora", Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+
+/* „Naše venčanje“ */
+.elegant-white-card-section--cyrillic
+  .elegant-white-eyebrow {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+/* Imena */
+.elegant-white-card-section--cyrillic
+  .elegant-white-names h1 {
+  font-family: "Lora", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.94;
+  text-transform: none;
+}
+
+/* Veznik „i“ */
+.elegant-white-card-section--cyrillic
+  .elegant-white-and-row em {
+  font-family: "Lora", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
+/* Monogram */
+.elegant-white-card-section--cyrillic
+  .elegant-white-monogram {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Datum */
+.elegant-white-card-section--cyrillic
+  .elegant-white-date-box,
+.elegant-white-card-section--cyrillic
+  .elegant-white-date-center {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.elegant-white-card-section--cyrillic
+  .elegant-white-date-box span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+}
+
+.elegant-white-card-section--cyrillic
+  .elegant-white-date-center strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Vreme i završni tekst */
+.elegant-white-card-section--cyrillic
+  .elegant-white-time,
+.elegant-white-card-section--cyrillic
+  .elegant-white-closing {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Naslov rasporeda */
+.elegant-white-card-section--cyrillic
+  .elegant-white-schedule-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+/* Vreme događaja */
+.elegant-white-card-section--cyrillic
+  .elegant-white-event-time {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Naziv i lokacija događaja */
+.elegant-white-card-section--cyrillic
+  .elegant-white-event-label,
+.elegant-white-card-section--cyrillic
+  .elegant-white-event-location {
+  font-family: "Lora", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.elegant-white-card-section--cyrillic
+  .elegant-white-event-label {
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.elegant-white-card-section--cyrillic
+  .elegant-white-event-location {
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.elegant-white-card-section--cyrillic
+  .elegant-white-event-location-link {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* ======================================================
+   TELEFON
+====================================================== */
+
+@media (max-width: 600px) {
+  .elegant-white-card-section--cyrillic
+    .elegant-white-intro-copy {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-eyebrow {
+    font-size: 0.82rem;
+    letter-spacing: 0.07em;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-names h1 {
+    font-size: clamp(2.35rem, 12vw, 3.45rem);
+    line-height: 0.92;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-and-row em {
+    font-size: 1rem;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-date-box span {
+    font-size: 0.72rem;
+    letter-spacing: 0.045em;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-time,
+  .elegant-white-card-section--cyrillic
+    .elegant-white-closing {
+    font-size: 0.88rem;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-schedule-title {
+    font-size: clamp(1.8rem, 8.5vw, 2.4rem);
+    letter-spacing: 0.055em;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-event-label {
+    font-size: 0.95rem;
+  }
+
+  .elegant-white-card-section--cyrillic
+    .elegant-white-event-location {
+    font-size: 0.82rem;
+  }
+}

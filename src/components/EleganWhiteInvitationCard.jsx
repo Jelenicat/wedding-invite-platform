@@ -12,55 +12,146 @@ function EleganWhiteInvitationCard({
   details = {},
   slug,
   type,
+  script,
 }) {
   const events = details?.events || [];
 
+  const activeScript = script || details?.script || "latin";
+  const isCyrillic = activeScript === "cyrillic";
+
+  const copy = isCyrillic
+    ? {
+        introLineOne: "Са радошћу вас позивамо",
+        introLineTwo: "да са нама прославите",
+        eyebrow: "Наше венчање",
+        connector: "и",
+        timePrefix: "у",
+        timeSuffix: "часова",
+        closing: "Радујемо се вашем доласку!",
+        scheduleTitle: "Распоред",
+      }
+    : {
+        introLineOne: "Sa radošću vas pozivamo",
+        introLineTwo: "da sa nama proslavite",
+        eyebrow: "Naše venčanje",
+        connector: "i",
+        timePrefix: "u",
+        timeSuffix: "časova",
+        closing: "Radujemo se vašem dolasku!",
+        scheduleTitle: "Raspored",
+      };
+
   const formatMainDate = (dateString, dateISO) => {
-    const dayNames = [
-      "NEDELJA",
-      "PONEDELJAK",
-      "UTORAK",
-      "SREDA",
-      "ČETVRTAK",
-      "PETAK",
-      "SUBOTA",
-    ];
+    const dayNames = isCyrillic
+      ? [
+          "НЕДЕЉА",
+          "ПОНЕДЕЉАК",
+          "УТОРАК",
+          "СРЕДА",
+          "ЧЕТВРТАК",
+          "ПЕТАК",
+          "СУБОТА",
+        ]
+      : [
+          "NEDELJA",
+          "PONEDELJAK",
+          "UTORAK",
+          "SREDA",
+          "ČETVRTAK",
+          "PETAK",
+          "SUBOTA",
+        ];
 
     const monthMap = {
       JAN: 0,
+      JANUAR: 0,
+      ЈАН: 0,
+      ЈАНУАР: 0,
+
       FEB: 1,
+      FEBRUAR: 1,
+      ФЕБ: 1,
+      ФЕБРУАР: 1,
+
       MAR: 2,
+      MART: 2,
+      МАР: 2,
+      МАРТ: 2,
+
       APR: 3,
+      APRIL: 3,
+      АПР: 3,
+      АПРИЛ: 3,
+
       MAJ: 4,
+      МАЈ: 4,
+
       JUN: 5,
+      ЈУН: 5,
+
       JUL: 6,
+      ЈУЛ: 6,
+
       AVG: 7,
+      AVGUST: 7,
+      АВГ: 7,
+      АВГУСТ: 7,
+
       SEP: 8,
+      SEPTEMBAR: 8,
+      СЕП: 8,
+      СЕПТЕМБАР: 8,
+
       OKT: 9,
+      OKTOBAR: 9,
+      ОКТ: 9,
+      ОКТОБАР: 9,
+
       NOV: 10,
+      NOVEMBAR: 10,
+      НОВ: 10,
+      НОВЕМБАР: 10,
+
       DEC: 11,
+      DECEMBAR: 11,
+      ДЕЦ: 11,
+      ДЕЦЕМБАР: 11,
     };
 
     let parsedDate = null;
 
     if (dateISO) {
       const isoDateOnly = String(dateISO).split("T")[0];
-      const [year, month, day] = isoDateOnly.split("-").map(Number);
+      const [year, month, day] = isoDateOnly
+        .split("-")
+        .map(Number);
 
       if (year && month && day) {
         parsedDate = new Date(year, month - 1, day);
       }
     }
 
-    const parts = dateString ? dateString.trim().split(" ") : [];
+    const parts = dateString
+      ? dateString.trim().split(/\s+/)
+      : [];
 
     if (
       (!parsedDate || Number.isNaN(parsedDate.getTime())) &&
       parts.length >= 3
     ) {
-      const day = Number(parts[0]);
-      const month = monthMap[parts[1]?.toUpperCase()];
-      const year = Number(String(parts[2]).replace(".", ""));
+      const day = Number(
+        String(parts[0]).replace(/\D/g, "")
+      );
+
+      const monthKey = String(parts[1] || "")
+        .replace(/\./g, "")
+        .toUpperCase();
+
+      const month = monthMap[monthKey];
+
+      const year = Number(
+        String(parts[2]).replace(/\D/g, "")
+      );
 
       if (day && month !== undefined && year) {
         parsedDate = new Date(year, month, day);
@@ -93,13 +184,25 @@ function EleganWhiteInvitationCard({
   );
 
   const getEventIcon = (event) => {
-    const label = (event?.label || "").toLowerCase();
-    const icon = (event?.icon || "").toLowerCase();
+    const label = String(
+      event?.label || ""
+    ).toLowerCase();
+
+    const icon = String(
+      event?.icon || ""
+    ).toLowerCase();
 
     if (
       icon === "guests" ||
+      icon === "guest" ||
       label.includes("prijem gostiju") ||
-      label.includes("gosti")
+      label.includes("пријем гостију") ||
+      label.includes("doček gostiju") ||
+      label.includes("дочек гостију") ||
+      label.includes("gosti") ||
+      label.includes("гости") ||
+      label.includes("svatova") ||
+      label.includes("сватова")
     ) {
       return "/images/passport/icons/guests.svg";
     }
@@ -107,22 +210,36 @@ function EleganWhiteInvitationCard({
     if (
       icon === "gathering" ||
       label.includes("okupljanje") ||
-      label.includes("skup")
+      label.includes("окупљање") ||
+      label.includes("skup") ||
+      label.includes("скуп")
     ) {
       return "/images/passport/icons/gathering.svg";
     }
 
-    if (icon === "church" || label.includes("crkveno")) {
+    if (
+      icon === "church" ||
+      label.includes("crkveno") ||
+      label.includes("црквено") ||
+      label.includes("храм") ||
+      label.includes("црква")
+    ) {
       return "/images/passport/icons/church.svg";
     }
 
     if (
       icon === "civil" ||
+      icon === "rings" ||
+      icon === "ceremony" ||
       label.includes("građansko") ||
       label.includes("gradjansko") ||
+      label.includes("грађанско") ||
       label.includes("ceremonija") ||
+      label.includes("церемонија") ||
       label.includes("venčanje") ||
-      label.includes("venčanja")
+      label.includes("venčanja") ||
+      label.includes("венчање") ||
+      label.includes("венчања")
     ) {
       return "/images/passport/icons/rings.svg";
     }
@@ -130,16 +247,23 @@ function EleganWhiteInvitationCard({
     if (
       icon === "toast" ||
       label.includes("zdravica") ||
+      label.includes("здравица") ||
       label.includes("koktel") ||
-      label.includes("piće")
+      label.includes("коктел") ||
+      label.includes("piće") ||
+      label.includes("пиће")
     ) {
       return "/images/passport/icons/toast.svg";
     }
 
     if (
       icon === "restaurant" ||
+      icon === "dinner" ||
       label.includes("večera") ||
-      label.includes("ručak")
+      label.includes("вечера") ||
+      label.includes("ručak") ||
+      label.includes("ручак") ||
+      label.includes("ресторан")
     ) {
       return "/images/passport/icons/dinner.svg";
     }
@@ -147,14 +271,21 @@ function EleganWhiteInvitationCard({
     if (
       icon === "party" ||
       label.includes("proslava") ||
+      label.includes("прослава") ||
       label.includes("after") ||
       label.includes("zabava") ||
-      label.includes("ples")
+      label.includes("забава") ||
+      label.includes("ples") ||
+      label.includes("плес")
     ) {
       return "/images/passport/icons/party.svg";
     }
 
-    if (label.includes("torta")) {
+    if (
+      icon === "cake" ||
+      label.includes("torta") ||
+      label.includes("торта")
+    ) {
       return "/images/passport/icons/cake.svg";
     }
 
@@ -164,10 +295,15 @@ function EleganWhiteInvitationCard({
   return (
     <>
       <section
-        className="elegant-white-card-section"
+        className={`elegant-white-card-section ${
+          isCyrillic
+            ? "elegant-white-card-section--cyrillic"
+            : ""
+        }`}
         style={{
           backgroundImage: `url(${
-            details?.backgroundImage || "/images/elegant-white/background.jpg"
+            details?.backgroundImage ||
+            "/images/elegant-white/background.jpg"
           })`,
         }}
       >
@@ -175,19 +311,43 @@ function EleganWhiteInvitationCard({
 
         <motion.div
           className="elegant-white-card-shell"
-          initial={{ opacity: 0, y: 36, scale: 0.985 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          initial={{
+            opacity: 0,
+            y: 36,
+            scale: 0.985,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
           <div className="elegant-white-card-arch">
             <div className="elegant-white-card-inner">
               <motion.div
                 className="elegant-white-monogram-wrap"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                }}
               >
                 <div className="elegant-white-monogram-frame-wrap">
                   <img
@@ -198,51 +358,103 @@ function EleganWhiteInvitationCard({
                   />
 
                   <div className="elegant-white-monogram">
-                    <span>{brideName?.[0] || "A"}</span>
+                    <span>
+                      {brideName?.[0] || "A"}
+                    </span>
+
                     <span className="elegant-white-monogram-divider" />
-                    <span>{groomName?.[0] || "M"}</span>
+
+                    <span>
+                      {groomName?.[0] || "M"}
+                    </span>
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
                 className="elegant-white-intro-copy"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.05 }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.05,
+                }}
               >
-                <p>Sa radošću vas pozivamo</p>
-                <p>da sa nama proslavite</p>
+                <p>{copy.introLineOne}</p>
+                <p>{copy.introLineTwo}</p>
               </motion.div>
 
               <motion.h3
                 className="elegant-white-eyebrow"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.1,
+                }}
               >
-                Naše venčanje
+                {copy.eyebrow}
               </motion.h3>
 
               <motion.div
                 className="elegant-white-divider"
-                initial={{ opacity: 0, scaleX: 0.7 }}
-                whileInView={{ opacity: 1, scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.16 }}
-                style={{ transformOrigin: "center" }}
+                initial={{
+                  opacity: 0,
+                  scaleX: 0.7,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  scaleX: 1,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.16,
+                }}
+                style={{
+                  transformOrigin: "center",
+                }}
               >
                 <span />
               </motion.div>
 
               <motion.div
                 className="elegant-white-names"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.75, delay: 0.14 }}
+                initial={{
+                  opacity: 0,
+                  y: 18,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.14,
+                }}
               >
                 <h1>{brideName}</h1>
 
@@ -253,7 +465,9 @@ function EleganWhiteInvitationCard({
                     aria-hidden="true"
                     className="elegant-white-and-icon"
                   />
-                  <em>i</em>
+
+                  <em>{copy.connector}</em>
+
                   <img
                     src="/images/elegant-white/iright.svg"
                     alt=""
@@ -267,17 +481,30 @@ function EleganWhiteInvitationCard({
 
               <motion.div
                 className="elegant-white-date-row"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.75, delay: 0.2 }}
+                initial={{
+                  opacity: 0,
+                  y: 18,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.2,
+                }}
               >
                 <div className="elegant-white-date-box">
                   <span>{dateParts.dayName}</span>
                 </div>
 
                 <div className="elegant-white-date-center">
-                  <strong>{dateParts.dayNumber}</strong>
+                  <strong>
+                    {dateParts.dayNumber}
+                  </strong>
                 </div>
 
                 <div className="elegant-white-date-box">
@@ -287,25 +514,51 @@ function EleganWhiteInvitationCard({
 
               <motion.div
                 className="elegant-white-time"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.24 }}
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.24,
+                }}
               >
-                u {details?.ceremonyTime || weddingTime} časova
+                {copy.timePrefix}{" "}
+                {details?.ceremonyTime || weddingTime}{" "}
+                {copy.timeSuffix}
               </motion.div>
 
               <motion.div
                 className="elegant-white-closing"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.32 }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.32,
+                }}
               >
-                Radujemo se vašem dolasku!
+                {copy.closing}
               </motion.div>
 
-              <div className="elegant-white-heart">♡</div>
+              <div className="elegant-white-heart">
+                ♡
+              </div>
             </div>
           </div>
         </motion.div>
@@ -313,9 +566,18 @@ function EleganWhiteInvitationCard({
         {events.length > 0 && (
           <motion.div
             className="elegant-white-schedule-full"
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            initial={{
+              opacity: 0,
+              y: 32,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.15,
+            }}
             transition={{
               duration: 0.85,
               delay: 0.08,
@@ -326,12 +588,22 @@ function EleganWhiteInvitationCard({
               <div className="elegant-white-schedule-inner">
                 <motion.h3
                   className="elegant-white-schedule-title"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.65 }}
+                  initial={{
+                    opacity: 0,
+                    y: 10,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.65,
+                  }}
                 >
-                  Raspored
+                  {copy.scheduleTitle}
                 </motion.h3>
 
                 <div className="elegant-white-schedule-divider">
@@ -347,9 +619,18 @@ function EleganWhiteInvitationCard({
                     <motion.div
                       className="elegant-white-event"
                       key={`${event.label}-${index}`}
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.5 }}
+                      initial={{
+                        opacity: 0,
+                        y: 16,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      viewport={{
+                        once: true,
+                        amount: 0.5,
+                      }}
                       transition={{
                         duration: 0.55,
                         delay: index * 0.08,
@@ -405,16 +686,20 @@ function EleganWhiteInvitationCard({
         slug={slug}
         eventType={type}
         note={details?.note}
+        script={activeScript}
       />
 
-      {details.dateISO && (
+      {details?.dateISO && (
         <ElegantWhiteCountdown
           targetDate={details.dateISO}
           backgroundImage={details?.backgroundImage}
           brideName={brideName}
           groomName={groomName}
           details={details}
-          showCalendarButton={details?.showCalendarButton}
+          showCalendarButton={
+            details?.showCalendarButton
+          }
+          script={activeScript}
         />
       )}
     </>

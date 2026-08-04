@@ -18222,3 +18222,230 @@ margin-bottom: 2px;
   display: inline-block;
   margin-left: 0.3em;
 }
+
+/* ======================================================
+   ELEGANT WHITE RSVP — ЋИРИЛИЦА
+====================================================== */
+
+.elegant-white-rsvp-section--cyrillic,
+.elegant-white-rsvp-section--cyrillic button,
+.elegant-white-rsvp-section--cyrillic input {
+  font-family: "Lora", Georgia, serif;
+}
+
+/* Горњи писани текст */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-overline {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Наслов ПОТВРДА ДОЛАСКА */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+}
+
+/* Напомена испод наслова */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-subtitle {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+/* Називи поља */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-field label,
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-guests-label {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Поље за име */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-field input {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Placeholder */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-field input::placeholder {
+  font-family: "Lora", Georgia, serif;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+/* Долазим / Не долазим */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-option {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Дугме за слање */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-submit {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Порука након успешног слања */
+.elegant-white-rsvp-section--cyrillic
+  .elegant-white-rsvp-success p {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Мало мањи наслов на телефону */
+@media (max-width: 600px) {
+  .elegant-white-rsvp-section--cyrillic
+    .elegant-white-rsvp-title {
+    font-size: clamp(1.9rem, 9vw, 2.6rem);
+    letter-spacing: 0.05em;
+  }
+
+  .elegant-white-rsvp-section--cyrillic
+    .elegant-white-rsvp-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .elegant-white-rsvp-section--cyrillic
+    .elegant-white-rsvp-option,
+  .elegant-white-rsvp-section--cyrillic
+    .elegant-white-rsvp-submit {
+    font-size: 0.9rem;
+  }
+}
+
+/* ======================================================
+   ELEGANT WHITE COUNTDOWN — ЋИРИЛИЦА
+   Активира се када је script: "cyrillic"
+====================================================== */
+
+.elegant-white-countdown-section--cyrillic,
+.elegant-white-countdown-section--cyrillic button {
+  font-family: "Lora", Georgia, serif;
+}
+
+/* Горњи текст */
+.elegant-white-countdown-section--cyrillic
+  .elegant-white-countdown-overline {
+  font-family: "Lora", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+/* Наслов ОДБРОЈАВАЊЕ */
+.elegant-white-countdown-section--cyrillic
+  .elegant-white-countdown-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+/* Бројеви */
+.elegant-white-countdown-section--cyrillic
+  .elegant-white-countdown-box strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+/* Дана / Сати / Минута / Секунди */
+.elegant-white-countdown-section--cyrillic
+  .elegant-white-countdown-box span {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+/* Завршна порука */
+.elegant-white-countdown-section--cyrillic
+  .elegant-white-countdown-finished p {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+/* Дугме за календар */
+.elegant-white-countdown-section--cyrillic
+  .elegant-white-countdown-calendar-btn {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+/* Текст испод дугмета */
+.elegant-white-countdown-section--cyrillic
+  .elegant-white-countdown-calendar-hint {
+  font-family: "Lora", Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+
+/* ======================================================
+   ТЕЛЕФОН
+====================================================== */
+
+@media (max-width: 600px) {
+  .elegant-white-countdown-section--cyrillic
+    .elegant-white-countdown-overline {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .elegant-white-countdown-section--cyrillic
+    .elegant-white-countdown-title {
+    font-size: clamp(1.8rem, 8.5vw, 2.45rem);
+    letter-spacing: 0.05em;
+  }
+
+  .elegant-white-countdown-section--cyrillic
+    .elegant-white-countdown-box strong {
+    font-size: clamp(1.9rem, 9vw, 2.65rem);
+  }
+
+  .elegant-white-countdown-section--cyrillic
+    .elegant-white-countdown-box span {
+    font-size: 0.72rem;
+    letter-spacing: 0.015em;
+  }
+
+  .elegant-white-countdown-section--cyrillic
+    .elegant-white-countdown-calendar-btn {
+    font-size: 0.9rem;
+  }
+
+  .elegant-white-countdown-section--cyrillic
+    .elegant-white-countdown-calendar-hint {
+    font-size: 0.8rem;
+  }
+}

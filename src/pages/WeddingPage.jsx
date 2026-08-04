@@ -288,6 +288,10 @@ const TEMPLATE_COMPONENTS = {
   Intro: BirthdayIntro,
    Invitation: BirthdayElenaInvitationCard,
 },
+"silk-elegant-white": {
+  Intro: SilkIntro,
+  Invitation: EleganWhiteInvitationCard,
+},
 };
 
 const isObject = (value) =>

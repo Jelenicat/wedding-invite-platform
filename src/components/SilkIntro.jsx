@@ -23,8 +23,7 @@ function SilkIntro({
   const shouldUseIntroNamesSvg =
     slug === "jovana-dusan-1";
 
-  const isEnglish =
-    language === "en";
+  const isEnglish = language === "en";
 
   const isWeddingPartySlug =
     slug === "jovana-stefan";
@@ -119,22 +118,43 @@ function SilkIntro({
 
   const monthMapCyrillic = {
     JAN: "јануар",
+    ЈАН: "јануар",
+
     FEB: "фебруар",
+    ФЕБ: "фебруар",
+
     MAR: "март",
+    МАР: "март",
+
     APR: "април",
+    АПР: "април",
+
     MAY: "мај",
     MAJ: "мај",
+    МАЈ: "мај",
+
     JUN: "јун",
+    ЈУН: "јун",
+
     JUL: "јул",
+    ЈУЛ: "јул",
+
     AVG: "август",
     AUG: "август",
+    АВГ: "август",
+
     SEP: "септембар",
     СЕП: "септембар",
+
     OCT: "октобар",
     OKT: "октобар",
     ОКТ: "октобар",
+
     NOV: "новембар",
+    НОВ: "новембар",
+
     DEC: "децембар",
+    ДЕЦ: "децембар",
   };
 
   const monthMap = isEnglish
@@ -160,8 +180,11 @@ function SilkIntro({
     if (parts.length === 3) {
       if (Number.isNaN(Number(parts[0]))) {
         month =
-          monthMap[parts[0].toUpperCase()] ||
-          parts[0];
+          monthMap[
+            parts[0]
+              .replace(/\./g, "")
+              .toUpperCase()
+          ] || parts[0];
 
         day = parts[1];
         year = parts[2];
@@ -169,13 +192,27 @@ function SilkIntro({
         day = parts[0];
 
         month =
-          monthMap[parts[1].toUpperCase()] ||
-          parts[1];
+          monthMap[
+            parts[1]
+              .replace(/\./g, "")
+              .toUpperCase()
+          ] || parts[1];
 
         year = parts[2];
       }
     }
   }
+
+  const cleanDay = String(day).replace(/\.$/, "");
+  const cleanYear = String(year).replace(/\.$/, "");
+
+  const displayedDay = shouldAddDateDots
+    ? `${cleanDay}.`
+    : cleanDay;
+
+  const displayedYear = shouldAddDateDots
+    ? `${cleanYear}.`
+    : cleanYear;
 
   const t = isEnglish
     ? {
@@ -329,19 +366,31 @@ function SilkIntro({
         )}
 
         <p className={`silk-date ${fontMode}`}>
-          {month}
+          {isIvanaDusanSlug ? (
+            <>
+              {displayedDay}
 
-          <br />
+              <br />
 
-          {shouldAddDateDots
-            ? `${day}.`
-            : day}
+              {month}
 
-          <br />
+              <br />
 
-          {shouldAddDateDots
-            ? `${year}.`
-            : year}
+              {displayedYear}
+            </>
+          ) : (
+            <>
+              {month}
+
+              <br />
+
+              {displayedDay}
+
+              <br />
+
+              {displayedYear}
+            </>
+          )}
         </p>
 
         <button

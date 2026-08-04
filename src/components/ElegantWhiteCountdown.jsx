@@ -12,11 +12,14 @@ function ElegantWhiteCountdown({
   showCalendarButton = false,
   script = "latin",
 }) {
+  const isCyrillic = script === "cyrillic";
+
   const calculateTimeLeft = useMemo(() => {
     return () => {
       if (!targetDate) return null;
 
-      const difference = new Date(targetDate).getTime() - new Date().getTime();
+      const difference =
+        new Date(targetDate).getTime() - new Date().getTime();
 
       if (difference <= 0) {
         return {
@@ -30,15 +33,25 @@ function ElegantWhiteCountdown({
 
       return {
         expired: false,
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        days: Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        ),
+        hours: Math.floor(
+          (difference / (1000 * 60 * 60)) % 24
+        ),
+        minutes: Math.floor(
+          (difference / (1000 * 60)) % 60
+        ),
+        seconds: Math.floor(
+          (difference / 1000) % 60
+        ),
       };
     };
   }, [targetDate]);
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+  const [timeLeft, setTimeLeft] = useState(
+    calculateTimeLeft
+  );
 
   useEffect(() => {
     setTimeLeft(calculateTimeLeft());
@@ -50,30 +63,31 @@ function ElegantWhiteCountdown({
     return () => clearInterval(timer);
   }, [calculateTimeLeft]);
 
-  const t =
-    script === "cyrillic"
-      ? {
-          overline: "Odbrojavanje do našeg dana",
-          title: "Countdown",
-          days: "Dana",
-          hours: "Sati",
-          minutes: "Minuta",
-          seconds: "Sekundi",
-          finished: "Naš dan je stigao!",
-          addCalendar: "Dodaj u kalendar",
-          calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
-        }
-      : {
-          overline: "Odbrojavanje do našeg dana",
-          title: "Countdown",
-          days: "Dana",
-          hours: "Sati",
-          minutes: "Minuta",
-          seconds: "Sekundi",
-          finished: "Naš dan je stigao!",
-          addCalendar: "Dodaj u kalendar",
-          calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
-        };
+  const t = isCyrillic
+    ? {
+        overline: "Видимо се да заједно направимо успомене за памћење.",
+        title: "ОДБРОЈАВАЊЕ",
+        days: "Дана",
+        hours: "Сати",
+        minutes: "Минута",
+        seconds: "Секунди",
+        finished: "Наш дан је стигао!",
+        addCalendar: "Додај у календар",
+        calendarHint:
+          "Сачувајте датум венчања у свом телефону.",
+      }
+    : {
+        overline: "Odbrojavanje do našeg dana",
+        title: "Countdown",
+        days: "Dana",
+        hours: "Sati",
+        minutes: "Minuta",
+        seconds: "Sekundi",
+        finished: "Naš dan je stigao!",
+        addCalendar: "Dodaj u kalendar",
+        calendarHint:
+          "Sačuvajte datum venčanja u svom telefonu.",
+      };
 
   const handleCalendarClick = () => {
     addToCalendar({
@@ -90,47 +104,101 @@ function ElegantWhiteCountdown({
 
   return (
     <section
-      className="elegant-white-countdown-section"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      className={`elegant-white-countdown-section ${
+        isCyrillic
+          ? "elegant-white-countdown-section--cyrillic"
+          : ""
+      }`}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
     >
       <div className="elegant-white-countdown-bg-overlay" />
 
       <motion.div
         className="elegant-white-countdown-shell"
-        initial={{ opacity: 0, y: 36, scale: 0.985 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        initial={{
+          opacity: 0,
+          y: 36,
+          scale: 0.985,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.25,
+        }}
+        transition={{
+          duration: 0.9,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       >
         <div className="elegant-white-countdown-card">
           <div className="elegant-white-countdown-inner">
             <motion.p
               className="elegant-white-countdown-overline"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.6,
+              }}
             >
               {t.overline}
             </motion.p>
 
             <motion.h2
               className="elegant-white-countdown-title"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, delay: 0.05 }}
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.65,
+                delay: 0.05,
+              }}
             >
               {t.title}
             </motion.h2>
 
             <motion.div
               className="elegant-white-countdown-divider"
-              initial={{ opacity: 0, scaleX: 0.7 }}
-              whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, delay: 0.1 }}
-              style={{ transformOrigin: "center" }}
+              initial={{
+                opacity: 0,
+                scaleX: 0.7,
+              }}
+              whileInView={{
+                opacity: 1,
+                scaleX: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.65,
+                delay: 0.1,
+              }}
+              style={{
+                transformOrigin: "center",
+              }}
             >
               <span />
             </motion.div>
@@ -139,63 +207,147 @@ function ElegantWhiteCountdown({
               <div className="elegant-white-countdown-grid">
                 <motion.div
                   className="elegant-white-countdown-box"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.05 }}
+                  initial={{
+                    opacity: 0,
+                    y: 12,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.05,
+                  }}
                 >
-                  <strong>{String(timeLeft.days).padStart(2, "0")}</strong>
+                  <strong>
+                    {String(timeLeft.days).padStart(
+                      2,
+                      "0"
+                    )}
+                  </strong>
                   <span>{t.days}</span>
                 </motion.div>
 
                 <motion.div
                   className="elegant-white-countdown-box"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.1 }}
+                  initial={{
+                    opacity: 0,
+                    y: 12,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.1,
+                  }}
                 >
-                  <strong>{String(timeLeft.hours).padStart(2, "0")}</strong>
+                  <strong>
+                    {String(timeLeft.hours).padStart(
+                      2,
+                      "0"
+                    )}
+                  </strong>
                   <span>{t.hours}</span>
                 </motion.div>
 
                 <motion.div
                   className="elegant-white-countdown-box"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.15 }}
+                  initial={{
+                    opacity: 0,
+                    y: 12,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.15,
+                  }}
                 >
-                  <strong>{String(timeLeft.minutes).padStart(2, "0")}</strong>
+                  <strong>
+                    {String(timeLeft.minutes).padStart(
+                      2,
+                      "0"
+                    )}
+                  </strong>
                   <span>{t.minutes}</span>
                 </motion.div>
 
                 <motion.div
                   className="elegant-white-countdown-box"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.2 }}
+                  initial={{
+                    opacity: 0,
+                    y: 12,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.2,
+                  }}
                 >
-                  <strong>{String(timeLeft.seconds).padStart(2, "0")}</strong>
+                  <strong>
+                    {String(timeLeft.seconds).padStart(
+                      2,
+                      "0"
+                    )}
+                  </strong>
                   <span>{t.seconds}</span>
                 </motion.div>
               </div>
             ) : (
               <motion.div
                 className="elegant-white-countdown-finished"
-                initial={{ opacity: 0, y: 12, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.55 }}
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                  scale: 0.96,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.55,
+                }}
               >
                 <motion.div
                   className="elegant-white-countdown-finished-heart"
-                  initial={{ scale: 0.7, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.45, delay: 0.1 }}
+                  initial={{
+                    scale: 0.7,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    scale: 1,
+                    opacity: 1,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.1,
+                  }}
                 >
                   ♡
                 </motion.div>
+
                 <p>{t.finished}</p>
               </motion.div>
             )}
@@ -203,17 +355,28 @@ function ElegantWhiteCountdown({
             {showCalendarButton && (
               <motion.div
                 className="elegant-white-countdown-calendar-box"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: 0.25 }}
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.55,
+                  delay: 0.25,
+                }}
               >
                 <button
                   type="button"
                   className="elegant-white-countdown-calendar-btn"
                   onClick={handleCalendarClick}
                 >
-                  <span>📅</span>
+                  <span aria-hidden="true">📅</span>
                   {t.addCalendar}
                 </button>
 
