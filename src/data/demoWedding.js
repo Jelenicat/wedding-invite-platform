@@ -7565,12 +7565,14 @@ dressCodeMenPalette: [
       "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate početak našeg zajedničkog života.",
 
     events: [
-      {
-        time: "15:30",
-        label: "Crkveno venčanje",
-        location: "Naziv crkve, Niš",
-        icon: "church",
-      },
+   {
+  time: "15:30",
+  label: "Crkveno venčanje",
+  location: "Crkva Svetog Vasilija Ostroškog, Niš",
+  mapLink:
+    "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Vasilija+Ostroskog+Bulevar+Medijana+Nis",
+  icon: "church",
+},
       {
         time: "17:00",
         label: "Okupljanje gostiju",
