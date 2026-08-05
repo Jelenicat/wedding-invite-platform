@@ -11,15 +11,20 @@ function ElegantWhiteCountdown({
   details = {},
   showCalendarButton = false,
   script = "latin",
+  slug,
 }) {
   const isCyrillic = script === "cyrillic";
+
+  const isIvanaDusanSlug =
+    slug === "ivana-dusan";
 
   const calculateTimeLeft = useMemo(() => {
     return () => {
       if (!targetDate) return null;
 
       const difference =
-        new Date(targetDate).getTime() - new Date().getTime();
+        new Date(targetDate).getTime() -
+        new Date().getTime();
 
       if (difference <= 0) {
         return {
@@ -33,15 +38,24 @@ function ElegantWhiteCountdown({
 
       return {
         expired: false,
+
         days: Math.floor(
-          difference / (1000 * 60 * 60 * 24)
+          difference /
+            (1000 * 60 * 60 * 24)
         ),
+
         hours: Math.floor(
-          (difference / (1000 * 60 * 60)) % 24
+          (difference /
+            (1000 * 60 * 60)) %
+            24
         ),
+
         minutes: Math.floor(
-          (difference / (1000 * 60)) % 60
+          (difference /
+            (1000 * 60)) %
+            60
         ),
+
         seconds: Math.floor(
           (difference / 1000) % 60
         ),
@@ -49,9 +63,8 @@ function ElegantWhiteCountdown({
     };
   }, [targetDate]);
 
-  const [timeLeft, setTimeLeft] = useState(
-    calculateTimeLeft
-  );
+  const [timeLeft, setTimeLeft] =
+    useState(calculateTimeLeft);
 
   useEffect(() => {
     setTimeLeft(calculateTimeLeft());
@@ -65,26 +78,32 @@ function ElegantWhiteCountdown({
 
   const t = isCyrillic
     ? {
-        overline: "Видимо се да заједно направимо успомене за памћење.",
+        overline:
+          "Видимо се да заједно направимо успомене за памћење.",
         title: "ОДБРОЈАВАЊЕ",
         days: "Дана",
         hours: "Сати",
         minutes: "Минута",
         seconds: "Секунди",
-        finished: "Наш дан је стигао!",
-        addCalendar: "Додај у календар",
+        finished:
+          "Наш дан је стигао!",
+        addCalendar:
+          "Додај у календар",
         calendarHint:
           "Сачувајте датум венчања у свом телефону.",
       }
     : {
-        overline: "Odbrojavanje do našeg dana",
+        overline:
+          "Odbrojavanje do našeg dana",
         title: "Countdown",
         days: "Dana",
         hours: "Sati",
         minutes: "Minuta",
         seconds: "Sekundi",
-        finished: "Naš dan je stigao!",
-        addCalendar: "Dodaj u kalendar",
+        finished:
+          "Naš dan je stigao!",
+        addCalendar:
+          "Dodaj u kalendar",
         calendarHint:
           "Sačuvajte datum venčanja u svom telefonu.",
       };
@@ -107,6 +126,10 @@ function ElegantWhiteCountdown({
       className={`elegant-white-countdown-section ${
         isCyrillic
           ? "elegant-white-countdown-section--cyrillic"
+          : ""
+      } ${
+        isIvanaDusanSlug
+          ? "elegant-white-countdown-section--ivana-dusan"
           : ""
       }`}
       style={{
@@ -133,7 +156,12 @@ function ElegantWhiteCountdown({
         }}
         transition={{
           duration: 0.9,
-          ease: [0.22, 1, 0.36, 1],
+          ease: [
+            0.22,
+            1,
+            0.36,
+            1,
+          ],
         }}
       >
         <div className="elegant-white-countdown-card">
@@ -197,7 +225,8 @@ function ElegantWhiteCountdown({
                 delay: 0.1,
               }}
               style={{
-                transformOrigin: "center",
+                transformOrigin:
+                  "center",
               }}
             >
               <span />
@@ -224,11 +253,14 @@ function ElegantWhiteCountdown({
                   }}
                 >
                   <strong>
-                    {String(timeLeft.days).padStart(
+                    {String(
+                      timeLeft.days
+                    ).padStart(
                       2,
                       "0"
                     )}
                   </strong>
+
                   <span>{t.days}</span>
                 </motion.div>
 
@@ -251,12 +283,17 @@ function ElegantWhiteCountdown({
                   }}
                 >
                   <strong>
-                    {String(timeLeft.hours).padStart(
+                    {String(
+                      timeLeft.hours
+                    ).padStart(
                       2,
                       "0"
                     )}
                   </strong>
-                  <span>{t.hours}</span>
+
+                  <span>
+                    {t.hours}
+                  </span>
                 </motion.div>
 
                 <motion.div
@@ -278,12 +315,17 @@ function ElegantWhiteCountdown({
                   }}
                 >
                   <strong>
-                    {String(timeLeft.minutes).padStart(
+                    {String(
+                      timeLeft.minutes
+                    ).padStart(
                       2,
                       "0"
                     )}
                   </strong>
-                  <span>{t.minutes}</span>
+
+                  <span>
+                    {t.minutes}
+                  </span>
                 </motion.div>
 
                 <motion.div
@@ -305,12 +347,17 @@ function ElegantWhiteCountdown({
                   }}
                 >
                   <strong>
-                    {String(timeLeft.seconds).padStart(
+                    {String(
+                      timeLeft.seconds
+                    ).padStart(
                       2,
                       "0"
                     )}
                   </strong>
-                  <span>{t.seconds}</span>
+
+                  <span>
+                    {t.seconds}
+                  </span>
                 </motion.div>
               </div>
             ) : (
@@ -374,9 +421,14 @@ function ElegantWhiteCountdown({
                 <button
                   type="button"
                   className="elegant-white-countdown-calendar-btn"
-                  onClick={handleCalendarClick}
+                  onClick={
+                    handleCalendarClick
+                  }
                 >
-                  <span aria-hidden="true">📅</span>
+                  <span aria-hidden="true">
+                    📅
+                  </span>
+
                   {t.addCalendar}
                 </button>
 

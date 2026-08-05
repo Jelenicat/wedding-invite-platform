@@ -22245,3 +22245,383 @@ font-family: "Italianno", cursive;
     font-size: 0.82rem;
   }
 }
+
+/* ======================================================
+   IVANA I DUŠAN — TAMNIJI DATUMI, LINIJE I VEĆE IKONICE
+====================================================== */
+
+/* Dan u nedelji, broj dana i mesec/godina */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box
+  span,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-center
+  strong {
+  color: #786147 !important;
+  opacity: 1 !important;
+}
+
+/* Horizontalne linije oko datuma */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box {
+  border-color: rgba(120, 97, 71, 0.55) !important;
+}
+
+/* Ako su linije napravljene preko pseudo-elemenata */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box::before,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box::after {
+  background-color: rgba(120, 97, 71, 0.55) !important;
+  border-color: rgba(120, 97, 71, 0.55) !important;
+}
+
+/* Vremena u rasporedu */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-time {
+  color: #786147 !important;
+  opacity: 1 !important;
+  font-weight: 600;
+}
+
+/* Vertikalna linija rasporeda */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-timeline-line {
+  background-color: rgba(120, 97, 71, 0.5) !important;
+  border-color: rgba(120, 97, 71, 0.5) !important;
+}
+
+/* Tačkice na vertikalnoj liniji */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-dot {
+  background-color: #8a7357 !important;
+  border-color: #8a7357 !important;
+  opacity: 1 !important;
+}
+
+/* Veći prostor za ikonice */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-icon-wrap {
+  width: 52px !important;
+  min-width: 52px !important;
+  height: 52px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Veće i tamnije ikonice */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-icon {
+  width: 40px !important;
+  height: 40px !important;
+  max-width: none !important;
+
+  opacity: 1 !important;
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(42%)
+    sepia(18%)
+    saturate(700%)
+    hue-rotate(352deg)
+    brightness(92%)
+    contrast(88%);
+}
+
+/* Linije pored srca ispod naslova RASPORED */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-divider
+  span {
+  background-color: rgba(120, 97, 71, 0.52) !important;
+  border-color: rgba(120, 97, 71, 0.52) !important;
+}
+
+/* Srce u rasporedu */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-divider
+  i {
+  color: #8a7357 !important;
+  opacity: 1 !important;
+}
+
+/* Telefon */
+@media (max-width: 600px) {
+  .elegant-white-card-section--ivana-dusan
+    .elegant-white-event-icon-wrap {
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+  }
+
+  .elegant-white-card-section--ivana-dusan
+    .elegant-white-event-icon {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+/* Ivana i Dušan — tamniji dan i datum */
+
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box
+  span {
+  color: #5b4636 !important;
+  opacity: 1 !important;
+  font-weight: 600 !important;
+}
+
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-center
+  strong {
+  color: #5b4636 !important;
+  opacity: 1 !important;
+  font-weight: 600 !important;
+}
+
+/* Tamnije linije oko datuma */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box {
+  border-top-color: rgba(91, 70, 54, 0.7) !important;
+  border-bottom-color: rgba(91, 70, 54, 0.7) !important;
+}
+
+/* Ivana i Dušan — tamniji i veći dan i datum */
+
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box
+  span {
+  color: #5b4636 !important;
+  opacity: 1 !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em;
+}
+
+/* Broj 20. */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-center
+  strong {
+  color: #5b4636 !important;
+  opacity: 1 !important;
+  font-size: 3.1rem !important;
+  font-weight: 600 !important;
+  line-height: 1;
+}
+
+/* Tamnije linije oko datuma */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-date-box {
+  border-top-color: rgba(91, 70, 54, 0.72) !important;
+  border-bottom-color: rgba(91, 70, 54, 0.72) !important;
+}
+
+/* Telefon */
+@media (max-width: 600px) {
+  .elegant-white-card-section--ivana-dusan
+    .elegant-white-date-box
+    span {
+    font-size: 0.98rem !important;
+  }
+
+  .elegant-white-card-section--ivana-dusan
+    .elegant-white-date-center
+    strong {
+    font-size: 2.85rem !important;
+  }
+}
+
+/* Ivana i Dušan — potamni i ostali tekst */
+
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-intro-copy p,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-eyebrow,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-and-row em,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-closing,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-monogram,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-monogram span {
+  color: #5b4636 !important;
+  opacity: 1 !important;
+}
+
+/* Ako želiš da uvodni tekst bude još malo izraženiji */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-intro-copy p {
+  color: #6a5441 !important;
+}
+
+/* Srce ispod teksta */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-heart {
+  color: #8a7357 !important;
+  opacity: 1 !important;
+}
+
+/* Ivana i Dušan — tamniji uvodni tekst */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-intro-copy,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-intro-copy p {
+  color: #5b4636 !important;
+  opacity: 1 !important;
+}
+
+/* Ivana i Dušan — pojačan ceo ram kartica */
+
+/* Gornja kartica — spoljašnji ram */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-card-arch {
+  border-color: rgba(91, 70, 54, 0.7) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(91, 70, 54, 0.22),
+    0 8px 24px rgba(91, 70, 54, 0.08) !important;
+}
+
+/* Gornja kartica — unutrašnji ram */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-card-inner {
+  border-color: rgba(91, 70, 54, 0.52) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(91, 70, 54, 0.16) !important;
+}
+
+/* Kartica rasporeda — spoljašnji ram */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-card {
+  border-color: rgba(91, 70, 54, 0.7) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(91, 70, 54, 0.22),
+    0 8px 24px rgba(91, 70, 54, 0.08) !important;
+}
+
+/* Kartica rasporeda — unutrašnji ram */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-inner {
+  border-color: rgba(91, 70, 54, 0.52) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(91, 70, 54, 0.16) !important;
+}
+
+/* Ako su delovi rama napravljeni pseudo-elementima */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-card-arch::before,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-card-arch::after,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-card-inner::before,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-card-inner::after,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-card::before,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-card::after,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-inner::before,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-inner::after {
+  border-color: rgba(91, 70, 54, 0.55) !important;
+  opacity: 1 !important;
+}
+
+/* Ivana i Dušan — potamni sav preostali tekst u rasporedu */
+
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-title,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-label,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-location,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-location-link {
+  color: #705845 !important;
+  opacity: 1 !important;
+}
+
+/* Nazivi događaja malo izraženiji */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-label {
+  font-weight: 500 !important;
+}
+
+/* Lokacije */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-location,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-event-location-link {
+  color: #705845 !important;
+  text-decoration-color: rgba(112, 88, 69, 0.65) !important;
+  border-bottom-color: rgba(112, 88, 69, 0.55) !important;
+}
+
+/* Naslov rasporeda */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-schedule-title {
+  color: #705845 !important;
+  font-weight: 500 !important;
+}
+
+/* Ivana i Dušan — potamni preostali tekst na glavnoj kartici */
+
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-monogram,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-monogram span,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-intro-copy,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-intro-copy p,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-eyebrow,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-and-row em,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-closing,
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-heart {
+  color: #705845 !important;
+  opacity: 1 !important;
+}
+
+/* Uvodni tekst malo izraženiji */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-intro-copy p {
+  font-weight: 500 !important;
+}
+
+/* Naslov "Naše venčanje" */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-eyebrow {
+  font-weight: 500 !important;
+}
+
+/* Slovo "и" između imena */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-and-row em {
+  color: #705845 !important;
+}
+
+/* Završni tekst */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-closing {
+  color: #705845 !important;
+  font-weight: 500 !important;
+}
+
+/* Monogram i njegova razdelna linija */
+.elegant-white-card-section--ivana-dusan
+  .elegant-white-monogram-divider {
+  background-color: rgba(112, 88, 69, 0.7) !important;
+  border-color: rgba(112, 88, 69, 0.7) !important;
+  opacity: 1 !important;
+}

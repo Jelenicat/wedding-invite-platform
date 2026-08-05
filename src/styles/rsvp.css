@@ -18449,3 +18449,294 @@ margin-bottom: 2px;
     font-size: 0.8rem;
   }
 }
+
+/* ======================================================
+   IVANA I DUŠAN — TAMNIJI RSVP TEKST I JAČI RAM
+====================================================== */
+
+/* Naslov, podnaslov i tekstovi */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-overline,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-title,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-subtitle,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-field label,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-guests-label,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-success p {
+  color: #5b4636 !important;
+  opacity: 1 !important;
+}
+
+/* Glavni naslov */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-title {
+  font-weight: 500 !important;
+}
+
+/* Uvodni tekst i rok potvrde */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-subtitle {
+  color: #654e3a !important;
+  font-weight: 500 !important;
+}
+
+/* Spoljašnji ram RSVP kartice */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-card {
+  border-color: rgba(91, 70, 54, 0.72) !important;
+  border-width: 2px !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(91, 70, 54, 0.16),
+    0 8px 24px rgba(91, 70, 54, 0.08) !important;
+}
+
+/* Unutrašnji ram */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-inner {
+  border-color: rgba(91, 70, 54, 0.56) !important;
+  border-width: 2px !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(91, 70, 54, 0.12) !important;
+}
+
+/* Ukrasna linija ispod naslova */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-divider span {
+  background-color: rgba(91, 70, 54, 0.65) !important;
+  border-color: rgba(91, 70, 54, 0.65) !important;
+  opacity: 1 !important;
+}
+
+/* Naziv polja */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-field label {
+  font-weight: 400 !important;
+}
+
+/* Polje za ime */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-field input {
+  color: #5b4636 !important;
+  border-color: rgba(91, 70, 54, 0.58) !important;
+  background: rgba(255, 252, 247, 0.74) !important;
+}
+
+/* Placeholder */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-field input::placeholder {
+  color: rgba(91, 70, 54, 0.62) !important;
+  opacity: 1 !important;
+}
+
+/* Dolazim / Ne dolazim */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-option {
+  color: #5b4636 !important;
+  border-color: rgba(91, 70, 54, 0.58) !important;
+}
+
+/* Izabrana opcija */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-option.is-active {
+  color: #fffaf2 !important;
+  background: #746047 !important;
+  border-color: #746047 !important;
+}
+
+/* Broj gostiju */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-stepper {
+  border-color: rgba(91, 70, 54, 0.58) !important;
+}
+
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-stepper-btn,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-stepper-value {
+  color: #5b4636 !important;
+}
+
+/* Dugme za slanje */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-submit {
+  color: #fffaf2 !important;
+  background: #746047 !important;
+  border-color: #5b4636 !important;
+}
+
+/* Srce nakon uspešnog slanja */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-success-heart {
+  color: #5b4636 !important;
+}
+
+/* Ivana i Dušan — malo svetliji tekst */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-overline,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-title,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-subtitle,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-field label,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-guests-label,
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-success p {
+  color: #705845 !important;
+  opacity: 1 !important;
+}
+
+/* Malo svetliji spoljašnji ram */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-card {
+  border-color: rgba(112, 88, 69, 0.62) !important;
+  border-width: 2px !important;
+}
+
+/* Malo svetliji unutrašnji ram */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-inner {
+  border-color: rgba(112, 88, 69, 0.46) !important;
+  border-width: 2px !important;
+}
+
+/* Linija ispod naslova */
+.elegant-white-rsvp-section--ivana-dusan
+  .elegant-white-rsvp-divider span {
+  background-color: rgba(112, 88, 69, 0.56) !important;
+}
+
+/* ======================================================
+   IVANA I DUŠAN — COUNTDOWN TEKST I JAČI RAM
+====================================================== */
+
+/* Sav tekst */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-overline,
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-title,
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-box strong,
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-box span,
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-finished p,
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-finished-heart,
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-calendar-hint {
+  color: #705845 !important;
+  opacity: 1 !important;
+}
+
+/* Uvodna rečenica */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-overline {
+  font-weight: 500 !important;
+}
+
+/* Naslov */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-title {
+  color: #705845 !important;
+  font-weight: 500 !important;
+}
+
+/* Brojevi */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-box
+  strong {
+  color: #5f4937 !important;
+  font-weight: 500 !important;
+}
+
+/* Dana, Sati, Minuta, Sekundi */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-box
+  span {
+  color: #705845 !important;
+  font-weight: 500 !important;
+}
+
+/* Spoljašnji ram */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-card {
+  border-color: rgba(
+    112,
+    88,
+    69,
+    0.62
+  ) !important;
+
+  border-width: 2px !important;
+
+  box-shadow:
+    inset 0 0 0 1px
+      rgba(112, 88, 69, 0.15),
+    0 8px 24px
+      rgba(91, 70, 54, 0.08) !important;
+}
+
+/* Unutrašnji ram */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-inner {
+  border-color: rgba(
+    112,
+    88,
+    69,
+    0.48
+  ) !important;
+
+  border-width: 2px !important;
+
+  box-shadow:
+    inset 0 0 0 1px
+      rgba(112, 88, 69, 0.12) !important;
+}
+
+/* Linija ispod naslova */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-divider
+  span {
+  background-color: rgba(
+    112,
+    88,
+    69,
+    0.58
+  ) !important;
+
+  border-color: rgba(
+    112,
+    88,
+    69,
+    0.58
+  ) !important;
+
+  opacity: 1 !important;
+}
+
+/* Okviri oko brojeva */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-box {
+  border-color: rgba(
+    112,
+    88,
+    69,
+    0.5
+  ) !important;
+}
+
+/* Dugme za kalendar */
+.elegant-white-countdown-section--ivana-dusan
+  .elegant-white-countdown-calendar-btn {
+  color: #fffaf2 !important;
+  background: #705845 !important;
+  border-color: #5f4937 !important;
+}

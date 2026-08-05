@@ -7459,7 +7459,7 @@ dressCodeMenPalette: [
   groomName: "Душан",
 
   videoSrc: "/videos/ivana-dusan.mp4",
-  musicSrc: "/music/jovana-aleksandar.mp3",
+  musicSrc: "/music/ivana-dusan.mp3",
 
   fontMode: "light",
 

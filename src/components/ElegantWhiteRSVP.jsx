@@ -26,7 +26,8 @@ function ElegantWhiteRSVP({
   const [submitted, setSubmitted] = useState(false);
 
   const isCyrillic = script === "cyrillic";
-
+const isIvanaDusanSlug =
+  slug === "ivana-dusan";
   const t = isCyrillic
     ? {
         overline: "С љубављу",
@@ -161,11 +162,15 @@ function ElegantWhiteRSVP({
 
   return (
     <section
-      className={`elegant-white-rsvp-section ${
-        isCyrillic
-          ? "elegant-white-rsvp-section--cyrillic"
-          : ""
-      }`}
+  className={`elegant-white-rsvp-section ${
+  isCyrillic
+    ? "elegant-white-rsvp-section--cyrillic"
+    : ""
+} ${
+  isIvanaDusanSlug
+    ? "elegant-white-rsvp-section--ivana-dusan"
+    : ""
+}`}
       style={{
         backgroundImage:
           "url(/images/elegant-white/background.jpg)",

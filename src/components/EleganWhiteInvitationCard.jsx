@@ -414,12 +414,16 @@ function EleganWhiteInvitationCard({
 
   return (
     <>
-      <section
-        className={`elegant-white-card-section ${
-          isCyrillic
-            ? "elegant-white-card-section--cyrillic"
-            : ""
-        }`}
+   <section
+  className={`elegant-white-card-section ${
+    isCyrillic
+      ? "elegant-white-card-section--cyrillic"
+      : ""
+  } ${
+    isIvanaDusanSlug
+      ? "elegant-white-card-section--ivana-dusan"
+      : ""
+  }`}
         style={{
           backgroundImage: `url(${
             details?.backgroundImage ||
@@ -873,21 +877,18 @@ function EleganWhiteInvitationCard({
       />
 
       {details?.dateISO && (
-        <ElegantWhiteCountdown
-          targetDate={
-            details.dateISO
-          }
-          backgroundImage={
-            details?.backgroundImage
-          }
-          brideName={brideName}
-          groomName={groomName}
-          details={details}
-          showCalendarButton={
-            details?.showCalendarButton
-          }
-          script={activeScript}
-        />
+<ElegantWhiteCountdown
+  targetDate={details.dateISO}
+  backgroundImage={details?.backgroundImage}
+  brideName={brideName}
+  groomName={groomName}
+  details={details}
+  showCalendarButton={
+    details?.showCalendarButton
+  }
+  script={activeScript}
+  slug={slug}
+/>
       )}
     </>
   );
