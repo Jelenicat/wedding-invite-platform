@@ -18,7 +18,9 @@ function MinimalGoldInvitationCard({
   const safeGroomName = groomName || "Groom";
 
   const finalBg =
-    details.cardBackground || backgroundImage || "/images/minimal-gold-bg.jpg";
+    details.cardBackground ||
+    backgroundImage ||
+    "/images/minimal-gold-bg.jpg";
 
   const t =
     script === "cyrillic"
@@ -57,7 +59,14 @@ function MinimalGoldInvitationCard({
   };
 
   const timelineItems =
-    details.events?.filter((item) => item.label || item.time) || [];
+    details.events?.filter(
+      (item) =>
+        item.label ||
+        item.time ||
+        item.location ||
+        item.address ||
+        item.note
+    ) || [];
 
   const shouldShowDressCode =
     details.showDressCode &&
@@ -85,12 +94,17 @@ function MinimalGoldInvitationCard({
         <div className="minimal-invitation-paper">
           <div className="minimal-invitation-frame" />
 
-          <p className="minimal-invitation-kicker">{t.invitation}</p>
+          <p className="minimal-invitation-kicker">
+            {t.invitation}
+          </p>
 
           <div className="minimal-invitation-monogram">
             <span>{safeGroomName[0]}</span>
-            <span className="minimal-invitation-monogram-and">&</span>
-            
+
+            <span className="minimal-invitation-monogram-and">
+              &
+            </span>
+
             <span>{safeBrideName[0]}</span>
           </div>
 
@@ -101,7 +115,7 @@ function MinimalGoldInvitationCard({
                 : ""
             }`}
           >
-                <span>{safeGroomName}</span>
+            <span>{safeGroomName}</span>
 
             <span className="minimal-invitation-amp">
               <svg
@@ -124,7 +138,6 @@ function MinimalGoldInvitationCard({
               </svg>
             </span>
 
-        
             <span>{safeBrideName}</span>
           </h1>
 
@@ -141,13 +154,20 @@ function MinimalGoldInvitationCard({
           )}
 
           {details.welcomeText && (
-            <p className="minimal-invitation-text">{details.welcomeText}</p>
+            <p className="minimal-invitation-text">
+              {details.welcomeText}
+            </p>
           )}
 
           {details.date && (
             <div className="minimal-invitation-date-block">
-              <span className="minimal-invitation-date-label">{t.date}</span>
-              <p className="minimal-invitation-date">{details.date}</p>
+              <span className="minimal-invitation-date-label">
+                {t.date}
+              </span>
+
+              <p className="minimal-invitation-date">
+                {details.date}
+              </p>
             </div>
           )}
 
@@ -158,68 +178,95 @@ function MinimalGoldInvitationCard({
               </h3>
 
               <div className="minimal-timeline">
-                {timelineItems.map((event, index) => (
-                  <motion.div
-                    key={`${event.label}-${index}`}
-                    className="minimal-timeline-row"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.45, delay: index * 0.06 }}
-                  >
-                    <div className="minimal-timeline-left">
-                      <div className="minimal-timeline-icon">
-                        <img
-                          src={iconMap[event.icon] || "/icons/guests.svg"}
-                          alt={event.label || ""}
-                        />
+                {timelineItems.map((event, index) => {
+                  const mapQuery = [
+                    event.location,
+                    event.address,
+                  ]
+                    .filter(Boolean)
+                    .join(", ");
+
+                  const finalMapLink =
+                    event.mapLink ||
+                    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      mapQuery
+                    )}`;
+
+                  return (
+                    <motion.div
+                      key={`${event.label || "event"}-${index}`}
+                      className="minimal-timeline-row"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.45,
+                        delay: index * 0.06,
+                      }}
+                    >
+                      <div className="minimal-timeline-left">
+                        <div className="minimal-timeline-icon">
+                          <img
+                            src={
+                              iconMap[event.icon] ||
+                              "/icons/guests.svg"
+                            }
+                            alt={event.label || ""}
+                          />
+                        </div>
+
+                        {index !== timelineItems.length - 1 && (
+                          <span className="minimal-timeline-line" />
+                        )}
                       </div>
 
-                      {index !== timelineItems.length - 1 && (
-                        <span className="minimal-timeline-line" />
-                      )}
-                    </div>
+                      <div className="minimal-timeline-right">
+        <div className="minimal-timeline-event-top">
+  {event.time && (
+    <span className="minimal-timeline-time">
+      {event.time}
+    </span>
+  )}
 
-                    <div className="minimal-timeline-right">
-                      <p className="minimal-timeline-time">
-                        {event.time}
+  {event.location && (
+    <>
+      <span className="minimal-timeline-separator">
+        {" | "}
+      </span>
 
-                        {event.location && (
-                          <>
-                            <span className="minimal-timeline-separator">
-                              {" "}
-                              |{" "}
-                            </span>
+      <a
+        href={finalMapLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="minimal-timeline-location-inline minimal-timeline-location-link"
+      >
+        {event.location}
+      </a>
+    </>
+  )}
+</div>
 
-                            <a
-                              href={
-                                event.mapLink ||
-                                `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                                  event.location
-                                )}`
-                              }
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="minimal-timeline-location-inline minimal-timeline-location-link"
-                            >
-                              {event.location}
-                            </a>
-                          </>
-                        )}
-                      </p>
+{event.address && (
+  <p className="minimal-timeline-address">
+    {event.address}
+  </p>
+)}
 
-                      {event.label && (
-                        <h4 className="minimal-timeline-title">
-                          {event.label}
-                        </h4>
-                      )}
+{event.label && (
+  <h4 className="minimal-timeline-title">
+    {event.label}
+  </h4>
+)}
 
-                      {event.note && (
-                        <p className="minimal-timeline-note">{event.note}</p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
+{event.note && (
+  <p className="minimal-timeline-note">
+    {event.note}
+  </p>
+)}
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -238,7 +285,10 @@ function MinimalGoldInvitationCard({
 
               {details.dressCodeWomen && (
                 <div className="minimal-dresscode-role">
-                  <p className="minimal-dresscode-role-title">{t.women}</p>
+                  <p className="minimal-dresscode-role-title">
+                    {t.women}
+                  </p>
+
                   <p className="minimal-dresscode-role-text">
                     {details.dressCodeWomen}
                   </p>
@@ -248,21 +298,28 @@ function MinimalGoldInvitationCard({
               {details.dressCodePalette?.length > 0 && (
                 <div className="minimal-palette-box">
                   <div className="minimal-palette minimal-palette-editorial">
-                    {details.dressCodePalette.map((color, index) => (
-                      <span
-                        key={`${color}-${index}`}
-                        className="minimal-palette-dot minimal-palette-dot-editorial"
-                        style={{ backgroundColor: color }}
-                        aria-label={`dress code color ${index + 1}`}
-                      />
-                    ))}
+                    {details.dressCodePalette.map(
+                      (color, index) => (
+                        <span
+                          key={`${color}-${index}`}
+                          className="minimal-palette-dot minimal-palette-dot-editorial"
+                          style={{ backgroundColor: color }}
+                          aria-label={`dress code color ${
+                            index + 1
+                          }`}
+                        />
+                      )
+                    )}
                   </div>
                 </div>
               )}
 
               {details.dressCodeMen && (
                 <div className="minimal-dresscode-role minimal-dresscode-role-men">
-                  <p className="minimal-dresscode-role-title">{t.men}</p>
+                  <p className="minimal-dresscode-role-title">
+                    {t.men}
+                  </p>
+
                   <p className="minimal-dresscode-role-text">
                     {details.dressCodeMen}
                   </p>
@@ -297,7 +354,9 @@ function MinimalGoldInvitationCard({
           )}
 
           {details.note && (
-            <p className="minimal-invitation-note">{details.note}</p>
+            <p className="minimal-invitation-note">
+              {details.note}
+            </p>
           )}
         </div>
       </motion.section>
@@ -312,7 +371,7 @@ function MinimalGoldInvitationCard({
       />
 
       {details.dateISO && (
-       <MinimalGoldCountdown
+        <MinimalGoldCountdown
           targetDate={details.dateISO}
           brideName={safeBrideName}
           groomName={safeGroomName}

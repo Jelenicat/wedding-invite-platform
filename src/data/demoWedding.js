@@ -5011,32 +5011,34 @@ events: [
     date: "10.10.2026.",
     dateISO: "2026-10-10T17:30:00+02:00",
 
-  
-
     welcomeText:
       "Pozivamo vas da pred Bogom i u Kristu budete svjedoci našega bračnog zavjeta.",
 
-
-
-    events: [
-      {
-        label: "Crkveno vjenčanje",
-        time: "17:30",
-        icon: "church",
-        location: "Svetište sv. Leopolda Bogdana Mandića",
-      },
-      {
-         label: "Svadbena svečanost",
-        time: "20:00",
-        icon: "restaurant",
-        location: "Restoran Laguna",
-      },
-    ],
+  events: [
+  {
+    label: "Crkveno vjenčanje",
+    time: "17:30",
+    icon: "church",
+    location: "Svetište sv. Leopolda Bogdana Mandića",
+    address:
+      "Ulica Svetog Leopolda Mandića 41, Zagreb (Dubrava)",
+  },
+  {
+    label: "Svadbena svečanost",
+    time: "20:00",
+    icon: "restaurant",
+    location: "Restoran Laguna",
+    address:
+      "Dugoselska cesta 33a, Sesvetski Kraljevec",
+  },
+],
 
     showCalendarButton: false,
     showDressCode: false,
 
-    note: "A sad ostaju vjera, ufanje i ljubav, ovo troje – ali najveća je među njima ljubav.",
+    note:
+      "A sad ostaju vjera, ufanje i ljubav, ovo troje – ali najveća je među njima ljubav.",
+
     rsvpDeadline: "20.09.2026.",
     rsvpDeadlineISO: "2026-09-20",
   }),
