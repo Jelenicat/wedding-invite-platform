@@ -7688,7 +7688,7 @@ dressCodeMenPalette: [
 
     showCalendarButton: true,
     calendarButtonText: "Додај у календар",
-note: "Molimo vas da svoj dolazak potvrdite 1.октобра 2026.",
+note: "Молимо вас да свој долазак потврдите до 1. октобра 2026.",
     showDressCode: false,
 
     rsvpImage: "/images/gordana-milos-rsvp.jpg",
