@@ -7661,6 +7661,77 @@ dressCodeMenPalette: [
   },
 },
 
+{
+  slug: "gordana-milos",
+  type: "wedding",
+  template: "italian-minimal",
+  script: "cyrillic",
+
+  brideName: "Гордана",
+  groomName: "Милош",
+
+  weddingDate: "17. октобар 2026.",
+  weddingTime: "08:30",
+  venue: "Свечана сала „Мимоза“",
+
+  backgroundImage: "/images/gordana-milos-minimal.jpg",
+  musicSrc: "/music/gordana-milos.mp3",
+
+  details: {
+    introOpenText: "Кликни да отвориш",
+
+    welcomeText:
+      "Са радошћу вас позивамо да будете уз нас док ступамо у свети завет брака и прослављамо нашу љубав",
+
+    date: "17. ОКТ 2026.",
+    dateISO: "2026-10-17T08:30:00+02:00",
+
+    showCalendarButton: true,
+    calendarButtonText: "Додај у календар",
+note: "Molimo vas da svoj dolazak potvrdite 1.октобра 2026.",
+    showDressCode: false,
+
+    rsvpImage: "/images/gordana-milos-rsvp.jpg",
+
+    rsvpPhotoTitle:
+      "Тамо где љубав пронађе свој дом, почиње вечност.",
+
+    rsvpPhotoText:
+      "С поштовањем,\nпородице Станојевић и Петковић",
+
+    events: [
+      {
+        label: "Скуп сватова",
+        time: "08:30",
+        icon: "gathering",
+        location: "Породична кућа Петковић",
+       
+      },
+      {
+        label: "Црквено венчање",
+        time: "13:00",
+        icon: "church",
+        location: "Манастир Грачаница",
+        mapLink:
+          "https://www.google.com/maps/place/%D0%BC%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B8%D1%80+%D0%B3%D1%80%D0%B0%D1%87%D0%B0%D0%BD%D0%B8%D1%86%D0%B0/data=!4m2!3m1!1s0x13549b89603b0297:0x63b853d64ac39927?sa=X&ved=1t:155783&ictx=111",
+      },
+      {
+        label: "Пријем званица",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Свечана сала „Мимоза“",
+        mapLink:
+          "https://www.google.com/maps/place/Restoran+%22Mimoza%22/@42.5973076,21.1971238,725m/data=!3m2!1e3!4b1!4m9!3m8!1s0x13549b76b37a0dd1:0x9407665954c399f7!5m2!4m1!1i2!8m2!3d42.5973076!4d21.1996987!16s%2Fg%2F11q1lm46xr?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D",
+      },
+    ],
+
+    // Ovo pravi posebno dugme "Погледај локацију"
+    // ispod plana venčanja
+    mapLink:
+      "https://www.google.com/maps/place/Restoran+%22Mimoza%22/@42.5973076,21.1971238,725m/data=!3m2!1e3!4b1!4m9!3m8!1s0x13549b76b37a0dd1:0x9407665954c399f7!5m2!4m1!1i2!8m2!3d42.5973076!4d21.1996987!16s%2Fg%2F11q1lm46xr?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D",
+  },
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

@@ -20,6 +20,7 @@ function MinimalInvitationCard({
   const finalBg = backgroundImage || "/images/minimal-bg.jpg";
 
   const shouldUseNamesSvg = slug === "jovana-dusan-1";
+
   const isAndrijanaMarko =
     slug === "andrijana-marko" || slug === "andrijana-marko-1";
 
@@ -108,18 +109,31 @@ function MinimalInvitationCard({
           className="minimal-invitation-bg"
           style={{ backgroundImage: `url(${finalBg})` }}
         />
+
         <div className="minimal-invitation-overlay" />
 
         <div className="minimal-invitation-paper">
           <div className="minimal-invitation-frame" />
 
-          <p className="minimal-invitation-kicker">{t.invitation}</p>
+          <p className="minimal-invitation-kicker">
+            {t.invitation}
+          </p>
 
           <div className="minimal-invitation-monogram">
             <span>{safeBrideName[0]}</span>
-            <span className="minimal-invitation-monogram-and">&</span>
+
+            <span className="minimal-invitation-monogram-and">
+              &
+            </span>
+
             <span>{safeGroomName[0]}</span>
           </div>
+
+          {slug === "gordana-milos" && (
+            <p className="minimal-gordana-milos-vow">
+              Везани љубављу, заједно пред Богом
+            </p>
+          )}
 
           {shouldUseNamesSvg ? (
             <div
@@ -134,7 +148,11 @@ function MinimalInvitationCard({
                 script === "cyrillic"
                   ? "minimal-invitation-names-cyrillic"
                   : ""
-              } ${isJovanaAleksandarSlug ? "minimal-invitation-names-full" : ""}`}
+              } ${
+                isJovanaAleksandarSlug
+                  ? "minimal-invitation-names-full"
+                  : ""
+              }`}
             >
               {isJovanaAleksandarSlug ? (
                 <>
@@ -215,12 +233,17 @@ function MinimalInvitationCard({
           )}
 
           {details.welcomeText && (
-            <p className="minimal-invitation-text">{details.welcomeText}</p>
+            <p className="minimal-invitation-text">
+              {details.welcomeText}
+            </p>
           )}
 
           {details.date && (
             <div className="minimal-invitation-date-block">
-              <span className="minimal-invitation-date-label">{t.date}</span>
+              <span className="minimal-invitation-date-label">
+                {t.date}
+              </span>
+
               <p className="minimal-invitation-date">
                 {slug === "jovana-stefan"
                   ? details.date
@@ -244,13 +267,22 @@ function MinimalInvitationCard({
                     className="minimal-timeline-row"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.45, delay: index * 0.06 }}
+                    viewport={{
+                      once: true,
+                      amount: 0.2,
+                    }}
+                    transition={{
+                      duration: 0.45,
+                      delay: index * 0.06,
+                    }}
                   >
                     <div className="minimal-timeline-left">
                       <div className="minimal-timeline-icon">
                         <img
-                          src={iconMap[event.icon] || "/icons/guests.svg"}
+                          src={
+                            iconMap[event.icon] ||
+                            "/icons/guests.svg"
+                          }
                           alt={event.label}
                         />
                       </div>
@@ -264,48 +296,51 @@ function MinimalInvitationCard({
                       <p className="minimal-timeline-time">
                         {event.time}
 
-                        {!isAndrijanaMarko && event.location && (
-                          <>
-                            <span className="minimal-timeline-separator">
-                              {" "}
-                              |{" "}
-                            </span>
-                            <a
-                              href={
-                                event.mapLink ||
-                                `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                                  event.location
-                                )}`
-                              }
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="minimal-timeline-location-inline minimal-timeline-location-link"
-                            >
-                              {event.location}
-                            </a>
-                          </>
-                        )}
+                        {!isAndrijanaMarko &&
+                          event.location && (
+                            <>
+                              <span className="minimal-timeline-separator">
+                                {" "}
+                                |{" "}
+                              </span>
+
+                              <a
+                                href={
+                                  event.mapLink ||
+                                  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                    event.location
+                                  )}`
+                                }
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="minimal-timeline-location-inline minimal-timeline-location-link"
+                              >
+                                {event.location}
+                              </a>
+                            </>
+                          )}
                       </p>
 
                       <h4 className="minimal-timeline-title">
                         {event.label}
                       </h4>
 
-                      {isAndrijanaMarko && event.location && (
-                        <a
-                          href={
-                            event.mapLink ||
-                            `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                              event.location
-                            )}`
-                          }
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="minimal-timeline-location-below"
-                        >
-                          {event.location}
-                        </a>
-                      )}
+                      {isAndrijanaMarko &&
+                        event.location && (
+                          <a
+                            href={
+                              event.mapLink ||
+                              `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                event.location
+                              )}`
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="minimal-timeline-location-below"
+                          >
+                            {event.location}
+                          </a>
+                        )}
                     </div>
                   </motion.div>
                 ))}
@@ -327,7 +362,10 @@ function MinimalInvitationCard({
 
               {details.dressCodeWomen && (
                 <div className="minimal-dresscode-role">
-                  <p className="minimal-dresscode-role-title">{t.women}</p>
+                  <p className="minimal-dresscode-role-title">
+                    {t.women}
+                  </p>
+
                   <p className="minimal-dresscode-role-text">
                     {details.dressCodeWomen}
                   </p>
@@ -337,21 +375,30 @@ function MinimalInvitationCard({
               {details.dressCodePalette?.length > 0 && (
                 <div className="minimal-palette-box">
                   <div className="minimal-palette minimal-palette-editorial">
-                    {details.dressCodePalette.map((color, index) => (
-                      <span
-                        key={`${color}-${index}`}
-                        className="minimal-palette-dot minimal-palette-dot-editorial"
-                        style={{ backgroundColor: color }}
-                        aria-label={`dress code color ${index + 1}`}
-                      />
-                    ))}
+                    {details.dressCodePalette.map(
+                      (color, index) => (
+                        <span
+                          key={`${color}-${index}`}
+                          className="minimal-palette-dot minimal-palette-dot-editorial"
+                          style={{
+                            backgroundColor: color,
+                          }}
+                          aria-label={`dress code color ${
+                            index + 1
+                          }`}
+                        />
+                      )
+                    )}
                   </div>
                 </div>
               )}
 
               {details.dressCodeMen && (
                 <div className="minimal-dresscode-role minimal-dresscode-role-men">
-                  <p className="minimal-dresscode-role-title">{t.men}</p>
+                  <p className="minimal-dresscode-role-title">
+                    {t.men}
+                  </p>
+
                   <p className="minimal-dresscode-role-text">
                     {details.dressCodeMen}
                   </p>
@@ -374,7 +421,9 @@ function MinimalInvitationCard({
           )}
 
           {details.note && (
-            <p className="minimal-invitation-note">{details.note}</p>
+            <p className="minimal-invitation-note">
+              {details.note}
+            </p>
           )}
         </div>
       </motion.section>

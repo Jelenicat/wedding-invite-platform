@@ -292,6 +292,11 @@ const TEMPLATE_COMPONENTS = {
   Intro: SilkIntro,
   Invitation: EleganWhiteInvitationCard,
 },
+"italian-minimal": {
+  Intro: ItalianIntro,
+  Invitation: MinimalInvitationCard,
+},
+
 };
 
 const isObject = (value) =>
@@ -657,7 +662,8 @@ function WeddingPage() {
     templateKey === "envelope-split-v2-editorial" ||
     templateKey === "envelope-side-split" ||
     templateKey === "envelope-side-split-v2" ||
-    templateKey === "italian-envelope-video"
+templateKey === "italian-envelope-video" ||
+templateKey === "italian-minimal"
   ) {
     return (
       <div className="wedding-page">

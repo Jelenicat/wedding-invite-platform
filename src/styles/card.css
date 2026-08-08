@@ -22767,3 +22767,44 @@ font-family: "Italianno", cursive;
     font-size: 15.5px;
   }
 }
+
+/* =========================
+   GORDANA & MILOŠ
+   Tekst iznad imena
+========================= */
+
+.minimal-invitation-card.minimal-slug-gordana-milos
+  .minimal-gordana-milos-vow {
+  position: relative;
+  z-index: 2;
+
+  max-width: 280px;
+  margin: 2px auto 16px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.025em;
+
+  color: #51453e;
+  text-align: center;
+}
+
+/* Malo približavamo imena novom tekstu */
+.minimal-invitation-card.minimal-slug-gordana-milos
+  .minimal-invitation-names {
+  margin-top: 0;
+}
+
+@media (max-width: 480px) {
+  .minimal-invitation-card.minimal-slug-gordana-milos
+    .minimal-gordana-milos-vow {
+    max-width: 245px;
+    margin-bottom: 14px;
+
+    font-size: 0.98rem;
+    line-height: 1.4;
+  }
+}

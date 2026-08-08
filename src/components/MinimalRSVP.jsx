@@ -118,6 +118,7 @@ function MinimalRSVP({
     if (submitted) {
       const timer = setTimeout(() => {
         setSubmitted(false);
+
         setFormData({
           fullName: "",
           attending: "",
@@ -169,7 +170,11 @@ function MinimalRSVP({
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
-      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+      if (
+        !formData.guests ||
+        Number.isNaN(guestsCount) ||
+        guestsCount < 1
+      ) {
         alert(t.invalidGuests);
         return;
       }
@@ -219,15 +224,24 @@ function MinimalRSVP({
       className={`minimal-rsvp-section minimal-rsvp-slug-${slug || ""}`}
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
     >
       <div className="minimal-rsvp-shell">
         <motion.div
           className="minimal-rsvp-box"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.08 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.08,
+          }}
           viewport={{ once: true }}
         >
           <AnimatePresence mode="wait">
@@ -235,32 +249,68 @@ function MinimalRSVP({
               <motion.div
                 key="success"
                 className="minimal-rsvp-success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{
+                  opacity: 0,
+                  scale: 0.95,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                }}
               >
                 <motion.div
                   className="minimal-rsvp-success-heart"
-                  initial={{ scale: 0, rotate: -15 }}
-                  animate={{ scale: [0, 1.2, 1], rotate: [0, 8, -8, 0] }}
-                  transition={{ duration: 0.9 }}
+                  initial={{
+                    scale: 0,
+                    rotate: -15,
+                  }}
+                  animate={{
+                    scale: [0, 1.2, 1],
+                    rotate: [0, 8, -8, 0],
+                  }}
+                  transition={{
+                    duration: 0.9,
+                  }}
                 >
                   💌
                 </motion.div>
 
                 <motion.h3
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.45 }}
+                  initial={{
+                    opacity: 0,
+                    y: 8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.15,
+                    duration: 0.45,
+                  }}
                 >
                   {t.thanks}
                 </motion.h3>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.28, duration: 0.45 }}
+                  initial={{
+                    opacity: 0,
+                    y: 8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.28,
+                    duration: 0.45,
+                  }}
                 >
                   {t.success}
                 </motion.p>
@@ -299,17 +349,29 @@ function MinimalRSVP({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <p className="minimal-rsvp-kicker">RSVP</p>
+                <p className="minimal-rsvp-kicker">
+                  RSVP
+                </p>
 
-                <h2 className="minimal-rsvp-title">{t.title}</h2>
+                <h2 className="minimal-rsvp-title">
+                  {t.title}
+                </h2>
 
-                <p className="minimal-rsvp-subtitle">{t.subtitle}</p>
+                <p className="minimal-rsvp-subtitle">
+                  {t.subtitle}
+                </p>
 
                 <div className="minimal-rsvp-divider" />
 
-                <form className="minimal-rsvp-form" onSubmit={handleSubmit}>
+                <form
+                  className="minimal-rsvp-form"
+                  onSubmit={handleSubmit}
+                >
                   <div className="minimal-rsvp-field">
-                    <label htmlFor="minimal-fullName">{t.fullName}</label>
+                    <label htmlFor="minimal-fullName">
+                      {t.fullName}
+                    </label>
+
                     <input
                       id="minimal-fullName"
                       type="text"
@@ -330,11 +392,18 @@ function MinimalRSVP({
                       <button
                         type="button"
                         className={`minimal-choice-card ${
-                          formData.attending === "da" ? "is-active" : ""
+                          formData.attending === "da"
+                            ? "is-active"
+                            : ""
                         }`}
-                        onClick={() => handleAttendanceSelect("da")}
+                        onClick={() =>
+                          handleAttendanceSelect("da")
+                        }
                       >
-                        <span className="minimal-choice-title">{t.yes}</span>
+                        <span className="minimal-choice-title">
+                          {t.yes}
+                        </span>
+
                         <span className="minimal-choice-text">
                           {t.yesText}
                         </span>
@@ -343,12 +412,21 @@ function MinimalRSVP({
                       <button
                         type="button"
                         className={`minimal-choice-card ${
-                          formData.attending === "ne" ? "is-active" : ""
+                          formData.attending === "ne"
+                            ? "is-active"
+                            : ""
                         }`}
-                        onClick={() => handleAttendanceSelect("ne")}
+                        onClick={() =>
+                          handleAttendanceSelect("ne")
+                        }
                       >
-                        <span className="minimal-choice-title">{t.no}</span>
-                        <span className="minimal-choice-text">{t.noText}</span>
+                        <span className="minimal-choice-title">
+                          {t.no}
+                        </span>
+
+                        <span className="minimal-choice-text">
+                          {t.noText}
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -364,12 +442,29 @@ function MinimalRSVP({
                     {formData.attending === "da" && (
                       <motion.div
                         className="minimal-rsvp-field"
-                        initial={{ opacity: 0, height: 0, y: 6 }}
-                        animate={{ opacity: 1, height: "auto", y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -4 }}
-                        transition={{ duration: 0.25 }}
+                        initial={{
+                          opacity: 0,
+                          height: 0,
+                          y: 6,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          height: "auto",
+                          y: 0,
+                        }}
+                        exit={{
+                          opacity: 0,
+                          height: 0,
+                          y: -4,
+                        }}
+                        transition={{
+                          duration: 0.25,
+                        }}
                       >
-                        <label htmlFor="minimal-guests">{t.guests}</label>
+                        <label htmlFor="minimal-guests">
+                          {t.guests}
+                        </label>
+
                         <input
                           id="minimal-guests"
                           type="number"
@@ -385,57 +480,74 @@ function MinimalRSVP({
                   </AnimatePresence>
 
                   <AnimatePresence initial={false}>
-                    {formData.attending === "da" && showFastingOption && (
-                      <motion.div
-                        className="minimal-rsvp-choice-block minimal-rsvp-fasting-block"
-                        initial={{ opacity: 0, height: 0, y: 6 }}
-                        animate={{ opacity: 1, height: "auto", y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -4 }}
-                        transition={{ duration: 0.25 }}
-                      >
-                        <p className="minimal-rsvp-choice-label">
-                          {t.fasting}
-                        </p>
+                    {formData.attending === "da" &&
+                      showFastingOption && (
+                        <motion.div
+                          className="minimal-rsvp-choice-block minimal-rsvp-fasting-block"
+                          initial={{
+                            opacity: 0,
+                            height: 0,
+                            y: 6,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            height: "auto",
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            height: 0,
+                            y: -4,
+                          }}
+                          transition={{
+                            duration: 0.25,
+                          }}
+                        >
+                          <p className="minimal-rsvp-choice-label">
+                            {t.fasting}
+                          </p>
 
-                        <div className="minimal-rsvp-choice-grid">
-                          <button
-                            type="button"
-                            className={`minimal-choice-card ${
-                              formData.fasting === "posti" ? "is-active" : ""
-                            }`}
-                            onClick={() =>
-                              setFormData((prev) => ({
-                                ...prev,
-                                fasting: "posti",
-                              }))
-                            }
-                          >
-                            <span className="minimal-choice-title">
-                              {t.fastingYes}
-                            </span>
-                          </button>
+                          <div className="minimal-rsvp-choice-grid">
+                            <button
+                              type="button"
+                              className={`minimal-choice-card ${
+                                formData.fasting === "posti"
+                                  ? "is-active"
+                                  : ""
+                              }`}
+                              onClick={() =>
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  fasting: "posti",
+                                }))
+                              }
+                            >
+                              <span className="minimal-choice-title">
+                                {t.fastingYes}
+                              </span>
+                            </button>
 
-                          <button
-                            type="button"
-                            className={`minimal-choice-card ${
-                              formData.fasting === "ne_posti"
-                                ? "is-active"
-                                : ""
-                            }`}
-                            onClick={() =>
-                              setFormData((prev) => ({
-                                ...prev,
-                                fasting: "ne_posti",
-                              }))
-                            }
-                          >
-                            <span className="minimal-choice-title">
-                              {t.fastingNo}
-                            </span>
-                          </button>
-                        </div>
-                      </motion.div>
-                    )}
+                            <button
+                              type="button"
+                              className={`minimal-choice-card ${
+                                formData.fasting === "ne_posti"
+                                  ? "is-active"
+                                  : ""
+                              }`}
+                              onClick={() =>
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  fasting: "ne_posti",
+                                }))
+                              }
+                            >
+                              <span className="minimal-choice-title">
+                                {t.fastingNo}
+                              </span>
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
                   </AnimatePresence>
 
                   <button
@@ -450,6 +562,50 @@ function MinimalRSVP({
             )}
           </AnimatePresence>
         </motion.div>
+
+        {slug === "gordana-milos" &&
+          details.rsvpImage && (
+            <motion.div
+              className="minimal-gordana-milos-rsvp-footer"
+              initial={{
+                opacity: 0,
+                y: 24,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.12,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+            >
+              {details.rsvpPhotoTitle && (
+                <p className="minimal-gordana-milos-rsvp-quote">
+                  {details.rsvpPhotoTitle}
+                </p>
+              )}
+
+              <div className="minimal-gordana-milos-rsvp-image-frame">
+                <img
+                  src={details.rsvpImage}
+                  alt={`${brideName} и ${groomName}`}
+                  className="minimal-gordana-milos-rsvp-image"
+                />
+              </div>
+
+              {details.rsvpPhotoText && (
+                <p className="minimal-gordana-milos-rsvp-signature">
+                  {details.rsvpPhotoText}
+                </p>
+              )}
+            </motion.div>
+          )}
       </div>
     </motion.section>
   );

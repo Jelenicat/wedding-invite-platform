@@ -18740,3 +18740,148 @@ margin-bottom: 2px;
   background: #705845 !important;
   border-color: #5f4937 !important;
 }
+
+/* ======================================================
+   GORDANA I MILOŠ
+   Završni blok ispod RSVP forme
+====================================================== */
+
+.minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+  .minimal-gordana-milos-rsvp-footer {
+  position: relative;
+  z-index: 2;
+
+  width: min(500px, 100%);
+  margin: 36px auto 6px;
+  padding: 10px 22px 26px;
+
+  text-align: center;
+}
+
+/* Rečenica iznad fotografije */
+.minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+  .minimal-gordana-milos-rsvp-quote {
+  max-width: 390px;
+  margin: 0 auto 22px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.015em;
+
+  color: #3f342e;
+}
+
+/* Ram fotografije */
+.minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+  .minimal-gordana-milos-rsvp-image-frame {
+  position: relative;
+
+  width: min(360px, 100%);
+  margin: 0 auto;
+  padding: 9px;
+
+  background: rgba(255, 255, 255, 0.46);
+  border: 1px solid rgba(80, 70, 65, 0.18);
+
+  box-shadow:
+    0 18px 42px rgba(57, 45, 38, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.64);
+}
+
+/* Unutrašnji tanak ram */
+.minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+  .minimal-gordana-milos-rsvp-image-frame::after {
+  content: "";
+  position: absolute;
+  inset: 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  pointer-events: none;
+}
+
+/* Fotografija */
+.minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+  .minimal-gordana-milos-rsvp-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 470px;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Potpis ispod fotografije */
+.minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+  .minimal-gordana-milos-rsvp-signature {
+  margin: 24px auto 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.55;
+  white-space: pre-line;
+
+  color: #51443d;
+}
+
+/* Dekorativna linija iznad potpisa */
+.minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+  .minimal-gordana-milos-rsvp-signature::before {
+  content: "";
+  display: block;
+
+  width: 64px;
+  height: 1px;
+  margin: 0 auto 18px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(80, 70, 65, 0),
+    rgba(80, 70, 65, 0.42),
+    rgba(80, 70, 65, 0)
+  );
+}
+
+@media (max-width: 480px) {
+  .minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+    .minimal-gordana-milos-rsvp-footer {
+    margin-top: 26px;
+    padding: 6px 10px 20px;
+  }
+
+  .minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+    .minimal-gordana-milos-rsvp-quote {
+    max-width: 290px;
+    margin-bottom: 18px;
+
+    font-size: 1.22rem;
+    line-height: 1.45;
+  }
+
+  .minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+    .minimal-gordana-milos-rsvp-image-frame {
+    width: min(320px, 100%);
+    padding: 7px;
+  }
+
+  .minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+    .minimal-gordana-milos-rsvp-image-frame::after {
+    inset: 12px;
+  }
+
+  .minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+    .minimal-gordana-milos-rsvp-image {
+    max-height: 410px;
+  }
+
+  .minimal-rsvp-section.minimal-rsvp-slug-gordana-milos
+    .minimal-gordana-milos-rsvp-signature {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+}
