@@ -3661,6 +3661,177 @@ theme: {
     calendarDurationHours: 4,
   }),
 },
+
+{
+  slug: "sofija-nikola",
+  type: "wedding",
+  template: "silk-photo-script",
+  script: "latin",
+
+  brideName: "Sofija",
+  groomName: "Nikola",
+
+  // Silk intro
+  backgroundImage: "/images/silk-intro.jpg",
+  videoSrc: "/videos/sofija-andrej.mp4",
+
+  // Muzika
+  musicSrc: "/music/sofija-andrej.mp3",
+
+  weddingDate: "10. oktobar 2026.",
+  weddingTime: "16:30",
+  venue: "Vila Aleksandar, Beograd",
+
+  introText:
+    "Sa radošću vas pozivamo da zajedno sa nama proslavite početak našeg zajedničkog života.",
+
+  details: {
+    script: "latin",
+
+    dateISO: "2026-10-10T16:30:00+02:00",
+    dateDisplay: "10.10.2026.",
+
+    // Fotografija u pozadini invitation card-a
+    cardBackgroundImage:
+      "/images/sofija-andrej-invitation.jpg",
+    cardBackgroundPosition: "center",
+
+    // Fotografija u pozadini RSVP-a i countdown-a
+    sectionBackgroundImage:
+      "/images/sofija-andrej-invitation.jpg",
+    sectionBackgroundPosition: "center",
+
+    // Srce između imena
+    nameConnector: "heart",
+
+    invitationKicker: "Pozivnica za venčanje",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom uveličate naš poseban dan i budete deo uspomena koje ćemo zauvek čuvati.",
+
+    events: [
+      {
+        time: "15:00",
+        label: "Crkveno venčanje",
+        location: "Hram Svetog Aleksandra Nevskog, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Aleksandra+Nevskog+Beograd",
+        icon: "church",
+      },
+      {
+        time: "16:30",
+        label: "Okupljanje gostiju",
+        location: "Vila Aleksandar, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Aleksandar+Beograd",
+        icon: "gathering",
+      },
+      {
+        time: "17:30",
+        label: "Građansko venčanje",
+        location: "Vila Aleksandar, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Aleksandar+Beograd",
+        icon: "civil",
+      },
+      {
+        time: "18:00",
+        label: "Večera i proslava",
+        location: "Vila Aleksandar, Beograd",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Vila+Aleksandar+Beograd",
+        icon: "party",
+      },
+    ],
+
+    // Donji blok sa glavnom lokacijom
+    locationTitle: "Čekamo vas",
+    locationPrefix: "na adresi",
+
+    venue: "Vila Aleksandar",
+    venueAddress: "Beograd",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Vila+Aleksandar+Beograd",
+
+    mapButtonText: "Pogledaj lokaciju",
+
+    // Bez dress code-a
+    showDressCode: false,
+
+    note:
+      "Molimo vas da dolazak potvrdite najkasnije do 20. septembra 2026.",
+
+    // RSVP
+    rsvpKicker: "Potvrda dolaska",
+    rsvpTitle: "Radujemo se vašem odgovoru",
+
+    rsvpSubtitle:
+      "Molimo vas da potvrdite dolazak najkasnije do 20. septembra.",
+
+    rsvpButtonText: "Pošalji potvrdu",
+    rsvpMaxGuests: 10,
+
+    showFastingOption: true,
+
+    // Countdown
+    countdownKicker: "Odbrojavamo zajedno",
+    countdownTitle: "Do našeg dana je ostalo",
+
+    countdownNote:
+      "Jedva čekamo da ovaj poseban dan podelimo sa vama.",
+
+    countdownFinishedTitle: "Naš dan je stigao",
+    countdownFinishedNote: "Vidimo se na proslavi!",
+
+    showCalendarButton: false,
+
+    theme: {
+      // Topla ivory pozadina
+      backgroundColor: "#f3eeea",
+
+      // Tekst — gotovo sve u istoj toploj tamnoj nijansi
+      mainText: "#443839",
+      softText: "#69595b",
+      mutedText: "#8a797b",
+
+      // Glavna bordo boja
+      accent: "#741f35",
+      accentStrong: "#541525",
+
+      onAccent: "#fffaf7",
+
+      locationSoftText: "#741f35",
+
+      // Kartica
+      cardPaper: "rgba(255, 252, 249, 0.3)",
+      cardBorder: "rgba(84, 21, 37, 0.20)",
+      cardInnerBorder: "rgba(84, 21, 37, 0.12)",
+      cardShadow: "rgba(48, 31, 35, 0.16)",
+
+      // Fotografija — vrlo blag bordo/ivory filter
+      cardPhotoOverlay:
+        "rgba(255, 249, 246, 0.03)",
+
+      cardPhotoOverlayBottom:
+        "rgba(92, 34, 48, 0.16)",
+
+      // RSVP + countdown
+      sectionOverlay:
+        "rgba(248, 242, 239, 0.34)",
+
+      cardBg:
+        "rgba(255, 252, 250, 0.54)",
+
+      inputBg:
+        "rgba(255, 253, 251, 0.2)",
+
+      // Dugme
+      rsvpButtonText: "#fffaf7",
+    },
+  },
+},
+
 // =========================
 // Klijenti
 // =========================
@@ -5712,12 +5883,7 @@ calendarDurationHours: 7,
           venue: "Mesečev konak",
 
           events: [
-            {
-              label: "Gathering at the Cvetković family home",
-              time: "1:00 PM",
-              icon: "gathering",
-              location: "Cvetković family home",
-            },
+         
             {
               label: "Civil wedding ceremony",
               time: "3:30 PM",
@@ -7729,6 +7895,153 @@ note: "Молимо вас да свој долазак потврдите до 
     // ispod plana venčanja
     mapLink:
       "https://www.google.com/maps/place/Restoran+%22Mimoza%22/@42.5973076,21.1971238,725m/data=!3m2!1e3!4b1!4m9!3m8!1s0x13549b76b37a0dd1:0x9407665954c399f7!5m2!4m1!1i2!8m2!3d42.5973076!4d21.1996987!16s%2Fg%2F11q1lm46xr?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D",
+  },
+},
+
+{
+  slug: "ema-aleksa",
+  type: "wedding",
+  template: "silk-photo-script",
+  script: "latin",
+
+  brideName: "Ema",
+  groomName: "Aleksa",
+
+  // Silk intro
+  backgroundImage: "/images/silk-intro.jpg",
+  videoSrc: "/videos/ema-aleksa.mp4",
+
+  // Muzika
+ musicSrc: "/music/mina-dragan.mp3",
+
+  weddingDate: "18. septembar 2026.",
+  weddingTime: "16:00",
+  venue: "Mesečev konak, Niš",
+
+  introText:
+    "Sa radošću vas pozivamo da budete deo našeg dana.",
+
+  details: {
+    script: "latin",
+
+    dateISO: "2026-09-18T16:00:00+02:00",
+    dateDisplay: "18.09.2026.",
+
+    // Fotografija u pozadini invitation card-a
+    cardBackgroundImage: "/images/invitation-background.jpg",
+    cardBackgroundPosition: "center",
+
+    // Fotografija u pozadini RSVP-a i countdown-a
+    sectionBackgroundImage: "/images/invitation-background.jpg",
+    sectionBackgroundPosition: "center",
+
+    // Srce između imena
+    nameConnector: "heart",
+
+    invitationKicker: "Pozivnica za venčanje",
+
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da svojim prisustvom ulepšate početak našeg zajedničkog života.",
+
+    events: [
+      {
+        time: "16:00",
+        label: "Crkveno venčanje",
+        location: "Crkva Svetog Pantelejmona, Niš",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Pantelejmona+Nis",
+        icon: "church",
+      },
+      {
+        time: "17:30",
+        label: "Građansko venčanje",
+        location: "Oficirski dom, Niš",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Oficirski+dom+Nis",
+        icon: "civil",
+      },
+      {
+        time: "19:00",
+        label: "Večera i proslava",
+        location: "Restoran Mesečev konak, Niš",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+        icon: "party",
+      },
+    ],
+
+    // Donji blok sa glavnom lokacijom
+    locationTitle: "Čekamo vas",
+    locationPrefix: "na adresi",
+
+    venue: "Restoran Mesečev konak",
+    venueAddress: "Niš",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
+
+    mapButtonText: "Pogledaj lokaciju",
+
+    // Bez dress code-a
+    showDressCode: false,
+
+    note:
+      "Molimo vas da dolazak potvrdite najkasnije do 1. septembra 2026.",
+
+    // RSVP
+    rsvpKicker: "Potvrda dolaska",
+    rsvpTitle: "Radujemo se vašem odgovoru",
+
+    rsvpSubtitle:
+      "Molimo vas da potvrdite dolazak najkasnije do 1. septembra.",
+
+    rsvpButtonText: "Pošalji potvrdu",
+    rsvpMaxGuests: 10,
+
+    // Postim / ne postim
+    showFastingOption: true,
+
+    // Countdown
+    countdownKicker: "Odbrojavamo zajedno",
+    countdownTitle: "Do našeg dana je ostalo",
+
+    countdownNote:
+      "Jedva čekamo da ovaj poseban trenutak podelimo sa vama.",
+
+    countdownFinishedTitle: "Naš dan je stigao",
+    countdownFinishedNote: "Vidimo se na proslavi!",
+
+    // Bez dugmeta za dodavanje u kalendar
+    showCalendarButton: false,
+
+    theme: {
+      backgroundColor: "#e9e2d8",
+
+      mainText: "#5b514a",
+      softText: "#786c64",
+      mutedText: "#978a80",
+
+      accent: "#c2a078",
+      accentStrong: "#916842",
+
+      onAccent: "#fffaf3",
+
+      locationSoftText: "#916842",
+
+      cardPaper: "rgba(255, 255, 255, 0.30)",
+      cardBorder: "rgba(113, 91, 74, 0.22)",
+      cardInnerBorder: "rgba(113, 91, 74, 0.15)",
+      cardShadow: "rgba(55, 43, 35, 0.14)",
+
+      cardPhotoOverlay: "rgba(245, 240, 233, 0.01)",
+      cardPhotoOverlayBottom: "rgba(245, 237, 229, 0.30)",
+
+      sectionOverlay: "rgba(255, 255, 255, 0.30)",
+      cardBg: "rgba(255, 252, 247, 0.48)",
+      inputBg: "rgba(255, 253, 249, 0.62)",
+
+      rsvpButtonText: "#fffaf3",
+    },
   },
 },
 
