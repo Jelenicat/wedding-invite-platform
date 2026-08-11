@@ -5837,7 +5837,7 @@ calendarDurationHours: 7,
   fontMode: "dark",
 
   weddingDate: "24 ОКТ 2026",
-  weddingTime: "13:00",
+  weddingTime: "15:30",
   venue: "Месечев конак",
 
   backgroundImage: "/images/marija-petar-minimal.jpg",
@@ -5847,7 +5847,7 @@ calendarDurationHours: 7,
       "Наша прича добија ново поглавље, зато вас са радошћу позивамо да будете део наше успомене.",
 
     date: "24.10.2026.",
-    dateISO: "2026-10-24T13:00:00+02:00",
+    dateISO: "2026-10-24T15:30:00+02:00",
 
     venue: "Месечев конак",
 
@@ -5860,6 +5860,7 @@ calendarDurationHours: 7,
     showLanguageSwitcher: true,
     defaultLanguage: "sr",
     languages: ["sr", "en"],
+
     languageLabels: {
       sr: "SR",
       en: "EN",
@@ -5871,8 +5872,9 @@ calendarDurationHours: 7,
 
         brideName: "Marija",
         groomName: "Petar",
+
         weddingDate: "24 OCT 2026",
-        weddingTime: "1:00 PM",
+        weddingTime: "3:30 PM",
         venue: "Mesečev konak",
 
         details: {
@@ -5883,7 +5885,6 @@ calendarDurationHours: 7,
           venue: "Mesečev konak",
 
           events: [
-         
             {
               label: "Civil wedding ceremony",
               time: "3:30 PM",
@@ -5905,8 +5906,12 @@ calendarDurationHours: 7,
           mapLink:
             "https://www.google.com/maps/search/?api=1&query=Mesecev+konak+Nis",
 
-          note: "Please confirm your attendance by October 10, 2026.",
-          rsvpText: "Please confirm your attendance by October 10, 2026.",
+          note:
+            "Please confirm your attendance by October 10, 2026.",
+
+          rsvpText:
+            "Please confirm your attendance by October 10, 2026.",
+
           rsvpDeadline: "10 OCT 2026",
           rsvpDeadlineISO: "2026-10-10",
         },
@@ -5914,7 +5919,6 @@ calendarDurationHours: 7,
     },
 
     events: [
-    
       {
         label: "Церемонија општинског венчања",
         time: "15:30",
@@ -5938,8 +5942,12 @@ calendarDurationHours: 7,
     dressCodePalette: [],
     dressCodeNote: "",
 
-    note: "Молимо вас да свој долазак потврдите до 10.10.2026. године.",
-    rsvpText: "Молимо вас да свој долазак потврдите до 10.10.2026. године.",
+    note:
+      "Молимо вас да свој долазак потврдите до 10.10.2026. године.",
+
+    rsvpText:
+      "Молимо вас да свој долазак потврдите до 10.10.2026. године.",
+
     rsvpDeadline: "10.10.2026.",
     rsvpDeadlineISO: "2026-10-10",
   }),
