@@ -5914,12 +5914,7 @@ calendarDurationHours: 7,
     },
 
     events: [
-      {
-        label: "Скуп сватова",
-        time: "13:00",
-        icon: "gathering",
-        location: "Породична кућа Цветковић",
-      },
+    
       {
         label: "Церемонија општинског венчања",
         time: "15:30",
