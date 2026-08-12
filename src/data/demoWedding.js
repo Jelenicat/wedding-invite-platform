@@ -8002,7 +8002,7 @@ note: "Молимо вас да свој долазак потврдите до 
     rsvpMaxGuests: 10,
 
     // Postim / ne postim
-    showFastingOption: true,
+
 
     // Countdown
     countdownKicker: "Odbrojavamo zajedno",
