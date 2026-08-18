@@ -17806,12 +17806,7 @@
   background: rgba(255, 255, 255, 0.08);
 }
 /* Marija & Petar — porodična kuća nije klikabilna */
-.minimal-slug-marija-petar .minimal-timeline-row:first-child
-  .minimal-timeline-location-link {
-  pointer-events: none;
-  cursor: default;
-  text-decoration: none;
-}
+
 
 /* Opcionalno: malo lepši razmak za photo-card bez slike */
 .photo-card-no-photo .photo-card-kicker {
