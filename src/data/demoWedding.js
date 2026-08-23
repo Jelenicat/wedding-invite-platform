@@ -7247,7 +7247,7 @@ dressCodeMenPalette: [
   groomName: "Nikola",
 
   videoSrc: "/videos/marija-nikola.mp4",
-  musicSrc: "/music/marija-nikola-2.mp3",
+  musicSrc: "/music/marija-nikola-1.mp3",
   fontMode: "dark",
 
   weddingDate: "07 NOV 2026",
