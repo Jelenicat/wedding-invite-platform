@@ -8044,6 +8044,101 @@ note: "Молимо вас да свој долазак потврдите до 
   },
 },
 
+{
+  slug: "kristina-vukasin",
+  type: "wedding",
+  template: "split-video",
+
+  brideName: "Kristina",
+  groomName: "Vukašin",
+
+  videoSrc: "/videos/kristina-vukasin.mp4",
+
+  weddingDate: "07 NOV 2026",
+  weddingTime: "13:00",
+  venue: "Vranje",
+
+  introText: "Radujemo se da ovaj dan podelimo sa vama.",
+
+  details: createDetails({
+    backgroundImage: "/images/ANA-OGNJEN-split-1.jpg",
+
+    welcomeText:
+      "Biće nam veliko zadovoljstvo da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "07 NOV 2026",
+    dateISO: "2026-11-07T13:00:00+01:00",
+
+    showCalendarButton: true,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "13:00",
+        location: "Crkva Svete Trojice",
+        mapLink:
+          "https://maps.google.com/?q=Crkva+Svete+Trojice+Vranje",
+        note: "Trenutak kada počinje naše zajedničko novo poglavlje.",
+      },
+      {
+        label: "Prijem gostiju",
+        time: "15:30",
+        location: "Hotel Vojvoda Putnik, Vranje",
+        mapLink:
+          "https://maps.google.com/?q=Hotel+Vojvoda+Putnik+Vranje",
+        note: "Radujemo se zajedničkom slavlju sa vama.",
+      },
+    ],
+
+ theme: {
+  mainText: "#F7F2F4",
+  softText: "#E8E0E3",
+  scriptText: "#FFF8FA",
+  mutedText: "#CFC5CB",
+
+accent: "#F5F3F4",
+accentStrong: "#FFFFFF",
+  buttonText: "#2A1F24",
+
+  cardBg: "rgba(18, 15, 20, 0.46)",
+  cardBorder: "rgba(255,255,255,0.14)",
+  frameBorder: "rgba(255,255,255,0.16)",
+
+ paperOverlayTop: "rgba(0, 0, 0, 0.72)",
+paperOverlayBottom: "rgba(0, 0, 0, 0.42)",
+vignetteColor: "rgba(0, 0, 0, 0.38)",
+
+  flowLine: "#F6EEF1",
+  dividerLine: "rgba(255,255,255,0.18)",
+  nodeRing: "rgba(255,255,255,0.24)",
+
+  backgroundColor: "#09070B",
+
+  /* INTRO */
+  introMainText: "#FFF8FA",
+  introAccent: "#FFF8FA",
+  introButtonBg: "rgba(255,255,255,0.08)",
+  introButtonBorder: "rgba(255,255,255,0.42)",
+  introButtonText: "#FFF8FA",
+  introButtonHoverBg: "rgba(255,255,255,0.14)",
+
+  /* RSVP */
+  rsvpButtonBg: "#A84F59",
+  rsvpButtonText: "#FFF9FA",
+},
+
+    showDressCode: false,
+
+    venue: "Hotel Vojvoda Putnik, Vranje",
+
+    mapLink:
+      "https://maps.google.com/?q=Hotel+Vojvoda+Putnik+Vranje",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 25. oktobra 2026.",
+  }),
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

@@ -60,6 +60,7 @@ const adminAccess = {
         "marija-nikola-1":"marija123",
         "gordana-milos":"gordana123",
         "ema-aleksa":"ema123",
+        "kristina-vukasin":"kristina123",
      
 };
 
