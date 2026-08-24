@@ -8053,7 +8053,7 @@ note: "Молимо вас да свој долазак потврдите до 
   groomName: "Vukašin",
 
   videoSrc: "/videos/kristina-vukasin.mp4",
-
+musicSrc: "/music/kristina-vukasin.mp3",
   weddingDate: "07 NOV 2026",
   weddingTime: "13:00",
   venue: "Vranje",
