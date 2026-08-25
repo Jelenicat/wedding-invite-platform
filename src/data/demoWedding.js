@@ -3375,7 +3375,7 @@ rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
 
   // Silk intro
   backgroundImage: "/images/silk-intro.jpg",
-  videoSrc: "/videos/milica-nemanja-1.mp4",
+  videoSrc: "/videos/milica-nemanja-2.mp4",
 
   // Muzika — izbriši ako je nećeš
   musicSrc: "/music/wedding-song.mp3",
@@ -3394,14 +3394,14 @@ rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
     dateDisplay: "12.09.2026.",
 
     // Fotografija u pozadini invitation card-a
-    cardBackgroundImage: "/images/invitation-background.jpg",
+    cardBackgroundImage: "/images/invitation-background-1.jpg",
 
     // Možeš potpuno da izbrišeš ovu stavku.
     // Tada će automatski biti center.
     cardBackgroundPosition: "center",
 
     // Fotografija u pozadini RSVP-a i countdown-a
-    sectionBackgroundImage: "/images/invitation-background.jpg",
+    sectionBackgroundImage: "/images/invitation-background-1.jpg",
     sectionBackgroundPosition: "center",
 
     // Srce između imena
@@ -3505,37 +3505,36 @@ rsvpImage: "/images/italian-rsvp/tamara-viktor-calla-rsvp.jpg",
       "Sačuvajte datum venčanja u svom telefonu.",
 
 theme: {
-  backgroundColor: "#e9e2d8",
+  backgroundColor: "#dedbd6",
 
   // Osnovni tekst
-  mainText: "#5b514a",
-  softText: "#786c64",
-  mutedText: "#978a80",
+  mainText: "#554f4b",
+  softText: "#706965",
+  mutedText: "#908985",
 
   // Imena, srce, vremena i detalji
-  accent: "#c2a078",
-  accentStrong: "#916842",
+  accent: "#a18d7d",
+  accentStrong: "#806e61",
+  onAccent: "#f8f5f1",
 
-  onAccent: "#fffaf3",
-
-  locationSoftText: "#916842",
+  locationSoftText: "#8b796c",
 
   // Providna kartica
- cardPaper: "rgba(255, 255, 255, 0.30)",
-  cardBorder: "rgba(113, 91, 74, 0.22)",
-  cardInnerBorder: "rgba(113, 91, 74, 0.15)",
-  cardShadow: "rgba(55, 43, 35, 0.14)",
+  cardPaper: "rgba(245, 243, 240, 0.65)",
+  cardBorder: "rgba(90, 82, 76, 0.20)",
+  cardInnerBorder: "rgba(90, 82, 76, 0.12)",
+  cardShadow: "rgba(45, 42, 40, 0.14)",
 
   // Filter preko fotografije
-  cardPhotoOverlay: "rgba(245, 240, 233, 0.01)",
-  cardPhotoOverlayBottom: "rgba(245, 237, 229, 0.30)",
+  cardPhotoOverlay: "rgba(220, 217, 213, 0.06)",
+  cardPhotoOverlayBottom: "rgba(218, 214, 210, 0.25)",
 
   // RSVP i countdown
-  sectionOverlay: "rgba(255, 255, 255, 0.30)",
-  cardBg: "rgba(255, 252, 247, 0.48)",
-  inputBg: "rgba(255, 253, 249, 0.62)",
+  sectionOverlay: "rgba(225, 222, 218, 0.30)",
+  cardBg: "rgba(244, 242, 239, 0.42)",
+  inputBg: "rgba(248, 246, 243, 0.58)",
 
-  rsvpButtonText: "#fffaf3",
+  rsvpButtonText: "#f8f5f1",
 },
   },
 },
