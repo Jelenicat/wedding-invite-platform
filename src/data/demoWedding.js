@@ -7765,14 +7765,14 @@ dressCodeMenPalette: [
     showDressCode: false,
 
     note:
-      "Molimo vas da dolazak potvrdite najkasnije do 1. septembra 2026.",
+      "Molimo vas da dolazak potvrdite najkasnije do 10. septembra 2026.",
 
     // RSVP
     rsvpKicker: "Potvrda dolaska",
     rsvpTitle: "Radujemo se vašem odgovoru",
 
     rsvpSubtitle:
-      "Molimo vas da potvrdite dolazak najkasnije do 1. septembra.",
+      "Molimo vas da potvrdite dolazak najkasnije do 10. septembra.",
 
     rsvpButtonText: "Pošalji potvrdu",
     rsvpMaxGuests: 10,
