@@ -9353,11 +9353,11 @@ body,
 ========================= */
 
 .silk-intro.silk-slug-milica-milos .silk-names {
-  transform: translateY(-28px);
+  transform: translateY(-32px);
 }
 
 @media (max-width: 768px) {
   .silk-intro.silk-slug-milica-milos .silk-names {
-    transform: translateY(-22px);
+    transform: translateY(-27px);
   }
 }
