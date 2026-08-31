@@ -8138,6 +8138,71 @@ vignetteColor: "rgba(0, 0, 0, 0.38)",
   }),
 },
 
+{
+  slug: "milica-milos",
+  type: "wedding",
+  template: "silk",
+  script: "latin",
+
+  brideName: "Milica",
+  groomName: "Miloš",
+videoSrc: "/videos/milica-milos.mp4",
+  // koristimo muziku od Marije i Petra
+  musicSrc: "/music/milica-milos.mp3",
+
+  fontMode: "light",
+
+  weddingDate: "11 OKT 2026",
+  weddingTime: "15:30",
+  venue: "Restoran Triniti",
+
+  // koristimo sliku od Marije i Petra
+  backgroundImage: "/images/marija-petar-minimal.jpg",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "11.10.2026.",
+    dateISO: "2026-10-11T15:30:00+02:00",
+
+    venue: "Restoran Triniti",
+
+    showCalendarButton: true,
+    calendarDurationHours: 9,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "15:30",
+        icon: "church",
+        location: "Crkva",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "18:00",
+        icon: "civil",
+        location: "Restoran Triniti",
+      },
+    ],
+
+    showDressCode: true,
+dressCodeTitle: "Dress code",
+dressCodeNote:
+  "Svečano i elegantno, u stilu koji vam najviše prija.",
+dressCodePalette: [],
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 25. septembra.",
+
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite do 25. septembra.",
+
+    rsvpDeadline: "25.09.2026.",
+    rsvpDeadlineISO: "2026-09-25",
+  }),
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
