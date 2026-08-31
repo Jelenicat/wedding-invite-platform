@@ -8146,8 +8146,8 @@ vignetteColor: "rgba(0, 0, 0, 0.38)",
 
   brideName: "Milica",
   groomName: "Miloš",
-videoSrc: "/videos/milica-milos.mp4",
-  // koristimo muziku od Marije i Petra
+
+  videoSrc: "/videos/milica-milos.mp4",
   musicSrc: "/music/milica-milos.mp3",
 
   fontMode: "light",
@@ -8156,7 +8156,6 @@ videoSrc: "/videos/milica-milos.mp4",
   weddingTime: "15:30",
   venue: "Restoran Triniti",
 
-  // koristimo sliku od Marije i Petra
   backgroundImage: "/images/marija-petar-minimal.jpg",
 
   details: createDetails({
@@ -8167,6 +8166,9 @@ videoSrc: "/videos/milica-milos.mp4",
     dateISO: "2026-10-11T15:30:00+02:00",
 
     venue: "Restoran Triniti",
+
+mapLink:
+  "https://www.google.com/maps/search/?api=1&query=Restoran+Triniti",
 
     showCalendarButton: true,
     calendarDurationHours: 9,
@@ -8179,6 +8181,12 @@ videoSrc: "/videos/milica-milos.mp4",
         location: "Crkva",
       },
       {
+        label: "Slikanje ispred restorana",
+        time: "17:00",
+        icon: "guests",
+        location: "Restoran Triniti",
+      },
+      {
         label: "Građansko venčanje",
         time: "18:00",
         icon: "civil",
@@ -8187,10 +8195,10 @@ videoSrc: "/videos/milica-milos.mp4",
     ],
 
     showDressCode: true,
-dressCodeTitle: "Dress code",
-dressCodeNote:
-  "Svečano i elegantno, u stilu koji vam najviše prija.",
-dressCodePalette: [],
+    dressCodeTitle: "Dress code",
+    dressCodeNote:
+      "Svečano i elegantno, u stilu koji vam najviše prija.",
+    dressCodePalette: [],
 
     note:
       "Molimo vas da svoj dolazak potvrdite do 25. septembra.",
