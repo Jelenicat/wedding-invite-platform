@@ -8175,10 +8175,12 @@ mapLink:
 
     events: [
       {
-        label: "Crkveno venčanje",
+          label: "Crkveno venčanje",
         time: "15:30",
         icon: "church",
-        location: "Crkva",
+        location: "Crkva Svete Petke",
+        mapLink:
+          "https://www.google.com/maps/place/%D0%A1%D1%80%D0%BF%D1%81%D0%BA%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0+%D1%86%D1%80%D0%BA%D0%B2%D0%B0+%D0%A1%D0%B2%D0%B5%D1%82%D0%B5+%D0%9F%D0%B5%D1%82%D0%BA%D0%B5/@43.3153621,21.8782388,717m/data=!3m2!1e3!4b1!4m6!3m5!1s0x4755b753dfd02833:0xcb64df33c744cf05!8m2!3d43.3153621!4d21.8782388!16s%2Fg%2F11fzb1rkxl?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D",
       },
       {
         label: "Slikanje ispred restorana",
