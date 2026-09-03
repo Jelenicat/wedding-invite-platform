@@ -7,6 +7,11 @@ function BirthdaySplitIntro({
   sliderImages = [],
   backgroundImage,
   onEnter,
+
+  // MUZIKA
+  onStartMusic,
+  musicStarted = false,
+  hasMusic = false,
 }) {
   const name = brideName || "Olivia";
 
@@ -16,6 +21,16 @@ function BirthdaySplitIntro({
   const loopImages = [...validImages, ...validImages];
 
   const isLaraSlug = slug === "lara-1";
+
+  /*
+   * Play dugme samo za Laru.
+   * Nestaje kada se muzika pokrene.
+   */
+  const showMusicButton =
+    isLaraSlug &&
+    hasMusic &&
+    !musicStarted &&
+    typeof onStartMusic === "function";
 
   return (
     <section
@@ -139,7 +154,7 @@ function BirthdaySplitIntro({
               </div>
 
               <div className="birthday-split-subtitle-text">
-                slavi rođendan!
+                slavi svoj 1. rođendan 🤎
               </div>
             </motion.div>
           ) : (
@@ -162,6 +177,47 @@ function BirthdaySplitIntro({
             </motion.p>
           )}
 
+          {/* PLAY MUZIKA - samo Lara */}
+          {showMusicButton && (
+            <motion.div
+              className="birthday-split-music-control"
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 0.42,
+                duration: 0.6,
+              }}
+            >
+              <motion.button
+                type="button"
+                className="birthday-split-music-circle"
+                onClick={onStartMusic}
+                aria-label="Pusti muziku"
+                whileHover={{
+                  scale: 1.06,
+                }}
+                whileTap={{
+                  scale: 0.94,
+                }}
+              >
+                <span
+                  className="birthday-split-music-icon"
+                  aria-hidden="true"
+                />
+              </motion.button>
+
+              <span className="birthday-split-music-label">
+                Pusti muziku
+              </span>
+            </motion.div>
+          )}
+
           {/* BUTTON */}
           <motion.button
             className="birthday-split-btn"
@@ -175,7 +231,7 @@ function BirthdaySplitIntro({
               y: 0,
             }}
             transition={{
-              delay: 0.5,
+              delay: 0.55,
               duration: 0.7,
             }}
             whileHover={{

@@ -8242,7 +8242,7 @@ mapLink:
       "/images/lara-5.jpg",
       "/images/lara-6.jpg",
       "/images/lara-7.jpg",
-      "/images/lara-8.jpg",
+      
       "/images/lara-9.jpg",
       "/images/lara-10.jpg",
       "/images/lara-11.jpg",
@@ -8260,6 +8260,74 @@ mapLink:
 
     showCalendarButton: true,
   },
+},
+
+{
+  slug: "marija-filip",
+  type: "wedding",
+  template: "playing-card",
+
+  brideName: "Marija",
+  groomName: "Filip",
+
+  weddingDate: "01 NOV 2026",
+  weddingTime: "14:00",
+  venue: "Restoran Imperija Gold",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "01 NOV 2026",
+    dateISO: "2026-11-01T14:00:00+01:00",
+
+    venue: "Restoran Imperija Gold",
+
+    showCalendarButton: true,
+    calendarDurationHours: 9,
+
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "14:00",
+        icon: "church",
+        location: "Crkva Svete Petke",
+        address: "Čukarička padina, Beograd",
+        mapLink:
+          "https://maps.app.goo.gl/GRRkR9N6v4s3CHvK6",
+        buttonText: "Pogledaj lokaciju",
+      },
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "restaurant",
+        location: "Restoran Imperija Gold",
+        mapLink:
+          "https://www.google.com/maps?sca_esv=daafaa10f68735e4&output=search&q=%D0%A1%D0%B2%D0%B5%D1%87%D0%B0%D0%BD%D0%B0+%D1%81%D0%B0%D0%BB%D0%B0+%27%27Imperia+Gold%27%27,+7.+Oktobar+11564,+%D0%A1%D1%82%D0%B5%D0%BF%D0%BE%D1%98%D0%B5%D0%B2%D0%B0%D1%86&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832cK-OlyrFp0q_lDSVqWSWpCnpnP4ky6xnUEVIDkxkfIzvBBPF3WcYHirTQE36eDhJaNoQFztMiPnvohT2C-VOslYu8RVo8o_SEeraufUFtlIg-97dRUc1e5qy13niWZdPll3TJ_CB8wclyYGmzmJdKX1_bSqpT70KLCFcFYVTp9Nlb-ZXg&entry=mc&ved=1t:200715&ictx=111",
+        buttonText: "Pogledaj lokaciju",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Restoran Imperija Gold",
+        mapLink:
+          "https://www.google.com/maps?sca_esv=daafaa10f68735e4&output=search&q=%D0%A1%D0%B2%D0%B5%D1%87%D0%B0%D0%BD%D0%B0+%D1%81%D0%B0%D0%BB%D0%B0+%27%27Imperia+Gold%27%27,+7.+Oktobar+11564,+%D0%A1%D1%82%D0%B5%D0%BF%D0%BE%D1%98%D0%B5%D0%B2%D0%B0%D1%86&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832cK-OlyrFp0q_lDSVqWSWpCnpnP4ky6xnUEVIDkxkfIzvBBPF3WcYHirTQE36eDhJaNoQFztMiPnvohT2C-VOslYu8RVo8o_SEeraufUFtlIg-97dRUc1e5qy13niWZdPll3TJ_CB8wclyYGmzmJdKX1_bSqpT70KLCFcFYVTp9Nlb-ZXg&entry=mc&ved=1t:200715&ictx=111",
+        buttonText: "Pogledaj lokaciju",
+      },
+    ],
+
+    mapLink:
+      "https://maps.app.goo.gl/MUvFA3ZsKRMbYD1p7?g_st=ac",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 15. oktobra.",
+
+    rsvpDeadline: "15.10.2026.",
+    rsvpDeadlineISO: "2026-10-15",
+  }),
 },
 
   // =========================

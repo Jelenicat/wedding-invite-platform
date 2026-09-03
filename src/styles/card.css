@@ -22882,3 +22882,10 @@ font-family: "Italianno", cursive;
       0 12px 35px rgba(70, 50, 40, 0.08);
   }
 }
+
+.birthday-video-lara-1 .birthday-video-name,
+.birthday-split-intro-lara-1 .birthday-split-subtitle-name {
+  font-family: "Cormorant Garamond", serif !important;
+  font-style: italic;
+  font-weight: 300;
+}
