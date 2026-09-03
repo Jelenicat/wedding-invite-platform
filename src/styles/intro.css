@@ -9701,17 +9701,28 @@ body,
 }
 
 @media (max-width: 640px) {
-  .birthday-split-heading {
-    overflow: visible;
-    height: 205px;
-  }
-
   .birthday-split-title {
-    line-height: 1.2;
-    padding: 8px 12px;
-    overflow: visible;
+    left: 50% !important;
+    bottom: 0 !important;
 
     margin-left: 0 !important;
-    translate: -14px 12px;
+
+    font-size: 66px !important;
+    line-height: 1.2 !important;
+
+    translate: -60% 10px !important;
+
+    padding: 8px 12px;
+    overflow: visible;
+    white-space: nowrap;
+  }
+
+  .birthday-split-heading {
+    height: 205px !important;
+    overflow: visible !important;
+  }
+
+  .birthday-split-one {
+    font-size: 150px !important;
   }
 }
