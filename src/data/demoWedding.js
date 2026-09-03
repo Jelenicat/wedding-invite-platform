@@ -8269,7 +8269,7 @@ mapLink:
 
   brideName: "Marija",
   groomName: "Filip",
-
+ musicSrc: "/music/marija-filip.mp3",
   weddingDate: "01 NOV 2026",
   weddingTime: "14:00",
   venue: "Restoran Imperija Gold",

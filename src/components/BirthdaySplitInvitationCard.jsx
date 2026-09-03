@@ -71,10 +71,18 @@ function BirthdaySplitInvitationCard({
 
   /*
    * TEKST ISPOD IMENA
+   *
+   * SAMO Lara dobija:
+   * slavi svoj 1. rođendan 🤎 🧸
+   *
+   * Eva i svi ostali ostaju kao ranije.
    */
-  const subtitle = isCyrillic
-    ? "слави свој рођендан"
-    : "slavi svoj rođendan";
+  const subtitle =
+    isLaraSlug
+      ? "slavi svoj 1. rođendan 🤎 🧸"
+      : isCyrillic
+        ? "слави свој рођендан"
+        : "slavi svoj rođendan";
 
   /*
    * DANI U NEDELJI
@@ -148,11 +156,9 @@ function BirthdaySplitInvitationCard({
 
   /*
    * Eva VEĆ koristi pravi kalendar.
-   *
    * Sada ga koristi i Lara.
    *
-   * Ostali stari slugovi ostaju potpuno
-   * po starom.
+   * Ostali stari slugovi ostaju po starom.
    */
   const usesRealCalendar =
     isEvaSlug ||
@@ -254,9 +260,16 @@ function BirthdaySplitInvitationCard({
           </h1>
 
           {/* SUBTITLE */}
-          <p className="birthday-video-subtitle">
-            {subtitle}
-          </p>
+         <p className="birthday-video-subtitle">
+  {isLaraSlug ? (
+    <>
+      <span>slavi svoj 1. rođendan </span>
+      <span className="lara-subtitle-emojis">🤎 🧸</span>
+    </>
+  ) : (
+    subtitle
+  )}
+</p>
 
           {/* KALENDAR */}
           <div className="birthday-video-calendar">
@@ -347,11 +360,7 @@ function BirthdaySplitInvitationCard({
               </a>
             )}
 
-            {/* VREME
-                Prikazuje se SAMO ako postoji.
-                Eva ima vreme -> ostaje kao ranije.
-                Lara trenutno nema -> nema prazne ikonice.
-            */}
+            {/* VREME */}
             {weddingTime && (
               <div className="birthday-video-item">
                 <span
