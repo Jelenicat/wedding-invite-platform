@@ -139,7 +139,7 @@ function PlayingCardInvitationCard({
 
               {isMarijaFilip && (
                 <p className="pci-family-text">
-                  Porodice Filipović i Kitanović
+                  Porodice Kitanović i Filipović
                 </p>
               )}
             </div>
