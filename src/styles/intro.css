@@ -9711,7 +9711,7 @@ body,
     padding: 8px 12px;
     overflow: visible;
 
-    /* vraćamo One malo ulevo */
-    margin-left: 6px;
+    margin-left: 0 !important;
+    translate: -24px 6px;
   }
 }
