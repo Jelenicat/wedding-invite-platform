@@ -63,7 +63,8 @@ const adminAccess = {
         "kristina-vukasin":"kristina123",
         "milica-milos":"milica123",
         "lara-1":"lara123",
-        "marija-filip":"marija123"
+        "marija-filip":"marija123",
+        "teodora-petar":"teodora123",
      
 };
 

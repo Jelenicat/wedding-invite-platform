@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
 function MinimalIntro({
+  slug,
   brideName,
   groomName,
   weddingDate,
@@ -34,28 +35,49 @@ function MinimalIntro({
           open: "OTVORI POZIVNICU",
         };
 
+  const isTeodoraPetar = slug === "teodora-petar";
+
   return (
     <section className="minimal-intro-v2">
       <div
         className="minimal-intro-v2-bg"
         style={{ backgroundImage: `url(${finalBg})` }}
       />
+
       <div className="minimal-intro-v2-fade" />
 
       <motion.div
         className="minimal-intro-v2-card"
-        initial={{ opacity: 0, y: 20, scale: 0.985 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        initial={{
+          opacity: 0,
+          y: 20,
+          scale: 0.985,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        }}
+        transition={{
+          duration: 0.9,
+          ease: "easeOut",
+        }}
       >
         <div className="minimal-frame" />
 
-        <p className="minimal-top-title">{t.invitation}</p>
+        <p className="minimal-top-title">
+          {t.invitation}
+        </p>
 
         <div className="minimal-arch" />
 
-        <h1 className="minimal-script-names">
+        <h1
+          className={`minimal-script-names ${
+            isTeodoraPetar ? "teodora-petar-names" : ""
+          }`}
+        >
           <span>{brideName}</span>
+
           <span className="minimal-amp">
             <svg
               viewBox="0 0 24 24"
@@ -76,32 +98,56 @@ function MinimalIntro({
               />
             </svg>
           </span>
+
           <span>{groomName}</span>
         </h1>
 
         <div className="minimal-date-row">
           <div className="minimal-date-box">
-            <span className="minimal-date-label">{t.day}</span>
+            <span className="minimal-date-label">
+              {t.day}
+            </span>
+
             <span className="minimal-date-line" />
           </div>
 
           <div className="minimal-date-center">
-            <span className="minimal-date-month">{month}</span>
-            <span className="minimal-date-day">{day}</span>
-            <span className="minimal-date-year">{year}</span>
+            <span className="minimal-date-month">
+              {month}
+            </span>
+
+            <span className="minimal-date-day">
+              {day}
+            </span>
+
+            <span className="minimal-date-year">
+              {year}
+            </span>
           </div>
 
           <div className="minimal-date-box">
-            <span className="minimal-date-label">{weddingTime || "17:00"}</span>
+            <span className="minimal-date-label">
+              {weddingTime || "17:00"}
+            </span>
+
             <span className="minimal-date-line" />
           </div>
         </div>
 
-        <p className="minimal-bottom-text">{introText || t.defaultText}</p>
+        <p className="minimal-bottom-text">
+          {introText || t.defaultText}
+        </p>
 
-        <p className="minimal-venue">{venue}</p>
+        {!isTeodoraPetar && (
+          <p className="minimal-venue">
+            {venue}
+          </p>
+        )}
 
-        <button className="minimal-open-btn" onClick={onEnter}>
+        <button
+          className="minimal-open-btn"
+          onClick={onEnter}
+        >
           {t.open}
         </button>
       </motion.div>

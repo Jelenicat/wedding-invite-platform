@@ -143,17 +143,21 @@ function MinimalInvitationCard({
               <span className="minimal-names-svg-mask" />
             </div>
           ) : (
-            <h1
-              className={`minimal-invitation-names ${
-                script === "cyrillic"
-                  ? "minimal-invitation-names-cyrillic"
-                  : ""
-              } ${
-                isJovanaAleksandarSlug
-                  ? "minimal-invitation-names-full"
-                  : ""
-              }`}
-            >
+      <h1
+  className={`minimal-invitation-names ${
+    script === "cyrillic"
+      ? "minimal-invitation-names-cyrillic"
+      : ""
+  } ${
+    isJovanaAleksandarSlug
+      ? "minimal-invitation-names-full"
+      : ""
+  } ${
+    slug === "teodora-petar"
+      ? "teodora-petar-card-names"
+      : ""
+  }`}
+>
               {isJovanaAleksandarSlug ? (
                 <>
                   <span className="minimal-person-name">

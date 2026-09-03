@@ -8296,7 +8296,7 @@ mapLink:
         location: "Crkva Svete Petke",
         address: "Čukarička padina, Beograd",
         mapLink:
-          "https://maps.app.goo.gl/GRRkR9N6v4s3CHvK6",
+          "https://www.google.com/maps/place/%D0%A1%D1%80%D0%BF%D1%81%D0%BA%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0+%D1%86%D1%80%D0%BA%D0%B2%D0%B0+%D0%A1%D0%B2%D0%B5%D1%82%D0%B5+%D0%9F%D0%B5%D1%82%D0%BA%D0%B5+%D0%9F%D0%B0%D1%80%D0%B0%D1%81%D0%BA%D0%B5%D0%B2%D0%B5/@44.7754562,19.1873945,179077m/data=!3m1!1e3!4m10!1m2!2m1!1z0KHRgNC_0YHQutCwINC_0YDQsNCy0L7RgdC70LDQstC90LAg0YbRgNC60LLQsCDQodCy0LXRgtC1INCf0LXRgtC60LUg0J_QsNGA0LDRgdC60LXQstC1!3m6!1s0x475a6e332fb00e1b:0xc42d9b319133319e!8m2!3d44.7754562!4d20.4068769!15sClfQodGA0L_RgdC60LAg0L_RgNCw0LLQvtGB0LvQsNCy0L3QsCDRhtGA0LrQstCwINCh0LLQtdGC0LUg0J_QtdGC0LrQtSDQn9Cw0YDQsNGB0LrQtdCy0LWSAQ9vcnRob2RveF9jaHVyY2jgAQA!16s%2Fg%2F1hf4jq00d?entry=ttu&g_ep=EgoyMDI2MDkwMS4wIKXMDSoASAFQAw%3D%3Dhttps://www.google.com/maps/dir/44.7858469,20.4845733/%D0%A1%D1%80%D0%BF%D1%81%D0%BA%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0+%D1%86%D1%80%D0%BA%D0%B2%D0%B0+%D0%A1%D0%B2%D0%B5%D1%82%D0%B5+%D0%9F%D0%B5%D1%82%D0%BA%D0%B5+%D0%9F%D0%B0%D1%80%D0%B0%D1%81%D0%BA%D0%B5%D0%B2%D0%B5,+%D0%9E%D0%B1%D0%B0%D0%BB%D1%81%D0%BA%D0%B8%D1%85+%D1%80%D0%B0%D0%B4%D0%BD%D0%B8%D0%BA%D0%B0,+%D0%91%D0%B5%D0%BE%D0%B3%D1%80%D0%B0%D0%B4/@44.7871848,20.3631801,22380m/data=!3m2!1e3!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x475a6e332fb00e1b:0xc42d9b319133319e!2m2!1d20.406671!2d44.7755281!3e0?entry=ttu&g_ep=EgoyMDI2MDkwMS4wIKXMDSoASAFQAw%3D%3D",
         buttonText: "Pogledaj lokaciju",
       },
       {
@@ -8327,6 +8327,68 @@ mapLink:
 
     rsvpDeadline: "15.10.2026.",
     rsvpDeadlineISO: "2026-10-15",
+  }),
+},
+
+{
+  slug: "teodora-petar",
+  type: "wedding",
+  template: "minimal",
+
+  brideName: "Teodora",
+  groomName: "Petar",
+
+  weddingDate: "04 OKT 2026",
+  weddingTime: "14:00",
+  venue: "Hotel Šumadija, Gornji Milanovac",
+ musicSrc: "/music/teodora-petar.mp3",
+  backgroundImage: "/images/milica-ognjen-minimal.jpg",
+
+  introText:
+    "Pozivamo vas da zajedno sa nama proslavite ljubav, radost i početak novog poglavlja.",
+
+  details: createDetails({
+    welcomeText:
+      "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
+
+    date: "04 OKT 2026",
+    dateISO: "2026-10-04T14:00:00+02:00",
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "14:00",
+        icon: "church",
+        location: "Crkva Svete Trojice, Gornji Milanovac",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svete+Trojice+Gornji+Milanovac",
+      },
+      {
+        label: "Skup svatova",
+        time: "16:00",
+        icon: "gathering",
+        location: "Hotel Šumadija, Gornji Milanovac",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Sumadija+Gornji+Milanovac",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Hotel Šumadija, Gornji Milanovac",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Sumadija+Gornji+Milanovac",
+      },
+    ],
+      showCalendarButton: true,
+
+    showDressCode: false,
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Hotel+Sumadija+Gornji+Milanovac",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 20. septembra.",
   }),
 },
 

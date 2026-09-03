@@ -9855,3 +9855,40 @@ body,
     animation: none;
   }
 }
+
+.teodora-petar-names {
+  font-family: "Great Vibes", cursive !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Minimal intro - iPhone/Safari bez skrola */
+@media (max-width: 480px) {
+  .minimal-intro-v2 {
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+  }
+
+  .minimal-intro-v2-card {
+    height: calc(100svh - 28px);
+    min-height: calc(100svh - 28px);
+    max-height: calc(100svh - 28px);
+  }
+}
+
+.pc-family-text {
+  width: 100%;
+  margin: 2px 0 12px;
+  text-align: center;
+
+  font-family: inherit;
+  font-size: 0.64rem;
+  font-weight: 400;
+
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  color: #555;
+  opacity: 0.72;
+}

@@ -22893,3 +22893,15 @@ font-family: "Italianno", cursive;
 .birthday-video-lara-1 .lara-subtitle-emojis {
   font-style: normal !important;
 }
+
+/* Teodora & Petar - isti font kao na intro-u */
+.minimal-slug-teodora-petar .teodora-petar-card-names {
+  font-family: "Great Vibes", cursive !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Teodora & Petar - svetlija / belja pozadinska slika */
+.minimal-slug-teodora-petar .minimal-invitation-overlay {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
