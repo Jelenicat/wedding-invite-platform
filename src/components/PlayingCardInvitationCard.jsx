@@ -7,7 +7,9 @@ import "../styles/rsvp.css";
 
 function getInitial(value = "") {
   const cleanValue = String(value).trim();
+
   if (!cleanValue) return "";
+
   return Array.from(cleanValue)[0].toUpperCase();
 }
 
@@ -27,6 +29,9 @@ function PlayingCardInvitationCard({
   const groomInitial = getInitial(safeGroomName);
 
   const isCyrillic = script === "cyrillic";
+
+  // Samo za Mariju i Filipa
+  const isMarijaFilip = slug === "marija-filip";
 
   const t = isCyrillic
     ? {
@@ -67,7 +72,10 @@ function PlayingCardInvitationCard({
         className={`playing-card-invitation playing-card-slug-${slug || ""}`}
         initial={{ opacity: 0, y: 26 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+        transition={{
+          duration: 0.72,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       >
         <div className="pci-page-inner">
           <article className="pci-main-card">
@@ -84,7 +92,9 @@ function PlayingCardInvitationCard({
             </div>
 
             <div className="pci-hero">
-              <p className="pci-kicker">{t.invitation}</p>
+              <p className="pci-kicker">
+                {t.invitation}
+              </p>
 
               <div className="pci-mini-suits">
                 <span>♥</span>
@@ -94,17 +104,26 @@ function PlayingCardInvitationCard({
 
               <h1 className="pci-names">
                 <span>{safeBrideName}</span>
+
                 <em>&</em>
+
                 <span>{safeGroomName}</span>
               </h1>
 
-              <p className="pci-invite-text">{t.inviteText}</p>
+              <p className="pci-invite-text">
+                {t.inviteText}
+              </p>
 
-              <div className="pci-heart-mark" aria-hidden="true">
+              <div
+                className="pci-heart-mark"
+                aria-hidden="true"
+              >
                 ♥
               </div>
 
-              <p className="pci-script">Lucky in Love</p>
+              <p className="pci-script">
+                Lucky in Love
+              </p>
 
               {dateText && (
                 <div className="pci-date-card">
@@ -113,7 +132,15 @@ function PlayingCardInvitationCard({
               )}
 
               {details.welcomeText && (
-                <p className="pci-welcome">{details.welcomeText}</p>
+                <p className="pci-welcome">
+                  {details.welcomeText}
+                </p>
+              )}
+
+              {isMarijaFilip && (
+                <p className="pci-family-text">
+                  Porodice Filipović i Kitanović
+                </p>
               )}
             </div>
           </article>
@@ -122,13 +149,18 @@ function PlayingCardInvitationCard({
             <section className="pci-section pci-schedule-section">
               <div className="pci-section-title-wrap">
                 <span>♥</span>
+
                 <h2>{t.schedule}</h2>
+
                 <span>♥</span>
               </div>
 
               <div className="pci-timeline">
                 {timelineItems.map((event, index) => {
-                  const locationQuery = [event.location, event.address]
+                  const locationQuery = [
+                    event.location,
+                    event.address,
+                  ]
                     .filter(Boolean)
                     .join(", ");
 
@@ -144,23 +176,42 @@ function PlayingCardInvitationCard({
                     <motion.div
                       key={`${event.label}-${event.time}-${index}`}
                       className="pci-event-card"
-                      initial={{ opacity: 0, y: 18 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: 0.45, delay: index * 0.06 }}
+                      initial={{
+                        opacity: 0,
+                        y: 18,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      viewport={{
+                        once: true,
+                        amount: 0.2,
+                      }}
+                      transition={{
+                        duration: 0.45,
+                        delay: index * 0.06,
+                      }}
                     >
                       <div className="pci-event-suit">
-                        <strong>{String(index + 1).padStart(2, "0")}</strong>
+                        <strong>
+                          {String(index + 1).padStart(2, "0")}
+                        </strong>
+
                         <span>♥</span>
                       </div>
 
                       <div className="pci-event-content">
                         {event.time && (
-                          <p className="pci-event-time">{event.time}</p>
+                          <p className="pci-event-time">
+                            {event.time}
+                          </p>
                         )}
 
                         {event.label && (
-                          <h3 className="pci-event-title">{event.label}</h3>
+                          <h3 className="pci-event-title">
+                            {event.label}
+                          </h3>
                         )}
 
                         {event.location && (
@@ -170,7 +221,9 @@ function PlayingCardInvitationCard({
                         )}
 
                         {event.address && (
-                          <p className="pci-event-address">{event.address}</p>
+                          <p className="pci-event-address">
+                            {event.address}
+                          </p>
                         )}
 
                         {eventMapLink && (
@@ -195,36 +248,52 @@ function PlayingCardInvitationCard({
             <section className="pci-section pci-dress-section">
               <div className="pci-section-title-wrap">
                 <span>♥</span>
-                <h2>{details.dressCodeTitle || t.dressCode}</h2>
+
+                <h2>
+                  {details.dressCodeTitle || t.dressCode}
+                </h2>
+
                 <span>♥</span>
               </div>
 
               {details.dressCodeNote && (
-                <p className="pci-section-note">{details.dressCodeNote}</p>
+                <p className="pci-section-note">
+                  {details.dressCodeNote}
+                </p>
               )}
 
               {details.dressCodeWomen && (
                 <div className="pci-dress-row">
                   <strong>{t.women}</strong>
-                  <p>{details.dressCodeWomen}</p>
+
+                  <p>
+                    {details.dressCodeWomen}
+                  </p>
                 </div>
               )}
 
               {details.dressCodePalette?.length > 0 && (
                 <div className="pci-palette">
-                  {details.dressCodePalette.map((color, index) => (
-                    <span
-                      key={`${color}-${index}`}
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
+                  {details.dressCodePalette.map(
+                    (color, index) => (
+                      <span
+                        key={`${color}-${index}`}
+                        style={{
+                          backgroundColor: color,
+                        }}
+                      />
+                    )
+                  )}
                 </div>
               )}
 
               {details.dressCodeMen && (
                 <div className="pci-dress-row">
                   <strong>{t.men}</strong>
-                  <p>{details.dressCodeMen}</p>
+
+                  <p>
+                    {details.dressCodeMen}
+                  </p>
                 </div>
               )}
             </section>
@@ -233,7 +302,10 @@ function PlayingCardInvitationCard({
           {details.note && (
             <section className="pci-note-card">
               <span>♥</span>
-              <p>{details.note}</p>
+
+              <p>
+                {details.note}
+              </p>
             </section>
           )}
         </div>

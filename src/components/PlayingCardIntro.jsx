@@ -10,15 +10,12 @@ function getInitial(value = "") {
 }
 
 function PlayingCardIntro({
-  slug,
   brideName = "Jelisaveta",
   groomName = "Luka",
   onEnter,
 }) {
   const brideInitial = getInitial(brideName);
   const groomInitial = getInitial(groomName);
-
-  const isMarijaFilip = slug === "marija-filip";
 
   return (
     <section
@@ -173,26 +170,6 @@ function PlayingCardIntro({
             </div>
           </div>
         </motion.div>
-
-        {isMarijaFilip && (
-          <motion.div
-            className="pc-family-text"
-            initial={{
-              opacity: 0,
-              y: 8,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              delay: 0.82,
-              duration: 0.7,
-            }}
-          >
-            Porodice Filipović i Kitanović
-          </motion.div>
-        )}
 
         <motion.button
           type="button"

@@ -22905,3 +22905,20 @@ font-family: "Italianno", cursive;
 .minimal-slug-teodora-petar .minimal-invitation-overlay {
   background: rgba(255, 255, 255, 0.8) !important;
 }
+
+.pci-family-text {
+  margin: 5px 28px 0;
+  text-align: center;
+
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-style: italic;
+  font-weight: 400;
+
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-transform: none;
+
+  color: #4f4949;
+  opacity: 0.75;
+}
