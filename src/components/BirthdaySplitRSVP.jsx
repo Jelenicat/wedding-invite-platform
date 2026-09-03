@@ -121,7 +121,7 @@ function BirthdaySplitRSVP({
 
 const subtitle =
   slug === "lara-1"
-    ? "Neka prvi rođendan bude početak još jedne lepe uspomene koju ćemo stvoriti zajedno. 🤍"
+    ? "Neka prvi rođendan bude početak još jedne lepe uspomene koju ćemo stvoriti zajedno. 🧸"
     : details?.rsvpSubtitle || text.subtitle;
 
   const slugClass = slug

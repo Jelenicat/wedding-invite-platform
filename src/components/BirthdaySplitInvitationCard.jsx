@@ -264,7 +264,7 @@ function BirthdaySplitInvitationCard({
   {isLaraSlug ? (
     <>
       <span>slavi svoj 1. rođendan </span>
-      <span className="lara-subtitle-emojis">🤎 🧸</span>
+      <span className="lara-subtitle-emojis">🤎</span>
     </>
   ) : (
     subtitle
