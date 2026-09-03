@@ -9699,3 +9699,16 @@ body,
     background: rgba(255, 252, 247, 0.65);
   }
 }
+
+@media (max-width: 640px) {
+  .birthday-split-heading {
+    overflow: visible;
+    height: 205px;
+  }
+
+  .birthday-split-title {
+    line-height: 1.2;
+    padding: 8px 12px;
+    overflow: visible;
+  }
+}
