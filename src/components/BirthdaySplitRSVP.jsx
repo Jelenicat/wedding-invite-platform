@@ -409,11 +409,13 @@ function BirthdaySplitRSVP({
                   {subtitle}
                 </p>
 
-                {details?.note && slug !== "eva-1" && (
-                  <div className="birthday-split-rsvp-note">
-                    {details.note}
-                  </div>
-                )}
+                {details?.note &&
+  slug !== "eva-1" &&
+  slug !== "lara-1" && (
+    <div className="birthday-split-rsvp-note">
+      {details.note}
+    </div>
+  )}
 
                 <form
                   className="birthday-split-rsvp-form"

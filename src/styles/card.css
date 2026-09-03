@@ -22829,3 +22829,23 @@ font-family: "Italianno", cursive;
 .minimal-slug-milica-milos .minimal-invitation-overlay {
   background: rgba(255, 255, 255, 0.08);
 }
+
+.birthday-video-lara-1 .birthday-video-welcome {
+  color: #8f7f74;
+  opacity: 1;
+}
+
+.birthday-video-lara-1 .birthday-video-name {
+  font-family: "Great Vibes", cursive;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.birthday-video-lara-1 .birthday-video-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 500;
+  font-style: italic;
+}

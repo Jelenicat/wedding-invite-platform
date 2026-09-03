@@ -8213,6 +8213,55 @@ mapLink:
   }),
 },
 
+{
+  slug: "lara-1",
+  type: "birthday",
+  template: "birthday-split",
+  script: "latin",
+
+  brideName: "Lara",
+
+  backgroundImage: "/images/lara-1-bg.jpg",
+
+  weddingDate: "04.10.2026.",
+  weddingTime: "14:00",
+ musicSrc: "/music/lara-1.mp3",
+  venue: "Triniti Resort, Mala sala",
+
+  details: {
+    date: "04 OKT 2026",
+    dateISO: "2026-10-04T14:00:00+02:00",
+
+    venue: "Triniti Resort, Mala sala",
+
+    sliderImages: [
+      "/images/lara-1.jpg",
+      "/images/lara-2.jpg",
+      "/images/lara-3.jpg",
+      "/images/lara-4.jpg",
+      "/images/lara-5.jpg",
+      "/images/lara-6.jpg",
+      "/images/lara-7.jpg",
+      "/images/lara-8.jpg",
+      "/images/lara-9.jpg",
+      "/images/lara-10.jpg",
+      "/images/lara-11.jpg",
+      "/images/lara-12.jpg",
+    ],
+
+    welcomeText:
+      "Radujemo se vašem dolasku!",
+
+    note:
+      "Molimo vas da svoje prisustvo potvrdite do 01.10.2026.",
+
+    rsvpDeadline: "01.10.2026.",
+    rsvpDeadlineISO: "2026-10-01",
+
+    showCalendarButton: true,
+  },
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

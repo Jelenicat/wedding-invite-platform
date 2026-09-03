@@ -28,15 +28,27 @@ function BirthdaySplitInvitationCard({
     (isCyrillic ? "Нина" : "Nina");
 
   /*
+   * POSEBNI SLUGOVI
+   */
+  const isEvaSlug =
+    slug === "eva-1";
+
+  const isLaraSlug =
+    slug === "lara-1";
+
+  /*
    * Eva koristi videoSrc iz sluga.
    * Ostali slugovi zadržavaju stari način:
    * /videos/ime-sluga.mp4
    */
   const videoPath =
-    slug === "eva-1"
+    isEvaSlug
       ? videoSrc || `/videos/${slug}.mp4`
       : `/videos/${slug}.mp4`;
 
+  /*
+   * DATUM
+   */
   const displayedDate =
     details?.date ||
     weddingDate ||
@@ -57,25 +69,29 @@ function BirthdaySplitInvitationCard({
   const day =
     Number.parseInt(dayValue, 10);
 
+  /*
+   * TEKST ISPOD IMENA
+   */
   const subtitle = isCyrillic
     ? "слави свој рођендан"
     : "slavi svoj rođendan";
 
   /*
-   * Za latinicu ostavljamo stare oznake,
-   * da ne menjamo postojeće slugove.
+   * DANI U NEDELJI
+   *
+   * Lara dobija srpske oznake.
+   * Eva ostaje kao ranije.
+   * Ostali stari slugovi ostaju kao ranije.
    */
   const calendarDays = isCyrillic
     ? ["По", "Ут", "Ср", "Че", "Пе", "Су", "Не"]
-    : ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+    : isLaraSlug
+      ? ["Po", "Ut", "Sr", "Če", "Pe", "Su", "Ne"]
+      : ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
   /*
-   * Pravi raspored kalendara samo za Evu.
-   * Datum se čita iz details.dateISO.
+   * ISO DATUM
    */
-  const isEvaSlug =
-    slug === "eva-1";
-
   const isoDateParts =
     details?.dateISO
       ?.slice(0, 10)
@@ -131,14 +147,19 @@ function BirthdaySplitInvitationCard({
       : 30;
 
   /*
-   * Eva dobija prazna polja pre prvog dana
-   * meseca, kako bi dani bili ispod pravog
-   * dana u nedelji.
+   * Eva VEĆ koristi pravi kalendar.
    *
-   * Ostali slugovi ostaju po starom.
+   * Sada ga koristi i Lara.
+   *
+   * Ostali stari slugovi ostaju potpuno
+   * po starom.
    */
+  const usesRealCalendar =
+    isEvaSlug ||
+    isLaraSlug;
+
   const calendarDates =
-    isEvaSlug && hasValidEventDate
+    usesRealCalendar && hasValidEventDate
       ? [
           ...Array.from(
             {
@@ -146,6 +167,7 @@ function BirthdaySplitInvitationCard({
             },
             () => null
           ),
+
           ...Array.from(
             {
               length: daysInMonth,
@@ -160,15 +182,26 @@ function BirthdaySplitInvitationCard({
           (_, index) => index + 1
         );
 
+  /*
+   * Aktivni dan
+   */
   const activeCalendarDay =
-    isEvaSlug && hasValidEventDate
+    usesRealCalendar && hasValidEventDate
       ? eventDay
       : day;
+
+  /*
+   * LOKACIJA
+   */
+  const displayedVenue =
+    details?.venueDetails
+      ? `${venue}, ${details.venueDetails}`
+      : venue;
 
   const locationLink =
     details?.mapLink ||
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-      venue || ""
+      displayedVenue || ""
     )}`;
 
   return (
@@ -180,6 +213,7 @@ function BirthdaySplitInvitationCard({
             : ""
         }`}
       >
+        {/* VIDEO BACKGROUND */}
         <video
           className="birthday-video-bg"
           autoPlay
@@ -196,6 +230,7 @@ function BirthdaySplitInvitationCard({
 
         <div className="birthday-video-overlay" />
 
+        {/* CARD */}
         <motion.div
           className="birthday-video-card"
           initial={{
@@ -213,14 +248,17 @@ function BirthdaySplitInvitationCard({
             ease: [0.22, 1, 0.36, 1],
           }}
         >
+          {/* IME */}
           <h1 className="birthday-video-name">
             {name}
           </h1>
 
+          {/* SUBTITLE */}
           <p className="birthday-video-subtitle">
             {subtitle}
           </p>
 
+          {/* KALENDAR */}
           <div className="birthday-video-calendar">
             <div className="calendar-month">
               {month}
@@ -247,9 +285,11 @@ function BirthdaySplitInvitationCard({
                     }
                     className={[
                       "calendar-cell",
+
                       calendarDate === null
                         ? "is-empty"
                         : "",
+
                       calendarDate ===
                       activeCalendarDay
                         ? "active"
@@ -265,86 +305,106 @@ function BirthdaySplitInvitationCard({
             </div>
           </div>
 
+          {/* INFO */}
           <div className="birthday-video-info">
-            <a
-              href={locationLink}
-              target="_blank"
-              rel="noreferrer"
-              className="birthday-video-item"
-            >
-              <span
-                className="birthday-video-item-icon"
-                aria-hidden="true"
+
+            {/* LOKACIJA */}
+            {displayedVenue && (
+              <a
+                href={locationLink}
+                target="_blank"
+                rel="noreferrer"
+                className="birthday-video-item"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
+                <span
+                  className="birthday-video-item-icon"
+                  aria-hidden="true"
                 >
-                  <path
-                    d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10Z"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10Z"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
 
-                  <circle
-                    cx="12"
-                    cy="11"
-                    r="2.5"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
+                    <circle
+                      cx="12"
+                      cy="11"
+                      r="2.5"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
 
-              <span>{venue}</span>
-            </a>
+                <span>
+                  {displayedVenue}
+                </span>
+              </a>
+            )}
 
-            <div className="birthday-video-item">
-              <span
-                className="birthday-video-item-icon"
-                aria-hidden="true"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
+            {/* VREME
+                Prikazuje se SAMO ako postoji.
+                Eva ima vreme -> ostaje kao ranije.
+                Lara trenutno nema -> nema prazne ikonice.
+            */}
+            {weddingTime && (
+              <div className="birthday-video-item">
+                <span
+                  className="birthday-video-item-icon"
+                  aria-hidden="true"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="8.5"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="8.5"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                    />
 
-                  <path
-                    d="M12 7.5v5l3 2"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+                    <path
+                      d="M12 7.5v5l3 2"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
 
-              <span>{weddingTime}</span>
-            </div>
+                <span>
+                  {weddingTime}
+                </span>
+              </div>
+            )}
 
+            {/* WELCOME */}
             {details?.welcomeText && (
               <div className="birthday-video-welcome">
                 {details.welcomeText}
               </div>
             )}
 
+            {/* NOTE */}
             {details?.note && (
               <div className="birthday-video-note">
                 {details.note}
               </div>
             )}
+
           </div>
         </motion.div>
       </section>
 
+      {/* RSVP */}
       <BirthdaySplitRSVP
         slug={slug}
         eventType="birthday"
@@ -354,13 +414,14 @@ function BirthdaySplitInvitationCard({
         script={activeScript}
       />
 
+      {/* COUNTDOWN */}
       <BirthdaySplitCountdown
         slug={slug}
         targetDate={details?.dateISO}
         backgroundImage={backgroundImage}
         script={activeScript}
         brideName={brideName}
-        venue={venue}
+        venue={displayedVenue}
         details={details}
       />
     </>

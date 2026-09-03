@@ -581,7 +581,7 @@ function WeddingPage() {
     babyImage: localizedInvitation.babyImage,
     partyGender: localizedInvitation.partyGender,
     introNamesSvg: localizedInvitation.introNamesSvg,
-
+sliderImages: localizedInvitation.details?.sliderImages || [],
     // LANGUAGE SWITCHER — prosleđuje se intro template-u
     language,
     onLanguageChange: setLanguage,
