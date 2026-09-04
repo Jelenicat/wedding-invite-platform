@@ -8355,14 +8355,7 @@ mapLink:
     dateISO: "2026-10-04T14:00:00+02:00",
 
     events: [
-      {
-        label: "Crkveno venčanje",
-        time: "14:00",
-        icon: "church",
-        location: "Crkva Svete Trojice, Gornji Milanovac",
-        mapLink:
-          "https://www.google.com/maps/search/?api=1&query=Crkva+Svete+Trojice+Gornji+Milanovac",
-      },
+      
       {
         label: "Skup svatova",
         time: "16:00",
