@@ -119,10 +119,20 @@ function BirthdaySplitRSVP({
         submit: "Pošalji potvrdu",
       };
 
-const subtitle =
-  slug === "lara-1"
-    ? "Neka prvi rođendan bude početak još jedne lepe uspomene koju ćemo stvoriti zajedno. 🧸"
-    : details?.rsvpSubtitle || text.subtitle;
+  const subtitle =
+    slug === "lara-1"
+      ? "Neka prvi rođendan bude početak još jedne lepe uspomene koju ćemo stvoriti zajedno. 🧸"
+      : slug === "relja"
+        ? (
+            <>
+              Jedva čekamo da ovaj poseban dan
+              <br />
+              proslavimo sa vama i zajedno stvorimo
+              <br />
+              još jednu prelepu uspomenu. 🧸🤎
+            </>
+          )
+        : details?.rsvpSubtitle || text.subtitle;
 
   const slugClass = slug
     ? `birthday-split-rsvp-${slug}`
@@ -411,12 +421,13 @@ const subtitle =
                 </p>
 
                 {details?.note &&
-  slug !== "eva-1" &&
-  slug !== "lara-1" && (
-    <div className="birthday-split-rsvp-note">
-      {details.note}
-    </div>
-  )}
+                  slug !== "eva-1" &&
+                  slug !== "lara-1" &&
+                  slug !== "relja" && (
+                    <div className="birthday-split-rsvp-note">
+                      {details.note}
+                    </div>
+                  )}
 
                 <form
                   className="birthday-split-rsvp-form"

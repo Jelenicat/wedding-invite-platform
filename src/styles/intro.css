@@ -9892,3 +9892,111 @@ body,
   color: #555;
   opacity: 0.72;
 }
+
+/* ============================================================
+   RELJA - OUR LITTLE BEAR
+   samo slug: relja
+   ============================================================ */
+
+.birthday-split-intro-relja .birthday-split-relja-subtitle {
+  width: 100%;
+  max-width: 300px;
+  margin: 8px auto 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.09em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #72594a;
+}
+
+.birthday-split-intro-relja .birthday-split-relja-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.birthday-split-intro-relja .birthday-split-relja-bottom {
+  margin-top: 3px;
+}
+
+.birthday-split-intro-relja .birthday-split-relja-bear {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 0.95em;
+  transform: translateY(1px);
+}
+
+
+/* =========================
+   RELJA - TELEFON
+========================= */
+
+@media (max-width: 640px) {
+  .birthday-split-intro-relja .birthday-split-right {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .birthday-split-intro-relja .birthday-split-relja-subtitle {
+    width: 100%;
+    max-width: 185px;
+
+    margin-top: 4px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    line-height: 1.4;
+    letter-spacing: 0.055em;
+  }
+
+  .birthday-split-intro-relja .birthday-split-relja-bottom {
+    margin-top: 4px;
+  }
+
+  .birthday-split-intro-relja .birthday-split-relja-bear {
+    margin-left: 3px;
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   RELJA - MALI TELEFONI
+========================= */
+
+@media (max-width: 390px) {
+  .birthday-split-intro-relja .birthday-split-relja-subtitle {
+    max-width: 170px;
+    font-size: 12px;
+    line-height: 1.42;
+    letter-spacing: 0.045em;
+  }
+
+  .birthday-split-intro-relja .birthday-split-relja-bear {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .birthday-split-intro-relja .birthday-split-relja-subtitle {
+    max-width: 190px;
+    margin-top: -4px;
+
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+
+    color: #6f5140;
+  }
+}

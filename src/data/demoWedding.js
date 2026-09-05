@@ -8385,6 +8385,50 @@ mapLink:
   }),
 },
 
+{
+  slug: "relja",
+  type: "birthday",
+  template: "birthday-split",
+  script: "latin",
+
+  brideName: "Relja",
+
+  // Privremeno isto kao Lara
+  backgroundImage: "/images/relja-bg.png",
+  musicSrc: "/music/relja.mp3",
+
+  weddingDate: "04.10.2026.",
+  weddingTime: "15:00",
+  venue: "Hotel Vojvoda Putnik, Mala sala",
+
+  details: {
+    date: "04 OKT 2026",
+    dateISO: "2026-10-04T15:00:00+02:00",
+
+    venue: "Hotel Vojvoda Putnik, Mala sala",
+
+    sliderImages: [
+      "/images/relja-1.jpg",
+      "/images/relja-2.jpg",
+      "/images/relja-3.jpg",
+      "/images/relja-4.jpg",
+      "/images/relja-5.jpg",
+      "/images/relja-6.jpg",
+      "/images/relja-7.jpg",
+      "/images/relja-8.jpg",
+    ],
+
+    welcomeText: "Radujemo se vašem dolasku!",
+
+    note: "Molimo vas da svoje prisustvo potvrdite do 27.09.2026.",
+
+    rsvpDeadline: "27.09.2026.",
+    rsvpDeadlineISO: "2026-09-27",
+
+    showCalendarButton: true,
+  },
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

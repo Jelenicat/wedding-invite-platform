@@ -21,24 +21,35 @@ function BirthdaySplitIntro({
   const loopImages = [...validImages, ...validImages];
 
   const isLaraSlug = slug === "lara-1";
+  const isReljaSlug = slug === "relja";
+
+  // Pozadinska slika kao kod Lare i za Relju
+  const hasBirthdaySplitBackground =
+    slug === "lara-1" || slug === "relja";
 
   /*
    * Play dugme samo za Laru.
    * Nestaje kada se muzika pokrene.
    */
-  const showMusicButton =
-    isLaraSlug &&
-    hasMusic &&
-    !musicStarted &&
-    typeof onStartMusic === "function";
+const showMusicButton =
+  (isLaraSlug || isReljaSlug) &&
+  hasMusic &&
+  !musicStarted &&
+  typeof onStartMusic === "function";
 
   return (
     <section
       className={`birthday-split-intro ${
-        isLaraSlug ? "birthday-split-intro-lara-1" : ""
+        hasBirthdaySplitBackground
+          ? "birthday-split-intro-lara-1"
+          : ""
+      } ${
+        isReljaSlug
+          ? "birthday-split-intro-relja"
+          : ""
       }`}
       style={
-        isLaraSlug && backgroundImage
+        hasBirthdaySplitBackground && backgroundImage
           ? {
               "--birthday-split-intro-bg": `url(${backgroundImage})`,
             }
@@ -83,8 +94,8 @@ function BirthdaySplitIntro({
           duration: 0.9,
         }}
       >
-        {/* Background samo za Laru */}
-        {isLaraSlug && backgroundImage && (
+        {/* Background za Laru i Relju */}
+        {hasBirthdaySplitBackground && backgroundImage && (
           <div className="birthday-split-lara-background" />
         )}
 
@@ -156,6 +167,36 @@ function BirthdaySplitIntro({
               <div className="birthday-split-subtitle-text">
                 slavi svoj 1. rođendan 🤎
               </div>
+            </motion.div>
+          ) : isReljaSlug ? (
+            <motion.div
+              className="birthday-split-relja-subtitle"
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 0.3,
+                duration: 0.7,
+              }}
+            >
+              <span className="birthday-split-relja-line">
+                OUR LITTLE BEAR
+              </span>
+
+              <span className="birthday-split-relja-line birthday-split-relja-bottom">
+                IS TURNING ONE
+                <span
+                  className="birthday-split-relja-bear"
+                  aria-hidden="true"
+                >
+                  🧸
+                </span>
+              </span>
             </motion.div>
           ) : (
             <motion.p

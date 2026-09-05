@@ -487,9 +487,10 @@ function WeddingPage() {
   const InvitationComponent = template.Invitation;
 
   // Samo ovaj slug koristi posebno dugme za pokretanje muzike.
-  const usesManualIntroMusic =
+const usesManualIntroMusic =
   invitation.slug === "nina-milan" ||
-  invitation.slug === "lara-1";
+  invitation.slug === "lara-1" ||
+  invitation.slug === "relja";
 
   const playInvitationMusic = () => {
     if (!invitation.musicSrc || !audioRef.current || musicStarted) return;

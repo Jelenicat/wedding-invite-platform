@@ -36,15 +36,29 @@ function BirthdaySplitInvitationCard({
   const isLaraSlug =
     slug === "lara-1";
 
+  const isReljaSlug =
+    slug === "relja";
+
   /*
-   * Eva koristi videoSrc iz sluga.
-   * Ostali slugovi zadržavaju stari način:
-   * /videos/ime-sluga.mp4
+   * Lara i Relja koriste isti CARD stil.
+   */
+  const usesLaraCardStyle =
+    isLaraSlug ||
+    isReljaSlug;
+
+  /*
+   * VIDEO ZA GLAVNU KARTICU
    */
   const videoPath =
     isEvaSlug
       ? videoSrc || `/videos/${slug}.mp4`
       : `/videos/${slug}.mp4`;
+
+  /*
+   * RELJIN POSEBAN VIDEO
+   */
+  const reljaVideoPath =
+    "/videos/relja.mp4";
 
   /*
    * DATUM
@@ -71,29 +85,20 @@ function BirthdaySplitInvitationCard({
 
   /*
    * TEKST ISPOD IMENA
-   *
-   * SAMO Lara dobija:
-   * slavi svoj 1. rođendan 🤎 🧸
-   *
-   * Eva i svi ostali ostaju kao ranije.
    */
   const subtitle =
-    isLaraSlug
-      ? "slavi svoj 1. rođendan 🤎 🧸"
+    usesLaraCardStyle
+      ? "slavi svoj 1. rođendan 🤎"
       : isCyrillic
         ? "слави свој рођендан"
         : "slavi svoj rođendan";
 
   /*
    * DANI U NEDELJI
-   *
-   * Lara dobija srpske oznake.
-   * Eva ostaje kao ranije.
-   * Ostali stari slugovi ostaju kao ranije.
    */
   const calendarDays = isCyrillic
     ? ["По", "Ут", "Ср", "Че", "Пе", "Су", "Не"]
-    : isLaraSlug
+    : usesLaraCardStyle
       ? ["Po", "Ut", "Sr", "Če", "Pe", "Su", "Ne"]
       : ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
@@ -121,13 +126,11 @@ function BirthdaySplitInvitationCard({
     Number.isInteger(eventDay);
 
   /*
-   * JavaScript:
+   * JS:
    * 0 = nedelja
-   * 1 = ponedeljak
    *
    * Naš kalendar:
    * 0 = ponedeljak
-   * 6 = nedelja
    */
   const firstDayOfMonth =
     hasValidEventDate
@@ -155,14 +158,11 @@ function BirthdaySplitInvitationCard({
       : 30;
 
   /*
-   * Eva VEĆ koristi pravi kalendar.
-   * Sada ga koristi i Lara.
-   *
-   * Ostali stari slugovi ostaju po starom.
+   * Eva, Lara i Relja koriste pravi kalendar.
    */
   const usesRealCalendar =
     isEvaSlug ||
-    isLaraSlug;
+    usesLaraCardStyle;
 
   const calendarDates =
     usesRealCalendar && hasValidEventDate
@@ -189,7 +189,7 @@ function BirthdaySplitInvitationCard({
         );
 
   /*
-   * Aktivni dan
+   * AKTIVNI DAN
    */
   const activeCalendarDay =
     usesRealCalendar && hasValidEventDate
@@ -212,27 +212,52 @@ function BirthdaySplitInvitationCard({
 
   return (
     <>
+      {/* =====================================================
+          GLAVNA KARTICA
+      ===================================================== */}
+
       <section
         className={`birthday-video-invitation birthday-video-${slug} ${
+          usesLaraCardStyle
+            ? "birthday-video-lara-1"
+            : ""
+        } ${
           isCyrillic
             ? "birthday-video-invitation-cyrillic"
             : ""
         }`}
       >
-        {/* VIDEO BACKGROUND */}
-        <video
-          className="birthday-video-bg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={backgroundImage || undefined}
-        >
-          <source
-            src={videoPath}
-            type="video/mp4"
+        {/* 
+          Kod Relje ne koristimo relja.mp4 iza kartice,
+          jer ćemo video prikazati posebno ispod RSVP-a.
+        */}
+
+        {isReljaSlug ? (
+          <div
+            className="birthday-video-bg birthday-video-bg-image"
+            style={
+              backgroundImage
+                ? {
+                    backgroundImage: `url(${backgroundImage})`,
+                  }
+                : undefined
+            }
           />
-        </video>
+        ) : (
+          <video
+            className="birthday-video-bg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={backgroundImage || undefined}
+          >
+            <source
+              src={videoPath}
+              type="video/mp4"
+            />
+          </video>
+        )}
 
         <div className="birthday-video-overlay" />
 
@@ -260,19 +285,25 @@ function BirthdaySplitInvitationCard({
           </h1>
 
           {/* SUBTITLE */}
-         <p className="birthday-video-subtitle">
-  {isLaraSlug ? (
-    <>
-      <span>slavi svoj 1. rođendan </span>
-      <span className="lara-subtitle-emojis">🤎</span>
-    </>
-  ) : (
-    subtitle
-  )}
-</p>
+          <p className="birthday-video-subtitle">
+            {usesLaraCardStyle ? (
+              <>
+                <span>
+                  slavi svoj 1. rođendan{" "}
+                </span>
+
+                <span className="lara-subtitle-emojis">
+                  🤎
+                </span>
+              </>
+            ) : (
+              subtitle
+            )}
+          </p>
 
           {/* KALENDAR */}
           <div className="birthday-video-calendar">
+
             <div className="calendar-month">
               {month}
             </div>
@@ -413,7 +444,10 @@ function BirthdaySplitInvitationCard({
         </motion.div>
       </section>
 
-      {/* RSVP */}
+      {/* =====================================================
+          RSVP
+      ===================================================== */}
+
       <BirthdaySplitRSVP
         slug={slug}
         eventType="birthday"
@@ -423,7 +457,68 @@ function BirthdaySplitInvitationCard({
         script={activeScript}
       />
 
-      {/* COUNTDOWN */}
+      {/* =====================================================
+          RELJIN VIDEO
+          ISPOD RSVP-a
+          SAMO slug: relja
+      ===================================================== */}
+
+      {isReljaSlug && (
+        <section
+          className="relja-memory-video-section"
+          style={
+            backgroundImage
+              ? {
+                  "--relja-memory-background": `url(${backgroundImage})`,
+                }
+              : undefined
+          }
+        >
+          <div className="relja-memory-video-background" />
+          <div className="relja-memory-video-overlay" />
+
+          <motion.div
+            className="relja-memory-video-wrap"
+            initial={{
+              opacity: 0,
+              y: 26,
+              scale: 0.98,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.18,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <video
+              className="relja-memory-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            >
+              <source
+                src={reljaVideoPath}
+                type="video/mp4"
+              />
+            </video>
+          </motion.div>
+        </section>
+      )}
+
+      {/* =====================================================
+          COUNTDOWN
+      ===================================================== */}
+
       <BirthdaySplitCountdown
         slug={slug}
         targetDate={details?.dateISO}
