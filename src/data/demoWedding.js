@@ -3833,6 +3833,75 @@ theme: {
   },
 },
 
+{
+  slug: "andrea-david",
+  type: "wedding",
+  template: "monogram-video",
+  script: "latin",
+
+  brideName: "Andrea",
+  groomName: "David",
+
+  weddingDate: "10.08.2028.",
+  weddingTime: "17:00",
+
+  venue: "Restoran Elegance, Beograd",
+
+  // VIDEO NA POČETNOM EKRANU
+  videoSrc: "/videos/andrea-david.mp4",
+
+  // POZADINA GLAVNE POZIVNICE
+  backgroundImage: "/images/andrea-david-minimal.jpg",
+
+  // opciono
+  musicSrc: "/music/andrea-david.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "10.08.2028.",
+    dateISO: "2028-08-10T17:00:00+02:00",
+
+    venue: "Restoran Elegance, Beograd",
+
+    events: [
+      {
+        label: "Okupljanje gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Restoran Elegance, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+      },
+      {
+        label: "Građansko venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Restoran Elegance, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+      },
+      {
+        label: "Večera i proslava",
+        time: "18:30",
+        icon: "restaurant",
+        location: "Restoran Elegance, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Restoran+Elegance+Beograd",
+      },
+    ],
+
+    showDressCode: false,
+
+    showCalendarButton: true,
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 25. jula 2028.",
+  }),
+},
+
+
 // =========================
 // Klijenti
 // =========================

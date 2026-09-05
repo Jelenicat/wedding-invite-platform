@@ -87,11 +87,13 @@ function BirthdaySplitInvitationCard({
    * TEKST ISPOD IMENA
    */
   const subtitle =
-    usesLaraCardStyle
-      ? "slavi svoj 1. rođendan 🤎"
-      : isCyrillic
-        ? "слави свој рођендан"
-        : "slavi svoj rođendan";
+    isReljaSlug
+      ? "Relja’s Beary 1st Birthday 🧸🤎"
+      : isLaraSlug
+        ? "slavi svoj 1. rođendan 🤎"
+        : isCyrillic
+          ? "слави свој рођендан"
+          : "slavi svoj rođendan";
 
   /*
    * DANI U NEDELJI
@@ -227,11 +229,6 @@ function BirthdaySplitInvitationCard({
             : ""
         }`}
       >
-        {/* 
-          Kod Relje ne koristimo relja.mp4 iza kartice,
-          jer ćemo video prikazati posebno ispod RSVP-a.
-        */}
-
         {isReljaSlug ? (
           <div
             className="birthday-video-bg birthday-video-bg-image"
@@ -286,7 +283,17 @@ function BirthdaySplitInvitationCard({
 
           {/* SUBTITLE */}
           <p className="birthday-video-subtitle">
-            {usesLaraCardStyle ? (
+            {isReljaSlug ? (
+              <>
+                <span>
+                  Relja’s Beary 1st Birthday{" "}
+                </span>
+
+                <span className="lara-subtitle-emojis">
+                  🧸🤎
+                </span>
+              </>
+            ) : isLaraSlug ? (
               <>
                 <span>
                   slavi svoj 1. rođendan{" "}
@@ -303,7 +310,6 @@ function BirthdaySplitInvitationCard({
 
           {/* KALENDAR */}
           <div className="birthday-video-calendar">
-
             <div className="calendar-month">
               {month}
             </div>
@@ -439,7 +445,6 @@ function BirthdaySplitInvitationCard({
                 {details.note}
               </div>
             )}
-
           </div>
         </motion.div>
       </section>

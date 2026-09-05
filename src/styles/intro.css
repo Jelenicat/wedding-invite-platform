@@ -10000,3 +10000,976 @@ body,
     color: #6f5140;
   }
 }
+
+/* =========================================
+   MONOGRAM VIDEO INTRO
+========================================= */
+
+.monogram-video-intro {
+  position: relative;
+
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  background: #090b08;
+  color: #ffffff;
+
+  isolation: isolate;
+}
+
+
+/* =========================================
+   VIDEO
+========================================= */
+
+.monogram-video-bg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  z-index: 0;
+
+  transform: scale(1.015);
+
+  animation:
+    monogramVideoBreath
+    16s
+    ease-in-out
+    infinite
+    alternate;
+
+  will-change: transform;
+}
+
+@keyframes monogramVideoBreath {
+  from {
+    transform: scale(1.015);
+  }
+
+  to {
+    transform: scale(1.055);
+  }
+}
+
+
+/* =========================================
+   CINEMATIC OVERLAY
+========================================= */
+
+.monogram-video-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.26) 0%,
+      rgba(0, 0, 0, 0.05) 23%,
+      rgba(0, 0, 0, 0.01) 45%,
+      rgba(0, 0, 0, 0.08) 68%,
+      rgba(0, 0, 0, 0.52) 100%
+    );
+}
+
+
+/* =========================================
+   VIGNETTE
+========================================= */
+
+.monogram-video-vignette {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 46%,
+      transparent 34%,
+      rgba(0, 0, 0, 0.04) 58%,
+      rgba(0, 0, 0, 0.32) 100%
+    );
+}
+
+
+/* =========================================
+   TOP TEXT
+========================================= */
+
+.monogram-video-top {
+  position: absolute;
+
+  top: clamp(42px, 6.5svh, 70px);
+  left: 50%;
+
+  translate: -50% 0;
+
+  z-index: 3;
+
+  width: 100%;
+
+  padding:
+    0
+    20px;
+
+  margin: 0;
+
+  text-align: center;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  color: rgba(255, 255, 255, 0.93);
+
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+
+/* =========================================
+   MONOGRAM WRAPPER
+========================================= */
+
+.monogram-video-monogram {
+  position: absolute;
+
+  top: 46%;
+  left: 50%;
+
+  translate: -50% -50%;
+
+  z-index: 3;
+
+  width: 310px;
+  height: 270px;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(
+      0 8px 18px
+      rgba(0, 0, 0, 0.08)
+    );
+}
+
+
+/* blag glow iza inicijala */
+
+.monogram-video-monogram::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 220px;
+  height: 220px;
+
+  translate: -50% -50%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.055) 0%,
+      rgba(255, 255, 255, 0.018) 42%,
+      transparent 72%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   MONOGRAM LETTERS
+========================================= */
+
+.monogram-video-letter {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  /* ISTI FONT */
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size:
+    clamp(
+      170px,
+      34vw,
+      220px
+    );
+
+  font-weight: 400;
+  font-style: normal;
+
+  line-height: 0.7;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.96
+    );
+
+  /*
+    Namerno veoma slab shadow.
+    Tako isti Italianno deluje tanje.
+  */
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 5px 12px rgba(0, 0, 0, 0.06);
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+
+  font-synthesis: none;
+
+  transform-origin: center;
+}
+
+
+/* =========================================
+   A
+========================================= */
+
+.monogram-video-letter-bride {
+  transform:
+    translate(
+      -70%,
+      -58%
+    )
+    rotate(-4deg);
+
+  z-index: 2;
+}
+
+
+/* =========================================
+   D
+========================================= */
+
+.monogram-video-letter-groom {
+  transform:
+    translate(
+      -30%,
+      -22%
+    )
+    rotate(2deg);
+
+  z-index: 1;
+}
+
+
+/* =========================================
+   NAMES + DATE WRAPPER
+========================================= */
+
+.monogram-video-details {
+  position: absolute;
+
+  left: 50%;
+  bottom: 105px;
+
+  translate: -50% 0;
+
+  z-index: 3;
+
+  width: 100%;
+
+  padding:
+    0
+    20px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   NAMES
+========================================= */
+
+.monogram-video-names {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.38);
+}
+
+.monogram-video-names span {
+  font-size: 0.78em;
+
+  opacity: 0.82;
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.monogram-video-date {
+  margin-top: 8px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 10.5px;
+
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+
+  color: rgba(255, 255, 255, 0.84);
+
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.36);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.monogram-video-button {
+  position: absolute;
+
+  left: 50%;
+
+  bottom:
+    calc(
+      22px +
+      env(safe-area-inset-bottom)
+    );
+
+  translate: -50% 0;
+
+  z-index: 4;
+
+  min-width: 240px;
+
+  padding:
+    14px
+    28px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.48);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.24),
+      rgba(10, 10, 10, 0.36)
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.96
+    );
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.19em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   BUTTON HOVER
+========================================= */
+
+.monogram-video-button:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.04)
+    );
+
+  border-color:
+    rgba(255, 255, 255, 0.8);
+
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================================
+   BUTTON ACTIVE
+========================================= */
+
+.monogram-video-button:active {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+}
+
+
+/* =========================================================
+   MOBILE — GLAVNI "WOW" DIZAJN
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .monogram-video-intro {
+    min-height: 100dvh;
+  }
+
+
+  /* VIDEO */
+
+  .monogram-video-bg {
+    /*
+      Malo veći video daje više cinematic osećaj.
+      Ne deluje kao obična video pozadina.
+    */
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scale(1.035);
+  }
+
+
+  /* OVERLAY */
+
+  .monogram-video-overlay {
+    background:
+      linear-gradient(
+        to bottom,
+
+        rgba(0, 0, 0, 0.33) 0%,
+
+        rgba(0, 0, 0, 0.09) 16%,
+
+        rgba(0, 0, 0, 0.015) 35%,
+
+        rgba(0, 0, 0, 0.015) 58%,
+
+        rgba(0, 0, 0, 0.14) 73%,
+
+        rgba(0, 0, 0, 0.68) 100%
+      );
+  }
+
+
+  .monogram-video-vignette {
+    background:
+      radial-gradient(
+        ellipse at 50% 43%,
+
+        transparent 30%,
+
+        rgba(0, 0, 0, 0.015) 48%,
+
+        rgba(0, 0, 0, 0.18) 78%,
+
+        rgba(0, 0, 0, 0.4) 100%
+      );
+  }
+
+
+  /* TOP */
+
+  .monogram-video-top {
+    top:
+      calc(
+        38px +
+        env(safe-area-inset-top)
+      );
+
+    padding:
+      0
+      12px;
+
+    font-size: 10.5px;
+
+    letter-spacing: 0.175em;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.93
+      );
+  }
+
+
+  /* MONOGRAM */
+
+  .monogram-video-monogram {
+    top: 43%;
+
+    width: 285px;
+    height: 250px;
+  }
+
+
+  .monogram-video-monogram::before {
+    width: 250px;
+    height: 250px;
+
+    background:
+      radial-gradient(
+        circle,
+
+        rgba(255, 255, 255, 0.065) 0%,
+
+        rgba(255, 255, 255, 0.025) 38%,
+
+        transparent 70%
+      );
+
+    filter: blur(22px);
+  }
+
+
+  /*
+    Isti Italianno.
+    Malo veći, ali sa skoro bez shadow-a,
+    pa izgleda mnogo finije.
+  */
+
+  .monogram-video-letter {
+    font-size: 178px;
+
+    font-weight: 400;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.965
+      );
+
+    text-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.08),
+      0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+
+  /* A */
+
+  .monogram-video-letter-bride {
+    transform:
+      translate(
+        -70%,
+        -57%
+      )
+      rotate(-4deg);
+  }
+
+
+  /* D */
+
+  .monogram-video-letter-groom {
+    transform:
+      translate(
+        -31%,
+        -21%
+      )
+      rotate(2deg);
+  }
+
+
+  /* IMENA */
+
+  .monogram-video-details {
+    bottom:
+      calc(
+        104px +
+        env(safe-area-inset-bottom)
+      );
+
+    padding:
+      0
+      16px;
+  }
+
+
+  .monogram-video-names {
+    font-size: 14px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.105em;
+
+    gap: 7px;
+
+    text-shadow:
+      0 2px 8px
+      rgba(0, 0, 0, 0.48);
+  }
+
+
+  .monogram-video-date {
+    margin-top: 8px;
+
+    font-size: 9.5px;
+
+    letter-spacing: 0.13em;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.83
+      );
+  }
+
+
+  /* BUTTON */
+
+  .monogram-video-button {
+    bottom:
+      calc(
+        22px +
+        env(safe-area-inset-bottom)
+      );
+
+    width:
+      min(
+        252px,
+        calc(100vw - 64px)
+      );
+
+    min-width: 0;
+
+    height: 45px;
+
+    padding:
+      0
+      18px;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.52
+      );
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(8, 8, 8, 0.18),
+        rgba(8, 8, 8, 0.38)
+      );
+
+    backdrop-filter:
+      blur(10px);
+
+    -webkit-backdrop-filter:
+      blur(10px);
+
+    font-size: 9.5px;
+
+    letter-spacing: 0.19em;
+
+    box-shadow:
+      0 14px 34px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
+
+/* =========================================================
+   USKI TELEFONI
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .monogram-video-top {
+    top:
+      calc(
+        31px +
+        env(safe-area-inset-top)
+      );
+
+    font-size: 9.7px;
+
+    letter-spacing: 0.145em;
+  }
+
+
+  .monogram-video-monogram {
+    width: 250px;
+    height: 225px;
+  }
+
+
+  .monogram-video-letter {
+    font-size: 162px;
+  }
+
+
+  .monogram-video-details {
+    bottom:
+      calc(
+        97px +
+        env(safe-area-inset-bottom)
+      );
+  }
+
+
+  .monogram-video-names {
+    font-size: 13px;
+
+    letter-spacing: 0.09em;
+  }
+
+
+  .monogram-video-date {
+    font-size: 9px;
+  }
+
+
+  .monogram-video-button {
+    width:
+      min(
+        230px,
+        calc(100vw - 54px)
+      );
+
+    height: 43px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   NIŽI TELEFONI
+========================================================= */
+
+@media (max-height: 720px) {
+
+  .monogram-video-top {
+    top:
+      calc(
+        26px +
+        env(safe-area-inset-top)
+      );
+  }
+
+
+  .monogram-video-monogram {
+    top: 41%;
+
+    width: 245px;
+    height: 220px;
+  }
+
+
+  .monogram-video-letter {
+    font-size: 158px;
+  }
+
+
+  .monogram-video-details {
+    bottom:
+      calc(
+        88px +
+        env(safe-area-inset-bottom)
+      );
+  }
+
+
+  .monogram-video-button {
+    bottom:
+      calc(
+        15px +
+        env(safe-area-inset-bottom)
+      );
+
+    height: 42px;
+  }
+}
+
+
+/* =========================================================
+   BAŠ NISKI TELEFONI
+========================================================= */
+
+@media (max-height: 640px) {
+
+  .monogram-video-top {
+    top:
+      calc(
+        18px +
+        env(safe-area-inset-top)
+      );
+
+    font-size: 9px;
+  }
+
+
+  .monogram-video-monogram {
+    top: 39%;
+
+    width: 225px;
+    height: 195px;
+  }
+
+
+  .monogram-video-letter {
+    font-size: 148px;
+  }
+
+
+  .monogram-video-details {
+    bottom:
+      calc(
+        78px +
+        env(safe-area-inset-bottom)
+      );
+  }
+
+
+  .monogram-video-names {
+    font-size: 12px;
+  }
+
+
+  .monogram-video-date {
+    margin-top: 6px;
+
+    font-size: 8.5px;
+  }
+
+
+  .monogram-video-button {
+    bottom:
+      calc(
+        11px +
+        env(safe-area-inset-bottom)
+      );
+
+    height: 39px;
+
+    font-size: 8.5px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 769px) {
+
+  .monogram-video-monogram {
+    width: 340px;
+    height: 290px;
+  }
+
+
+  .monogram-video-letter {
+    font-size: 215px;
+  }
+
+
+  .monogram-video-details {
+    bottom: 110px;
+  }
+
+
+  .monogram-video-button {
+    bottom: 30px;
+  }
+}

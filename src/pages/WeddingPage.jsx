@@ -52,6 +52,8 @@ import EditorialIntro from "../components/EditorialIntro";
 import EditorialInvitationCard from "../components/EditorialInvitationCard";
 import SilkIntro from "../components/SilkIntro";
 import SilkPhotoInvitationCard from "../components/SilkPhotoInvitationCard";
+import MonogramVideoIntro from "../components/MonogramVideoIntro";
+import MonogramInvitationCard from "../components/MonogramInvitationCard";
 
 import SilkDateFlowInvitationCard from "../components/SilkDateFlowInvitationCard";
 import EnvelopeSplitIntro from "../components/EnvelopeSplitIntro";
@@ -296,6 +298,11 @@ const TEMPLATE_COMPONENTS = {
   Intro: ItalianIntro,
   Invitation: MinimalInvitationCard,
 },
+
+  "monogram-video": {
+    Intro: MonogramVideoIntro,
+    Invitation: MonogramInvitationCard,
+  },
 
 };
 
