@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import EditorialRSVP from "./EditorialRSVP";
 import EditorialCountdown from "./EditorialCountdown";
 
+function getInitial(value = "") {
+  const cleanValue = String(value).trim();
+
+  if (!cleanValue) return "";
+
+  return Array.from(cleanValue)[0].toUpperCase();
+}
+
 export default function MonogramInvitationCard({
   brideName,
   groomName,
@@ -15,8 +23,14 @@ export default function MonogramInvitationCard({
 }) {
   const events = details?.events || [];
 
-  const dressWomen = details?.dressCodeWomen || "";
-  const dressMen = details?.dressCodeMen || "";
+  const brideInitial = getInitial(brideName);
+  const groomInitial = getInitial(groomName);
+
+  const dressWomen =
+    details?.dressCodeWomen || "";
+
+  const dressMen =
+    details?.dressCodeMen || "";
 
   const dressCodePalette = Array.isArray(
     details?.dressCodePalette
@@ -181,7 +195,9 @@ export default function MonogramInvitationCard({
             : "none",
       }}
     >
-      {/* BACKGROUND */}
+      {/* =========================================
+          BACKGROUND
+      ========================================= */}
 
       <div className="editorial-monogram-background" />
 
@@ -213,10 +229,43 @@ export default function MonogramInvitationCard({
 
           <section className="editorial-hero editorial-monogram-hero">
 
+            {/* INICIJALI */}
+
+            <motion.div
+              className="editorial-monogram-initials"
+              initial={{
+                opacity: 0,
+                y: 8,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.65,
+              }}
+            >
+              <span>
+                {brideInitial}
+              </span>
+
+              <span className="editorial-monogram-initials-and">
+                &
+              </span>
+
+              <span>
+                {groomInitial}
+              </span>
+            </motion.div>
+
+
             {/* IMENA */}
 
             <motion.div
-              className="editorial-monogram-hero-names"
+              className="editorial-monogram-script-names"
               initial={{
                 opacity: 0,
                 y: 10,
@@ -230,25 +279,30 @@ export default function MonogramInvitationCard({
               }}
               transition={{
                 duration: 0.8,
+                delay: 0.05,
               }}
             >
-              <span>{brideName}</span>
+              <div className="editorial-monogram-script-name">
+                {brideName}
+              </div>
 
-              <span className="editorial-monogram-hero-and">
-                &
-              </span>
+              <div className="editorial-monogram-heart">
+                ♡
+              </div>
 
-              <span>{groomName}</span>
+              <div className="editorial-monogram-script-name">
+                {groomName}
+              </div>
             </motion.div>
 
 
-            {/* MINI NASLOV */}
+            {/* WELCOME TEXT */}
 
-            <motion.div
-              className="editorial-monogram-hero-kicker"
+            <motion.p
+              className="editorial-monogram-welcome editorial-monogram-welcome--stacked"
               initial={{
                 opacity: 0,
-                y: 6,
+                y: 8,
               }}
               whileInView={{
                 opacity: 1,
@@ -259,48 +313,42 @@ export default function MonogramInvitationCard({
               }}
               transition={{
                 duration: 0.7,
-                delay: 0.1,
+                delay: 0.12,
               }}
             >
-              POZIVNICA ZA VENČANJE
-            </motion.div>
+              {details?.welcomeText ||
+                "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana."}
+            </motion.p>
 
 
-            {/* UKRAS */}
+            {/* DATUM LABEL */}
 
             <motion.div
-              className="editorial-monogram-hero-symbol"
+              className="editorial-monogram-date-label"
               initial={{
                 opacity: 0,
-                scale: 0.9,
+                y: 8,
               }}
               whileInView={{
                 opacity: 1,
-                scale: 1,
+                y: 0,
               }}
               viewport={{
                 once: true,
               }}
               transition={{
-                duration: 0.65,
-                delay: 0.15,
+                duration: 0.7,
+                delay: 0.18,
               }}
             >
-              <span />
-
-              <img
-                src="/icons/rings.svg"
-                alt=""
-              />
-
-              <span />
+              DATUM
             </motion.div>
 
 
             {/* DATUM */}
 
             <motion.div
-              className="editorial-hero-date"
+              className="editorial-hero-date editorial-monogram-big-date"
               initial={{
                 opacity: 0,
                 y: 8,
@@ -314,36 +362,11 @@ export default function MonogramInvitationCard({
               }}
               transition={{
                 duration: 0.7,
-                delay: 0.2,
+                delay: 0.22,
               }}
             >
               {weddingDate}
             </motion.div>
-
-
-            {/* WELCOME */}
-
-            <motion.p
-              className="editorial-hero-bottom editorial-monogram-welcome"
-              initial={{
-                opacity: 0,
-                y: 8,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.25,
-              }}
-            >
-              {details?.welcomeText ||
-                "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan."}
-            </motion.p>
           </section>
 
 
@@ -359,7 +382,7 @@ export default function MonogramInvitationCard({
               className="editorial-monogram-section-icon"
               initial={{
                 opacity: 0,
-                scale: 0.8,
+                scale: 0.85,
               }}
               whileInView={{
                 opacity: 1,
@@ -392,10 +415,12 @@ export default function MonogramInvitationCard({
             )}
 
             <div className="editorial-location-text">
+
               {locationText ? (
                 <div className="editorial-location-stack">
 
                   <div className="editorial-location-name-row">
+
                     {details?.mapLink ? (
                       <a
                         href={details.mapLink}
@@ -410,6 +435,7 @@ export default function MonogramInvitationCard({
                         {locationText}
                       </span>
                     )}
+
                   </div>
 
                   {details?.mapLink && (
@@ -424,6 +450,7 @@ export default function MonogramInvitationCard({
                       </a>
                     </div>
                   )}
+
                 </div>
               ) : (
                 <p
@@ -434,6 +461,7 @@ export default function MonogramInvitationCard({
                   Lokacija uskoro
                 </p>
               )}
+
             </div>
           </section>
 
@@ -451,7 +479,7 @@ export default function MonogramInvitationCard({
                 className="editorial-monogram-section-icon"
                 initial={{
                   opacity: 0,
-                  scale: 0.8,
+                  scale: 0.85,
                 }}
                 whileInView={{
                   opacity: 1,
@@ -548,10 +576,12 @@ export default function MonogramInvitationCard({
                                 </div>
                               )
                           )}
+
                       </motion.div>
                     );
                   }
                 )}
+
               </div>
             </section>
           )}
@@ -570,7 +600,7 @@ export default function MonogramInvitationCard({
                 className="editorial-monogram-section-icon editorial-monogram-dress-icon"
                 initial={{
                   opacity: 0,
-                  scale: 0.8,
+                  scale: 0.85,
                 }}
                 whileInView={{
                   opacity: 1,
@@ -621,6 +651,7 @@ export default function MonogramInvitationCard({
                         dressCodeWomenPalette,
                         "editorial-dress-palette-box--women"
                       )}
+
                     </div>
                   )}
 
@@ -644,8 +675,10 @@ export default function MonogramInvitationCard({
                         dressCodeMenPalette,
                         "editorial-dress-palette-box--men"
                       )}
+
                     </div>
                   )}
+
                 </div>
               ) : (
                 <>
@@ -662,6 +695,7 @@ export default function MonogramInvitationCard({
                   )}
                 </>
               )}
+
             </section>
           )}
 
@@ -691,6 +725,7 @@ export default function MonogramInvitationCard({
             script={details?.script || "latin"}
             slug={slug}
           />
+
         </motion.div>
       </div>
     </section>
