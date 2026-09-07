@@ -8408,7 +8408,7 @@ mapLink:
   groomName: "Petar",
 
   weddingDate: "04 OKT 2026",
-  weddingTime: "14:00",
+  weddingTime: "16:00",
   venue: "Hotel Šumadija, Gornji Milanovac",
  musicSrc: "/music/teodora-petar.mp3",
   backgroundImage: "/images/milica-ognjen-minimal.jpg",
@@ -8421,7 +8421,7 @@ mapLink:
       "Biće nam izuzetno drago da svojim prisustvom ulepšate naš poseban dan.",
 
     date: "04 OKT 2026",
-    dateISO: "2026-10-04T14:00:00+02:00",
+    dateISO: "2026-10-04T16:00:00+02:00",
 
     events: [
       
