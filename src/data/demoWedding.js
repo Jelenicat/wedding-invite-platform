@@ -8322,11 +8322,11 @@ mapLink:
       "Radujemo se vašem dolasku!",
 
     note:
-      "Molimo vas da svoje prisustvo potvrdite do 01.10.2026.",
+      "Molimo vas da svoje prisustvo potvrdite do 25.09.2026.",
 
     rsvpDeadline: "01.10.2026.",
     rsvpDeadlineISO: "2026-10-01",
-
+calendarDurationHours: 7,
     showCalendarButton: true,
   },
 },
