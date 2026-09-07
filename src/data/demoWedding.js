@@ -8326,7 +8326,7 @@ mapLink:
 
     rsvpDeadline: "01.10.2026.",
     rsvpDeadlineISO: "2026-10-01",
-calendarDurationHours: 7,
+calendarDurationHours: 6,
     showCalendarButton: true,
   },
 },
