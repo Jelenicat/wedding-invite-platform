@@ -8498,6 +8498,71 @@ calendarDurationHours: 6,
   },
 },
 
+{
+  slug: "hana-1",
+  type: "birthday",
+  template: "birthday-split",
+  script: "latin",
+
+  brideName: "Hana",
+
+  // Prva Hanina slika kao glavna pozadina
+  backgroundImage: "/images/hana-1-bg.jpg",
+musicSrc: "/music/hana-1.mp3",
+  // Koristi Evin video
+  videoSrc: "/videos/eva-1.mp4",
+
+  weddingDate: "18.10.2026.",
+  weddingTime: "14:30",
+  venue: "Sala Belwood, Ada Ciganlija",
+
+  details: {
+    date: "18 OKT 2026",
+    dateISO: "2026-10-18T14:30:00+02:00",
+
+    venue: "Sala Belwood, Ada Ciganlija",
+
+    events: [
+      {
+        label: "Krštenje",
+        time: "14:30",
+        icon: "church",
+        location: "Crkva Svetog Save",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Save+Beograd",
+      },
+      {
+        label: "Proslava",
+        time: "16:00",
+        icon: "cake",
+        location: "Sala Belwood, Ada Ciganlija",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Belwood+Ada+Ciganlija",
+      },
+    ],
+
+    sliderImages: [
+      "/images/hana-1-1.jpg",
+      "/images/hana-1-3.jpg",
+       "/images/hana-1-2.jpg",
+      "/images/hana-1-4.jpg",
+      "/images/hana-1-5.jpg",
+      "/images/hana-1-6.jpg",
+    ],
+
+    welcomeText: "Radujemo se vašem dolasku!",
+
+    note:
+      "Molimo vas da svoje prisustvo potvrdite do 10.10.2026.",
+
+    rsvpDeadline: "10.10.2026.",
+    rsvpDeadlineISO: "2026-10-10",
+
+    calendarDurationHours: 6,
+    showCalendarButton: true,
+  },
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

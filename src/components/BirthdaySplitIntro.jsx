@@ -20,48 +20,78 @@ function BirthdaySplitIntro({
   // Dupliramo slike zbog seamless / infinite slidera
   const loopImages = [...validImages, ...validImages];
 
-  const isLaraSlug = slug === "lara-1";
-  const isReljaSlug = slug === "relja";
+  /*
+   * POSEBNI SLUGOVI
+   */
+  const isLaraSlug =
+    slug === "lara-1";
 
-  // Pozadinska slika kao kod Lare i za Relju
-  const hasBirthdaySplitBackground =
-    slug === "lara-1" || slug === "relja";
+  const isReljaSlug =
+    slug === "relja";
+
+  const isHanaSlug =
+    slug === "hana-1";
 
   /*
-   * Play dugme samo za Laru.
-   * Nestaje kada se muzika pokrene.
+   * POZADINSKA SLIKA
+   *
+   * Lara, Relja i Hana koriste backgroundImage
+   * na desnoj strani intro sekcije.
    */
-const showMusicButton =
-  (isLaraSlug || isReljaSlug) &&
-  hasMusic &&
-  !musicStarted &&
-  typeof onStartMusic === "function";
+  const hasBirthdaySplitBackground =
+    isLaraSlug ||
+    isReljaSlug ||
+    isHanaSlug;
+
+  /*
+   * PLAY MUZIKA
+   *
+   * Samo Lara i Relja.
+   */
+  const showMusicButton =
+    (isLaraSlug || isReljaSlug) &&
+    hasMusic &&
+    !musicStarted &&
+    typeof onStartMusic === "function";
 
   return (
     <section
-      className={`birthday-split-intro ${
+      className={[
+        "birthday-split-intro",
+
         hasBirthdaySplitBackground
           ? "birthday-split-intro-lara-1"
-          : ""
-      } ${
+          : "",
+
         isReljaSlug
           ? "birthday-split-intro-relja"
-          : ""
-      }`}
+          : "",
+
+        isHanaSlug
+          ? "birthday-split-intro-hana"
+          : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       style={
-        hasBirthdaySplitBackground && backgroundImage
+        hasBirthdaySplitBackground &&
+        backgroundImage
           ? {
               "--birthday-split-intro-bg": `url(${backgroundImage})`,
             }
           : undefined
       }
     >
-      {/* LEFT - SLIDER */}
+      {/* =====================================================
+          LEFT - SLIDER
+      ===================================================== */}
+
       <div className="birthday-split-left">
         <div
           className="birthday-split-track"
           style={{
-            "--image-count": validImages.length || 1,
+            "--image-count":
+              validImages.length || 1,
           }}
         >
           {loopImages.map((img, i) => (
@@ -79,7 +109,10 @@ const showMusicButton =
         </div>
       </div>
 
-      {/* RIGHT - TEXT */}
+      {/* =====================================================
+          RIGHT - TEXT
+      ===================================================== */}
+
       <motion.div
         className="birthday-split-right"
         initial={{
@@ -94,14 +127,25 @@ const showMusicButton =
           duration: 0.9,
         }}
       >
-        {/* Background za Laru i Relju */}
-        {hasBirthdaySplitBackground && backgroundImage && (
-          <div className="birthday-split-lara-background" />
-        )}
+        {/* ===================================================
+            POZADINSKA SLIKA
+            Lara / Relja / Hana
+        =================================================== */}
+
+        {hasBirthdaySplitBackground &&
+          backgroundImage && (
+            <div className="birthday-split-lara-background" />
+          )}
 
         <div className="birthday-split-content">
-          {/* HEADING */}
+
+          {/* =================================================
+              HEADING 1 / ONE
+              ISTI ZA LARU, RELJU I HANU
+          ================================================= */}
+
           <div className="birthday-split-heading">
+
             {/* BIG 1 */}
             <motion.div
               className="birthday-split-one"
@@ -117,7 +161,12 @@ const showMusicButton =
               }}
               transition={{
                 duration: 1.2,
-                ease: [0.22, 1, 0.36, 1],
+                ease: [
+                  0.22,
+                  1,
+                  0.36,
+                  1,
+                ],
               }}
             >
               1
@@ -143,8 +192,76 @@ const showMusicButton =
             </motion.h1>
           </div>
 
-          {/* SUBTITLE */}
-          {isLaraSlug ? (
+          {/* =================================================
+              SUBTITLE
+          ================================================= */}
+
+          {isHanaSlug ? (
+
+            /* ================================================
+               HANA
+            ================================================ */
+
+            <motion.div
+              className="birthday-split-hana-content"
+              initial={{
+                opacity: 0,
+                y: 14,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+              }}
+            >
+              <motion.div
+                className="birthday-split-hana-name"
+                initial={{
+                  opacity: 0,
+                  y: 10,
+                  filter: "blur(4px)",
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                }}
+                transition={{
+                  delay: 0.25,
+                  duration: 0.9,
+                }}
+              >
+                {name}
+              </motion.div>
+
+              <motion.div
+                className="birthday-split-hana-text"
+                initial={{
+                  opacity: 0,
+                  y: 8,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.4,
+                  duration: 0.7,
+                }}
+              >
+                slavi svoj 1. rođendan
+              </motion.div>
+            </motion.div>
+
+          ) : isLaraSlug ? (
+
+            /* ================================================
+               LARA
+            ================================================ */
+
             <motion.div
               className="birthday-split-subtitle-wrap"
               initial={{
@@ -168,7 +285,13 @@ const showMusicButton =
                 slavi svoj 1. rođendan 🤎
               </div>
             </motion.div>
+
           ) : isReljaSlug ? (
+
+            /* ================================================
+               RELJA
+            ================================================ */
+
             <motion.div
               className="birthday-split-relja-subtitle"
               initial={{
@@ -190,6 +313,7 @@ const showMusicButton =
 
               <span className="birthday-split-relja-line birthday-split-relja-bottom">
                 IS TURNING ONE
+
                 <span
                   className="birthday-split-relja-bear"
                   aria-hidden="true"
@@ -198,7 +322,13 @@ const showMusicButton =
                 </span>
               </span>
             </motion.div>
+
           ) : (
+
+            /* ================================================
+               OSTALI SLUGOVI
+            ================================================ */
+
             <motion.p
               className="birthday-split-subtitle"
               initial={{
@@ -218,7 +348,11 @@ const showMusicButton =
             </motion.p>
           )}
 
-          {/* PLAY MUZIKA - samo Lara */}
+          {/* =================================================
+              PLAY MUZIKA
+              samo Lara / Relja
+          ================================================= */}
+
           {showMusicButton && (
             <motion.div
               className="birthday-split-music-control"
@@ -259,7 +393,10 @@ const showMusicButton =
             </motion.div>
           )}
 
-          {/* BUTTON */}
+          {/* =================================================
+              BUTTON
+          ================================================= */}
+
           <motion.button
             className="birthday-split-btn"
             onClick={onEnter}
@@ -284,6 +421,7 @@ const showMusicButton =
           >
             Pogledaj pozivnicu
           </motion.button>
+
         </div>
       </motion.div>
     </section>

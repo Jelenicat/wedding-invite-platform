@@ -24658,4 +24658,63 @@ font-family: "Italianno", cursive;
   }
 }
 
+/* =========================
+   HANA-1 CARD NAME
+   isto kao na intro
+========================= */
 
+.birthday-video-invitation.birthday-video-hana-1 .birthday-video-name {
+  font-family: "Great Vibes", cursive;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #5f473f;
+  margin: 0 0 14px;
+}
+
+.birthday-video-invitation.birthday-video-hana-1 .birthday-video-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 500;
+  font-style: italic;
+  color: #6f564e;
+}
+
+@media (max-width: 640px) {
+  .birthday-video-invitation.birthday-video-hana-1 .birthday-video-name {
+    font-size: 64px;
+  }
+
+  .birthday-video-invitation.birthday-video-hana-1 .birthday-video-subtitle {
+    font-size: 19px;
+  }
+}
+/* =========================
+   HANA-1
+   isto ime kao na intro-u
+========================= */
+
+.birthday-video-invitation.birthday-video-hana-1
+  .birthday-video-name {
+  font-family: "Great Vibes", cursive !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+
+  font-size: 74px;
+  line-height: 0.95;
+  letter-spacing: 0;
+
+  color: #74483f;
+
+  margin: 0 0 12px;
+
+  text-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .birthday-video-invitation.birthday-video-hana-1
+    .birthday-video-name {
+    font-size: 68px;
+  }
+}

@@ -39,20 +39,29 @@ function BirthdaySplitInvitationCard({
   const isReljaSlug =
     slug === "relja";
 
+  const isHanaSlug =
+    slug === "hana-1";
+
   /*
-   * Lara i Relja koriste isti CARD stil.
+   * Lara, Relja i Hana koriste isti CARD stil.
    */
   const usesLaraCardStyle =
     isLaraSlug ||
-    isReljaSlug;
+    isReljaSlug ||
+    isHanaSlug;
 
   /*
    * VIDEO ZA GLAVNU KARTICU
+   *
+   * Ako postoji videoSrc u slugu,
+   * koristi njega.
+   *
+   * Ako ne postoji:
+   * /videos/slug.mp4
    */
   const videoPath =
-    isEvaSlug
-      ? videoSrc || `/videos/${slug}.mp4`
-      : `/videos/${slug}.mp4`;
+    videoSrc ||
+    `/videos/${slug}.mp4`;
 
   /*
    * RELJIN POSEBAN VIDEO
@@ -91,9 +100,11 @@ function BirthdaySplitInvitationCard({
       ? "Relja’s Beary 1st Birthday 🧸🤎"
       : isLaraSlug
         ? "slavi svoj 1. rođendan 🤎"
-        : isCyrillic
-          ? "слави свој рођендан"
-          : "slavi svoj rođendan";
+        : isHanaSlug
+          ? "slavi svoj 1. rođendan"
+          : isCyrillic
+            ? "слави свој рођендан"
+            : "slavi svoj rođendan";
 
   /*
    * DANI U NEDELJI
@@ -106,6 +117,10 @@ function BirthdaySplitInvitationCard({
 
   /*
    * ISO DATUM
+   *
+   * Hana:
+   * 18.10.2026.
+   * NEDELJA
    */
   const isoDateParts =
     details?.dateISO
@@ -160,7 +175,8 @@ function BirthdaySplitInvitationCard({
       : 30;
 
   /*
-   * Eva, Lara i Relja koriste pravi kalendar.
+   * Eva, Lara, Relja i Hana
+   * koriste pravi kalendar.
    */
   const usesRealCalendar =
     isEvaSlug ||
@@ -229,6 +245,12 @@ function BirthdaySplitInvitationCard({
             : ""
         }`}
       >
+        {/*
+         * Relja koristi sliku.
+         *
+         * Hana koristi videoSrc iz sluga,
+         * npr. /videos/eva-1.mp4
+         */}
         {isReljaSlug ? (
           <div
             className="birthday-video-bg birthday-video-bg-image"
@@ -303,6 +325,10 @@ function BirthdaySplitInvitationCard({
                   🤎
                 </span>
               </>
+            ) : isHanaSlug ? (
+              <span>
+                slavi svoj 1. rođendan
+              </span>
             ) : (
               subtitle
             )}
