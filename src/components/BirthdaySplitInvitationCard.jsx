@@ -52,12 +52,6 @@ function BirthdaySplitInvitationCard({
 
   /*
    * VIDEO ZA GLAVNU KARTICU
-   *
-   * Ako postoji videoSrc u slugu,
-   * koristi njega.
-   *
-   * Ako ne postoji:
-   * /videos/slug.mp4
    */
   const videoPath =
     videoSrc ||
@@ -117,10 +111,6 @@ function BirthdaySplitInvitationCard({
 
   /*
    * ISO DATUM
-   *
-   * Hana:
-   * 18.10.2026.
-   * NEDELJA
    */
   const isoDateParts =
     details?.dateISO
@@ -175,8 +165,7 @@ function BirthdaySplitInvitationCard({
       : 30;
 
   /*
-   * Eva, Lara, Relja i Hana
-   * koriste pravi kalendar.
+   * Eva, Lara, Relja i Hana koriste pravi kalendar.
    */
   const usesRealCalendar =
     isEvaSlug ||
@@ -245,12 +234,6 @@ function BirthdaySplitInvitationCard({
             : ""
         }`}
       >
-        {/*
-         * Relja koristi sliku.
-         *
-         * Hana koristi videoSrc iz sluga,
-         * npr. /videos/eva-1.mp4
-         */}
         {isReljaSlug ? (
           <div
             className="birthday-video-bg birthday-video-bg-image"
@@ -381,95 +364,227 @@ function BirthdaySplitInvitationCard({
             </div>
           </div>
 
-          {/* INFO */}
+          {/* =================================================
+              INFO
+          ================================================= */}
+
           <div className="birthday-video-info">
 
-            {/* LOKACIJA */}
-            {displayedVenue && (
-              <a
-                href={locationLink}
-                target="_blank"
-                rel="noreferrer"
-                className="birthday-video-item"
-              >
-                <span
-                  className="birthday-video-item-icon"
-                  aria-hidden="true"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
+            {/* ===============================================
+                HANA
+            =============================================== */}
+
+            {isHanaSlug &&
+            Array.isArray(details?.events) ? (
+              <div className="birthday-video-hana-events">
+
+                {details.events.map(
+                  (event, index) => (
+                    <div
+                      className="birthday-video-hana-event"
+                      key={`${event.label}-${event.time}-${index}`}
+                    >
+                      {/* NAZIV DOGAĐAJA */}
+                      {event.label && (
+                        <div className="birthday-video-hana-event-title">
+                          {event.label}
+                        </div>
+                      )}
+
+                      {/* VREME + LOKACIJA */}
+                      <div className="birthday-video-hana-event-details">
+
+                        {/* VREME */}
+                        {event.time && (
+                          <div className="birthday-video-hana-event-detail">
+                            <span
+                              className="birthday-video-hana-detail-icon"
+                              aria-hidden="true"
+                            >
+                              <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                              >
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="8.5"
+                                  stroke="currentColor"
+                                  strokeWidth="1.5"
+                                />
+
+                                <path
+                                  d="M12 7.5v5l3 2"
+                                  stroke="currentColor"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </span>
+
+                            <span>
+                              {event.time}
+                            </span>
+                          </div>
+                        )}
+
+                        {/* LOKACIJA */}
+                        {event.location && (
+                          <a
+                            href={
+                              event.mapLink ||
+                              `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                event.location
+                              )}`
+                            }
+                            target="_blank"
+                            rel="noreferrer"
+                            className="birthday-video-hana-event-detail"
+                          >
+                            <span
+                              className="birthday-video-hana-detail-icon"
+                              aria-hidden="true"
+                            >
+                              <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                              >
+                                <path
+                                  d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10Z"
+                                  stroke="currentColor"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+
+                                <circle
+                                  cx="12"
+                                  cy="11"
+                                  r="2.4"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </span>
+
+                            <span>
+                              {event.location}
+                            </span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  )
+                )}
+
+                {/* WELCOME */}
+                {details?.welcomeText && (
+                  <div className="birthday-video-welcome">
+                    {details.welcomeText}
+                  </div>
+                )}
+
+                {/* NOTE */}
+                {details?.note && (
+                  <div className="birthday-video-note">
+                    {details.note}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                {/* ===========================================
+                    SVI OSTALI SLUGOVI
+                =========================================== */}
+
+                {/* LOKACIJA */}
+                {displayedVenue && (
+                  <a
+                    href={locationLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="birthday-video-item"
                   >
-                    <path
-                      d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10Z"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                    <span
+                      className="birthday-video-item-icon"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10Z"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
 
-                    <circle
-                      cx="12"
-                      cy="11"
-                      r="2.5"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </span>
+                        <circle
+                          cx="12"
+                          cy="11"
+                          r="2.5"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
 
-                <span>
-                  {displayedVenue}
-                </span>
-              </a>
-            )}
+                    <span>
+                      {displayedVenue}
+                    </span>
+                  </a>
+                )}
 
-            {/* VREME */}
-            {weddingTime && (
-              <div className="birthday-video-item">
-                <span
-                  className="birthday-video-item-icon"
-                  aria-hidden="true"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="8.5"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                    />
+                {/* VREME */}
+                {weddingTime && (
+                  <div className="birthday-video-item">
+                    <span
+                      className="birthday-video-item-icon"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="8.5"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                        />
 
-                    <path
-                      d="M12 7.5v5l3 2"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
+                        <path
+                          d="M12 7.5v5l3 2"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
 
-                <span>
-                  {weddingTime}
-                </span>
-              </div>
-            )}
+                    <span>
+                      {weddingTime}
+                    </span>
+                  </div>
+                )}
 
-            {/* WELCOME */}
-            {details?.welcomeText && (
-              <div className="birthday-video-welcome">
-                {details.welcomeText}
-              </div>
-            )}
+                {/* WELCOME */}
+                {details?.welcomeText && (
+                  <div className="birthday-video-welcome">
+                    {details.welcomeText}
+                  </div>
+                )}
 
-            {/* NOTE */}
-            {details?.note && (
-              <div className="birthday-video-note">
-                {details.note}
-              </div>
+                {/* NOTE */}
+                {details?.note && (
+                  <div className="birthday-video-note">
+                    {details.note}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </motion.div>
