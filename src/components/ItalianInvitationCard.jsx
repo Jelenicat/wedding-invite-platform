@@ -423,7 +423,10 @@ function AnimatedEventsSection({ events = [], details = {} }) {
           initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
           Program dana
         </motion.h2>
@@ -452,9 +455,15 @@ function AnimatedEventsSection({ events = [], details = {} }) {
                 <div className="italian-timeline-dot" />
 
                 <div className="italian-timeline-content">
-                  <div className="italian-timeline-time">{event.time}</div>
+                  {event.time && (
+                    <div className="italian-timeline-time">
+                      {event.time}
+                    </div>
+                  )}
 
-                  <div className="italian-timeline-label">{event.label}</div>
+                  <div className="italian-timeline-label">
+                    {event.label}
+                  </div>
 
                   {event.location && (
                     <div className="italian-timeline-location">
@@ -482,6 +491,77 @@ function AnimatedEventsSection({ events = [], details = {} }) {
   );
 }
 
+/* ============================================================
+   DRESS CODE
+   Prikazuje se SAMO kada je details.showDressCode === true
+============================================================ */
+
+function ItalianDressCode({ details = {} }) {
+  if (details?.showDressCode !== true) {
+    return null;
+  }
+
+  const title = details?.dressCodeTitle || "Dress code";
+  const note = details?.dressCodeNote || "";
+
+  const palette = Array.isArray(details?.dressCodePalette)
+    ? details.dressCodePalette
+    : [];
+
+  return (
+    <motion.section
+      className="italian-dresscode-section"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
+      <div className="italian-dresscode-inner">
+        <p className="italian-dresscode-kicker">
+          Dress code
+        </p>
+
+        <h2 className="italian-dresscode-title">
+          {title}
+        </h2>
+
+        <div
+          className="italian-dresscode-ornament"
+          aria-hidden="true"
+        >
+          <span />
+          <em>♡</em>
+          <span />
+        </div>
+
+        {note && (
+          <p className="italian-dresscode-note">
+            {note}
+          </p>
+        )}
+
+        {palette.length > 0 && (
+          <div className="italian-dresscode-palette">
+            {palette.map((color, index) => (
+              <span
+                key={`${color}-${index}`}
+                className="italian-dresscode-color"
+                style={{
+                  backgroundColor: color,
+                }}
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </motion.section>
+  );
+}
+
 function ItalianInvitationCard({
   brideName,
   groomName,
@@ -502,25 +582,42 @@ function ItalianInvitationCard({
   const dateText = details?.date || weddingDate;
 
   const heroText =
-    details?.heroText || details?.invitationText || "se venčavaju";
+    details?.heroText ||
+    details?.invitationText ||
+    "se venčavaju";
 
-  const heroScriptText = details?.heroScriptText || "";
-  const heroSubText = details?.heroSubText || "";
+  const heroScriptText =
+    details?.heroScriptText || "";
 
-  const events = details?.events || [];
-  const dateParts = getDateParts(dateText);
+  const heroSubText =
+    details?.heroSubText || "";
 
-  const italianVariantClass = details?.italianVariant
-    ? `italian-${details.italianVariant}`
-    : "";
+  const events =
+    details?.events || [];
 
-  const slugClass = slug ? `italian-slug-${slug}` : "";
+  const dateParts =
+    getDateParts(dateText);
+
+  const italianVariantClass =
+    details?.italianVariant
+      ? `italian-${details.italianVariant}`
+      : "";
+
+  const slugClass =
+    slug
+      ? `italian-slug-${slug}`
+      : "";
 
   const scratchVariant =
-    details?.italianVariant === "silver" ? "silver" : "default";
+    details?.italianVariant === "silver"
+      ? "silver"
+      : "default";
 
-  const [revealedDateParts, setRevealedDateParts] = useState(0);
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [revealedDateParts, setRevealedDateParts] =
+    useState(0);
+
+  const [showConfetti, setShowConfetti] =
+    useState(false);
 
   const handleDatePartReveal = () => {
     setRevealedDateParts((prev) => {
@@ -540,7 +637,13 @@ function ItalianInvitationCard({
 
   return (
     <>
-      <main className={`italian-card-page ${italianVariantClass} ${slugClass}`}>
+      <main
+        className={`italian-card-page ${italianVariantClass} ${slugClass}`}
+      >
+        {/* =========================
+            HERO
+        ========================= */}
+
         <section className="italian-hero">
           <video
             className="italian-hero-video"
@@ -556,8 +659,14 @@ function ItalianInvitationCard({
 
           <motion.div
             className="italian-hero-content"
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{
+              opacity: 0,
+              y: 28,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
             transition={{
               duration: 1.4,
               ease: [0.22, 1, 0.36, 1],
@@ -565,10 +674,16 @@ function ItalianInvitationCard({
             }}
           >
             <div className="italian-names">
-              {safeBrideName} <span>&</span> {safeGroomName}
+              {safeBrideName}
+              {" "}
+              <span>&</span>
+              {" "}
+              {safeGroomName}
             </div>
 
-            <div className="italian-subtitle">{heroText}</div>
+            <div className="italian-subtitle">
+              {heroText}
+            </div>
 
             {heroScriptText && (
               <div className="italian-names italian-hero-script-text">
@@ -597,7 +712,9 @@ function ItalianInvitationCard({
                     block: "start",
                   });
               }}
-              initial={{ opacity: 0 }}
+              initial={{
+                opacity: 0,
+              }}
               animate={{
                 opacity: 1,
                 y: [0, 8, 0],
@@ -637,29 +754,60 @@ function ItalianInvitationCard({
           )}
         </section>
 
+        {/* =========================
+            DATUM
+        ========================= */}
+
         <section className="italian-date-section">
           <motion.div
             className="italian-date-inner"
-            initial={{ opacity: 0, y: 34 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            initial={{
+              opacity: 0,
+              y: 34,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.25,
+            }}
+            transition={{
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <h2 className="italian-date-title">Datum</h2>
+            <h2 className="italian-date-title">
+              Datum
+            </h2>
 
             {isDorotejaDragan ? (
               <>
                 <div className="italian-plain-date">
-                  <span className="italian-plain-date-day">{dateParts.day}</span>
+                  <span className="italian-plain-date-day">
+                    {dateParts.day}
+                  </span>
+
                   <span className="italian-plain-date-month">
                     {dateParts.month}
                   </span>
-                  <span className="italian-plain-date-year">{dateParts.year}</span>
+
+                  <span className="italian-plain-date-year">
+                    {dateParts.year}
+                  </span>
                 </div>
 
-                <div className="italian-date-occasion" aria-hidden="true">
+                <div
+                  className="italian-date-occasion"
+                  aria-hidden="true"
+                >
                   <span className="italian-date-occasion-line" />
-                  <span className="italian-date-occasion-symbol">◆</span>
+
+                  <span className="italian-date-occasion-symbol">
+                    ◆
+                  </span>
+
                   <span className="italian-date-occasion-line" />
                 </div>
 
@@ -680,7 +828,9 @@ function ItalianInvitationCard({
                 </p>
 
                 <div className="italian-date-reveal-wrap">
-                  <ConfettiBurst active={showConfetti} />
+                  <ConfettiBurst
+                    active={showConfetti}
+                  />
 
                   <div className="italian-scratch-grid">
                     <ScratchCard
@@ -710,6 +860,10 @@ function ItalianInvitationCard({
           </motion.div>
         </section>
 
+        {/* =========================
+            PISMO
+        ========================= */}
+
         <EnvelopeLetterSection
           brideName={safeBrideName}
           groomName={safeGroomName}
@@ -718,9 +872,13 @@ function ItalianInvitationCard({
             isDorotejaDragan
               ? {
                   ...details,
-                  letterIntro: "Dragi naši,",
+
+                  letterIntro:
+                    "Dragi naši,",
+
                   letterText1:
                     "Sa velikom radošću pozivamo vas da budete deo jednog posebnog dana – dana našeg venčanja i Stefanovog krštenja.",
+
                   letterText2:
                     "Biće nam neizmerna čast da ove nezaboravne trenutke ljubavi i porodične sreće podelimo upravo sa vama.",
                 }
@@ -728,10 +886,30 @@ function ItalianInvitationCard({
           }
         />
 
+        {/* =========================
+            PROGRAM DANA
+        ========================= */}
+
         {events.length > 0 && (
-          <AnimatedEventsSection events={events} details={details} />
+          <AnimatedEventsSection
+            events={events}
+            details={details}
+          />
         )}
+
+        {/* =========================
+            DRESS CODE
+            SAMO AKO showDressCode === true
+        ========================= */}
+
+        <ItalianDressCode
+          details={details}
+        />
       </main>
+
+      {/* =========================
+          RSVP
+      ========================= */}
 
       <ItalianRSVP
         slug={slug}
@@ -741,6 +919,10 @@ function ItalianInvitationCard({
         details={details}
         script={script}
       />
+
+      {/* =========================
+          COUNTDOWN
+      ========================= */}
 
       {details?.dateISO && (
         <ItalianCountdown

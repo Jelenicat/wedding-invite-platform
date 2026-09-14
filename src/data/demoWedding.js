@@ -8563,6 +8563,80 @@ musicSrc: "/music/hana-1.mp3",
   },
 },
 
+{
+  slug: "bojana-vasilije",
+  type: "wedding",
+  template: "italian-envelope-video",
+
+  brideName: "Bojana",
+  groomName: "Vasilije",
+
+  weddingDate: "19.09.2027.",
+  weddingTime: "15:00",
+  venue: "Restoran Akacija",
+
+  videoSrc: "/videos/tamara-ratko.mp4",
+  musicSrc: "/music/bojana-vasilije.mp3",
+
+  details: createDetails({
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    heroText: "venčanje",
+
+    showCalendarButton: true,
+
+    date: "19.09.2027.",
+    dateISO: "2027-09-19T15:00:00+02:00",
+
+    venue: "Restoran Akacija",
+
+    cloudLeft: "/images/italian-clouds/cloud-left.svg",
+    cloudRight: "/images/italian-clouds/cloud-right.svg",
+
+    hideRsvpPhotoBlock: true,
+
+    events: [
+      {
+        label: "Crkveno venčanje",
+        time: "15:00",
+        icon: "church",
+        location: "Crkva Svetog Aleksandra Nevskog, Dorćol",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Aleksandra+Nevskog+Dorcol+Beograd",
+      },
+      {
+        label: "Građansko venčanje i proslava",
+        icon: "civil",
+        location: "Restoran Akacija",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
+      },
+    ],
+
+    showDressCode: true,
+
+    dressCodeTitle: "Formal · Black-Tie Optional",
+
+    dressCodePalette: [],
+
+    dressCodeNote:
+      "Bilo bi nam drago da ovaj poseban dan ulepšate elegantnim i svečanim izdanjem.",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 15. avgusta 2027.",
+
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite do 15. avgusta 2027.",
+
+    rsvpDeadline: "15.08.2027.",
+    rsvpDeadlineISO: "2027-08-15",
+  }),
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
