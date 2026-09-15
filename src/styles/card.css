@@ -25708,3 +25708,33 @@ font-family: "Italianno", cursive;
     display: none;
   }
 }
+
+/* ============================================================
+   SCRATCH — BLOKIRAJ SCROLL DOK SE GREBE
+============================================================ */
+
+.sci-root
+  .sci-photo-area:not(.is-revealed),
+.sci-root
+  .sci-photo-area:not(.is-revealed)
+  .sci-photo-ring,
+.sci-root
+  .sci-photo-area:not(.is-revealed)
+  .sci-photo-window,
+.sci-root
+  .sci-photo-area:not(.is-revealed)
+  .sci-scratch-canvas {
+  touch-action: none;
+  overscroll-behavior: contain;
+
+  -webkit-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+}
+
+/* kada se slika otkrije, vraća se normalno ponašanje */
+.sci-root
+  .sci-photo-area.is-revealed {
+  touch-action: auto;
+}

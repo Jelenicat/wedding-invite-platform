@@ -34,7 +34,7 @@ const COPY = {
     photo: "Фотографија младенаца",
     unavailable: "Фотографија тренутно није доступна.",
     continue: "Погледај позивницу",
-    loading: "Учитavanje fotografije…",
+    loading: "Учитавање фотографије…",
     details: "Детаљи прославе",
     timeline: "Наш дан",
     location: "Погледај локацију",
@@ -206,7 +206,6 @@ const SNOW_FLAKES = [
     delay: "0.04s",
     drift: "-10px",
   },
-
   {
     left: "18%",
     size: "4px",
@@ -273,8 +272,6 @@ function SnowOverlay({ active }) {
    SCRATCH PHOTO
 ============================================================ */
 
-// Samo premaz se crta na canvasu.
-// Fotografija je zaseban <img> ispod njega.
 function ScratchPhoto({
   src,
   paper,
@@ -431,8 +428,6 @@ function ScratchPhoto({
           width,
           height,
         );
-
-        /* diskretna papirna tekstura */
 
         let seed = 73;
 
@@ -670,7 +665,7 @@ function ScratchPhoto({
   };
 
   /* ============================================================
-     POINTER
+     POINTER — MOBILE SCROLL FIX
   ============================================================ */
 
   const start = (event) => {
@@ -691,6 +686,12 @@ function ScratchPhoto({
       return;
     }
 
+    /*
+      Kada je korisnik stvarno počeo da grebe,
+      browser ne sme da pretvori pokret u scroll.
+    */
+    event.preventDefault();
+
     drawingRef.current.pointer =
       event.pointerId;
 
@@ -709,6 +710,11 @@ function ScratchPhoto({
     ) {
       return;
     }
+
+    /*
+      Blokiramo scroll SAMO dok traje aktivno grebanje.
+    */
+    event.preventDefault();
 
     draw(event);
 
@@ -731,6 +737,8 @@ function ScratchPhoto({
     ) {
       return;
     }
+
+    event.preventDefault();
 
     drawingRef.current = {
       pointer: null,
@@ -791,7 +799,6 @@ function ScratchPhoto({
             }}
           />
 
-          {/* SNOW POSLE OTKRIVANJA */}
           <SnowOverlay
             active={showSnow}
           />
@@ -912,11 +919,6 @@ function ScratchCardContent({
 
   const handleReveal = () => {
     setRevealed(true);
-
-    /*
-      Snow se pokreće samo jednom,
-      tačno kada fotografija bude otkrivena.
-    */
     setShowSnow(true);
   };
 
@@ -1041,7 +1043,6 @@ function ScratchCardContent({
                 weddingDate}
             </p>
 
-            
             {revealed && (
               <a
                 className="sci-details-link"
@@ -1287,8 +1288,6 @@ function ScratchCardContent({
    EXPORT
 ============================================================ */
 
-// Promena jezika čuva otkrivenu fotografiju.
-// Promena sluga pravi novu karticu.
 export default function ScratchInvitationCard(
   props,
 ) {
