@@ -11140,3 +11140,356 @@ body,
   }
 }
 
+/* ============================================================
+   ENVELOPE FLAP INTRO
+   Spora rotacija ka spolja + brzo nestajanje donjeg sloja
+============================================================ */
+
+.efi-overlay {
+  --efi-flap-duration: 4.8s;
+  --efi-bottom-duration: 0.55s;
+  --efi-bottom-delay: 2.2s;
+
+
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  overflow: hidden;
+  background: #fff;
+  isolation: isolate;
+}
+
+.efi-overlay .efi-viewport {
+  position: relative;
+
+  width: 100%;
+  max-width: 640px;
+  height: 100%;
+
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Zajedničko platno za obe slike i senku */
+.efi-overlay .efi-canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: max(100%, calc(100vh * 2 / 3));
+  width: max(100%, calc(100dvh * 2 / 3));
+  aspect-ratio: 2 / 3;
+
+  transform: translate(-50%, -50%);
+
+  perspective: 1500px;
+  perspective-origin: 50% var(--efi-hinge, 0%);
+}
+
+.efi-overlay .efi-bottom,
+.efi-overlay .efi-shadow,
+.efi-overlay .efi-flap,
+.efi-overlay .efi-front {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  max-width: none;
+
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  object-fit: fill;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Donji deo koverte */
+.efi-overlay .efi-bottom {
+  z-index: 1;
+  opacity: 1;
+}
+
+/* Senka prati providni oblik gornje slike */
+.efi-overlay .efi-shadow {
+  z-index: 2;
+
+  background: #51483e;
+  opacity: 0.23;
+  filter: blur(5px);
+
+  -webkit-mask-image: var(--efi-top-image);
+  mask-image: var(--efi-top-image);
+
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  transform: translateY(5px);
+  transform-origin: 50% var(--efi-hinge, 0%);
+}
+
+/* Gornji preklop */
+.efi-overlay .efi-flap {
+  z-index: 3;
+
+  transform-origin: 50% var(--efi-hinge, 0%);
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+}
+
+.efi-overlay .efi-front {
+  transform: translateZ(0.2px);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Bez žute / krem poleđine */
+.efi-overlay .efi-back {
+  display: none;
+}
+
+/* ============================================================
+   OTVARANJE
+============================================================ */
+
+/* Spora rotacija gornjeg preklopa */
+.efi-overlay.efi-opening .efi-flap,
+.efi-overlay.efi-fading .efi-flap {
+  animation:
+    efi-open-flap
+    var(--efi-flap-duration)
+    cubic-bezier(0.4, 0, 0.2, 1)
+    both;
+}
+
+/* Blaga promena osvetljenja papira */
+.efi-overlay.efi-opening .efi-front,
+.efi-overlay.efi-fading .efi-front {
+  animation:
+    efi-paper-light
+    var(--efi-flap-duration)
+    ease-in-out
+    both;
+}
+
+/* Donja slika nestaje odmah na početku otvaranja */
+.efi-overlay.efi-opening .efi-bottom {
+  animation:
+    efi-bottom-away
+    var(--efi-bottom-duration)
+    ease-out
+    var(--efi-bottom-delay)
+    both;
+}
+
+/* Senka nestaje sa donjom slikom */
+.efi-overlay.efi-opening .efi-shadow {
+  animation:
+    efi-shadow-away
+    var(--efi-bottom-duration)
+    ease-out
+    var(--efi-bottom-delay)
+    both;
+}
+
+/* Bela podloga nestaje, preklop nastavlja rotaciju */
+.efi-overlay.efi-opening {
+  animation:
+    efi-clear-background
+    var(--efi-bottom-duration)
+    ease-out
+    var(--efi-bottom-delay)
+    both;
+}
+
+/* ============================================================
+   KRAJ ROTACIJE
+============================================================ */
+
+.efi-overlay.efi-fading {
+  background: transparent;
+  animation: efi-fade-out 0.15s ease-out both;
+}
+
+.efi-overlay.efi-fading .efi-bottom {
+  opacity: 0;
+}
+
+.efi-overlay.efi-fading .efi-flap,
+.efi-overlay.efi-fading .efi-shadow {
+  visibility: hidden;
+}
+
+/* ============================================================
+   KLIK NA KO VERTU
+============================================================ */
+
+.efi-overlay .efi-open-button {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+
+  width: 100%;
+  height: 100%;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  box-shadow: none;
+  color: #675b51;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.efi-overlay .efi-open-button:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.efi-overlay .efi-open-button:focus-visible {
+  outline: 2px solid #8c7a66;
+  outline-offset: -8px;
+}
+
+.efi-overlay .efi-caption {
+  position: absolute;
+
+  bottom: max(
+    36px,
+    calc(env(safe-area-inset-bottom) + 20px)
+  );
+
+  left: 12px;
+  right: 12px;
+
+  text-align: center;
+
+  font: 400 13px/1.5 Georgia, "Times New Roman", serif;
+  letter-spacing: 0.12em;
+
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.efi-overlay.efi-opening .efi-caption,
+.efi-overlay.efi-fading .efi-caption {
+  opacity: 0;
+}
+
+/* ============================================================
+   ANIMACIJE
+============================================================ */
+
+/* Pozitivan ugao: otvaranje prema posmatraču i nagore */
+@keyframes efi-open-flap {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(175deg);
+  }
+}
+
+@keyframes efi-bottom-away {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes efi-shadow-away {
+  from {
+    opacity: 0.23;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(12px);
+  }
+}
+
+@keyframes efi-clear-background {
+  from {
+    background-color: #fff;
+  }
+
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes efi-paper-light {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  42% {
+    filter: brightness(0.97);
+  }
+
+  65% {
+    filter: brightness(0.94);
+  }
+}
+
+@keyframes efi-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   SMANJENO KRETANJE
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .efi-overlay {
+    --efi-flap-duration: 0.02s;
+    --efi-bottom-duration: 0.02s;
+    --efi-bottom-delay: 0s;
+  }
+
+  .efi-overlay.efi-fading {
+    animation-duration: 0.2s;
+  }
+
+  .efi-overlay .efi-caption {
+    transition: none;
+  }
+}
+
+/* Senka nestaje odmah po početku rotacije */
+.efi-overlay.efi-opening .efi-shadow {
+  animation: efi-shadow-away 0.18s ease-out 0s both;
+}

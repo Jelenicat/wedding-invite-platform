@@ -3900,7 +3900,66 @@ theme: {
       "Molimo vas da svoj dolazak potvrdite do 25. jula 2028.",
   }),
 },
+{
+  slug: "mila-hearts-demo",
+  type: "birthday",
+  template: "birthday-hearts",
+  script: "latin",
 
+  brideName: "Mila",
+
+  weddingDate: "10.10.2026.",
+  weddingTime: "15:00",
+  venue: "Mesto proslave",
+
+  backgroundImage: "/images/vuk-1-bg.jpg",
+
+  // Fotografije u srcima
+  image1: "/images/vuk-1-1.jpg",
+  image2: "/images/vuk-1-2.jpg",
+  image3: "/images/vuk-1-3.jpg",
+
+  details: {
+    age: 1,
+
+    date: "10.10.2026.",
+    dateISO: "2026-10-10T15:00:00+02:00",
+
+    venue: "Mesto proslave",
+    backgroundImage: "/images/vuk-1-bg.jpg",
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Milin prvi rođendan.",
+
+    rsvpText:
+      "Najlepše uspomene stvaramo zajedno.",
+
+    note:
+      "Radujemo se vašem dolasku!",
+
+    rsvpDeadline: "01.10.2026.",
+    rsvpDeadlineISO: "2026-10-01",
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+    // Fotografije za BirthdaySplitInvitationCard
+    sliderImages: [
+      "/images/vuk-1.jpg",
+      "/images/vuk-2.jpg",
+      "/images/vuk-3.jpg",
+    ],
+
+    events: [
+      {
+        label: "Proslava rođendana",
+        time: "15:00",
+        icon: "cake",
+        location: "Mesto proslave",
+      },
+    ],
+  },
+},
 
 // =========================
 // Klijenti
@@ -8566,47 +8625,48 @@ musicSrc: "/music/hana-1.mp3",
 {
   slug: "bojana-vasilije",
   type: "wedding",
-  template: "italian-envelope-video",
+  template: "envelope-flap",
 
   brideName: "Bojana",
   groomName: "Vasilije",
 
   weddingDate: "19.09.2027.",
-  weddingTime: "15:00",
+  weddingTime: "17:00",
   venue: "Restoran Akacija",
 
-  videoSrc: "/videos/tamara-ratko.mp4",
+  image: "/images/invitations/bojana-vasilije.jpg",
   musicSrc: "/music/bojana-vasilije.mp3",
 
   details: createDetails({
+    cardBackground: "#f3f2f2",
+
     welcomeText:
       "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
 
-    heroText: "venčanje",
-
-    showCalendarButton: true,
-
     date: "19.09.2027.",
+
+    // Početak celog venčanja — crkva u 15:00
     dateISO: "2027-09-19T15:00:00+02:00",
 
     venue: "Restoran Akacija",
 
-    cloudLeft: "/images/italian-clouds/cloud-left.svg",
-    cloudRight: "/images/italian-clouds/cloud-right.svg",
-
-    hideRsvpPhotoBlock: true,
+    // 15:00 → 01:00 narednog dana
+    calendarDurationHours: 10,
+    showCalendarButton: true,
 
     events: [
       {
         label: "Crkveno venčanje",
         time: "15:00",
         icon: "church",
-        location: "Crkva Svetog Aleksandra Nevskog, Dorćol",
+        location:
+          "Crkva Svetog Aleksandra Nevskog, Dorćol",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Aleksandra+Nevskog+Dorcol+Beograd",
       },
       {
         label: "Građansko venčanje i proslava",
+        time: "17:00",
         icon: "civil",
         location: "Restoran Akacija",
         mapLink:
@@ -8616,24 +8676,65 @@ musicSrc: "/music/hana-1.mp3",
 
     showDressCode: true,
 
-    dressCodeTitle: "Formal · Black-Tie Optional",
-
-    dressCodePalette: [],
+    dressCodeTitle:
+      "Formal · Black-Tie Optional",
 
     dressCodeNote:
       "Bilo bi nam drago da ovaj poseban dan ulepšate elegantnim i svečanim izdanjem.",
 
+    // Koristi se za Dodaj u kalendar
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
 
     note:
       "Molimo vas da svoj dolazak potvrdite do 15. avgusta 2027.",
 
-    rsvpText:
-      "Molimo vas da svoj dolazak potvrdite do 15. avgusta 2027.",
+    /* LANGUAGE */
+    showLanguageSwitcher: true,
 
-    rsvpDeadline: "15.08.2027.",
-    rsvpDeadlineISO: "2027-08-15",
+    translations: {
+      en: {
+        weddingDate:
+          "19 September 2027",
+
+        venue:
+          "Akacija Restaurant",
+
+        details: {
+          welcomeText:
+            "With great joy, we invite you to be part of our special day.",
+
+          date:
+            "19 September 2027",
+
+          venue:
+            "Akacija Restaurant",
+
+          events: [
+            {
+              label:
+                "Church ceremony",
+
+              location:
+                "Church of Saint Alexander Nevsky, Dorćol",
+            },
+            {
+              label:
+                "Civil ceremony and reception",
+
+              location:
+                "Akacija Restaurant",
+            },
+          ],
+
+          dressCodeNote:
+            "We would love you to join us in elegant, formal attire for this special day.",
+
+          note:
+            "Please confirm your attendance by 15 August 2027.",
+        },
+      },
+    },
   }),
 },
 

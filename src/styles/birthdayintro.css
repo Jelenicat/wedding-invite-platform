@@ -3424,3 +3424,1073 @@ body,
 .wedding-page {
   color-scheme: only light !important;
 }
+
+/* ============================================================
+   BIRTHDAY HEARTS INTRO
+   Posebni Bhi nazivi fontova, izvori: Google Fonts
+============================================================ */
+
+@font-face {
+  font-family: "Bhi Italianno";
+  src: url("https://fonts.gstatic.com/s/italianno/v18/dg4n_p3sv6gCJkwzT6Rnjw.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bhi Cormorant";
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_v86GnM.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bhi Manrope";
+  src: url("https://fonts.gstatic.com/s/manrope/v20/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FO_F.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.bhi-intro {
+  --bhi-paper: #faf6ef;
+  --bhi-ink: #6d4b38;
+  --bhi-soft: #806852;
+  --bhi-gold: #b59564;
+  --bhi-px: 0px;
+  --bhi-py: 0px;
+
+  --bhi-heart-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 18C28-4 2 3 2 30C2 53 29 77 50 95C71 77 98 53 98 30C98 3 72-4 50 18Z'/%3E%3C/svg%3E");
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  color: var(--bhi-ink);
+  background: var(--bhi-paper);
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bhi-intro *,
+.bhi-intro *::before,
+.bhi-intro *::after {
+  box-sizing: border-box;
+}
+
+.bhi-intro button {
+  font: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bhi-intro button:focus-visible {
+  outline: 2px solid #775135;
+  outline-offset: 7px;
+}
+
+.bhi-intro p,
+.bhi-intro h1 {
+  margin: 0;
+}
+
+/* POZADINA */
+
+.bhi-light {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+.bhi-light-a {
+  width: 850px;
+  height: 730px;
+  left: -420px;
+  top: -180px;
+
+  background: radial-gradient(
+    ellipse,
+    #e9d4bda8,
+    #f3e9dc00 70%
+  );
+
+  animation: bhi-light 16s ease-in-out infinite alternate;
+}
+
+.bhi-light-b {
+  width: 850px;
+  height: 950px;
+  right: -520px;
+  bottom: -430px;
+
+  background: radial-gradient(
+    ellipse,
+    #d9b8a077,
+    #f2e7d200 70%
+  );
+
+  animation:
+    bhi-light 19s ease-in-out -5s infinite alternate-reverse;
+}
+
+.bhi-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.055;
+  pointer-events: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.7' filter='url(%23grain)'/%3E%3C/svg%3E");
+}
+
+/* IME I NASLOV */
+
+.bhi-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 850px);
+  padding: 34px 20px 31px;
+  text-align: center;
+}
+
+.bhi-heading {
+  position: relative;
+  z-index: 4;
+}
+
+.bhi-eyebrow {
+  font: 400 11px/1.6 "Bhi Manrope", Arial, sans-serif;
+  letter-spacing: 3.6px;
+  text-transform: uppercase;
+
+  animation: bhi-rise 1s 0.08s both;
+}
+
+.bhi-name {
+  font:
+    400 clamp(110px, 15vw, 144px) / 0.96
+    "Bhi Italianno", "Brush Script MT", cursive;
+
+  padding: 17px 9px 0;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+
+  animation: bhi-rise 1.2s 0.18s both;
+}
+
+.bhi-subtitle {
+  font: 400 24px/1.35 "Bhi Cormorant", Georgia, serif;
+  letter-spacing: 0.25px;
+
+  animation: bhi-rise 1.2s 0.29s both;
+}
+
+/* PROSTOR ZA SRCA */
+
+.bhi-stage {
+  position: relative;
+  z-index: 3;
+
+  width: min(100%, 570px);
+  aspect-ratio: 1.58;
+  margin: 13px auto 0;
+}
+
+.bhi-parallax {
+  position: absolute;
+  inset: 0;
+
+  transform: translate3d(var(--bhi-px), var(--bhi-py), 0);
+
+  transition:
+    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.bhi-one {
+  position: absolute;
+  left: 9%;
+  top: 29%;
+
+  font:
+    400 clamp(130px, 26vw, 235px) / 1
+    "Bhi Italianno", cursive;
+
+  color: #b895632e;
+  transform: rotate(-12deg);
+  user-select: none;
+
+  animation: bhi-rise 1.3s 0.45s both;
+}
+
+.bhi-orbit {
+  position: absolute;
+  border: 1px solid #be9e6e28;
+  border-radius: 50%;
+  pointer-events: none;
+
+  transform: rotate(-22deg);
+}
+
+.bhi-orbit-a {
+  width: 83%;
+  height: 58%;
+  left: 7%;
+  top: 18%;
+}
+
+.bhi-orbit-b {
+  width: 70%;
+  height: 63%;
+  left: 20%;
+  top: 14%;
+
+  transform: rotate(21deg);
+  opacity: 0.4;
+}
+
+/* RASPORED SRCA */
+
+.bhi-heart-slot {
+  position: absolute;
+
+  animation:
+    bhi-arrive 1.3s cubic-bezier(0.18, 0.7, 0.24, 1) both;
+}
+
+.bhi-heart-0 {
+  width: 31%;
+  left: 0;
+  top: 35%;
+  z-index: 3;
+
+  --bhi-angle: -15deg;
+  --bhi-exit-x: -240px;
+  --bhi-exit-y: -170px;
+  --bhi-exit-rotate: -45deg;
+
+  animation-delay: 0.42s;
+}
+
+.bhi-heart-1 {
+  width: 53%;
+  left: 23.5%;
+  top: 6%;
+  z-index: 4;
+
+  --bhi-angle: 4deg;
+  --bhi-exit-x: 0px;
+  --bhi-exit-y: -240px;
+  --bhi-exit-rotate: 15deg;
+
+  animation-delay: 0.2s;
+}
+
+.bhi-heart-2 {
+  width: 29%;
+  right: 0;
+  top: 42%;
+  z-index: 5;
+
+  --bhi-angle: 15deg;
+  --bhi-exit-x: 240px;
+  --bhi-exit-y: -140px;
+  --bhi-exit-rotate: 45deg;
+
+  animation-delay: 0.62s;
+}
+
+/* LEBĐENJE I PREVLAČENJE */
+
+.bhi-heart-float {
+  animation: bhi-float 6.3s ease-in-out infinite;
+}
+
+.bhi-heart-0 .bhi-heart-float {
+  animation-delay: -1.9s;
+  animation-duration: 7s;
+}
+
+.bhi-heart-2 .bhi-heart-float {
+  animation-delay: -3.6s;
+  animation-duration: 5.8s;
+}
+
+.bhi-heart {
+  display: block;
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1;
+
+  padding: 0;
+  border: 0;
+  border-radius: 40%;
+  background: transparent;
+
+  cursor: grab;
+  touch-action: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  perspective: 1100px;
+
+  transform:
+    translate3d(
+      var(--bhi-dx, 0px),
+      var(--bhi-dy, 0px),
+      0
+    )
+    rotate(var(--bhi-angle));
+
+  transition:
+    transform 750ms cubic-bezier(0.18, 1.45, 0.3, 1),
+    filter 400ms;
+
+  filter:
+    drop-shadow(0 16px 13px #79533722)
+    drop-shadow(0 2px 2px #64402315);
+}
+
+.bhi-heart[data-dragging="true"] {
+  cursor: grabbing;
+  transition: filter 200ms;
+
+  filter: drop-shadow(0 24px 18px #79533738);
+}
+
+.bhi-heart[disabled] {
+  cursor: default;
+}
+
+/* OKRETANJE SRCA */
+
+.bhi-heart-turn {
+  position: absolute;
+  inset: 0;
+  display: block;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 850ms cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+
+.bhi-is-flipped .bhi-heart-turn {
+  transform: rotateY(180deg);
+}
+
+.bhi-heart-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+
+  -webkit-mask:
+    var(--bhi-heart-mask) center / 100% 100% no-repeat;
+
+  mask:
+    var(--bhi-heart-mask) center / 100% 100% no-repeat;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  background: #efe2ce;
+}
+
+.bhi-heart-front {
+  transform: rotateY(0deg) translateZ(1px);
+}
+
+/* FOTOGRAFIJE */
+
+.bhi-photo {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  max-width: none;
+
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.bhi-photo-sheet {
+  width: 300%;
+  right: auto;
+  object-position: center !important;
+}
+
+.bhi-photo-fallback {
+  position: absolute;
+  inset: 20% 0 0;
+
+  color: #997341;
+  font: 400 80px/1 "Bhi Cormorant", Georgia, serif;
+}
+
+.bhi-photo-light {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    135deg,
+    #fffcf540 0%,
+    transparent 40%,
+    #83602d0d 85%
+  );
+
+  box-shadow: inset 0 0 16px #fffaee24;
+  pointer-events: none;
+}
+
+/* POLEĐINA SRCA */
+
+.bhi-heart-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8% 12% 23%;
+
+  transform: rotateY(180deg) translateZ(1px);
+
+  background: radial-gradient(
+    ellipse at 35% 20%,
+    #fffaf1,
+    #ecd9bd
+  );
+
+  color: #805b38;
+}
+
+.bhi-back-main {
+  display: block;
+
+  font:
+    400 clamp(22px, 5vw, 34px) / 1
+    "Bhi Italianno", cursive;
+}
+
+.bhi-back-small {
+  display: block;
+
+  font:
+    400 clamp(11px, 2vw, 15px) / 1.6
+    "Bhi Manrope", Arial, sans-serif;
+}
+
+.bhi-heart-1 .bhi-back-main {
+  font:
+    400 clamp(64px, 12vw, 95px) / 0.95
+    "Bhi Cormorant", Georgia, serif;
+}
+
+.bhi-heart-1 .bhi-back-small {
+  font:
+    400 clamp(22px, 5vw, 32px) / 1.2
+    "Bhi Italianno", cursive;
+}
+
+/* SVETLUCANJE */
+
+.bhi-glint {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+
+  background: #c5a36c;
+
+  clip-path: polygon(
+    50% 0,
+    61% 39%,
+    100% 50%,
+    61% 61%,
+    50% 100%,
+    39% 61%,
+    0 50%,
+    39% 39%
+  );
+
+  animation: bhi-twinkle 4.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.bhi-glint-a {
+  left: 14%;
+  top: 20%;
+  width: 14px;
+  height: 14px;
+  animation-delay: -1s;
+}
+
+.bhi-glint-b {
+  right: 10%;
+  top: 18%;
+  width: 9px;
+  height: 9px;
+  animation-delay: -2.5s;
+}
+
+.bhi-glint-c {
+  left: 53%;
+  bottom: 4%;
+  width: 8px;
+  height: 8px;
+  animation-delay: -3.6s;
+}
+
+/* DUGME I DATUM */
+
+.bhi-hint {
+  font: 400 11px/1.6 "Bhi Manrope", Arial, sans-serif;
+  letter-spacing: 0.1px;
+  color: var(--bhi-soft);
+
+  animation: bhi-rise 1.2s 0.85s both;
+}
+
+.bhi-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 25px;
+  padding-top: 26px;
+
+  animation: bhi-rise 1.2s 0.6s both;
+}
+
+.bhi-open {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  min-height: 55px;
+  min-width: 257px;
+  padding: 15px 29px;
+
+  border: 1px solid #a9895c70;
+  border-radius: 0;
+
+  background: linear-gradient(
+    110deg,
+    #fffcf9d9,
+    #f0e4d491
+  );
+
+  box-shadow: 0 7px 22px #8967470b;
+
+  font:
+    400 12px/1.5
+    "Bhi Manrope", Arial, sans-serif !important;
+
+  letter-spacing: 0.9px;
+  cursor: pointer;
+  overflow: hidden;
+
+  transition:
+    background 300ms,
+    box-shadow 300ms,
+    transform 300ms;
+}
+
+.bhi-open::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    #ffffffb0 48%,
+    transparent 67%
+  );
+
+  transform: translateX(-140%);
+  animation: bhi-shimmer 6.4s 2.7s infinite;
+
+  pointer-events: none;
+}
+
+.bhi-open svg {
+  transition: transform 300ms;
+  flex: 0 0 auto;
+}
+
+.bhi-open:active {
+  transform: translateY(1px);
+}
+
+.bhi-open[disabled] {
+  cursor: default;
+}
+
+.bhi-date {
+  font: 400 11px/1.6 "Bhi Manrope", Arial, sans-serif;
+
+  letter-spacing: 4px;
+  padding-left: 4px;
+
+  color: var(--bhi-soft);
+}
+
+/* OTVARANJE POZIVNICE */
+
+.bhi-opening-bloom {
+  position: absolute;
+  z-index: 10;
+
+  left: 50%;
+  top: 45%;
+
+  width: max(150vw, 150vh);
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    #fffaf1,
+    #f8efe2
+  );
+
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.bhi-is-opening {
+  animation: bhi-exit-root 1500ms forwards;
+  pointer-events: none;
+}
+
+.bhi-is-opening .bhi-heart-slot {
+  animation:
+    bhi-hearts-out 1100ms
+    cubic-bezier(0.5, 0, 0.35, 1) forwards;
+}
+
+.bhi-is-opening .bhi-heart-0 {
+  animation-delay: 70ms;
+}
+
+.bhi-is-opening .bhi-heart-2 {
+  animation-delay: 140ms;
+}
+
+.bhi-is-opening .bhi-heading,
+.bhi-is-opening .bhi-bottom,
+.bhi-is-opening .bhi-hint {
+  animation: bhi-text-out 650ms ease-in forwards;
+}
+
+.bhi-is-opening .bhi-opening-bloom {
+  animation:
+    bhi-bloom 1450ms
+    cubic-bezier(0.65, 0, 0.25, 1) forwards;
+}
+
+.bhi-is-opening .bhi-orbit,
+.bhi-is-opening .bhi-one,
+.bhi-is-opening .bhi-glint {
+  animation: bhi-text-out 700ms ease-in forwards;
+}
+
+/* PRISTUPAČNOST I ĆIRILICA */
+
+.bhi-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.bhi-cyrillic .bhi-name {
+  font-family: "Bhi Cormorant", Georgia, serif;
+  font-size: clamp(66px, 12vw, 96px);
+  font-style: italic;
+
+  padding-top: 27px;
+  padding-bottom: 14px;
+}
+
+.bhi-cyrillic .bhi-back-main,
+.bhi-cyrillic .bhi-heart-1 .bhi-back-small {
+  font-family: "Bhi Cormorant", Georgia, serif;
+  font-style: italic;
+}
+
+.bhi-intro[data-paused="true"] *,
+.bhi-intro[data-paused="true"] *::before {
+  animation-play-state: paused;
+}
+
+/* HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+  .bhi-heart:hover {
+    filter: drop-shadow(0 23px 17px #79533738);
+  }
+
+  .bhi-heart:hover .bhi-photo-light {
+    background: linear-gradient(
+      130deg,
+      #fffaf159,
+      transparent 58%
+    );
+  }
+
+  .bhi-open:hover {
+    background: #eee0cb;
+    box-shadow: 0 9px 25px #89674713;
+    transform: translateY(-2px);
+  }
+
+  .bhi-open:hover svg {
+    transform: translateX(4px);
+  }
+}
+
+/* TELEFON */
+
+@media (max-width: 600px) {
+  .bhi-content {
+    padding: 33px 18px 30px;
+  }
+
+  .bhi-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+  }
+
+  .bhi-name {
+    font-size: clamp(96px, 28vw, 132px);
+    padding-top: 22px;
+  }
+
+  .bhi-subtitle {
+    font-size: 22px;
+  }
+
+  .bhi-stage {
+    margin-top: 29px;
+    aspect-ratio: 1.24;
+  }
+
+  .bhi-heart-0 {
+    width: 32%;
+    top: 42%;
+    left: 0;
+  }
+
+  .bhi-heart-1 {
+    width: 60%;
+    top: 4%;
+    left: 20%;
+  }
+
+  .bhi-heart-2 {
+    width: 31%;
+    top: 49%;
+    right: 0;
+  }
+
+  .bhi-one {
+    left: 4%;
+    top: 33%;
+    font-size: clamp(147px, 45vw, 220px);
+  }
+
+  .bhi-orbit-a {
+    top: 22%;
+    height: 48%;
+    width: 90%;
+    left: 5%;
+  }
+
+  .bhi-orbit-b {
+    top: 21%;
+    height: 49%;
+  }
+
+  .bhi-glint-a {
+    left: 8%;
+    top: 25%;
+  }
+
+  .bhi-glint-b {
+    top: 23%;
+    right: 3%;
+  }
+
+  .bhi-glint-c {
+    bottom: 7%;
+    left: 51%;
+  }
+
+  .bhi-hint {
+    font-size: 11px;
+  }
+
+  .bhi-bottom {
+    padding-top: 28px;
+    gap: 26px;
+  }
+
+  .bhi-open {
+    min-height: 54px;
+    min-width: 254px;
+  }
+
+  .bhi-date {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+  }
+
+  .bhi-heart-1 .bhi-back-main {
+    font-size: clamp(65px, 20vw, 96px);
+  }
+
+  .bhi-heart-1 .bhi-back-small {
+    font-size: 26px;
+  }
+
+  .bhi-back-main {
+    font-size: 25px;
+  }
+
+  .bhi-back-small {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .bhi-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .bhi-stage {
+    margin-top: 21px;
+  }
+
+  .bhi-name {
+    font-size: 96px;
+  }
+
+  .bhi-open {
+    min-width: 240px;
+  }
+
+  .bhi-hint {
+    font-size: 11px;
+  }
+
+  .bhi-back-main {
+    font-size: 22px;
+  }
+
+  .bhi-back-small {
+    font-size: 11px;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 600px) {
+  .bhi-content {
+    padding-top: 24px;
+    padding-bottom: 22px;
+  }
+
+  .bhi-name {
+    font-size: 96px;
+    padding-top: 13px;
+  }
+
+  .bhi-stage {
+    width: min(100%, 340px);
+    margin-top: 14px;
+    aspect-ratio: 1.34;
+  }
+
+  .bhi-bottom {
+    padding-top: 20px;
+    gap: 20px;
+  }
+}
+
+/* ANIMACIJE */
+
+@keyframes bhi-rise {
+  from {
+    opacity: 0;
+    transform: translateY(17px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bhi-arrive {
+  from {
+    opacity: 0;
+    transform:
+      translateY(35px)
+      scale(0.84)
+      rotate(-5deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bhi-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+@keyframes bhi-light {
+  to {
+    transform: translate(75px, 45px) scale(1.15);
+  }
+}
+
+@keyframes bhi-twinkle {
+  0%,
+  100% {
+    opacity: 0.27;
+    transform: scale(0.6) rotate(0);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: scale(1) rotate(35deg);
+  }
+}
+
+@keyframes bhi-shimmer {
+  0%,
+  67% {
+    transform: translateX(-140%);
+  }
+
+  87%,
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+@keyframes bhi-hearts-out {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+
+  24% {
+    opacity: 1;
+    transform: translateY(10px) scale(1.035);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(var(--bhi-exit-x), var(--bhi-exit-y))
+      rotate(var(--bhi-exit-rotate))
+      scale(0.45);
+  }
+}
+
+@keyframes bhi-text-out {
+  to {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes bhi-bloom {
+  0%,
+  22% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes bhi-exit-root {
+  0%,
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* SMANJENO KRETANJE */
+
+@media (prefers-reduced-motion: reduce) {
+  .bhi-intro *,
+  .bhi-intro *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .bhi-parallax,
+  .bhi-heart-float {
+    transform: none;
+  }
+
+  .bhi-is-opening {
+    animation: bhi-exit-root 200ms forwards !important;
+  }
+
+  .bhi-is-opening .bhi-opening-bloom {
+    display: none;
+  }
+}

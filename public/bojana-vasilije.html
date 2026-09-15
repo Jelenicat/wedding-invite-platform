@@ -3,54 +3,60 @@
   <head>
     <meta charset="UTF-8" />
 
-    <title>Bojana i Vasilije - Pozivnica za venčanje</title>
-
-    <!-- PRELOAD za brže učitavanje Italian koverte i videa -->
-    <link
-      rel="preload"
-      as="image"
-      href="/images/envelope/bojana-vasilije-left.svg"
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
     />
 
-    <link
-      rel="preload"
-      as="image"
-      href="/images/envelope/bojana-vasilije-right.svg"
-    />
-
-    <link
-      rel="preload"
-      as="image"
-      href="/images/envelope/bojana-vasilije-top.svg"
-    />
-
-    <link
-      rel="preload"
-      as="image"
-      href="/images/envelope/bojana-vasilije-bottom.svg"
-    />
-
-    <link
-      rel="preload"
-      as="image"
-      href="/images/envelope/bojana-vasilije-center.svg"
-    />
-
-    <!-- koristi isti video kao Tamara i Ratko -->
-    <link
-      rel="preload"
-      as="video"
-      href="/videos/tamara-ratko.mp4"
-      type="video/mp4"
-    />
+    <title>
+      Bojana i Vasilije - Pozivnica za venčanje
+    </title>
 
     <meta
       name="description"
       content="Kliknite i otvorite digitalnu pozivnicu za venčanje Bojane i Vasilija."
     />
 
-    <!-- OG -->
-    <meta property="og:type" content="website" />
+    <!-- =====================================================
+         PRELOAD — ENVELOPE FLAP
+    ====================================================== -->
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/envelope/bojana-vasilije-top.png"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/envelope/bojana-vasilije-bottom.png"
+    />
+
+    <!-- Fotografija koja se grebe -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/invitations/bojana-vasilije.jpg"
+    />
+
+    <!-- =====================================================
+         CANONICAL
+    ====================================================== -->
+
+    <link
+      rel="canonical"
+      href="https://mojapozivnica.app/bojana-vasilije"
+    />
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta
+      property="og:type"
+      content="website"
+    />
 
     <meta
       property="og:title"
@@ -72,11 +78,30 @@
       content="https://mojapozivnica.app/previews/bojana-vasilije.jpg"
     />
 
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:type"
+      content="image/jpeg"
+    />
 
-    <!-- Twitter -->
+    <meta
+      property="og:image:width"
+      content="1200"
+    />
+
+    <meta
+      property="og:image:height"
+      content="630"
+    />
+
+    <meta
+      property="og:image:alt"
+      content="Bojana i Vasilije - Pozivnica za venčanje"
+    />
+
+    <!-- =====================================================
+         TWITTER
+    ====================================================== -->
+
     <meta
       name="twitter:card"
       content="summary_large_image"
@@ -100,9 +125,15 @@
 
   <body>
     <script>
-      setTimeout(() => {
-        window.location.href = "/bojana-vasilije";
-      }, 400);
+      window.location.replace("/bojana-vasilije");
     </script>
+
+    <noscript>
+      <p>
+        <a href="/bojana-vasilije">
+          Otvorite pozivnicu za venčanje Bojane i Vasilija
+        </a>
+      </p>
+    </noscript>
   </body>
 </html>

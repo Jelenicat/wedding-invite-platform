@@ -84,6 +84,8 @@ import GoldPrintVideoInvitationCard from "../components/GoldPrintVideoInvitation
 import CyrillicSvgSilkIntro from "../components/CyrillicSvgSilkIntro";
 import CyrillicSvgSilkInvitationCard from "../components/CyrillicSvgSilkInvitationCard";
 import PhotoCardSplitInvitationCard from "../components/PhotoCardSplitInvitationCard";
+import EnvelopeFlapIntro from "../components/EnvelopeFlapIntro";
+import ScratchInvitationCard from "../components/ScratchInvitationCard";
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayEvaIntro from "../components/BirthdayEvaIntro";
@@ -94,6 +96,7 @@ import BirthdayMarbleIntro from "../components/BirthdayMarbleIntro";
 import BirthdayMarbleInvitationCard from "../components/BirthdayMarbleInvitationCard";
 import BirthdayBabyIntro from "../components/BirthdayBabyIntro";
 import BirthdayBabyInvitationCard from "../components/BirthdayBabyInvitationCard";
+import BirthdayHeartsIntro from "../components/BirthdayHeartsIntro";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -303,7 +306,14 @@ const TEMPLATE_COMPONENTS = {
     Intro: MonogramVideoIntro,
     Invitation: MonogramInvitationCard,
   },
-
+"birthday-hearts": {
+  Intro: BirthdayHeartsIntro,
+  Invitation: BirthdaySplitInvitationCard,
+},
+"envelope-flap": {
+  Intro: EnvelopeFlapIntro,
+  Invitation: ScratchInvitationCard,
+},
 };
 
 const isObject = (value) =>
@@ -665,8 +675,30 @@ sliderImages: localizedInvitation.details?.sliderImages || [],
     );
   }
 
-  if (
-    templateKey === "envelope-split" ||
+if (templateKey === "envelope-flap") {
+  return (
+    <div className="wedding-page">
+      {audioNode}
+
+    <InvitationComponent
+  {...invitationProps}
+  onLanguageChange={setLanguage}
+/>
+
+      <IntroComponent
+        key={slug}
+        {...introProps}
+        onStartMusic={playInvitationMusic}
+        onReveal={() => setEnvelopeRevealed(true)}
+        onEnter={handleIntroEnter}
+      />
+    </div>
+  );
+}
+
+if (
+  templateKey === "envelope-split" ||
+      
     templateKey === "envelope-split-v2" ||
      templateKey === "envelope-split-v2-photo-card" ||
     templateKey === "envelope-split-v2-editorial" ||
