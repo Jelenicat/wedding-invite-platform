@@ -25925,3 +25925,28 @@ font-family: "Italianno", cursive;
     margin-top: 12px;
   }
 }
+
+/* ============================================================
+   SCRATCH — POSLE OTKRIVANJA OSTAVI SAMO ELIPSU
+============================================================ */
+
+.sci-root
+  .sci-photo-area.is-revealed
+  .sci-scratch-canvas {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* roditelji bez ikakve pravougaone pozadine */
+.sci-root .sci-photo-area,
+.sci-root .sci-photo-ring {
+  background: transparent !important;
+}
+
+/* samo elipsa sme da bude vidljiva */
+.sci-root .sci-photo-window {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  clip-path: ellipse(50% 50% at 50% 50%);
+}
