@@ -25738,3 +25738,190 @@ font-family: "Italianno", cursive;
   .sci-photo-area.is-revealed {
   touch-action: auto;
 }
+
+/* ============================================================
+   ENVELOPE FLAP — OVAL / ELLIPSE SCRATCH PHOTO
+============================================================ */
+
+.sci-root .sci-photo-area {
+  width: 100%;
+
+  margin: 34px auto 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* spoljašnji beli ram */
+.sci-root .sci-photo-ring {
+  width: min(100%, 304px);
+  aspect-ratio: 1.42 / 1;
+
+  padding: 6px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(242, 239, 236, 0.96)
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(157, 147, 136, 0.14),
+    0 10px 24px rgba(92, 83, 74, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* unutrašnji oval u kome su slika + canvas */
+.sci-root .sci-photo-window {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.38);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(170, 160, 149, 0.18);
+}
+
+/* sama fotografija */
+.sci-root .sci-photo {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* scratch sloj */
+.sci-root .sci-scratch-canvas {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border-radius: 50%;
+  background: transparent;
+
+  z-index: 3;
+}
+
+/* sneg mora da prati isti oval */
+.sci-root .sci-snow-overlay {
+  position: absolute;
+  inset: 0;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* kada se otkrije, canvas više ne hvata pointer */
+.sci-root .sci-photo-area.is-revealed .sci-scratch-canvas {
+  pointer-events: none;
+}
+
+/* helper tekst ispod slike */
+.sci-root .sci-scratch-help {
+  max-width: 300px;
+
+  margin-top: 18px;
+
+  text-align: center;
+}
+
+.sci-root .sci-scratch-help p {
+  margin: 0 0 12px;
+
+  color: var(--sci-muted);
+
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+  .sci-root .sci-photo-area {
+    margin: 28px auto 26px;
+  }
+
+  .sci-root .sci-photo-ring {
+    width: min(100%, 292px);
+    padding: 5px;
+  }
+
+  .sci-root .sci-scratch-help {
+    max-width: 270px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sci-root .sci-photo-ring {
+    width: min(100%, 270px);
+  }
+}
+
+/* ============================================================
+   SCRATCH HELP — FIX POSLE ELIPSE
+============================================================ */
+
+.sci-root .sci-scratch-help {
+  position: static;
+
+  top: auto;
+  left: auto;
+  right: auto;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin: 14px auto 0;
+
+  text-align: center;
+}
+
+.sci-root .sci-scratch-help p {
+  margin: 0;
+
+  color: var(--sci-muted);
+
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .sci-root .sci-scratch-help {
+    margin-top: 12px;
+  }
+}
