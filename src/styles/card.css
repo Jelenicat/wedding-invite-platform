@@ -25301,7 +25301,6 @@ font-family: "Italianno", cursive;
     margin-top: -35px;
   }
 }
-
 .sci-root {
   --sci-paper: #f3f2f2;
   --sci-ink: #625b54;
@@ -25428,71 +25427,161 @@ font-family: "Italianno", cursive;
 
 .sci-root .sci-photo-area {
   position: relative;
-  width: min(64vw, 245px);
+  width: 100%;
   max-width: 100%;
-  margin: 17px auto 24px;
+  margin: 28px auto 26px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: transparent;
 }
+
 .sci-root .sci-photo-ring {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1;
+
+  width: min(100%, 304px);
+  aspect-ratio: 1.42 / 1;
+
   padding: 5px;
+
+  border: 1px solid rgba(157, 147, 136, 0.22);
   border-radius: 50%;
-  box-shadow: -1px -1px 2px rgba(116, 110, 100, 0.19), 1px 1px 2px #fff;
+
+  background: transparent;
+
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.82),
+    0 8px 22px rgba(92, 83, 74, 0.05);
+
+  overflow: hidden;
+
+  -webkit-clip-path: ellipse(50% 50% at 50% 50%);
+  clip-path: ellipse(50% 50% at 50% 50%);
 }
+
 .sci-root .sci-photo-window {
   position: relative;
+
   width: 100%;
   height: 100%;
+
   border-radius: 50%;
   overflow: hidden;
-  background: var(--sci-paper);
-  box-shadow: inset 1px 1px 3px rgba(116, 110, 100, 0.15);
+
+  background: transparent;
+  box-shadow: none;
+
+  -webkit-clip-path: ellipse(50% 50% at 50% 50%);
+  clip-path: ellipse(50% 50% at 50% 50%);
+
   isolation: isolate;
 }
-.sci-root .sci-photo, .sci-root .sci-scratch-canvas {
+
+.sci-root .sci-photo-ring::before,
+.sci-root .sci-photo-ring::after,
+.sci-root .sci-photo-window::before,
+.sci-root .sci-photo-window::after {
+  content: none;
+  display: none;
+}
+
+.sci-root .sci-photo,
+.sci-root .sci-scratch-canvas {
   position: absolute;
   inset: 0;
+
   display: block;
+
   width: 100%;
   height: 100%;
+
   margin: 0;
   padding: 0;
   border: 0;
+
+  border-radius: 50%;
+
+  -webkit-clip-path: ellipse(50% 50% at 50% 50%);
+  clip-path: ellipse(50% 50% at 50% 50%);
 }
+
 .sci-root .sci-photo {
   object-fit: cover;
   object-position: center;
+
   filter: grayscale(1) contrast(1.03);
+
+  background: transparent;
+
   pointer-events: none;
+
+  -webkit-user-drag: none;
   user-select: none;
 }
+
 .sci-root .sci-scratch-canvas {
-  z-index: 2;
+  z-index: 3;
+
+  background: transparent;
+
   touch-action: none;
+  overscroll-behavior: contain;
+
   cursor: crosshair;
+
   opacity: 1;
   transition: opacity 0.7s ease;
+
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
-.sci-root .sci-photo-area.is-revealed .sci-scratch-canvas { opacity: 0; pointer-events: none; }
+
+.sci-root .sci-photo-area.is-revealed .sci-scratch-canvas {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .sci-root .sci-photo-error {
   position: absolute;
   z-index: 3;
   inset: 32% 10%;
+
   margin: 0;
+
   font-size: 12px;
   line-height: 1.6;
+
   color: var(--sci-muted);
+
   pointer-events: none;
 }
+
 .sci-root .sci-scratch-help {
-  position: absolute;
-  top: calc(100% + 24px);
-  left: -20px;
-  right: -20px;
+  position: static;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin: 12px auto 0;
+
   text-align: center;
 }
-.sci-root .sci-scratch-help p { margin: 0; color: var(--sci-muted); font: italic 11px/1.65 Georgia, serif; }
+
+.sci-root .sci-scratch-help p {
+  margin: 0;
+
+  color: var(--sci-muted);
+
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+}
 /* Tastatura i čitači ekrana mogu otkriti fotografiju bez grebanja. */
 .sci-root .sci-reveal-button {
   position: absolute;
@@ -25571,7 +25660,7 @@ font-family: "Italianno", cursive;
 @media (min-width: 700px) {
   .sci-root .sci-hero { padding-top: 64px; }
   .sci-root .sci-paper-panel { min-height: max(700px, calc(100svh - 90px)); padding-left: 65px; padding-right: 65px; }
-  .sci-root .sci-photo-area { width: 260px; }
+  .sci-root .sci-photo-ring { width: 304px; }
 }
 @media (max-width: 360px) {
   .sci-root .sci-hero { padding-left: 10px; padding-right: 10px; }
@@ -25598,6 +25687,11 @@ font-family: "Italianno", cursive;
   pointer-events: none;
 
   border-radius: 50%;
+
+  -webkit-clip-path: ellipse(50% 50% at 50% 50%);
+  clip-path: ellipse(50% 50% at 50% 50%);
+
+  background: transparent;
 }
 
 /* jedna pahulja */
@@ -25710,11 +25804,9 @@ font-family: "Italianno", cursive;
 }
 
 /* ============================================================
-   SCRATCH — BLOKIRAJ SCROLL DOK SE GREBE
+   SCRATCH — MOBILE SCROLL FIX
 ============================================================ */
 
-.sci-root
-  .sci-photo-area:not(.is-revealed),
 .sci-root
   .sci-photo-area:not(.is-revealed)
   .sci-photo-ring,
@@ -25733,139 +25825,12 @@ font-family: "Italianno", cursive;
   -webkit-touch-callout: none;
 }
 
-/* kada se slika otkrije, vraća se normalno ponašanje */
-.sci-root
-  .sci-photo-area.is-revealed {
+.sci-root .sci-photo-area.is-revealed {
   touch-action: auto;
 }
 
 /* ============================================================
-   ENVELOPE FLAP — OVAL / ELLIPSE SCRATCH PHOTO
-============================================================ */
-
-.sci-root .sci-photo-area {
-  width: 100%;
-
-  margin: 34px auto 30px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* spoljašnji beli ram */
-.sci-root .sci-photo-ring {
-  width: min(100%, 304px);
-  aspect-ratio: 1.42 / 1;
-
-  padding: 6px;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.98),
-      rgba(242, 239, 236, 0.96)
-    );
-
-  box-shadow:
-    0 0 0 1px rgba(157, 147, 136, 0.14),
-    0 10px 24px rgba(92, 83, 74, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* unutrašnji oval u kome su slika + canvas */
-.sci-root .sci-photo-window {
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-
-  border-radius: 50%;
-  overflow: hidden;
-
-  background: rgba(255, 255, 255, 0.38);
-
-  box-shadow:
-    inset 0 0 0 1px rgba(170, 160, 149, 0.18);
-}
-
-/* sama fotografija */
-.sci-root .sci-photo {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  object-position: center;
-
-  display: block;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* scratch sloj */
-.sci-root .sci-scratch-canvas {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  border-radius: 50%;
-  background: transparent;
-
-  z-index: 3;
-}
-
-/* sneg mora da prati isti oval */
-.sci-root .sci-snow-overlay {
-  position: absolute;
-  inset: 0;
-
-  border-radius: 50%;
-  overflow: hidden;
-
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* kada se otkrije, canvas više ne hvata pointer */
-.sci-root .sci-photo-area.is-revealed .sci-scratch-canvas {
-  pointer-events: none;
-}
-
-/* helper tekst ispod slike */
-.sci-root .sci-scratch-help {
-  max-width: 300px;
-
-  margin-top: 18px;
-
-  text-align: center;
-}
-
-.sci-root .sci-scratch-help p {
-  margin: 0 0 12px;
-
-  color: var(--sci-muted);
-
-  font-family: Georgia, serif;
-  font-size: 13px;
-  font-style: italic;
-  line-height: 1.6;
-}
-
-/* ============================================================
-   MOBILE
+   PHOTO — MOBILE
 ============================================================ */
 
 @media (max-width: 480px) {
@@ -25875,12 +25840,11 @@ font-family: "Italianno", cursive;
 
   .sci-root .sci-photo-ring {
     width: min(100%, 292px);
-    padding: 5px;
   }
 
   .sci-root .sci-scratch-help {
     max-width: 270px;
-    margin-top: 16px;
+    margin-top: 12px;
   }
 }
 
@@ -25888,65 +25852,4 @@ font-family: "Italianno", cursive;
   .sci-root .sci-photo-ring {
     width: min(100%, 270px);
   }
-}
-
-/* ============================================================
-   SCRATCH HELP — FIX POSLE ELIPSE
-============================================================ */
-
-.sci-root .sci-scratch-help {
-  position: static;
-
-  top: auto;
-  left: auto;
-  right: auto;
-
-  width: 100%;
-  max-width: 300px;
-
-  margin: 14px auto 0;
-
-  text-align: center;
-}
-
-.sci-root .sci-scratch-help p {
-  margin: 0;
-
-  color: var(--sci-muted);
-
-  font-family: Georgia, serif;
-  font-size: 13px;
-  font-style: italic;
-  line-height: 1.6;
-}
-
-@media (max-width: 480px) {
-  .sci-root .sci-scratch-help {
-    margin-top: 12px;
-  }
-}
-
-/* ============================================================
-   SCRATCH — POSLE OTKRIVANJA OSTAVI SAMO ELIPSU
-============================================================ */
-
-.sci-root
-  .sci-photo-area.is-revealed
-  .sci-scratch-canvas {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* roditelji bez ikakve pravougaone pozadine */
-.sci-root .sci-photo-area,
-.sci-root .sci-photo-ring {
-  background: transparent !important;
-}
-
-/* samo elipsa sme da bude vidljiva */
-.sci-root .sci-photo-window {
-  border-radius: 50% !important;
-  overflow: hidden !important;
-  clip-path: ellipse(50% 50% at 50% 50%);
 }
