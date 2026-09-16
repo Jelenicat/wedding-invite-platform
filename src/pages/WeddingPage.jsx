@@ -97,6 +97,8 @@ import BirthdayMarbleInvitationCard from "../components/BirthdayMarbleInvitation
 import BirthdayBabyIntro from "../components/BirthdayBabyIntro";
 import BirthdayBabyInvitationCard from "../components/BirthdayBabyInvitationCard";
 import BirthdayHeartsIntro from "../components/BirthdayHeartsIntro";
+import BirthdayHeartsInvitationCard from "../components/BirthdayHeartsInvitationCard";
+import BirthdayScratchIntro from "../components/BirthdayScratchIntro";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -308,11 +310,15 @@ const TEMPLATE_COMPONENTS = {
   },
 "birthday-hearts": {
   Intro: BirthdayHeartsIntro,
-  Invitation: BirthdaySplitInvitationCard,
+  Invitation: BirthdayHeartsInvitationCard,
 },
 "envelope-flap": {
   Intro: EnvelopeFlapIntro,
   Invitation: ScratchInvitationCard,
+},
+"birthday-scratch": {
+  Intro: BirthdayScratchIntro,
+  Invitation: BirthdayHeartsInvitationCard,
 },
 };
 

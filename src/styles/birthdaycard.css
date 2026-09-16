@@ -2984,3 +2984,1502 @@
     height: 18px;
   }
 }
+
+
+
+
+/* ============================================================
+   BIRTHDAY HEARTS INVITATION CARD
+============================================================ */
+
+.bhc-page {
+  --bhc-brown: #795845;
+  --bhc-brown-dark: #654737;
+  --bhc-soft: #9b7c69;
+  --bhc-gold: #bd9d73;
+  --bhc-paper: #faf5ef;
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 44px 16px;
+
+  overflow: hidden;
+
+  background: var(--bhc-paper);
+  color: var(--bhc-brown);
+}
+
+/* ============================================================
+   BACKGROUND
+============================================================ */
+
+.bhc-background {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    var(--bhc-background);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: scale(1.015);
+
+  pointer-events: none;
+}
+
+/*
+  Mnogo nežnije nego raniji overlay.
+  Pozadina ostaje jasno vidljiva.
+*/
+.bhc-background-softener {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(253, 249, 245, 0.12) 0%,
+      rgba(253, 249, 245, 0.05) 52%,
+      rgba(253, 249, 245, 0.10) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   GLAVNA KARTICA
+============================================================ */
+
+.bhc-card {
+  position: relative;
+  z-index: 2;
+
+  width: min(
+    92%,
+    410px
+  );
+
+  padding:
+    37px
+    25px
+    30px;
+
+  text-align: center;
+
+  border-radius: 38px;
+
+  /*
+    Kartica je namerno dosta providna.
+  */
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        255,
+        253,
+        250,
+        0.38
+      ),
+      rgba(
+        250,
+        244,
+        238,
+        0.27
+      )
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      143,
+      108,
+      86,
+      0.16
+    );
+
+  box-shadow:
+    0 28px 65px
+      rgba(
+        88,
+        61,
+        44,
+        0.11
+      ),
+    0 8px 24px
+      rgba(
+        88,
+        61,
+        44,
+        0.05
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.56
+      );
+
+  backdrop-filter:
+    blur(9px);
+
+  -webkit-backdrop-filter:
+    blur(9px);
+
+  overflow: hidden;
+}
+
+/* veoma suptilan unutrašnji okvir */
+
+.bhc-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 11px;
+
+  border:
+    1px
+    solid
+    rgba(
+      157,
+      123,
+      100,
+      0.09
+    );
+
+  border-radius: 29px;
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   BLAGI GLOW UNUTAR KARTICE
+============================================================ */
+
+.bhc-soft-glow {
+  position: absolute;
+
+  border-radius: 999px;
+
+  filter: blur(55px);
+
+  pointer-events: none;
+
+  opacity: 0.35;
+}
+
+.bhc-soft-glow-one {
+  width: 150px;
+  height: 150px;
+
+  top: -55px;
+  left: -50px;
+
+  background:
+    rgba(
+      238,
+      215,
+      194,
+      0.52
+    );
+}
+
+.bhc-soft-glow-two {
+  width: 170px;
+  height: 170px;
+
+  right: -65px;
+  bottom: -70px;
+
+  background:
+    rgba(
+      213,
+      190,
+      166,
+      0.40
+    );
+}
+
+/* ============================================================
+   HEADING
+============================================================ */
+
+.bhc-heading {
+  position: relative;
+  z-index: 2;
+}
+
+/* Malo srce, velika ljubav */
+
+.bhc-kicker {
+  margin:
+    0
+    0
+    7px;
+
+  font-family:
+    "Manrope",
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.32em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      125,
+      89,
+      68,
+      0.78
+    );
+}
+
+/* IME */
+
+.bhc-name {
+  margin:
+    4px
+    0
+    2px;
+
+  padding-top: 4px;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size:
+    clamp(
+      88px,
+      20vw,
+      120px
+    );
+
+  font-weight: 400;
+
+  line-height: 0.9;
+
+  letter-spacing: 0;
+
+  color:
+    var(--bhc-brown);
+
+  text-shadow:
+    0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.35
+      );
+}
+
+/* slavi svoj prvi rođendan */
+
+.bhc-subtitle {
+  margin:
+    3px
+    auto
+    0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 23px;
+  font-weight: 500;
+
+  font-style: italic;
+
+  line-height: 1.2;
+
+  color:
+    rgba(
+      111,
+      78,
+      60,
+      0.92
+    );
+}
+
+/* ============================================================
+   HEART DIVIDER
+============================================================ */
+
+.bhc-heading-flourish {
+  width: 190px;
+
+  margin:
+    19px
+    auto
+    5px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    rgba(
+      176,
+      141,
+      103,
+      0.82
+    );
+}
+
+.bhc-heading-flourish > span:not(
+    .bhc-flourish-heart
+  ) {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        176,
+        141,
+        103,
+        0.50
+      )
+    );
+}
+
+.bhc-heading-flourish
+  > span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        176,
+        141,
+        103,
+        0.50
+      ),
+      transparent
+    );
+}
+
+.bhc-flourish-heart {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 21px;
+
+  line-height: 1;
+}
+
+/* ============================================================
+   KALENDAR
+============================================================ */
+
+.bhc-calendar {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin:
+    18px
+    auto
+    22px;
+
+  padding:
+    19px
+    16px
+    17px;
+
+  border-radius: 27px;
+
+  background:
+    rgba(
+      255,
+      252,
+      248,
+      0.24
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      150,
+      116,
+      94,
+      0.11
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.45
+    );
+}
+
+/* pisani naslov kalendara */
+
+.bhc-calendar-script {
+  margin:
+    -2px
+    0
+    9px;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 34px;
+
+  line-height: 1;
+
+  color:
+    rgba(
+      139,
+      102,
+      78,
+      0.88
+    );
+}
+
+/* mesec + godina */
+
+.bhc-calendar-heading {
+  display: flex;
+
+  align-items: baseline;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-bottom: 14px;
+}
+
+.bhc-calendar-month {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 20px;
+
+  font-style: italic;
+
+  font-weight: 500;
+
+  text-transform: lowercase;
+
+  color:
+    var(--bhc-brown);
+}
+
+.bhc-calendar-year {
+  font-family:
+    "Manrope",
+    Arial,
+    sans-serif;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(
+      126,
+      97,
+      79,
+      0.62
+    );
+}
+
+/* weekdays */
+
+.bhc-calendar-weekdays {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      7,
+      1fr
+    );
+
+  gap: 4px;
+
+  margin-bottom: 7px;
+}
+
+.bhc-calendar-weekdays span {
+  font-family:
+    "Manrope",
+    Arial,
+    sans-serif;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 0.07em;
+
+  color:
+    rgba(
+      127,
+      101,
+      85,
+      0.60
+    );
+}
+
+/* calendar dates */
+
+.bhc-calendar-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      7,
+      1fr
+    );
+
+  gap:
+    6px
+    4px;
+
+  align-items: center;
+}
+
+.bhc-calendar-day {
+  position: relative;
+
+  min-height: 29px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color:
+    rgba(
+      105,
+      79,
+      64,
+      0.84
+    );
+
+  border-radius: 50%;
+}
+
+.bhc-calendar-day.is-empty {
+  opacity: 0;
+}
+
+/* aktivan datum */
+
+.bhc-calendar-day.is-active {
+  width: 33px;
+  height: 33px;
+
+  min-height: 33px;
+
+  margin: auto;
+
+  color:
+    #694b3a;
+
+  background:
+    rgba(
+      229,
+      207,
+      186,
+      0.64
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      160,
+      123,
+      97,
+      0.28
+    );
+
+  box-shadow:
+    0
+    5px
+    13px
+    rgba(
+      98,
+      68,
+      50,
+      0.07
+    );
+}
+
+.bhc-calendar-heart {
+  position: absolute;
+
+  top: -11px;
+  right: -6px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 18px;
+
+  color:
+    #b68e70;
+
+  transform:
+    rotate(10deg);
+}
+
+/* ============================================================
+   WELCOME TEXT
+============================================================ */
+
+.bhc-message {
+  position: relative;
+  z-index: 2;
+
+  max-width: 300px;
+
+  margin:
+    4px
+    auto
+    22px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 18px;
+  font-style: italic;
+
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color:
+    rgba(
+      110,
+      84,
+      69,
+      0.83
+    );
+}
+
+/* ============================================================
+   INFO
+============================================================ */
+
+.bhc-info {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 310px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      145,
+      111,
+      89,
+      0.12
+    );
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      145,
+      111,
+      89,
+      0.12
+    );
+}
+
+/* vreme / mesto */
+
+.bhc-info-row {
+  width: 100%;
+
+  min-height: 62px;
+
+  padding:
+    11px
+    8px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  text-decoration: none;
+
+  color:
+    var(--bhc-brown);
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      145,
+      111,
+      89,
+      0.09
+    );
+
+  transition:
+    transform
+    0.25s
+    ease,
+    opacity
+    0.25s
+    ease;
+}
+
+.bhc-info-row:last-child {
+  border-bottom: 0;
+}
+
+a.bhc-info-row:hover {
+  transform:
+    translateY(
+      -1px
+    );
+
+  opacity: 0.78;
+}
+
+.bhc-info-icon {
+  width: 20px;
+  height: 20px;
+
+  flex:
+    0
+    0
+    20px;
+
+  color:
+    rgba(
+      157,
+      119,
+      92,
+      0.88
+    );
+}
+
+.bhc-info-icon svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.bhc-info-content {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  text-align: left;
+
+  gap: 1px;
+}
+
+.bhc-info-label {
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 25px;
+
+  line-height: 1;
+
+  color:
+    rgba(
+      137,
+      101,
+      78,
+      0.78
+    );
+}
+
+.bhc-info-value {
+  max-width: 230px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  line-height: 1.25;
+
+  color:
+    #6a4d3d;
+}
+
+/* ============================================================
+   MULTIPLE EVENTS
+============================================================ */
+
+.bhc-event {
+  padding:
+    16px
+    7px;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      145,
+      111,
+      89,
+      0.10
+    );
+}
+
+.bhc-event:last-child {
+  border-bottom: 0;
+}
+
+.bhc-event-title {
+  margin-bottom: 8px;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 29px;
+
+  line-height: 1;
+
+  color:
+    #755442;
+}
+
+.bhc-event-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+.bhc-meta-row {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  text-decoration: none;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+
+  color:
+    rgba(
+      105,
+      77,
+      61,
+      0.88
+    );
+}
+
+.bhc-meta-icon {
+  width: 15px;
+  height: 15px;
+
+  color:
+    rgba(
+      153,
+      115,
+      89,
+      0.82
+    );
+}
+
+.bhc-meta-icon svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================
+   NOTE
+============================================================ */
+
+.bhc-note {
+  position: relative;
+  z-index: 2;
+
+  max-width: 285px;
+
+  margin:
+    20px
+    auto
+    0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 15px;
+
+  font-style: italic;
+
+  line-height: 1.5;
+
+  color:
+    rgba(
+      117,
+      90,
+      73,
+      0.72
+    );
+}
+
+/* ============================================================
+   DONJI "ONE"
+============================================================ */
+
+.bhc-bottom-decoration {
+  position: relative;
+  z-index: 2;
+
+  width: 185px;
+
+  margin:
+    25px
+    auto
+    0;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+.bhc-bottom-decoration > span:not(
+    .bhc-bottom-script
+  ) {
+  height: 1px;
+
+  background:
+    rgba(
+      165,
+      129,
+      101,
+      0.20
+    );
+}
+
+.bhc-bottom-script {
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  color:
+    rgba(
+      158,
+      120,
+      91,
+      0.43
+    );
+
+  transform:
+    rotate(
+      -5deg
+    );
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 600px) {
+  .bhc-page {
+    padding:
+      30px
+      12px;
+  }
+
+  .bhc-card {
+    width: 90%;
+
+    max-width: 355px;
+
+    padding:
+      31px
+      18px
+      25px;
+
+    border-radius: 31px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          253,
+          250,
+          0.33
+        ),
+        rgba(
+          250,
+          244,
+          238,
+          0.24
+        )
+      );
+
+    backdrop-filter:
+      blur(8px);
+
+    -webkit-backdrop-filter:
+      blur(8px);
+  }
+
+  .bhc-card::before {
+    inset: 8px;
+    border-radius: 24px;
+  }
+
+  .bhc-kicker {
+    font-size: 9px;
+
+    letter-spacing:
+      0.27em;
+  }
+
+  .bhc-name {
+    font-size:
+      clamp(
+        82px,
+        27vw,
+        108px
+      );
+  }
+
+  .bhc-subtitle {
+    font-size: 21px;
+  }
+
+  .bhc-heading-flourish {
+    width: 165px;
+
+    margin-top: 16px;
+  }
+
+  .bhc-calendar {
+    max-width: 280px;
+
+    margin-top: 16px;
+
+    padding:
+      17px
+      12px
+      15px;
+
+    border-radius: 23px;
+  }
+
+  .bhc-calendar-script {
+    font-size: 31px;
+  }
+
+  .bhc-calendar-month {
+    font-size: 19px;
+  }
+
+  .bhc-calendar-day {
+    min-height: 27px;
+
+    font-size: 15px;
+  }
+
+  .bhc-calendar-day.is-active {
+    width: 31px;
+    height: 31px;
+
+    min-height: 31px;
+  }
+
+  .bhc-message {
+    max-width: 270px;
+
+    font-size: 17px;
+  }
+
+  .bhc-info {
+    max-width: 280px;
+  }
+
+  .bhc-info-row {
+    min-height: 57px;
+  }
+
+  .bhc-info-label {
+    font-size: 23px;
+  }
+
+  .bhc-info-value {
+    max-width: 205px;
+
+    font-size: 16px;
+  }
+
+  .bhc-event-title {
+    font-size: 27px;
+  }
+
+  .bhc-meta-row {
+    font-size: 15px;
+  }
+}
+
+/* ============================================================
+   MALI TELEFONI
+============================================================ */
+
+@media (max-width: 360px) {
+  .bhc-page {
+    padding:
+      22px
+      8px;
+  }
+
+  .bhc-card {
+    width: 94%;
+
+    padding:
+      27px
+      14px
+      23px;
+  }
+
+  .bhc-name {
+    font-size: 84px;
+  }
+
+  .bhc-subtitle {
+    font-size: 19px;
+  }
+
+  .bhc-calendar {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .bhc-calendar-grid {
+    gap:
+      5px
+      2px;
+  }
+
+  .bhc-calendar-weekdays {
+    gap: 2px;
+  }
+
+  .bhc-message {
+    font-size: 16px;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .bhc-page *,
+  .bhc-page *::before,
+  .bhc-page *::after {
+    animation: none !important;
+
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   BIRTHDAY HEARTS CARD — FINISH
+============================================================ */
+
+/* GLAVNA KARTICA — više providna */
+.bhc-card {
+  background: rgba(255, 252, 248, 0.22) !important;
+
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+
+  border: 1px solid rgba(146, 111, 88, 0.14) !important;
+
+  box-shadow:
+    0 18px 45px rgba(88, 61, 44, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38) !important;
+}
+
+/* unutrašnji okvir još suptilniji */
+.bhc-card::before {
+  border-color: rgba(151, 116, 92, 0.06) !important;
+}
+
+/* SKLONI MUTNE GLOW MRLJE */
+.bhc-soft-glow {
+  display: none !important;
+}
+
+/* IME */
+.bhc-name {
+  color: #795744 !important;
+  font-size: clamp(94px, 21vw, 126px) !important;
+}
+
+/* podnaslov */
+.bhc-subtitle {
+  font-size: 25px !important;
+  color: #805d4b !important;
+}
+
+/* divider */
+.bhc-heading-flourish {
+  margin-top: 15px !important;
+  margin-bottom: 0 !important;
+}
+
+/* ============================================================
+   KALENDAR — bez velike bele kutije
+============================================================ */
+
+.bhc-calendar {
+  max-width: 295px !important;
+
+  margin: 14px auto 18px !important;
+
+  padding: 13px 10px 10px !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* naš poseban dan */
+.bhc-calendar-script {
+  font-family: "Italianno", "Great Vibes", cursive !important;
+
+  font-size: 39px !important;
+  line-height: 0.95 !important;
+
+  margin-bottom: 8px !important;
+
+  color: #906b55 !important;
+}
+
+/* mesec */
+.bhc-calendar-month {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 21px !important;
+  font-style: italic !important;
+  color: #805e4b !important;
+}
+
+/* godina */
+.bhc-calendar-year {
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  opacity: 0.72;
+}
+
+/* dani nedelje */
+.bhc-calendar-weekdays span {
+  font-size: 8px !important;
+  color: rgba(115, 87, 70, 0.62) !important;
+}
+
+/* brojevi */
+.bhc-calendar-day {
+  font-size: 16px !important;
+  color: rgba(102, 76, 61, 0.88) !important;
+}
+
+/* AKTIVNI DAN */
+.bhc-calendar-day.is-active {
+  width: 32px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+
+  background: rgba(255, 255, 255, 0.18) !important;
+
+  border: 1px solid rgba(150, 108, 82, 0.48) !important;
+
+  color: #76513f !important;
+
+  box-shadow: none !important;
+}
+
+/* srce kod datuma */
+.bhc-calendar-heart {
+  top: -10px !important;
+  right: -7px !important;
+
+  font-size: 17px !important;
+
+  color: #b78d70 !important;
+}
+
+/* ============================================================
+   TEKST ISPOD KALENDARA
+============================================================ */
+
+.bhc-message {
+  margin-top: 8px !important;
+  margin-bottom: 16px !important;
+
+  max-width: 280px !important;
+
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+
+  color: rgba(117, 84, 66, 0.78) !important;
+}
+
+/* INFO BLOK */
+.bhc-info {
+  border-top-color: rgba(145, 111, 89, 0.08) !important;
+  border-bottom-color: rgba(145, 111, 89, 0.08) !important;
+}
+
+.bhc-info-label {
+  font-size: 27px !important;
+}
+
+.bhc-info-value {
+  font-size: 17px !important;
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 600px) {
+  .bhc-card {
+    width: 91% !important;
+
+    padding:
+      28px
+      17px
+      22px !important;
+
+    background: rgba(255, 252, 248, 0.19) !important;
+
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+
+  .bhc-name {
+    font-size: clamp(88px, 27vw, 112px) !important;
+  }
+
+  .bhc-subtitle {
+    font-size: 23px !important;
+  }
+
+  .bhc-calendar {
+    margin-top: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .bhc-calendar-script {
+    font-size: 36px !important;
+  }
+
+  .bhc-message {
+    font-size: 17px !important;
+    margin-bottom: 14px !important;
+  }
+}

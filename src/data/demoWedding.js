@@ -3901,18 +3901,18 @@ theme: {
   }),
 },
 {
-  slug: "mila-hearts-demo",
+  slug: "vuk-hearts-demo",
   type: "birthday",
   template: "birthday-hearts",
   script: "latin",
 
-  brideName: "Mila",
+  brideName: "Vuk",
 
   weddingDate: "10.10.2026.",
   weddingTime: "15:00",
   venue: "Mesto proslave",
 
-  backgroundImage: "/images/vuk-1-bg.jpg",
+  backgroundImage: "/images/vuk-bg.jpg",
 
   // Fotografije u srcima
   image1: "/images/vuk-1-1.jpg",
@@ -3924,12 +3924,12 @@ theme: {
 
     date: "10.10.2026.",
     dateISO: "2026-10-10T15:00:00+02:00",
-
+  introBackgroundImage: "/images/vuk-bg.jpg",
     venue: "Mesto proslave",
-    backgroundImage: "/images/vuk-1-bg.jpg",
+    backgroundImage: "/images/vuk-bg.jpg",
 
     welcomeText:
-      "Pozivamo vas da zajedno proslavimo Milin prvi rođendan.",
+      "Pozivamo vas da zajedno proslavimo Vukov prvi rođendan.",
 
     rsvpText:
       "Najlepše uspomene stvaramo zajedno.",
@@ -3960,7 +3960,114 @@ theme: {
     ],
   },
 },
+{
+  slug: "vuk-scratch-demo",
+  type: "birthday",
+  template: "birthday-scratch",
+  script: "latin",
 
+  brideName: "Vuk",
+  childName: "Vuk",
+
+  weddingDate: "10.10.2026.",
+  weddingTime: "15:00",
+  venue: "Mesto proslave",
+
+  /*
+   * Fallback pozadina.
+   * Koriste je i invitation card / RSVP / countdown
+   * ako nema posebne slike u details.
+   */
+  backgroundImage: "/images/vuk-bg-1.jpg",
+
+  details: {
+    age: 1,
+
+    date: "10.10.2026.",
+    dateISO: "2026-10-10T15:00:00+02:00",
+
+    /* =========================================
+       SCRATCH INTRO
+    ========================================= */
+
+    // pozadina celog introa
+    scratchIntroBackgroundImage: "/images/vuk-bg-1.jpg",
+
+    // slika u ovalnom okviru koju gost grebe
+    scratchImage: "/images/viktor-1-3.jpg",
+
+    /* =========================================
+       INVITATION CARD
+    ========================================= */
+
+    cardBackgroundImage: "/images/vuk-bg-1.jpg",
+
+    cardKicker: "Malo srce, velika ljubav",
+
+    cardSubtitle:
+      "slavi svoj prvi rođendan",
+
+    welcomeText:
+      "Pozivamo vas da zajedno proslavimo Vukov prvi rođendan.",
+
+    /* =========================================
+       DOGAĐAJ
+    ========================================= */
+
+    venue: "Mesto proslave",
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Mesto+proslave",
+
+    events: [
+      {
+        label: "Proslava rođendana",
+        time: "15:00",
+        icon: "cake",
+        location: "Mesto proslave",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Mesto+proslave",
+      },
+    ],
+
+    /* =========================================
+       RSVP
+    ========================================= */
+
+    rsvpSubtitle:
+      "Radovaćemo se da zajedno proslavimo Vukov prvi rođendan.",
+
+    rsvpNote:
+      "Molimo vas da dolazak potvrdite do 01.10.2026.",
+
+    rsvpDeadline: "01.10.2026.",
+    rsvpDeadlineISO: "2026-10-01",
+
+    /* =========================================
+       COUNTDOWN
+    ========================================= */
+
+    countdownKicker: "ODBROJAVAMO",
+
+    countdownTitle:
+      "Još malo do slavlja",
+
+    countdownSubtitle:
+      "Svakim danom smo sve bliže jednoj posebnoj uspomeni.",
+
+    /* =========================================
+       KALENDAR
+    ========================================= */
+
+    showCalendarButton: true,
+    calendarDurationHours: 4,
+
+    showDressCode: false,
+
+    note:
+      "Jedva čekamo da ovaj poseban dan podelimo sa vama.",
+  },
+},
 // =========================
 // Klijenti
 // =========================

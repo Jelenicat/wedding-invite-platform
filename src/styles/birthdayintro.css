@@ -3432,7 +3432,8 @@ body,
 
 @font-face {
   font-family: "Bhi Italianno";
-  src: url("https://fonts.gstatic.com/s/italianno/v18/dg4n_p3sv6gCJkwzT6Rnjw.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/italianno/v18/dg4n_p3sv6gCJkwzT6Rnjw.ttf")
+    format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -3440,7 +3441,8 @@ body,
 
 @font-face {
   font-family: "Bhi Cormorant";
-  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_v86GnM.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_v86GnM.ttf")
+    format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -3448,7 +3450,8 @@ body,
 
 @font-face {
   font-family: "Bhi Manrope";
-  src: url("https://fonts.gstatic.com/s/manrope/v20/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FO_F.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/manrope/v20/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FO_F.ttf")
+    format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -3476,6 +3479,7 @@ body,
   justify-content: center;
 
   overflow: hidden;
+
   color: var(--bhi-ink);
   background: var(--bhi-paper);
 
@@ -3505,7 +3509,33 @@ body,
   margin: 0;
 }
 
-/* POZADINA */
+/* ============================================================
+   POZADINSKA SLIKA
+   BEZ OVERLAY-A
+============================================================ */
+
+.bhi-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  background-image: var(--bhi-bg-image);
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  transform: scale(1.02);
+}
+
+/* ============================================================
+   POZADINSKI EFEKTI
+============================================================ */
 
 .bhi-light {
   position: absolute;
@@ -3517,6 +3547,7 @@ body,
 .bhi-light-a {
   width: 850px;
   height: 730px;
+
   left: -420px;
   top: -180px;
 
@@ -3526,12 +3557,18 @@ body,
     #f3e9dc00 70%
   );
 
-  animation: bhi-light 16s ease-in-out infinite alternate;
+  animation:
+    bhi-light
+    16s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 .bhi-light-b {
   width: 850px;
   height: 950px;
+
   right: -520px;
   bottom: -430px;
 
@@ -3542,26 +3579,40 @@ body,
   );
 
   animation:
-    bhi-light 19s ease-in-out -5s infinite alternate-reverse;
+    bhi-light
+    19s
+    ease-in-out
+    -5s
+    infinite
+    alternate-reverse;
 }
 
 .bhi-grain {
   position: absolute;
   inset: 0;
+
   opacity: 0.055;
+
   pointer-events: none;
 
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.7' filter='url(%23grain)'/%3E%3C/svg%3E");
 }
 
-/* IME I NASLOV */
+/* ============================================================
+   IME I NASLOV
+============================================================ */
 
 .bhi-content {
   position: relative;
   z-index: 2;
 
   width: min(100%, 850px);
-  padding: 34px 20px 31px;
+
+  padding:
+    34px
+    20px
+    31px;
+
   text-align: center;
 }
 
@@ -3571,33 +3622,66 @@ body,
 }
 
 .bhi-eyebrow {
-  font: 400 11px/1.6 "Bhi Manrope", Arial, sans-serif;
+  font:
+    400
+    11px / 1.6
+    "Bhi Manrope",
+    Arial,
+    sans-serif;
+
   letter-spacing: 3.6px;
   text-transform: uppercase;
 
-  animation: bhi-rise 1s 0.08s both;
+  animation:
+    bhi-rise
+    1s
+    0.08s
+    both;
 }
 
 .bhi-name {
   font:
-    400 clamp(110px, 15vw, 144px) / 0.96
-    "Bhi Italianno", "Brush Script MT", cursive;
+    400
+    clamp(110px, 15vw, 144px) / 0.96
+    "Bhi Italianno",
+    "Brush Script MT",
+    cursive;
 
-  padding: 17px 9px 0;
+  padding:
+    17px
+    9px
+    0;
+
   overflow-wrap: anywhere;
   text-wrap: balance;
 
-  animation: bhi-rise 1.2s 0.18s both;
+  animation:
+    bhi-rise
+    1.2s
+    0.18s
+    both;
 }
 
 .bhi-subtitle {
-  font: 400 24px/1.35 "Bhi Cormorant", Georgia, serif;
+  font:
+    400
+    24px / 1.35
+    "Bhi Cormorant",
+    Georgia,
+    serif;
+
   letter-spacing: 0.25px;
 
-  animation: bhi-rise 1.2s 0.29s both;
+  animation:
+    bhi-rise
+    1.2s
+    0.29s
+    both;
 }
 
-/* PROSTOR ZA SRCA */
+/* ============================================================
+   PROSTOR ZA SRCA
+============================================================ */
 
 .bhi-stage {
   position: relative;
@@ -3605,47 +3689,81 @@ body,
 
   width: min(100%, 570px);
   aspect-ratio: 1.58;
-  margin: 13px auto 0;
+
+  margin:
+    13px
+    auto
+    0;
 }
 
 .bhi-parallax {
   position: absolute;
   inset: 0;
 
-  transform: translate3d(var(--bhi-px), var(--bhi-py), 0);
+  transform:
+    translate3d(
+      var(--bhi-px),
+      var(--bhi-py),
+      0
+    );
 
   transition:
-    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transform
+    700ms
+    cubic-bezier(
+      0.2,
+      0.7,
+      0.2,
+      1
+    );
 }
 
 .bhi-one {
   position: absolute;
+
   left: 9%;
   top: 29%;
 
   font:
-    400 clamp(130px, 26vw, 235px) / 1
-    "Bhi Italianno", cursive;
+    400
+    clamp(130px, 26vw, 235px) / 1
+    "Bhi Italianno",
+    cursive;
 
   color: #b895632e;
-  transform: rotate(-12deg);
+
+  transform:
+    rotate(-12deg);
+
   user-select: none;
 
-  animation: bhi-rise 1.3s 0.45s both;
+  animation:
+    bhi-rise
+    1.3s
+    0.45s
+    both;
 }
 
 .bhi-orbit {
   position: absolute;
-  border: 1px solid #be9e6e28;
+
+  border:
+    1px
+    solid
+    #be9e6e28;
+
   border-radius: 50%;
+
   pointer-events: none;
 
-  transform: rotate(-22deg);
+  transform:
+    rotate(-22deg);
 }
 
 .bhi-orbit-a {
   width: 83%;
   height: 58%;
+
   left: 7%;
   top: 18%;
 }
@@ -3653,26 +3771,41 @@ body,
 .bhi-orbit-b {
   width: 70%;
   height: 63%;
+
   left: 20%;
   top: 14%;
 
-  transform: rotate(21deg);
+  transform:
+    rotate(21deg);
+
   opacity: 0.4;
 }
 
-/* RASPORED SRCA */
+/* ============================================================
+   RASPORED SRCA
+============================================================ */
 
 .bhi-heart-slot {
   position: absolute;
 
   animation:
-    bhi-arrive 1.3s cubic-bezier(0.18, 0.7, 0.24, 1) both;
+    bhi-arrive
+    1.3s
+    cubic-bezier(
+      0.18,
+      0.7,
+      0.24,
+      1
+    )
+    both;
 }
 
 .bhi-heart-0 {
   width: 31%;
+
   left: 0;
   top: 35%;
+
   z-index: 3;
 
   --bhi-angle: -15deg;
@@ -3685,8 +3818,10 @@ body,
 
 .bhi-heart-1 {
   width: 53%;
+
   left: 23.5%;
   top: 6%;
+
   z-index: 4;
 
   --bhi-angle: 4deg;
@@ -3699,8 +3834,10 @@ body,
 
 .bhi-heart-2 {
   width: 29%;
+
   right: 0;
   top: 42%;
+
   z-index: 5;
 
   --bhi-angle: 15deg;
@@ -3711,35 +3848,48 @@ body,
   animation-delay: 0.62s;
 }
 
-/* LEBĐENJE I PREVLAČENJE */
+/* ============================================================
+   LEBĐENJE I PREVLAČENJE
+============================================================ */
 
 .bhi-heart-float {
-  animation: bhi-float 6.3s ease-in-out infinite;
+  animation:
+    bhi-float
+    6.3s
+    ease-in-out
+    infinite;
 }
 
-.bhi-heart-0 .bhi-heart-float {
+.bhi-heart-0
+.bhi-heart-float {
   animation-delay: -1.9s;
   animation-duration: 7s;
 }
 
-.bhi-heart-2 .bhi-heart-float {
+.bhi-heart-2
+.bhi-heart-float {
   animation-delay: -3.6s;
   animation-duration: 5.8s;
 }
 
 .bhi-heart {
   display: block;
+
   position: relative;
 
   width: 100%;
+
   aspect-ratio: 1;
 
   padding: 0;
+
   border: 0;
   border-radius: 40%;
+
   background: transparent;
 
   cursor: grab;
+
   touch-action: none;
 
   user-select: none;
@@ -3753,68 +3903,128 @@ body,
       var(--bhi-dy, 0px),
       0
     )
-    rotate(var(--bhi-angle));
+    rotate(
+      var(--bhi-angle)
+    );
 
   transition:
-    transform 750ms cubic-bezier(0.18, 1.45, 0.3, 1),
-    filter 400ms;
+    transform
+    750ms
+    cubic-bezier(
+      0.18,
+      1.45,
+      0.3,
+      1
+    ),
+    filter
+    400ms;
 
   filter:
-    drop-shadow(0 16px 13px #79533722)
-    drop-shadow(0 2px 2px #64402315);
+    drop-shadow(
+      0
+      16px
+      13px
+      #79533722
+    )
+    drop-shadow(
+      0
+      2px
+      2px
+      #64402315
+    );
 }
 
 .bhi-heart[data-dragging="true"] {
   cursor: grabbing;
-  transition: filter 200ms;
 
-  filter: drop-shadow(0 24px 18px #79533738);
+  transition:
+    filter
+    200ms;
+
+  filter:
+    drop-shadow(
+      0
+      24px
+      18px
+      #79533738
+    );
 }
 
 .bhi-heart[disabled] {
   cursor: default;
 }
 
-/* OKRETANJE SRCA */
+/* ============================================================
+   OKRETANJE SRCA
+============================================================ */
 
 .bhi-heart-turn {
   position: absolute;
   inset: 0;
+
   display: block;
 
-  transform-style: preserve-3d;
+  transform-style:
+    preserve-3d;
 
   transition:
-    transform 850ms cubic-bezier(0.2, 0.65, 0.2, 1);
+    transform
+    850ms
+    cubic-bezier(
+      0.2,
+      0.65,
+      0.2,
+      1
+    );
 }
 
-.bhi-is-flipped .bhi-heart-turn {
-  transform: rotateY(180deg);
+.bhi-is-flipped
+.bhi-heart-turn {
+  transform:
+    rotateY(180deg);
 }
 
 .bhi-heart-face {
   position: absolute;
   inset: 0;
+
   display: block;
+
   overflow: hidden;
 
   -webkit-mask:
-    var(--bhi-heart-mask) center / 100% 100% no-repeat;
+    var(--bhi-heart-mask)
+    center /
+    100%
+    100%
+    no-repeat;
 
   mask:
-    var(--bhi-heart-mask) center / 100% 100% no-repeat;
+    var(--bhi-heart-mask)
+    center /
+    100%
+    100%
+    no-repeat;
 
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  -webkit-backface-visibility:
+    hidden;
 
-  background: #efe2ce;
+  backface-visibility:
+    hidden;
+
+  background:
+    #efe2ce;
 }
 
 .bhi-heart-front {
-  transform: rotateY(0deg) translateZ(1px);
+  transform:
+    rotateY(0deg)
+    translateZ(1px);
 }
 
-/* FOTOGRAFIJE */
+/* ============================================================
+   FOTOGRAFIJE
+============================================================ */
 
 .bhi-photo {
   position: absolute;
@@ -3822,58 +4032,96 @@ body,
 
   width: 100%;
   height: 100%;
+
   max-width: none;
 
   object-fit: cover;
+
   pointer-events: none;
 }
 
 .bhi-photo-sheet {
   width: 300%;
+
   right: auto;
-  object-position: center !important;
+
+  object-position:
+    center !important;
 }
 
 .bhi-photo-fallback {
   position: absolute;
-  inset: 20% 0 0;
+
+  inset:
+    20%
+    0
+    0;
 
   color: #997341;
-  font: 400 80px/1 "Bhi Cormorant", Georgia, serif;
+
+  font:
+    400
+    80px / 1
+    "Bhi Cormorant",
+    Georgia,
+    serif;
 }
 
 .bhi-photo-light {
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    135deg,
-    #fffcf540 0%,
-    transparent 40%,
-    #83602d0d 85%
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #fffcf540
+      0%,
+      transparent
+      40%,
+      #83602d0d
+      85%
+    );
 
-  box-shadow: inset 0 0 16px #fffaee24;
+  box-shadow:
+    inset
+    0
+    0
+    16px
+    #fffaee24;
+
   pointer-events: none;
 }
 
-/* POLEĐINA SRCA */
+/* ============================================================
+   POLEĐINA SRCA
+============================================================ */
 
 .bhi-heart-back {
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
   align-items: center;
 
-  padding: 8% 12% 23%;
+  padding:
+    8%
+    12%
+    23%;
 
-  transform: rotateY(180deg) translateZ(1px);
+  transform:
+    rotateY(180deg)
+    translateZ(1px);
 
-  background: radial-gradient(
-    ellipse at 35% 20%,
-    #fffaf1,
-    #ecd9bd
-  );
+  background:
+    radial-gradient(
+      ellipse
+      at
+      35%
+      20%,
+      #fffaf1,
+      #ecd9bd
+    );
 
   color: #805b38;
 }
@@ -3882,161 +4130,249 @@ body,
   display: block;
 
   font:
-    400 clamp(22px, 5vw, 34px) / 1
-    "Bhi Italianno", cursive;
+    400
+    clamp(22px, 5vw, 34px) / 1
+    "Bhi Italianno",
+    cursive;
 }
 
 .bhi-back-small {
   display: block;
 
   font:
-    400 clamp(11px, 2vw, 15px) / 1.6
-    "Bhi Manrope", Arial, sans-serif;
+    400
+    clamp(11px, 2vw, 15px) / 1.6
+    "Bhi Manrope",
+    Arial,
+    sans-serif;
 }
 
-.bhi-heart-1 .bhi-back-main {
+.bhi-heart-1
+.bhi-back-main {
   font:
-    400 clamp(64px, 12vw, 95px) / 0.95
-    "Bhi Cormorant", Georgia, serif;
+    400
+    clamp(64px, 12vw, 95px) / 0.95
+    "Bhi Cormorant",
+    Georgia,
+    serif;
 }
 
-.bhi-heart-1 .bhi-back-small {
+.bhi-heart-1
+.bhi-back-small {
   font:
-    400 clamp(22px, 5vw, 32px) / 1.2
-    "Bhi Italianno", cursive;
+    400
+    clamp(22px, 5vw, 32px) / 1.2
+    "Bhi Italianno",
+    cursive;
 }
 
-/* SVETLUCANJE */
+/* ============================================================
+   SVETLUCANJE
+============================================================ */
 
 .bhi-glint {
   position: absolute;
+
   width: 12px;
   height: 12px;
 
   background: #c5a36c;
 
-  clip-path: polygon(
-    50% 0,
-    61% 39%,
-    100% 50%,
-    61% 61%,
-    50% 100%,
-    39% 61%,
-    0 50%,
-    39% 39%
-  );
+  clip-path:
+    polygon(
+      50% 0,
+      61% 39%,
+      100% 50%,
+      61% 61%,
+      50% 100%,
+      39% 61%,
+      0 50%,
+      39% 39%
+    );
 
-  animation: bhi-twinkle 4.6s ease-in-out infinite;
+  animation:
+    bhi-twinkle
+    4.6s
+    ease-in-out
+    infinite;
+
   pointer-events: none;
 }
 
 .bhi-glint-a {
   left: 14%;
   top: 20%;
+
   width: 14px;
   height: 14px;
+
   animation-delay: -1s;
 }
 
 .bhi-glint-b {
   right: 10%;
   top: 18%;
+
   width: 9px;
   height: 9px;
+
   animation-delay: -2.5s;
 }
 
 .bhi-glint-c {
   left: 53%;
   bottom: 4%;
+
   width: 8px;
   height: 8px;
+
   animation-delay: -3.6s;
 }
 
-/* DUGME I DATUM */
+/* ============================================================
+   DUGME I DATUM
+============================================================ */
 
 .bhi-hint {
-  font: 400 11px/1.6 "Bhi Manrope", Arial, sans-serif;
-  letter-spacing: 0.1px;
-  color: var(--bhi-soft);
+  font:
+    400
+    11px / 1.6
+    "Bhi Manrope",
+    Arial,
+    sans-serif;
 
-  animation: bhi-rise 1.2s 0.85s both;
+  letter-spacing: 0.1px;
+
+  color:
+    var(--bhi-soft);
+
+  animation:
+    bhi-rise
+    1.2s
+    0.85s
+    both;
 }
 
 .bhi-bottom {
   display: flex;
+
   flex-direction: column;
   align-items: center;
 
   gap: 25px;
+
   padding-top: 26px;
 
-  animation: bhi-rise 1.2s 0.6s both;
+  animation:
+    bhi-rise
+    1.2s
+    0.6s
+    both;
 }
 
 .bhi-open {
   position: relative;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 24px;
 
   min-height: 55px;
   min-width: 257px;
-  padding: 15px 29px;
 
-  border: 1px solid #a9895c70;
+  padding:
+    15px
+    29px;
+
+  border:
+    1px
+    solid
+    #a9895c70;
+
   border-radius: 0;
 
-  background: linear-gradient(
-    110deg,
-    #fffcf9d9,
-    #f0e4d491
-  );
+  background:
+    linear-gradient(
+      110deg,
+      #fffcf9d9,
+      #f0e4d491
+    );
 
-  box-shadow: 0 7px 22px #8967470b;
+  box-shadow:
+    0
+    7px
+    22px
+    #8967470b;
 
   font:
-    400 12px/1.5
-    "Bhi Manrope", Arial, sans-serif !important;
+    400
+    12px / 1.5
+    "Bhi Manrope",
+    Arial,
+    sans-serif
+    !important;
 
   letter-spacing: 0.9px;
+
   cursor: pointer;
+
   overflow: hidden;
 
   transition:
-    background 300ms,
-    box-shadow 300ms,
-    transform 300ms;
+    background
+    300ms,
+    box-shadow
+    300ms,
+    transform
+    300ms;
 }
 
 .bhi-open::before {
   content: "";
+
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    115deg,
-    transparent 30%,
-    #ffffffb0 48%,
-    transparent 67%
-  );
+  background:
+    linear-gradient(
+      115deg,
+      transparent
+      30%,
+      #ffffffb0
+      48%,
+      transparent
+      67%
+    );
 
-  transform: translateX(-140%);
-  animation: bhi-shimmer 6.4s 2.7s infinite;
+  transform:
+    translateX(-140%);
+
+  animation:
+    bhi-shimmer
+    6.4s
+    2.7s
+    infinite;
 
   pointer-events: none;
 }
 
 .bhi-open svg {
-  transition: transform 300ms;
-  flex: 0 0 auto;
+  transition:
+    transform
+    300ms;
+
+  flex:
+    0
+    0
+    auto;
 }
 
 .bhi-open:active {
-  transform: translateY(1px);
+  transform:
+    translateY(1px);
 }
 
 .bhi-open[disabled] {
@@ -4044,80 +4380,142 @@ body,
 }
 
 .bhi-date {
-  font: 400 11px/1.6 "Bhi Manrope", Arial, sans-serif;
+  font:
+    400
+    11px / 1.6
+    "Bhi Manrope",
+    Arial,
+    sans-serif;
 
   letter-spacing: 4px;
+
   padding-left: 4px;
 
-  color: var(--bhi-soft);
+  color:
+    var(--bhi-soft);
 }
 
-/* OTVARANJE POZIVNICE */
+/* ============================================================
+   OTVARANJE POZIVNICE
+============================================================ */
 
 .bhi-opening-bloom {
   position: absolute;
+
   z-index: 10;
 
   left: 50%;
   top: 45%;
 
-  width: max(150vw, 150vh);
+  width:
+    max(
+      150vw,
+      150vh
+    );
+
   aspect-ratio: 1;
+
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
-    #fffaf1,
-    #f8efe2
-  );
+  background:
+    radial-gradient(
+      circle,
+      #fffaf1,
+      #f8efe2
+    );
 
-  transform: translate(-50%, -50%) scale(0);
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(0);
+
   opacity: 0;
 
   pointer-events: none;
 }
 
 .bhi-is-opening {
-  animation: bhi-exit-root 1500ms forwards;
+  animation:
+    bhi-exit-root
+    1500ms
+    forwards;
+
   pointer-events: none;
 }
 
-.bhi-is-opening .bhi-heart-slot {
+.bhi-is-opening
+.bhi-heart-slot {
   animation:
-    bhi-hearts-out 1100ms
-    cubic-bezier(0.5, 0, 0.35, 1) forwards;
+    bhi-hearts-out
+    1100ms
+    cubic-bezier(
+      0.5,
+      0,
+      0.35,
+      1
+    )
+    forwards;
 }
 
-.bhi-is-opening .bhi-heart-0 {
+.bhi-is-opening
+.bhi-heart-0 {
   animation-delay: 70ms;
 }
 
-.bhi-is-opening .bhi-heart-2 {
+.bhi-is-opening
+.bhi-heart-2 {
   animation-delay: 140ms;
 }
 
-.bhi-is-opening .bhi-heading,
-.bhi-is-opening .bhi-bottom,
-.bhi-is-opening .bhi-hint {
-  animation: bhi-text-out 650ms ease-in forwards;
-}
-
-.bhi-is-opening .bhi-opening-bloom {
+.bhi-is-opening
+.bhi-heading,
+.bhi-is-opening
+.bhi-bottom,
+.bhi-is-opening
+.bhi-hint {
   animation:
-    bhi-bloom 1450ms
-    cubic-bezier(0.65, 0, 0.25, 1) forwards;
+    bhi-text-out
+    650ms
+    ease-in
+    forwards;
 }
 
-.bhi-is-opening .bhi-orbit,
-.bhi-is-opening .bhi-one,
-.bhi-is-opening .bhi-glint {
-  animation: bhi-text-out 700ms ease-in forwards;
+.bhi-is-opening
+.bhi-opening-bloom {
+  animation:
+    bhi-bloom
+    1450ms
+    cubic-bezier(
+      0.65,
+      0,
+      0.25,
+      1
+    )
+    forwards;
 }
 
-/* PRISTUPAČNOST I ĆIRILICA */
+.bhi-is-opening
+.bhi-orbit,
+.bhi-is-opening
+.bhi-one,
+.bhi-is-opening
+.bhi-glint {
+  animation:
+    bhi-text-out
+    700ms
+    ease-in
+    forwards;
+}
+
+/* ============================================================
+   PRISTUPAČNOST I ĆIRILICA
+============================================================ */
 
 .bhi-sr-only {
   position: absolute;
+
   width: 1px;
   height: 1px;
 
@@ -4125,23 +4523,50 @@ body,
   margin: -1px;
 
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+
+  clip:
+    rect(
+      0,
+      0,
+      0,
+      0
+    );
+
   white-space: nowrap;
+
   border: 0;
 }
 
-.bhi-cyrillic .bhi-name {
-  font-family: "Bhi Cormorant", Georgia, serif;
-  font-size: clamp(66px, 12vw, 96px);
+.bhi-cyrillic
+.bhi-name {
+  font-family:
+    "Bhi Cormorant",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      66px,
+      12vw,
+      96px
+    );
+
   font-style: italic;
 
   padding-top: 27px;
   padding-bottom: 14px;
 }
 
-.bhi-cyrillic .bhi-back-main,
-.bhi-cyrillic .bhi-heart-1 .bhi-back-small {
-  font-family: "Bhi Cormorant", Georgia, serif;
+.bhi-cyrillic
+.bhi-back-main,
+.bhi-cyrillic
+.bhi-heart-1
+.bhi-back-small {
+  font-family:
+    "Bhi Cormorant",
+    Georgia,
+    serif;
+
   font-style: italic;
 }
 
@@ -4150,37 +4575,61 @@ body,
   animation-play-state: paused;
 }
 
-/* HOVER */
+/* ============================================================
+   HOVER
+============================================================ */
 
 @media (hover: hover) and (pointer: fine) {
   .bhi-heart:hover {
-    filter: drop-shadow(0 23px 17px #79533738);
+    filter:
+      drop-shadow(
+        0
+        23px
+        17px
+        #79533738
+      );
   }
 
-  .bhi-heart:hover .bhi-photo-light {
-    background: linear-gradient(
-      130deg,
-      #fffaf159,
-      transparent 58%
-    );
+  .bhi-heart:hover
+  .bhi-photo-light {
+    background:
+      linear-gradient(
+        130deg,
+        #fffaf159,
+        transparent
+        58%
+      );
   }
 
   .bhi-open:hover {
     background: #eee0cb;
-    box-shadow: 0 9px 25px #89674713;
-    transform: translateY(-2px);
+
+    box-shadow:
+      0
+      9px
+      25px
+      #89674713;
+
+    transform:
+      translateY(-2px);
   }
 
   .bhi-open:hover svg {
-    transform: translateX(4px);
+    transform:
+      translateX(4px);
   }
 }
 
-/* TELEFON */
+/* ============================================================
+   TELEFON
+============================================================ */
 
 @media (max-width: 600px) {
   .bhi-content {
-    padding: 33px 18px 30px;
+    padding:
+      33px
+      18px
+      30px;
   }
 
   .bhi-eyebrow {
@@ -4189,7 +4638,13 @@ body,
   }
 
   .bhi-name {
-    font-size: clamp(96px, 28vw, 132px);
+    font-size:
+      clamp(
+        96px,
+        28vw,
+        132px
+      );
+
     padding-top: 22px;
   }
 
@@ -4204,18 +4659,21 @@ body,
 
   .bhi-heart-0 {
     width: 32%;
+
     top: 42%;
     left: 0;
   }
 
   .bhi-heart-1 {
     width: 60%;
+
     top: 4%;
     left: 20%;
   }
 
   .bhi-heart-2 {
     width: 31%;
+
     top: 49%;
     right: 0;
   }
@@ -4223,13 +4681,21 @@ body,
   .bhi-one {
     left: 4%;
     top: 33%;
-    font-size: clamp(147px, 45vw, 220px);
+
+    font-size:
+      clamp(
+        147px,
+        45vw,
+        220px
+      );
   }
 
   .bhi-orbit-a {
     top: 22%;
+
     height: 48%;
     width: 90%;
+
     left: 5%;
   }
 
@@ -4272,11 +4738,18 @@ body,
     letter-spacing: 3.5px;
   }
 
-  .bhi-heart-1 .bhi-back-main {
-    font-size: clamp(65px, 20vw, 96px);
+  .bhi-heart-1
+  .bhi-back-main {
+    font-size:
+      clamp(
+        65px,
+        20vw,
+        96px
+      );
   }
 
-  .bhi-heart-1 .bhi-back-small {
+  .bhi-heart-1
+  .bhi-back-small {
     font-size: 26px;
   }
 
@@ -4288,6 +4761,10 @@ body,
     font-size: 11px;
   }
 }
+
+/* ============================================================
+   MALI TELEFONI
+============================================================ */
 
 @media (max-width: 360px) {
   .bhi-content {
@@ -4320,6 +4797,10 @@ body,
   }
 }
 
+/* ============================================================
+   NISKI TELEFONI
+============================================================ */
+
 @media (max-height: 720px) and (max-width: 600px) {
   .bhi-content {
     padding-top: 24px;
@@ -4332,8 +4813,14 @@ body,
   }
 
   .bhi-stage {
-    width: min(100%, 340px);
+    width:
+      min(
+        100%,
+        340px
+      );
+
     margin-top: 14px;
+
     aspect-ratio: 1.34;
   }
 
@@ -4343,23 +4830,30 @@ body,
   }
 }
 
-/* ANIMACIJE */
+/* ============================================================
+   ANIMACIJE
+============================================================ */
 
 @keyframes bhi-rise {
   from {
     opacity: 0;
-    transform: translateY(17px);
+
+    transform:
+      translateY(17px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 }
 
 @keyframes bhi-arrive {
   from {
     opacity: 0;
+
     transform:
       translateY(35px)
       scale(0.84)
@@ -4368,6 +4862,7 @@ body,
 
   to {
     opacity: 1;
+
     transform: none;
   }
 }
@@ -4375,17 +4870,26 @@ body,
 @keyframes bhi-float {
   0%,
   100% {
-    transform: translateY(0) rotate(-1deg);
+    transform:
+      translateY(0)
+      rotate(-1deg);
   }
 
   50% {
-    transform: translateY(-10px) rotate(1.5deg);
+    transform:
+      translateY(-10px)
+      rotate(1.5deg);
   }
 }
 
 @keyframes bhi-light {
   to {
-    transform: translate(75px, 45px) scale(1.15);
+    transform:
+      translate(
+        75px,
+        45px
+      )
+      scale(1.15);
   }
 }
 
@@ -4393,44 +4897,61 @@ body,
   0%,
   100% {
     opacity: 0.27;
-    transform: scale(0.6) rotate(0);
+
+    transform:
+      scale(0.6)
+      rotate(0);
   }
 
   50% {
     opacity: 0.82;
-    transform: scale(1) rotate(35deg);
+
+    transform:
+      scale(1)
+      rotate(35deg);
   }
 }
 
 @keyframes bhi-shimmer {
   0%,
   67% {
-    transform: translateX(-140%);
+    transform:
+      translateX(-140%);
   }
 
   87%,
   100% {
-    transform: translateX(140%);
+    transform:
+      translateX(140%);
   }
 }
 
 @keyframes bhi-hearts-out {
   0% {
     opacity: 1;
+
     transform: none;
   }
 
   24% {
     opacity: 1;
-    transform: translateY(10px) scale(1.035);
+
+    transform:
+      translateY(10px)
+      scale(1.035);
   }
 
   100% {
     opacity: 0;
 
     transform:
-      translate(var(--bhi-exit-x), var(--bhi-exit-y))
-      rotate(var(--bhi-exit-rotate))
+      translate(
+        var(--bhi-exit-x),
+        var(--bhi-exit-y)
+      )
+      rotate(
+        var(--bhi-exit-rotate)
+      )
       scale(0.45);
   }
 }
@@ -4438,24 +4959,44 @@ body,
 @keyframes bhi-text-out {
   to {
     opacity: 0;
-    transform: translateY(-14px);
+
+    transform:
+      translateY(-14px);
   }
 }
 
 @keyframes bhi-bloom {
   0%,
   22% {
-    transform: translate(-50%, -50%) scale(0);
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(0);
+
     opacity: 0;
   }
 
   70% {
-    transform: translate(-50%, -50%) scale(1);
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1);
+
     opacity: 1;
   }
 
   100% {
-    transform: translate(-50%, -50%) scale(1.2);
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1.2);
+
     opacity: 0;
   }
 }
@@ -4472,7 +5013,9 @@ body,
   }
 }
 
-/* SMANJENO KRETANJE */
+/* ============================================================
+   SMANJENO KRETANJE
+============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .bhi-intro *,
@@ -4487,10 +5030,1438 @@ body,
   }
 
   .bhi-is-opening {
-    animation: bhi-exit-root 200ms forwards !important;
+    animation:
+      bhi-exit-root
+      200ms
+      forwards
+      !important;
   }
 
-  .bhi-is-opening .bhi-opening-bloom {
+  .bhi-is-opening
+  .bhi-opening-bloom {
     display: none;
+  }
+}
+/* ČISTA POZADINA — bez ikakvih efekata preko slike */
+
+.bhi-light,
+.bhi-light-a,
+.bhi-light-b,
+.bhi-grain {
+  display: none !important;
+}
+
+.bhi-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  background-image: var(--bhi-bg-image);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+/* ============================================================
+   BHI DORADE
+   - bez strelice
+   - veca bocna srca
+   - lepsi fontovi
+============================================================ */
+
+/* sigurnosno, ako negde ostane svg */
+.bhi-open svg {
+  display: none !important;
+}
+
+/* -------------------------
+   FONTOVI
+-------------------------- */
+
+.bhi-eyebrow {
+  font:
+    500 12px/1.6 "Bhi Manrope", Arial, sans-serif;
+  letter-spacing: 4.2px;
+  color: rgba(120, 88, 69, 0.9);
+}
+
+.bhi-name {
+  font:
+    400 clamp(118px, 16vw, 156px) / 0.94
+    "Bhi Italianno", "Brush Script MT", cursive;
+  color: #7b5844;
+  padding-top: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.bhi-subtitle {
+  font:
+    400 27px/1.2 "Bhi Cormorant", Georgia, serif;
+  letter-spacing: 0.15px;
+  color: #7a5a47;
+}
+
+.bhi-hint {
+  font:
+    400 17px/1.3 "Bhi Cormorant", Georgia, serif;
+  color: rgba(122, 90, 71, 0.86);
+  letter-spacing: 0;
+}
+
+.bhi-date {
+  font:
+    400 12px/1.6 "Bhi Manrope", Arial, sans-serif;
+  letter-spacing: 3px;
+  padding-left: 3px;
+  color: rgba(122, 90, 71, 0.82);
+}
+
+/* -------------------------
+   DUGME
+-------------------------- */
+
+.bhi-bottom {
+  gap: 22px;
+  padding-top: 24px;
+}
+
+.bhi-open {
+  min-width: 280px;
+  min-height: 58px;
+  padding: 16px 30px;
+  gap: 0;
+
+  border: 1px solid rgba(169, 137, 92, 0.42);
+  background: rgba(255, 251, 245, 0.44);
+  box-shadow: 0 6px 18px rgba(137, 103, 71, 0.06);
+
+  font:
+    400 29px/1 "Bhi Cormorant", Georgia, serif !important;
+  letter-spacing: 0.3px;
+  color: #7a5a47;
+}
+
+.bhi-open::before {
+  display: none;
+}
+
+.bhi-open:hover {
+  background: rgba(255, 248, 240, 0.68);
+  box-shadow: 0 9px 22px rgba(137, 103, 71, 0.08);
+}
+
+.bhi-open span {
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+/* -------------------------
+   SRCA SA STRANE
+-------------------------- */
+
+.bhi-heart-0 {
+  width: 35%;
+  left: -1%;
+  top: 35%;
+}
+
+.bhi-heart-2 {
+  width: 33%;
+  right: -1%;
+  top: 39%;
+}
+
+/* centralno srce ostaje glavno */
+.bhi-heart-1 {
+  width: 54%;
+  left: 23%;
+  top: 6%;
+}
+
+/* malo finiji razmak oko srca */
+.bhi-stage {
+  margin-top: 16px;
+}
+
+/* -------------------------
+   TELEFON
+-------------------------- */
+
+@media (max-width: 600px) {
+  .bhi-eyebrow {
+    font-size: 12px;
+    letter-spacing: 3.3px;
+  }
+
+  .bhi-name {
+    font-size: clamp(104px, 31vw, 138px);
+    padding-top: 18px;
+  }
+
+  .bhi-subtitle {
+    font-size: 24px;
+  }
+
+  .bhi-hint {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .bhi-open {
+    min-width: 270px;
+    min-height: 56px;
+    font-size: 27px !important;
+  }
+
+  .bhi-date {
+    font-size: 11px;
+    letter-spacing: 2.6px;
+    padding-left: 2.6px;
+  }
+
+  .bhi-heart-0 {
+    width: 36%;
+    left: -2%;
+    top: 39%;
+  }
+
+  .bhi-heart-2 {
+    width: 34%;
+    right: -2%;
+    top: 43%;
+  }
+
+  .bhi-heart-1 {
+    width: 58%;
+    left: 21%;
+    top: 4%;
+  }
+}
+
+@media (max-width: 360px) {
+  .bhi-name {
+    font-size: 100px;
+  }
+
+  .bhi-subtitle {
+    font-size: 22px;
+  }
+
+  .bhi-open {
+    min-width: 248px;
+    font-size: 25px !important;
+  }
+
+  .bhi-heart-0 {
+    width: 35%;
+    left: -1%;
+  }
+
+  .bhi-heart-2 {
+    width: 33%;
+    right: -1%;
+  }
+}
+
+.bhi-bg-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(250, 246, 239, 0.14);
+
+  pointer-events: none;
+}
+
+.bhi-bg-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(250, 246, 239, 0.22) 0%,
+    rgba(250, 246, 239, 0.12) 48%,
+    rgba(250, 246, 239, 0.04) 100%
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================
+   FONT DORADE
+========================================= */
+
+.bhi-eyebrow {
+  font: 500 12px/1.5 "Bhi Manrope", Arial, sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #9a7a65;
+}
+
+.bhi-name {
+  font:
+    400 clamp(112px, 16vw, 150px) / 0.92
+    "Bhi Italianno", "Brush Script MT", cursive;
+  color: #7c5a47;
+  padding-top: 14px;
+  letter-spacing: 0;
+}
+
+.bhi-subtitle {
+  font: 400 27px/1.22 "Bhi Cormorant", Georgia, serif;
+  letter-spacing: 0.1px;
+  color: #805e4b;
+  margin-top: 4px;
+}
+
+.bhi-hint {
+  font: 400 15px/1.45 "Bhi Cormorant", Georgia, serif;
+  color: rgba(128, 94, 75, 0.72);
+  letter-spacing: 0;
+}
+
+.bhi-open {
+  font: 400 23px/1.1 "Bhi Cormorant", Georgia, serif !important;
+  letter-spacing: 0.2px;
+  color: #7c5a47;
+}
+
+.bhi-date {
+  font: 500 12px/1.5 "Bhi Manrope", Arial, sans-serif;
+  letter-spacing: 3px;
+  padding-left: 3px;
+  color: rgba(128, 94, 75, 0.78);
+}
+
+/* ============================================================
+   BIRTHDAY SCRATCH INTRO
+============================================================ */
+
+.bsi-intro {
+  --bsi-paper: #fbf8f4;
+  --bsi-brown: #795845;
+  --bsi-soft: #987764;
+  --bsi-gold: #b7956f;
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: var(--bsi-paper);
+
+  color: var(--bsi-brown);
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bsi-intro *,
+.bsi-intro *::before,
+.bsi-intro *::after {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   BACKGROUND PO SLUGU
+============================================================ */
+
+.bsi-background {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    var(--bsi-background);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: scale(1.015);
+
+  pointer-events: none;
+}
+
+/*
+  Samo veoma blag sloj da okvir i tekst
+  ostanu čitljivi.
+*/
+.bsi-background-softener {
+  position: absolute;
+  inset: 0;
+
+  background:
+    rgba(
+      252,
+      249,
+      246,
+      0.14
+    );
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   SPOLJNI OKVIR
+============================================================ */
+
+.bsi-frame,
+.bsi-frame-inner {
+  position: absolute;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.bsi-frame {
+  inset:
+    26px
+    22px;
+
+  border:
+    1px
+    solid
+    rgba(
+      139,
+      111,
+      94,
+      0.24
+    );
+
+  /*
+   * Onaj elegantni usečeni izgled sa slike.
+   */
+  clip-path:
+    polygon(
+      9% 0,
+      91% 0,
+
+      91.8% 1.2%,
+      92.5% 2.5%,
+      94% 3.4%,
+      97% 3.8%,
+
+      100% 3.8%,
+
+      100% 100%,
+
+      0 100%,
+
+      0 3.8%,
+
+      3% 3.8%,
+      6% 3.4%,
+      7.5% 2.5%,
+      8.2% 1.2%
+    );
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+}
+
+.bsi-frame-inner {
+  inset:
+    32px
+    28px;
+
+  border:
+    1px
+    solid
+    rgba(
+      150,
+      121,
+      101,
+      0.12
+    );
+
+  clip-path:
+    polygon(
+      8% 0,
+      92% 0,
+
+      92.5% 1%,
+      93% 2%,
+      94.5% 2.8%,
+      97% 3.2%,
+
+      100% 3.2%,
+
+      100% 100%,
+
+      0 100%,
+
+      0 3.2%,
+
+      3% 3.2%,
+      5.5% 2.8%,
+      7% 2%,
+      7.5% 1%
+    );
+}
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.bsi-content {
+  position: relative;
+  z-index: 2;
+
+  width:
+    min(
+      100%,
+      430px
+    );
+
+  padding:
+    82px
+    42px
+    62px;
+
+  text-align: center;
+}
+
+/* ============================================================
+   TOP TEXT
+============================================================ */
+
+.bsi-kicker {
+  margin:
+    0
+    0
+    7px;
+
+  font-family:
+    "Bhi Manrope",
+    "Manrope",
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1.5;
+
+  letter-spacing:
+    0.32em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      121,
+      86,
+      67,
+      0.76
+    );
+
+  animation:
+    bsi-rise
+    0.9s
+    ease
+    both;
+}
+
+.bsi-name {
+  margin:
+    0;
+
+  font-family:
+    "Bhi Italianno",
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size:
+    clamp(
+      88px,
+      24vw,
+      120px
+    );
+
+  font-weight: 400;
+
+  line-height: 0.9;
+
+  color:
+    #765341;
+
+  animation:
+    bsi-rise
+    1s
+    0.08s
+    ease
+    both;
+}
+
+.bsi-birthday-text {
+  margin:
+    6px
+    0
+    26px;
+
+  font-family:
+    "Bhi Cormorant",
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 22px;
+
+  font-style: italic;
+
+  line-height: 1.25;
+
+  color:
+    #805f4e;
+
+  animation:
+    bsi-rise
+    1s
+    0.16s
+    ease
+    both;
+}
+
+/* ============================================================
+   SCRATCH FRAME
+============================================================ */
+
+.bsi-scratch-frame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio:
+    1.5 / 1;
+
+  margin:
+    0
+    auto;
+
+  overflow: hidden;
+
+  border-radius:
+    50%;
+
+  border:
+    1px
+    solid
+    rgba(
+      117,
+      94,
+      81,
+      0.36
+    );
+
+  background:
+    rgba(
+      255,
+      253,
+      250,
+      0.22
+    );
+
+  box-shadow:
+    0 13px 32px
+      rgba(
+        83,
+        58,
+        43,
+        0.07
+      ),
+    inset
+    0
+    1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.54
+    );
+
+  animation:
+    bsi-scratch-arrive
+    1.1s
+    0.25s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+/* drugi ovalni okvir */
+
+.bsi-scratch-frame::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 5px;
+
+  z-index: 4;
+
+  border:
+    1px
+    solid
+    rgba(
+      121,
+      96,
+      81,
+      0.14
+    );
+
+  border-radius:
+    50%;
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   TEXT ISPOD SCRATCH SLIKE
+============================================================ */
+
+.bsi-reveal-content {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    22px
+    30px;
+
+  background:
+    radial-gradient(
+      circle
+      at
+      center,
+      rgba(
+        255,
+        254,
+        252,
+        0.82
+      ),
+      rgba(
+        247,
+        239,
+        231,
+        0.58
+      )
+    );
+}
+
+.bsi-reveal-small {
+  font-family:
+    "Bhi Cormorant",
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 15px;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      121,
+      90,
+      71,
+      0.74
+    );
+}
+
+.bsi-reveal-main {
+  margin:
+    2px
+    0;
+
+  font-family:
+    "Bhi Italianno",
+    "Italianno",
+    cursive;
+
+  font-size:
+    clamp(
+      42px,
+      12vw,
+      58px
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color:
+    #765341;
+}
+
+.bsi-reveal-bottom {
+  font-family:
+    "Bhi Cormorant",
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 14px;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      121,
+      90,
+      71,
+      0.68
+    );
+}
+
+.bsi-reveal-one {
+  position: absolute;
+
+  right: 16%;
+  bottom: 6%;
+
+  font-family:
+    "Bhi Italianno",
+    cursive;
+
+  font-size: 42px;
+
+  color:
+    rgba(
+      176,
+      137,
+      104,
+      0.17
+    );
+
+  transform:
+    rotate(
+      -9deg
+    );
+}
+
+/* ============================================================
+   SCRATCH CANVAS
+============================================================ */
+
+.bsi-scratch-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 3;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  /*
+   * KLJUČNO:
+   * dok grebeš na telefonu, browser
+   * ne pokušava da skroluje stranicu.
+   */
+  touch-action: none;
+
+  cursor: grab;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  transition:
+    opacity
+    0.75s
+    ease,
+    transform
+    0.75s
+    ease;
+}
+
+.bsi-scratch-canvas:active {
+  cursor: grabbing;
+}
+
+/*
+  Kada je dovoljno ogrebano,
+  ostatak slike nestaje.
+*/
+.bsi-scratch-canvas.bsi-scratch-complete {
+  opacity: 0;
+
+  transform:
+    scale(
+      1.035
+    );
+
+  pointer-events: none;
+}
+
+/* fallback */
+
+.bsi-scratch-placeholder {
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    #eee2d6;
+
+  font-family:
+    "Bhi Italianno",
+    cursive;
+
+  font-size: 60px;
+
+  color:
+    #765341;
+}
+
+/* ============================================================
+   HINT
+============================================================ */
+
+.bsi-scratch-hint {
+  margin:
+    20px
+    0
+    0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  font-family:
+    "Bhi Cormorant",
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 15px;
+
+  font-style: italic;
+
+  line-height: 1.3;
+
+  color:
+    rgba(
+      119,
+      87,
+      68,
+      0.72
+    );
+
+  animation:
+    bsi-rise
+    1s
+    0.55s
+    ease
+    both;
+}
+
+.bsi-finger {
+  font-style: normal;
+
+  color:
+    #b38b69;
+
+  animation:
+    bsi-hint-heart
+    2.5s
+    ease-in-out
+    infinite;
+}
+
+/* ============================================================
+   AFTER REVEAL
+============================================================ */
+
+.bsi-after-reveal {
+  margin-top: 18px;
+}
+
+.bsi-divider {
+  width: 180px;
+
+  margin:
+    0
+    auto
+    18px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    #b28a68;
+}
+
+.bsi-divider span {
+  height: 1px;
+
+  background:
+    rgba(
+      177,
+      138,
+      104,
+      0.32
+    );
+}
+
+.bsi-divider b {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 20px;
+
+  font-weight: 400;
+}
+
+/* ============================================================
+   OPEN BUTTON
+============================================================ */
+
+.bsi-open {
+  min-width: 245px;
+
+  min-height: 54px;
+
+  padding:
+    14px
+    25px;
+
+  border:
+    1px
+    solid
+    rgba(
+      142,
+      106,
+      82,
+      0.30
+    );
+
+  background:
+    rgba(
+      255,
+      252,
+      248,
+      0.31
+    );
+
+  color:
+    #765341;
+
+  font-family:
+    "Bhi Cormorant",
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition:
+    transform
+      0.25s
+      ease,
+    background
+      0.25s
+      ease,
+    box-shadow
+      0.25s
+      ease;
+}
+
+.bsi-open:hover {
+  transform:
+    translateY(
+      -2px
+    );
+
+  background:
+    rgba(
+      245,
+      231,
+      218,
+      0.46
+    );
+
+  box-shadow:
+    0 10px 20px
+    rgba(
+      88,
+      59,
+      42,
+      0.06
+    );
+}
+
+/* ============================================================
+   OPENING
+============================================================ */
+
+.bsi-opening-bloom {
+  position: absolute;
+
+  z-index: 10;
+
+  left: 50%;
+  top: 50%;
+
+  width:
+    max(
+      150vw,
+      150vh
+    );
+
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #fffaf4,
+      #f5eade
+    );
+
+  opacity: 0;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(0);
+
+  pointer-events: none;
+}
+
+.bsi-is-opening
+.bsi-opening-bloom {
+  animation:
+    bsi-bloom
+    1400ms
+    cubic-bezier(
+      0.65,
+      0,
+      0.25,
+      1
+    )
+    forwards;
+}
+
+.bsi-is-opening
+.bsi-content {
+  animation:
+    bsi-content-out
+    700ms
+    ease
+    forwards;
+}
+
+.bsi-is-opening {
+  pointer-events: none;
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (
+  max-width: 600px
+) {
+  .bsi-frame {
+    inset:
+      18px
+      15px;
+  }
+
+  .bsi-frame-inner {
+    inset:
+      23px
+      20px;
+  }
+
+  .bsi-content {
+    width: 100%;
+
+    padding:
+      66px
+      38px
+      46px;
+  }
+
+  .bsi-kicker {
+    font-size: 9px;
+
+    letter-spacing:
+      0.27em;
+  }
+
+  .bsi-name {
+    font-size:
+      clamp(
+        82px,
+        27vw,
+        108px
+      );
+  }
+
+  .bsi-birthday-text {
+    font-size: 20px;
+
+    margin-bottom: 25px;
+  }
+
+  .bsi-scratch-frame {
+    width: 100%;
+
+    aspect-ratio:
+      1.5 / 1;
+  }
+
+  .bsi-reveal-main {
+    font-size:
+      clamp(
+        39px,
+        11vw,
+        51px
+      );
+  }
+
+  .bsi-reveal-small {
+    font-size: 14px;
+  }
+
+  .bsi-reveal-bottom {
+    font-size: 13px;
+  }
+
+  .bsi-scratch-hint {
+    margin-top: 18px;
+
+    font-size: 14px;
+  }
+
+  .bsi-open {
+    min-width: 225px;
+
+    font-size: 19px;
+  }
+}
+
+/* ============================================================
+   MALI TELEFON
+============================================================ */
+
+@media (
+  max-width: 360px
+) {
+  .bsi-content {
+    padding-left: 31px;
+    padding-right: 31px;
+  }
+
+  .bsi-name {
+    font-size: 78px;
+  }
+
+  .bsi-birthday-text {
+    font-size: 18px;
+  }
+
+  .bsi-scratch-hint {
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+
+@keyframes bsi-rise {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(
+        14px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(
+        0
+      );
+  }
+}
+
+@keyframes bsi-scratch-arrive {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(
+        18px
+      )
+      scale(
+        0.97
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(
+        0
+      )
+      scale(
+        1
+      );
+  }
+}
+
+@keyframes bsi-hint-heart {
+  0%,
+  100% {
+    transform:
+      translateX(
+        0
+      );
+
+    opacity: 0.65;
+  }
+
+  50% {
+    transform:
+      translateX(
+        4px
+      );
+
+    opacity: 1;
+  }
+}
+
+@keyframes bsi-bloom {
+  0%,
+  20% {
+    opacity: 0;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        0
+      );
+  }
+
+  72% {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1
+      );
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1.15
+      );
+  }
+}
+
+@keyframes bsi-content-out {
+  to {
+    opacity: 0;
+
+    transform:
+      translateY(
+        -12px
+      );
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .bsi-intro *,
+  .bsi-intro *::before,
+  .bsi-intro *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }

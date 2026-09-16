@@ -3869,3 +3869,1330 @@ padding:
       34px !important;
   }
 }
+
+
+
+/* ============================================================
+   SHARED
+============================================================ */
+
+.bhrsvp-section,
+.bhcount-section {
+  --birthday-brown: #795845;
+  --birthday-dark: #654737;
+  --birthday-soft: #987866;
+  --birthday-gold: #b8956d;
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 46px 16px;
+
+  overflow: hidden;
+
+  background: #faf6f1;
+
+  color:
+    var(--birthday-brown);
+}
+
+/* ============================================================
+   BACKGROUNDS
+============================================================ */
+
+.bhrsvp-bg,
+.bhcount-bg {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: scale(1.015);
+
+  pointer-events: none;
+}
+
+.bhrsvp-bg {
+  background-image:
+    var(--bhrsvp-bg);
+}
+
+.bhcount-bg {
+  background-image:
+    var(--bhcount-bg);
+}
+
+.bhrsvp-softener,
+.bhcount-softener {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 252, 248, 0.12) 0%,
+      rgba(255, 252, 248, 0.04) 58%,
+      rgba(255, 252, 248, 0.08) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   RSVP
+============================================================ */
+
+.bhrsvp-wrap {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.bhrsvp-card {
+  position: relative;
+
+  width:
+    min(
+      90%,
+      400px
+    );
+
+  padding:
+    36px
+    25px
+    30px;
+
+  border:
+    1px solid
+    rgba(
+      151,
+      115,
+      91,
+      0.14
+    );
+
+  border-radius: 36px;
+
+  background:
+    rgba(
+      255,
+      252,
+      248,
+      0.22
+    );
+
+  box-shadow:
+    0 22px 55px
+      rgba(
+        89,
+        62,
+        44,
+        0.08
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.45
+      );
+
+  backdrop-filter:
+    blur(5px);
+
+  -webkit-backdrop-filter:
+    blur(5px);
+
+  overflow: hidden;
+}
+
+.bhrsvp-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 10px;
+
+  border:
+    1px solid
+    rgba(
+      151,
+      115,
+      91,
+      0.07
+    );
+
+  border-radius: 28px;
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   RSVP HEADING
+============================================================ */
+
+.bhrsvp-heading {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+.bhrsvp-kicker {
+  margin:
+    0
+    0
+    6px;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing:
+    0.3em;
+
+  color:
+    rgba(
+      119,
+      83,
+      63,
+      0.72
+    );
+}
+
+.bhrsvp-title {
+  margin: 0;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size:
+    clamp(
+      55px,
+      14vw,
+      72px
+    );
+
+  font-weight: 400;
+
+  line-height: 0.96;
+
+  color:
+    #775442;
+}
+
+.bhrsvp-subtitle {
+  max-width: 285px;
+
+  margin:
+    12px
+    auto
+    0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  line-height: 1.45;
+
+  color:
+    rgba(
+      107,
+      78,
+      61,
+      0.78
+    );
+}
+
+.bhrsvp-divider,
+.bhcount-divider {
+  width: 180px;
+
+  margin:
+    18px
+    auto
+    24px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    #b28a68;
+}
+
+.bhrsvp-divider span,
+.bhcount-divider span {
+  height: 1px;
+
+  background:
+    rgba(
+      177,
+      138,
+      104,
+      0.33
+    );
+}
+
+.bhrsvp-divider b,
+.bhcount-divider b {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 20px;
+
+  font-weight: 400;
+}
+
+/* ============================================================
+   RSVP NOTE
+============================================================ */
+
+.bhrsvp-note {
+  max-width: 280px;
+
+  margin:
+    -8px
+    auto
+    20px;
+
+  text-align: center;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 15px;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      116,
+      87,
+      69,
+      0.72
+    );
+}
+
+/* ============================================================
+   FORM
+============================================================ */
+
+.bhrsvp-form {
+  position: relative;
+  z-index: 2;
+}
+
+.bhrsvp-field {
+  margin-bottom: 20px;
+}
+
+.bhrsvp-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  color:
+    #765543;
+}
+
+.bhrsvp-field input {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding:
+    12px
+    15px;
+
+  border:
+    1px solid
+    rgba(
+      151,
+      116,
+      93,
+      0.18
+    );
+
+  border-radius: 18px;
+
+  outline: none;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.26
+    );
+
+  color:
+    #694d3d;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 17px;
+
+  transition:
+    border-color
+      0.25s ease,
+    background
+      0.25s ease,
+    box-shadow
+      0.25s ease;
+}
+
+.bhrsvp-field input::placeholder {
+  color:
+    rgba(
+      122,
+      95,
+      79,
+      0.48
+    );
+}
+
+.bhrsvp-field input:focus {
+  border-color:
+    rgba(
+      150,
+      111,
+      84,
+      0.40
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.34
+    );
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      171,
+      132,
+      103,
+      0.06
+    );
+}
+
+/* ============================================================
+   ATTENDANCE
+============================================================ */
+
+.bhrsvp-question {
+  margin:
+    0
+    0
+    12px;
+
+  text-align: center;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  color:
+    #765442;
+}
+
+.bhrsvp-choice-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.bhrsvp-choice {
+  position: relative;
+
+  min-height: 115px;
+
+  padding:
+    15px
+    8px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(
+      150,
+      115,
+      91,
+      0.14
+    );
+
+  border-radius: 22px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.19
+    );
+
+  color:
+    #72513f;
+
+  cursor: pointer;
+
+  transition:
+    transform
+      0.25s ease,
+    background
+      0.25s ease,
+    border-color
+      0.25s ease,
+    box-shadow
+      0.25s ease;
+}
+
+.bhrsvp-choice:hover {
+  transform:
+    translateY(-2px);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+}
+
+.bhrsvp-choice.is-active {
+  background:
+    rgba(
+      237,
+      220,
+      204,
+      0.35
+    );
+
+  border-color:
+    rgba(
+      152,
+      111,
+      82,
+      0.34
+    );
+
+  box-shadow:
+    0 8px 20px
+      rgba(
+        93,
+        63,
+        43,
+        0.06
+      );
+}
+
+.bhrsvp-choice-heart {
+  margin-bottom: 4px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 19px;
+
+  color:
+    #b58b69;
+}
+
+.bhrsvp-choice-title {
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size: 28px;
+
+  line-height: 1;
+}
+
+.bhrsvp-choice-small {
+  max-width: 120px;
+
+  margin-top: 4px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 12px;
+
+  line-height: 1.25;
+
+  color:
+    rgba(
+      110,
+      82,
+      66,
+      0.67
+    );
+}
+
+/* ============================================================
+   SUBMIT
+============================================================ */
+
+.bhrsvp-submit {
+  width: 100%;
+
+  min-height: 54px;
+
+  margin-top: 3px;
+
+  border:
+    1px solid
+    rgba(
+      143,
+      103,
+      77,
+      0.28
+    );
+
+  border-radius: 0;
+
+  background:
+    rgba(
+      255,
+      250,
+      246,
+      0.35
+    );
+
+  color:
+    #765341;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 21px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    transform
+      0.25s ease,
+    background
+      0.25s ease,
+    box-shadow
+      0.25s ease;
+}
+
+.bhrsvp-submit:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  background:
+    rgba(
+      244,
+      230,
+      218,
+      0.48
+    );
+
+  box-shadow:
+    0 10px 20px
+    rgba(
+      91,
+      62,
+      44,
+      0.06
+    );
+}
+
+.bhrsvp-submit:disabled {
+  opacity: 0.55;
+
+  cursor: default;
+}
+
+/* ============================================================
+   SUCCESS
+============================================================ */
+
+.bhrsvp-success {
+  position: relative;
+
+  min-height: 330px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.bhrsvp-success-heart {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 56px;
+
+  color:
+    #b28a68;
+}
+
+.bhrsvp-success h3 {
+  margin:
+    4px
+    0
+    5px;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size: 60px;
+
+  font-weight: 400;
+
+  color:
+    #765442;
+}
+
+.bhrsvp-success p {
+  max-width: 240px;
+
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      106,
+      79,
+      63,
+      0.76
+    );
+}
+
+.bhrsvp-success-one {
+  margin-top: 20px;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size: 43px;
+
+  color:
+    rgba(
+      174,
+      135,
+      104,
+      0.31
+    );
+}
+
+/* ============================================================
+   COUNTDOWN
+============================================================ */
+
+.bhcount-card {
+  position: relative;
+  z-index: 2;
+
+  width:
+    min(
+      90%,
+      420px
+    );
+
+  padding:
+    37px
+    24px
+    31px;
+
+  text-align: center;
+
+  border:
+    1px solid
+    rgba(
+      151,
+      115,
+      91,
+      0.14
+    );
+
+  border-radius: 36px;
+
+  background:
+    rgba(
+      255,
+      252,
+      248,
+      0.20
+    );
+
+  backdrop-filter:
+    blur(5px);
+
+  -webkit-backdrop-filter:
+    blur(5px);
+
+  box-shadow:
+    0 22px 55px
+      rgba(
+        89,
+        62,
+        44,
+        0.08
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.42
+      );
+
+  overflow: hidden;
+}
+
+.bhcount-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 10px;
+
+  border:
+    1px solid
+    rgba(
+      151,
+      115,
+      91,
+      0.07
+    );
+
+  border-radius: 28px;
+
+  pointer-events: none;
+}
+
+.bhcount-kicker {
+  position: relative;
+  z-index: 2;
+
+  margin:
+    0
+    0
+    6px;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing:
+    0.32em;
+
+  color:
+    rgba(
+      119,
+      83,
+      63,
+      0.70
+    );
+}
+
+.bhcount-title {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size:
+    clamp(
+      58px,
+      15vw,
+      76px
+    );
+
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  color:
+    #765341;
+}
+
+.bhcount-subtitle {
+  position: relative;
+  z-index: 2;
+
+  max-width: 285px;
+
+  margin:
+    12px
+    auto
+    0;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  line-height: 1.45;
+
+  color:
+    rgba(
+      108,
+      81,
+      65,
+      0.75
+    );
+}
+
+/* ============================================================
+   COUNTDOWN NUMBERS
+============================================================ */
+
+.bhcount-grid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  margin:
+    8px
+    auto
+    27px;
+
+  max-width: 340px;
+}
+
+.bhcount-unit {
+  position: relative;
+
+  min-height: 93px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.bhcount-unit:not(
+    :last-child
+  )::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  top: 22%;
+
+  width: 1px;
+  height: 56%;
+
+  background:
+    rgba(
+      157,
+      119,
+      91,
+      0.14
+    );
+}
+
+.bhcount-number {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      31px,
+      8vw,
+      42px
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color:
+    #70503f;
+}
+
+.bhcount-label {
+  margin-top: 7px;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing:
+    0.12em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      123,
+      94,
+      76,
+      0.61
+    );
+}
+
+.bhcount-finished {
+  position: relative;
+  z-index: 2;
+
+  margin:
+    32px
+    auto;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size: 45px;
+
+  color:
+    #765341;
+}
+
+/* ============================================================
+   CALENDAR BUTTON
+============================================================ */
+
+.bhcount-calendar-button {
+  position: relative;
+  z-index: 2;
+
+  min-width: 225px;
+
+  min-height: 52px;
+
+  padding:
+    12px
+    20px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border:
+    1px solid
+    rgba(
+      144,
+      105,
+      80,
+      0.27
+    );
+
+  background:
+    rgba(
+      255,
+      251,
+      247,
+      0.28
+    );
+
+  color:
+    #765341;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  transition:
+    background
+      0.25s ease,
+    box-shadow
+      0.25s ease;
+}
+
+.bhcount-calendar-button:hover {
+  background:
+    rgba(
+      242,
+      227,
+      214,
+      0.42
+    );
+
+  box-shadow:
+    0 9px 18px
+    rgba(
+      88,
+      59,
+      42,
+      0.06
+    );
+}
+
+.bhcount-calendar-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================================
+   ONE
+============================================================ */
+
+.bhcount-one {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 21px;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size: 35px;
+
+  line-height: 1;
+
+  color:
+    rgba(
+      167,
+      127,
+      96,
+      0.32
+    );
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 600px) {
+  .bhrsvp-section,
+  .bhcount-section {
+    padding:
+      30px
+      11px;
+  }
+
+  .bhrsvp-card,
+  .bhcount-card {
+    width: 91%;
+
+    max-width: 360px;
+
+    padding:
+      31px
+      18px
+      26px;
+
+    border-radius: 31px;
+
+    background:
+      rgba(
+        255,
+        252,
+        248,
+        0.18
+      );
+  }
+
+  .bhrsvp-title {
+    font-size: 57px;
+  }
+
+  .bhrsvp-subtitle,
+  .bhcount-subtitle {
+    font-size: 17px;
+  }
+
+  .bhrsvp-choice {
+    min-height: 108px;
+
+    padding:
+      13px
+      6px;
+  }
+
+  .bhrsvp-choice-title {
+    font-size: 26px;
+  }
+
+  .bhrsvp-choice-small {
+    font-size: 11px;
+  }
+
+  .bhcount-title {
+    font-size: 60px;
+  }
+
+  .bhcount-grid {
+    max-width: 310px;
+
+    margin-bottom: 23px;
+  }
+
+  .bhcount-unit {
+    min-height: 83px;
+  }
+
+  .bhcount-number {
+    font-size: 34px;
+  }
+
+  .bhcount-label {
+    font-size: 7px;
+
+    letter-spacing:
+      0.09em;
+  }
+
+  .bhcount-calendar-button {
+    min-width: 215px;
+
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .bhrsvp-card,
+  .bhcount-card {
+    width: 94%;
+
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .bhrsvp-title {
+    font-size: 52px;
+  }
+
+  .bhrsvp-choice-grid {
+    gap: 7px;
+  }
+
+  .bhrsvp-choice {
+    min-height: 102px;
+  }
+
+  .bhcount-grid {
+    max-width: 290px;
+  }
+
+  .bhcount-number {
+    font-size: 30px;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .bhrsvp-section *,
+  .bhcount-section * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
