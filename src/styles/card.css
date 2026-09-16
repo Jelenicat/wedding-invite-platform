@@ -25863,21 +25863,25 @@ font-family: "Italianno", cursive;
 
 @media (max-width: 480px) {
   .sci-root.sci-bojana-vasilije .sci-paper-panel {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 28px;
+    padding-right: 28px;
   }
 
   .sci-root.sci-bojana-vasilije .sci-photo-ring {
-    width: min(100%, 326px);
+    width: min(100%, 304px);
   }
 }
 
 @media (max-width: 360px) {
+  .sci-root.sci-bojana-vasilije .sci-paper-panel {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .sci-root.sci-bojana-vasilije .sci-photo-ring {
-    width: min(100%, 312px);
+    width: min(100%, 288px);
   }
 }
-
 /* ============================================================
    BOJANA & VASILIJE
    VEĆI TEKST SAMO SRPSKI + SAMO TELEFON

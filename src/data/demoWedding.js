@@ -8809,7 +8809,7 @@ musicSrc: "/music/hana-1.mp3",
 
         details: {
           welcomeText:
-            "With great joy, we invite you to be part of our special day.",
+            "With great joy, we invite you to be a part of our special day.",
 
           date:
             "19 September 2027",

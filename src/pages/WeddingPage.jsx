@@ -320,6 +320,11 @@ const TEMPLATE_COMPONENTS = {
   Intro: BirthdayScratchIntro,
   Invitation: BirthdayHeartsInvitationCard,
 },
+"envelope-flap-minimal": {
+  Intro: EnvelopeFlapIntro,
+  Invitation: MinimalInvitationCard,
+},
+
 };
 
 const isObject = (value) =>
@@ -681,7 +686,10 @@ sliderImages: localizedInvitation.details?.sliderImages || [],
     );
   }
 
-if (templateKey === "envelope-flap") {
+if (
+  templateKey === "envelope-flap" ||
+  templateKey === "envelope-flap-minimal"
+) {
   return (
     <div className="wedding-page">
       {audioNode}
