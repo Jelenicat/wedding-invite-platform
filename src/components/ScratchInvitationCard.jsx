@@ -686,10 +686,6 @@ function ScratchPhoto({
       return;
     }
 
-    /*
-      Kada je korisnik stvarno počeo da grebe,
-      browser ne sme da pretvori pokret u scroll.
-    */
     event.preventDefault();
 
     drawingRef.current.pointer =
@@ -711,9 +707,6 @@ function ScratchPhoto({
       return;
     }
 
-    /*
-      Blokiramo scroll SAMO dok traje aktivno grebanje.
-    */
     event.preventDefault();
 
     draw(event);
@@ -923,21 +916,21 @@ function ScratchCardContent({
   };
 
   return (
- <div
-  className={`sci-root ${
-    revealed
-      ? "sci-revealed"
-      : ""
-  } ${
-    slug === "bojana-vasilije"
-      ? "sci-bojana-vasilije"
-      : ""
-  }`}
-  lang={activeLanguage}
-  style={{
-    "--sci-paper": paper,
-  }}
->
+    <div
+      className={`sci-root ${
+        revealed
+          ? "sci-revealed"
+          : ""
+      } ${
+        slug === "bojana-vasilije"
+          ? "sci-bojana-vasilije"
+          : ""
+      }`}
+      lang={activeLanguage}
+      style={{
+        "--sci-paper": paper,
+      }}
+    >
       {/* ======================================================
           HERO
       ====================================================== */}
@@ -961,7 +954,9 @@ function ScratchCardContent({
                 lang={value}
                 aria-label={
                   value === "sr"
-                    ? "Srpski"
+                    ? slug === "bojana-vasilije"
+                      ? "Српски"
+                      : "Srpski"
                     : "English"
                 }
                 aria-pressed={
@@ -974,7 +969,10 @@ function ScratchCardContent({
                   )
                 }
               >
-                {value.toUpperCase()}
+                {value === "sr" &&
+                slug === "bojana-vasilije"
+                  ? "СР"
+                  : value.toUpperCase()}
               </button>
             ),
           )}
