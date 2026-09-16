@@ -194,7 +194,7 @@ function EnvelopeFlapIntro({
         {slug === "bojana-vasilije" && phase === "closed" && (
           <span className="efi-bojana-open-hint" aria-hidden="true">
             <span className="efi-bojana-open-hint-sr">
-              Kliknite da otvorite pismo
+              Кликните да отворите писмо
             </span>
 
             <span className="efi-bojana-open-hint-en">

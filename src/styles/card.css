@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400;1,500&display=swap");
+
 /* =========================
    FLORAL INVITATION CARD - EDITORIAL
 ========================= */
@@ -25979,5 +25980,58 @@ font-family: "Italianno", cursive;
   .sci-root.sci-bojana-vasilije[lang="sr"]
     .sci-note {
     font-size: 15px;
+  }
+}
+
+/* BOJANA & VASILIJE — ćirilica */
+
+/* BOJANA & VASILIJE — ćirilica */
+
+.sci-root.sci-bojana-vasilije[lang="sr"] .sci-names.sci-cyrillic {
+  font-family: "Great Vibes", cursive;
+
+  font-weight: 400;
+  font-style: normal;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: nowrap;
+
+  gap: 8px;
+
+  font-size: clamp(40px, 7vw, 62px);
+
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+
+  white-space: nowrap;
+}
+
+.sci-root.sci-bojana-vasilije[lang="sr"]
+  .sci-names.sci-cyrillic
+  .sci-amp {
+  font-size: 0.62em;
+  margin: 0 2px;
+}
+
+@media (max-width: 480px) {
+  .sci-root.sci-bojana-vasilije[lang="sr"] .sci-names.sci-cyrillic {
+    font-size: clamp(35px, 9.2vw, 45px);
+    gap: 5px;
+  }
+}
+.sci-root.sci-bojana-vasilije[lang="sr"] .sci-section-title {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+@media (max-width: 480px) {
+  .sci-root.sci-bojana-vasilije[lang="sr"] .sci-section-title {
+    font-size: 46px;
+    line-height: 1;
   }
 }

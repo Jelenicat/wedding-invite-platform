@@ -20246,3 +20246,21 @@ margin-bottom: 2px;
     line-height: 1.6;
   }
 }
+
+.sci-root.sci-bojana-vasilije[lang="sr"]
+  .ef-rsvp-bojana-vasilije
+  h2 {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+@media (max-width: 480px) {
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    h2 {
+    font-size: 42px;
+    line-height: 1;
+  }
+}

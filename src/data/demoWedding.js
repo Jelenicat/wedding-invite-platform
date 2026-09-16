@@ -8733,13 +8733,14 @@ musicSrc: "/music/hana-1.mp3",
   slug: "bojana-vasilije",
   type: "wedding",
   template: "envelope-flap",
+  script: "cyrillic",
 
-  brideName: "Bojana",
-  groomName: "Vasilije",
+  brideName: "Бојана",
+  groomName: "Василије",
 
   weddingDate: "19.09.2027.",
   weddingTime: "17:00",
-  venue: "Restoran Akacija",
+  venue: "Ресторан Акација",
 
   image: "/images/invitations/bojana-vasilije.jpg",
   musicSrc: "/music/bojana-vasilije.mp3",
@@ -8748,34 +8749,34 @@ musicSrc: "/music/hana-1.mp3",
     cardBackground: "#f3f2f2",
 
     welcomeText:
-      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+      "Са великом радошћу вас позивамо да будете део нашег посебног дана.",
 
     date: "19.09.2027.",
 
-    // Početak celog venčanja — crkva u 15:00
+    // Почетак целог венчања — црква у 15:00
     dateISO: "2027-09-19T15:00:00+02:00",
 
-    venue: "Restoran Akacija",
+    venue: "Ресторан Акација",
 
-    // 15:00 → 01:00 narednog dana
+    // 15:00 → 01:00 наредног дана
     calendarDurationHours: 10,
     showCalendarButton: true,
 
     events: [
       {
-        label: "Crkveno venčanje",
+        label: "Црквено венчање",
         time: "15:00",
         icon: "church",
         location:
-          "Crkva Svetog Aleksandra Nevskog, Dorćol",
+          "Црква Светог Александра Невског, Дорћол",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Aleksandra+Nevskog+Dorcol+Beograd",
       },
       {
-        label: "Građansko venčanje i proslava",
+        label: "Грађанско венчање и прослава",
         time: "17:00",
         icon: "civil",
-        location: "Restoran Akacija",
+        location: "Ресторан Акација",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
       },
@@ -8787,22 +8788,37 @@ musicSrc: "/music/hana-1.mp3",
       "Formal · Black-Tie Optional",
 
     dressCodeNote:
-      "Bilo bi nam drago da ovaj poseban dan ulepšate elegantnim i svečanim izdanjem.",
+      "Било би нам драго да овај посебан дан улепшате елегантним и свечаним издањем.",
 
-    // Koristi se za Dodaj u kalendar
+    // Користи се за Додај у календар
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
 
     note:
-      "Molimo vas da svoj dolazak potvrdite do 15. avgusta 2027.",
+      "Молимо вас да свој долазак потврдите до 15. августа 2027.",
 
     /* LANGUAGE */
     showLanguageSwitcher: true,
+    defaultLanguage: "sr",
+
+    languages: ["sr", "en"],
+
+    languageLabels: {
+      sr: "SR",
+      en: "EN",
+    },
 
     translations: {
       en: {
+        script: "latin",
+
+        brideName: "Bojana",
+        groomName: "Vasilije",
+
         weddingDate:
           "19 September 2027",
+
+        weddingTime: "5:00 PM",
 
         venue:
           "Akacija Restaurant",
@@ -8822,26 +8838,101 @@ musicSrc: "/music/hana-1.mp3",
               label:
                 "Church ceremony",
 
+              time: "3:00 PM",
+
+              icon: "church",
+
               location:
                 "Church of Saint Alexander Nevsky, Dorćol",
+
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Aleksandra+Nevskog+Dorcol+Beograd",
             },
             {
               label:
                 "Civil ceremony and reception",
 
+              time: "5:00 PM",
+
+              icon: "civil",
+
               location:
                 "Akacija Restaurant",
+
+              mapLink:
+                "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
             },
           ],
 
+          showDressCode: true,
+
+          dressCodeTitle:
+            "Formal · Black-Tie Optional",
+
           dressCodeNote:
             "We would love you to join us in elegant, formal attire for this special day.",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
 
           note:
             "Please confirm your attendance by 15 August 2027.",
         },
       },
     },
+  }),
+},
+
+
+{
+  slug: "ana-nemanja",
+  type: "wedding",
+  template: "envelope-flap-minimal",
+
+  brideName: "Ana",
+  groomName: "Nemanja",
+
+  weddingDate: "21.11.2026.",
+  weddingTime: "17:00",
+  venue: "Hotel Vojvodina",
+ backgroundImage: "/images/ana-nemanja-minimal.jpg",
+  details: createDetails({
+   
+ backgroundImage: "/images/ana-nemanja-minimal.jpg",
+    welcomeText:
+      "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+    date: "21.11.2026.",
+    dateISO: "2026-11-21T17:00:00+01:00",
+
+    venue: "Hotel Vojvodina",
+
+    // BEZ DUGMETA "DODAJ U KALENDAR"
+    showCalendarButton: false,
+
+    // BEZ DRESS CODE-A
+    showDressCode: false,
+
+    events: [
+      {
+        label: "Skup gostiju",
+        time: "16:00",
+        icon: "gathering",
+        location: "Hotel Vojvodina",
+      },
+      {
+        label: "Venčanje",
+        time: "17:00",
+        icon: "civil",
+        location: "Hotel Vojvodina",
+      },
+    ],
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 01.11.2026.",
+
+    rsvpText:
+      "Molimo vas da svoj dolazak potvrdite do 01.11.2026.",
   }),
 },
 
