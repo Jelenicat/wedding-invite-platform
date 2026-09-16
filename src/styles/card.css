@@ -25853,3 +25853,127 @@ font-family: "Italianno", cursive;
     width: min(100%, 270px);
   }
 }
+
+
+/* ============================================================
+   BOJANA & VASILIJE
+   VEĆA SCRATCH FOTOGRAFIJA NA TELEFONU
+   SR + EN
+============================================================ */
+
+@media (max-width: 480px) {
+  .sci-root.sci-bojana-vasilije .sci-paper-panel {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .sci-root.sci-bojana-vasilije .sci-photo-ring {
+    width: min(100%, 326px);
+  }
+}
+
+@media (max-width: 360px) {
+  .sci-root.sci-bojana-vasilije .sci-photo-ring {
+    width: min(100%, 312px);
+  }
+}
+
+/* ============================================================
+   BOJANA & VASILIJE
+   VEĆI TEKST SAMO SRPSKI + SAMO TELEFON
+============================================================ */
+
+@media (max-width: 480px) {
+
+  /* SR / EN switch */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-language button {
+    font-size: 12px;
+  }
+
+  /* POZIVNICA ZA VENČANJE */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-kicker {
+    font-size: 11px;
+  }
+
+  /* BOJANA & VASILIJE */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-names {
+    font-size: clamp(43px, 11.5vw, 68px);
+  }
+
+  /* PREVUCITE PRSTOM... */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-scratch-help p {
+    font-size: 15px;
+  }
+
+  /* SLAVIMO LJUBAV */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-together {
+    font-size: 11px;
+  }
+
+  /* DATUM */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-date {
+    font-size: 24px;
+  }
+
+  /* DETALJI PROSLAVE */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-details-link {
+    font-size: 13px;
+  }
+
+  /* UVODNI TEKST */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-welcome {
+    font-size: 19px;
+  }
+
+  /* NAŠ DAN */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-section-title {
+    font-size: 44px;
+  }
+
+  /* VREME DOGAĐAJA */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-event-time {
+    font-size: 21px;
+  }
+
+  /* NAZIV DOGAĐAJA */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-event-info h3 {
+    font-size: 18px;
+  }
+
+  /* LOKACIJA */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-event-info p {
+    font-size: 15px;
+  }
+
+  /* POGLEDAJ LOKACIJU */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-event-info a {
+    font-size: 12px;
+  }
+
+  /* DRESS CODE NASLOV */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-dress h2 {
+    font-size: 25px;
+  }
+
+  /* DRESS CODE TEKST + NAPOMENA */
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-dress > p:not(.sci-kicker),
+  .sci-root.sci-bojana-vasilije[lang="sr"]
+    .sci-note {
+    font-size: 15px;
+  }
+}

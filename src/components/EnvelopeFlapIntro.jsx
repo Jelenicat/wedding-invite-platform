@@ -190,7 +190,19 @@ function EnvelopeFlapIntro({
         aria-label={
           cyrillic ? "Отвори позивницу" : "Otvori pozivnicu"
         }
-      />
+      >
+        {slug === "bojana-vasilije" && phase === "closed" && (
+          <span className="efi-bojana-open-hint" aria-hidden="true">
+            <span className="efi-bojana-open-hint-sr">
+              Kliknite da otvorite pismo
+            </span>
+
+            <span className="efi-bojana-open-hint-en">
+              Click to open the letter
+            </span>
+          </span>
+        )}
+      </button>
     </section>
   );
 }

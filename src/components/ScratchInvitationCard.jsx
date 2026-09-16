@@ -923,17 +923,21 @@ function ScratchCardContent({
   };
 
   return (
-    <div
-      className={`sci-root ${
-        revealed
-          ? "sci-revealed"
-          : ""
-      }`}
-      lang={activeLanguage}
-      style={{
-        "--sci-paper": paper,
-      }}
-    >
+ <div
+  className={`sci-root ${
+    revealed
+      ? "sci-revealed"
+      : ""
+  } ${
+    slug === "bojana-vasilije"
+      ? "sci-bojana-vasilije"
+      : ""
+  }`}
+  lang={activeLanguage}
+  style={{
+    "--sci-paper": paper,
+  }}
+>
       {/* ======================================================
           HERO
       ====================================================== */}

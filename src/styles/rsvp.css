@@ -20085,3 +20085,164 @@ margin-bottom: 2px;
     gap: 7px;
   }
 }
+
+/* ============================================================
+   BOJANA & VASILIJE
+   VEĆI SRPSKI TEKST NA TELEFONU
+   RSVP + COUNTDOWN
+   English ostaje nepromenjen
+============================================================ */
+
+@media (max-width: 480px) {
+
+  /* ==========================================================
+     RSVP
+  ========================================================== */
+
+  /* RSVP mali naslov */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-kicker {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+  }
+
+  /* POTVRDITE DOLAZAK */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    h2 {
+    font-size: clamp(42px, 12.5vw, 52px);
+  }
+
+  /* Uvodni tekst */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* Ime i prezime / Broj osoba */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-field > span {
+    font-size: 14px;
+  }
+
+  /* Input tekst */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-field input {
+    font-size: 16px;
+  }
+
+  /* Placeholder */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-field input::placeholder {
+    font-size: 15px;
+  }
+
+  /* Da li dolazite? / Da li postite? */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-fieldset legend {
+    font-size: 14px;
+  }
+
+  /* Dolazim / Ne dolazim */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-options strong {
+    font-size: 17px;
+  }
+
+  /* Radujem se... / Nažalost... */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-options small {
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  /* Postim / Ne postim */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-options-small button {
+    font-size: 14px;
+  }
+
+  /* Pošalji potvrdu */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-submit {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+  }
+
+  /* Greške */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-error {
+    font-size: 14px;
+  }
+
+  /* Hvala + potvrda nakon slanja */
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-success h2 {
+    font-size: 44px;
+  }
+
+  .sci-root[lang="sr"]
+    .ef-rsvp-bojana-vasilije
+    .ef-rsvp-success p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+
+  /* ==========================================================
+     COUNTDOWN
+  ========================================================== */
+
+  /* Do venčanja je ostalo */
+  .sci-root[lang="sr"]
+    .ef-countdown-bojana-vasilije
+    .ef-countdown-kicker {
+    font-size: 15px;
+    line-height: 1.45;
+    letter-spacing: 0.1em;
+  }
+
+  /* BROJEVI */
+  .sci-root[lang="sr"]
+    .ef-countdown-bojana-vasilije
+    .ef-countdown-unit strong {
+    font-size: clamp(34px, 10vw, 43px);
+  }
+
+  /* dana / sati / min / sek */
+  .sci-root[lang="sr"]
+    .ef-countdown-bojana-vasilije
+    .ef-countdown-unit small {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Dodaj u kalendar */
+  .sci-root[lang="sr"]
+    .ef-countdown-bojana-vasilije
+    .ef-countdown-calendar-button {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  /* Sačuvajte datum... */
+  .sci-root[lang="sr"]
+    .ef-countdown-bojana-vasilije
+    .ef-countdown-calendar-hint {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}

@@ -11493,3 +11493,71 @@ body,
 .efi-overlay.efi-opening .efi-shadow {
   animation: efi-shadow-away 0.18s ease-out 0s both;
 }
+
+/* ============================================================
+   BOJANA & VASILIJE — suptilan hint za otvaranje koverte
+============================================================ */
+
+.efi-bojana-open-hint {
+  position: absolute;
+  left: 50%;
+  bottom: max(42px, calc(env(safe-area-inset-bottom) + 28px));
+
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: calc(100vw - 48px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+
+  color: rgba(104, 94, 91, 0.58);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  text-align: center;
+
+  pointer-events: none;
+
+  animation: efi-bojana-hint-fade 2.8s ease-in-out infinite;
+}
+
+.efi-bojana-open-hint-sr {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.efi-bojana-open-hint-en {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  opacity: 0.62;
+}
+
+@keyframes efi-bojana-hint-fade {
+  0%,
+  100% {
+    opacity: 0.58;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 600px) {
+  .efi-bojana-open-hint {
+    color: rgba(104, 94, 91, 0.7);
+  }
+
+  .efi-bojana-open-hint-sr {
+    font-size: 16px;
+  }
+
+  .efi-bojana-open-hint-en {
+    font-size: 12px;
+  }
+}
