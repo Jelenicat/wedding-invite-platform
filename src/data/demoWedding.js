@@ -8896,27 +8896,23 @@ musicSrc: "/music/hana-1.mp3",
 
   weddingDate: "21.11.2026.",
   weddingTime: "17:00",
-  venue: "Hotel Vojvodina",
- 
+  venue: "Hotel Vojvodina, Zrenjanin",
+
   musicSrc: "/music/mina-dragan.mp3",
   backgroundImage: "/images/ana-nemanja-minimal.jpg",
 
-
   details: createDetails({
-   
- backgroundImage: "/images/ana-nemanja-minimal.jpg",
+    backgroundImage: "/images/ana-nemanja-minimal.jpg",
+
     welcomeText:
       "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
 
     date: "21.11.2026.",
     dateISO: "2026-11-21T17:00:00+01:00",
 
-    venue: "Hotel Vojvodina",
+    venue: "Hotel Vojvodina, Zrenjanin",
 
-    // BEZ DUGMETA "DODAJ U KALENDAR"
     showCalendarButton: false,
-
-    // BEZ DRESS CODE-A
     showDressCode: false,
 
     events: [
@@ -8924,15 +8920,22 @@ musicSrc: "/music/hana-1.mp3",
         label: "Skup gostiju",
         time: "16:00",
         icon: "gathering",
-        location: "Hotel Vojvodina",
+        location: "Hotel Vojvodina, Zrenjanin",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvodina+Trg+Slobode+3-5+Zrenjanin",
       },
       {
         label: "Venčanje",
         time: "17:00",
         icon: "civil",
-        location: "Hotel Vojvodina",
+        location: "Hotel Vojvodina, Zrenjanin",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvodina+Trg+Slobode+3-5+Zrenjanin",
       },
     ],
+
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvodina+Trg+Slobode+3-5+Zrenjanin",
 
     note:
       "Molimo vas da svoj dolazak potvrdite do 01.11.2026.",
