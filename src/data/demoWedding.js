@@ -8787,7 +8787,7 @@ musicSrc: "/music/hana-1.mp3",
     showDressCode: true,
 
     dressCodeTitle:
-      "Formal · Black-Tie Optional",
+      "Формално · свечана комбинација - кравата по жељи",
 
     dressCodeNote:
       "Било би нам драго да овај посебан дан улепшате елегантним и свечаним издањем.",

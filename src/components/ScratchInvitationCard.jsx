@@ -38,7 +38,7 @@ const COPY = {
     details: "Детаљи прославе",
     timeline: "Наш дан",
     location: "Погледај локацију",
-    dress: "Дрес код",
+    dress: "Кодекс облачења",
     women: "Даме",
     men: "Господа",
     language: "Избор језика",
