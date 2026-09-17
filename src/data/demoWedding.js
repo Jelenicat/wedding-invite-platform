@@ -8797,7 +8797,7 @@ musicSrc: "/music/hana-1.mp3",
       "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
 
     note:
-      "Молимо вас да свој долазак потврдите до 15. августа 2027.",
+      "Молимо вас да свој долазак потврдите до 15. јула 2027.",
 
     /* LANGUAGE */
     showLanguageSwitcher: true,
@@ -8878,7 +8878,7 @@ musicSrc: "/music/hana-1.mp3",
             "https://www.google.com/maps/search/?api=1&query=Restoran+Akacija+Beograd",
 
           note:
-            "Please confirm your attendance by 15 August 2027.",
+            "Please confirm your attendance by 15 July 2027.",
         },
       },
     },
