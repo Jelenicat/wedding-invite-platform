@@ -77,6 +77,7 @@ sliderImages = [],
   showCalendarButton = false,
   calendarDurationHours,
  showLanguageSwitcher = false,
+ rsvpClosed = false,
 defaultLanguage = "sr",
 languages = ["sr", "en"],
 languageLabels = { sr: "SR", en: "EN" },
@@ -157,6 +158,7 @@ hideRsvpPhotoBlock,
   showCalendarButton,
   calendarDurationHours,
 showLanguageSwitcher,
+rsvpClosed,
 defaultLanguage,
 languages,
 languageLabels,
@@ -6610,7 +6612,7 @@ rsvpOptions: {
     dateISO: "2026-10-03T15:00:00+02:00",
 
     venue: "Diamond Garden, Beograd",
-
+rsvpClosed: true,
     showCalendarButton: true,
     calendarDurationHours: 10,
 
@@ -8895,7 +8897,11 @@ musicSrc: "/music/hana-1.mp3",
   weddingDate: "21.11.2026.",
   weddingTime: "17:00",
   venue: "Hotel Vojvodina",
- backgroundImage: "/images/ana-nemanja-minimal.jpg",
+ 
+  musicSrc: "/music/mina-dragan.mp3",
+  backgroundImage: "/images/ana-nemanja-minimal.jpg",
+
+
   details: createDetails({
    
  backgroundImage: "/images/ana-nemanja-minimal.jpg",

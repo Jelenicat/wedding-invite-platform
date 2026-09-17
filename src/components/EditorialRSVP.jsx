@@ -15,6 +15,7 @@ export default function EditorialRSVP({
   brideName,
   groomName,
   note,
+  rsvpClosed = false,
 }) {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -62,6 +63,11 @@ export default function EditorialRSVP({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // RSVP je zatvoren — ne dozvoljavamo slanje forme
+    if (rsvpClosed) {
+      return;
+    }
+
     if (!slug || !eventType) {
       alert("Nedostaje slug ili tip događaja.");
       return;
@@ -80,7 +86,11 @@ export default function EditorialRSVP({
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
-      if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+      if (
+        !formData.guests ||
+        Number.isNaN(guestsCount) ||
+        guestsCount < 1
+      ) {
         alert("Unesite ispravan broj osoba.");
         return;
       }
@@ -125,27 +135,85 @@ export default function EditorialRSVP({
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="editorial-rsvp-title">POTVRDA DOLASKA</h2>
-        <div className="editorial-rsvp-script">potvrdite prisustvo</div>
+        <h2 className="editorial-rsvp-title">
+          POTVRDA DOLASKA
+        </h2>
 
- <p className="editorial-rsvp-text">
-  {note || "Molimo vas da potvrdite dolazak na proslavu"}
-  <br />
-  {brideName} & {groomName}
-</p>
+        <div className="editorial-rsvp-script">
+          {rsvpClosed
+            ? "hvala na razumevanju"
+            : "potvrdite prisustvo"}
+        </div>
+
+        {!rsvpClosed && (
+          <p className="editorial-rsvp-text">
+            {note ||
+              "Molimo vas da potvrdite dolazak na proslavu"}
+            <br />
+            {brideName} & {groomName}
+          </p>
+        )}
 
         <AnimatePresence mode="wait">
-          {submitted ? (
+          {rsvpClosed ? (
+            <motion.div
+              key="closed"
+              className="editorial-rsvp-closed"
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: 8,
+              }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+              }}
+            >
+              <div className="editorial-rsvp-closed-line" />
+
+              <p className="editorial-rsvp-closed-label">
+                PRIJAVA JE ZATVORENA
+              </p>
+
+              <p className="editorial-rsvp-closed-text">
+                Za naknadne izmene i prijavu gostiju
+                <br />
+                obratite se mladencima.
+              </p>
+
+              <div className="editorial-rsvp-closed-bottom-line" />
+            </motion.div>
+          ) : submitted ? (
             <motion.div
               key="success"
               className="editorial-rsvp-success"
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.4 }}
+              initial={{
+                opacity: 0,
+                scale: 0.96,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.96,
+              }}
+              transition={{
+                duration: 0.4,
+              }}
             >
               <h3>Hvala 💌</h3>
-              <p>Vaša potvrda je uspešno poslata.</p>
+              <p>
+                Vaša potvrda je uspešno poslata.
+              </p>
             </motion.div>
           ) : (
             <motion.form
@@ -172,10 +240,13 @@ export default function EditorialRSVP({
                     type="radio"
                     name="attending"
                     value="da"
-                    checked={formData.attending === "da"}
+                    checked={
+                      formData.attending === "da"
+                    }
                     onChange={handleChange}
                     required
                   />
+
                   <span>Dolazim</span>
                 </label>
 
@@ -184,17 +255,23 @@ export default function EditorialRSVP({
                     type="radio"
                     name="attending"
                     value="ne"
-                    checked={formData.attending === "ne"}
+                    checked={
+                      formData.attending === "ne"
+                    }
                     onChange={handleChange}
                     required
                   />
+
                   <span>Ne dolazim</span>
                 </label>
               </div>
 
               {formData.attending === "da" && (
                 <div className="editorial-rsvp-field">
-                  <label className="editorial-rsvp-label" htmlFor="guests">
+                  <label
+                    className="editorial-rsvp-label"
+                    htmlFor="guests"
+                  >
                     Broj gostiju
                   </label>
 
@@ -218,7 +295,9 @@ export default function EditorialRSVP({
                 className="editorial-rsvp-button"
                 disabled={loading}
               >
-                {loading ? "Slanje..." : "Pošalji potvrdu"}
+                {loading
+                  ? "Slanje..."
+                  : "Pošalji potvrdu"}
               </button>
             </motion.form>
           )}

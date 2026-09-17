@@ -441,7 +441,64 @@ function MinimalInvitationCard({
         script={script}
         language={language}
       />
+{slug === "ana-nemanja" && (
+  <motion.section
+    className="ana-nemanja-contact-section"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7 }}
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    <div className="ana-nemanja-contact-inner">
+      <p className="ana-nemanja-contact-kicker">
+        Kontakt
+      </p>
 
+      <h2 className="ana-nemanja-contact-title">
+        Tu smo za sva pitanja
+      </h2>
+
+      <div className="ana-nemanja-contact-divider" />
+
+      <p className="ana-nemanja-contact-text">
+        Ukoliko vam je potrebna dodatna informacija,
+        slobodno nam se javite.
+      </p>
+
+      <div className="ana-nemanja-contact-grid">
+        <a
+          href="tel:+381637252476"
+          className="ana-nemanja-contact-person"
+        >
+          <span className="ana-nemanja-contact-name">
+            Ana
+          </span>
+
+          <span className="ana-nemanja-contact-phone">
+            063 725 2476
+          </span>
+        </a>
+
+        <a
+          href="tel:+381692731994"
+          className="ana-nemanja-contact-person"
+        >
+          <span className="ana-nemanja-contact-name">
+            Nemanja
+          </span>
+
+          <span className="ana-nemanja-contact-phone">
+            069 273 1994
+          </span>
+        </a>
+      </div>
+
+      <span className="ana-nemanja-contact-heart">
+        ♡
+      </span>
+    </div>
+  </motion.section>
+)}
       {details.dateISO && (
         <MinimalCountdown
           targetDate={details.dateISO}

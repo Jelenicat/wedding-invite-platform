@@ -380,6 +380,7 @@ export default function EditorialInvitationCard({
             brideName={brideName}
             groomName={groomName}
             note={details?.note}
+             rsvpClosed={details?.rsvpClosed}
           />
 
           {/* ODBROJAVANJE */}
