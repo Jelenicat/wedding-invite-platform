@@ -347,7 +347,7 @@ export default function BirthdayTeddyElegantIntro({
                 delay: 0.2,
               }}
             >
-              Sa ljubavlju vas pozivamo
+              Sa ljubavlju vas poziva
             </motion.p>
 
             {/* ime deteta */}
