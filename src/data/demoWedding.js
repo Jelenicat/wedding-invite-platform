@@ -4070,6 +4070,68 @@ theme: {
       "Jedva čekamo da ovaj poseban dan podelimo sa vama.",
   },
 },
+
+
+{
+  slug: "mila-teddy-demo",
+  type: "birthday",
+  template: "birthday-teddy-elegant",
+  script: "latin",
+
+  brideName: "Mila",
+  childName: "Mila",
+
+  weddingDate: "25.10.2026.",
+  weddingTime: "16:00",
+  venue: "Sala Bellissima, Beograd",
+
+  // OVO JE ONA SLIKA SA MEDOM KOJU SI POSLALA
+  backgroundImage: "/images/teddy-heart-intro.png",
+
+  // slike koje može da koristi BirthdayHeartsInvitationCard
+  image1: "/images/mila-1.jpg",
+  image2: "/images/mila-2.jpg",
+  image3: "/images/mila-3.jpg",
+
+  details: createDetails({
+    age: 1,
+
+    date: "25.10.2026.",
+    dateISO: "2026-10-25T16:00:00+01:00",
+
+    venue: "Sala Bellissima, Beograd",
+
+    welcomeText:
+      "Jedna godina osmeha, zagrljaja i najlepših trenutaka. Pozivamo vas da zajedno sa nama proslavite Milin prvi rođendan.",
+
+    rsvpText:
+      "Najlepši dani postaju još lepši kada ih delimo sa dragim ljudima.",
+
+    events: [
+      {
+        label: "Proslava rođendana",
+        time: "16:00",
+        icon: "cake",
+        location: "Sala Bellissima, Beograd",
+        mapLink:
+          "https://maps.google.com/?q=Beograd",
+      },
+    ],
+
+    sliderImages: [
+      "/images/mila-1.jpg",
+      "/images/mila-2.jpg",
+      "/images/mila-3.jpg",
+    ],
+
+    showCalendarButton: false,
+    showDressCode: false,
+
+    note:
+      "Molimo vas da svoj dolazak potvrdite do 18. oktobra.",
+  }),
+},
+
 // =========================
 // Klijenti
 // =========================

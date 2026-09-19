@@ -99,6 +99,7 @@ import BirthdayBabyInvitationCard from "../components/BirthdayBabyInvitationCard
 import BirthdayHeartsIntro from "../components/BirthdayHeartsIntro";
 import BirthdayHeartsInvitationCard from "../components/BirthdayHeartsInvitationCard";
 import BirthdayScratchIntro from "../components/BirthdayScratchIntro";
+import BirthdayTeddyElegantIntro from "../components/BirthdayTeddyElegantIntro";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -323,6 +324,10 @@ const TEMPLATE_COMPONENTS = {
 "envelope-flap-minimal": {
   Intro: EnvelopeFlapIntro,
   Invitation: MinimalInvitationCard,
+},
+"birthday-teddy-elegant": {
+  Intro: BirthdayTeddyElegantIntro,
+  Invitation: BirthdayHeartsInvitationCard,
 },
 
 };

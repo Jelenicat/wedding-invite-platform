@@ -6465,3 +6465,949 @@ body,
     transition: none !important;
   }
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
+
+/* =========================================================
+   TEDDY ELEGANT — PRVI ROĐENDAN
+========================================================= */
+
+.teddy-elegant-intro,
+.teddy-elegant-intro * {
+  box-sizing: border-box;
+}
+
+.teddy-elegant-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #fbfaf8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  color: #81573d;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   BLAGI OVERLAY
+========================================================= */
+
+.teddy-elegant-intro__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035) 0%,
+      rgba(255, 255, 255, 0.01) 45%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SRCULENCA
+========================================================= */
+
+.teddy-elegant-intro__hearts {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.teddy-elegant-intro__heart {
+  position: absolute;
+
+  display: block;
+
+  font-family: Georgia, serif;
+  font-weight: 400;
+  line-height: 1;
+
+  color: rgba(173, 106, 60, 0.7);
+
+  text-shadow:
+    0 0 6px rgba(181, 111, 65, 0.09),
+    0 0 13px rgba(181, 111, 65, 0.05);
+
+  transform-origin: center;
+
+  animation:
+    teddyHeartTwinkle 3.2s ease-in-out infinite,
+    teddyHeartFloat 5.6s ease-in-out infinite;
+}
+
+.teddy-elegant-intro__heart:nth-child(2n) {
+  color: rgba(201, 147, 108, 0.68);
+
+  animation-duration:
+    4s,
+    6.2s;
+}
+
+.teddy-elegant-intro__heart:nth-child(3n) {
+  color: rgba(160, 89, 44, 0.57);
+
+  animation-duration:
+    3.6s,
+    5.3s;
+}
+
+.teddy-elegant-intro__heart:nth-child(4n) {
+  color: rgba(191, 129, 86, 0.6);
+
+  animation-duration:
+    4.4s,
+    6.8s;
+}
+
+.teddy-elegant-intro__heart:nth-child(5n) {
+  color: rgba(214, 166, 132, 0.72);
+
+  animation-duration:
+    3.8s,
+    5.9s;
+}
+
+
+/* =========================================================
+   TREPERENJE SRCA
+========================================================= */
+
+@keyframes teddyHeartTwinkle {
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: scale(0.8);
+  }
+
+  22% {
+    opacity: 0.4;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+
+  74% {
+    opacity: 0.42;
+    transform: scale(0.94);
+  }
+}
+
+
+/* =========================================================
+   PLUTANJE SRCA
+========================================================= */
+
+@keyframes teddyHeartFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  25% {
+    translate: 1px -3px;
+  }
+
+  50% {
+    translate: -1px -7px;
+  }
+
+  75% {
+    translate: 2px -4px;
+  }
+}
+
+
+/* =========================================================
+   CENTRALNA KARTICA
+========================================================= */
+
+.teddy-elegant-intro__wrap {
+  position: relative;
+  z-index: 3;
+
+  width: min(84vw, 400px);
+
+  margin: 0;
+
+  animation:
+    teddyCardFloat
+    6s
+    ease-in-out
+    infinite;
+}
+
+
+/* veoma blago lebdenje cele kartice */
+
+@keyframes teddyCardFloat {
+  0%,
+  100% {
+    transform: translateY(-1svh);
+  }
+
+  50% {
+    transform: translateY(calc(-1svh - 3px));
+  }
+}
+
+
+/* =========================================================
+   SPOLJAŠNJI UGRAVIRANI RAM
+========================================================= */
+
+.teddy-elegant-intro__frame {
+  position: relative;
+
+  width: 100%;
+
+  padding: 11px;
+
+  border-radius: 28px;
+
+  border:
+    1px solid
+    rgba(170, 121, 84, 0.17);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.99) 0%,
+      rgba(251, 248, 245, 0.985) 50%,
+      rgba(255, 255, 255, 0.99) 100%
+    );
+
+  box-shadow:
+    0 18px 46px rgba(104, 65, 38, 0.055),
+
+    0 0 18px rgba(194, 134, 93, 0.025),
+
+    inset 1px 1px 0 rgba(255, 255, 255, 1),
+
+    inset -1px -1px 0 rgba(151, 101, 67, 0.08);
+
+  animation:
+    teddyFrameBreath
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   BLAGI GLOW RAMA
+========================================================= */
+
+@keyframes teddyFrameBreath {
+  0%,
+  100% {
+    box-shadow:
+      0 18px 46px rgba(104, 65, 38, 0.055),
+
+      0 0 16px rgba(194, 134, 93, 0.02),
+
+      inset 1px 1px 0 rgba(255, 255, 255, 1),
+
+      inset -1px -1px 0 rgba(151, 101, 67, 0.08);
+  }
+
+  50% {
+    box-shadow:
+      0 20px 52px rgba(104, 65, 38, 0.072),
+
+      0 0 30px rgba(194, 134, 93, 0.065),
+
+      inset 1px 1px 0 rgba(255, 255, 255, 1),
+
+      inset -1px -1px 0 rgba(151, 101, 67, 0.1);
+  }
+}
+
+
+/* =========================================================
+   UNUTRAŠNJI RAM
+========================================================= */
+
+.teddy-elegant-intro__frame-inner {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    38px
+    24px
+    30px;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  border-radius: 20px;
+
+  border:
+    1px solid
+    rgba(162, 108, 72, 0.28);
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    inset 0 0 0 5px rgba(255, 255, 255, 0.74),
+
+    inset 0 0 15px rgba(120, 75, 45, 0.026),
+
+    inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+
+    inset -1px -1px 0 rgba(139, 89, 55, 0.045);
+}
+
+
+/* tanka dodatna ugravirana linija */
+
+.teddy-elegant-intro__frame-inner::before {
+  content: "";
+
+  position: absolute;
+  z-index: 0;
+
+  inset: 7px;
+
+  border-radius: 15px;
+
+  border:
+    1px solid
+    rgba(176, 129, 95, 0.095);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.92);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   VELIKI UGRAVIRANI BROJ 1
+========================================================= */
+
+.teddy-elegant-intro__frame-inner::after {
+  content: "1";
+
+  position: absolute;
+  z-index: 0;
+
+  left: 50%;
+  top: 48%;
+
+  transform:
+    translate(-50%, -50%);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(190px, 48vw, 250px);
+
+  font-weight: 400;
+  line-height: 1;
+
+  color:
+    rgba(166, 112, 75, 0.032);
+
+  text-shadow:
+    1px 1px 0
+      rgba(255, 255, 255, 0.95),
+
+    -1px -1px 0
+      rgba(137, 88, 57, 0.033);
+
+  pointer-events: none;
+}
+
+
+/* sav pravi sadržaj ide preko broja */
+
+.teddy-elegant-intro__frame-inner > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   SA LJUBAVLJU VAS POZIVAMO
+========================================================= */
+
+.teddy-elegant-intro__eyebrow {
+  margin:
+    0
+    0
+    3px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(16px, 4.2vw, 20px);
+
+  font-weight: 400;
+  font-style: italic;
+
+  line-height: 1.15;
+
+  letter-spacing: 0.015em;
+
+  color: #986747;
+}
+
+
+/* =========================================================
+   IME — ITALIANNO
+========================================================= */
+
+.teddy-elegant-intro__name {
+  margin:
+    8px
+    auto
+    0;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size:
+    clamp(86px, 24vw, 116px);
+
+  font-weight: 400;
+
+  line-height: 0.74;
+
+  letter-spacing: 0.005em;
+
+  color:
+    #a45f34 !important;
+
+  background:
+    none !important;
+
+  -webkit-background-clip:
+    initial !important;
+
+  background-clip:
+    initial !important;
+
+  -webkit-text-fill-color:
+    #a45f34 !important;
+
+  text-shadow:
+    0 1px 0
+      rgba(255, 255, 255, 0.96),
+
+    0 4px 8px
+      rgba(117, 66, 36, 0.1),
+
+    0 0 17px
+      rgba(190, 126, 82, 0.045);
+
+  filter: none;
+
+  animation: none;
+}
+
+
+/* =========================================================
+   NA PRVI ROĐENDAN
+========================================================= */
+
+.teddy-elegant-intro__occasion {
+  margin:
+    19px
+    0
+    0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(21px, 5.5vw, 27px);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.015em;
+
+  color: #82573c;
+}
+
+
+/* =========================================================
+   DATUM
+========================================================= */
+
+.teddy-elegant-intro__date {
+  position: relative;
+
+  width: fit-content;
+
+  min-width: 160px;
+
+  margin:
+    23px
+    auto
+    0;
+
+  padding-top: 16px;
+  padding-left: 0.18em;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(15px, 4vw, 19px);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.18em;
+
+  color: #825d44;
+}
+
+
+/* linija iznad datuma */
+
+.teddy-elegant-intro__date::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 86px;
+  height: 1px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(160, 109, 75, 0.34),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   DUGME
+========================================================= */
+
+.teddy-elegant-intro__button {
+  width:
+    min(68vw, 265px);
+
+  min-height: 52px;
+
+  margin:
+    25px
+    auto
+    0;
+
+  padding:
+    11px
+    22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  appearance: none;
+
+  border:
+    1px solid
+    rgba(169, 116, 79, 0.43);
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.99),
+      rgba(250, 244, 239, 0.94)
+    );
+
+  color: #85583b;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(17px, 4.5vw, 21px);
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0.025em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px
+      rgba(109, 70, 43, 0.07),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 1);
+
+  backdrop-filter:
+    blur(5px);
+
+  -webkit-backdrop-filter:
+    blur(5px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+/* nema pulsiranja dugmeta */
+
+.teddy-elegant-intro__button:active {
+  transform:
+    scale(0.98);
+}
+
+
+@media (hover: hover) {
+
+  .teddy-elegant-intro__button:hover {
+    border-color:
+      rgba(156, 101, 65, 0.62);
+
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff,
+        #f8f1eb
+      );
+
+    box-shadow:
+      0 12px 27px
+        rgba(109, 70, 43, 0.10),
+
+      inset 0 1px 0
+        rgba(255, 255, 255, 1);
+  }
+}
+
+
+/* =========================================================
+   OTVARANJE INTROA
+========================================================= */
+
+.teddy-elegant-intro.is-opening {
+  pointer-events: none;
+
+  animation:
+    teddyElegantExit
+    0.82s
+    cubic-bezier(
+      0.7,
+      0,
+      0.3,
+      1
+    )
+    forwards;
+}
+
+
+@keyframes teddyElegantExit {
+
+  0% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+
+  45% {
+    opacity: 0.86;
+
+    transform:
+      scale(1.015);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.045);
+
+    filter:
+      blur(5px);
+  }
+}
+
+
+/* =========================================================
+   TELEFON
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .teddy-elegant-intro {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .teddy-elegant-intro__wrap {
+    width: 84vw;
+  }
+
+  .teddy-elegant-intro__frame {
+    padding: 10px;
+
+    border-radius: 25px;
+  }
+
+  .teddy-elegant-intro__frame-inner {
+    padding:
+      32px
+      19px
+      25px;
+
+    border-radius: 18px;
+  }
+
+  .teddy-elegant-intro__frame-inner::before {
+    inset: 6px;
+
+    border-radius: 13px;
+  }
+
+  .teddy-elegant-intro__frame-inner::after {
+    font-size:
+      clamp(
+        175px,
+        49vw,
+        220px
+      );
+  }
+
+  .teddy-elegant-intro__eyebrow {
+    margin-bottom: 2px;
+
+    font-size:
+      clamp(
+        15px,
+        4vw,
+        18px
+      );
+  }
+
+  .teddy-elegant-intro__name {
+    margin-top: 8px;
+
+    font-size:
+      clamp(
+        82px,
+        23vw,
+        102px
+      );
+  }
+
+  .teddy-elegant-intro__occasion {
+    margin-top: 18px;
+
+    font-size:
+      clamp(
+        20px,
+        5.5vw,
+        25px
+      );
+  }
+
+  .teddy-elegant-intro__date {
+    margin-top: 20px;
+
+    padding-top: 14px;
+
+    font-size: 16px;
+  }
+
+  .teddy-elegant-intro__button {
+    width:
+      min(
+        66vw,
+        250px
+      );
+
+    min-height: 50px;
+
+    margin-top: 22px;
+
+    font-size: 18px;
+  }
+}
+
+
+/* =========================================================
+   NIŽI TELEFONI
+========================================================= */
+
+@media (max-height: 720px) {
+
+  .teddy-elegant-intro__wrap {
+    width:
+      min(
+        82vw,
+        390px
+      );
+  }
+
+  .teddy-elegant-intro__frame-inner {
+    padding:
+      24px
+      18px
+      20px;
+  }
+
+  .teddy-elegant-intro__eyebrow {
+    margin-bottom: 2px;
+
+    font-size: 15px;
+  }
+
+  .teddy-elegant-intro__name {
+    margin-top: 6px;
+
+    font-size: 76px;
+  }
+
+  .teddy-elegant-intro__occasion {
+    margin-top: 14px;
+
+    font-size: 20px;
+  }
+
+  .teddy-elegant-intro__date {
+    margin-top: 15px;
+
+    padding-top: 11px;
+
+    font-size: 15px;
+  }
+
+  .teddy-elegant-intro__button {
+    margin-top: 17px;
+
+    min-height: 46px;
+
+    font-size: 17px;
+  }
+}
+
+
+/* =========================================================
+   VEOMA MALI TELEFONI
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .teddy-elegant-intro__wrap {
+    width: 86vw;
+  }
+
+  .teddy-elegant-intro__frame-inner {
+    padding:
+      27px
+      15px
+      21px;
+  }
+
+  .teddy-elegant-intro__name {
+    font-size: 76px;
+  }
+
+  .teddy-elegant-intro__occasion {
+    font-size: 19px;
+  }
+
+  .teddy-elegant-intro__button {
+    width: 215px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .teddy-elegant-intro,
+  .teddy-elegant-intro *,
+  .teddy-elegant-intro *::before,
+  .teddy-elegant-intro *::after {
+    animation:
+      none !important;
+
+    transition:
+      none !important;
+  }
+
+  .teddy-elegant-intro__heart {
+    opacity: 0.42;
+  }
+}
