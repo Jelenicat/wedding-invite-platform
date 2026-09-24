@@ -87,6 +87,11 @@ import PhotoCardSplitInvitationCard from "../components/PhotoCardSplitInvitation
 import EnvelopeFlapIntro from "../components/EnvelopeFlapIntro";
 import ScratchInvitationCard from "../components/ScratchInvitationCard";
 
+import SaveTheDatePetals from "../components/SaveTheDatePetals";
+import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
+import SaveTheDateFilm from "../components/SaveTheDateFilm";
+import SaveTheDatePhotoSlot from "../components/SaveTheDatePhotoSlot";
+
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayEvaIntro from "../components/BirthdayEvaIntro";
 import BirthdayLuxuryInvitationCard from "../components/BirthdayLuxuryInvitationCard";
@@ -392,7 +397,30 @@ function WeddingPage() {
   const invitation = useMemo(() => {
     return demoWedding.find((item) => item.slug === slug);
   }, [slug]);
+const templateKey = invitation?.template || "envelope";
 
+const musicSrc =
+  invitation?.musicSrc ||
+  invitation?.details?.saveTheDate?.musicSrc ||
+  "";
+
+const playInvitationMusic = () => {
+  if (!musicSrc || !audioRef.current || musicStarted) return;
+
+  const musicVolume = templateKey === "cyrillic-svg-silk" ? 0.32 : 0.45;
+
+  audioRef.current.muted = false;
+  audioRef.current.volume = musicVolume;
+
+  audioRef.current
+    .play()
+    .then(() => {
+      setMusicStarted(true);
+    })
+    .catch((error) => {
+      console.error("Muzika nije pokrenuta:", error);
+    });
+};
   useEffect(() => {
     let wasPlayingBeforeHidden = false;
 
@@ -449,10 +477,13 @@ function WeddingPage() {
   useEffect(() => {
     if (!invitation) return;
 
-    document.title =
-      invitation.type === "birthday"
-        ? `${invitation.brideName} | Pozivnica`
-        : `${invitation.brideName} & ${invitation.groomName} | Pozivnica`;
+    if (invitation.type === "birthday") {
+  document.title = `${invitation.brideName} | Pozivnica`;
+} else if (invitation.type === "save-the-date") {
+  document.title = `${invitation.brideName} & ${invitation.groomName} | Save the Date`;
+} else {
+  document.title = `${invitation.brideName} & ${invitation.groomName} | Pozivnica`;
+}
 
     setIsIntroOpen(false);
     setShowInvitation(false);
@@ -510,38 +541,116 @@ function WeddingPage() {
     return <div className="wedding-page">Pozivnica nije pronađena.</div>;
   }
 
+  
+
   const localizedInvitation = getLocalizedInvitation(invitation, language);
+  
+const audioNode = musicSrc ? (
+  <audio ref={audioRef} loop preload="none">
+    <source src={musicSrc} type="audio/mpeg" />
+  </audio>
+) : null;
 
-  const templateKey = invitation.template || "envelope";
-  const template =
-    TEMPLATE_COMPONENTS[templateKey] || TEMPLATE_COMPONENTS.envelope;
+/* ===============================
+   SAVE THE DATE
+================================ */
 
-  const IntroComponent = template.Intro;
-  const InvitationComponent = template.Invitation;
+if (templateKey === "save-the-date-petals") {
+  return (
+    <div className="wedding-page save-the-date-page"
+      onClickCapture={playInvitationMusic}
+    >
+      {audioNode}
+
+      <SaveTheDatePetals
+        key={slug}
+        slug={slug}
+        brideName={localizedInvitation.brideName}
+        groomName={localizedInvitation.groomName}
+        weddingDate={localizedInvitation.weddingDate}
+        venue={localizedInvitation.venue}
+        script={localizedInvitation.script || "latin"}
+        details={localizedInvitation.details}
+      />
+    </div>
+  );
+}
+
+if (templateKey === "save-the-date-envelope") {
+  return (
+    <div className="wedding-page save-the-date-page"
+    onClickCapture={playInvitationMusic}
+    >
+      {audioNode}
+
+      <SaveTheDateEnvelope
+        key={slug}
+        slug={slug}
+        brideName={localizedInvitation.brideName}
+        groomName={localizedInvitation.groomName}
+        weddingDate={localizedInvitation.weddingDate}
+        venue={localizedInvitation.venue}
+        script={localizedInvitation.script || "latin"}
+        details={localizedInvitation.details}
+      />
+    </div>
+  );
+}
+if (templateKey === "save-the-date-film") {
+  return (
+    <div className="wedding-page save-the-date-page"
+    onClickCapture={playInvitationMusic}
+    >
+      {audioNode}
+
+      <SaveTheDateFilm
+        key={slug}
+        brideName={localizedInvitation.brideName}
+        groomName={localizedInvitation.groomName}
+        weddingDate={localizedInvitation.weddingDate}
+        venue={localizedInvitation.venue}
+        script={localizedInvitation.script || "latin"}
+        details={localizedInvitation.details}
+      />
+    </div>
+  );
+}
+
+if (templateKey === "save-the-date-photo-slot") {
+  return (
+    <div
+      className="wedding-page save-the-date-page"
+      onClickCapture={playInvitationMusic}
+    >
+      {audioNode}
+
+      <SaveTheDatePhotoSlot
+        key={slug}
+        brideName={localizedInvitation.brideName}
+        groomName={localizedInvitation.groomName}
+        weddingDate={localizedInvitation.weddingDate}
+        venue={localizedInvitation.venue}
+        script={localizedInvitation.script || "latin"}
+        details={localizedInvitation.details}
+      />
+    </div>
+  );
+}
+/* ===============================
+   STANDARD TEMPLATES
+================================ */
+
+const template =
+  TEMPLATE_COMPONENTS[templateKey] || TEMPLATE_COMPONENTS.envelope;
+
+const IntroComponent = template.Intro;
+const InvitationComponent = template.Invitation;
 
   // Samo ovaj slug koristi posebno dugme za pokretanje muzike.
 const usesManualIntroMusic =
   invitation.slug === "nina-milan" ||
   invitation.slug === "lara-1" ||
   invitation.slug === "relja";
-
-  const playInvitationMusic = () => {
-    if (!invitation.musicSrc || !audioRef.current || musicStarted) return;
-
-    const musicVolume = templateKey === "cyrillic-svg-silk" ? 0.32 : 0.45;
-
-    audioRef.current.muted = false;
-    audioRef.current.volume = musicVolume;
-
-    audioRef.current
-      .play()
-      .then(() => {
-        setMusicStarted(true);
-      })
-      .catch((error) => {
-        console.error("Muzika nije pokrenuta:", error);
-      });
-  };
 
   const handleIntroOpen = () => {
     setIsIntroOpen(true);
@@ -649,12 +758,6 @@ sliderImages: localizedInvitation.details?.sliderImages || [],
     // Korisno kasnije ako želiš da i invitation card koristi jezik
     language,
   };
-
-  const audioNode = invitation.musicSrc ? (
-    <audio ref={audioRef} loop preload="none">
-      <source src={invitation.musicSrc} type="audio/mpeg" />
-    </audio>
-  ) : null;
 
   const angelMusicText =
     language === "en"

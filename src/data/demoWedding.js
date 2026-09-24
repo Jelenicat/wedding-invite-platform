@@ -4132,6 +4132,645 @@ theme: {
   }),
 },
 
+{
+  slug: "save-ana-nikola",
+
+  type: "save-the-date",
+  template: "save-the-date-petals",
+
+  /* ===============================
+     PISMO
+  ================================ */
+
+  script: "cyrillic",
+
+  brideName: "Ана",
+  groomName: "Никола",
+
+  weddingDate: "19.06.2027.",
+  venue: "Београд",
+
+  details: {
+    ...createDetails({
+      date: "19.06.2027.",
+      dateISO: "2027-06-19",
+      venue: "Београд",
+    }),
+
+    saveTheDate: {
+      /* ===============================
+         PISMO
+      ================================ */
+
+      script: "cyrillic",
+
+      /* ===============================
+         LATICE
+      ================================ */
+
+      petalImageSrc:
+        "/images/save-the-date/white-rose-petals.webp",
+
+      /* ===============================
+         SCRATCH SRCE
+      ================================ */
+
+      heartImageSrc:
+        "/images/save-the-date/mint-glass-heart.webp",
+
+      /*
+        Koliko srca treba da se ogrebe
+        pre automatskog otkrivanja.
+      */
+      revealThreshold:
+        0.46,
+
+      /* ===============================
+         HEART THEME
+      ================================ */
+
+      /*
+        Koliko će srce ostati vidljivo
+        nakon otkrivanja.
+      */
+      heartRevealOpacity:
+        0.33,
+
+      /*
+        Podešavanje izgleda srca.
+        Ovo su vrednosti za mint varijantu.
+      */
+      heartSaturation:
+        0.72,
+
+      heartBrightness:
+        1.08,
+
+      heartContrast:
+        1.01,
+
+      /* ===============================
+         AKCENT
+      ================================ */
+
+      /*
+        Koristi se za:
+        &
+        malo srce iznad countdown-a
+        i druge sitne akcente.
+      */
+      accentColor:
+        "#b79a72",
+
+      /* ===============================
+         BACKGROUND
+      ================================ */
+
+      backgroundImage:
+        "/images/save-the-date/ana-nikola-bg-1.jpg",
+
+      backgroundPosition:
+        "center center",
+
+      /*
+        Manji broj =
+        fotografija se jače vidi.
+
+        0.30 = dosta vidljiva,
+        ali tekst i dalje ostaje čitljiv.
+      */
+      backgroundOverlay:
+        0.3,
+
+      /*
+        Osnovna boja iza slike.
+      */
+      pageBackground:
+        "#f8f6f1",
+
+      /* ===============================
+         COUNTDOWN
+      ================================ */
+
+      showCountdown:
+        true,
+
+      /* ===============================
+         KALENDAR
+      ================================ */
+
+      showCalendarButton:
+        true,
+
+      /*
+        Save the Date nema tačno vreme.
+        Dodaje se kao ALL-DAY događaj.
+      */
+      dateISO:
+        "2027-06-19",
+
+      calendarTitle:
+        "Сачувајте датум - Ана & Никола",
+
+      calendarDescription:
+        "Сачувајте датум за наш посебан дан.",
+    },
+  },
+},
+
+
+{
+  slug: "save-marija-luka",
+
+  type: "save-the-date",
+  template: "save-the-date-petals",
+
+  brideName: "Marija",
+  groomName: "Luka",
+
+  weddingDate: "12.09.2027.",
+  venue: "Beograd",
+
+  script: "latin",
+
+  details: {
+    ...createDetails({
+      date: "12.09.2027.",
+      dateISO: "2027-09-12",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      petalImageSrc:
+        "/images/save-the-date/bordo-petals.webp",
+
+      heartImageSrc:
+        "/images/save-the-date/bordo-heart.webp",
+
+      backgroundImage:
+        "/images/save-the-date/marija-luka-bg.jpg",
+
+      backgroundPosition:
+        "center center",
+
+      backgroundOverlay:
+        0.1,
+
+      revealThreshold:
+        0.46,
+
+      showCountdown:
+        true,
+
+      showCalendarButton:
+        true,
+
+      dateISO:
+        "2027-09-12",
+
+      calendarTitle:
+        "Sačuvajte datum - Marija & Luka",
+
+      calendarDescription:
+        "Sačuvajte datum za naš poseban dan.",
+
+      /* BORDO THEME */
+
+      accentColor:
+        "#8f4a5a",
+
+      pageBackground:
+        "#fbf7f8",
+
+      heartRevealOpacity:
+        0.01,
+
+      heartSaturation:
+        1,
+
+      heartBrightness:
+        1,
+
+      heartContrast:
+        1.02,
+
+      /* TEKST U SRCU */
+
+      nameColor:
+        "#4a3037",
+
+      dateColor:
+        "#50383e",
+
+      ampColor:
+        "#8f3f52",
+
+      nameTextShadow:
+        "0 1px 1px rgba(255,255,255,0.30)",
+    },
+  },
+},
+
+{
+  slug: "save-jovana-stefan",
+
+  type: "save-the-date",
+  template: "save-the-date-petals",
+
+  /* ===============================
+     PISMO
+  ================================ */
+
+  script: "latin",
+
+  brideName: "Jovana",
+  groomName: "Stefan",
+
+  weddingDate: "25.07.2027.",
+  venue: "Beograd",
+
+  details: {
+    ...createDetails({
+      date: "25.07.2027.",
+      dateISO: "2027-07-25",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      /* ===============================
+         PISMO
+      ================================ */
+
+      script: "latin",
+
+      /* ===============================
+         LATICE
+      ================================ */
+
+      petalImageSrc:
+        "/images/save-the-date/pink-petals.webp",
+
+      /* ===============================
+         SRCE
+      ================================ */
+
+      heartImageSrc:
+        "/images/save-the-date/rose-heart.webp",
+
+      revealThreshold:
+        0.46,
+
+      /* ===============================
+         BACKGROUND
+      ================================ */
+
+      backgroundImage:
+        "/images/save-the-date/jovana-stefan-bg.jpg",
+
+      backgroundPosition:
+        "center center",
+
+      backgroundOverlay:
+        0.34,
+
+      pageBackground:
+        "#fdf8fa",
+
+      /* ===============================
+         COUNTDOWN
+      ================================ */
+
+      showCountdown:
+        true,
+
+      /* ===============================
+         KALENDAR
+      ================================ */
+
+      showCalendarButton:
+        true,
+
+      dateISO:
+        "2027-07-25",
+
+      calendarTitle:
+        "Sačuvajte datum - Jovana & Stefan",
+
+      calendarDescription:
+        "Sačuvajte datum za naš poseban dan.",
+
+      /* ===============================
+         THEME
+      ================================ */
+
+      accentColor:
+        "#c88aa0",
+
+      heartRevealOpacity:
+        0.30,
+
+      heartSaturation:
+        0.95,
+
+      heartBrightness:
+        1.02,
+
+      heartContrast:
+        1.02,
+
+      /* ===============================
+         TEKST U SRCU
+      ================================ */
+
+      nameColor:
+        "#5a4047",
+
+      dateColor:
+        "#6b4e56",
+
+      ampColor:
+        "#c88aa0",
+
+      nameTextShadow:
+        "0 1px 1px rgba(255,255,255,0.28)",
+    },
+  },
+},
+
+{
+  slug: "save-iva-marko",
+
+  type: "save-the-date",
+  template: "save-the-date-envelope",
+
+  brideName: "Iva",
+  groomName: "Marko",
+
+  weddingDate: "20.06.2027.",
+  venue: "Beograd",
+
+  details: {
+    ...createDetails({
+      date: "20.06.2027.",
+      dateISO: "2027-06-20",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      /* ===============================
+         KOVERTA
+      ================================ */
+
+      envelopeTopImage:
+        "/images/save-the-date/envelope/iva-marko-top.png",
+
+      envelopeBottomImage:
+        "/images/save-the-date/envelope/iva-marko-bottom.png",
+
+      /* ===============================
+         FINALNA POZADINA — PO SLUGU
+         Ovo je velika slika preko celog ekrana
+      ================================ */
+
+      cardArtImage:
+        "/images/save-the-date/iva-marko.png",
+
+      backgroundPosition:
+        "center top",
+
+      backgroundOverlay: 0,
+
+      /* ===============================
+         BOJE
+      ================================ */
+
+      pageBackground:
+        "#f1ece3",
+
+      inkColor:
+        "#6d5b4e",
+
+      mutedColor:
+        "#8c7462",
+
+      accentColor:
+        "#b79a72",
+
+      /* ===============================
+         COUNTDOWN / CALENDAR
+      ================================ */
+
+      showCountdown: true,
+
+      countdownTitle:
+        "Do našeg dana",
+
+      showCalendarButton: true,
+
+      dateISO:
+        "2027-06-20",
+
+      calendarTitle:
+        "Sačuvajte datum - Iva & Marko",
+
+      calendarDescription:
+        "Sačuvajte datum za naš poseban dan.",
+
+      /* ===============================
+         TEKST
+      ================================ */
+
+      eyebrow:
+        "ZAJEDNO SA SVOJIM PORODICAMA",
+
+      message:
+        "MOLIMO VAS DA SAČUVATE DATUM NAŠEG VENČANJA",
+
+      signature:
+        "Svečana pozivnica uskoro",
+
+      connector:
+        "I",
+
+      /* ===============================
+         INTRO
+      ================================ */
+
+      envelopeHint:
+        "Dodirnite da otvorite pismo",
+    },
+  },
+},
+
+{
+  slug: "save-tara-marko",
+  type: "save-the-date",
+  template: "save-the-date-film",
+  script: "latin",
+  brideName: "Tara",
+  groomName: "Marko",
+  weddingDate: "14.08.2027.",
+  venue: "Beograd",
+  details: {
+    ...createDetails({
+      date: "14.08.2027.",
+      dateISO: "2027-08-14",
+      venue: "Beograd",
+    }),
+    saveTheDate: {
+      photo: "/images/save-the-date/film-demo.png",
+      photoAlt: "Par u večernjem filmskom kadru",
+      photoPosition: "center 43%",
+      accentColor: "#d7b99d",
+      filmLabel: "NAŠA PRIČA U KADROVIMA",
+      closingText: "Pozivnica sa detaljima uskoro stiže.",
+      showCountdown: false,
+      showCalendarButton: true,
+    },
+  },
+},
+{
+  slug: "save-sara-luka",
+
+  type: "save-the-date",
+  template: "save-the-date-envelope",
+
+  brideName: "Sara",
+  groomName: "Luka",
+
+  weddingDate: "12.09.2027.",
+  venue: "Beograd",
+musicSrc: "/music/mina-dragan.mp3",
+  details: {
+    ...createDetails({
+      date: "12.09.2027.",
+      dateISO: "2027-09-12",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      /* ===============================
+         KOVERTA
+      ================================ */
+
+      envelopeTopImage:
+        "/images/save-the-date/envelope/sara-luka-top.png",
+
+      envelopeBottomImage:
+        "/images/save-the-date/envelope/sara-luka-bottom.png",
+
+      /* ===============================
+         FULL SCREEN SLIKA
+         Posebna za ovaj slug
+      ================================ */
+
+      cardArtImage:
+        "/images/save-the-date/sara-luka.png",
+
+      /* ===============================
+         KARTICA U KOVERTI
+      ================================ */
+
+      paperColor:
+        "#ffffff",
+
+      /* ogromni inicijali */
+      inkColor:
+        "#766b63",
+
+      /* datum */
+      mutedColor:
+        "#9b9189",
+
+      /* ram / akcenti */
+      accentColor:
+        "#c9bdb2",
+
+      /* ===============================
+         COUNTDOWN + KALENDAR
+      ================================ */
+
+      showCountdown: true,
+
+      countdownTitle:
+        "Do našeg dana",
+
+      showCalendarButton: true,
+
+      dateISO:
+        "2027-09-12",
+
+      calendarTitle:
+        "Sačuvajte datum - Sara & Luka",
+
+      calendarDescription:
+        "Sačuvajte datum za naš poseban dan.",
+
+      /* ===============================
+         TEKST
+      ================================ */
+
+      eyebrow:
+        "ZAJEDNO SA SVOJIM PORODICAMA",
+
+      message:
+        "MOLIMO VAS DA SAČUVATE DATUM NAŠEG VENČANJA",
+
+      signature:
+        "Svečana pozivnica uskoro",
+
+      connector:
+        "I",
+
+      /* ===============================
+         INTRO
+      ================================ */
+
+      envelopeHint:
+        "Dodirnite da otvorite pismo",
+    },
+  },
+},
+
+{
+  slug: "save-ana-nikola-slot",
+  type: "save-the-date",
+  template: "save-the-date-photo-slot",
+
+  script: "latin",
+  brideName: "Ana",
+  groomName: "Nikola",
+  weddingDate: "19.06.2027.",
+  venue: "Beograd",
+
+  details: {
+    ...createDetails({
+      date: "19.06.2027.",
+      dateISO: "2027-06-19",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      frameImage: "/images/save-the-date/photo-slot-frame.png",
+
+      photos: [
+        "/images/save-the-date/ana-nikola-1.jpg",
+        "/images/save-the-date/ana-nikola-2.jpg",
+        "/images/save-the-date/ana-nikola-3.jpg",
+      ],
+
+      backgroundColor: "#590b25",
+      slotTop: "32%",
+      slotWidth: "41%",
+      stripWidth: "32%",
+      frameRatio: "4 / 5",
+      showSlotOverlay: true,
+      showCalendarButton: true,
+      closingText: "Pozivnica sa detaljima uskoro stiže.",
+    },
+  },
+},
+
 // =========================
 // Klijenti
 // =========================
