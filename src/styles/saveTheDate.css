@@ -10078,15 +10078,51 @@
 
 @media (max-width: 600px) {
   .std-photo-slot__layout { justify-content: center; padding: 16px 10px max(18px, env(safe-area-inset-bottom)); }
-  .std-photo-slot__scene { --sps-frame-width: min(87vw, 350px) !important; max-width: 87vw; margin-bottom: 28px; }
+  .std-photo-slot__scene { --sps-frame-width: min(100vw, 420px) !important; max-width: none; margin-bottom: 32px; }
   .std-photo-slot__heading h1 { font-size: clamp(49px, 13vw, 64px); }
   .std-photo-slot__slot { border-width: 2px; }
+  .std-photo-slot__strip-date { font-size: 18px; }
 }
 @media (max-height: 690px) {
   .std-photo-slot__layout { justify-content: flex-start; }
   .std-photo-slot__scene { width: min(67vw, 280px); }
 }
+@media (max-width: 600px) and (max-height: 690px) {
+  .std-photo-slot__scene { width: var(--sps-frame-width); }
+}
 @media (prefers-reduced-motion: reduce) {
   .std-photo-slot[data-phase="playing"] .std-photo-slot__strip { animation: none; transform: translateY(1%) rotate(var(--sps-strip-angle)); }
   .std-photo-slot__details { animation: none; }
+}
+
+/* Save the Date petals: more breathing room on phones. */
+@media (max-width: 600px) {
+  .std-save-date__secret {
+    transform: translateY(10px);
+  }
+
+  .std-save-date[data-phase="revealed"] .std-save-date__below {
+    margin-top: 4px;
+  }
+
+  .std-save-date[data-phase="revealed"] .std-save-date__countdown {
+    margin-top: 14px;
+  }
+
+  .std-save-date[data-phase="revealed"] {
+    padding-bottom: max(52px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Save the Date envelope: space between the signature and countdown. */
+@media (max-width: 700px) {
+  .std-envelope-save__extras {
+    bottom: calc(25.5% - 14px) !important;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+  .std-envelope-save__extras {
+    bottom: calc(21.5% - 14px) !important;
+  }
 }

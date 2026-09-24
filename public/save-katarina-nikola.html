@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="sr-Cyrl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Катарина и Никола — Сачувајте датум</title>
+    <meta
+      name="description"
+      content="Сачувајте 19. јун 2027. за венчање Катарине и Николе. Свечана позивница са детаљима ускоро стиже."
+    />
+
+    <!-- Латице се учитавају пре преласка на позивницу. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/white-rose-petals.webp"
+      fetchpriority="high"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sr_RS" />
+    <meta
+      property="og:title"
+      content="Катарина и Никола — Сачувајте датум"
+    />
+    <meta
+      property="og:description"
+      content="Сачувајте 19. јун 2027. за венчање Катарине и Николе. Свечана позивница са детаљима ускоро стиже."
+    />
+    <meta
+      property="og:url"
+      content="https://mojapozivnica.app/save-katarina-nikola.html"
+    />
+    <meta
+      property="og:image"
+      content="https://mojapozivnica.app/previews/save-katarina-nikola.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Катарина и Никола — Сачувајте датум"
+    />
+    <meta
+      name="twitter:description"
+      content="Сачувајте 19. јун 2027. за венчање Катарине и Николе."
+    />
+    <meta
+      name="twitter:image"
+      content="https://mojapozivnica.app/previews/save-katarina-nikola.jpg"
+    />
+
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #f8f6f1;
+        color: #756b63;
+        font: 18px Georgia, serif;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Учитавање позивнице…</p>
+    <noscript>
+      <p><a href="/save-katarina-nikola">Отворите најаву венчања</a></p>
+    </noscript>
+
+    <script>
+      (() => {
+        const destination = "/save-katarina-nikola";
+        const petals = new Image();
+        let redirected = false;
+
+        function openInvitation() {
+          if (redirected) return;
+          redirected = true;
+          window.location.replace(destination);
+        }
+
+        petals.onload = openInvitation;
+        petals.onerror = openInvitation;
+        petals.fetchPriority = "high";
+        petals.src = "/images/save-the-date/white-rose-petals.webp";
+
+        // Rezerva ako zahtev za sliku ne završi na slaboj vezi.
+        window.setTimeout(openInvitation, 5000);
+      })();
+    </script>
+  </body>
+</html>

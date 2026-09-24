@@ -102,7 +102,18 @@ export default function SaveTheDateFilm({
         <span className="std-film-save__intro-index">01 — LOVE, ON FILM</span>
         <button type="button" className="std-film-save__play" onClick={start}
           aria-label={cyrillic ? "Пусти филм" : "Pusti film"}>
-          <span className="std-film-save__play-icon" aria-hidden="true">▶</span>
+          <span className="std-film-save__play-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 32 36"
+              width="1em"
+              height="1.125em"
+              fill="currentColor"
+              focusable="false"
+              style={{ display: "block" }}
+            >
+              <path d="M4 2.5v31L30 18 4 2.5Z" />
+            </svg>
+          </span>
           <span>{config.playText || copy.play}</span>
         </button>
         <p>{config.introNote || (cyrillic ? "Један датум који желимо да поделимо са вама." : "Jedan datum koji želimo da podelimo sa vama.")}</p>

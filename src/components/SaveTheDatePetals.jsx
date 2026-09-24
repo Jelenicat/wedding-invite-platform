@@ -401,6 +401,11 @@ function SaveTheDatePetals({
   ] = useState([]);
 
   const [
+    petalsReady,
+    setPetalsReady,
+  ] = useState(false);
+
+  const [
     heartReady,
     setHeartReady,
   ] = useState(false);
@@ -1222,19 +1227,45 @@ function SaveTheDatePetals({
   ================================ */
 
   useEffect(() => {
-    buildPetals();
-
     const preloadPetals =
       new Image();
+
+    let cancelled = false;
+    let loaded = false;
+    let cleanupHeart = null;
+
+    setPetalsReady(false);
 
     preloadPetals.decoding =
       "async";
 
+    preloadPetals.fetchPriority =
+      "high";
+
+    const finishPetals = () => {
+      if (cancelled || loaded) return;
+      loaded = true;
+      window.clearTimeout(petalTimeout);
+      buildPetals();
+      setPetalsReady(true);
+      cleanupHeart = loadHeart();
+    };
+
+    preloadPetals.onload = () => {
+      const decode = preloadPetals.decode?.();
+      if (decode) {
+        decode.catch(() => {}).then(finishPetals);
+      } else {
+        finishPetals();
+      }
+    };
+    preloadPetals.onerror = finishPetals;
+
+    const petalTimeout =
+      window.setTimeout(finishPetals, 5000);
+
     preloadPetals.src =
       petalImageSrc;
-
-    const cleanupHeart =
-      loadHeart();
 
     const handleResize =
       () => {
@@ -1246,6 +1277,7 @@ function SaveTheDatePetals({
           requestAnimationFrame(
             () => {
               if (
+                loaded &&
                 phaseRef.current ===
                 "intro"
               ) {
@@ -1272,6 +1304,10 @@ function SaveTheDatePetals({
     );
 
     return () => {
+      cancelled = true;
+      preloadPetals.onload = null;
+      preloadPetals.onerror = null;
+      window.clearTimeout(petalTimeout);
       cleanupHeart?.();
 
       window.removeEventListener(
@@ -1864,10 +1900,12 @@ function SaveTheDatePetals({
           `url("${petalImageSrc}")`,
 
         "--std-heart-image":
-          `url("${heartImageSrc}")`,
+          petalsReady
+            ? `url("${heartImageSrc}")`
+            : "none",
 
         "--std-bg-image":
-          backgroundImage
+          petalsReady && backgroundImage
             ? `url("${backgroundImage}")`
             : "none",
 
@@ -1901,6 +1939,25 @@ function SaveTheDatePetals({
         className="std-save-date__light"
         aria-hidden="true"
       />
+
+      {!petalsReady && (
+        <div
+          role="status"
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 30,
+            display: "grid",
+            placeItems: "center",
+            background: pageBackground,
+            color: "#756b63",
+            fontFamily: '"Cormorant Garamond", Georgia, serif',
+            fontSize: 18,
+          }}
+        >
+          {isCyrillic ? "Учитавање латица…" : "Učitavanje latica…"}
+        </div>
+      )}
 
       <header className="std-save-date__masthead">
         {copy.masthead}

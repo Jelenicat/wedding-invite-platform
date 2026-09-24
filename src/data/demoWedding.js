@@ -9646,6 +9646,49 @@ musicSrc: "/music/hana-1.mp3",
   }),
 },
 
+{
+  slug: "save-katarina-nikola",
+  type: "save-the-date",
+  template: "save-the-date-petals",
+  script: "cyrillic",
+
+  brideName: "Катарина",
+  groomName: "Никола",
+  weddingDate: "19.06.2027.",
+  venue: "Београд",
+  musicSrc: "/music/mina-dragan.mp3",
+
+  details: {
+    ...createDetails({
+      date: "19.06.2027.",
+      dateISO: "2027-06-19",
+      venue: "Београд",
+    }),
+
+    saveTheDate: {
+      script: "cyrillic",
+      petalImageSrc: "/images/save-the-date/white-rose-petals.webp",
+      heartImageSrc: "/images/save-the-date/mint-glass-heart.webp",
+      revealThreshold: 0.46,
+      heartRevealOpacity: 0.33,
+      heartSaturation: 0.72,
+      heartBrightness: 1.08,
+      heartContrast: 1.01,
+      accentColor: "#b79a72",
+
+      backgroundImage: "/images/save-the-date/ana-nikola-bg-1.jpg",
+      backgroundPosition: "center center",
+      backgroundOverlay: 0.3,
+      pageBackground: "#f8f6f1",
+
+      showCountdown: true,
+      showCalendarButton: true,
+      dateISO: "2027-06-19",
+      calendarTitle: "Сачувајте датум - Катарина & Никола",
+      calendarDescription: "Сачувајте датум за наш посебан дан.",
+    },
+  },
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================
