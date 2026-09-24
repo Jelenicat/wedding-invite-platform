@@ -9654,14 +9654,14 @@ musicSrc: "/music/hana-1.mp3",
 
   brideName: "Катарина",
   groomName: "Никола",
-  weddingDate: "19.06.2027.",
+  weddingDate: "15.05.2027.",
   venue: "Београд",
   musicSrc: "/music/mina-dragan.mp3",
 
   details: {
     ...createDetails({
-      date: "19.06.2027.",
-      dateISO: "2027-06-19",
+      date: "15.05.2027.",
+      dateISO: "2027-05-15",
       venue: "Београд",
     }),
 
@@ -9683,7 +9683,7 @@ musicSrc: "/music/hana-1.mp3",
 
       showCountdown: true,
       showCalendarButton: true,
-      dateISO: "2027-06-19",
+      dateISO: "2027-05-15",
       calendarTitle: "Сачувајте датум - Катарина & Никола",
       calendarDescription: "Сачувајте датум за наш посебан дан.",
     },
