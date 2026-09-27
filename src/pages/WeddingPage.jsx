@@ -91,6 +91,8 @@ import SaveTheDatePetals from "../components/SaveTheDatePetals";
 import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
 import SaveTheDateFilm from "../components/SaveTheDateFilm";
 import SaveTheDatePhotoSlot from "../components/SaveTheDatePhotoSlot";
+import SaveTheDateOvalVideo from "../components/SaveTheDateOvalVideo";
+
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayEvaIntro from "../components/BirthdayEvaIntro";
@@ -625,6 +627,23 @@ if (templateKey === "save-the-date-photo-slot") {
       {audioNode}
 
       <SaveTheDatePhotoSlot
+        key={slug}
+        brideName={localizedInvitation.brideName}
+        groomName={localizedInvitation.groomName}
+        weddingDate={localizedInvitation.weddingDate}
+        venue={localizedInvitation.venue}
+        script={localizedInvitation.script || "latin"}
+        details={localizedInvitation.details}
+      />
+    </div>
+  );
+}
+
+if (templateKey === "save-the-date-oval-video") {
+  return (
+    <div className="wedding-page save-the-date-page" onClickCapture={playInvitationMusic}>
+      {audioNode}
+      <SaveTheDateOvalVideo
         key={slug}
         brideName={localizedInvitation.brideName}
         groomName={localizedInvitation.groomName}

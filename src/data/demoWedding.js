@@ -4771,6 +4771,33 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+{
+  slug: "save-ana-nikola-video",
+  type: "save-the-date",
+  template: "save-the-date-oval-video",
+  script: "latin",
+
+  brideName: "Ana",
+  groomName: "Nikola",
+  weddingDate: "19.06.2027.",
+  venue: "Beograd",
+
+  details: {
+    ...createDetails({
+      date: "19.06.2027.",
+      dateISO: "2027-06-19",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      videoSrc: "/videos/sofija-andrej.mp4",
+      revealThreshold: 0.46,
+      showVideoSound: true,
+      showCalendarButton: false,
+    },
+  },
+},
+
 // =========================
 // Klijenti
 // =========================

@@ -10123,3 +10123,253 @@
     bottom: calc(21.5% - 14px) !important;
   }
 }
+
+.std-oval-video,
+.std-oval-video * { box-sizing: border-box; }
+
+.wedding-page.save-the-date-page.save-the-date-oval-video-page {
+  height: 100svh !important;
+  height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.std-oval-video {
+  width: 100%;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: var(--sov-paper);
+  color: var(--sov-ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.std-oval-video__paper {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 560px);
+  min-height: min(850px, calc(100svh - 24px));
+  padding: clamp(30px, 4vh, 44px) clamp(20px, 5vw, 50px) 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(255,255,255,.48), transparent 72%),
+    var(--sov-paper);
+  box-shadow: 0 28px 85px rgba(0,0,0,.32);
+}
+
+.std-oval-video__paper::after {
+  display: none;
+}
+
+.std-oval-video__header { flex: 0 0 auto; padding-top: 14px; }
+.std-oval-video__header h1 {
+  margin: 0;
+  white-space: nowrap;
+  font: normal clamp(52px, 10vw, 72px)/1.08 "Pinyon Script", "Italianno", cursive;
+  letter-spacing: -.035em;
+}
+.std-oval-video[data-script="cyrillic"] .std-oval-video__header h1 {
+  font-family: "Marck Script", "Segoe Script", cursive;
+  font-size: clamp(35px, 8vw, 52px);
+}
+.std-oval-video__header p {
+  margin: 4px 0 0;
+  font-size: clamp(12px, 2.1vw, 14px);
+  letter-spacing: .23em;
+  color: #786b61;
+}
+
+.std-oval-video__center {
+  width: 100%;
+  min-height: 0;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.std-oval-video__frame {
+  position: relative;
+  width: min(98%, 440px);
+  aspect-ratio: 1122 / 1402;
+  flex: 0 1 auto;
+  max-height: 100%;
+}
+
+.std-oval-video__frame-image {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  filter: brightness(1.08) saturate(.25);
+  pointer-events: none;
+  user-select: none;
+}
+
+.std-oval-video__window {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  clip-path: ellipse(26.5% 27.5% at 50% 50.5%);
+  background: linear-gradient(135deg, #aba18f, #dad1bf);
+}
+
+.std-oval-video__window video,
+.std-oval-video__window img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.035);
+}
+
+.std-oval-video__mask {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.std-oval-video__missing {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.std-oval-video__reveal-button,
+.std-oval-video__sound,
+.std-oval-video__calendar {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.std-oval-video__reveal-button,
+.std-oval-video__sound {
+  flex: 0 0 auto;
+  padding: 7px 12px;
+  font-size: 12px;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+  color: #79695d;
+}
+.std-oval-video__reveal-button:focus-visible,
+.std-oval-video__sound:focus-visible,
+.std-oval-video__calendar:focus-visible {
+  outline: 2px solid var(--sov-ink);
+  outline-offset: 3px;
+}
+
+.std-oval-video__footer { flex: 0 0 auto; width: 100%; margin-top: 12px; }
+.std-oval-video__names {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: .15em;
+  font: normal clamp(48px, 10vw, 70px)/1.04 "Pinyon Script", "Italianno", cursive;
+  letter-spacing: -.025em;
+}
+.std-oval-video__names i { color: #927b69; font-size: .7em; font-style: normal; }
+.std-oval-video[data-script="cyrillic"] .std-oval-video__names {
+  font-family: "Marck Script", "Segoe Script", cursive;
+  font-size: clamp(35px, 8vw, 55px);
+}
+.std-oval-video__venue {
+  margin: 5px 0 0;
+  font-size: 12px;
+  letter-spacing: .21em;
+  text-transform: uppercase;
+  color: #76685d;
+}
+.std-oval-video__soon {
+  margin: 10px 0 0;
+  font-size: 17px;
+  font-style: italic;
+  color: #6f6056;
+}
+.std-oval-video__calendar {
+  margin: 8px 0 0;
+  padding: 4px 3px;
+  border-bottom: 1px solid currentColor;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .std-oval-video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .std-oval-video__paper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    padding: max(20px, env(safe-area-inset-top)) 12px max(16px, env(safe-area-inset-bottom));
+    box-shadow: none;
+  }
+  .std-oval-video__header { padding-top: 4px; }
+  .std-oval-video__header h1 { font-size: clamp(45px, 13vw, 64px); }
+  .std-oval-video__header p {
+    margin-top: 6px;
+    font-size: clamp(19px, 5.8vw, 24px);
+    line-height: 1.1;
+    letter-spacing: .12em;
+  }
+  .std-oval-video__frame {
+    align-self: flex-start;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(124vw, 490px, calc((100dvh - 250px) * .82));
+    flex-shrink: 1;
+  }
+  .std-oval-video__center { min-width: 0; margin-top: 5px; }
+  .std-oval-video__footer { margin-top: 8px; }
+  .std-oval-video__names { font-size: clamp(49px, 13vw, 65px); }
+}
+
+@media (max-width: 380px), (max-height: 680px) {
+  .std-oval-video__paper { padding-top: max(16px, env(safe-area-inset-top)); padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+  .std-oval-video__header { padding-top: 2px; }
+  .std-oval-video__header h1 { font-size: clamp(42px, 12vw, 58px); }
+  .std-oval-video__header p { font-size: clamp(18px, 5.5vw, 21px); }
+  .std-oval-video__center { margin-top: 3px; }
+  .std-oval-video__frame { width: min(120vw, 430px, calc((100dvh - 245px) * .8)); }
+  .std-oval-video__footer { margin-top: 4px; }
+  .std-oval-video__names { font-size: clamp(43px, 11vw, 56px); }
+  .std-oval-video__soon { margin-top: 5px; font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .std-oval-video *, .std-oval-video *::before, .std-oval-video *::after { scroll-behavior: auto; }
+}
