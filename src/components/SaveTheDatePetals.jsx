@@ -1874,6 +1874,16 @@ function SaveTheDatePetals({
       : copy.scratchEyebrow;
 
   /* ===============================
+     KATARINA & NIKOLA — SLUG ONLY
+  ================================ */
+
+  const isKatarinaNikola =
+    typeof window !== "undefined" &&
+    window.location.pathname
+      .toLowerCase()
+      .includes("save-katarina-nikola");
+
+  /* ===============================
      RENDER
   ================================ */
 
@@ -1887,6 +1897,10 @@ function SaveTheDatePetals({
       } ${
         isCyrillic
           ? "is-cyrillic"
+          : ""
+      } ${
+        isKatarinaNikola
+          ? "is-katarina-nikola"
           : ""
       }`}
       data-phase={phase}

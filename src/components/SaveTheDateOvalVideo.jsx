@@ -30,7 +30,6 @@ export default function SaveTheDateOvalVideo({
   const dateISO = config.dateISO || details.dateISO || toISO(weddingDate);
   const threshold = Math.min(0.8, Math.max(0.2, Number(config.revealThreshold) || 0.46));
   const [revealed, setRevealed] = useState(false);
-  const [muted, setMuted] = useState(true);
   const [videoError, setVideoError] = useState(false);
   const canvasRef = useRef(null);
   const videoRef = useRef(null);
@@ -39,8 +38,8 @@ export default function SaveTheDateOvalVideo({
   const revealedRef = useRef(false);
 
   const copy = cyrillic
-    ? { scratch: "ПРЕВУЦИ ПРСТОМ", reveal: "Откриј снимак", soon: "Позивница са детаљима ускоро стиже.", calendar: "Додај у календар", soundOn: "Укључи звук", soundOff: "Искључи звук", missing: "Наш снимак ускоро стиже" }
-    : { scratch: "PREVUCI PRSTOM", reveal: "Otkrij snimak", soon: "Pozivnica sa detaljima uskoro stiže.", calendar: "Dodaj u kalendar", soundOn: "Uključi zvuk", soundOff: "Isključi zvuk", missing: "Naš snimak uskoro stiže" };
+    ? { scratch: "ПРЕВУЦИ ПРСТОМ", reveal: "Откриј снимак", soon: "Позивница са детаљима ускоро стиже.", calendar: "Додај у календар", missing: "Наш снимак ускоро стиже" }
+    : { scratch: "PREVUCI PRSTOM", reveal: "Otkrij snimak", soon: "Pozivnica sa detaljima uskoro stiže.", calendar: "Dodaj u kalendar", missing: "Naš snimak uskoro stiže" };
 
   useLayoutEffect(() => {
     if (revealed) return undefined;
@@ -168,15 +167,6 @@ export default function SaveTheDateOvalVideo({
     });
   }
 
-  function toggleSound() {
-    const next = !muted;
-    setMuted(next);
-    if (videoRef.current) {
-      videoRef.current.muted = next;
-      videoRef.current.play().catch(() => {});
-    }
-  }
-
   const style = {
     "--sov-paper": config.paperColor || "#fcfbf8",
     "--sov-ink": config.inkColor || "#5b4c43",
@@ -198,7 +188,7 @@ export default function SaveTheDateOvalVideo({
                   ref={videoRef}
                   src={videoSrc}
                   poster={poster || undefined}
-                  muted={muted}
+                  muted
                   playsInline
                   loop
                   preload="metadata"
@@ -227,11 +217,6 @@ export default function SaveTheDateOvalVideo({
           {!revealed && (
             <button className="std-oval-video__reveal-button" type="button" onClick={reveal}>
               {copy.reveal}
-            </button>
-          )}
-          {revealed && config.showVideoSound === true && videoSrc && !videoError && (
-            <button className="std-oval-video__sound" type="button" onClick={toggleSound}>
-              {muted ? copy.soundOn : copy.soundOff}
             </button>
           )}
         </section>

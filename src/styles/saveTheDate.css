@@ -10256,7 +10256,6 @@
 }
 
 .std-oval-video__reveal-button,
-.std-oval-video__sound,
 .std-oval-video__calendar {
   border: 0;
   background: transparent;
@@ -10265,8 +10264,7 @@
   cursor: pointer;
 }
 
-.std-oval-video__reveal-button,
-.std-oval-video__sound {
+.std-oval-video__reveal-button {
   flex: 0 0 auto;
   padding: 7px 12px;
   font-size: 12px;
@@ -10275,7 +10273,6 @@
   color: #79695d;
 }
 .std-oval-video__reveal-button:focus-visible,
-.std-oval-video__sound:focus-visible,
 .std-oval-video__calendar:focus-visible {
   outline: 2px solid var(--sov-ink);
   outline-offset: 3px;
@@ -10350,7 +10347,7 @@
     align-self: flex-start;
     left: 50%;
     transform: translateX(-50%);
-    width: min(124vw, 490px, calc((100dvh - 250px) * .82));
+    width: min(128vw, 520px, calc((100dvh - 230px) * .85));
     flex-shrink: 1;
   }
   .std-oval-video__center { min-width: 0; margin-top: 5px; }
@@ -10370,6 +10367,130 @@
   .std-oval-video__soon { margin-top: 5px; font-size: 15px; }
 }
 
+@media (max-width: 380px) and (min-height: 681px) {
+  .std-oval-video__frame {
+    width: min(124vw, 450px, calc((100dvh - 225px) * .82));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .std-oval-video *, .std-oval-video *::before, .std-oval-video *::after { scroll-behavior: auto; }
+}
+
+
+/* =====================================================
+   KATARINA & NIKOLA — MOBILE TYPOGRAPHY ONLY
+   Slug: save-katarina-nikola
+   NALepiti NA SAM KRAJ saveTheDate.css
+===================================================== */
+
+@media (max-width: 480px) {
+
+  /* SAVE THE DATE / САЧУВАЈТЕ ДАТУМ gore */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__masthead {
+    font-size: 10px;
+  }
+
+  /* Naša mala tajna / Venčavamo se */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__eyebrow {
+    font-size: 16px;
+    line-height: 1.22;
+  }
+
+  /* & između imena */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__amp {
+    margin: 4px 0 3px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  /* Datum u srcu */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__date {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  /* Prevuci prstom... / loading / error */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__hint {
+    font-size: 19px;
+    line-height: 1.42;
+  }
+
+  /* Grad */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__city {
+    font-size: 11px;
+  }
+
+  /* Sačuvajte datum.
+     Ovo je pisani font, ali ga povećavamo
+     jer si ga posebno tražila */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__save {
+    font-size: 38px;
+  }
+
+  /* Pozivnica sa detaljima uskoro stiže. */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__soon {
+    font-size: 17px;
+    line-height: 1.38;
+  }
+
+  /* Dodaj u kalendar */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__calendar-button {
+    font-size: 15px;
+  }
+
+  /* Brojevi countdown-a */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown-number {
+    font-size: 39px;
+  }
+
+  /* DANA / SATI / MINUTA */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown-label {
+    font-size: 9.5px;
+  }
+
+  /* SAVE THE DATE / САЧУВАЈТЕ ДАТУМ na intro ekranu */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__intro-label {
+    font-size: 10px;
+  }
+
+  /* Dodirni latice */
+  .std-save-date.is-katarina-nikola
+  .std-save-date__open-hint {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .std-save-date.is-katarina-nikola
+  .std-save-date__heart {
+    width: min(82vw, 320px);
+    margin-top: 22px;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__secret {
+    top: 22%;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__amp {
+    margin: 5px 0 4px;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1;
+  }
 }
