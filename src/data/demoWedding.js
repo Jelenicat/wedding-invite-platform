@@ -9683,7 +9683,7 @@ musicSrc: "/music/hana-1.mp3",
   groomName: "Никола",
   weddingDate: "15.05.2027.",
   venue: "Београд",
-  musicSrc: "/music/mina-dragan.mp3",
+   musicSrc: "/music/milica-aleksandar.mp3",
 
   details: {
     ...createDetails({

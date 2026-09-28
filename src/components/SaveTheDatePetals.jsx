@@ -2030,7 +2030,7 @@ function SaveTheDatePetals({
                   </span>
 
                   <span className="std-save-date__amp">
-                    &amp;
+                    {isKatarinaNikola ? "и" : "&"}
                   </span>
 
                   <span className="std-save-date__name">
