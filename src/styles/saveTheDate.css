@@ -10494,3 +10494,233 @@
     line-height: 1;
   }
 }
+
+/* =====================================================
+   KATARINA & NIKOLA — FINAL MOBILE FIT
+   obrisati prethodni custom blok i ostaviti samo ovaj
+===================================================== */
+
+@media (max-width: 480px) {
+  .std-save-date.is-katarina-nikola {
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+    height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  /* -----------------------------
+     OPŠTE
+  ----------------------------- */
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__masthead {
+    font-size: 9px;
+    letter-spacing: 0.24em;
+  }
+
+  /* -----------------------------
+     SCRATCH SCREEN
+  ----------------------------- */
+
+  .std-save-date.is-katarina-nikola[data-phase="scratch"]
+  .std-save-date__stage,
+  .std-save-date.is-katarina-nikola[data-phase="loading"]
+  .std-save-date__stage {
+    transform: translateY(6px);
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="scratch"]
+  .std-save-date__eyebrow,
+  .std-save-date.is-katarina-nikola[data-phase="loading"]
+  .std-save-date__eyebrow {
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 13px;
+    line-height: 1.15;
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="scratch"]
+  .std-save-date__title,
+  .std-save-date.is-katarina-nikola[data-phase="loading"]
+  .std-save-date__title {
+    font-size: 42px;
+    line-height: 0.98;
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="scratch"]
+  .std-save-date__heart,
+  .std-save-date.is-katarina-nikola[data-phase="loading"]
+  .std-save-date__heart {
+    width: min(67vw, 258px);
+    margin-top: 16px;
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="scratch"]
+  .std-save-date__below,
+  .std-save-date.is-katarina-nikola[data-phase="loading"]
+  .std-save-date__below {
+    margin-top: 0;
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="scratch"]
+  .std-save-date__hint,
+  .std-save-date.is-katarina-nikola[data-phase="loading"]
+  .std-save-date__hint {
+    font-size: 15px;
+    line-height: 1.34;
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="scratch"]
+  .std-save-date__text-button,
+  .std-save-date.is-katarina-nikola[data-phase="loading"]
+  .std-save-date__text-button {
+    margin-top: 8px;
+    padding: 4px 10px 6px;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  /* -----------------------------
+     REVEALED SCREEN
+  ----------------------------- */
+
+  .std-save-date.is-katarina-nikola[data-phase="revealed"]
+  .std-save-date__eyebrow {
+    font-size: 14px;
+    line-height: 1.15;
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="revealed"]
+  .std-save-date__title {
+    font-size: 45px;
+    line-height: 0.97;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__heart {
+    width: min(71vw, 272px);
+    margin-top: 14px;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__secret {
+    top: 22.5%;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__names {
+    font-size: clamp(42px, 15.6cqw, 50px);
+    line-height: 0.8;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__amp {
+    margin: 3px 0 2px;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__date {
+    margin-top: 8px !important;
+    font-size: 17px;
+    letter-spacing: 0.11em;
+  }
+
+  .std-save-date.is-katarina-nikola[data-phase="revealed"]
+  .std-save-date__below {
+    margin-top: 8px;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__city {
+    margin-top: 3px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__save {
+    margin-top: 3px !important;
+    font-size: 31px;
+    line-height: 1;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__soon {
+    margin-top: 4px !important;
+    font-size: 13.5px;
+    line-height: 1.28;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__calendar-button {
+    min-width: 192px;
+    min-height: 35px;
+    margin-top: 10px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__calendar-icon {
+    width: 17px;
+    height: 17px;
+    font-size: 10px;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown {
+    margin-top: 11px;
+    width: min(100%, 295px);
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown-heart {
+    margin-bottom: 2px;
+    font-size: 15px;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown-title {
+    margin-bottom: 8px !important;
+    font-size: 25px;
+    line-height: 1;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown-number {
+    font-size: 28px;
+    line-height: 0.9;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown-label {
+    margin-top: 4px;
+    font-size: 7px;
+    letter-spacing: 0.14em;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__countdown-separator {
+    height: 28px;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__footer {
+    display: none;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__intro-label {
+    font-size: 9px;
+  }
+
+  .std-save-date.is-katarina-nikola
+  .std-save-date__open-hint {
+    font-size: 15px;
+  }
+}
