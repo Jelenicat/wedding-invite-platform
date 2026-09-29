@@ -4734,12 +4734,15 @@ musicSrc: "/music/mina-dragan.mp3",
 
 {
   slug: "save-ana-nikola-slot",
+
   type: "save-the-date",
   template: "save-the-date-photo-slot",
 
   script: "latin",
+
   brideName: "Ana",
   groomName: "Nikola",
+
   weddingDate: "19.06.2027.",
   venue: "Beograd",
 
@@ -4751,7 +4754,29 @@ musicSrc: "/music/mina-dragan.mp3",
     }),
 
     saveTheDate: {
-      frameImage: "/images/save-the-date/photo-slot-frame.png",
+      /* =========================
+         TEXT
+      ========================== */
+
+      heading: "SAČUVAJ DATUM!",
+      openText: "OTVORI NAJAVU",
+      replayText: "POGLEDAJ PONOVO",
+
+      closingText:
+        "Pozivnica sa detaljima uskoro stiže.",
+
+      /* =========================
+         FRAME
+      ========================== */
+
+      frameImage:
+        "/images/save-the-date/photo-slot-frame.png",
+
+      frameRatio: "4 / 5",
+
+      /* =========================
+         PHOTOS
+      ========================== */
 
       photos: [
         "/images/save-the-date/ana-nikola-1.jpg",
@@ -4759,14 +4784,76 @@ musicSrc: "/music/mina-dragan.mp3",
         "/images/save-the-date/ana-nikola-3.jpg",
       ],
 
-      backgroundColor: "#590b25",
+      imageShape: "rect",
+
+      /* =========================
+         PHOTO STRIP POSITION
+      ========================== */
+
       slotTop: "32%",
+
       slotWidth: "41%",
+
       stripWidth: "32%",
-      frameRatio: "4 / 5",
+
+      slotAngle: "0deg",
+      stripAngle: "0deg",
+
+      /*
+        Završna pozicija trake.
+        Negativna vrednost je malo podiže.
+      */
+      stripRestTop: "-15px",
+
+      stripFinalY: "9%",
+      stripOvershootY: "11%",
+
+      /* =========================
+         PHOTO STRIP COLORS
+      ========================== */
+
+      stripBackground: "#fefdf9",
+      stripTextColor: "#5b4a42",
+
+      /* =========================
+         BACKGROUND
+      ========================== */
+
+      backgroundColor: "#590b25",
+
+      backgroundImage: null,
+
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+
+      backgroundOverlay:
+        "radial-gradient(ellipse 95% 72% at 50% 46%, #771935 0%, rgba(89,11,37,0.65) 56%, #350617 100%)",
+
+      /* =========================
+         TEXT COLOR
+      ========================== */
+
+      textColor: "#f9f0e8",
+
+      /* =========================
+         SLOT
+      ========================== */
+
       showSlotOverlay: true,
+
+      /* =========================
+         CALENDAR
+      ========================== */
+
       showCalendarButton: true,
-      closingText: "Pozivnica sa detaljima uskoro stiže.",
+
+      dateISO: "2027-06-19",
+
+      calendarTitle:
+        "Ana & Nikola — Sačuvajte datum",
+
+      calendarDescription:
+        "Pozivnica sa detaljima uskoro stiže.",
     },
   },
 },
@@ -4794,6 +4881,199 @@ musicSrc: "/music/mina-dragan.mp3",
       revealThreshold: 0.46,
       showVideoSound: true,
       showCalendarButton: false,
+    },
+  },
+},
+{
+  slug: "save-julia-charles-slot",
+
+  type: "save-the-date",
+  template: "save-the-date-photo-slot",
+
+  script: "latin",
+
+  brideName: "Julia",
+  groomName: "Charles",
+
+  weddingDate: "27.07.2028.",
+  venue: "Beograd",
+
+  details: {
+    ...createDetails({
+      date: "27.07.2028.",
+      dateISO: "2028-07-27",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      /* =========================
+         TEKST
+      ========================== */
+
+      heading: "VENČAVAMO SE!",
+      openText: "OTVORI NAJAVU",
+      replayText: "POGLEDAJ PONOVO",
+
+      closingText:
+        "Pozivnica sa svim detaljima uskoro stiže.",
+
+      /* =========================
+         OKVIR
+      ========================== */
+
+      frameImage:
+        "/images/save-the-date/photo-slot-black-frame.png",
+
+      frameRatio: "4 / 7",
+
+      sceneScale: "1.26",
+
+      frameWidth:
+        "min(74vw, 390px)",
+
+      mobileFrameWidth:
+        "min(calc(100vw - 20px), 420px)",
+
+      /* =========================
+         FOTOGRAFIJE
+      ========================== */
+
+      photos: [
+        "/images/save-the-date/julia-charles-1.jpg",
+        "/images/save-the-date/julia-charles-2.jpg",
+        "/images/save-the-date/julia-charles-3.jpg",
+      ],
+
+      imageShape: "rect",
+
+      /* =========================
+         POZICIJA TRAKE / PROREZA
+      ========================== */
+
+      slotTop: "22.5%",
+
+      slotWidth: "40%",
+
+      stripWidth: "39%",
+
+      stripRestTop: "0px",
+      stripFinalY: "0%",
+      stripOvershootY: "2%",
+
+      stripAngle: "0deg",
+      slotAngle: "0deg",
+
+      /* =========================
+         BOJE TRAKE
+      ========================== */
+
+      stripBackground:
+        "#f8f8f5",
+
+      stripTextColor:
+        "#352f2d",
+
+      /* =========================
+         POZADINA
+      ========================== */
+
+      backgroundImage:
+        "/images/save-the-date/red-background.jpg",
+
+      backgroundColor:
+        "#720000",
+
+      backgroundPosition:
+        "center center",
+
+      backgroundSize:
+        "cover",
+
+      backgroundOverlay:
+        "linear-gradient(rgba(60,0,0,0.02), rgba(60,0,0,0.02))",
+
+      /* =========================
+         BOJA TEKSTA
+      ========================== */
+
+      textColor:
+        "#ffffff",
+
+      /* =========================
+         PROREZ
+      ========================== */
+
+      /*
+        Okvir već ima nacrtan otvor,
+        pa dodatni CSS prorez ne prikazujemo.
+      */
+      showSlotOverlay: false,
+
+      /* =========================
+         KALENDAR
+      ========================== */
+
+      showCalendarButton: true,
+
+      dateISO:
+        "2028-07-27",
+
+      calendarTitle:
+        "Julia & Charles — Sačuvajte datum",
+
+      calendarDescription:
+        "Pozivnica sa svim detaljima uskoro stiže.",
+    },
+  },
+},
+
+{
+  slug: "save-kala-cipka-demo",
+  type: "save-the-date",
+  template: "save-the-date-calla-lace",
+  script: "latin",
+
+  brideName: "Ana",
+  groomName: "Nikola",
+  weddingDate: "19.06.2027.",
+  venue: "Beograd",
+
+  details: {
+    ...createDetails({
+      date: "19.06.2027.",
+      dateISO: "2027-06-19",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      language: "sr",
+      dateISO: "2027-06-19",
+      monogram: "AN",
+
+      assets: {
+        background: "/images/save-the-date/calla-lace/calla-background.png",
+        envelope: "/images/save-the-date/calla-lace/ivory-envelope.png",
+        envelopeOpen: "/images/save-the-date/calla-lace/ivory-envelope-open.png",
+        lace: "/images/save-the-date/calla-lace/sheer-white-lace.png",
+        paper: "",
+      },
+
+      colors: {
+        paper: "#ffffff",
+        ink: "#2f2c27",
+        muted: "#6a675e",
+        light: "#ffffff",
+        accent: "#ededeb",
+        laceText: "#ffffff",
+        lacePanel: "rgba(255, 255, 255, .06)",
+        envelopeMonogram: "#ffffff",
+      },
+
+      laceOpacity: 0.72,
+      backgroundPosition: "center center",
+      backgroundOverlay: 0.05,
+      showCountdown: true,
+      showCalendarButton: true,
     },
   },
 },
