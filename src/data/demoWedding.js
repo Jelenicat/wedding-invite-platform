@@ -4926,7 +4926,7 @@ musicSrc: "/music/mina-dragan.mp3",
 
       frameRatio: "4 / 7",
 
-      sceneScale: "1.12",
+      sceneScale: "1.09",
 
       frameWidth:
         "min(74vw, 390px)",
