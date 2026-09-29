@@ -5078,6 +5078,141 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+{
+  slug: "save-ana-nikola-envelope-video",
+
+  type: "save-the-date",
+  template: "save-the-date-envelope-video",
+  script: "latin",
+
+  brideName: "Ana",
+  groomName: "Nikola",
+
+  weddingDate: "19.06.2027.",
+  venue: "Beograd",
+
+  details: {
+    ...createDetails({
+      date: "19.06.2027.",
+      dateISO: "2027-06-19",
+      venue: "Beograd",
+    }),
+
+    saveTheDate: {
+      /* ===============================
+         KOVERTA
+      ================================ */
+
+      envelopeTopImage:
+        "/images/save-the-date/envelope/ana-nikola-video-top.png",
+
+      envelopeBottomImage:
+        "/images/save-the-date/envelope/ana-nikola-video-bottom.png",
+
+      /* ===============================
+         VIDEO POSLE OTVARANJA PISMA
+      ================================ */
+
+      videoSrc:
+        "/videos/save-the-date/ana-nikola.mp4",
+
+      // opciono — slika dok se video ne učita
+      videoPoster:
+        "/images/save-the-date/ana-nikola-video-poster.jpg",
+
+      videoPosition:
+        "center center",
+
+      // preporuka za telefon
+      videoMuted: true,
+
+      /* ===============================
+         POSLE VIDEA — INICIJALI
+      ================================ */
+
+      monogram: "AN",
+
+      // koliko dugo inicijali ostaju pre finalnog ekrana
+      monogramDurationMs: 2300,
+
+      monogramColor:
+        "#ffffff",
+
+      monogramBackground:
+        "rgba(11, 10, 9, 0.78)",
+
+      /* ===============================
+         FINALNI SAVE THE DATE
+      ================================ */
+
+      cardArtImage:
+        "/images/save-the-date/sara-luka.png",
+
+      pageBackground:
+        "#f1ece3",
+
+      paperColor:
+        "#fbf6ef",
+
+      inkColor:
+        "#6d5b4e",
+
+      mutedColor:
+        "#8c7462",
+
+      accentColor:
+        "#b79a72",
+
+      /* ===============================
+         COUNTDOWN
+      ================================ */
+
+      showCountdown: true,
+
+      countdownTitle:
+        "Do našeg dana",
+
+      /* ===============================
+         KALENDAR
+      ================================ */
+
+      showCalendarButton: true,
+
+      dateISO:
+        "2027-06-19",
+
+      calendarTitle:
+        "Sačuvajte datum - Ana & Nikola",
+
+      calendarDescription:
+        "Sačuvajte datum za naš poseban dan.",
+
+      /* ===============================
+         TEKST
+      ================================ */
+
+      eyebrow:
+        "ZAJEDNO SA SVOJIM PORODICAMA",
+
+      message:
+        "MOLIMO VAS DA SAČUVATE DATUM NAŠEG VENČANJA",
+
+      signature:
+        "Svečana pozivnica uskoro stiže",
+
+      connector:
+        "I",
+
+      /* ===============================
+         INTRO
+      ================================ */
+
+      envelopeHint:
+        "Dodirnite da otvorite pismo",
+    },
+  },
+},
+
 // =========================
 // Klijenti
 // =========================
@@ -9996,6 +10131,342 @@ musicSrc: "/music/hana-1.mp3",
     },
   },
 },
+{
+  slug: "save-andjela-andrija",
+
+  type: "save-the-date",
+  template: "save-the-date-calla-lace",
+
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  venue: "Hotel Izvor, Aranđelovac",
+
+  details: {
+    ...createDetails({
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+      venue: "Hotel Izvor, Aranđelovac",
+    }),
+
+    saveTheDate: {
+      dateISO: "2027-07-31",
+
+      monogram: "AA",
+
+      displayDate: "31. JUL 2027.",
+
+      backgroundPosition: "center center",
+      backgroundOverlay: 0.05,
+
+      laceOpacity: 0.72,
+
+      showCalendarButton: true,
+      showCountdown: true,
+
+      copy: {
+        eyebrow: "VENČAVAMO SE",
+        openEnvelope: "DODIRNITE KOVERTU",
+
+        saveTitle: "Sačuvajte datum",
+
+        scrollDown: "POMERITE STRANICU NADOLE",
+
+        formalInvitation:
+          "Svečana pozivnica uskoro stiže",
+
+        calendarPrompt:
+          "Sačuvajte naš datum u svom kalendaru",
+
+        withLove: "S LJUBAVLJU",
+
+        note:
+          "RADUJEMO SE ŠTO ĆETE BITI SA NAMA",
+
+        calendar: "DODAJ U KALENDAR",
+
+        dayIsHere: "Naš dan je stigao",
+      },
+    },
+  },
+},
+
+{
+  slug: "save-andjela-andrija-1",
+
+  type: "save-the-date",
+  template: "save-the-date-photo-slot",
+
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  venue: "Hotel Izvor, Aranđelovac",
+
+  details: {
+    ...createDetails({
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+      venue: "Hotel Izvor, Aranđelovac",
+    }),
+
+    saveTheDate: {
+      /* =========================
+         TEKST
+      ========================== */
+
+      heading: "VENČAVAMO SE!",
+      openText: "OTVORI NAJAVU",
+      replayText: "POGLEDAJ PONOVO",
+
+      closingText:
+        "Pozivnica sa svim detaljima uskoro stiže.",
+
+      /* =========================
+         OKVIR
+      ========================== */
+
+      frameImage:
+        "/images/save-the-date/photo-slot-black-frame.png",
+
+      frameRatio: "4 / 7",
+
+      sceneScale: "1.09",
+
+      frameWidth:
+        "min(74vw, 390px)",
+
+      mobileFrameWidth:
+        "min(calc(100vw - 20px), 420px)",
+
+      /* =========================
+         FOTOGRAFIJE
+         ISTE KAO JULIA & CHARLES
+      ========================== */
+
+      photos: [
+        "/images/save-the-date/julia-charles-1.jpg",
+        "/images/save-the-date/julia-charles-2.jpg",
+        "/images/save-the-date/julia-charles-3.jpg",
+      ],
+
+      imageShape: "rect",
+
+      /* =========================
+         POZICIJA TRAKE / PROREZA
+      ========================== */
+
+      slotTop: "22.5%",
+
+      slotWidth: "40%",
+
+      stripWidth: "39%",
+
+      stripRestTop: "0px",
+      stripFinalY: "0%",
+      stripOvershootY: "2%",
+
+      stripAngle: "0deg",
+      slotAngle: "0deg",
+
+      /* =========================
+         BOJE TRAKE
+      ========================== */
+
+      stripBackground:
+        "#f8f8f5",
+
+      stripTextColor:
+        "#352f2d",
+
+      /* =========================
+         POZADINA
+         ISTA KAO JULIA & CHARLES
+      ========================== */
+
+      backgroundImage:
+        "/images/save-the-date/red-background.jpg",
+
+      backgroundColor:
+        "#720000",
+
+      backgroundPosition:
+        "center center",
+
+      backgroundSize:
+        "cover",
+
+      backgroundOverlay:
+        "linear-gradient(rgba(60,0,0,0.02), rgba(60,0,0,0.02))",
+
+      /* =========================
+         BOJA TEKSTA
+      ========================== */
+
+      textColor:
+        "#ffffff",
+
+      /* =========================
+         PROREZ
+      ========================== */
+
+      showSlotOverlay: false,
+
+      /* =========================
+         KALENDAR
+      ========================== */
+
+      showCalendarButton: true,
+
+      dateISO:
+        "2027-07-31",
+
+      calendarTitle:
+        "Andjela & Andrija — Sačuvajte datum",
+
+      calendarDescription:
+        "Pozivnica sa svim detaljima uskoro stiže.",
+    },
+  },
+},
+
+{
+  slug: "save-andjela-andrija-2",
+
+  type: "save-the-date",
+  template: "save-the-date-envelope-video",
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  venue: "Hotel Izvor, Aranđelovac",
+
+  details: {
+    ...createDetails({
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+      venue: "Hotel Izvor, Aranđelovac",
+    }),
+
+    saveTheDate: {
+      /* ===============================
+         KOVERTA
+      ================================ */
+
+      envelopeTopImage:
+        "/images/save-the-date/envelope/ana-nikola-video-top.png",
+
+      envelopeBottomImage:
+        "/images/save-the-date/envelope/ana-nikola-video-bottom.png",
+
+      /* ===============================
+         VIDEO POSLE OTVARANJA PISMA
+      ================================ */
+
+      videoSrc:
+        "/videos/save-the-date/ana-nikola.mp4",
+
+      videoPoster:
+        "/images/save-the-date/ana-nikola-video-poster.jpg",
+
+      videoPosition:
+        "center center",
+
+      videoMuted: true,
+
+      /* ===============================
+         POSLE VIDEA — INICIJALI
+      ================================ */
+
+      monogram: "AA",
+
+      monogramDurationMs: 2300,
+
+      monogramColor:
+        "#ffffff",
+
+      monogramBackground:
+        "rgba(11, 10, 9, 0.78)",
+
+      /* ===============================
+         FINALNI SAVE THE DATE
+      ================================ */
+
+      cardArtImage:
+        "/images/save-the-date/sara-luka.png",
+
+      pageBackground:
+        "#f1ece3",
+
+      paperColor:
+        "#fbf6ef",
+
+      inkColor:
+        "#6d5b4e",
+
+      mutedColor:
+        "#8c7462",
+
+      accentColor:
+        "#b79a72",
+
+      /* ===============================
+         COUNTDOWN
+      ================================ */
+
+      showCountdown: true,
+
+      countdownTitle:
+        "Do našeg dana",
+
+      /* ===============================
+         KALENDAR
+      ================================ */
+
+      showCalendarButton: true,
+
+      dateISO:
+        "2027-07-31",
+
+      calendarTitle:
+        "Sačuvajte datum - Andjela & Andrija",
+
+      calendarDescription:
+        "Sačuvajte datum za naš poseban dan.",
+
+      /* ===============================
+         TEKST
+      ================================ */
+
+      eyebrow:
+        "ZAJEDNO SA SVOJIM PORODICAMA",
+
+      message:
+        "MOLIMO VAS DA SAČUVATE DATUM NAŠEG VENČANJA",
+
+      signature:
+        "Svečana pozivnica uskoro stiže",
+
+      connector:
+        "I",
+
+      /* ===============================
+         INTRO
+      ================================ */
+
+      envelopeHint:
+        "Dodirnite da otvorite pismo",
+    },
+  },
+},
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

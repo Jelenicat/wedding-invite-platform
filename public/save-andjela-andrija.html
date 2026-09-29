@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Andjela i Andrija — Sačuvajte datum</title>
+
+    <meta
+      name="description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu. Svečana pozivnica sa detaljima uskoro stiže."
+    />
+
+    <!--
+      CALLA LACE ASSETI
+      Učitavaju se pre prelaska na Save the Date.
+    -->
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/calla-lace/calla-background.png"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/calla-lace/ivory-envelope.png"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/calla-lace/ivory-envelope-open.png"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/calla-lace/sheer-white-lace.png"
+    />
+
+
+    <!-- OPEN GRAPH -->
+
+    <meta property="og:type" content="website" />
+
+    <meta
+      property="og:locale"
+      content="sr_RS"
+    />
+
+    <meta
+      property="og:title"
+      content="Andjela i Andrija — Sačuvajte datum"
+    />
+
+    <meta
+      property="og:description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu. Svečana pozivnica sa detaljima uskoro stiže."
+    />
+
+    <meta
+      property="og:url"
+      content="https://mojapozivnica.app/save-andjela-andrija.html"
+    />
+
+    <meta
+      property="og:image"
+      content="https://mojapozivnica.app/previews/save-andjela-andrija.jpg"
+    />
+
+    <meta
+      property="og:image:type"
+      content="image/jpeg"
+    />
+
+    <meta
+      property="og:image:width"
+      content="1200"
+    />
+
+    <meta
+      property="og:image:height"
+      content="630"
+    />
+
+
+    <!-- TWITTER / LINK PREVIEW -->
+
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+
+    <meta
+      name="twitter:title"
+      content="Andjela i Andrija — Sačuvajte datum"
+    />
+
+    <meta
+      name="twitter:description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu."
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://mojapozivnica.app/previews/save-andjela-andrija.jpg"
+    />
+
+
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+
+        display: grid;
+        place-items: center;
+
+        background: #0b0d0a;
+
+        color: #ffffff;
+
+        font:
+          18px
+          Georgia,
+          serif;
+
+        text-align: center;
+      }
+
+      p {
+        opacity: 0.72;
+      }
+
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+
+
+  <body>
+
+    <p>Učitavanje najave…</p>
+
+
+    <noscript>
+      <p>
+        <a href="/save-andjela-andrija">
+          Otvorite najavu venčanja
+        </a>
+      </p>
+    </noscript>
+
+
+    <script>
+      (() => {
+        const destination =
+          "/save-andjela-andrija";
+
+        const assets = [
+          "/images/save-the-date/calla-lace/calla-background.png",
+          "/images/save-the-date/calla-lace/ivory-envelope.png",
+          "/images/save-the-date/calla-lace/ivory-envelope-open.png",
+          "/images/save-the-date/calla-lace/sheer-white-lace.png",
+        ];
+
+        let redirected = false;
+
+
+        function openInvitation() {
+          if (redirected) return;
+
+          redirected = true;
+
+          window.location.replace(
+            destination
+          );
+        }
+
+
+        function preloadImage(src) {
+          return new Promise((resolve) => {
+            const image = new Image();
+
+            let finished = false;
+
+
+            function finish() {
+              if (finished) return;
+
+              finished = true;
+
+              resolve();
+            }
+
+
+            image.onload = async () => {
+              try {
+                if (image.decode) {
+                  await image.decode();
+                }
+              } catch {
+                // Slika je već učitana.
+              }
+
+              finish();
+            };
+
+
+            /*
+              Ako neki asset slučajno ne postoji,
+              ne blokiramo celu pozivnicu.
+            */
+            image.onerror = finish;
+
+
+            image.src = src;
+
+
+            /*
+              Ako je browser već ima u cache-u.
+            */
+            if (image.complete) {
+              if (image.decode) {
+                image
+                  .decode()
+                  .catch(() => {})
+                  .finally(finish);
+              } else {
+                finish();
+              }
+            }
+          });
+        }
+
+
+        Promise.all(
+          assets.map(preloadImage)
+        ).then(openInvitation);
+
+
+        /*
+          Rezerva za veoma slabu vezu:
+          korisnik ipak ulazi u pozivnicu
+          ako preload predugo traje.
+        */
+        window.setTimeout(
+          openInvitation,
+          6000
+        );
+      })();
+    </script>
+
+  </body>
+</html>

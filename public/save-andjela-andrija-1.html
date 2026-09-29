@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Andjela i Andrija — Sačuvajte datum</title>
+
+    <meta
+      name="description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu. Pozivnica sa svim detaljima uskoro stiže."
+    />
+
+    <!-- =================================================
+         PHOTO SLOT ASSETI
+         Sve učitavamo pre otvaranja najave.
+    ================================================== -->
+
+    <!-- POZADINA -->
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/red-background.jpg"
+      fetchpriority="high"
+    />
+
+    <!-- FRAME -->
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/photo-slot-black-frame.png"
+      fetchpriority="high"
+    />
+
+    <!-- FOTOGRAFIJE -->
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/julia-charles-1.jpg"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/julia-charles-2.jpg"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/julia-charles-3.jpg"
+    />
+
+
+    <!-- =================================================
+         OPEN GRAPH
+    ================================================== -->
+
+    <meta property="og:type" content="website" />
+
+    <meta
+      property="og:locale"
+      content="sr_RS"
+    />
+
+    <meta
+      property="og:title"
+      content="Andjela i Andrija — Sačuvajte datum"
+    />
+
+    <meta
+      property="og:description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu. Pozivnica sa svim detaljima uskoro stiže."
+    />
+
+    <meta
+      property="og:url"
+      content="https://mojapozivnica.app/save-andjela-andrija-1.html"
+    />
+
+    <meta
+      property="og:image"
+      content="https://mojapozivnica.app/previews/save-andjela-andrija-1.jpg"
+    />
+
+    <meta
+      property="og:image:type"
+      content="image/jpeg"
+    />
+
+    <meta
+      property="og:image:width"
+      content="1200"
+    />
+
+    <meta
+      property="og:image:height"
+      content="630"
+    />
+
+
+    <!-- =================================================
+         TWITTER / LINK PREVIEW
+    ================================================== -->
+
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+
+    <meta
+      name="twitter:title"
+      content="Andjela i Andrija — Sačuvajte datum"
+    />
+
+    <meta
+      name="twitter:description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu."
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://mojapozivnica.app/previews/save-andjela-andrija-1.jpg"
+    />
+
+
+    <!-- =================================================
+         LOADING SCREEN
+    ================================================== -->
+
+    <style>
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        min-height: 100svh;
+
+        display: grid;
+        place-items: center;
+
+        background:
+          linear-gradient(
+            rgba(60, 0, 0, 0.02),
+            rgba(60, 0, 0, 0.02)
+          ),
+          url("/images/save-the-date/red-background.jpg")
+          center center / cover no-repeat;
+
+        background-color: #720000;
+
+        color: #ffffff;
+
+        font:
+          17px
+          Georgia,
+          serif;
+
+        text-align: center;
+      }
+
+      .loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        padding: 24px;
+      }
+
+      .loader__monogram {
+        font-size: 40px;
+        font-style: italic;
+        line-height: 1;
+
+        opacity: 0.95;
+      }
+
+      .loader__text {
+        margin: 0;
+
+        font-size: 11px;
+
+        letter-spacing: 0.22em;
+
+        text-transform: uppercase;
+
+        opacity: 0.8;
+      }
+
+      .loader__line {
+        position: relative;
+
+        overflow: hidden;
+
+        width: 90px;
+        height: 1px;
+
+        background:
+          rgba(255, 255, 255, 0.22);
+      }
+
+      .loader__line::after {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: -50%;
+
+        width: 45%;
+        height: 100%;
+
+        background: #ffffff;
+
+        animation:
+          loadingLine
+          1.4s
+          ease-in-out
+          infinite;
+      }
+
+      @keyframes loadingLine {
+        from {
+          left: -50%;
+        }
+
+        to {
+          left: 110%;
+        }
+      }
+
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+
+
+  <body>
+
+    <div class="loader">
+      <div class="loader__monogram">
+        A&amp;A
+      </div>
+
+      <p class="loader__text">
+        Učitavanje najave
+      </p>
+
+      <div
+        class="loader__line"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+
+    <noscript>
+      <p>
+        <a href="/save-andjela-andrija-1">
+          Otvorite najavu venčanja
+        </a>
+      </p>
+    </noscript>
+
+
+    <script>
+      (() => {
+        const destination =
+          "/save-andjela-andrija-1";
+
+        const assets = [
+          "/images/save-the-date/red-background.jpg",
+
+          "/images/save-the-date/photo-slot-black-frame.png",
+
+          "/images/save-the-date/julia-charles-1.jpg",
+          "/images/save-the-date/julia-charles-2.jpg",
+          "/images/save-the-date/julia-charles-3.jpg",
+        ];
+
+
+        let redirected = false;
+
+
+        function openInvitation() {
+          if (redirected) return;
+
+          redirected = true;
+
+          window.location.replace(
+            destination
+          );
+        }
+
+
+        function preloadImage(src) {
+          return new Promise((resolve) => {
+            const img = new Image();
+
+            let finished = false;
+
+
+            function finish() {
+              if (finished) return;
+
+              finished = true;
+
+              resolve();
+            }
+
+
+            img.onload = async () => {
+              try {
+                /*
+                  Čekamo da browser završi i
+                  dekodiranje slike.
+                */
+                if (img.decode) {
+                  await img.decode();
+                }
+              } catch {
+                /*
+                  Ako decode nije podržan
+                  ili browser vrati grešku,
+                  slika je već učitana.
+                */
+              }
+
+              finish();
+            };
+
+
+            /*
+              Ako neki asset ne postoji,
+              ne blokiramo korisnika zauvek.
+            */
+            img.onerror = finish;
+
+
+            img.src = src;
+
+
+            /*
+              Ako je slika već u cache-u.
+            */
+            if (img.complete) {
+              if (img.decode) {
+                img
+                  .decode()
+                  .catch(() => {})
+                  .finally(finish);
+              } else {
+                finish();
+              }
+            }
+          });
+        }
+
+
+        Promise.all(
+          assets.map(preloadImage)
+        ).then(
+          openInvitation
+        );
+
+
+        /*
+          Backup za baš slabu mrežu.
+
+          Ako preload traje predugo,
+          ipak otvaramo najavu.
+        */
+        window.setTimeout(
+          openInvitation,
+          7000
+        );
+      })();
+    </script>
+
+  </body>
+</html>

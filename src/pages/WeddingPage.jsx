@@ -93,6 +93,8 @@ import SaveTheDateFilm from "../components/SaveTheDateFilm";
 import SaveTheDatePhotoSlot from "../components/SaveTheDatePhotoSlot";
 import SaveTheDateOvalVideo from "../components/SaveTheDateOvalVideo";
 import SaveTheDateCallaLace from "../components/SaveTheDateCallaLace";
+import SaveTheDateEnvelopeVideo from "../components/SaveTheDateEnvelopeVideo";
+
 
 import BirthdayLuxuryIntro from "../components/BirthdayLuxuryIntro";
 import BirthdayEvaIntro from "../components/BirthdayEvaIntro";
@@ -666,6 +668,28 @@ if (templateKey === "save-the-date-calla-lace") {
 
       <SaveTheDateCallaLace
         key={slug}
+        brideName={localizedInvitation.brideName}
+        groomName={localizedInvitation.groomName}
+        weddingDate={localizedInvitation.weddingDate}
+        venue={localizedInvitation.venue}
+        script={localizedInvitation.script || "latin"}
+        details={localizedInvitation.details}
+      />
+    </div>
+  );
+}
+
+if (templateKey === "save-the-date-envelope-video") {
+  return (
+    <div
+      className="wedding-page save-the-date-page"
+      onClickCapture={playInvitationMusic}
+    >
+      {audioNode}
+
+      <SaveTheDateEnvelopeVideo
+        key={slug}
+        slug={slug}
         brideName={localizedInvitation.brideName}
         groomName={localizedInvitation.groomName}
         weddingDate={localizedInvitation.weddingDate}

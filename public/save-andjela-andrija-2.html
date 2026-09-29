@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Andjela i Andrija — Sačuvajte datum</title>
+
+    <meta
+      name="description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu. Svečana pozivnica uskoro stiže."
+    />
+
+    <!-- =================================================
+         PRELOAD — ENVELOPE VIDEO TEMPLATE
+    ================================================== -->
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/envelope/ana-nikola-video-top.png"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/envelope/ana-nikola-video-bottom.png"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/ana-nikola-video-poster.jpg"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/save-the-date/sara-luka.png"
+    />
+
+    <link
+      rel="preload"
+      as="video"
+      href="/videos/save-the-date/ana-nikola.mp4"
+    />
+
+
+    <!-- =================================================
+         OPEN GRAPH
+    ================================================== -->
+
+    <meta property="og:type" content="website" />
+
+    <meta
+      property="og:locale"
+      content="sr_RS"
+    />
+
+    <meta
+      property="og:title"
+      content="Andjela i Andrija — Sačuvajte datum"
+    />
+
+    <meta
+      property="og:description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu. Svečana pozivnica uskoro stiže."
+    />
+
+    <meta
+      property="og:url"
+      content="https://mojapozivnica.app/save-andjela-andrija-2.html"
+    />
+
+    <meta
+      property="og:image"
+      content="https://mojapozivnica.app/previews/save-andjela-andrija-2.jpg"
+    />
+
+    <meta
+      property="og:image:type"
+      content="image/jpeg"
+    />
+
+    <meta
+      property="og:image:width"
+      content="1200"
+    />
+
+    <meta
+      property="og:image:height"
+      content="630"
+    />
+
+
+    <!-- =================================================
+         TWITTER
+    ================================================== -->
+
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+
+    <meta
+      name="twitter:title"
+      content="Andjela i Andrija — Sačuvajte datum"
+    />
+
+    <meta
+      name="twitter:description"
+      content="Sačuvajte 31. jul 2027. za venčanje Andjele i Andrije u Hotelu Izvor u Aranđelovcu."
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://mojapozivnica.app/previews/save-andjela-andrija-2.jpg"
+    />
+
+
+    <!-- =================================================
+         LOADING SCREEN
+    ================================================== -->
+
+    <style>
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        min-height: 100svh;
+
+        display: grid;
+        place-items: center;
+
+        background:
+          linear-gradient(
+            rgba(11, 10, 9, 0.68),
+            rgba(11, 10, 9, 0.78)
+          ),
+          url("/images/save-the-date/ana-nikola-video-poster.jpg")
+          center center / cover no-repeat;
+
+        background-color: #0b0a09;
+
+        color: #ffffff;
+
+        font-family:
+          Georgia,
+          "Times New Roman",
+          serif;
+
+        text-align: center;
+      }
+
+      .loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        padding: 24px;
+      }
+
+      .loader__monogram {
+        font-size: 46px;
+        line-height: 1;
+
+        letter-spacing: 0.02em;
+
+        opacity: 0.96;
+      }
+
+      .loader__text {
+        margin: 0;
+
+        font-size: 10px;
+        line-height: 1.3;
+
+        letter-spacing: 0.26em;
+
+        text-transform: uppercase;
+
+        opacity: 0.8;
+      }
+
+      .loader__line {
+        position: relative;
+
+        overflow: hidden;
+
+        width: 90px;
+        height: 1px;
+
+        background:
+          rgba(255, 255, 255, 0.22);
+      }
+
+      .loader__line::after {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: -50%;
+
+        width: 45%;
+        height: 100%;
+
+        background: #ffffff;
+
+        animation:
+          loadingLine
+          1.4s
+          ease-in-out
+          infinite;
+      }
+
+      @keyframes loadingLine {
+        from {
+          left: -50%;
+        }
+
+        to {
+          left: 110%;
+        }
+      }
+
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+
+
+  <body>
+
+    <div class="loader">
+
+      <div class="loader__monogram">
+        A&amp;A
+      </div>
+
+      <p class="loader__text">
+        Učitavanje najave
+      </p>
+
+      <div
+        class="loader__line"
+        aria-hidden="true"
+      ></div>
+
+    </div>
+
+
+    <noscript>
+      <p>
+        <a href="/save-andjela-andrija-2">
+          Otvorite najavu venčanja
+        </a>
+      </p>
+    </noscript>
+
+
+    <script>
+      (() => {
+        const destination =
+          "/save-andjela-andrija-2";
+
+
+        const imageAssets = [
+          "/images/save-the-date/envelope/ana-nikola-video-top.png",
+
+          "/images/save-the-date/envelope/ana-nikola-video-bottom.png",
+
+          "/images/save-the-date/ana-nikola-video-poster.jpg",
+
+          "/images/save-the-date/sara-luka.png",
+        ];
+
+
+        const videoSrc =
+          "/videos/save-the-date/ana-nikola.mp4";
+
+
+        let redirected = false;
+
+
+        function openInvitation() {
+          if (redirected) return;
+
+          redirected = true;
+
+          window.location.replace(
+            destination
+          );
+        }
+
+
+        /* ===============================================
+           IMAGE PRELOAD
+        =============================================== */
+
+        function preloadImage(src) {
+          return new Promise((resolve) => {
+            const img = new Image();
+
+            let finished = false;
+
+
+            function finish() {
+              if (finished) return;
+
+              finished = true;
+
+              resolve();
+            }
+
+
+            img.onload = async () => {
+              try {
+                if (img.decode) {
+                  await img.decode();
+                }
+              } catch {
+                // Slika je već učitana.
+              }
+
+              finish();
+            };
+
+
+            img.onerror = finish;
+
+
+            img.src = src;
+
+
+            if (img.complete) {
+              if (img.decode) {
+                img
+                  .decode()
+                  .catch(() => {})
+                  .finally(finish);
+              } else {
+                finish();
+              }
+            }
+          });
+        }
+
+
+        /* ===============================================
+           VIDEO PRELOAD
+        =============================================== */
+
+        function preloadVideo(src) {
+          return new Promise((resolve) => {
+            const video =
+              document.createElement("video");
+
+            let finished = false;
+
+
+            function finish() {
+              if (finished) return;
+
+              finished = true;
+
+              video.removeEventListener(
+                "loadeddata",
+                finish
+              );
+
+              video.removeEventListener(
+                "canplay",
+                finish
+              );
+
+              video.removeEventListener(
+                "error",
+                finish
+              );
+
+              resolve();
+            }
+
+
+            video.preload = "auto";
+
+            video.muted = true;
+
+            video.playsInline = true;
+
+
+            video.addEventListener(
+              "loadeddata",
+              finish,
+              { once: true }
+            );
+
+
+            video.addEventListener(
+              "canplay",
+              finish,
+              { once: true }
+            );
+
+
+            video.addEventListener(
+              "error",
+              finish,
+              { once: true }
+            );
+
+
+            video.src = src;
+
+            video.load();
+          });
+        }
+
+
+        /* ===============================================
+           LOAD EVERYTHING
+        =============================================== */
+
+        Promise.all([
+          ...imageAssets.map(
+            preloadImage
+          ),
+
+          preloadVideo(
+            videoSrc
+          ),
+        ]).then(
+          openInvitation
+        );
+
+
+        /*
+          Rezerva ako je veza baš slaba.
+
+          Posle 8 sekundi ipak otvaramo
+          Save the Date.
+        */
+        window.setTimeout(
+          openInvitation,
+          8000
+        );
+      })();
+    </script>
+
+  </body>
+</html>
