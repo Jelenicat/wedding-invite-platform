@@ -16139,14 +16139,14 @@ background: #fbf8f3;
 }
 
 /* =========================================================
-   SAVE THE DATE — GERMAN TEXT / UMLAUT CLIP FIX
-   Applies ONLY when the component has .is-german.
-   ========================================================= */
+   SAVE THE DATE — GERMAN VERSION
+   Only applies when component has .is-german
+========================================================= */
 
-/*
-  German copy contains umlauts (Ä, Ö, Ü, ä, ö, ü) and longer words.
-  The stitch reveal must have extra room above/below and on both sides.
-*/
+
+/* =========================================================
+   1. NEVER CUT GERMAN LETTERS / SCRIPT FLOURISHES
+========================================================= */
 
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-text,
@@ -16178,30 +16178,33 @@ background: #fbf8f3;
 }
 
 
-/* Give accents and script flourishes physical breathing room. */
+/* extra room for Ä / Ö / Ü and script font flourishes */
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-ink {
   display: inline-block;
 
   padding:
     0.42em
-    0.28em
+    0.32em
     0.48em;
 
   margin:
     -0.42em
-    -0.28em
+    -0.32em
     -0.48em;
 
   overflow: visible !important;
 }
 
 
-/* Wrapped German sentences: keep real visual spacing between words. */
+/* =========================================================
+   2. REAL SPACE BETWEEN WORDS
+========================================================= */
+
 .std-envelope-video-save.is-german
 .std-envelope-save__final-stitch.is-wrap
 .std-envelope-video-save__stitch-word {
-  margin-right: 0.24em;
+  margin-right: 0.23em;
 }
 
 .std-envelope-video-save.is-german
@@ -16212,8 +16215,8 @@ background: #fbf8f3;
 
 
 /* =========================================================
-   INTRO OVAL — German copy is wider
-   ========================================================= */
+   3. INTRO OVAL
+========================================================= */
 
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-copy {
@@ -16225,116 +16228,252 @@ background: #fbf8f3;
   overflow: visible !important;
 }
 
+
+/* Andjela und Andrija */
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-names {
-  font-size: clamp(25px, 6.7vw, 39px) !important;
+  font-size:
+    clamp(
+      25px,
+      6.7vw,
+      39px
+    ) !important;
+
   line-height: 1.14 !important;
 
   white-space: nowrap;
+
   overflow: visible !important;
 }
 
+
+/* Termin vormerken */
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-title {
-  font-size: clamp(22px, 5.8vw, 32px) !important;
+  font-size:
+    clamp(
+      22px,
+      5.8vw,
+      32px
+    ) !important;
+
   line-height: 1.16 !important;
 
   overflow: visible !important;
 }
 
+
+/* date inside intro oval */
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-date {
   line-height: 1.2 !important;
+
   overflow: visible !important;
 }
 
 
 /* =========================================================
-   FINAL CARD — German text
-   ========================================================= */
+   4. FINAL CARD — TOP TEXT
+========================================================= */
 
 .std-envelope-video-save.is-german
 .std-envelope-save__eyebrow {
-  line-height: 1.5 !important;
+  width: 84%;
+  max-width: 360px;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  font-size:
+    clamp(
+      11px,
+      2.8vw,
+      15px
+    ) !important;
+
+  line-height: 1.48 !important;
+
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.18em !important;
+
+  text-align: center;
+
+  overflow: visible !important;
 }
+
+
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-word {
+  font-size: inherit !important;
+}
+
+
+/* =========================================================
+   5. MAIN MESSAGE
+========================================================= */
 
 .std-envelope-video-save.is-german
 .std-envelope-save__message {
-  line-height: 1.5 !important;
+  line-height: 1.55 !important;
+
+  letter-spacing: 0.11em !important;
+  word-spacing: 0.18em !important;
+
+  overflow: visible !important;
 }
+
+
+/* =========================================================
+   6. VENUE
+========================================================= */
 
 .std-envelope-video-save.is-german
 .std-envelope-save__venue {
   line-height: 1.45 !important;
-}
 
-.std-envelope-video-save.is-german
-.std-envelope-save__signature {
-  line-height: 1.36 !important;
-
-  padding-left: 0.18em;
-  padding-right: 0.18em;
+  letter-spacing: 0.18em !important;
+  word-spacing: 0.18em !important;
 
   overflow: visible !important;
 }
+
+
+/* =========================================================
+   7. SIGNATURE
+   Die offizielle Einladung
+   folgt in Kürze
+========================================================= */
+
+.std-envelope-video-save.is-german
+.std-envelope-save__signature {
+  width: 88%;
+  max-width: 360px;
+
+  margin:
+    17px
+    auto
+    0 !important;
+
+  padding:
+    0
+    0.22em !important;
+
+  line-height: 1.38 !important;
+
+  text-align: center;
+
+  overflow: visible !important;
+}
+
 
 .std-envelope-video-save.is-german
 .std-envelope-save__signature
 .std-envelope-save__final-stitch {
   max-width: none !important;
 
-  padding-left: 0.18em;
-  padding-right: 0.30em;
+  padding-left: 0.20em;
+  padding-right: 0.34em;
 
   overflow: visible !important;
 }
 
 
 /* =========================================================
-   STITCH REVEAL — extra vertical + horizontal room
-   ========================================================= */
+   8. COUNTDOWN
+   IMPORTANT:
+   extras is position:absolute in main CSS.
+   Therefore margin-bottom on signature cannot create space.
+   We physically move the entire countdown lower.
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__extras {
+    bottom: 18.5% !important;
+
+    transform:
+      translate(
+        -50%,
+        18px
+      ) !important;
+  }
+
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__countdown {
+    margin: 0 !important;
+  }
+
+
+  /* Bis zu unserem großen Tag */
+  .std-envelope-video-save.is-german
+  .std-envelope-save__countdown-title {
+    margin:
+      0
+      auto
+      15px !important;
+
+    line-height: 1.22 !important;
+
+    text-align: center;
+  }
+}
+
+
+/* =========================================================
+   9. GERMAN STITCH REVEAL
+   bigger clip area = umlauts/flourishes are not cut
+========================================================= */
 
 .std-envelope-video-save.is-german[data-phase="stitch-card"]
 .std-envelope-video-save__stitch-card
 .std-envelope-video-save__stitch-ink {
-  animation-name: stev-stitch-reveal-german !important;
+  animation-name:
+    stev-stitch-reveal-german !important;
 }
+
 
 .std-envelope-video-save.is-german[data-phase="revealed"]
 .std-envelope-save__final-stitch
 .std-envelope-video-save__stitch-ink {
-  animation-name: stev-final-stitch-reveal-german !important;
+  animation-name:
+    stev-final-stitch-reveal-german !important;
 }
 
 
 @keyframes stev-stitch-reveal-german {
+
   0% {
     opacity: 0;
 
     clip-path:
       inset(
-        -0.50em
+        -0.52em
         100%
-        -0.55em
-        -0.25em
+        -0.58em
+        -0.28em
       );
 
     filter: blur(1px);
   }
 
+
   8% {
     opacity: 1;
   }
+
 
   100% {
     opacity: 1;
 
     clip-path:
       inset(
-        -0.50em
-        -0.35em
-        -0.55em
-        -0.25em
+        -0.52em
+        -0.38em
+        -0.58em
+        -0.28em
       );
 
     filter: blur(0);
@@ -16343,37 +16482,41 @@ background: #fbf8f3;
 
 
 @keyframes stev-final-stitch-reveal-german {
+
   0% {
     opacity: 0;
 
     clip-path:
       inset(
-        -0.50em
+        -0.52em
         100%
-        -0.55em
-        -0.25em
+        -0.58em
+        -0.28em
       );
 
     filter: blur(1px);
   }
 
+
   8% {
     opacity: 1;
   }
 
+
   68% {
     filter: blur(0.2px);
   }
+
 
   100% {
     opacity: 1;
 
     clip-path:
       inset(
-        -0.50em
-        -0.35em
-        -0.55em
-        -0.25em
+        -0.52em
+        -0.38em
+        -0.58em
+        -0.28em
       );
 
     filter: blur(0);
@@ -16381,8 +16524,14 @@ background: #fbf8f3;
 }
 
 
-/* Mobile: German text needs a touch more horizontal space. */
+/* =========================================================
+   10. MOBILE
+========================================================= */
+
 @media (max-width: 600px) {
+
+  /* ---------- INTRO OVAL ---------- */
+
   .std-envelope-video-save.is-german
   .std-envelope-video-save__stitch-copy {
     inset:
@@ -16391,28 +16540,179 @@ background: #fbf8f3;
       21.5% !important;
   }
 
+
   .std-envelope-video-save.is-german
   .std-envelope-video-save__stitch-names {
-    font-size: clamp(23px, 6.4vw, 35px) !important;
+    font-size:
+      clamp(
+        23px,
+        6.4vw,
+        35px
+      ) !important;
   }
+
 
   .std-envelope-video-save.is-german
   .std-envelope-video-save__stitch-title {
-    font-size: clamp(20px, 5.5vw, 29px) !important;
+    font-size:
+      clamp(
+        20px,
+        5.5vw,
+        29px
+      ) !important;
   }
+
+
+  /* ---------- TOP TEXT ---------- */
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__eyebrow {
+    width: 88%;
+
+    font-size:
+      12px !important;
+
+    line-height:
+      1.5 !important;
+
+    letter-spacing:
+      0.10em !important;
+
+    word-spacing:
+      0.18em !important;
+  }
+
+
+  /* ---------- MESSAGE ---------- */
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__message {
+    line-height:
+      1.55 !important;
+  }
+
+
+  /* ---------- SIGNATURE ---------- */
 
   .std-envelope-video-save.is-german
   .std-envelope-save__signature {
-    line-height: 1.4 !important;
+    width: 92%;
+
+    margin-top:
+      18px !important;
+
+    line-height:
+      1.42 !important;
+  }
+
+
+  /* ---------- COUNTDOWN ---------- */
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__extras {
+    bottom:
+      18.5% !important;
+
+    transform:
+      translate(
+        -50%,
+        18px
+      ) !important;
+  }
+
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__countdown-title {
+    margin:
+      0
+      auto
+      14px !important;
+
+    line-height:
+      1.25 !important;
   }
 }
 
 
-/* Accessibility */
+/* =========================================================
+   11. SHORT MOBILE
+========================================================= */
+
+@media (max-width: 700px) and (max-height: 700px) {
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__eyebrow {
+    font-size:
+      11px !important;
+  }
+
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__signature {
+    margin-top:
+      14px !important;
+
+    line-height:
+      1.36 !important;
+  }
+
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__extras {
+    bottom:
+      16.5% !important;
+
+    transform:
+      translate(
+        -50%,
+        14px
+      ) !important;
+  }
+
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__countdown-title {
+    margin-bottom:
+      11px !important;
+  }
+}
+
+
+/* =========================================================
+   12. ACCESSIBILITY
+========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
+
   .std-envelope-video-save.is-german
   .std-envelope-video-save__stitch-ink {
-    clip-path: none !important;
-    filter: none !important;
+    clip-path:
+      none !important;
+
+    filter:
+      none !important;
   }
+}
+
+/* kraća linija ispod "Zum Kalender hinzufügen" */
+.std-envelope-video-save.is-german
+.std-envelope-save__extras
+.std-envelope-save__calendar {
+  width: 190px !important;
+  max-width: 190px !important;
+  align-self: center !important;
+}
+
+/* Kraća linija ispod kalendara — samo nemačka verzija */
+.std-envelope-video-save.is-german
+.std-envelope-save__extras
+.std-envelope-save__calendar {
+  width: 155px !important;
+  max-width: 155px !important;
+  min-width: 0 !important;
+
+  align-self: center !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
