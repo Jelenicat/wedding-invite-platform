@@ -16781,3 +16781,21 @@ background: #fbf8f3;
     filter: none !important;
   }
 }
+
+
+/* =====================================================
+   SAVE THE DATE — FORCE LIGHT COLOR SCHEME
+   Sprečava automatski dark mode kada je browser/telefon
+   podešen na tamnu temu.
+===================================================== */
+
+:root,
+html,
+body,
+#root,
+.wedding-page,
+.std-save-date,
+.std-envelope-save,
+.std-envelope-video-save {
+  color-scheme: only light !important;
+}
