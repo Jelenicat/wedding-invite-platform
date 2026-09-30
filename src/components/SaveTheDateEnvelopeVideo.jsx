@@ -172,6 +172,7 @@ function SaveTheDateEnvelopeVideo({
   venue = "Beograd",
   script = "latin",
   details = {},
+  onStartMusic,
 }) {
   const config = details.saveTheDate || {};
 
@@ -499,23 +500,31 @@ function SaveTheDateEnvelopeVideo({
     });
   }, [finishVideo, videoMuted, videoSrc]);
 
-  const openEnvelope = useCallback(() => {
-    if (openedRef.current || assets === "loading") return;
+const openEnvelope = useCallback(() => {
+  if (openedRef.current || assets === "loading") return;
 
-    openedRef.current = true;
-    videoFinishedRef.current = false;
+  // MUZIKA KREĆE ODMAH NA KLIK ZA OTVARANJE PISMA
+  onStartMusic?.();
 
-    if (assets === "error") {
-      startVideo();
-      return;
-    }
+  openedRef.current = true;
+  videoFinishedRef.current = false;
 
-    setPhase("opening");
+  if (assets === "error") {
+    startVideo();
+    return;
+  }
 
-    openTimerRef.current = window.setTimeout(() => {
-      startVideo();
-    }, envelopeCutDelayMs);
-  }, [assets, envelopeCutDelayMs, startVideo]);
+  setPhase("opening");
+
+  openTimerRef.current = window.setTimeout(() => {
+    startVideo();
+  }, envelopeCutDelayMs);
+}, [
+  assets,
+  envelopeCutDelayMs,
+  startVideo,
+  onStartMusic,
+]);
 
   /* =====================================================
      CALENDAR

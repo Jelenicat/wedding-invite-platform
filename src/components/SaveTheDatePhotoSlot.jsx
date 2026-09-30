@@ -19,6 +19,7 @@ export default function SaveTheDatePhotoSlot({
   venue = "Beograd",
   script = "latin",
   details = {},
+  onStartMusic,
 }) {
   const config = details.saveTheDate || {};
 
@@ -45,26 +46,29 @@ export default function SaveTheDatePhotoSlot({
     };
   }, []);
 
-  function start() {
-    if (phase !== "idle") return;
+function start() {
+  if (phase !== "idle") return;
 
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+  // Muzika kreće tačno na klik "OTVORI NAJAVU"
+  onStartMusic?.();
 
-    setPhase(
-      reduceMotion
-        ? "done"
-        : "playing"
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  setPhase(
+    reduceMotion
+      ? "done"
+      : "playing"
+  );
+
+  if (!reduceMotion) {
+    finishTimer.current = window.setTimeout(
+      () => setPhase("done"),
+      3750
     );
-
-    if (!reduceMotion) {
-      finishTimer.current = window.setTimeout(
-        () => setPhase("done"),
-        3750
-      );
-    }
   }
+}
 
   function calendar() {
     if (!dateISO) return;

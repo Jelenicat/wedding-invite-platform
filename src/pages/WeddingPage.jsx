@@ -628,10 +628,7 @@ if (templateKey === "save-the-date-film") {
 
 if (templateKey === "save-the-date-photo-slot") {
   return (
-    <div
-      className="wedding-page save-the-date-page"
-      onClickCapture={playInvitationMusic}
-    >
+    <div className="wedding-page save-the-date-page">
       {audioNode}
 
       <SaveTheDatePhotoSlot
@@ -642,6 +639,7 @@ if (templateKey === "save-the-date-photo-slot") {
         venue={localizedInvitation.venue}
         script={localizedInvitation.script || "latin"}
         details={localizedInvitation.details}
+        onStartMusic={playInvitationMusic}
       />
     </div>
   );
@@ -687,10 +685,7 @@ if (templateKey === "save-the-date-calla-lace") {
 
 if (templateKey === "save-the-date-envelope-video") {
   return (
-    <div
-      className="wedding-page save-the-date-page"
-      onClickCapture={playInvitationMusic}
-    >
+    <div className="wedding-page save-the-date-page">
       {audioNode}
 
       <SaveTheDateEnvelopeVideo
@@ -702,6 +697,7 @@ if (templateKey === "save-the-date-envelope-video") {
         venue={localizedInvitation.venue}
         script={localizedInvitation.script || "latin"}
         details={localizedInvitation.details}
+        onStartMusic={playInvitationMusic}
       />
     </div>
   );

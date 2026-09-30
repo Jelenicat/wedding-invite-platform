@@ -10240,7 +10240,7 @@ musicSrc: "/music/hana-1.mp3",
 
   brideName: "Andjela",
   groomName: "Andrija",
-
+musicSrc: "/music/mina-dragan.mp3",
   weddingDate: "31.07.2027.",
   venue: "Hotel Izvor, Aranđelovac",
 
@@ -10303,7 +10303,7 @@ musicSrc: "/music/hana-1.mp3",
 
   brideName: "Andjela",
   groomName: "Andrija",
-
+musicSrc: "/music/mina-dragan.mp3",
   weddingDate: "31.07.2027.",
   venue: "Hotel Izvor, Aranđelovac",
 
@@ -10440,7 +10440,7 @@ musicSrc: "/music/hana-1.mp3",
   type: "save-the-date",
   template: "save-the-date-envelope-video",
   script: "latin",
-
+musicSrc: "/music/mina-dragan.mp3",
   brideName: "Andjela",
   groomName: "Andrija",
 
@@ -10577,7 +10577,7 @@ musicSrc: "/music/hana-1.mp3",
 
   brideName: "Andjela",
   groomName: "Andrija",
-
+musicSrc: "/music/mina-dragan.mp3",
   weddingDate: "31 JUL 2027",
 
   weddingTime: "",
@@ -10735,7 +10735,7 @@ image1: "/images/nevena-pedja/location.jpg",
 
   brideName: "Andjela",
   groomName: "Andrija",
-
+musicSrc: "/music/mina-dragan.mp3",
   weddingDate: "31 JUL 2027",
 
   weddingTime: "",
@@ -10894,7 +10894,7 @@ image1: "/images/nevena-pedja/location.jpg",
 
   weddingDate: "31.07.2027.",
   weddingTime: "",
-
+musicSrc: "/music/mina-dragan.mp3",
   venue: "Hotel Izvor, Aranđelovac",
 
   /* =========================
@@ -11050,7 +11050,7 @@ image1: "/images/nevena-pedja/location.jpg",
 
   brideName: "Andjela",
   groomName: "Andrija",
-
+musicSrc: "/music/mina-dragan.mp3",
   weddingDate: "31.07.2027.",
   weddingTime: "",
 
@@ -11209,7 +11209,7 @@ image1: "/images/nevena-pedja/location.jpg",
 
   brideName: "Andjela",
   groomName: "Andrija",
-
+musicSrc: "/music/mina-dragan.mp3",
   weddingDate: "31.07.2027.",
   weddingTime: "",
 
@@ -11412,7 +11412,7 @@ image1: "/images/nevena-pedja/location.jpg",
 
   weddingDate: "31.07.2027.",
   weddingTime: "",
-
+musicSrc: "/music/mina-dragan.mp3",
   venue: "Hotel Izvor, Aranđelovac",
 
   /* =========================

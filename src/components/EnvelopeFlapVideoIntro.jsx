@@ -12,6 +12,7 @@ export default function EnvelopeFlapVideoIntro({
   videoSrc,
   details = {},
   onEnter,
+  onStartMusic,
   slug,
   script = "latin",
 }) {
@@ -190,14 +191,14 @@ export default function EnvelopeFlapVideoIntro({
       )}
 
       {stage === "envelope" && (
-        <EnvelopeFlapIntro
-          onEnter={() => {}}
-          onReveal={handleEnvelopeReveal}
-          onStartMusic={() => {}}
-          slug={slug}
-          details={details}
-          script={script}
-        />
+      <EnvelopeFlapIntro
+  onEnter={() => {}}
+  onReveal={handleEnvelopeReveal}
+  onStartMusic={onStartMusic}
+  slug={slug}
+  details={details}
+  script={script}
+/>
       )}
     </div>
   );
