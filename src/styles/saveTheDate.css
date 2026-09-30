@@ -16140,12 +16140,13 @@ background: #fbf8f3;
 
 /* =========================================================
    SAVE THE DATE — GERMAN VERSION
-   Only applies when component has .is-german
+   FINAL CLEAN VERSION
+   Applies only when component has .is-german
 ========================================================= */
 
 
 /* =========================================================
-   1. NEVER CUT GERMAN LETTERS / SCRIPT FLOURISHES
+   1. DO NOT CUT GERMAN LETTERS / SCRIPT FLOURISHES
 ========================================================= */
 
 .std-envelope-video-save.is-german
@@ -16178,7 +16179,7 @@ background: #fbf8f3;
 }
 
 
-/* extra room for Ä / Ö / Ü and script font flourishes */
+/* Extra space for umlauts and script-font swashes. */
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-ink {
   display: inline-block;
@@ -16198,7 +16199,7 @@ background: #fbf8f3;
 
 
 /* =========================================================
-   2. REAL SPACE BETWEEN WORDS
+   2. WORD SPACING FOR WRAPPED STITCH TEXT
 ========================================================= */
 
 .std-envelope-video-save.is-german
@@ -16263,7 +16264,6 @@ background: #fbf8f3;
 }
 
 
-/* date inside intro oval */
 .std-envelope-video-save.is-german
 .std-envelope-video-save__stitch-date {
   line-height: 1.2 !important;
@@ -16273,30 +16273,32 @@ background: #fbf8f3;
 
 
 /* =========================================================
-   4. FINAL CARD — TOP TEXT
+   4. FINAL CARD — TOP EYEBROW
+   GEMEINSAM MIT UNSEREN FAMILIEN
+
+   This small line is intentionally NOT stitch-clipped.
 ========================================================= */
 
 .std-envelope-video-save.is-german
 .std-envelope-save__eyebrow {
-  width: 84%;
+  width: 88%;
   max-width: 360px;
 
   margin-left: auto !important;
   margin-right: auto !important;
 
-  font-size:
-    clamp(
-      11px,
-      2.8vw,
-      15px
-    ) !important;
+  color: #806957 !important;
 
-  line-height: 1.48 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
 
-  letter-spacing: 0.12em !important;
-  word-spacing: 0.18em !important;
+  letter-spacing: 0.11em !important;
+  word-spacing: 0.20em !important;
 
-  text-align: center;
+  text-align: center !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
 
   overflow: visible !important;
 }
@@ -16304,8 +16306,42 @@ background: #fbf8f3;
 
 .std-envelope-video-save.is-german
 .std-envelope-save__eyebrow
-.std-envelope-video-save__stitch-word {
+.std-envelope-video-save__stitch-word,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-ink {
+  color: #806957 !important;
+
   font-size: inherit !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  overflow: visible !important;
+}
+
+
+/* Do not let the tiny stitch reveal turn this text into a dotted line. */
+.std-envelope-video-save.is-german[data-phase="revealed"]
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-ink {
+  animation: none !important;
+
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+
+  filter: none !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-needle {
+  display: none !important;
 }
 
 
@@ -16347,21 +16383,28 @@ background: #fbf8f3;
 
 .std-envelope-video-save.is-german
 .std-envelope-save__signature {
-  width: 88%;
-  max-width: 360px;
+  width: 94%;
+  max-width: 370px;
 
   margin:
-    17px
+    14px
     auto
     0 !important;
 
   padding:
     0
-    0.22em !important;
+    0.24em !important;
 
-  line-height: 1.38 !important;
+  font-size:
+    clamp(
+      22px,
+      5.8vw,
+      30px
+    ) !important;
 
-  text-align: center;
+  line-height: 1.08 !important;
+
+  text-align: center !important;
 
   overflow: visible !important;
 }
@@ -16370,24 +16413,56 @@ background: #fbf8f3;
 .std-envelope-video-save.is-german
 .std-envelope-save__signature
 .std-envelope-save__final-stitch {
+  display: inline !important;
+
   max-width: none !important;
 
   padding-left: 0.20em;
   padding-right: 0.34em;
+
+  line-height: inherit !important;
+
+  overflow: visible !important;
+}
+
+
+.std-envelope-video-save.is-german
+.std-envelope-save__signature
+.std-envelope-video-save__stitch-text,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__signature
+.std-envelope-video-save__stitch-word,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__signature
+.std-envelope-video-save__stitch-ink {
+  line-height: inherit !important;
+
+  vertical-align: baseline !important;
 
   overflow: visible !important;
 }
 
 
 /* =========================================================
-   8. COUNTDOWN
-   IMPORTANT:
-   extras is position:absolute in main CSS.
-   Therefore margin-bottom on signature cannot create space.
-   We physically move the entire countdown lower.
+   8. COUNTDOWN / CALENDAR
+   Keep original paper geometry.
+   Move only the absolute extras block.
 ========================================================= */
 
 @media (max-width: 700px) {
+
+  /*
+    IMPORTANT:
+    Do NOT override .std-envelope-save__paper-inner inset here.
+    The base template already positions the main text correctly.
+  */
+  .std-envelope-video-save.is-german
+  .std-envelope-save__paper-inner {
+    overflow: visible !important;
+  }
+
 
   .std-envelope-video-save.is-german
   .std-envelope-save__extras {
@@ -16396,7 +16471,7 @@ background: #fbf8f3;
     transform:
       translate(
         -50%,
-        18px
+        26px
       ) !important;
   }
 
@@ -16413,18 +16488,38 @@ background: #fbf8f3;
     margin:
       0
       auto
-      15px !important;
+      12px !important;
 
-    line-height: 1.22 !important;
+    line-height: 1.15 !important;
 
-    text-align: center;
+    text-align: center !important;
   }
 }
 
 
 /* =========================================================
-   9. GERMAN STITCH REVEAL
-   bigger clip area = umlauts/flourishes are not cut
+   9. SHORT CALENDAR UNDERLINE
+========================================================= */
+
+.std-envelope-video-save.is-german
+.std-envelope-save__extras
+.std-envelope-save__calendar {
+  width: 155px !important;
+  max-width: 155px !important;
+  min-width: 0 !important;
+
+  align-self: center !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+
+/* =========================================================
+   10. GERMAN STITCH REVEAL
 ========================================================= */
 
 .std-envelope-video-save.is-german[data-phase="stitch-card"]
@@ -16525,7 +16620,7 @@ background: #fbf8f3;
 
 
 /* =========================================================
-   10. MOBILE
+   11. MOBILE
 ========================================================= */
 
 @media (max-width: 600px) {
@@ -16563,32 +16658,18 @@ background: #fbf8f3;
   }
 
 
-  /* ---------- TOP TEXT ---------- */
+  /* ---------- FINAL TOP TEXT ---------- */
 
   .std-envelope-video-save.is-german
   .std-envelope-save__eyebrow {
     width: 88%;
 
-    font-size:
-      12px !important;
+    font-size: 12px !important;
 
-    line-height:
-      1.5 !important;
+    line-height: 1.5 !important;
 
-    letter-spacing:
-      0.10em !important;
-
-    word-spacing:
-      0.18em !important;
-  }
-
-
-  /* ---------- MESSAGE ---------- */
-
-  .std-envelope-video-save.is-german
-  .std-envelope-save__message {
-    line-height:
-      1.55 !important;
+    letter-spacing: 0.11em !important;
+    word-spacing: 0.20em !important;
   }
 
 
@@ -16596,13 +16677,21 @@ background: #fbf8f3;
 
   .std-envelope-video-save.is-german
   .std-envelope-save__signature {
-    width: 92%;
+    width: 94% !important;
 
-    margin-top:
-      18px !important;
+    margin:
+      13px
+      auto
+      0 !important;
 
-    line-height:
-      1.42 !important;
+    font-size:
+      clamp(
+        21px,
+        5.5vw,
+        28px
+      ) !important;
+
+    line-height: 1.06 !important;
   }
 
 
@@ -16610,13 +16699,12 @@ background: #fbf8f3;
 
   .std-envelope-video-save.is-german
   .std-envelope-save__extras {
-    bottom:
-      18.5% !important;
+    bottom: 18.5% !important;
 
     transform:
       translate(
         -50%,
-        18px
+        26px
       ) !important;
   }
 
@@ -16626,210 +16714,70 @@ background: #fbf8f3;
     margin:
       0
       auto
-      14px !important;
+      12px !important;
 
-    line-height:
-      1.25 !important;
+    line-height: 1.15 !important;
   }
 }
 
 
 /* =========================================================
-   11. SHORT MOBILE
+   12. SHORT MOBILE
 ========================================================= */
 
 @media (max-width: 700px) and (max-height: 700px) {
 
   .std-envelope-video-save.is-german
   .std-envelope-save__eyebrow {
-    font-size:
-      11px !important;
+    font-size: 11px !important;
   }
 
 
   .std-envelope-video-save.is-german
   .std-envelope-save__signature {
-    margin-top:
-      14px !important;
+    margin-top: 10px !important;
 
-    line-height:
-      1.36 !important;
+    font-size:
+      clamp(
+        20px,
+        5.2vw,
+        27px
+      ) !important;
+
+    line-height: 1.04 !important;
   }
 
 
   .std-envelope-video-save.is-german
   .std-envelope-save__extras {
-    bottom:
-      16.5% !important;
+    bottom: 16.5% !important;
 
     transform:
       translate(
         -50%,
-        14px
+        20px
       ) !important;
   }
 
 
   .std-envelope-video-save.is-german
   .std-envelope-save__countdown-title {
-    margin-bottom:
-      11px !important;
+    margin-bottom: 10px !important;
   }
 }
 
 
 /* =========================================================
-   12. ACCESSIBILITY
+   13. ACCESSIBILITY
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
   .std-envelope-video-save.is-german
   .std-envelope-video-save__stitch-ink {
-    clip-path:
-      none !important;
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
 
-    filter:
-      none !important;
-  }
-}
-
-/* kraća linija ispod "Zum Kalender hinzufügen" */
-.std-envelope-video-save.is-german
-.std-envelope-save__extras
-.std-envelope-save__calendar {
-  width: 190px !important;
-  max-width: 190px !important;
-  align-self: center !important;
-}
-
-/* Kraća linija ispod kalendara — samo nemačka verzija */
-.std-envelope-video-save.is-german
-.std-envelope-save__extras
-.std-envelope-save__calendar {
-  width: 155px !important;
-  max-width: 155px !important;
-  min-width: 0 !important;
-
-  align-self: center !important;
-
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* =====================================================
-   GERMAN — TOP EYEBROW ALWAYS VISIBLE
-===================================================== */
-
-.std-envelope-video-save.is-german
-.std-envelope-save__eyebrow {
-  color: #806957 !important;
-
-  font-size: 12px !important;
-  line-height: 1.5 !important;
-
-  letter-spacing: 0.11em !important;
-  word-spacing: 0.20em !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  overflow: visible !important;
-}
-
-
-/* same color on every animated word */
-.std-envelope-video-save.is-german
-.std-envelope-save__eyebrow
-.std-envelope-video-save__stitch-word,
-
-.std-envelope-video-save.is-german
-.std-envelope-save__eyebrow
-.std-envelope-video-save__stitch-ink {
-  color: #806957 !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  overflow: visible !important;
-}
-
-
-/*
-  Do not clip this tiny uppercase sentence.
-  The stitch clip was making it look like a dotted line.
-*/
-.std-envelope-video-save.is-german[data-phase="revealed"]
-.std-envelope-save__eyebrow
-.std-envelope-video-save__stitch-ink {
-  animation: none !important;
-
-  clip-path: none !important;
-  -webkit-clip-path: none !important;
-
-  filter: none !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-
-/* hide the little stitch/needle line only for this top sentence */
-.std-envelope-video-save.is-german
-.std-envelope-save__eyebrow
-.std-envelope-video-save__stitch-needle {
-  display: none !important;
-}
-
-/* =====================================================
-   GERMAN — FIX CLIPPED SIGNATURE SECOND LINE
-===================================================== */
-
-@media (max-width: 700px) {
-
-  .std-envelope-video-save.is-german
-  .std-envelope-save__paper-inner {
-    inset:
-      18%
-      15%
-      27% !important;
-
-    overflow: visible !important;
-  }
-
-
-  .std-envelope-video-save.is-german
-  .std-envelope-save__signature {
-    width: 94% !important;
-    max-width: 380px !important;
-
-    margin:
-      18px
-      auto
-      0 !important;
-
-    line-height:
-      1.42 !important;
-
-    overflow: visible !important;
-  }
-
-
-  .std-envelope-video-save.is-german
-  .std-envelope-save__signature
-  .std-envelope-save__final-stitch,
-
-  .std-envelope-video-save.is-german
-  .std-envelope-save__signature
-  .std-envelope-video-save__stitch-text,
-
-  .std-envelope-video-save.is-german
-  .std-envelope-save__signature
-  .std-envelope-video-save__stitch-word,
-
-  .std-envelope-video-save.is-german
-  .std-envelope-save__signature
-  .std-envelope-video-save__stitch-ink {
-    overflow: visible !important;
+    filter: none !important;
   }
 }
