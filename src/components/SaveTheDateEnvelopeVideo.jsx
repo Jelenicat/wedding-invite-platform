@@ -9,6 +9,7 @@ import {
 
 import "../styles/saveTheDate.css";
 
+
 import { addToCalendar } from "../utils/calendar";
 
 /* =====================================================
@@ -158,10 +159,97 @@ function getMonthLabel(month, isCyrillic) {
 }
 
 /* =====================================================
+   STITCH TEXT
+===================================================== */
+
+function getStitchDuration(text, step) {
+  const chars = Math.max(Array.from(String(text || "")).length, 1);
+  return Math.max(420, chars * step);
+}
+
+function StitchText({
+  text,
+  className = "",
+  start = 0,
+  step = 70,
+  wrap = false,
+}) {
+  const value = String(text || "");
+
+  if (wrap) {
+    const words = value.trim().split(/\s+/).filter(Boolean);
+    let offset = 0;
+
+    return (
+      <span
+        className={`std-envelope-video-save__stitch-text ${className} is-wrap`}
+        aria-label={value}
+      >
+        {words.map((word, index) => {
+          const chars = Math.max(Array.from(word).length, 1);
+          const delay = start + offset * step;
+          const duration = Math.max(260, chars * step);
+
+          offset += chars + 1;
+
+          return (
+            <span
+              key={`${word}-${index}`}
+              className="std-envelope-video-save__stitch-word"
+              aria-hidden="true"
+              style={{
+                "--stev-stitch-delay": `${delay}ms`,
+                "--stev-stitch-duration": `${duration}ms`,
+                "--stev-stitch-timing": `steps(${chars}, end)`,
+              }}
+            >
+              <span className="std-envelope-video-save__stitch-ink">
+                {word}
+              </span>
+
+              <span className="std-envelope-video-save__stitch-needle" />
+
+              {index < words.length - 1 ? " " : ""}
+            </span>
+          );
+        })}
+      </span>
+    );
+  }
+
+  const chars = Math.max(Array.from(value).length, 1);
+  const duration = Math.max(420, chars * step);
+
+  return (
+    <span
+      className={`std-envelope-video-save__stitch-text ${className}`}
+      aria-label={value}
+      style={{
+        "--stev-stitch-delay": `${start}ms`,
+        "--stev-stitch-duration": `${duration}ms`,
+        "--stev-stitch-timing": `steps(${chars}, end)`,
+      }}
+    >
+      <span
+        className="std-envelope-video-save__stitch-ink"
+        aria-hidden="true"
+      >
+        {value}
+      </span>
+
+      <span
+        className="std-envelope-video-save__stitch-needle"
+        aria-hidden="true"
+      />
+    </span>
+  );
+}
+
+/* =====================================================
    COMPONENT
 
    FLOW:
-   closed -> opening -> video -> monogram -> revealed
+   closed -> opening -> stitch-card -> video -> monogram -> revealed
 ===================================================== */
 
 function SaveTheDateEnvelopeVideo({
@@ -260,6 +348,31 @@ function SaveTheDateEnvelopeVideo({
   const videoPosition = config.videoPosition || "center center";
   const videoMuted = config.videoMuted !== false;
 
+  const stitchedCardImage =
+    config.stitchedCardImage ||
+    "/images/save-the-date/stitched-oval-transparent.png";
+
+  const stitchCardDurationMs = clampNumber(
+    config.stitchCardDurationMs,
+    5600,
+    3000,
+    10000
+  );
+
+  const stitchLetterStepMs = clampNumber(
+    config.stitchLetterStepMs,
+    68,
+    35,
+    150
+  );
+
+  const stitchTextStartMs = clampNumber(
+    config.stitchTextStartMs,
+    550,
+    0,
+    2500
+  );
+
   const monogramDurationMs = clampNumber(
     config.monogramDurationMs,
     3200,
@@ -326,6 +439,7 @@ function SaveTheDateEnvelopeVideo({
   const openedRef = useRef(false);
   const videoFinishedRef = useRef(false);
   const openTimerRef = useRef(null);
+  const stitchTimerRef = useRef(null);
   const monogramTimerRef = useRef(null);
   const videoRef = useRef(null);
 
@@ -347,15 +461,21 @@ function SaveTheDateEnvelopeVideo({
       videoRef.current.currentTime = 0;
     }
 
+    const preloadSources = [
+      envelopeBottomImage,
+      envelopeTopImage,
+      stitchedCardImage,
+    ].filter(Boolean);
+
     const markLoaded = () => {
       loaded += 1;
 
-      if (active && loaded === 2) {
+      if (active && loaded === preloadSources.length) {
         setAssets("ready");
       }
     };
 
-    const images = [envelopeBottomImage, envelopeTopImage].map((src) => {
+    const images = preloadSources.map((src) => {
       const image = new Image();
 
       image.onload = markLoaded;
@@ -370,7 +490,7 @@ function SaveTheDateEnvelopeVideo({
     });
 
     const fallbackTimer = window.setTimeout(() => {
-      if (active && loaded !== 2) {
+      if (active && loaded !== preloadSources.length) {
         setAssets("error");
       }
     }, 9000);
@@ -384,7 +504,12 @@ function SaveTheDateEnvelopeVideo({
         image.onerror = null;
       });
     };
-  }, [envelopeBottomImage, envelopeTopImage, videoSrc]);
+  }, [
+    envelopeBottomImage,
+    envelopeTopImage,
+    stitchedCardImage,
+    videoSrc,
+  ]);
 
   /* =====================================================
      LOCK SCROLL DURING INTRO
@@ -427,6 +552,10 @@ function SaveTheDateEnvelopeVideo({
     return () => {
       if (openTimerRef.current) {
         window.clearTimeout(openTimerRef.current);
+      }
+
+      if (stitchTimerRef.current) {
+        window.clearTimeout(stitchTimerRef.current);
       }
 
       if (monogramTimerRef.current) {
@@ -500,31 +629,44 @@ function SaveTheDateEnvelopeVideo({
     });
   }, [finishVideo, videoMuted, videoSrc]);
 
-const openEnvelope = useCallback(() => {
-  if (openedRef.current || assets === "loading") return;
+  const startStitchedCard = useCallback(() => {
+    setPhase("stitch-card");
 
-  // MUZIKA KREĆE ODMAH NA KLIK ZA OTVARANJE PISMA
-  onStartMusic?.();
+    if (stitchTimerRef.current) {
+      window.clearTimeout(stitchTimerRef.current);
+    }
 
-  openedRef.current = true;
-  videoFinishedRef.current = false;
+    stitchTimerRef.current = window.setTimeout(() => {
+      startVideo();
+    }, stitchCardDurationMs);
+  }, [startVideo, stitchCardDurationMs]);
 
-  if (assets === "error") {
-    startVideo();
-    return;
-  }
+    const openEnvelope = useCallback(() => {
+    if (openedRef.current || assets === "loading") return;
 
-  setPhase("opening");
+    // Muzika kreće odmah na klik za otvaranje pisma.
+    onStartMusic?.();
 
-  openTimerRef.current = window.setTimeout(() => {
-    startVideo();
-  }, envelopeCutDelayMs);
-}, [
-  assets,
-  envelopeCutDelayMs,
-  startVideo,
-  onStartMusic,
-]);
+    openedRef.current = true;
+    videoFinishedRef.current = false;
+
+    if (assets === "error") {
+      startVideo();
+      return;
+    }
+
+    setPhase("opening");
+
+    openTimerRef.current = window.setTimeout(() => {
+      startStitchedCard();
+    }, envelopeCutDelayMs);
+  }, [
+    assets,
+    envelopeCutDelayMs,
+    startStitchedCard,
+    startVideo,
+    onStartMusic,
+  ]);
 
   /* =====================================================
      CALENDAR
@@ -587,6 +729,7 @@ const openEnvelope = useCallback(() => {
     "--ste-envelope-duration": `${envelopeDurationMs}ms`,
     "--stev-video-position": videoPosition,
     "--stev-monogram-color": config.monogramColor || "#ffffff",
+    "--stev-envelope-resume-delay": `-${envelopeCutDelayMs}ms`,
   };
 
   const message = config.message || copy.message;
@@ -604,6 +747,82 @@ const openEnvelope = useCallback(() => {
     : `${dateParts.day}. ${monthLabel} ${dateParts.year}.`;
 
   const venueLabel = String(venue || "").trim().toUpperCase();
+
+  const stitchConnector = isCyrillic ? "и" : "i";
+  const stitchedNames = `${brideName} ${stitchConnector} ${groomName}`;
+  const stitchedSaveDate = isCyrillic
+    ? "Сачувајте датум"
+    : "Sačuvajte datum";
+  const stitchedDate = dateParts.fallback
+    ? weddingDate
+    : `${dateParts.day} / ${dateParts.month} / ${dateParts.year}`;
+
+  const stitchNamesStart = stitchTextStartMs;
+  const stitchNamesEnd =
+    stitchNamesStart + stitchedNames.length * stitchLetterStepMs;
+  const stitchDividerStart = stitchNamesEnd + 180;
+  const stitchTitleStart = stitchDividerStart + 450;
+  const stitchTitleEnd =
+    stitchTitleStart + stitchedSaveDate.length * stitchLetterStepMs;
+  const stitchDateStart = stitchTitleEnd + 280;
+
+  /* =====================================================
+     FINAL CARD — STITCH TIMING
+     Starts only when phase becomes "revealed".
+  ===================================================== */
+
+  const finalEyebrowStep = 22;
+  const finalNameStep = 54;
+  const finalConnectorStep = 70;
+  const finalMessageStep = 20;
+  const finalDateStep = 44;
+  const finalVenueStep = 27;
+  const finalSignatureStep = 28;
+
+  const finalEyebrowStart = 180;
+
+  const finalBrideStart =
+    finalEyebrowStart +
+    getStitchDuration(eyebrow, finalEyebrowStep) +
+    140;
+
+  const finalConnectorStart =
+    finalBrideStart +
+    getStitchDuration(brideName, finalNameStep) +
+    70;
+
+  const finalGroomStart =
+    finalConnectorStart +
+    getStitchDuration(connector, finalConnectorStep) +
+    70;
+
+  const finalMessageStart =
+    finalGroomStart +
+    getStitchDuration(groomName, finalNameStep) +
+    220;
+
+  const finalDateStart =
+    finalMessageStart +
+    getStitchDuration(message, finalMessageStep) +
+    240;
+
+  const finalVenueStart =
+    finalDateStart +
+    getStitchDuration(formattedDateLine, finalDateStep) +
+    220;
+
+  const finalSignatureStart =
+    (venueLabel
+      ? finalVenueStart +
+        getStitchDuration(venueLabel, finalVenueStep)
+      : finalDateStart +
+        getStitchDuration(formattedDateLine, finalDateStep)) +
+    210;
+
+  const finalExtrasStart =
+    finalSignatureStart +
+    getStitchDuration(signature, finalSignatureStep) +
+    420;
 
   return (
     <section
@@ -623,33 +842,89 @@ const openEnvelope = useCallback(() => {
       <main className="std-envelope-save__content">
         <article className="std-envelope-save__paper">
           <div className="std-envelope-save__paper-inner">
-            <p className="std-envelope-save__eyebrow">{eyebrow}</p>
+            <p className="std-envelope-save__eyebrow">
+              <StitchText
+                text={eyebrow}
+                className="std-envelope-save__final-stitch"
+                start={finalEyebrowStart}
+                step={finalEyebrowStep}
+                wrap
+              />
+            </p>
 
             <div
               className="std-envelope-save__names"
               aria-label={`${brideName} i ${groomName}`}
             >
-              <span>{brideName}</span>
-              <span className="std-envelope-save__amp">{connector}</span>
-              <span>{groomName}</span>
+              <StitchText
+                text={brideName}
+                className="std-envelope-save__final-stitch"
+                start={finalBrideStart}
+                step={finalNameStep}
+              />
+
+              <span className="std-envelope-save__amp">
+                <StitchText
+                  text={connector}
+                  className="std-envelope-save__final-stitch"
+                  start={finalConnectorStart}
+                  step={finalConnectorStep}
+                />
+              </span>
+
+              <StitchText
+                text={groomName}
+                className="std-envelope-save__final-stitch"
+                start={finalGroomStart}
+                step={finalNameStep}
+              />
             </div>
 
-            <p className="std-envelope-save__message">{message}</p>
+            <p className="std-envelope-save__message">
+              <StitchText
+                text={message}
+                className="std-envelope-save__final-stitch"
+                start={finalMessageStart}
+                step={finalMessageStep}
+                wrap
+              />
+            </p>
 
             <div className="std-envelope-save__date-block">
               <p
                 className="std-envelope-save__date-line"
                 aria-label={weddingDate}
               >
-                {formattedDateLine}
+                <StitchText
+                  text={formattedDateLine}
+                  className="std-envelope-save__final-stitch"
+                  start={finalDateStart}
+                  step={finalDateStep}
+                />
               </p>
             </div>
 
             {venueLabel && (
-              <p className="std-envelope-save__venue">{venueLabel}</p>
+              <p className="std-envelope-save__venue">
+                <StitchText
+                  text={venueLabel}
+                  className="std-envelope-save__final-stitch"
+                  start={finalVenueStart}
+                  step={finalVenueStep}
+                  wrap
+                />
+              </p>
             )}
 
-            <p className="std-envelope-save__signature">{signature}</p>
+            <p className="std-envelope-save__signature">
+              <StitchText
+                text={signature}
+                className="std-envelope-save__final-stitch"
+                start={finalSignatureStart}
+                step={finalSignatureStep}
+                wrap
+              />
+            </p>
           </div>
         </article>
 
@@ -659,6 +934,9 @@ const openEnvelope = useCallback(() => {
               <section
                 className="std-envelope-save__countdown"
                 aria-label={countdownTitle}
+                style={{
+                  "--stev-final-extra-delay": `${finalExtrasStart}ms`,
+                }}
               >
                 <p className="std-envelope-save__countdown-title">
                   {countdown.finished ? copy.today : countdownTitle}
@@ -694,6 +972,9 @@ const openEnvelope = useCallback(() => {
                 type="button"
                 className="std-envelope-save__calendar"
                 onClick={handleAddToCalendar}
+                style={{
+                  "--stev-final-extra-delay": `${finalExtrasStart + 280}ms`,
+                }}
               >
                 <span
                   className="std-envelope-save__calendar-icon"
@@ -709,7 +990,7 @@ const openEnvelope = useCallback(() => {
       </main>
 
       {/* =================================================
-          INTRO: ENVELOPE -> VIDEO -> MONOGRAM
+          INTRO: ENVELOPE -> STITCHED CARD -> VIDEO -> MONOGRAM
       ================================================= */}
 
       <div
@@ -758,8 +1039,68 @@ const openEnvelope = useCallback(() => {
         {assets === "ready" ? (
           <div className="std-envelope-save__envelope-stage" aria-hidden="true">
             <div className="std-envelope-save__envelope-canvas">
+              {/* Base envelope stays behind the insert. */}
               <img
                 className="std-envelope-save__envelope-bottom"
+                src={envelopeBottomImage}
+                alt=""
+                draggable={false}
+              />
+
+              {/* Oval insert rises out of the envelope. */}
+              <div
+                className="std-envelope-video-save__stitch-card"
+                aria-hidden={phase !== "stitch-card"}
+              >
+                <img
+                  className="std-envelope-video-save__stitch-card-image"
+                  src={stitchedCardImage}
+                  alt=""
+                  draggable={false}
+                />
+
+                <div className="std-envelope-video-save__stitch-copy">
+                  <StitchText
+                    text={stitchedNames}
+                    className="std-envelope-video-save__stitch-names"
+                    start={stitchNamesStart}
+                    step={stitchLetterStepMs}
+                  />
+
+                  <div
+                    className="std-envelope-video-save__stitch-divider"
+                    style={{
+                      "--stev-divider-delay": `${stitchDividerStart}ms`,
+                    }}
+                  >
+                    <span />
+                    <i>♡</i>
+                    <span />
+                  </div>
+
+                  <StitchText
+                    text={stitchedSaveDate}
+                    className="std-envelope-video-save__stitch-title"
+                    start={stitchTitleStart}
+                    step={stitchLetterStepMs}
+                  />
+
+                  <StitchText
+                    text={stitchedDate}
+                    className="std-envelope-video-save__stitch-date"
+                    start={stitchDateStart}
+                    step={Math.max(45, stitchLetterStepMs - 10)}
+                  />
+                </div>
+              </div>
+
+              {/*
+                Duplicate only the FRONT pocket over the insert.
+                This is what makes the oval look like it is physically
+                coming out of the envelope instead of floating over it.
+              */}
+              <img
+                className="std-envelope-video-save__envelope-front-mask"
                 src={envelopeBottomImage}
                 alt=""
                 draggable={false}

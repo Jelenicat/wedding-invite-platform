@@ -10440,7 +10440,7 @@ musicSrc: "/music/mina-dragan.mp3",
   type: "save-the-date",
   template: "save-the-date-envelope-video",
   script: "latin",
-musicSrc: "/music/mina-dragan.mp3",
+ musicSrc: "/music/teodora-petar.mp3",
   brideName: "Andjela",
   groomName: "Andrija",
 
