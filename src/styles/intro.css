@@ -11834,3 +11834,50 @@ body,
     letter-spacing: 0.14em;
   }
 }
+
+/* =====================================================
+   ENVELOPE VIDEO INITIALS — MOBILE FIX
+   da se desni inicijal ne seče
+===================================================== */
+
+@media (max-width: 640px) {
+  .efv-initials-mark {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 24px;
+    gap: 0;
+  }
+
+  .efv-initial {
+    font-size: clamp(100px, 30vw, 128px);
+    flex: 0 0 auto;
+  }
+
+  .efv-initial-bride {
+    transform: translateY(-16px);
+  }
+
+  .efv-slash {
+    font-size: clamp(68px, 19vw, 86px);
+    margin: 0 -3px;
+    flex: 0 0 auto;
+  }
+
+  .efv-initial-groom {
+    transform: translateY(18px);
+  }
+}
+
+@media (max-width: 380px) {
+  .efv-initials-mark {
+    padding: 0 18px;
+  }
+
+  .efv-initial {
+    font-size: clamp(92px, 29vw, 110px);
+  }
+
+  .efv-slash {
+    font-size: clamp(62px, 18vw, 76px);
+  }
+}
