@@ -16716,3 +16716,67 @@ background: #fbf8f3;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+/* =====================================================
+   GERMAN — TOP EYEBROW ALWAYS VISIBLE
+===================================================== */
+
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow {
+  color: #806957 !important;
+
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+
+  letter-spacing: 0.11em !important;
+  word-spacing: 0.20em !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  overflow: visible !important;
+}
+
+
+/* same color on every animated word */
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-word,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-ink {
+  color: #806957 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  overflow: visible !important;
+}
+
+
+/*
+  Do not clip this tiny uppercase sentence.
+  The stitch clip was making it look like a dotted line.
+*/
+.std-envelope-video-save.is-german[data-phase="revealed"]
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-ink {
+  animation: none !important;
+
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+
+  filter: none !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* hide the little stitch/needle line only for this top sentence */
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow
+.std-envelope-video-save__stitch-needle {
+  display: none !important;
+}
