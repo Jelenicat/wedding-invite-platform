@@ -120,7 +120,7 @@ function splitDisplayDate(value) {
   };
 }
 
-function getMonthLabel(month, isCyrillic) {
+function getMonthLabel(month, isCyrillic, isGerman = false) {
   const monthIndex = Number(month) - 1;
 
   const latinMonths = [
@@ -153,7 +153,26 @@ function getMonthLabel(month, isCyrillic) {
     "ДЕЦ",
   ];
 
-  const months = isCyrillic ? cyrillicMonths : latinMonths;
+  const germanMonths = [
+    "JAN",
+    "FEB",
+    "MÄR",
+    "APR",
+    "MAI",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OKT",
+    "NOV",
+    "DEZ",
+  ];
+
+  const months = isGerman
+    ? germanMonths
+    : isCyrillic
+      ? cyrillicMonths
+      : latinMonths;
 
   return months[monthIndex] || month || "";
 }
@@ -269,41 +288,64 @@ function SaveTheDateEnvelopeVideo({
     config.script === "cyrillic" ||
     details.script === "cyrillic";
 
-  const copy = isCyrillic
+  const isGerman =
+    slug === "save-andjela-andrija-6" ||
+    config.language === "de" ||
+    details.language === "de";
+
+  const copy = isGerman
     ? {
-        eyebrow: "ЗАЈЕДНО СА СВОЈИМ ПОРОДИЦАМА",
-        introHint: "Додирните да отворите писмо",
-        opening: "Отварамо писмо…",
-        message: "МОЛИМО ВАС ДА САЧУВАТЕ ДАТУМ НАШЕГ ВЕНЧАЊА",
-        signature: "Свечана позивница ускоро",
-        connector: "И",
-        countdownTitle: "До нашег дана",
-        days: "Дана",
-        hours: "Сати",
-        minutes: "Минута",
-        today: "Данас је наш дан",
-        addCalendar: "Додај у календар",
-        calendarNote: "Сачувајте датум за наш посебан дан.",
-        calendarTitle: `Сачувајте датум - ${brideName} & ${groomName}`,
-        ariaOpen: "Отвори Save the Date писмо",
+        eyebrow: "GEMEINSAM MIT UNSEREN FAMILIEN",
+        introHint: "Tippt, um den Umschlag zu öffnen",
+        opening: "Der Umschlag wird geöffnet…",
+        message: "BITTE MERKT EUCH DEN TERMIN UNSERER HOCHZEIT VOR",
+        signature: "Die offizielle Einladung folgt in Kürze",
+        connector: "UND",
+        countdownTitle: "Bis zu unserem großen Tag",
+        days: "Tage",
+        hours: "Stunden",
+        minutes: "Minuten",
+        today: "Heute ist unser großer Tag",
+        addCalendar: "Zum Kalender hinzufügen",
+        calendarNote: "Merkt euch den Termin für unseren besonderen Tag vor.",
+        calendarTitle: `Save the Date - ${brideName} & ${groomName}`,
+        ariaOpen: "Save-the-Date-Umschlag öffnen",
       }
-    : {
-        eyebrow: "ZAJEDNO SA SVOJIM PORODICAMA",
-        introHint: "Dodirnite da otvorite pismo",
-        opening: "Otvaramo pismo…",
-        message: "MOLIMO VAS DA SAČUVATE DATUM NAŠEG VENČANJA",
-        signature: "Svečana pozivnica uskoro stiže",
-        connector: "I",
-        countdownTitle: "Do našeg dana",
-        days: "Dana",
-        hours: "Sati",
-        minutes: "Minuta",
-        today: "Danas je naš dan",
-        addCalendar: "Dodaj u kalendar",
-        calendarNote: "Sačuvajte datum za naš poseban dan.",
-        calendarTitle: `Sačuvajte datum - ${brideName} & ${groomName}`,
-        ariaOpen: "Otvori Save the Date pismo",
-      };
+    : isCyrillic
+      ? {
+          eyebrow: "ЗАЈЕДНО СА СВОЈИМ ПОРОДИЦАМА",
+          introHint: "Додирните да отворите писмо",
+          opening: "Отварамо писмо…",
+          message: "МОЛИМО ВАС ДА САЧУВАТЕ ДАТУМ НАШЕГ ВЕНЧАЊА",
+          signature: "Свечана позивница ускоро",
+          connector: "И",
+          countdownTitle: "До нашег дана",
+          days: "Дана",
+          hours: "Сати",
+          minutes: "Минута",
+          today: "Данас је наш дан",
+          addCalendar: "Додај у календар",
+          calendarNote: "Сачувајте датум за наш посебан дан.",
+          calendarTitle: `Сачувајте датум - ${brideName} & ${groomName}`,
+          ariaOpen: "Отвори Save the Date писмо",
+        }
+      : {
+          eyebrow: "ZAJEDNO SA SVOJIM PORODICAMA",
+          introHint: "Dodirnite da otvorite pismo",
+          opening: "Otvaramo pismo…",
+          message: "MOLIMO VAS DA SAČUVATE DATUM NAŠEG VENČANJA",
+          signature: "Svečana pozivnica uskoro stiže",
+          connector: "I",
+          countdownTitle: "Do našeg dana",
+          days: "Dana",
+          hours: "Sati",
+          minutes: "Minuta",
+          today: "Danas je naš dan",
+          addCalendar: "Dodaj u kalendar",
+          calendarNote: "Sačuvajte datum za naš poseban dan.",
+          calendarTitle: `Sačuvajte datum - ${brideName} & ${groomName}`,
+          ariaOpen: "Otvori Save the Date pismo",
+        };
 
   /* =====================================================
      CONFIG
@@ -347,6 +389,33 @@ function SaveTheDateEnvelopeVideo({
   const videoPoster = config.videoPoster || "";
   const videoPosition = config.videoPosition || "center center";
   const videoMuted = config.videoMuted !== false;
+
+  /*
+    Safety limits:
+    - assetPreloadTimeoutMs: do not leave the intro locked forever
+    - videoWatchdogMs: absolute fallback if the browser never fires ended/error
+    - videoStallTimeoutMs: skip a video that remains stalled/waiting too long
+  */
+  const assetPreloadTimeoutMs = clampNumber(
+    config.assetPreloadTimeoutMs,
+    6000,
+    2500,
+    20000
+  );
+
+  const videoWatchdogMs = clampNumber(
+    config.videoWatchdogMs,
+    18000,
+    12000,
+    180000
+  );
+
+  const videoStallTimeoutMs = clampNumber(
+    config.videoStallTimeoutMs,
+    8000,
+    4000,
+    30000
+  );
 
   const stitchedCardImage =
     config.stitchedCardImage ||
@@ -441,65 +510,149 @@ function SaveTheDateEnvelopeVideo({
   const openTimerRef = useRef(null);
   const stitchTimerRef = useRef(null);
   const monogramTimerRef = useRef(null);
+
+  const videoWatchdogRef = useRef(null);
+  const videoStallTimerRef = useRef(null);
+
   const videoRef = useRef(null);
 
   /* =====================================================
-     PRELOAD ENVELOPE
+     PRELOAD — SAFE / NON-BLOCKING
   ===================================================== */
 
   useEffect(() => {
     let active = true;
-    let loaded = 0;
 
     setAssets("loading");
     setPhase("closed");
+
     openedRef.current = false;
     videoFinishedRef.current = false;
 
     if (videoRef.current) {
       videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+
+      try {
+        videoRef.current.currentTime = 0;
+      } catch {
+        // Metadata may not be available yet on some mobile browsers.
+      }
     }
 
-    const preloadSources = [
+    /*
+      These three assets are required for the envelope sequence.
+      If one fails, we do NOT leave the user stuck. The click will
+      gracefully skip the envelope/card and continue to the video.
+    */
+    const essentialSources = [
       envelopeBottomImage,
       envelopeTopImage,
       stitchedCardImage,
     ].filter(Boolean);
 
-    const markLoaded = () => {
-      loaded += 1;
+    /*
+      These are only warmed into the browser cache.
+      Their failure must never block the intro.
+    */
+    const warmSources = [
+      videoPoster,
+      cardArtImage,
+      backgroundImage,
+      cardTextureImage,
+    ]
+      .filter(Boolean)
+      .filter(
+        (src, index, array) =>
+          array.indexOf(src) === index &&
+          !essentialSources.includes(src)
+      );
 
-      if (active && loaded === preloadSources.length) {
-        setAssets("ready");
+    let settled = 0;
+    let failed = 0;
+
+    const finishEssential = (didFail = false) => {
+      if (!active) return;
+
+      settled += 1;
+
+      if (didFail) {
+        failed += 1;
+      }
+
+      if (settled >= essentialSources.length) {
+        setAssets(failed > 0 ? "error" : "ready");
       }
     };
 
-    const images = preloadSources.map((src) => {
+    const essentialImages = essentialSources.map((src) => {
+      const image = new Image();
+      let done = false;
+
+      const finish = (didFail) => {
+        if (done) return;
+
+        done = true;
+        finishEssential(didFail);
+      };
+
+      image.onload = () => finish(false);
+      image.onerror = () => finish(true);
+      image.src = src;
+
+      /*
+        Cached images can already be complete before the handlers
+        get a chance to fire consistently on every browser.
+      */
+      if (image.complete) {
+        if (image.naturalWidth > 0) {
+          finish(false);
+        } else {
+          finish(true);
+        }
+      }
+
+      return image;
+    });
+
+    const warmImages = warmSources.map((src) => {
       const image = new Image();
 
-      image.onload = markLoaded;
-      image.onerror = () => {
-        if (active) {
-          setAssets("error");
-        }
-      };
+      image.onload = null;
+      image.onerror = null;
       image.src = src;
 
       return image;
     });
 
+    if (essentialSources.length === 0) {
+      setAssets("ready");
+    }
+
+    /*
+      Critical fallback:
+      never leave the open button disabled forever on a bad/slow
+      connection. "error" means openEnvelope will skip directly
+      to video/final instead of freezing.
+    */
     const fallbackTimer = window.setTimeout(() => {
-      if (active && loaded !== preloadSources.length) {
-        setAssets("error");
-      }
-    }, 9000);
+      if (!active) return;
+
+      setAssets((current) =>
+        current === "loading" ? "error" : current
+      );
+    }, assetPreloadTimeoutMs);
 
     return () => {
       active = false;
+
       window.clearTimeout(fallbackTimer);
 
-      images.forEach((image) => {
+      essentialImages.forEach((image) => {
+        image.onload = null;
+        image.onerror = null;
+      });
+
+      warmImages.forEach((image) => {
         image.onload = null;
         image.onerror = null;
       });
@@ -508,7 +661,11 @@ function SaveTheDateEnvelopeVideo({
     envelopeBottomImage,
     envelopeTopImage,
     stitchedCardImage,
-    videoSrc,
+    videoPoster,
+    cardArtImage,
+    backgroundImage,
+    cardTextureImage,
+    assetPreloadTimeoutMs,
   ]);
 
   /* =====================================================
@@ -548,6 +705,18 @@ function SaveTheDateEnvelopeVideo({
      CLEANUP
   ===================================================== */
 
+  const clearVideoSafetyTimers = useCallback(() => {
+    if (videoWatchdogRef.current) {
+      window.clearTimeout(videoWatchdogRef.current);
+      videoWatchdogRef.current = null;
+    }
+
+    if (videoStallTimerRef.current) {
+      window.clearTimeout(videoStallTimerRef.current);
+      videoStallTimerRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     return () => {
       if (openTimerRef.current) {
@@ -561,11 +730,20 @@ function SaveTheDateEnvelopeVideo({
       if (monogramTimerRef.current) {
         window.clearTimeout(monogramTimerRef.current);
       }
+
+      if (videoWatchdogRef.current) {
+        window.clearTimeout(videoWatchdogRef.current);
+      }
+
+      if (videoStallTimerRef.current) {
+        window.clearTimeout(videoStallTimerRef.current);
+      }
     };
   }, []);
 
   /* =====================================================
      VIDEO -> MONOGRAM -> FINAL
+     Hardened for Safari / slow mobile connections.
   ===================================================== */
 
   const finishVideo = useCallback(() => {
@@ -573,10 +751,16 @@ function SaveTheDateEnvelopeVideo({
 
     videoFinishedRef.current = true;
 
+    clearVideoSafetyTimers();
+
     const video = videoRef.current;
 
     if (video) {
-      video.pause();
+      try {
+        video.pause();
+      } catch {
+        // Ignore browser-specific media errors during cleanup.
+      }
     }
 
     setPhase("monogram");
@@ -588,13 +772,79 @@ function SaveTheDateEnvelopeVideo({
     monogramTimerRef.current = window.setTimeout(() => {
       setPhase("revealed");
     }, monogramDurationMs);
-  }, [monogramDurationMs]);
+  }, [clearVideoSafetyTimers, monogramDurationMs]);
+
+  const scheduleVideoWatchdog = useCallback(
+    (video) => {
+      if (videoWatchdogRef.current) {
+        window.clearTimeout(videoWatchdogRef.current);
+      }
+
+      /*
+        If duration is known, always allow the full video plus a safety
+        margin. Otherwise use the configured watchdog.
+      */
+      const durationMs =
+        video &&
+        Number.isFinite(video.duration) &&
+        video.duration > 0
+          ? Math.ceil(video.duration * 1000) + 8000
+          : 0;
+
+      const timeoutMs = Math.max(
+        videoWatchdogMs,
+        durationMs
+      );
+
+      videoWatchdogRef.current = window.setTimeout(() => {
+        finishVideo();
+      }, timeoutMs);
+    },
+    [finishVideo, videoWatchdogMs]
+  );
+
+  const clearVideoStallTimer = useCallback(() => {
+    if (videoStallTimerRef.current) {
+      window.clearTimeout(videoStallTimerRef.current);
+      videoStallTimerRef.current = null;
+    }
+  }, []);
+
+  const handleVideoWaiting = useCallback(() => {
+    if (videoFinishedRef.current) return;
+
+    clearVideoStallTimer();
+
+    videoStallTimerRef.current = window.setTimeout(() => {
+      finishVideo();
+    }, videoStallTimeoutMs);
+  }, [
+    clearVideoStallTimer,
+    finishVideo,
+    videoStallTimeoutMs,
+  ]);
+
+  const handleVideoPlaying = useCallback(() => {
+    clearVideoStallTimer();
+  }, [clearVideoStallTimer]);
+
+  const handleVideoLoadedMetadata = useCallback(() => {
+    const video = videoRef.current;
+
+    if (!video || videoFinishedRef.current) return;
+
+    scheduleVideoWatchdog(video);
+  }, [scheduleVideoWatchdog]);
 
   const startVideo = useCallback(() => {
     if (!videoSrc) {
       finishVideo();
       return;
     }
+
+    videoFinishedRef.current = false;
+
+    clearVideoSafetyTimers();
 
     setPhase("video");
 
@@ -606,20 +856,42 @@ function SaveTheDateEnvelopeVideo({
         return;
       }
 
-      video.currentTime = 0;
+      try {
+        video.currentTime = 0;
+      } catch {
+        // Some Safari versions reject currentTime before metadata.
+      }
+
       video.muted = videoMuted;
 
-      const playPromise = video.play();
+      /*
+        Start the watchdog before play(). Even if the promise never
+        settles correctly, the intro still cannot remain stuck forever.
+      */
+      scheduleVideoWatchdog(video);
+
+      const tryPlay = () => {
+        try {
+          return video.play();
+        } catch {
+          return Promise.reject(
+            new Error("Video playback failed")
+          );
+        }
+      };
+
+      const playPromise = tryPlay();
 
       if (playPromise?.catch) {
         playPromise.catch(() => {
           /*
-            Mobile browsers can block delayed autoplay with sound.
-            Retry muted so the transition never gets stuck.
+            Delayed autoplay may lose the original user gesture.
+            Retry muted. If even muted playback fails, continue to
+            monogram/final instead of leaving a black screen.
           */
           video.muted = true;
 
-          const mutedPlayPromise = video.play();
+          const mutedPlayPromise = tryPlay();
 
           if (mutedPlayPromise?.catch) {
             mutedPlayPromise.catch(finishVideo);
@@ -627,7 +899,13 @@ function SaveTheDateEnvelopeVideo({
         });
       }
     });
-  }, [finishVideo, videoMuted, videoSrc]);
+  }, [
+    clearVideoSafetyTimers,
+    finishVideo,
+    scheduleVideoWatchdog,
+    videoMuted,
+    videoSrc,
+  ]);
 
   const startStitchedCard = useCallback(() => {
     setPhase("stitch-card");
@@ -641,7 +919,7 @@ function SaveTheDateEnvelopeVideo({
     }, stitchCardDurationMs);
   }, [startVideo, stitchCardDurationMs]);
 
-    const openEnvelope = useCallback(() => {
+  const openEnvelope = useCallback(() => {
     if (openedRef.current || assets === "loading") return;
 
     // Muzika kreće odmah na klik za otvaranje pisma.
@@ -685,7 +963,7 @@ function SaveTheDateEnvelopeVideo({
       eventType: "save-the-date",
       eventTitle: config.calendarTitle || copy.calendarTitle,
       allDay: true,
-      language: "sr",
+      language: isGerman ? "de" : "sr",
     });
   }, [
     brideName,
@@ -698,6 +976,7 @@ function SaveTheDateEnvelopeVideo({
     details.mapLink,
     copy.calendarNote,
     copy.calendarTitle,
+    isGerman,
   ]);
 
   /* =====================================================
@@ -740,7 +1019,7 @@ function SaveTheDateEnvelopeVideo({
 
   const monthLabel = dateParts.fallback
     ? ""
-    : getMonthLabel(dateParts.month, isCyrillic);
+    : getMonthLabel(dateParts.month, isCyrillic, isGerman);
 
   const formattedDateLine = dateParts.fallback
     ? weddingDate
@@ -748,11 +1027,19 @@ function SaveTheDateEnvelopeVideo({
 
   const venueLabel = String(venue || "").trim().toUpperCase();
 
-  const stitchConnector = isCyrillic ? "и" : "i";
+  const stitchConnector = isGerman
+    ? "und"
+    : isCyrillic
+      ? "и"
+      : "i";
+
   const stitchedNames = `${brideName} ${stitchConnector} ${groomName}`;
-  const stitchedSaveDate = isCyrillic
-    ? "Сачувајте датум"
-    : "Sačuvajte datum";
+
+  const stitchedSaveDate = isGerman
+    ? "Termin vormerken"
+    : isCyrillic
+      ? "Сачувајте датум"
+      : "Sačuvajte datum";
   const stitchedDate = dateParts.fallback
     ? weddingDate
     : `${dateParts.day} / ${dateParts.month} / ${dateParts.year}`;
@@ -854,7 +1141,7 @@ function SaveTheDateEnvelopeVideo({
 
             <div
               className="std-envelope-save__names"
-              aria-label={`${brideName} i ${groomName}`}
+              aria-label={`${brideName} ${isGerman ? "und" : isCyrillic ? "и" : "i"} ${groomName}`}
             >
               <StitchText
                 text={brideName}
@@ -1009,6 +1296,11 @@ function SaveTheDateEnvelopeVideo({
               preload="auto"
               playsInline
               muted={videoMuted}
+              onLoadedMetadata={handleVideoLoadedMetadata}
+              onCanPlay={handleVideoPlaying}
+              onPlaying={handleVideoPlaying}
+              onWaiting={handleVideoWaiting}
+              onStalled={handleVideoWaiting}
               onEnded={finishVideo}
               onError={finishVideo}
             />

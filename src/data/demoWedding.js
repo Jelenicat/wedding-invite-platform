@@ -10440,7 +10440,7 @@ musicSrc: "/music/mina-dragan.mp3",
   type: "save-the-date",
   template: "save-the-date-envelope-video",
   script: "latin",
- musicSrc: "/music/teodora-petar.mp3",
+ musicSrc: "/music/andjela-andrija.mp3",
   brideName: "Andjela",
   groomName: "Andrija",
 
@@ -10566,6 +10566,140 @@ musicSrc: "/music/mina-dragan.mp3",
     },
   },
 },
+{
+  slug: "save-andjela-andrija-6",
+
+  type: "save-the-date",
+  template: "save-the-date-envelope-video",
+  script: "latin",
+
+  musicSrc: "/music/andjela-andrija.mp3",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  venue: "Hotel Izvor, Aranđelovac",
+
+  details: {
+    ...createDetails({
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+      venue: "Hotel Izvor, Aranđelovac",
+    }),
+
+    saveTheDate: {
+      /* ===============================
+         KOVERTA
+      ================================ */
+
+      envelopeTopImage:
+        "/images/save-the-date/envelope/ana-nikola-video-top.png",
+
+      envelopeBottomImage:
+        "/images/save-the-date/envelope/ana-nikola-video-bottom.png",
+
+      /* ===============================
+         VIDEO POSLE OTVARANJA PISMA
+      ================================ */
+
+      videoSrc:
+        "/videos/save-the-date/ana-nikola.mp4",
+
+      videoPoster:
+        "/images/save-the-date/ana-nikola-video-poster.jpg",
+
+      videoPosition:
+        "center center",
+
+      videoMuted: true,
+
+      /* ===============================
+         POSLE VIDEA — INICIJALI
+      ================================ */
+
+      monogram: "AA",
+
+      monogramDurationMs: 2300,
+
+      monogramColor:
+        "#ffffff",
+
+      monogramBackground:
+        "rgba(11, 10, 9, 0.78)",
+
+      /* ===============================
+         FINALNI SAVE THE DATE
+      ================================ */
+
+      cardArtImage:
+        "/images/save-the-date/andjela-andrija.png",
+
+      pageBackground:
+        "#000000",
+
+      paperColor:
+        "#fbf6ef",
+
+      inkColor:
+        "#6d5b4e",
+
+      mutedColor:
+        "#8c7462",
+
+      accentColor:
+        "#b79a72",
+
+      /* ===============================
+         COUNTDOWN
+      ================================ */
+
+      showCountdown: true,
+
+      countdownTitle:
+        "Bis zu unserem großen Tag",
+
+      /* ===============================
+         KALENDAR
+      ================================ */
+
+      showCalendarButton: true,
+
+      dateISO:
+        "2027-07-31",
+
+      calendarTitle:
+        "Save the Date - Andjela & Andrija",
+
+      calendarDescription:
+        "Merkt euch den Termin für unseren besonderen Tag vor.",
+
+      /* ===============================
+         TEKST — NEMAČKI
+      ================================ */
+
+      eyebrow:
+        "GEMEINSAM MIT UNSEREN FAMILIEN",
+
+      message:
+        "BITTE MERKT EUCH DEN TERMIN UNSERER HOCHZEIT VOR",
+
+      signature:
+        "Die offizielle Einladung folgt in Kürze",
+
+      connector:
+        " ",
+
+      /* ===============================
+         INTRO
+      ================================ */
+
+      envelopeHint:
+        "Tippt, um den Umschlag zu öffnen",
+    },
+  },
+},
+
 {
   slug: "andjela-andrija",
 

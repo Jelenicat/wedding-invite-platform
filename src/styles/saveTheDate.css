@@ -16052,3 +16052,88 @@ background: #fbf8f3;
     font-size: clamp(14px, 3.8vw, 18px) !important;
   }
 }
+
+/* =====================================================
+   FINAL STITCH — WORD SPACING FIX
+   da ne izgleda kao jedna reč
+===================================================== */
+
+/* svaka "reč" koju StitchText pravi dobija mali razmak */
+.std-envelope-save__final-stitch.is-wrap
+.std-envelope-video-save__stitch-word {
+  margin-right: 0.22em;
+}
+
+.std-envelope-save__final-stitch.is-wrap
+.std-envelope-video-save__stitch-word:last-child {
+  margin-right: 0;
+}
+
+
+/* gornji mali tekst */
+.std-envelope-save__eyebrow {
+  line-height: 1.45 !important;
+  letter-spacing: 0.18em !important;
+  word-spacing: 0.22em !important;
+}
+
+
+/* srednja poruka */
+.std-envelope-save__message {
+  line-height: 1.48 !important;
+  letter-spacing: 0.08em !important;
+  word-spacing: 0.24em !important;
+}
+
+
+/* mesto / venue */
+.std-envelope-save__venue {
+  line-height: 1.38 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.22em !important;
+}
+
+
+/* ako treba da svi ti redovi budu lepše centrirani */
+.std-envelope-save__eyebrow,
+.std-envelope-save__message,
+.std-envelope-save__venue {
+  text-align: center;
+}
+
+/* =====================================================
+   SIGNATURE — RIGHT SIDE CLIP FIX
+===================================================== */
+
+.std-envelope-save__signature {
+  line-height: 1.26 !important;
+  overflow: visible !important;
+  text-align: center;
+}
+
+.std-envelope-save__signature
+.std-envelope-save__final-stitch {
+  display: inline-block !important;
+  max-width: none !important;
+  overflow: visible !important;
+
+  padding-right: 0.22em;
+  margin-right: -0.02em;
+}
+
+.std-envelope-save__signature
+.std-envelope-video-save__stitch-ink {
+  overflow: visible !important;
+
+  padding:
+    0.26em
+    0.24em
+    0.34em
+    0.08em;
+
+  margin:
+    -0.26em
+    -0.24em
+    -0.34em
+    -0.08em;
+}
