@@ -16137,3 +16137,282 @@ background: #fbf8f3;
     -0.34em
     -0.08em;
 }
+
+/* =========================================================
+   SAVE THE DATE — GERMAN TEXT / UMLAUT CLIP FIX
+   Applies ONLY when the component has .is-german.
+   ========================================================= */
+
+/*
+  German copy contains umlauts (Ä, Ö, Ü, ä, ö, ü) and longer words.
+  The stitch reveal must have extra room above/below and on both sides.
+*/
+
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-text,
+
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-word,
+
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-ink,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__final-stitch,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__message,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__venue,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__signature,
+
+.std-envelope-video-save.is-german
+.std-envelope-save__names {
+  overflow: visible !important;
+}
+
+
+/* Give accents and script flourishes physical breathing room. */
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-ink {
+  display: inline-block;
+
+  padding:
+    0.42em
+    0.28em
+    0.48em;
+
+  margin:
+    -0.42em
+    -0.28em
+    -0.48em;
+
+  overflow: visible !important;
+}
+
+
+/* Wrapped German sentences: keep real visual spacing between words. */
+.std-envelope-video-save.is-german
+.std-envelope-save__final-stitch.is-wrap
+.std-envelope-video-save__stitch-word {
+  margin-right: 0.24em;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-save__final-stitch.is-wrap
+.std-envelope-video-save__stitch-word:last-child {
+  margin-right: 0;
+}
+
+
+/* =========================================================
+   INTRO OVAL — German copy is wider
+   ========================================================= */
+
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-copy {
+  inset:
+    24%
+    14%
+    21% !important;
+
+  overflow: visible !important;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-names {
+  font-size: clamp(25px, 6.7vw, 39px) !important;
+  line-height: 1.14 !important;
+
+  white-space: nowrap;
+  overflow: visible !important;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-title {
+  font-size: clamp(22px, 5.8vw, 32px) !important;
+  line-height: 1.16 !important;
+
+  overflow: visible !important;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-video-save__stitch-date {
+  line-height: 1.2 !important;
+  overflow: visible !important;
+}
+
+
+/* =========================================================
+   FINAL CARD — German text
+   ========================================================= */
+
+.std-envelope-video-save.is-german
+.std-envelope-save__eyebrow {
+  line-height: 1.5 !important;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-save__message {
+  line-height: 1.5 !important;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-save__venue {
+  line-height: 1.45 !important;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-save__signature {
+  line-height: 1.36 !important;
+
+  padding-left: 0.18em;
+  padding-right: 0.18em;
+
+  overflow: visible !important;
+}
+
+.std-envelope-video-save.is-german
+.std-envelope-save__signature
+.std-envelope-save__final-stitch {
+  max-width: none !important;
+
+  padding-left: 0.18em;
+  padding-right: 0.30em;
+
+  overflow: visible !important;
+}
+
+
+/* =========================================================
+   STITCH REVEAL — extra vertical + horizontal room
+   ========================================================= */
+
+.std-envelope-video-save.is-german[data-phase="stitch-card"]
+.std-envelope-video-save__stitch-card
+.std-envelope-video-save__stitch-ink {
+  animation-name: stev-stitch-reveal-german !important;
+}
+
+.std-envelope-video-save.is-german[data-phase="revealed"]
+.std-envelope-save__final-stitch
+.std-envelope-video-save__stitch-ink {
+  animation-name: stev-final-stitch-reveal-german !important;
+}
+
+
+@keyframes stev-stitch-reveal-german {
+  0% {
+    opacity: 0;
+
+    clip-path:
+      inset(
+        -0.50em
+        100%
+        -0.55em
+        -0.25em
+      );
+
+    filter: blur(1px);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+
+    clip-path:
+      inset(
+        -0.50em
+        -0.35em
+        -0.55em
+        -0.25em
+      );
+
+    filter: blur(0);
+  }
+}
+
+
+@keyframes stev-final-stitch-reveal-german {
+  0% {
+    opacity: 0;
+
+    clip-path:
+      inset(
+        -0.50em
+        100%
+        -0.55em
+        -0.25em
+      );
+
+    filter: blur(1px);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  68% {
+    filter: blur(0.2px);
+  }
+
+  100% {
+    opacity: 1;
+
+    clip-path:
+      inset(
+        -0.50em
+        -0.35em
+        -0.55em
+        -0.25em
+      );
+
+    filter: blur(0);
+  }
+}
+
+
+/* Mobile: German text needs a touch more horizontal space. */
+@media (max-width: 600px) {
+  .std-envelope-video-save.is-german
+  .std-envelope-video-save__stitch-copy {
+    inset:
+      24.5%
+      12.5%
+      21.5% !important;
+  }
+
+  .std-envelope-video-save.is-german
+  .std-envelope-video-save__stitch-names {
+    font-size: clamp(23px, 6.4vw, 35px) !important;
+  }
+
+  .std-envelope-video-save.is-german
+  .std-envelope-video-save__stitch-title {
+    font-size: clamp(20px, 5.5vw, 29px) !important;
+  }
+
+  .std-envelope-video-save.is-german
+  .std-envelope-save__signature {
+    line-height: 1.4 !important;
+  }
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .std-envelope-video-save.is-german
+  .std-envelope-video-save__stitch-ink {
+    clip-path: none !important;
+    filter: none !important;
+  }
+}

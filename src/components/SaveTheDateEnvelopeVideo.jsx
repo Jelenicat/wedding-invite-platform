@@ -10,6 +10,7 @@ import {
 import "../styles/saveTheDate.css";
 
 
+
 import { addToCalendar } from "../utils/calendar";
 
 /* =====================================================
@@ -1115,7 +1116,7 @@ function SaveTheDateEnvelopeVideo({
     <section
       className={`std-envelope-save std-envelope-video-save ${
         isCyrillic ? "is-cyrillic" : ""
-      }`}
+      } ${isGerman ? "is-german" : ""}`}
       data-phase={phase}
       style={style}
     >
