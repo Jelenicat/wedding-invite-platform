@@ -23,6 +23,18 @@ export default function MonogramInvitationCard({
 }) {
   const events = details?.events || [];
 
+  const isAndjelaAndrijaMonogram =
+    slug === "andjela-andrija-2" ||
+    slug === "anjela-andrija-2" ||
+    slug === "andjela-andrija-3";
+
+  const childhoodImage =
+    details?.childhoodImage || "";
+
+  const childhoodText =
+    details?.childhoodText ||
+    "Ovo dvoje tada još nisu znali šta ih čeka.";
+
   const brideInitial = getInitial(brideName);
   const groomInitial = getInitial(groomName);
 
@@ -187,6 +199,10 @@ export default function MonogramInvitationCard({
     <section
       className={`editorial-card editorial-card--monogram ${
         slug ? `editorial-card--${slug}` : ""
+      } ${
+        isAndjelaAndrijaMonogram
+          ? "editorial-card--andjela-andrija-monogram-special"
+          : ""
       }`}
       style={{
         "--editorial-monogram-bg":
@@ -222,14 +238,11 @@ export default function MonogramInvitationCard({
             duration: 0.8,
           }}
         >
-
           {/* =========================================
               HERO
           ========================================= */}
 
           <section className="editorial-hero editorial-monogram-hero">
-
-            {/* INICIJALI */}
 
             <motion.div
               className="editorial-monogram-initials"
@@ -260,9 +273,6 @@ export default function MonogramInvitationCard({
                 {groomInitial}
               </span>
             </motion.div>
-
-
-            {/* IMENA */}
 
             <motion.div
               className="editorial-monogram-script-names"
@@ -295,9 +305,6 @@ export default function MonogramInvitationCard({
               </div>
             </motion.div>
 
-
-            {/* WELCOME TEXT */}
-
             <motion.p
               className="editorial-monogram-welcome editorial-monogram-welcome--stacked"
               initial={{
@@ -320,9 +327,6 @@ export default function MonogramInvitationCard({
                 "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana."}
             </motion.p>
 
-
-            {/* DATUM LABEL */}
-
             <motion.div
               className="editorial-monogram-date-label"
               initial={{
@@ -343,9 +347,6 @@ export default function MonogramInvitationCard({
             >
               DATUM
             </motion.div>
-
-
-            {/* DATUM */}
 
             <motion.div
               className="editorial-hero-date editorial-monogram-big-date"
@@ -368,7 +369,6 @@ export default function MonogramInvitationCard({
               {weddingDate}
             </motion.div>
           </section>
-
 
           {/* =========================================
               LOKACIJA
@@ -415,12 +415,10 @@ export default function MonogramInvitationCard({
             )}
 
             <div className="editorial-location-text">
-
               {locationText ? (
                 <div className="editorial-location-stack">
 
                   <div className="editorial-location-name-row">
-
                     {details?.mapLink ? (
                       <a
                         href={details.mapLink}
@@ -435,7 +433,6 @@ export default function MonogramInvitationCard({
                         {locationText}
                       </span>
                     )}
-
                   </div>
 
                   {details?.mapLink && (
@@ -461,10 +458,8 @@ export default function MonogramInvitationCard({
                   Lokacija uskoro
                 </p>
               )}
-
             </div>
           </section>
-
 
           {/* =========================================
               RASPORED
@@ -534,7 +529,6 @@ export default function MonogramInvitationCard({
                             index * 0.07,
                         }}
                       >
-
                         {event.time && (
                           <div className="editorial-time">
                             {event.time}
@@ -577,6 +571,13 @@ export default function MonogramInvitationCard({
                               )
                           )}
 
+                        {isAndjelaAndrijaMonogram &&
+                          event.note && (
+                            <div className="editorial-time-note">
+                              {event.note}
+                            </div>
+                          )}
+
                       </motion.div>
                     );
                   }
@@ -586,7 +587,6 @@ export default function MonogramInvitationCard({
             </section>
           )}
 
-
           {/* =========================================
               DRESS CODE
           ========================================= */}
@@ -594,31 +594,55 @@ export default function MonogramInvitationCard({
           {shouldShowDressCode && (
             <section className="editorial-section editorial-dress-section">
 
-              <motion.img
-                src="/icons/dresscode.svg"
-                alt=""
-                className="editorial-monogram-section-icon editorial-monogram-dress-icon"
-                initial={{
-                  opacity: 0,
-                  scale: 0.85,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.6,
-                }}
-              />
+              {!isAndjelaAndrijaMonogram && (
+                <motion.img
+                  src="/icons/dresscode.svg"
+                  alt=""
+                  className="editorial-monogram-section-icon editorial-monogram-dress-icon"
+                  initial={{
+                    opacity: 0,
+                    scale: 0.85,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.6,
+                  }}
+                />
+              )}
+
+              {isAndjelaAndrijaMonogram && (
+                <div className="editorial-dress-eyebrow">
+                  DRESS CODE
+                </div>
+              )}
 
               <h2 className="editorial-title editorial-dress-title">
-                KOD
-                <br />
-                OBLAČENJA
+                {isAndjelaAndrijaMonogram ? (
+                  <>
+                    LETNJA
+                    <br />
+                    ELEGANCIJA
+                  </>
+                ) : (
+                  <>
+                    KOD
+                    <br />
+                    OBLAČENJA
+                  </>
+                )}
               </h2>
+
+              {isAndjelaAndrijaMonogram && (
+                <div className="editorial-dress-script-special">
+                  summer evening
+                </div>
+              )}
 
               {details?.dressCodeNote && (
                 <div className="editorial-dress-copy">
@@ -699,7 +723,6 @@ export default function MonogramInvitationCard({
             </section>
           )}
 
-
           {/* =========================================
               RSVP
           ========================================= */}
@@ -710,8 +733,8 @@ export default function MonogramInvitationCard({
             brideName={brideName}
             groomName={groomName}
             note={details?.note}
+            rsvpClosed={details?.rsvpClosed}
           />
-
 
           {/* =========================================
               COUNTDOWN
@@ -725,6 +748,57 @@ export default function MonogramInvitationCard({
             script={details?.script || "latin"}
             slug={slug}
           />
+
+          {/* =========================================
+              ANDJELA & ANDRIJA
+              CHILDHOOD ENDING
+          ========================================= */}
+
+          {isAndjelaAndrijaMonogram &&
+            childhoodImage && (
+              <section className="editorial-childhood-section editorial-childhood-section--ending">
+
+                <motion.div
+                  className="editorial-childhood-inner"
+                  initial={{
+                    opacity: 0,
+                    y: 24,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.25,
+                  }}
+                  transition={{
+                    duration: 0.8,
+                  }}
+                >
+                  <div className="editorial-childhood-small-title">
+                    NEKADA DAVNO
+                  </div>
+
+                  <div className="editorial-childhood-figure">
+                    <img
+                      src={childhoodImage}
+                      alt={`${brideName} i ${groomName} kao mali`}
+                      className="editorial-childhood-image"
+                    />
+                  </div>
+
+                  <p className="editorial-childhood-text">
+                    {childhoodText}
+                  </p>
+
+                  <div className="editorial-childhood-heart">
+                    ♡
+                  </div>
+
+                </motion.div>
+              </section>
+            )}
 
         </motion.div>
       </div>

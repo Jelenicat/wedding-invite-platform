@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import EditorialRSVP from "./EditorialRSVP";
 import EditorialCountdown from "./EditorialCountdown";
 
@@ -13,7 +14,18 @@ export default function EditorialInvitationCard({
   type,
 }) {
   const events = details?.events || [];
+
   const isAleksandraAleksa = slug === "aleksandra-aleksa";
+
+  const isAndjelaAndrija =
+    slug === "andjela-andrija" ||
+    slug === "andjela-andrija-1";
+
+  const childhoodImage = details?.childhoodImage || "";
+
+  const childhoodText =
+    details?.childhoodText ||
+    "Ovo dvoje tada još nisu znali šta ih čeka.";
 
   const dressWomen = details?.dressCodeWomen || "";
   const dressMen = details?.dressCodeMen || "";
@@ -121,6 +133,10 @@ export default function EditorialInvitationCard({
     <section
       className={`editorial-card ${
         slug ? `editorial-card--${slug}` : ""
+      } ${
+        slug === "andjela-andrija-1"
+          ? "editorial-card--andjela-andrija"
+          : ""
       }`}
     >
       <div className="editorial-card-shell">
@@ -131,7 +147,10 @@ export default function EditorialInvitationCard({
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
-          {/* UVOD */}
+          {/* =========================================
+              UVOD
+          ========================================= */}
+
           <section className="editorial-hero">
             {isAleksandraAleksa ? (
               <>
@@ -141,7 +160,11 @@ export default function EditorialInvitationCard({
 
                 <div className="editorial-hero-names">
                   <span>{brideName}</span>
-                  <span className="editorial-hero-heart">♡</span>
+
+                  <span className="editorial-hero-heart">
+                    ♡
+                  </span>
+
                   <span>{groomName}</span>
                 </div>
 
@@ -183,10 +206,18 @@ export default function EditorialInvitationCard({
             )}
           </section>
 
-          {/* LOKACIJA */}
+          {/* =========================================
+              LOKACIJA
+          ========================================= */}
+
           <section className="editorial-section editorial-location-section">
-            <h2 className="editorial-title">LOKACIJA</h2>
-            <div className="editorial-script">restoran</div>
+            <h2 className="editorial-title">
+              LOKACIJA
+            </h2>
+
+            <div className="editorial-script">
+              restoran
+            </div>
 
             {image1 && (
               <div className="editorial-location-image-wrap">
@@ -239,11 +270,19 @@ export default function EditorialInvitationCard({
             </div>
           </section>
 
-          {/* RASPORED */}
+          {/* =========================================
+              RASPORED
+          ========================================= */}
+
           {!!events.length && (
             <section className="editorial-section editorial-timing-section">
-              <h2 className="editorial-title">RASPORED</h2>
-              <div className="editorial-script">raspored</div>
+              <h2 className="editorial-title">
+                RASPORED
+              </h2>
+
+              <div className="editorial-script">
+                raspored
+              </div>
 
               <div className="editorial-timeline">
                 <div className="editorial-timeline-line" />
@@ -292,6 +331,13 @@ export default function EditorialInvitationCard({
                             {event.location}
                           </div>
                         ))}
+
+                      {isAndjelaAndrija &&
+                        event.note && (
+                          <div className="editorial-time-note">
+                            {event.note}
+                          </div>
+                        )}
                     </div>
                   );
                 })}
@@ -299,18 +345,45 @@ export default function EditorialInvitationCard({
             </section>
           )}
 
-          {/* KOD OBLAČENJA */}
+          {/* =========================================
+              KOD OBLAČENJA
+          ========================================= */}
+
           {shouldShowDressCode && (
             <section className="editorial-section editorial-dress-section">
+              {isAndjelaAndrija && (
+                <div className="editorial-dress-eyebrow">
+                  DRESS CODE
+                </div>
+              )}
+
               <h2 className="editorial-title editorial-dress-title">
-                KOD
-                <br />
-                OBLAČENJA
+                {isAndjelaAndrija ? (
+                  <>
+                    LETNJA
+                    <br />
+                    ELEGANCIJA
+                  </>
+                ) : (
+                  <>
+                    KOD
+                    <br />
+                    OBLAČENJA
+                  </>
+                )}
               </h2>
+
+              {isAndjelaAndrija && (
+                <div className="editorial-dress-script-special">
+                  summer evening
+                </div>
+              )}
 
               {details?.dressCodeNote && (
                 <div className="editorial-dress-copy">
-                  <p>{details.dressCodeNote}</p>
+                  <p>
+                    {details.dressCodeNote}
+                  </p>
                 </div>
               )}
 
@@ -367,23 +440,31 @@ export default function EditorialInvitationCard({
                     </div>
                   )}
 
-                  {renderDressPalette(dressCodePalette)}
+                  {renderDressPalette(
+                    dressCodePalette
+                  )}
                 </>
               )}
             </section>
           )}
 
-          {/* POTVRDA DOLASKA */}
+          {/* =========================================
+              POTVRDA DOLASKA
+          ========================================= */}
+
           <EditorialRSVP
             slug={slug}
             eventType={type || "wedding"}
             brideName={brideName}
             groomName={groomName}
             note={details?.note}
-             rsvpClosed={details?.rsvpClosed}
+            rsvpClosed={details?.rsvpClosed}
           />
 
-          {/* ODBROJAVANJE */}
+          {/* =========================================
+              ODBROJAVANJE
+          ========================================= */}
+
           <EditorialCountdown
             targetDate={details?.dateISO}
             brideName={brideName}
@@ -392,6 +473,54 @@ export default function EditorialInvitationCard({
             script={details?.script || "latin"}
             slug={slug}
           />
+
+          {/* =========================================
+              ANDJELA & ANDRIJA
+              ZAVRŠNI CHILDHOOD MOMENT
+          ========================================= */}
+
+          {isAndjelaAndrija && childhoodImage && (
+            <section className="editorial-childhood-section editorial-childhood-section--ending">
+              <motion.div
+                className="editorial-childhood-inner"
+                initial={{
+                  opacity: 0,
+                  y: 24,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.25,
+                }}
+                transition={{
+                  duration: 0.8,
+                }}
+              >
+                <div className="editorial-childhood-small-title">
+                  NEKADA DAVNO
+                </div>
+
+                <div className="editorial-childhood-figure">
+                  <img
+                    src={childhoodImage}
+                    alt={`${brideName} i ${groomName} kao mali`}
+                    className="editorial-childhood-image"
+                  />
+                </div>
+
+                <p className="editorial-childhood-text">
+                  {childhoodText}
+                </p>
+
+                <div className="editorial-childhood-heart">
+                  ♡
+                </div>
+              </motion.div>
+            </section>
+          )}
         </motion.div>
       </div>
     </section>

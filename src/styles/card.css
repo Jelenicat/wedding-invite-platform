@@ -26050,3 +26050,1375 @@ font-family: "Italianno", cursive;
     0 16px 36px rgba(0, 0, 0, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
+
+/* =========================================================
+   ANDJELA & ANDRIJA
+   MAGAZINE EDITORIAL
+   samo slug: andjela-andrija
+========================================================= */
+
+
+/* =========================================================
+   1. TIMELINE
+   linija ostaje, ali NE PRELAZI PREKO TEKSTA
+========================================================= */
+
+.editorial-card--andjela-andrija .editorial-timeline-line {
+  z-index: 0;
+}
+
+.editorial-card--andjela-andrija .editorial-timeline-item {
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-card--andjela-andrija .editorial-time,
+.editorial-card--andjela-andrija .editorial-time-label,
+.editorial-card--andjela-andrija .editorial-time-location,
+.editorial-card--andjela-andrija .editorial-time-location-link,
+.editorial-card--andjela-andrija .editorial-time-note {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tekst pravi "prekid" u vertikalnoj liniji */
+.editorial-card--andjela-andrija .editorial-time-label,
+.editorial-card--andjela-andrija .editorial-time-location,
+.editorial-card--andjela-andrija .editorial-time-location-link,
+.editorial-card--andjela-andrija .editorial-time-note {
+  width: fit-content;
+  max-width: 190px;
+
+  background: #f5f1ec;
+
+  box-shadow:
+    0 0 0 6px #f5f1ec;
+}
+
+.editorial-card--andjela-andrija .editorial-time-label {
+  margin-left: auto;
+  margin-right: auto;
+
+  max-width: 180px;
+
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 1.55px;
+}
+
+.editorial-card--andjela-andrija .editorial-time-location {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.editorial-card--andjela-andrija .editorial-time-note {
+  margin: 7px auto 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 13px;
+  line-height: 1.4;
+  font-style: italic;
+
+  color: rgba(42, 38, 35, 0.52);
+}
+
+
+/* Malo više vazduha između događaja */
+.editorial-card--andjela-andrija .editorial-timeline-item {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+
+/* =========================================================
+   2. CHILDHOOD BLOCK
+========================================================= */
+
+.editorial-card--andjela-andrija .editorial-childhood-section {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    52px
+    22px
+    24px;
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.editorial-card--andjela-andrija .editorial-childhood-inner {
+  position: relative;
+  z-index: 1;
+
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+
+/* mali naslov */
+.editorial-card--andjela-andrija .editorial-childhood-small-title {
+  margin-bottom: 6px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.26em;
+
+  text-transform: uppercase;
+
+  color: rgba(48, 42, 38, 0.55);
+}
+
+
+/* prostor za PNG */
+.editorial-card--andjela-andrija .editorial-childhood-figure {
+  position: relative;
+
+  width: min(
+    250px,
+    76vw
+  );
+
+  margin:
+    4px
+    auto
+    5px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+
+/* nežna svetla mrlja iza PNG-a */
+.editorial-card--andjela-andrija
+  .editorial-childhood-figure::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 52%;
+
+  width: 210px;
+  height: 150px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(213, 198, 182, 0.24) 0%,
+      rgba(213, 198, 182, 0.11) 45%,
+      rgba(213, 198, 182, 0) 75%
+    );
+
+  filter: blur(8px);
+
+  pointer-events: none;
+}
+
+
+/* sam PNG bez pozadine */
+.editorial-card--andjela-andrija .editorial-childhood-image {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0
+      12px
+      18px
+      rgba(65, 53, 45, 0.08)
+    );
+}
+
+
+/* glavni tekst */
+.editorial-card--andjela-andrija .editorial-childhood-text {
+  max-width: 290px;
+
+  margin:
+    4px
+    auto
+    0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 23px;
+  font-weight: 400;
+  font-style: italic;
+
+  line-height: 1.2;
+
+  color: #443b35;
+}
+
+
+/* malo srce */
+.editorial-card--andjela-andrija .editorial-childhood-heart {
+  margin-top: 13px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 18px;
+
+  color: rgba(106, 87, 74, 0.52);
+}
+
+
+/* =========================================================
+   3. DRESS CODE
+========================================================= */
+
+.editorial-card--andjela-andrija .editorial-dress-section {
+  padding-top: 72px;
+  padding-bottom: 56px;
+}
+
+
+/* DRESS CODE mali tekst */
+.editorial-card--andjela-andrija .editorial-dress-eyebrow {
+  margin-bottom: 11px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+
+  color: rgba(45, 39, 35, 0.48);
+}
+
+
+/* veliki naslov */
+.editorial-card--andjela-andrija .editorial-dress-title {
+  margin: 0;
+
+  font-size:
+    clamp(
+      43px,
+      11vw,
+      58px
+    );
+
+  line-height: 0.87;
+
+  letter-spacing: 0.03em;
+
+  color: #29231f;
+}
+
+
+/* summer evening */
+.editorial-card--andjela-andrija .editorial-dress-script-special {
+  margin-top: 7px;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 31px;
+  line-height: 1;
+
+  color: rgba(101, 84, 72, 0.47);
+}
+
+
+/* uvodni tekst */
+.editorial-card--andjela-andrija .editorial-dress-copy {
+  max-width: 300px;
+
+  margin:
+    20px
+    auto
+    0;
+}
+
+.editorial-card--andjela-andrija .editorial-dress-copy p {
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+  line-height: 1.65;
+
+  color: #544940;
+}
+
+
+/* dve grupe */
+.editorial-card--andjela-andrija .editorial-dress-roles {
+  width: 100%;
+  max-width: 320px;
+
+  margin:
+    34px
+    auto
+    0;
+
+  gap: 38px;
+}
+
+
+/* pojedinačni blok */
+.editorial-card--andjela-andrija .editorial-dress-role {
+  position: relative;
+
+  max-width: 300px;
+
+  margin: 0 auto;
+
+  padding:
+    2px
+    12px;
+}
+
+
+/* diskretna linija između Dame i Gospoda */
+.editorial-card--andjela-andrija
+  .editorial-dress-role--men::before {
+  content: "";
+
+  position: absolute;
+
+  top: -20px;
+  left: 50%;
+
+  width: 42px;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background:
+    rgba(
+      65,
+      54,
+      47,
+      0.18
+    );
+}
+
+
+/* Dame / Gospoda */
+.editorial-card--andjela-andrija .editorial-dress-role-title {
+  margin:
+    0
+    0
+    12px;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 34px;
+  font-weight: 400;
+  font-style: normal;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+
+  color: #3f342e;
+}
+
+
+/* opis */
+.editorial-card--andjela-andrija .editorial-dress-role-text {
+  max-width: 280px;
+
+  margin:
+    0
+    auto
+    15px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  line-height: 1.55;
+
+  color: #302924;
+}
+
+
+/* palette box bez teškog okvira */
+.editorial-card--andjela-andrija
+  .editorial-dress-palette-box {
+  margin-top: 8px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+}
+
+
+/* boje */
+.editorial-card--andjela-andrija
+  .editorial-dress-palette {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+
+/* veći elegantni kružići */
+.editorial-card--andjela-andrija
+  .editorial-dress-palette-dot {
+  width: 31px;
+  height: 31px;
+
+  flex:
+    0
+    0
+    31px;
+
+  border-radius: 999px;
+
+  border:
+    1px
+    solid
+    rgba(
+      45,
+      38,
+      33,
+      0.1
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.45
+      ),
+    0
+      4px
+      10px
+      rgba(
+        50,
+        40,
+        34,
+        0.06
+      );
+}
+
+
+/* =========================================================
+   4. MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .editorial-card--andjela-andrija
+    .editorial-childhood-section {
+    padding:
+      46px
+      18px
+      18px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-childhood-figure {
+    width:
+      min(
+        230px,
+        74vw
+      );
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-childhood-text {
+    max-width: 270px;
+
+    font-size: 22px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-dress-section {
+    padding-top: 64px;
+    padding-bottom: 48px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-dress-title {
+    font-size:
+      clamp(
+        40px,
+        12vw,
+        50px
+      );
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-dress-script-special {
+    font-size: 30px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-dress-copy p {
+    font-size: 15.5px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-dress-role-title {
+    font-size: 32px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-dress-role-text {
+    max-width: 275px;
+
+    font-size: 15.5px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-time-label {
+    max-width: 175px;
+  }
+
+
+  .editorial-card--andjela-andrija
+    .editorial-time-location {
+    max-width: 185px;
+  }
+}
+
+/* ANDJELA & ANDRIJA — childhood kao završni epilog */
+
+.editorial-card--andjela-andrija
+.editorial-childhood-section--ending {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.editorial-card--andjela-andrija
+.editorial-childhood-section--ending
+.editorial-childhood-figure {
+  width: min(220px, 68vw);
+}
+
+.editorial-card--andjela-andrija
+.editorial-childhood-section--ending
+.editorial-childhood-text {
+  margin-top: 10px;
+  font-size: 23px;
+}
+
+@media (max-width: 480px) {
+  .editorial-card--andjela-andrija
+  .editorial-childhood-section--ending {
+    padding-top: 60px;
+    padding-bottom: 64px;
+  }
+
+  .editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-figure {
+    width: min(210px, 66vw);
+  }
+}
+
+/* =========================================================
+   ANDJELA & ANDRIJA
+   CHILDHOOD ENDING — SOFTER / MORE EDITORIAL
+========================================================= */
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending {
+  position: relative;
+  padding: 56px 22px 68px;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending::before {
+  content: "";
+  display: block;
+  width: 68px;
+  height: 1px;
+  margin: 0 auto 26px;
+  background: rgba(90, 75, 64, 0.16);
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-inner {
+  max-width: 290px;
+  margin: 0 auto;
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-small-title {
+  margin-bottom: 12px;
+  font-size: 10px;
+  letter-spacing: 0.34em;
+  color: rgba(92, 77, 66, 0.48);
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-figure {
+  position: relative;
+  width: min(200px, 62vw);
+  margin: 0 auto 12px;
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-figure::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 180px;
+  height: 130px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(214, 199, 184, 0.22) 0%,
+    rgba(214, 199, 184, 0.1) 48%,
+    rgba(214, 199, 184, 0) 75%
+  );
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(58, 46, 38, 0.08));
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-text {
+  max-width: 245px;
+  margin: 6px auto 0;
+  font-size: 20px;
+  line-height: 1.28;
+  color: #51453d;
+  text-wrap: balance;
+}
+
+.editorial-card--andjela-andrija
+  .editorial-childhood-section--ending
+  .editorial-childhood-heart {
+  margin-top: 12px;
+  font-size: 15px;
+  color: rgba(126, 103, 88, 0.52);
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .editorial-card--andjela-andrija
+    .editorial-childhood-section--ending {
+    padding: 48px 18px 62px;
+  }
+
+  .editorial-card--andjela-andrija
+    .editorial-childhood-section--ending::before {
+    margin-bottom: 22px;
+  }
+
+  .editorial-card--andjela-andrija
+    .editorial-childhood-section--ending
+    .editorial-childhood-figure {
+    width: min(188px, 60vw);
+    margin-bottom: 10px;
+  }
+
+  .editorial-card--andjela-andrija
+    .editorial-childhood-section--ending
+    .editorial-childhood-text {
+    max-width: 230px;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+}
+
+/* =========================================================
+   ANDJELA & ANDRIJA
+   MONOGRAM VIDEO
+   slugovi:
+   - andjela-andrija-2
+   - andjela-andrija-3
+========================================================= */
+
+
+/* =========================================================
+   RASPORED — NOTE ISPOD DOGAĐAJA
+========================================================= */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-time-note {
+  width: fit-content;
+  max-width: 240px;
+
+  margin: 8px auto 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 13px;
+  line-height: 1.45;
+  font-style: italic;
+
+  text-align: center;
+
+  color: rgba(58, 49, 43, 0.56);
+}
+
+
+/* Malo više vazduha između događaja */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-monogram-timeline-item {
+  padding-top: 26px;
+  padding-bottom: 28px;
+}
+
+
+/* =========================================================
+   DRESS CODE
+========================================================= */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-section {
+  padding-top: 68px;
+  padding-bottom: 54px;
+}
+
+
+/* mali DRESS CODE */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-eyebrow {
+  margin-bottom: 10px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+
+  color: rgba(48, 41, 37, 0.5);
+}
+
+
+/* LETNJA ELEGANCIJA */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-title {
+  margin: 0;
+
+  font-size:
+    clamp(
+      43px,
+      11vw,
+      58px
+    );
+
+  line-height: 0.87;
+
+  letter-spacing: 0.03em;
+
+  color: #29231f;
+}
+
+
+/* ukloni standardnu crtu ispod velikog naslova */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-title::after {
+  display: none;
+}
+
+
+/* summer evening */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-script-special {
+  margin-top: 9px;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 32px;
+  line-height: 1;
+
+  color: rgba(101, 84, 72, 0.55);
+}
+
+
+/* uvod dress code */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-copy {
+  max-width: 300px;
+
+  margin:
+    21px
+    auto
+    0;
+}
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-copy p {
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+  line-height: 1.65;
+
+  color: #544940;
+}
+
+
+/* Dame + Gospoda */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-roles {
+  width: 100%;
+  max-width: 320px;
+
+  margin:
+    34px
+    auto
+    0;
+
+  gap: 38px;
+}
+
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-role {
+  position: relative;
+
+  max-width: 300px;
+
+  margin: 0 auto;
+
+  padding: 2px 12px;
+}
+
+
+/* linijica između Dame i Gospoda */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-role--men::before {
+  content: "";
+
+  position: absolute;
+
+  top: -20px;
+  left: 50%;
+
+  width: 42px;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background:
+    rgba(
+      65,
+      54,
+      47,
+      0.18
+    );
+}
+
+
+/* Dame / Gospoda */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-role-title {
+  margin: 0 0 12px;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 34px;
+  font-weight: 400;
+  font-style: normal;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+
+  color: #3f342e;
+}
+
+
+/* opis */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-role-text {
+  max-width: 280px;
+
+  margin:
+    0
+    auto
+    15px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  line-height: 1.55;
+
+  color: #302924;
+}
+
+
+/* palette bez boxa */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-palette-box {
+  margin-top: 8px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+}
+
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-palette {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-dress-palette-dot {
+  width: 31px;
+  height: 31px;
+
+  flex: 0 0 31px;
+
+  border-radius: 999px;
+
+  border:
+    1px solid
+    rgba(45, 38, 33, 0.1);
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(255, 255, 255, 0.45),
+    0
+      4px
+      10px
+      rgba(50, 40, 34, 0.06);
+}
+
+
+/* =========================================================
+   CHILDHOOD — ZAVRŠETAK POSLE COUNTDOWN-A
+========================================================= */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-section--ending {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    56px
+    22px
+    68px;
+
+  margin-top: 6px;
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+
+/* elegantna linija iznad */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-section--ending::before {
+  content: "";
+
+  display: block;
+
+  width: 68px;
+  height: 1px;
+
+  margin:
+    0
+    auto
+    26px;
+
+  background:
+    rgba(
+      90,
+      75,
+      64,
+      0.18
+    );
+}
+
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-inner {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 290px;
+
+  margin: 0 auto;
+}
+
+
+/* NEKADA DAVNO */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-small-title {
+  margin-bottom: 12px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.34em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      75,
+      63,
+      55,
+      0.52
+    );
+}
+
+
+/* PNG */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-figure {
+  position: relative;
+
+  width:
+    min(
+      200px,
+      62vw
+    );
+
+  margin:
+    0
+    auto
+    12px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-end;
+}
+
+
+/* nežno svetlo iza slike */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-figure::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 180px;
+  height: 130px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(240, 232, 222, 0.38) 0%,
+      rgba(226, 212, 198, 0.18) 45%,
+      rgba(213, 198, 182, 0) 76%
+    );
+
+  filter: blur(9px);
+
+  pointer-events: none;
+}
+
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-image {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0
+      10px
+      16px
+      rgba(58, 46, 38, 0.09)
+    );
+}
+
+
+/* završna rečenica */
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-text {
+  max-width: 245px;
+
+  margin:
+    6px
+    auto
+    0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  line-height: 1.28;
+
+  font-style: italic;
+
+  color: #51453d;
+
+  text-wrap: balance;
+}
+
+
+.editorial-card--andjela-andrija-monogram-special
+  .editorial-childhood-heart {
+  margin-top: 12px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 15px;
+
+  color:
+    rgba(
+      126,
+      103,
+      88,
+      0.55
+    );
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-dress-section {
+    padding-top: 62px;
+    padding-bottom: 48px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-dress-title {
+    font-size:
+      clamp(
+        40px,
+        12vw,
+        50px
+      );
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-dress-script-special {
+    font-size: 30px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-dress-copy p {
+    font-size: 15.5px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-dress-role-title {
+    font-size: 32px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-dress-role-text {
+    max-width: 275px;
+
+    font-size: 15.5px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-childhood-section--ending {
+    padding:
+      48px
+      18px
+      62px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-childhood-section--ending::before {
+    margin-bottom: 22px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-childhood-figure {
+    width:
+      min(
+        188px,
+        60vw
+      );
+
+    margin-bottom: 10px;
+  }
+
+
+  .editorial-card--andjela-andrija-monogram-special
+    .editorial-childhood-text {
+    max-width: 230px;
+
+    font-size: 18px;
+
+    line-height: 1.3;
+  }
+}

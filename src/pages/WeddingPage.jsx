@@ -86,6 +86,7 @@ import CyrillicSvgSilkInvitationCard from "../components/CyrillicSvgSilkInvitati
 import PhotoCardSplitInvitationCard from "../components/PhotoCardSplitInvitationCard";
 import EnvelopeFlapIntro from "../components/EnvelopeFlapIntro";
 import ScratchInvitationCard from "../components/ScratchInvitationCard";
+import EnvelopeFlapVideoIntro from "../components/EnvelopeFlapVideoIntro";
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
 import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
@@ -337,6 +338,11 @@ const TEMPLATE_COMPONENTS = {
 "birthday-teddy-elegant": {
   Intro: BirthdayTeddyElegantIntro,
   Invitation: BirthdayHeartsInvitationCard,
+},
+
+"envelope-flap-video-minimal": {
+  Intro: EnvelopeFlapVideoIntro,
+  Invitation: MinimalInvitationCard,
 },
 
 };

@@ -5213,6 +5213,105 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+{
+  slug: "ana-nikola-video",
+  type: "wedding",
+  template: "envelope-flap-video-minimal",
+  script: "latin",
+
+  brideName: "Ana",
+  groomName: "Nemanja",
+
+  weddingDate: "21.11.2026.",
+  weddingTime: "17:00",
+  venue: "Hotel Vojvodina, Zrenjanin",
+
+  /* VIDEO POSLE OTVARANJA KOVERTE */
+  videoSrc: "/videos/ana-nikola.mp4",
+
+  /* POZADINA MINIMAL INVITATION CARD-A */
+  backgroundImage: "/images/ana-nemanja-minimal.jpg",
+
+  /* MUZIKA KREĆE KADA SE ZAVRŠE VIDEO + INICIJALI */
+  musicSrc: "/music/mina-dragan.mp3",
+
+  details: {
+    ...createDetails({
+      backgroundImage: "/images/ana-nemanja-minimal.jpg",
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana.",
+
+      date: "21.11.2026.",
+      dateISO: "2026-11-21T17:00:00+01:00",
+
+      venue: "Hotel Vojvodina, Zrenjanin",
+
+      showCalendarButton: false,
+      showDressCode: false,
+
+      events: [
+        {
+          label: "Skup gostiju",
+          time: "16:00",
+          icon: "gathering",
+          location: "Hotel Vojvodina, Zrenjanin",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvodina+Trg+Slobode+3-5+Zrenjanin",
+        },
+        {
+          label: "Venčanje",
+          time: "17:00",
+          icon: "civil",
+          location: "Hotel Vojvodina, Zrenjanin",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvodina+Trg+Slobode+3-5+Zrenjanin",
+        },
+      ],
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Vojvodina+Trg+Slobode+3-5+Zrenjanin",
+
+      note:
+        "Molimo vas da svoj dolazak potvrdite do 01.11.2026.",
+
+      rsvpText:
+        "Molimo vas da svoj dolazak potvrdite do 01.11.2026.",
+    }),
+
+    /* ========================================
+       KOVERTA
+       ======================================== */
+    envelopeFlap: {
+      hingePercent: 0,
+    },
+
+    /* ========================================
+       KOVERTA → VIDEO → INICIJALI → POZIVNICA
+       ======================================== */
+    envelopeVideoFlow: {
+      /* video */
+      videoMuted: true,
+      videoFit: "cover",
+      videoPosition: "center center",
+
+      /* koliko pre kraja videa počinje fade */
+      videoFadeBeforeEnd: 0.8,
+
+      /* koliko dugo stoje inicijali */
+      initialsDuration: 2200,
+
+      /* ekran sa inicijalima */
+      initialsBackground: "#f4f0e9",
+      initialsColor: "#514943",
+      slashColor: "#8b7768",
+
+      /* opciono — ako želiš ručno inicijale */
+      brideInitial: "A",
+      groomInitial: "N",
+    },
+  },
+},
 // =========================
 // Klijenti
 // =========================
@@ -10400,10 +10499,11 @@ musicSrc: "/music/hana-1.mp3",
       ================================ */
 
       cardArtImage:
-        "/images/save-the-date/sara-luka.png",
+        "/images/save-the-date/andjela-andrija.png",
 
-      pageBackground:
-        "#f1ece3",
+      
+        pageBackground:
+  "#000000",
 
       paperColor:
         "#fbf6ef",
@@ -10466,7 +10566,1040 @@ musicSrc: "/music/hana-1.mp3",
     },
   },
 },
+{
+  slug: "andjela-andrija",
 
+  type: "wedding",
+
+  template: "magazine-editorial",
+
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31 JUL 2027",
+
+  weddingTime: "",
+
+  venue: "Hotel Izvor, Aranđelovac",
+
+  backgroundImage:
+    "/images/andjela-andrija.jpg",
+
+image1: "/images/nevena-pedja/location.jpg",
+
+  details: {
+    ...createDetails({
+      backgroundImage:
+        "/images/magazine-intro-bg.png",
+
+      ticketNumber:
+        "310727AA",
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
+
+      date:
+        "31 JUL 2027",
+
+      dateISO:
+        "2027-07-31",
+
+      venue:
+        "Hotel Izvor, Aranđelovac",
+
+      showCalendarButton:
+        true,
+
+      events: [
+        {
+          label:
+            "Okupljanje kod mlade",
+
+          time: "",
+
+          icon:
+            "gathering",
+
+          location:
+            "Lokacija će biti naknadno potvrđena",
+        },
+
+        {
+          label:
+            "Crkveno venčanje",
+
+          time: "",
+
+          icon:
+            "church",
+
+          location:
+            "Lokacija i vreme biće naknadno potvrđeni",
+        },
+
+        {
+          label:
+            "Građansko venčanje",
+
+          time: "",
+
+          icon:
+            "civil",
+
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          note:
+            "Ceremonija na otvorenom",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+
+        {
+          label:
+            "Svadbeno slavlje",
+
+          time: "",
+
+          icon:
+            "restaurant",
+
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+      ],
+
+      showDressCode:
+        true,
+
+      dressCodeTitle:
+        "Letnja elegancija",
+
+      dressCodeNote:
+        "Svečano, elegantno i lagano — u duhu jedne letnje večeri.",
+
+      dressCodeWomen:
+        "Elegantne midi ili maxi haljine, lagani materijali i nežni, sofisticirani detalji.",
+
+      dressCodeMen:
+        "Smoking ili elegantno odelo od laganijih materijala, uz svečan i opušten letnji izgled.",
+
+      dressCodeWomenPalette: [
+        "#eadfd5",
+        "#d6b9ad",
+        "#c9c4ac",
+        "#b7c1b3",
+      ],
+
+      dressCodeMenPalette: [
+        "#1e1e1d",
+        "#45423e",
+        "#8b8178",
+        "#d6cec5",
+      ],
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+      note:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+    }),
+
+    /* =====================================
+       SAMO ANDJELA & ANDRIJA
+       childhood PNG
+    ===================================== */
+
+    childhoodImage:
+      "/images/andjela-andrija/childhood.png",
+
+    childhoodText:
+      "Ovo dvoje tada još nisu znali šta ih čeka",
+  },
+},
+
+{
+  slug: "andjela-andrija-1",
+
+  type: "wedding",
+
+  template: "magazine-editorial",
+
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31 JUL 2027",
+
+  weddingTime: "",
+
+  venue: "Hotel Izvor, Aranđelovac",
+
+  backgroundImage:
+    "/images/andjela-andrija-1.jpg",
+
+image1: "/images/nevena-pedja/location.jpg",
+
+  details: {
+    ...createDetails({
+      backgroundImage:
+        "/images/magazine-intro-bg.png",
+
+      ticketNumber:
+        "310727AA",
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
+
+      date:
+        "31 JUL 2027",
+
+      dateISO:
+        "2027-07-31",
+
+      venue:
+        "Hotel Izvor, Aranđelovac",
+
+      showCalendarButton:
+        true,
+
+      events: [
+        {
+          label:
+            "Okupljanje kod mlade",
+
+          time: "",
+
+          icon:
+            "gathering",
+
+          location:
+            "Lokacija će biti naknadno potvrđena",
+        },
+
+        {
+          label:
+            "Crkveno venčanje",
+
+          time: "",
+
+          icon:
+            "church",
+
+          location:
+            "Lokacija i vreme biće naknadno potvrđeni",
+        },
+
+        {
+          label:
+            "Građansko venčanje",
+
+          time: "",
+
+          icon:
+            "civil",
+
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          note:
+            "Ceremonija na otvorenom",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+
+        {
+          label:
+            "Svadbeno slavlje",
+
+          time: "",
+
+          icon:
+            "restaurant",
+
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+      ],
+
+      showDressCode:
+        true,
+
+      dressCodeTitle:
+        "Letnja elegancija",
+
+      dressCodeNote:
+        "Svečano, elegantno i lagano — u duhu jedne letnje večeri.",
+
+      dressCodeWomen:
+        "Elegantne midi ili maxi haljine, lagani materijali i nežni, sofisticirani detalji.",
+
+      dressCodeMen:
+        "Smoking ili elegantno odelo od laganijih materijala, uz svečan i opušten letnji izgled.",
+
+      dressCodeWomenPalette: [
+        "#eadfd5",
+        "#d6b9ad",
+        "#c9c4ac",
+        "#b7c1b3",
+      ],
+
+      dressCodeMenPalette: [
+        "#1e1e1d",
+        "#45423e",
+        "#8b8178",
+        "#d6cec5",
+      ],
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+      note:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+    }),
+
+    /* =====================================
+       SAMO ANDJELA & ANDRIJA
+       childhood PNG
+    ===================================== */
+
+    childhoodImage:
+      "/images/andjela-andrija/childhood.png",
+
+    childhoodText:
+      "Ovo dvoje tada još nisu znali šta ih čeka“.",
+  },
+},
+
+{
+  slug: "andjela-andrija-2",
+
+  type: "wedding",
+  template: "monogram-video",
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  weddingTime: "",
+
+  venue: "Hotel Izvor, Aranđelovac",
+
+  /* =========================
+     INTRO VIDEO
+  ========================== */
+
+  videoSrc: "/videos/andjela-andrija-1.mp4",
+
+  /* =========================
+     POZADINA POZIVNICE
+  ========================== */
+
+  backgroundImage: "/images/andrea-david-minimal.jpg",
+
+  /* =========================
+     LOKACIJA — SLIKA
+  ========================== */
+
+image1: "/images/nevena-pedja/location.jpg",
+
+  details: {
+    ...createDetails({
+      /* =========================
+         UVOD
+      ========================== */
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
+
+      /* =========================
+         DATUM
+      ========================== */
+
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+
+      /* =========================
+         LOKACIJA
+      ========================== */
+
+      venue: "Hotel Izvor, Aranđelovac",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+      /* =========================
+         RASPORED
+      ========================== */
+
+      events: [
+        {
+          label: "Okupljanje kod mlade",
+          time: "",
+          icon: "gathering",
+          location: "Lokacija će biti naknadno potvrđena",
+        },
+
+        {
+          label: "Crkveno venčanje",
+          time: "",
+          icon: "church",
+          location: "Lokacija i vreme biće naknadno potvrđeni",
+        },
+
+        {
+          label: "Građansko venčanje",
+          time: "",
+          icon: "civil",
+          location: "Hotel Izvor, Aranđelovac",
+          note: "Ceremonija na otvorenom",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+
+        {
+          label: "Svadbeno slavlje",
+          time: "",
+          icon: "restaurant",
+          location: "Hotel Izvor, Aranđelovac",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+      ],
+
+      /* =========================
+         DRESS CODE
+      ========================== */
+
+      showDressCode: true,
+
+      dressCodeTitle: "Letnja elegancija",
+
+      dressCodeNote:
+        "Svečano, elegantno i lagano — u duhu jedne letnje večeri.",
+
+      dressCodeWomen:
+        "Elegantne midi ili maxi haljine, lagani materijali i nežni, sofisticirani detalji.",
+
+      dressCodeMen:
+        "Smoking ili elegantno odelo od laganijih materijala, uz svečan i opušten letnji izgled.",
+
+      dressCodeWomenPalette: [
+        "#eadfd5",
+        "#d6b9ad",
+        "#c9c4ac",
+        "#b7c1b3",
+      ],
+
+      dressCodeMenPalette: [
+        "#1e1e1d",
+        "#45423e",
+        "#8b8178",
+        "#d6cec5",
+      ],
+
+      /* =========================
+         RSVP
+      ========================== */
+
+      note:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      rsvpText:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      /* =========================
+         KALENDAR
+      ========================== */
+
+      showCalendarButton: true,
+
+      calendarDurationHours: 9,
+    }),
+
+    /* =========================
+       CHILDHOOD ENDING
+    ========================== */
+
+    childhoodImage:
+      "/images/andjela-andrija/childhood.png",
+
+    childhoodText:
+      "Ovo dvoje tada još nisu znali šta ih čeka.",
+  },
+},
+
+{
+  slug: "andjela-andrija-3",
+
+  type: "wedding",
+  template: "monogram-video",
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  weddingTime: "",
+
+  venue: "Hotel Izvor, Aranđelovac",
+
+  /* =========================
+     INTRO VIDEO
+  ========================== */
+
+  videoSrc: "/videos/andjela-andrija.mp4",
+
+  /* =========================
+     POZADINA POZIVNICE
+  ========================== */
+
+  backgroundImage: "/images/andrea-david-minimal.jpg",
+
+  /* =========================
+     LOKACIJA — SLIKA
+  ========================== */
+
+image1: "/images/nevena-pedja/location.jpg",
+
+  details: {
+    ...createDetails({
+      /* =========================
+         UVOD
+      ========================== */
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
+
+      /* =========================
+         DATUM
+      ========================== */
+
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+
+      /* =========================
+         LOKACIJA
+      ========================== */
+
+      venue: "Hotel Izvor, Aranđelovac",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+      /* =========================
+         RASPORED
+      ========================== */
+
+      events: [
+        {
+          label: "Okupljanje kod mlade",
+          time: "",
+          icon: "gathering",
+          location: "Lokacija će biti naknadno potvrđena",
+        },
+
+        {
+          label: "Crkveno venčanje",
+          time: "",
+          icon: "church",
+          location: "Lokacija i vreme biće naknadno potvrđeni",
+        },
+
+        {
+          label: "Građansko venčanje",
+          time: "",
+          icon: "civil",
+          location: "Hotel Izvor, Aranđelovac",
+          note: "Ceremonija na otvorenom",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+
+        {
+          label: "Svadbeno slavlje",
+          time: "",
+          icon: "restaurant",
+          location: "Hotel Izvor, Aranđelovac",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+      ],
+
+      /* =========================
+         DRESS CODE
+      ========================== */
+
+      showDressCode: true,
+
+      dressCodeTitle: "Letnja elegancija",
+
+      dressCodeNote:
+        "Svečano, elegantno i lagano — u duhu jedne letnje večeri.",
+
+      dressCodeWomen:
+        "Elegantne midi ili maxi haljine, lagani materijali i nežni, sofisticirani detalji.",
+
+      dressCodeMen:
+        "Smoking ili elegantno odelo od laganijih materijala, uz svečan i opušten letnji izgled.",
+
+      dressCodeWomenPalette: [
+        "#eadfd5",
+        "#d6b9ad",
+        "#c9c4ac",
+        "#b7c1b3",
+      ],
+
+      dressCodeMenPalette: [
+        "#1e1e1d",
+        "#45423e",
+        "#8b8178",
+        "#d6cec5",
+      ],
+
+      /* =========================
+         RSVP
+      ========================== */
+
+      note:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      rsvpText:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      /* =========================
+         KALENDAR
+      ========================== */
+
+      showCalendarButton: true,
+
+      calendarDurationHours: 9,
+    }),
+
+    /* =========================
+       CHILDHOOD ENDING
+    ========================== */
+
+    childhoodImage:
+      "/images/andjela-andrija/childhood.png",
+
+    childhoodText:
+      "Ovo dvoje tada još nisu znali šta ih čeka.",
+  },
+},
+
+{
+  slug: "andjela-andrija-4",
+
+  type: "wedding",
+  template: "envelope-flap-video-minimal",
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  weddingTime: "",
+
+  venue: "Hotel Izvor, Aranđelovac",
+
+  /* =========================
+     VIDEO POSLE OTVARANJA KOVERTE
+  ========================== */
+
+  videoSrc: "/videos/andjela-andrija.mp4",
+
+  /* =========================
+     POZADINA MINIMAL POZIVNICE
+  ========================== */
+
+  backgroundImage:
+    "/images/andrijana-marko-minimal.jpg",
+
+  details: {
+    ...createDetails({
+      /* =========================
+         POZADINA
+      ========================== */
+
+      backgroundImage:
+        "/images/andrijana-marko-minimal.jpg",
+
+      /* =========================
+         UVOD
+      ========================== */
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
+
+      /* =========================
+         DATUM
+      ========================== */
+
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+
+      /* =========================
+         LOKACIJA
+      ========================== */
+
+      venue:
+        "Hotel Izvor, Aranđelovac",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+      /* =========================
+         RASPORED
+      ========================== */
+
+      events: [
+        {
+          label: "Okupljanje kod mlade",
+          time: "",
+          icon: "gathering",
+          location:
+            "Lokacija će biti naknadno potvrđena",
+        },
+
+        {
+          label: "Crkveno venčanje",
+          time: "",
+          icon: "church",
+          location:
+            "Lokacija i vreme biće naknadno potvrđeni",
+        },
+
+        {
+          label: "Građansko venčanje",
+          time: "",
+          icon: "civil",
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          note:
+            "Ceremonija na otvorenom",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+
+        {
+          label: "Svadbeno slavlje",
+          time: "",
+          icon: "restaurant",
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+      ],
+
+      /* =========================
+         DRESS CODE
+      ========================== */
+
+      showDressCode: true,
+
+      dressCodeTitle:
+        "Letnja elegancija",
+
+      dressCodeNote:
+        "Svečano, elegantno i lagano — u duhu jedne letnje večeri.",
+
+      dressCodeWomen:
+        "Elegantne midi ili maxi haljine, lagani materijali i nežni, sofisticirani detalji.",
+
+      dressCodeMen:
+        "Smoking ili elegantno odelo od laganijih materijala, uz svečan i opušten letnji izgled.",
+
+      dressCodeWomenPalette: [
+        "#eadfd5",
+        "#d6b9ad",
+        "#c9c4ac",
+        "#b7c1b3",
+      ],
+
+      dressCodeMenPalette: [
+        "#1e1e1d",
+        "#45423e",
+        "#8b8178",
+        "#d6cec5",
+      ],
+
+      /* =========================
+         RSVP
+      ========================== */
+
+      note:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      rsvpText:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      /* =========================
+         KALENDAR
+      ========================== */
+
+      showCalendarButton: true,
+
+      calendarDurationHours: 9,
+    }),
+
+    /* =========================
+       KOVERTA
+    ========================== */
+
+    envelopeFlap: {
+      hingePercent: 0,
+    },
+
+    /* =========================
+       KOVERTA → VIDEO → INICIJALI
+       → MINIMAL POZIVNICA
+    ========================== */
+
+    envelopeVideoFlow: {
+      videoMuted: true,
+
+      videoFit: "cover",
+
+      videoPosition:
+        "center center",
+
+      videoFadeBeforeEnd: 0.8,
+
+      initialsDuration: 2200,
+
+      initialsBackground:
+        "#f4f0e9",
+
+      initialsColor:
+        "#514943",
+
+      ampersandColor:
+        "#8b7768",
+
+      brideInitial: "A",
+
+      groomInitial: "A",
+    },
+  },
+},
+
+{
+  slug: "andjela-andrija-5",
+
+  type: "wedding",
+  template: "envelope-flap-video-minimal",
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+
+  weddingDate: "31.07.2027.",
+  weddingTime: "",
+
+  venue: "Hotel Izvor, Aranđelovac",
+
+  /* =========================
+     VIDEO POSLE OTVARANJA KOVERTE
+  ========================== */
+
+  videoSrc:
+    "/videos/andjela-andrija-1.mp4",
+
+  /* =========================
+     POZADINA MINIMAL POZIVNICE
+  ========================== */
+
+  backgroundImage:
+    "/images/andrijana-marko-minimal.jpg",
+
+  details: {
+    ...createDetails({
+      /* =========================
+         POZADINA
+      ========================== */
+
+      backgroundImage:
+        "/images/andrijana-marko-minimal.jpg",
+
+      /* =========================
+         UVOD
+      ========================== */
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
+
+      /* =========================
+         DATUM
+      ========================== */
+
+      date: "31.07.2027.",
+      dateISO: "2027-07-31",
+
+      /* =========================
+         LOKACIJA
+      ========================== */
+
+      venue:
+        "Hotel Izvor, Aranđelovac",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+      /* =========================
+         RASPORED
+      ========================== */
+
+      events: [
+        {
+          label: "Okupljanje kod mlade",
+          time: "",
+          icon: "gathering",
+          location:
+            "Lokacija će biti naknadno potvrđena",
+        },
+
+        {
+          label: "Crkveno venčanje",
+          time: "",
+          icon: "church",
+          location:
+            "Lokacija i vreme biće naknadno potvrđeni",
+        },
+
+        {
+          label: "Građansko venčanje",
+          time: "",
+          icon: "civil",
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          note:
+            "Ceremonija na otvorenom",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+
+        {
+          label: "Svadbeno slavlje",
+          time: "",
+          icon: "restaurant",
+          location:
+            "Hotel Izvor, Aranđelovac",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+      ],
+
+      /* =========================
+         DRESS CODE
+      ========================== */
+
+      showDressCode: true,
+
+      dressCodeTitle:
+        "Letnja elegancija",
+
+      dressCodeNote:
+        "Svečano, elegantno i lagano — u duhu jedne letnje večeri.",
+
+      dressCodeWomen:
+        "Elegantne midi ili maxi haljine, lagani materijali i nežni, sofisticirani detalji.",
+
+      dressCodeMen:
+        "Smoking ili elegantno odelo od laganijih materijala, uz svečan i opušten letnji izgled.",
+
+      dressCodeWomenPalette: [
+        "#eadfd5",
+        "#d6b9ad",
+        "#c9c4ac",
+        "#b7c1b3",
+      ],
+
+      dressCodeMenPalette: [
+        "#1e1e1d",
+        "#45423e",
+        "#8b8178",
+        "#d6cec5",
+      ],
+
+      /* =========================
+         RSVP
+      ========================== */
+
+      note:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      rsvpText:
+        "Molimo vas da svoj dolazak potvrdite do 31.05.2027.",
+
+      /* =========================
+         KALENDAR
+      ========================== */
+
+      showCalendarButton: true,
+
+      calendarDurationHours: 9,
+    }),
+
+    /* =========================
+       KOVERTA
+    ========================== */
+
+    envelopeFlap: {
+      hingePercent: 0,
+    },
+
+    /* =========================
+       KOVERTA → VIDEO → INICIJALI
+       → MINIMAL POZIVNICA
+    ========================== */
+
+    envelopeVideoFlow: {
+      videoMuted: true,
+
+      videoFit: "cover",
+
+      videoPosition:
+        "center center",
+
+      videoFadeBeforeEnd: 0.8,
+
+      initialsDuration: 2200,
+
+      initialsBackground:
+        "#f4f0e9",
+
+      initialsColor:
+        "#514943",
+
+      ampersandColor:
+        "#8b7768",
+
+      brideInitial: "A",
+
+      groomInitial: "A",
+    },
+  },
+},
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

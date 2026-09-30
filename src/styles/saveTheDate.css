@@ -13341,3 +13341,128 @@
       9px !important;
   }
 }
+
+/* =====================================================
+   ENVELOPE VIDEO — PURE WHITE BACKGROUND
+   potpuno uklanja bež / žute animirane tonove
+===================================================== */
+
+.std-envelope-video-save {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+
+/* glavni ambient */
+.std-envelope-video-save
+.std-envelope-save__ambient {
+  display: none !important;
+
+  background: none !important;
+
+  opacity: 0 !important;
+
+  animation: none !important;
+}
+
+
+/* OVO JE BILO GLAVNI UZROK ŽUTIH FLEKA */
+.std-envelope-video-save
+.std-envelope-save__ambient::before,
+
+.std-envelope-video-save
+.std-envelope-save__ambient::after {
+  content: none !important;
+
+  display: none !important;
+
+  background: none !important;
+
+  opacity: 0 !important;
+
+  filter: none !important;
+
+  animation: none !important;
+}
+
+
+/* intro pozadina */
+.std-envelope-video-save
+.std-envelope-save__intro {
+  background: #ffffff !important;
+}
+
+
+/* nema dodatnog glow-a */
+.std-envelope-video-save
+.std-envelope-save__intro-glow {
+  display: none !important;
+
+  background: none !important;
+}
+
+
+/* video faza ostaje crna */
+.std-envelope-video-save__film {
+  background: #000000 !important;
+}
+
+.std-envelope-video-save__video {
+  background: #000000 !important;
+}
+
+.std-envelope-video-save__darken {
+  background: #000000 !important;
+}
+
+
+
+/* =====================================================
+   ENVELOPE VIDEO — HALF OPEN -> INSTANT VIDEO
+   Isto ponašanje kao EnvelopeFlapVideoIntro:
+   puna flap animacija 4.8s, ali intro se seče na 50%.
+===================================================== */
+
+/* Isti osećaj otvaranja kao na glavnom EnvelopeFlapIntro. */
+.std-envelope-video-save[data-phase="opening"]
+.std-envelope-save__envelope-flap {
+  animation:
+    stev-open-flap-same
+    var(--ste-envelope-duration, 4800ms)
+    cubic-bezier(0.4, 0, 0.2, 1)
+    both !important;
+}
+
+@keyframes stev-open-flap-same {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(175deg);
+  }
+}
+
+/* Kada JSX na 50% prebaci phase na video, koverta nestaje ODMAH. */
+.std-envelope-video-save[data-phase="video"]
+.std-envelope-save__envelope-stage,
+.std-envelope-video-save[data-phase="video"]
+.std-envelope-save__intro-copy,
+.std-envelope-video-save[data-phase="video"]
+.std-envelope-save__asset-state {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  filter: none !important;
+  transition: none !important;
+}
+
+/* Video se pojavljuje u istom trenutku, bez dodatnog fade čekanja. */
+.std-envelope-video-save[data-phase="video"]
+.std-envelope-video-save__film,
+.std-envelope-video-save[data-phase="video"]
+.std-envelope-video-save__video {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: none !important;
+}

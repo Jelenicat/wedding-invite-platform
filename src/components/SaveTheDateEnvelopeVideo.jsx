@@ -237,9 +237,21 @@ function SaveTheDateEnvelopeVideo({
 
   const envelopeDurationMs = clampNumber(
     config.envelopeDurationMs,
-    2400,
+    4800,
     900,
-    5000
+    8000
+  );
+
+  /*
+    Isto ponašanje kao EnvelopeFlapVideoIntro:
+    animacija koverte traje 4.8s, ali na polovini
+    (2.4s) cela koverta nestaje i video odmah kreće.
+  */
+  const envelopeCutDelayMs = clampNumber(
+    config.envelopeCutDelayMs,
+    envelopeDurationMs / 2,
+    0,
+    envelopeDurationMs
   );
 
   const videoSrc = config.videoSrc || details.videoSrc || "";
@@ -502,8 +514,8 @@ function SaveTheDateEnvelopeVideo({
 
     openTimerRef.current = window.setTimeout(() => {
       startVideo();
-    }, envelopeDurationMs);
-  }, [assets, envelopeDurationMs, startVideo]);
+    }, envelopeCutDelayMs);
+  }, [assets, envelopeCutDelayMs, startVideo]);
 
   /* =====================================================
      CALENDAR

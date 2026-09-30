@@ -11561,3 +11561,276 @@ body,
     font-size: 12px;
   }
 }
+
+
+/* =====================================================
+   ENVELOPE FLAP -> VIDEO -> INITIALS
+===================================================== */
+
+.efv-intro,
+.efv-intro * {
+  box-sizing: border-box;
+}
+
+.efv-video-screen,
+.efv-initials-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  z-index: 9000;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.efv-video-screen {
+  background: #000;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.efv-video-screen.is-finishing {
+  opacity: 0;
+}
+
+.efv-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--efv-video-fit, cover);
+  object-position: var(--efv-video-position, center);
+}
+
+/* =========================
+   INITIALS
+========================= */
+
+.efv-initials-screen {
+  display: grid;
+  place-items: center;
+  background: var(--efv-initials-bg, #f4f0e9);
+  animation: efv-initials-screen var(--efv-initials-duration, 2200ms) ease both;
+}
+
+.efv-initials-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 20px);
+  color: var(--efv-initials-color, #514943);
+  transform: translateY(-1vh);
+  animation: efv-initials-mark var(--efv-initials-duration, 2200ms) cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.efv-initial {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(72px, 14vw, 150px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.efv-ampersand {
+  margin: 0 -0.05em;
+  color: var(--efv-ampersand-color, #8b7768);
+  font-family: "Italianno", cursive;
+  font-size: clamp(54px, 9vw, 100px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+@keyframes efv-initials-screen {
+  0% {
+    opacity: 0;
+  }
+
+  18%,
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes efv-initials-mark {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+    filter: blur(4px);
+  }
+
+  22%,
+  70% {
+    opacity: 1;
+    transform: translateY(-1vh) scale(1);
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(1.015);
+    filter: blur(2px);
+  }
+}
+
+@media (max-width: 640px) {
+  .efv-initials-mark {
+    gap: 8px;
+  }
+
+  .efv-initial {
+    font-size: clamp(68px, 25vw, 112px);
+  }
+
+  .efv-ampersand {
+    font-size: clamp(48px, 18vw, 82px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .efv-video-screen,
+  .efv-initials-screen,
+  .efv-initials-mark {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* =====================================================
+   ENVELOPE VIDEO — BLACK INITIALS SCREEN
+===================================================== */
+
+.efv-initials-screen {
+  background: #000000;
+}
+
+/* A & A / inicijali */
+.efv-initial {
+  font-family: "Italianno", cursive;
+  font-size: clamp(110px, 18vw, 200px);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+/* & između inicijala */
+.efv-ampersand {
+  font-family: "Italianno", cursive;
+  font-size: clamp(62px, 9vw, 105px);
+  font-weight: 400;
+  line-height: 1;
+  color: #ffffff;
+  margin: 0 4px;
+}
+
+.efv-initials-mark {
+  gap: clamp(4px, 1vw, 10px);
+  color: #ffffff;
+}
+
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .efv-initials-mark {
+    gap: 2px;
+  }
+
+  .efv-initial {
+    font-size: clamp(105px, 34vw, 145px);
+  }
+
+  .efv-ampersand {
+    font-size: clamp(58px, 19vw, 82px);
+  }
+}
+
+/* =====================================================
+   INITIALS — A / A
+===================================================== */
+
+.efv-initials-screen {
+  background: #000;
+}
+
+.efv-initials-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  color: #fff;
+  transform: translateY(-1vh);
+}
+
+.efv-initial {
+  font-family: "Italianno", cursive !important;
+  font-size: clamp(120px, 20vw, 200px);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+/* prvi inicijal malo više */
+.efv-initial-bride {
+  transform: translateY(-20px);
+}
+
+/* kosa crta */
+.efv-slash {
+  font-family: "Italianno", cursive;
+  font-size: clamp(90px, 13vw, 140px);
+  font-weight: 400;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+
+  margin: 0 -3px;
+  transform: rotate(-4deg);
+}
+
+/* drugi inicijal malo niže */
+.efv-initial-groom {
+  transform: translateY(22px);
+}
+
+@media (max-width: 640px) {
+  .efv-initials-mark {
+    gap: 0;
+  }
+
+  .efv-initial {
+    font-size: clamp(115px, 35vw, 150px);
+  }
+
+  .efv-initial-bride {
+    transform: translateY(-16px);
+  }
+
+  .efv-slash {
+    font-size: clamp(75px, 23vw, 100px);
+    margin: 0 -5px;
+  }
+
+  .efv-initial-groom {
+    transform: translateY(18px);
+  }
+}
+
+@media (max-width: 480px) {
+  .monogram-video-names {
+    font-size: 17px;
+    letter-spacing: 0.09em;
+    gap: 8px;
+  }
+
+  .monogram-video-date {
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+}
