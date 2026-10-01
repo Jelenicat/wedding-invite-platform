@@ -8,8 +8,13 @@ function EnvelopeFlapIntro({
   onReveal,
   onStartMusic,
   slug,
+
   details = {},
   script = "latin",
+  language = "sr",
+
+  openHint = "",
+  openingText = "",
 }) {
   const config = details.envelopeFlap || {};
 
@@ -30,6 +35,10 @@ function EnvelopeFlapIntro({
 
   const cyrillic = script === "cyrillic";
   const hidden = phase === "hidden";
+
+  /* =========================================================
+     PRELOAD ASSETS
+     ========================================================= */
 
   useEffect(() => {
     let active = true;
@@ -72,6 +81,7 @@ function EnvelopeFlapIntro({
 
     return () => {
       active = false;
+
       clearTimeout(timeout);
 
       images.forEach((img) => {
@@ -81,11 +91,16 @@ function EnvelopeFlapIntro({
     };
   }, [topImage, bottomImage]);
 
+  /* =========================================================
+     LOCK SCROLL DOK JE INTRO AKTIVAN
+     ========================================================= */
+
   useEffect(() => {
     if (hidden) return undefined;
 
     const bodyOverflow = document.body.style.overflow;
-    const htmlOverflow = document.documentElement.style.overflow;
+    const htmlOverflow =
+      document.documentElement.style.overflow;
 
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
@@ -96,16 +111,24 @@ function EnvelopeFlapIntro({
     };
   }, [hidden]);
 
+  /* =========================================================
+     OPEN
+     ========================================================= */
+
   const open = () => {
-    if (openedRef.current || assets === "loading") return;
+    if (
+      openedRef.current ||
+      assets === "loading"
+    ) {
+      return;
+    }
 
     openedRef.current = true;
 
     // Muzika se pokreće direktno na klik zbog mobilnih browsera.
     onStartMusic?.();
 
-    // Invitation card se otkriva ispod koverte odmah.
-    // CSS zasebno animira preklop, donju sliku i podlogu.
+    // Parent dobija signal da je otvaranje počelo.
     onReveal?.();
 
     if (assets === "error") {
@@ -114,6 +137,10 @@ function EnvelopeFlapIntro({
       setPhase("opening");
     }
   };
+
+  /* =========================================================
+     FLAP ANIMATION FINISHED
+     ========================================================= */
 
   const reveal = (event) => {
     if (
@@ -127,6 +154,10 @@ function EnvelopeFlapIntro({
     setPhase("fading");
   };
 
+  /* =========================================================
+     INTRO FINISHED
+     ========================================================= */
+
   const finish = (event) => {
     if (
       event.target !== event.currentTarget ||
@@ -139,26 +170,48 @@ function EnvelopeFlapIntro({
     finishedRef.current = true;
 
     setPhase("hidden");
+
     onEnter?.();
   };
 
+  /* =========================================================
+     HIDDEN
+     ========================================================= */
+
   if (hidden) return null;
+
+  /* =========================================================
+     RENDER
+     ========================================================= */
 
   return (
     <section
       className={`efi-overlay efi-${phase}`}
       aria-label={
-        cyrillic ? "Отварање позивнице" : "Otvaranje pozivnice"
+        language === "de"
+          ? "Brief öffnen"
+          : cyrillic
+            ? "Отварање позивнице"
+            : "Otvaranje pozivnice"
       }
       onAnimationEnd={finish}
     >
-      <div className="efi-viewport" aria-hidden="true">
+      {/* =====================================================
+          ENVELOPE
+          ===================================================== */}
+
+      <div
+        className="efi-viewport"
+        aria-hidden="true"
+      >
         {assets === "ready" && (
           <div
             className="efi-canvas"
             style={{
               "--efi-hinge": `${hinge}%`,
-              "--efi-top-image": `url(${JSON.stringify(topImage)})`,
+              "--efi-top-image": `url(${JSON.stringify(
+                topImage
+              )})`,
             }}
           >
             <img
@@ -170,7 +223,10 @@ function EnvelopeFlapIntro({
 
             <div className="efi-shadow" />
 
-            <div className="efi-flap" onAnimationEnd={reveal}>
+            <div
+              className="efi-flap"
+              onAnimationEnd={reveal}
+            >
               <img
                 className="efi-front"
                 src={topImage}
@@ -182,27 +238,76 @@ function EnvelopeFlapIntro({
         )}
       </div>
 
+      {/* =====================================================
+          CLICK / TAP AREA
+          ===================================================== */}
+
       <button
         className="efi-open-button"
         type="button"
         onClick={open}
-        disabled={assets === "loading" || phase !== "closed"}
+        disabled={
+          assets === "loading" ||
+          phase !== "closed"
+        }
         aria-label={
-          cyrillic ? "Отвори позивницу" : "Otvori pozivnicu"
+          language === "de"
+            ? "Brief öffnen"
+            : cyrillic
+              ? "Отвори позивницу"
+              : "Otvori pozivnicu"
         }
       >
-        {slug === "bojana-vasilije" && phase === "closed" && (
-          <span className="efi-bojana-open-hint" aria-hidden="true">
-            <span className="efi-bojana-open-hint-sr">
-              Кликните да отворите писмо
-            </span>
+        {/* ===================================================
+            BOJANA & VASILIJE
+            POSTOJEĆE — OSTAVLJENO
+            =================================================== */}
 
-            <span className="efi-bojana-open-hint-en">
-              Click to open the letter
+        {slug === "bojana-vasilije" &&
+          phase === "closed" && (
+            <span
+              className="efi-bojana-open-hint"
+              aria-hidden="true"
+            >
+              <span className="efi-bojana-open-hint-sr">
+                Кликните да отворите писмо
+              </span>
+
+              <span className="efi-bojana-open-hint-en">
+                Click to open the letter
+              </span>
             </span>
-          </span>
-        )}
+          )}
+
+        {/* ===================================================
+            GENERIC OPEN HINT
+            npr. ANDJELA & ANDRIJA 5
+            =================================================== */}
+
+        {openHint &&
+          phase === "closed" && (
+            <span
+              className="efi-andjela-open-hint"
+              aria-hidden="true"
+            >
+              {openHint}
+            </span>
+          )}
       </button>
+
+      {/* =====================================================
+          TEXT DOK SE KOVERTA OTVARA
+          ===================================================== */}
+
+      {openingText &&
+        phase === "opening" && (
+          <div
+            className="efi-andjela-opening-text"
+            aria-hidden="true"
+          >
+            {openingText}
+          </div>
+        )}
     </section>
   );
 }

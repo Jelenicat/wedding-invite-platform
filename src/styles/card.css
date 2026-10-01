@@ -27422,3 +27422,1349 @@ font-family: "Italianno", cursive;
     line-height: 1.3;
   }
 }
+
+/* =========================================================
+   ANDJELA & ANDRIJA 5
+   PUTOVANJE I SMEŠTAJ / ANREISE & UNTERKUNFT
+   ========================================================= */
+
+.aa-travel-section {
+  position: relative;
+
+  width: 100%;
+  margin: 0;
+
+  padding:
+    clamp(70px, 9vw, 110px)
+    22px;
+
+  background: #ffffff;
+
+  color: #514943;
+
+  overflow: hidden;
+}
+
+
+/* vrlo blag dekorativni glow */
+
+.aa-travel-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: -140px;
+  left: 50%;
+
+  width: 520px;
+  height: 520px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(166, 149, 136, 0.055) 0%,
+      transparent 68%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   INNER
+   ========================================================= */
+
+.aa-travel-inner {
+  position: relative;
+  z-index: 1;
+
+  width: min(100%, 680px);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.aa-travel-eyebrow {
+  margin: 0 0 12px;
+
+  text-align: center;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.24em;
+
+  text-transform: uppercase;
+
+  color: #9a887b;
+}
+
+
+.aa-travel-title {
+  margin: 0;
+
+  text-align: center;
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: clamp(48px, 8vw, 70px);
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  color: #514943;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.aa-travel-divider {
+  width: 72px;
+  height: 1px;
+
+  margin: 24px auto 25px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(81, 73, 67, 0.36),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.aa-travel-intro {
+  max-width: 520px;
+
+  margin:
+    0 auto
+    clamp(36px, 6vw, 54px);
+
+  text-align: center;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  letter-spacing: 0.01em;
+
+  color: #70665f;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.aa-travel-card {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 52px 1fr;
+
+  gap: 20px;
+
+  width: 100%;
+
+  padding:
+    30px
+    30px
+    32px;
+
+  margin-bottom: 18px;
+
+  border:
+    1px solid
+    rgba(81, 73, 67, 0.14);
+
+  background:
+    rgba(255, 255, 255, 0.98);
+
+  box-shadow:
+    0 16px 42px
+    rgba(56, 46, 40, 0.035);
+}
+
+
+/* tanki unutrašnji okvir */
+
+.aa-travel-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 6px;
+
+  border:
+    1px solid
+    rgba(81, 73, 67, 0.045);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.aa-travel-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(81, 73, 67, 0.15);
+
+  border-radius: 50%;
+
+  color: #8d796a;
+
+  background: #ffffff;
+}
+
+
+.aa-travel-icon svg {
+  width: 20px;
+  height: 20px;
+
+  stroke-width: 1.35;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.aa-travel-card-content {
+  min-width: 0;
+}
+
+
+.aa-travel-card-eyebrow {
+  margin: 1px 0 7px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color: #a08c7e;
+}
+
+
+.aa-travel-card-title {
+  margin: 0 0 10px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 25px;
+  font-weight: 500;
+
+  line-height: 1.08;
+
+  letter-spacing: 0.01em;
+
+  color: #514943;
+}
+
+
+.aa-travel-card-text {
+  max-width: 510px;
+
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  color: #716760;
+}
+
+
+/* =========================================================
+   ROUTE BUTTON
+   ========================================================= */
+
+.aa-travel-link {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+
+  padding:
+    10px
+    17px;
+
+  border:
+    1px solid
+    rgba(81, 73, 67, 0.22);
+
+  background: transparent;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  color: #665950;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.aa-travel-link:hover {
+  transform: translateY(-2px);
+
+  background: #514943;
+
+  border-color: #514943;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   HOTELS
+   ========================================================= */
+
+.aa-travel-hotels {
+  margin-top: 26px;
+
+  border-top:
+    1px solid
+    rgba(81, 73, 67, 0.11);
+}
+
+
+.aa-travel-hotel {
+  min-height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding: 17px 2px;
+
+  border-bottom:
+    1px solid
+    rgba(81, 73, 67, 0.1);
+}
+
+
+.aa-travel-hotel-copy {
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+.aa-travel-hotel-name {
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  color: #514943;
+}
+
+
+.aa-travel-hotel-name--link {
+  display: inline-block;
+
+  text-decoration: none;
+
+  color: #514943;
+
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.aa-travel-hotel-name--link:hover {
+  color: #8e7868;
+}
+
+
+.aa-travel-hotel-note {
+  margin:
+    4px 0 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  color: #887d75;
+}
+
+
+/* =========================================================
+   HOTEL ARROW
+   ========================================================= */
+
+.aa-travel-hotel-arrow {
+  flex: 0 0 auto;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(81, 73, 67, 0.14);
+
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 20px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  color: #75665c;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease;
+}
+
+
+.aa-travel-hotel-arrow:hover {
+  transform: translateX(3px);
+
+  border-color: #514943;
+
+  background: #514943;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   FOOTER NOTE
+   ========================================================= */
+
+.aa-travel-footer {
+  margin:
+    21px 0
+    0;
+
+  padding-top: 2px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 12px;
+  font-style: italic;
+
+  line-height: 1.55;
+
+  color: #94877f;
+}
+
+
+/* =========================================================
+   SPACE BETWEEN CARDS
+   ========================================================= */
+
+.aa-travel-card--stay {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .aa-travel-section {
+    padding:
+      65px
+      18px
+      72px;
+  }
+
+  .aa-travel-inner {
+    width: min(100%, 390px);
+  }
+
+  .aa-travel-eyebrow {
+    max-width: 310px;
+
+    margin:
+      0 auto
+      11px;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    letter-spacing: 0.19em;
+  }
+
+  .aa-travel-title {
+    font-size: clamp(
+      48px,
+      15vw,
+      62px
+    );
+
+    line-height: 0.92;
+  }
+
+  .aa-travel-divider {
+    width: 64px;
+
+    margin:
+      22px auto
+      22px;
+  }
+
+  .aa-travel-intro {
+    max-width: 330px;
+
+    margin-bottom: 34px;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+  }
+
+
+  /* kartice */
+
+  .aa-travel-card {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+    padding:
+      25px
+      21px
+      27px;
+
+    margin-bottom: 14px;
+  }
+
+  .aa-travel-icon {
+    width: 43px;
+    height: 43px;
+
+    margin: 0 auto 2px;
+  }
+
+  .aa-travel-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .aa-travel-card-content {
+    text-align: center;
+  }
+
+  .aa-travel-card-eyebrow {
+    margin-bottom: 6px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.2em;
+  }
+
+  .aa-travel-card-title {
+    margin-bottom: 10px;
+
+    font-size: 23px;
+  }
+
+  .aa-travel-card-text {
+    max-width: 315px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+  }
+
+
+  /* route button */
+
+  .aa-travel-link {
+    margin-top: 18px;
+
+    padding:
+      10px
+      15px;
+
+    font-size: 10px;
+  }
+
+
+  /* hotels */
+
+  .aa-travel-hotels {
+    margin-top: 24px;
+
+    text-align: left;
+  }
+
+  .aa-travel-hotel {
+    min-height: 74px;
+
+    padding:
+      15px
+      0;
+  }
+
+  .aa-travel-hotel-name {
+    font-size: 16px;
+  }
+
+  .aa-travel-hotel-note {
+    max-width: 250px;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+  }
+
+  .aa-travel-hotel-arrow {
+    width: 32px;
+    height: 32px;
+
+    font-size: 18px;
+  }
+
+  .aa-travel-footer {
+    max-width: 300px;
+
+    margin:
+      19px auto
+      0;
+
+    text-align: center;
+
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .aa-travel-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .aa-travel-card {
+    padding:
+      23px
+      17px
+      25px;
+  }
+
+  .aa-travel-title {
+    font-size: 47px;
+  }
+
+  .aa-travel-intro {
+    font-size: 14px;
+  }
+
+  .aa-travel-hotel-note {
+    max-width: 205px;
+  }
+}
+
+
+/* =========================================================
+   DARK MODE
+   OVA SEKCIJA OSTAJE LIGHT / WHITE
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .aa-travel-section {
+    color-scheme: light;
+
+    background: #ffffff;
+
+    color: #514943;
+  }
+
+  .aa-travel-title,
+  .aa-travel-card-title,
+  .aa-travel-hotel-name,
+  .aa-travel-hotel-name--link {
+    color: #514943;
+  }
+
+  .aa-travel-intro,
+  .aa-travel-card-text {
+    color: #716760;
+  }
+
+  .aa-travel-card {
+    background: #ffffff;
+
+    border-color:
+      rgba(81, 73, 67, 0.14);
+  }
+
+  .aa-travel-icon,
+  .aa-travel-hotel-arrow {
+    background: #ffffff;
+
+    color: #75665c;
+  }
+
+  .aa-travel-link {
+    color: #665950;
+  }
+}
+
+/* =========================================================
+   ANDJELA & ANDRIJA 5
+   TRAVEL — COLOR MATCH WITH RSVP
+   dodati NA KRAJ card.css
+   ========================================================= */
+
+.aa-travel-section {
+  background: #fffaf8;
+  color: #5f544d;
+
+  /* da se ne vidi presek između RSVP i ove sekcije */
+  margin-top: -2px;
+}
+
+
+/* blagi topli glow umesto hladnog sivog */
+
+.aa-travel-section::before {
+  background:
+    radial-gradient(
+      circle,
+      rgba(190, 151, 137, 0.07) 0%,
+      rgba(190, 151, 137, 0.025) 38%,
+      transparent 70%
+    );
+}
+
+
+/* =========================================================
+   NASLOVI
+   ========================================================= */
+
+.aa-travel-eyebrow {
+  color: #b08d80;
+}
+
+.aa-travel-title {
+  color: #514741;
+}
+
+
+/* linija ispod naslova */
+
+.aa-travel-divider {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(140, 111, 96, 0.25),
+      transparent
+    );
+}
+
+
+/* uvodni tekst */
+
+.aa-travel-intro {
+  color: #7a665a;
+}
+
+
+/* =========================================================
+   KARTICE
+   ========================================================= */
+
+.aa-travel-card {
+  background:
+    rgba(255, 255, 255, 0.34);
+
+  border:
+    1px solid
+    rgba(140, 111, 96, 0.13);
+
+  box-shadow: none;
+}
+
+.aa-travel-card::before {
+  border-color:
+    rgba(140, 111, 96, 0.07);
+}
+
+
+/* =========================================================
+   IKONICE
+   ========================================================= */
+
+.aa-travel-icon {
+  background:
+    rgba(255, 255, 255, 0.42);
+
+  border-color:
+    rgba(140, 111, 96, 0.16);
+
+  color: #a18476;
+}
+
+
+/* =========================================================
+   TEKST U KARTICAMA
+   ========================================================= */
+
+.aa-travel-card-eyebrow {
+  color: #b08d80;
+}
+
+.aa-travel-card-title {
+  color: #514741;
+}
+
+.aa-travel-card-text {
+  color: #75645b;
+}
+
+
+/* =========================================================
+   DUGME ZA RUTU
+   ========================================================= */
+
+.aa-travel-link {
+  border-color:
+    rgba(140, 111, 96, 0.22);
+
+  color: #6f5f56;
+
+  background:
+    rgba(255, 255, 255, 0.24);
+}
+
+.aa-travel-link:hover {
+  background: #75645b;
+  border-color: #75645b;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   SMEŠTAJ
+   ========================================================= */
+
+.aa-travel-hotels {
+  border-top-color:
+    rgba(140, 111, 96, 0.12);
+}
+
+.aa-travel-hotel {
+  border-bottom-color:
+    rgba(140, 111, 96, 0.11);
+}
+
+.aa-travel-hotel-name,
+.aa-travel-hotel-name--link {
+  color: #514741;
+}
+
+.aa-travel-hotel-name--link:hover {
+  color: #9a796b;
+}
+
+.aa-travel-hotel-note {
+  color: #89776d;
+}
+
+
+/* strelica */
+
+.aa-travel-hotel-arrow {
+  background:
+    rgba(255, 255, 255, 0.42);
+
+  border-color:
+    rgba(140, 111, 96, 0.16);
+
+  color: #806d62;
+}
+
+.aa-travel-hotel-arrow:hover {
+  background: #75645b;
+  border-color: #75645b;
+  color: #ffffff;
+}
+
+
+/* footer */
+
+.aa-travel-footer {
+  color: #948078;
+}
+
+
+/* =========================================================
+   DARK MODE
+   ISTA TOPLA LIGHT VARIJANTA
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .aa-travel-section {
+    color-scheme: light;
+    background: #fffaf8;
+    color: #5f544d;
+  }
+
+  .aa-travel-title,
+  .aa-travel-card-title,
+  .aa-travel-hotel-name,
+  .aa-travel-hotel-name--link {
+    color: #514741;
+  }
+
+  .aa-travel-intro,
+  .aa-travel-card-text {
+    color: #75645b;
+  }
+
+  .aa-travel-card {
+    background:
+      rgba(255, 255, 255, 0.34);
+
+    border-color:
+      rgba(140, 111, 96, 0.13);
+  }
+
+  .aa-travel-icon,
+  .aa-travel-hotel-arrow {
+    background:
+      rgba(255, 255, 255, 0.42);
+
+    color: #806d62;
+  }
+
+  .aa-travel-link {
+    background:
+      rgba(255, 255, 255, 0.24);
+
+    color: #6f5f56;
+  }
+}
+
+/* =========================================================
+   ANDJELA & ANDRIJA 5
+   DRESS CODE — "Dame" i "Muškarci" u Italiano fontu
+   ========================================================= */
+
+.minimal-invitation-card.minimal-slug-andjela-andrija-5
+.minimal-dresscode-role-title {
+  font-family: "Italianno", cursive;
+  font-size: 52px;
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #a7968d;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .minimal-invitation-card.minimal-slug-andjela-andrija-5
+  .minimal-dresscode-role-title {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+}
+
+/* =========================================================
+   ANDJELA & ANDRIJA 5
+   CHILDHOOD ENDING — FINAL VERTICAL
+   SAMO ZA OVAJ SLUG
+   ========================================================= */
+
+.aa5-childhood-ending {
+  width: 100%;
+
+  padding:
+    30px
+    20px
+    38px;
+
+  background: #fbfaf8;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+   A & A
+   ↓
+   IMAGE
+   ↓
+   TEXT
+   ========================================================= */
+
+.aa5-childhood-ending-inner {
+  width: min(100%, 360px);
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/*
+  U trenutnom JSX-u A&A i tekst su u
+  .aa5-childhood-ending-copy.
+
+  display: contents omogućava da A&A i tekst
+  postanu direktni flex elementi parenta,
+  pa možemo da ih poređamo oko slike.
+*/
+
+.aa5-childhood-ending-copy {
+  display: contents;
+}
+
+
+/* =========================================================
+   A & A
+   ========================================================= */
+
+.aa5-childhood-ending-small {
+  order: 1;
+
+  display: block;
+
+  margin:
+    0
+    0
+    13px;
+
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.3em;
+
+  text-align: center;
+
+  color: #b09182;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.aa5-childhood-ending-image-wrap {
+  order: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  margin:
+    0
+    0
+    15px;
+}
+
+.aa5-childhood-ending-image {
+  display: block;
+
+  width: 145px;
+  max-width: 42vw;
+  height: auto;
+
+  margin: 0;
+
+  object-fit: contain;
+
+  transform: none;
+
+  filter:
+    drop-shadow(
+      0 9px 15px
+      rgba(92, 78, 70, 0.1)
+    );
+
+  pointer-events: none;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.aa5-childhood-ending-text {
+  order: 3;
+
+  margin: 0;
+  padding: 0;
+
+  width: min(100%, 275px);
+
+  font-family:
+    "Italianno",
+    "Great Vibes",
+    cursive;
+
+  font-size: 34px;
+  font-weight: 400;
+
+  line-height: 1.04;
+
+  letter-spacing: 0;
+
+  text-align: center;
+
+  color: #62534c;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .aa5-childhood-ending {
+    padding:
+      27px
+      18px
+      34px;
+  }
+
+  .aa5-childhood-ending-inner {
+    width: min(100%, 330px);
+  }
+
+  .aa5-childhood-ending-small {
+    margin-bottom: 11px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.28em;
+  }
+
+  .aa5-childhood-ending-image-wrap {
+    margin-bottom: 13px;
+  }
+
+  .aa5-childhood-ending-image {
+    width: 138px;
+
+    max-width: 44vw;
+  }
+
+  .aa5-childhood-ending-text {
+    width: min(100%, 260px);
+
+    font-size: 32px;
+
+    line-height: 1.03;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .aa5-childhood-ending {
+    padding:
+      24px
+      14px
+      30px;
+  }
+
+  .aa5-childhood-ending-inner {
+    width: 100%;
+  }
+
+  .aa5-childhood-ending-small {
+    margin-bottom: 10px;
+
+    font-size: 7.5px;
+  }
+
+  .aa5-childhood-ending-image-wrap {
+    margin-bottom: 12px;
+  }
+
+  .aa5-childhood-ending-image {
+    width: 125px;
+
+    max-width: 46vw;
+  }
+
+  .aa5-childhood-ending-text {
+    width: min(100%, 235px);
+
+    font-size: 29px;
+
+    line-height: 1.03;
+  }
+}
+
+
+/* =========================================================
+   DARK MODE
+   OVA SEKCIJA OSTAJE LIGHT
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .aa5-childhood-ending {
+    background: #fbfaf8;
+
+    color-scheme: light;
+  }
+
+  .aa5-childhood-ending-small {
+    color: #b09182;
+  }
+
+  .aa5-childhood-ending-text {
+    color: #62534c;
+  }
+}

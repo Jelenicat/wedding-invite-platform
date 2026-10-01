@@ -20,34 +20,61 @@ function MinimalRSVP({
   language = "sr",
 }) {
   const t =
-    language === "en"
+    language === "de"
       ? {
-          missingSlug: "Missing slug or event type.",
-          enterName: "Please enter your full name.",
-          chooseAttendance: "Please choose whether you will attend.",
-          invalidGuests: "Please enter a valid number of guests.",
-          chooseFasting: "Please choose whether you are fasting.",
-          submitError: "An error occurred while sending your RSVP.",
-          thanks: "Thank you!",
-          success: "Your RSVP has been sent successfully.",
-          title: "Confirm your attendance",
+          missingSlug: "Slug oder Veranstaltungstyp fehlt.",
+          enterName: "Bitte gebt euren Vor- und Nachnamen ein.",
+          chooseAttendance: "Bitte wählt aus, ob ihr teilnehmen werdet.",
+          invalidGuests: "Bitte gebt eine gültige Anzahl an Gästen ein.",
+          chooseFasting: "Bitte wählt aus, ob ihr fastet.",
+          submitError: "Beim Senden eurer Rückmeldung ist ein Fehler aufgetreten.",
+          thanks: "Vielen Dank!",
+          success: "Eure Rückmeldung wurde erfolgreich gesendet.",
+          title: "Teilnahme bestätigen",
           subtitle:
-            "It would mean so much to us to have you with us on our special day.",
-          fullName: "Full name",
-          fullNamePlaceholder: "Enter your full name",
-          attendance: "Will you attend?",
-          yes: "Attending",
-          yesText: "I’m happy to celebrate with you",
-          no: "Not attending",
-          noText: "Unfortunately, I can’t make it",
-          guests: "Number of guests",
-          fasting: "Are you fasting?",
-          fastingYes: "Fasting",
-          fastingNo: "Not fasting",
-          sending: "Sending...",
-          submit: "Send RSVP",
+            "Wir würden uns sehr freuen, diesen besonderen Tag gemeinsam mit euch zu feiern.",
+          fullName: "Vor- und Nachname",
+          fullNamePlaceholder: "Vor- und Nachname eingeben",
+          attendance: "Seid ihr dabei?",
+          yes: "Wir sind dabei",
+          yesText: "Wir freuen uns, mit euch zu feiern",
+          no: "Wir sind nicht dabei",
+          noText: "Leider können wir nicht kommen",
+          guests: "Anzahl der Gäste",
+          fasting: "Fastet ihr?",
+          fastingYes: "Ja, wir fasten",
+          fastingNo: "Nein, wir fasten nicht",
+          sending: "Wird gesendet...",
+          submit: "Antwort senden",
         }
-      : script === "cyrillic"
+      : language === "en"
+        ? {
+            missingSlug: "Missing slug or event type.",
+            enterName: "Please enter your full name.",
+            chooseAttendance: "Please choose whether you will attend.",
+            invalidGuests: "Please enter a valid number of guests.",
+            chooseFasting: "Please choose whether you are fasting.",
+            submitError: "An error occurred while sending your RSVP.",
+            thanks: "Thank you!",
+            success: "Your RSVP has been sent successfully.",
+            title: "Confirm your attendance",
+            subtitle:
+              "It would mean so much to us to have you with us on our special day.",
+            fullName: "Full name",
+            fullNamePlaceholder: "Enter your full name",
+            attendance: "Will you attend?",
+            yes: "Attending",
+            yesText: "I’m happy to celebrate with you",
+            no: "Not attending",
+            noText: "Unfortunately, I can’t make it",
+            guests: "Number of guests",
+            fasting: "Are you fasting?",
+            fastingYes: "Fasting",
+            fastingNo: "Not fasting",
+            sending: "Sending...",
+            submit: "Send RSVP",
+          }
+        : script === "cyrillic"
         ? {
             missingSlug: "Недостаје slug или тип догађаја.",
             enterName: "Унесите име и презиме.",
@@ -104,12 +131,52 @@ function MinimalRSVP({
   const rsvpOptions = details?.rsvpOptions || {};
   const showFastingOption = Boolean(rsvpOptions.fasting);
 
+  // Samo za ovaj slug svaki gost se unosi posebno
+  // i čuva kao poseban RSVP dokument sa guests: 1.
+  const splitGuestsIntoIndividualRsvps =
+    slug === "andjela-andrija-5";
+
+  const individualGuestText =
+    language === "de"
+      ? {
+          namesTitle: "Namen der Gäste",
+          guestLabel: "Gast",
+          guestPlaceholder: "Vor- und Nachname",
+          missingGuestNames:
+            "Bitte geben Sie den Vor- und Nachnamen jeder Person ein.",
+        }
+      : language === "en"
+        ? {
+            namesTitle: "Guest names",
+            guestLabel: "Guest",
+            guestPlaceholder: "Full name",
+            missingGuestNames:
+              "Please enter the full name of every guest.",
+          }
+        : script === "cyrillic"
+          ? {
+              namesTitle: "Имена гостију",
+              guestLabel: "Гост",
+              guestPlaceholder: "Име и презиме",
+              missingGuestNames:
+                "Унесите име и презиме за сваку особу.",
+            }
+          : {
+              namesTitle: "Imena gostiju",
+              guestLabel: "Gost",
+              guestPlaceholder: "Ime i prezime",
+              missingGuestNames:
+                "Unesite ime i prezime za svaku osobu.",
+            };
+
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
     guests: "1",
     fasting: "",
   });
+
+  const [guestNames, setGuestNames] = useState([""]);
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -125,11 +192,47 @@ function MinimalRSVP({
           guests: "1",
           fasting: "",
         });
+
+        setGuestNames([""]);
       }, 3000);
 
       return () => clearTimeout(timer);
     }
   }, [submitted]);
+
+  useEffect(() => {
+    if (!splitGuestsIntoIndividualRsvps) return;
+
+    if (formData.attending !== "da") {
+      setGuestNames([""]);
+      return;
+    }
+
+    const rawCount = Number(formData.guests);
+    const guestCount =
+      Number.isFinite(rawCount) && rawCount >= 1
+        ? Math.min(rawCount, 10)
+        : 1;
+
+    setGuestNames((prev) =>
+      Array.from(
+        { length: guestCount },
+        (_, index) => prev[index] || ""
+      )
+    );
+  }, [
+    splitGuestsIntoIndividualRsvps,
+    formData.attending,
+    formData.guests,
+  ]);
+
+  const handleGuestNameChange = (index, value) => {
+    setGuestNames((prev) =>
+      prev.map((name, currentIndex) =>
+        currentIndex === index ? value : name
+      )
+    );
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -147,6 +250,13 @@ function MinimalRSVP({
       guests: value === "da" ? prev.guests || "1" : "",
       fasting: value === "da" ? prev.fasting : "",
     }));
+
+    if (
+      splitGuestsIntoIndividualRsvps &&
+      value !== "da"
+    ) {
+      setGuestNames([""]);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -157,7 +267,10 @@ function MinimalRSVP({
       return;
     }
 
-    if (!formData.fullName.trim()) {
+    if (
+      !splitGuestsIntoIndividualRsvps &&
+      !formData.fullName.trim()
+    ) {
       alert(t.enterName);
       return;
     }
@@ -179,10 +292,33 @@ function MinimalRSVP({
         return;
       }
 
+      if (splitGuestsIntoIndividualRsvps) {
+        const namesForSubmission = guestNames
+          .slice(0, guestsCount)
+          .map((name) => name.trim());
+
+        if (
+          namesForSubmission.length !== guestsCount ||
+          namesForSubmission.some((name) => !name)
+        ) {
+          alert(individualGuestText.missingGuestNames);
+          return;
+        }
+      }
+
       if (showFastingOption && !formData.fasting) {
         alert(t.chooseFasting);
         return;
       }
+    }
+
+    if (
+      splitGuestsIntoIndividualRsvps &&
+      formData.attending === "ne" &&
+      !formData.fullName.trim()
+    ) {
+      alert(t.enterName);
+      return;
     }
 
     setLoading(true);
@@ -198,17 +334,58 @@ function MinimalRSVP({
         { merge: true }
       );
 
-      await addDoc(collection(db, "events", slug, "rsvps"), {
-        eventType,
-        fullName: formData.fullName.trim(),
-        attending: formData.attending,
-        guests: formData.attending === "da" ? guestsCount : 0,
-        fasting:
-          formData.attending === "da" && showFastingOption
-            ? formData.fasting
-            : "",
-        createdAt: serverTimestamp(),
-      });
+      if (
+        splitGuestsIntoIndividualRsvps &&
+        formData.attending === "da"
+      ) {
+        const namesForSubmission = guestNames
+          .slice(0, guestsCount)
+          .map((name) => name.trim());
+
+        // Jedna potvrda može imati više osoba, ali se svaka osoba
+        // čuva kao poseban RSVP red sa guests: 1.
+        const submissionGroupId = `${Date.now()}-${Math.random()
+          .toString(36)
+          .slice(2, 10)}`;
+
+        await Promise.all(
+          namesForSubmission.map((fullName) =>
+            addDoc(
+              collection(db, "events", slug, "rsvps"),
+              {
+                eventType,
+                fullName,
+                attending: "da",
+                guests: 1,
+                fasting: showFastingOption
+                  ? formData.fasting
+                  : "",
+                submissionGroupId,
+                createdAt: serverTimestamp(),
+              }
+            )
+          )
+        );
+      } else {
+        await addDoc(
+          collection(db, "events", slug, "rsvps"),
+          {
+            eventType,
+            fullName: formData.fullName.trim(),
+            attending: formData.attending,
+            guests:
+              formData.attending === "da"
+                ? guestsCount
+                : 0,
+            fasting:
+              formData.attending === "da" &&
+              showFastingOption
+                ? formData.fasting
+                : "",
+            createdAt: serverTimestamp(),
+          }
+        );
+      }
 
       setSubmitted(true);
     } catch (error) {
@@ -367,21 +544,23 @@ function MinimalRSVP({
                   className="minimal-rsvp-form"
                   onSubmit={handleSubmit}
                 >
-                  <div className="minimal-rsvp-field">
-                    <label htmlFor="minimal-fullName">
-                      {t.fullName}
-                    </label>
+                  {!splitGuestsIntoIndividualRsvps && (
+                    <div className="minimal-rsvp-field">
+                      <label htmlFor="minimal-fullName">
+                        {t.fullName}
+                      </label>
 
-                    <input
-                      id="minimal-fullName"
-                      type="text"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      placeholder={t.fullNamePlaceholder}
-                      required
-                    />
-                  </div>
+                      <input
+                        id="minimal-fullName"
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        placeholder={t.fullNamePlaceholder}
+                        required
+                      />
+                    </div>
+                  )}
 
                   <div className="minimal-rsvp-choice-block">
                     <p className="minimal-rsvp-choice-label">
@@ -439,6 +618,47 @@ function MinimalRSVP({
                   />
 
                   <AnimatePresence initial={false}>
+                    {splitGuestsIntoIndividualRsvps &&
+                      formData.attending === "ne" && (
+                        <motion.div
+                          className="minimal-rsvp-field"
+                          initial={{
+                            opacity: 0,
+                            height: 0,
+                            y: 6,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            height: "auto",
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            height: 0,
+                            y: -4,
+                          }}
+                          transition={{
+                            duration: 0.25,
+                          }}
+                        >
+                          <label htmlFor="minimal-fullName">
+                            {t.fullName}
+                          </label>
+
+                          <input
+                            id="minimal-fullName"
+                            type="text"
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                            placeholder={t.fullNamePlaceholder}
+                            required
+                          />
+                        </motion.div>
+                      )}
+                  </AnimatePresence>
+
+                  <AnimatePresence initial={false}>
                     {formData.attending === "da" && (
                       <motion.div
                         className="minimal-rsvp-field"
@@ -477,6 +697,69 @@ function MinimalRSVP({
                         />
                       </motion.div>
                     )}
+                  </AnimatePresence>
+
+                  <AnimatePresence initial={false}>
+                    {splitGuestsIntoIndividualRsvps &&
+                      formData.attending === "da" &&
+                      Number(formData.guests) >= 1 && (
+                        <motion.div
+                          className="minimal-rsvp-guest-names"
+                          key={`guest-names-${formData.guests}`}
+                          initial={{
+                            opacity: 0,
+                            height: 0,
+                            y: 6,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            height: "auto",
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            height: 0,
+                            y: -4,
+                          }}
+                          transition={{
+                            duration: 0.25,
+                          }}
+                        >
+                          <p className="minimal-rsvp-choice-label">
+                            {individualGuestText.namesTitle}
+                          </p>
+
+                          {guestNames.map((guestName, index) => (
+                            <div
+                              className="minimal-rsvp-field"
+                              key={`guest-name-${index}`}
+                            >
+                              <label
+                                htmlFor={`minimal-guest-name-${index}`}
+                              >
+                                {individualGuestText.guestLabel}{" "}
+                                {index + 1}
+                              </label>
+
+                              <input
+                                id={`minimal-guest-name-${index}`}
+                                type="text"
+                                value={guestName}
+                                onChange={(e) =>
+                                  handleGuestNameChange(
+                                    index,
+                                    e.target.value
+                                  )
+                                }
+                                placeholder={
+                                  individualGuestText.guestPlaceholder
+                                }
+                                required
+                              />
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
                   </AnimatePresence>
 
                   <AnimatePresence initial={false}>

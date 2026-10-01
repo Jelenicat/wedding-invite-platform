@@ -20456,3 +20456,467 @@ margin-bottom: 2px;
 
   color: rgba(73, 61, 56, 0.72);
 }
+
+/* =========================================================
+   ANDJELA & ANDRIJA 5
+   RSVP — POJEDINAČNA IMENA GOSTIJU
+   SAMO ZA OVAJ SLUG
+   ========================================================= */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names {
+  width: 100%;
+
+  margin-top: 18px;
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(145, 124, 112, 0.14);
+}
+
+
+/* =========================================================
+   NASLOV — IMENA GOSTIJU
+   ========================================================= */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-choice-label {
+  margin: 0 0 15px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  line-height: 1.25;
+
+  letter-spacing: 0.04em;
+
+  text-align: center;
+
+  color: #685951;
+}
+
+
+/* =========================================================
+   SVAKO POLJE
+   ========================================================= */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-field {
+  width: 100%;
+
+  margin: 0 0 12px;
+}
+
+
+/* poslednje bez nepotrebnog razmaka */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-field:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   LABEL — GOST 1 / GOST 2 / GOST 3
+   ========================================================= */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-field label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.11em;
+
+  text-transform: uppercase;
+
+  color: rgba(101, 84, 75, 0.72);
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-field input {
+  width: 100%;
+  min-height: 47px;
+
+  padding: 11px 14px;
+
+  border:
+    1px solid
+    rgba(159, 136, 123, 0.25);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.62);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255, 255, 255, 0.45);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.25;
+
+  color: #554a44;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* placeholder */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-field input::placeholder {
+  color: rgba(111, 94, 84, 0.45);
+
+  font-style: italic;
+}
+
+
+/* focus */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-field input:focus {
+  border-color:
+    rgba(159, 129, 113, 0.52);
+
+  background:
+    rgba(255, 255, 255, 0.88);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(178, 147, 130, 0.07);
+}
+
+
+/* =========================================================
+   SUKCESIVNA POLJA — BLAGA LINIJA
+   ========================================================= */
+
+.minimal-rsvp-slug-andjela-andrija-5
+.minimal-rsvp-guest-names
+.minimal-rsvp-field
++
+.minimal-rsvp-field {
+  padding-top: 4px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .minimal-rsvp-slug-andjela-andrija-5
+  .minimal-rsvp-guest-names {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+
+  .minimal-rsvp-slug-andjela-andrija-5
+  .minimal-rsvp-guest-names
+  .minimal-rsvp-choice-label {
+    margin-bottom: 13px;
+
+    font-size: 16px;
+  }
+
+  .minimal-rsvp-slug-andjela-andrija-5
+  .minimal-rsvp-guest-names
+  .minimal-rsvp-field {
+    margin-bottom: 10px;
+  }
+
+  .minimal-rsvp-slug-andjela-andrija-5
+  .minimal-rsvp-guest-names
+  .minimal-rsvp-field label {
+    margin-bottom: 5px;
+
+    font-size: 11px;
+  }
+
+  .minimal-rsvp-slug-andjela-andrija-5
+  .minimal-rsvp-guest-names
+  .minimal-rsvp-field input {
+    min-height: 44px;
+
+    padding: 10px 12px;
+
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   DARK MODE
+   ZA OVAJ RSVP ZADRŽAVAMO SVETLI IZGLED
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .minimal-rsvp-slug-andjela-andrija-5
+  .minimal-rsvp-guest-names
+  .minimal-rsvp-field input {
+    background:
+      rgba(255, 255, 255, 0.72);
+
+    color: #554a44;
+
+    border-color:
+      rgba(159, 136, 123, 0.25);
+  }
+
+  .minimal-rsvp-slug-andjela-andrija-5
+  .minimal-rsvp-guest-names
+  .minimal-rsvp-field input::placeholder {
+    color:
+      rgba(111, 94, 84, 0.45);
+  }
+}
+
+/* =========================================================
+   ANDJELA & ANDRIJA 5
+   COUNTDOWN — IVORY / TAUPE PALETTE
+   SAMO ZA OVAJ SLUG
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5 {
+  background: #fbfaf8;
+  color: #5b504a;
+}
+
+
+/* =========================================================
+   GORNJI NASLOV
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-kicker {
+  color: #9f8579;
+
+  font-weight: 500;
+  letter-spacing: 0.24em;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-divider {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(177, 151, 138, 0.38),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   BROJEVI
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-item span {
+  color: #584b45;
+
+  text-shadow: none;
+}
+
+
+/* =========================================================
+   DANA / SATI / MIN / SEK
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-item small {
+  color: #a28679;
+}
+
+
+/* =========================================================
+   TEKST ISPOD COUNTDOWN-A
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-note {
+  color: #75645c;
+}
+
+
+/* =========================================================
+   CALENDAR BOX
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-calendar-box {
+  color: #665750;
+}
+
+
+/* =========================================================
+   CALENDAR BUTTON
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-calendar-btn {
+  border:
+    1px solid
+    rgba(169, 145, 132, 0.34);
+
+  background:
+    rgba(255, 255, 255, 0.46);
+
+  color: #665750;
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255, 255, 255, 0.5);
+}
+
+
+/* uklanjamo ljubičasti emoji kalendara */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-calendar-btn > span {
+  display: none;
+}
+
+
+/* hover */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-calendar-btn:hover {
+  background:
+    rgba(255, 255, 255, 0.78);
+
+  border-color:
+    rgba(160, 132, 117, 0.52);
+
+  color: #544741;
+}
+
+
+/* =========================================================
+   CALENDAR HINT
+   ========================================================= */
+
+.minimal-countdown-slug-andjela-andrija-5
+.minimal-countdown-calendar-hint {
+  color: #92796e;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-kicker {
+    color: #9b8175;
+  }
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-item span {
+    color: #584b45;
+  }
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-item small {
+    color: #a2877b;
+  }
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-note {
+    color: #75645c;
+  }
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-calendar-btn {
+    border-color:
+      rgba(169, 145, 132, 0.32);
+
+    color: #62534c;
+  }
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-calendar-hint {
+    color: #90786d;
+  }
+}
+
+
+/* =========================================================
+   DARK MODE
+   OVAJ SLUG OSTAJE SVETAO
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .minimal-countdown-slug-andjela-andrija-5 {
+    background: #fbfaf8;
+    color: #5b504a;
+  }
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-item span {
+    color: #584b45;
+  }
+
+  .minimal-countdown-slug-andjela-andrija-5
+  .minimal-countdown-calendar-btn {
+    background:
+      rgba(255, 255, 255, 0.46);
+
+    color: #665750;
+
+    border-color:
+      rgba(169, 145, 132, 0.34);
+  }
+}

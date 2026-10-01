@@ -11546,7 +11546,9 @@ musicSrc: "/music/mina-dragan.mp3",
 
   weddingDate: "31.07.2027.",
   weddingTime: "",
-musicSrc: "/music/mina-dragan.mp3",
+
+  musicSrc: "/music/andjela-andrija.mp3",
+
   venue: "Hotel Izvor, Aranđelovac",
 
   /* =========================
@@ -11561,7 +11563,7 @@ musicSrc: "/music/mina-dragan.mp3",
   ========================== */
 
   backgroundImage:
-    "/images/andrijana-marko-minimal.jpg",
+    "/images/anđela-jovan-minimal.jpg",
 
   details: {
     ...createDetails({
@@ -11570,7 +11572,25 @@ musicSrc: "/music/mina-dragan.mp3",
       ========================== */
 
       backgroundImage:
-        "/images/andrijana-marko-minimal.jpg",
+        "/images/anđela-jovan-minimal.jpg",
+
+      /* =========================
+         JEZICI
+      ========================== */
+
+      defaultLanguage: "sr",
+
+      showLanguageSwitcher: true,
+
+      languages: [
+        "sr",
+        "de",
+      ],
+
+      languageLabels: {
+        sr: "SR",
+        de: "DE",
+      },
 
       /* =========================
          UVOD
@@ -11584,7 +11604,9 @@ musicSrc: "/music/mina-dragan.mp3",
       ========================== */
 
       date: "31.07.2027.",
-      dateISO: "2027-07-31",
+
+      dateISO:
+        "2027-07-31",
 
       /* =========================
          LOKACIJA
@@ -11602,25 +11624,40 @@ musicSrc: "/music/mina-dragan.mp3",
 
       events: [
         {
-          label: "Okupljanje kod mlade",
+          label:
+            "Okupljanje kod mlade",
+
           time: "",
-          icon: "gathering",
+
+          icon:
+            "gathering",
+
           location:
             "Lokacija će biti naknadno potvrđena",
         },
 
         {
-          label: "Crkveno venčanje",
+          label:
+            "Crkveno venčanje",
+
           time: "",
-          icon: "church",
+
+          icon:
+            "church",
+
           location:
             "Lokacija i vreme biće naknadno potvrđeni",
         },
 
         {
-          label: "Građansko venčanje",
+          label:
+            "Građansko venčanje",
+
           time: "",
-          icon: "civil",
+
+          icon:
+            "civil",
+
           location:
             "Hotel Izvor, Aranđelovac",
 
@@ -11632,9 +11669,14 @@ musicSrc: "/music/mina-dragan.mp3",
         },
 
         {
-          label: "Svadbeno slavlje",
+          label:
+            "Svadbeno slavlje",
+
           time: "",
-          icon: "restaurant",
+
+          icon:
+            "restaurant",
+
           location:
             "Hotel Izvor, Aranđelovac",
 
@@ -11692,7 +11734,294 @@ musicSrc: "/music/mina-dragan.mp3",
       showCalendarButton: true,
 
       calendarDurationHours: 9,
+
+      /* =========================
+         PREVODI
+         VAŽNO:
+         translated content ide u details
+         zbog getLocalizedInvitation()
+      ========================== */
+
+      translations: {
+        de: {
+          details: {
+            /* =====================
+               UVOD
+            ====================== */
+
+            welcomeText:
+              "Mit großer Freude laden wir euch ein, Teil unseres besonderen Tages zu sein und gemeinsam mit uns den Beginn unseres neuen Lebenskapitels zu feiern.",
+
+            /* =====================
+               DATUM
+            ====================== */
+
+            date:
+              "31.07.2027.",
+
+            /* =====================
+               RASPORED
+            ====================== */
+
+            events: [
+              {
+                label:
+                  "Treffen bei der Braut",
+
+                time: "",
+
+                icon:
+                  "gathering",
+
+                location:
+                  "Der genaue Ort wird noch bekannt gegeben",
+              },
+
+              {
+                label:
+                  "Kirchliche Trauung",
+
+                time: "",
+
+                icon:
+                  "church",
+
+                location:
+                  "Ort und Uhrzeit werden noch bekannt gegeben",
+              },
+
+              {
+                label:
+                  "Standesamtliche Trauung",
+
+                time: "",
+
+                icon:
+                  "civil",
+
+                location:
+                  "Hotel Izvor, Aranđelovac",
+
+                note:
+                  "Zeremonie im Freien",
+
+                mapLink:
+                  "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+              },
+
+              {
+                label:
+                  "Hochzeitsfeier",
+
+                time: "",
+
+                icon:
+                  "restaurant",
+
+                location:
+                  "Hotel Izvor, Aranđelovac",
+
+                mapLink:
+                  "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+              },
+            ],
+
+            /* =====================
+               DRESS CODE
+            ====================== */
+
+            dressCodeTitle:
+              "Sommerliche Eleganz",
+
+            dressCodeNote:
+              "Festlich, elegant und leicht – passend zu einem Sommerabend.",
+
+            dressCodeWomen:
+              "Elegante Midi- oder Maxikleider, leichte Stoffe und dezente, stilvolle Details.",
+
+            dressCodeMen:
+              "Smoking oder eleganter Anzug aus leichten Stoffen – festlich und zugleich sommerlich.",
+
+            /* =====================
+               RSVP
+            ====================== */
+
+            note:
+              "Bitte gebt uns bis zum 31.05.2027 Bescheid, ob ihr dabei sein könnt.",
+
+            rsvpText:
+              "Bitte gebt uns bis zum 31.05.2027 Bescheid, ob ihr dabei sein könnt.",
+
+            /* =====================
+               PUTOVANJE I SMEŠTAJ
+            ====================== */
+
+            foreignGuests: {
+              enabled: true,
+
+              eyebrow:
+                "FÜR UNSERE GÄSTE AUS DEM AUSLAND",
+
+              title:
+                "Anreise & Unterkunft",
+
+              intro:
+                "Damit eure Reise zu unserem besonderen Tag so angenehm wie möglich wird, haben wir einige hilfreiche Informationen für euch zusammengestellt.",
+
+              arrival: {
+                eyebrow:
+                  "ANREISE",
+
+                title:
+                  "Anreise nach Serbien",
+
+                text:
+                  "Für internationale Gäste ist die Anreise über den Flughafen Belgrad Nikola Tesla (BEG) besonders praktisch. Von dort geht es weiter nach Aranđelovac, wo unsere Hochzeitsfeier stattfindet.",
+
+                buttonText:
+                  "Route anzeigen",
+
+                mapLink:
+                  "https://www.google.com/maps/dir/?api=1&origin=Belgrade+Nikola+Tesla+Airport&destination=Hotel+Izvor+Arandjelovac",
+              },
+
+              accommodation: {
+                eyebrow:
+                  "UNTERKUNFT",
+
+                title:
+                  "Übernachtungsmöglichkeiten",
+
+                text:
+                  "Für eure Übernachtung stehen verschiedene Unterkünfte in Aranđelovac zur Verfügung.",
+
+                hotels: [
+                  {
+                    name:
+                      "Hotel Izvor",
+
+                    note:
+                      "Hier findet auch unsere Hochzeitsfeier statt.",
+
+                    mapLink:
+                      "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+                  },
+
+                  {
+                    name:
+                      "Vila Mila",
+
+                    note:
+                      "Eine Unterkunft in unmittelbarer Nähe des Hotels Izvor.",
+
+                    mapLink:
+                      "https://www.google.com/maps/search/?api=1&query=Vila+Mila+Arandjelovac",
+                  },
+
+                  {
+                    name:
+                      "Pansion Major",
+
+                    note:
+                      "Eine weitere Unterkunftsmöglichkeit in der Nähe.",
+
+                    mapLink:
+                      "https://www.google.com/maps/search/?api=1&query=Pansion+Major+Arandjelovac",
+                  },
+                ],
+
+                footer:
+                  "Bitte prüft Verfügbarkeit und Buchung direkt bei der jeweiligen Unterkunft.",
+              },
+            },
+          },
+        },
+      },
     }),
+
+    /* =========================
+       PUTOVANJE I SMEŠTAJ
+       SRPSKI
+    ========================== */
+
+    foreignGuests: {
+      enabled: true,
+
+      eyebrow:
+        "ZA GOSTE KOJI DOLAZE IZ INOSTRANSTVA",
+
+      title:
+        "Putovanje i smeštaj",
+
+      intro:
+        "Kako bi vam dolazak na naš poseban dan bio što jednostavniji, izdvojili smo nekoliko korisnih informacija o putovanju i smeštaju.",
+
+      arrival: {
+        eyebrow:
+          "DOLAZAK",
+
+        title:
+          "Dolazak u Srbiju",
+
+        text:
+          "Za goste koji dolaze iz inostranstva praktičan izbor je dolazak preko Aerodroma Nikola Tesla Beograd (BEG). Od aerodroma se putovanje nastavlja do Aranđelovca, gde će biti održano naše svadbeno slavlje.",
+
+        buttonText:
+          "Prikaži rutu",
+
+        mapLink:
+          "https://www.google.com/maps/dir/?api=1&origin=Belgrade+Nikola+Tesla+Airport&destination=Hotel+Izvor+Arandjelovac",
+      },
+
+      accommodation: {
+        eyebrow:
+          "SMEŠTAJ",
+
+        title:
+          "Gde možete odsesti",
+
+        text:
+          "Za boravak u Aranđelovcu izdvojili smo nekoliko opcija u blizini mesta proslave.",
+
+        hotels: [
+          {
+            name:
+              "Hotel Izvor",
+
+            note:
+              "Ovde će biti održano i naše svadbeno slavlje.",
+
+            mapLink:
+              "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+          },
+
+          {
+            name:
+              "Vila Mila",
+
+            note:
+              "Smeštaj u neposrednoj blizini Hotela Izvor.",
+
+            mapLink:
+              "https://www.google.com/maps/search/?api=1&query=Vila+Mila+Arandjelovac",
+          },
+
+          {
+            name:
+              "Pansion Major",
+
+            note:
+              "Još jedna opcija za smeštaj u blizini.",
+
+            mapLink:
+              "https://www.google.com/maps/search/?api=1&query=Pansion+Major+Arandjelovac",
+          },
+        ],
+
+        footer:
+          "Molimo vas da dostupnost i rezervaciju smeštaja proverite direktno sa izabranim objektom.",
+      },
+    },
 
     /* =========================
        KOVERTA
@@ -11728,9 +12057,11 @@ musicSrc: "/music/mina-dragan.mp3",
       ampersandColor:
         "#8b7768",
 
-      brideInitial: "A",
+      brideInitial:
+        "A",
 
-      groomInitial: "A",
+      groomInitial:
+        "A",
     },
   },
 },
