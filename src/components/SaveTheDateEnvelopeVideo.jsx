@@ -386,7 +386,24 @@ function SaveTheDateEnvelopeVideo({
     envelopeDurationMs
   );
 
-  const videoSrc = config.videoSrc || details.videoSrc || "";
+ const useStillImage =
+  [
+    "save-andjela-andrija-2",
+    "save-andjela-andrija-6",
+  ].includes(slug) && Boolean(config.imageSrc);
+
+  const imageSrc = useStillImage ? config.imageSrc : "";
+  const imagePosition = config.imagePosition || "center center";
+  const imageDurationMs = clampNumber(
+    config.imageDurationMs,
+    3600,
+    1200,
+    12000
+  );
+
+  const videoSrc = useStillImage
+    ? ""
+    : config.videoSrc || details.videoSrc || "";
   const videoPoster = config.videoPoster || "";
   const videoPosition = config.videoPosition || "center center";
   const videoMuted = config.videoMuted !== false;
@@ -514,6 +531,7 @@ function SaveTheDateEnvelopeVideo({
 
   const videoWatchdogRef = useRef(null);
   const videoStallTimerRef = useRef(null);
+  const imageTimerRef = useRef(null);
 
   const videoRef = useRef(null);
 
@@ -549,6 +567,7 @@ function SaveTheDateEnvelopeVideo({
       envelopeBottomImage,
       envelopeTopImage,
       stitchedCardImage,
+      ...(useStillImage && imageSrc ? [imageSrc] : []),
     ].filter(Boolean);
 
     /*
@@ -556,6 +575,7 @@ function SaveTheDateEnvelopeVideo({
       Their failure must never block the intro.
     */
     const warmSources = [
+      imageSrc,
       videoPoster,
       cardArtImage,
       backgroundImage,
@@ -662,6 +682,8 @@ function SaveTheDateEnvelopeVideo({
     envelopeBottomImage,
     envelopeTopImage,
     stitchedCardImage,
+    useStillImage,
+    imageSrc,
     videoPoster,
     cardArtImage,
     backgroundImage,
@@ -716,6 +738,11 @@ function SaveTheDateEnvelopeVideo({
       window.clearTimeout(videoStallTimerRef.current);
       videoStallTimerRef.current = null;
     }
+
+    if (imageTimerRef.current) {
+      window.clearTimeout(imageTimerRef.current);
+      imageTimerRef.current = null;
+    }
   }, []);
 
   useEffect(() => {
@@ -738,6 +765,10 @@ function SaveTheDateEnvelopeVideo({
 
       if (videoStallTimerRef.current) {
         window.clearTimeout(videoStallTimerRef.current);
+      }
+
+      if (imageTimerRef.current) {
+        window.clearTimeout(imageTimerRef.current);
       }
     };
   }, []);
@@ -838,14 +869,24 @@ function SaveTheDateEnvelopeVideo({
   }, [scheduleVideoWatchdog]);
 
   const startVideo = useCallback(() => {
+    videoFinishedRef.current = false;
+
+    clearVideoSafetyTimers();
+
+    if (useStillImage && imageSrc) {
+      setPhase("video");
+
+      imageTimerRef.current = window.setTimeout(() => {
+        finishVideo();
+      }, imageDurationMs);
+
+      return;
+    }
+
     if (!videoSrc) {
       finishVideo();
       return;
     }
-
-    videoFinishedRef.current = false;
-
-    clearVideoSafetyTimers();
 
     setPhase("video");
 
@@ -904,6 +945,9 @@ function SaveTheDateEnvelopeVideo({
     clearVideoSafetyTimers,
     finishVideo,
     scheduleVideoWatchdog,
+    useStillImage,
+    imageSrc,
+    imageDurationMs,
     videoMuted,
     videoSrc,
   ]);
@@ -1008,6 +1052,7 @@ function SaveTheDateEnvelopeVideo({
     "--ste-envelope-hinge": `${envelopeHingePercent}%`,
     "--ste-envelope-duration": `${envelopeDurationMs}ms`,
     "--stev-video-position": videoPosition,
+    "--stev-image-position": imagePosition,
     "--stev-monogram-color": config.monogramColor || "#ffffff",
     "--stev-envelope-resume-delay": `-${envelopeCutDelayMs}ms`,
   };
@@ -1116,7 +1161,9 @@ function SaveTheDateEnvelopeVideo({
     <section
       className={`std-envelope-save std-envelope-video-save ${
         isCyrillic ? "is-cyrillic" : ""
-      } ${isGerman ? "is-german" : ""}`}
+      } ${isGerman ? "is-german" : ""} ${
+        useStillImage ? "is-still-image" : ""
+      }`}
       data-phase={phase}
       style={style}
     >
@@ -1288,6 +1335,38 @@ function SaveTheDateEnvelopeVideo({
         <div className="std-envelope-save__intro-glow" aria-hidden="true" />
 
         <div className="std-envelope-video-save__film" aria-hidden="true">
+        {useStillImage && imageSrc && (
+  <img
+    className="std-envelope-video-save__image"
+    src={imageSrc}
+    alt=""
+    draggable={false}
+    onError={finishVideo}
+    style={{
+      position: "absolute",
+      inset: 0,
+
+      display: "block",
+
+      width: "100%",
+      height: "100%",
+
+      maxWidth: "none",
+      maxHeight: "none",
+
+      margin: 0,
+      padding: 0,
+
+      objectFit: "cover",
+      objectPosition: imagePosition,
+
+      filter: "grayscale(1)",
+
+      background: "#000000",
+    }}
+  />
+)}
+
           {videoSrc && (
             <video
               ref={videoRef}

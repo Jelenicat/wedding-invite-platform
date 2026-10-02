@@ -526,9 +526,11 @@ function MinimalRSVP({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <p className="minimal-rsvp-kicker">
-                  RSVP
-                </p>
+            {slug !== "andjela-andrija-5" && (
+  <p className="minimal-rsvp-kicker">
+    RSVP
+  </p>
+)}
 
                 <h2 className="minimal-rsvp-title">
                   {t.title}

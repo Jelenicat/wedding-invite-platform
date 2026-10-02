@@ -386,6 +386,101 @@ function MinimalInvitationCard({ brideName, groomName, details = {}, backgroundI
 
             </div>)}
 
+          {slug === "andjela-andrija-5" && (
+            <motion.section
+              className="aa5-bridesmaids-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <p className="aa5-bridesmaids-eyebrow">
+                {language === "de"
+                  ? "FÜR UNSERE BRAUTJUNGFERN"
+                  : "ZA NAŠE DEVERUŠE"}
+              </p>
+
+              <h3 className="aa5-bridesmaids-title">
+                {language === "de"
+                  ? "An der Seite der Braut – von den ersten Momenten an"
+                  : "Uz mladu, od prvih trenutaka"}
+              </h3>
+
+              <div className="aa5-bridesmaids-divider" />
+
+              <p className="aa5-bridesmaids-intro">
+                {language === "de"
+                  ? "Ihr Lieben, wir wünschen uns, dass ihr einen besonderen Teil dieses Tages an der Seite der Braut verbringt – von den Vorbereitungen, den ersten Lächeln und Fotos bis zur Zeremonie."
+                  : "Drage naše, želimo da jedan poseban deo ovog dana provedete uz mladu — od priprema, prvih osmeha i fotografija, pa sve do ceremonije."}
+              </p>
+
+              <div className="aa5-bridesmaids-list">
+                <div className="aa5-bridesmaids-item">
+                  <span className="aa5-bridesmaids-number">01</span>
+
+                  <div className="aa5-bridesmaids-item-copy">
+                    <h4>
+                      {language === "de"
+                        ? "An der Seite der Braut"
+                        : "Uz mladu"}
+                    </h4>
+
+                    <p>
+                      {language === "de"
+                        ? "An diesem Morgen ist euer Platz bei der Braut – für gemeinsame Vorbereitungen, Aufregung, Lachen und all die kleinen Momente, die wir für immer in Erinnerung behalten werden."
+                        : "Vaše mesto tog jutra je uz mladu — da zajedno podelite pripreme, tremu, smeh i one male trenutke koje ćemo zauvek pamtiti."}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="aa5-bridesmaids-item">
+                  <span className="aa5-bridesmaids-number">02</span>
+
+                  <div className="aa5-bridesmaids-item-copy">
+                    <h4>
+                      {language === "de"
+                        ? "Ein gemeinsamer Look"
+                        : "Jedan zajednički izgled"}
+                    </h4>
+
+                    <p>
+                      {language === "de"
+                        ? "Für die Vorbereitungen und die Zeremonie möchten wir, dass ihr alle dasselbe Kleid tragt, damit ein harmonisches und besonderes Gesamtbild entsteht."
+                        : "Za pripreme i ceremoniju želimo da sve budete u istim haljinama, kako bismo zajedno stvorile skladnu i posebnu uspomenu."}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="aa5-bridesmaids-item">
+                  <span className="aa5-bridesmaids-number">03</span>
+
+                  <div className="aa5-bridesmaids-item-copy">
+                    <h4>
+                      {language === "de"
+                        ? "Im Restaurant"
+                        : "U restoranu"}
+                    </h4>
+
+                    <p>
+                      {language === "de"
+                        ? "Sobald wir im Restaurant angekommen sind, könnt ihr euch gerne umziehen und den Abend in einem Outfit eurer Wahl weiterfeiern – wichtig ist, dass ihr euch wohlfühlt."
+                        : "Po dolasku u restoran, slobodno se presvucite i nastavite slavlje u odeći po svom izboru — najvažnije nam je da se osećate lepo i opušteno."}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="aa5-bridesmaids-closing">
+                {language === "de"
+                  ? "Danke, dass ihr an unserer Seite seid und diesen Tag noch besonderer macht. ♡"
+                  : "Hvala vam što ćete biti uz nas i što ćete ovaj dan učiniti još posebnijim. ♡"}
+              </p>
+            </motion.section>
+          )}
+
           {details.mapLink && (<div className="minimal-location-section">
 
               <a href={details.mapLink} target="_blank" rel="noreferrer" className="minimal-map-link">

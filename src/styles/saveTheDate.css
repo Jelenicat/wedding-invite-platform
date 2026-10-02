@@ -16799,3 +16799,112 @@ body,
 .std-envelope-video-save {
   color-scheme: only light !important;
 }
+
+/* =====================================================
+   ANDJELA & ANDRIJA — STILL IMAGE
+   Applies to -2 and -6 through .is-still-image
+
+   - full screen
+   - cover
+   - black & white
+   - centered
+   - fade in / fade out
+===================================================== */
+
+
+/* FULL SCREEN PHOTO LAYER */
+
+.std-envelope-video-save.is-still-image
+.std-envelope-video-save__film {
+  position: fixed !important;
+  z-index: 6;
+
+  inset: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+
+  overflow: hidden !important;
+
+  background: #000000 !important;
+}
+
+
+/* PHOTO */
+
+.std-envelope-video-save.is-still-image
+.std-envelope-video-save__image {
+  position: absolute !important;
+  z-index: 1;
+
+  inset: 0 !important;
+
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  object-fit: cover !important;
+
+  object-position:
+    var(
+      --stev-image-position,
+      center center
+    ) !important;
+
+  filter: grayscale(1) !important;
+
+  background: #000000;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: scale(1.01);
+
+  transition:
+    opacity 700ms ease,
+    visibility 700ms ease,
+    transform 4s ease;
+}
+
+
+/* =====================================================
+   PHOTO VISIBLE
+===================================================== */
+
+.std-envelope-video-save.is-still-image[data-phase="video"]
+.std-envelope-video-save__image {
+  opacity: 1;
+  visibility: visible;
+
+  transform: scale(1);
+}
+
+
+/* =====================================================
+   PHOTO OUT — MONOGRAM STARTS
+===================================================== */
+
+.std-envelope-video-save.is-still-image[data-phase="monogram"]
+.std-envelope-video-save__image {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* =====================================================
+   FINAL SCREEN
+===================================================== */
+
+.std-envelope-video-save.is-still-image[data-phase="revealed"]
+.std-envelope-video-save__image {
+  opacity: 0;
+  visibility: hidden;
+}

@@ -10440,7 +10440,9 @@ musicSrc: "/music/mina-dragan.mp3",
   type: "save-the-date",
   template: "save-the-date-envelope-video",
   script: "latin",
- musicSrc: "/music/andjela-andrija.mp3",
+
+  musicSrc: "/music/andjela-andrija.mp3",
+
   brideName: "Andjela",
   groomName: "Andrija",
 
@@ -10466,22 +10468,20 @@ musicSrc: "/music/mina-dragan.mp3",
         "/images/save-the-date/envelope/ana-nikola-video-bottom.png",
 
       /* ===============================
-         VIDEO POSLE OTVARANJA PISMA
+         SLIKA POSLE OTVARANJA PISMA
+         SAMO ZA OVAJ SLUG
       ================================ */
 
-      videoSrc:
-        "/videos/save-the-date/ana-nikola.mp4",
+      imageSrc:
+        "/images/save-the-date/andjela-andrija-2.jpg",
 
-      videoPoster:
-        "/images/save-the-date/ana-nikola-video-poster.jpg",
-
-      videoPosition:
+      imagePosition:
         "center center",
 
-      videoMuted: true,
+      imageDurationMs: 3600,
 
       /* ===============================
-         POSLE VIDEA — INICIJALI
+         POSLE SLIKE — INICIJALI
       ================================ */
 
       monogram: "AA",
@@ -10501,9 +10501,8 @@ musicSrc: "/music/mina-dragan.mp3",
       cardArtImage:
         "/images/save-the-date/andjela-andrija.png",
 
-      
-        pageBackground:
-  "#000000",
+      pageBackground:
+        "#000000",
 
       paperColor:
         "#fbf6ef",
@@ -10600,22 +10599,20 @@ musicSrc: "/music/mina-dragan.mp3",
         "/images/save-the-date/envelope/ana-nikola-video-bottom.png",
 
       /* ===============================
-         VIDEO POSLE OTVARANJA PISMA
+         SLIKA POSLE OTVARANJA PISMA
+         ISTA KAO ZA -2
       ================================ */
 
-      videoSrc:
-        "/videos/save-the-date/ana-nikola.mp4",
+      imageSrc:
+        "/images/save-the-date/andjela-andrija-2.jpg",
 
-      videoPoster:
-        "/images/save-the-date/ana-nikola-video-poster.jpg",
-
-      videoPosition:
+      imagePosition:
         "center center",
 
-      videoMuted: true,
+      imageDurationMs: 3600,
 
       /* ===============================
-         POSLE VIDEA — INICIJALI
+         POSLE SLIKE — INICIJALI
       ================================ */
 
       monogram: "AA",
