@@ -284,15 +284,27 @@ function SaveTheDateEnvelopeVideo({
 }) {
   const config = details.saveTheDate || {};
 
+  /* =====================================================
+     LANGUAGE CHOICE
+     SAMO ZA save-andjela-andrija-2
+  ===================================================== */
+
+  const hasLanguageChoice =
+    slug === "save-andjela-andrija-2";
+
+  const [selectedLanguage, setSelectedLanguage] =
+    useState("sr");
+
   const isCyrillic =
     script === "cyrillic" ||
     config.script === "cyrillic" ||
     details.script === "cyrillic";
 
-  const isGerman =
-    slug === "save-andjela-andrija-6" ||
-    config.language === "de" ||
-    details.language === "de";
+  const isGerman = hasLanguageChoice
+    ? selectedLanguage === "de"
+    : slug === "save-andjela-andrija-6" ||
+      config.language === "de" ||
+      details.language === "de";
 
   const copy = isGerman
     ? {
@@ -301,7 +313,7 @@ function SaveTheDateEnvelopeVideo({
         opening: "Der Umschlag wird geöffnet…",
         message: "BITTE MERKT EUCH DEN TERMIN UNSERER HOCHZEIT VOR",
         signature: "Die offizielle Einladung folgt in Kürze",
-        connector: "UND",
+        connector: " ",
         countdownTitle: "Bis zu unserem großen Tag",
         days: "Tage",
         hours: "Stunden",
@@ -319,7 +331,7 @@ function SaveTheDateEnvelopeVideo({
           opening: "Отварамо писмо…",
           message: "МОЛИМО ВАС ДА САЧУВАТЕ ДАТУМ НАШЕГ ВЕНЧАЊА",
           signature: "Свечана позивница ускоро",
-          connector: "И",
+          connector: " ",
           countdownTitle: "До нашег дана",
           days: "Дана",
           hours: "Сати",
@@ -336,7 +348,7 @@ function SaveTheDateEnvelopeVideo({
           opening: "Otvaramo pismo…",
           message: "MOLIMO VAS DA SAČUVATE DATUM NAŠEG VENČANJA",
           signature: "Svečana pozivnica uskoro stiže",
-          connector: "I",
+          connector: " ",
           countdownTitle: "Do našeg dana",
           days: "Dana",
           hours: "Sati",
@@ -521,7 +533,9 @@ function SaveTheDateEnvelopeVideo({
   );
 
   const [assets, setAssets] = useState("loading");
-  const [phase, setPhase] = useState("closed");
+  const [phase, setPhase] = useState(
+    hasLanguageChoice ? "language" : "closed"
+  );
 
   const openedRef = useRef(false);
   const videoFinishedRef = useRef(false);
@@ -543,7 +557,7 @@ function SaveTheDateEnvelopeVideo({
     let active = true;
 
     setAssets("loading");
-    setPhase("closed");
+    setPhase(hasLanguageChoice ? "language" : "closed");
 
     openedRef.current = false;
     videoFinishedRef.current = false;
@@ -679,6 +693,7 @@ function SaveTheDateEnvelopeVideo({
       });
     };
   }, [
+    hasLanguageChoice,
     envelopeBottomImage,
     envelopeTopImage,
     stitchedCardImage,
@@ -992,8 +1007,26 @@ function SaveTheDateEnvelopeVideo({
   ]);
 
   /* =====================================================
+     LANGUAGE SELECT
+     SAMO ZA save-andjela-andrija-2
+  ===================================================== */
+
+  const handleLanguageSelect = useCallback((nextLanguage) => {
+    setSelectedLanguage(nextLanguage);
+    setPhase("closed");
+  }, []);
+
+  /* =====================================================
      CALENDAR
   ===================================================== */
+
+  const calendarNote = hasLanguageChoice
+    ? copy.calendarNote
+    : config.calendarDescription || copy.calendarNote;
+
+  const calendarEventTitle = hasLanguageChoice
+    ? copy.calendarTitle
+    : config.calendarTitle || copy.calendarTitle;
 
   const handleAddToCalendar = useCallback(() => {
     if (!calendarDateISO) return;
@@ -1004,9 +1037,9 @@ function SaveTheDateEnvelopeVideo({
       dateISO: calendarDateISO,
       venue,
       mapLink: config.mapLink || details.mapLink || "",
-      note: config.calendarDescription || copy.calendarNote,
+      note: calendarNote,
       eventType: "save-the-date",
-      eventTitle: config.calendarTitle || copy.calendarTitle,
+      eventTitle: calendarEventTitle,
       allDay: true,
       language: isGerman ? "de" : "sr",
     });
@@ -1016,11 +1049,9 @@ function SaveTheDateEnvelopeVideo({
     calendarDateISO,
     venue,
     config.mapLink,
-    config.calendarDescription,
-    config.calendarTitle,
+    calendarNote,
+    calendarEventTitle,
     details.mapLink,
-    copy.calendarNote,
-    copy.calendarTitle,
     isGerman,
   ]);
 
@@ -1057,11 +1088,29 @@ function SaveTheDateEnvelopeVideo({
     "--stev-envelope-resume-delay": `-${envelopeCutDelayMs}ms`,
   };
 
-  const message = config.message || copy.message;
-  const eyebrow = config.eyebrow || copy.eyebrow;
-  const signature = config.signature || copy.signature;
-  const connector = config.connector || copy.connector;
-  const countdownTitle = config.countdownTitle || copy.countdownTitle;
+  const message = hasLanguageChoice
+    ? copy.message
+    : config.message || copy.message;
+
+  const eyebrow = hasLanguageChoice
+    ? copy.eyebrow
+    : config.eyebrow || copy.eyebrow;
+
+  const signature = hasLanguageChoice
+    ? copy.signature
+    : config.signature || copy.signature;
+
+  const connector = hasLanguageChoice
+    ? copy.connector
+    : config.connector || copy.connector;
+
+  const countdownTitle = hasLanguageChoice
+    ? copy.countdownTitle
+    : config.countdownTitle || copy.countdownTitle;
+
+  const envelopeHint = hasLanguageChoice
+    ? copy.introHint
+    : config.envelopeHint || copy.introHint;
 
   const monthLabel = dateParts.fallback
     ? ""
@@ -1156,6 +1205,97 @@ function SaveTheDateEnvelopeVideo({
     finalSignatureStart +
     getStitchDuration(signature, finalSignatureStep) +
     420;
+
+  const languageDateLabel = dateParts.fallback
+    ? weddingDate
+    : `${dateParts.day} · ${dateParts.month} · ${dateParts.year}`;
+
+  /* =====================================================
+     LANGUAGE SCREEN
+     SAMO ZA save-andjela-andrija-2
+  ===================================================== */
+
+  if (hasLanguageChoice && phase === "language") {
+    return (
+      <section
+        className="std-envelope-video-language-screen"
+        aria-label="Izbor jezika / Sprachauswahl"
+      >
+        <div className="std-envelope-video-language-frame-wrap">
+          <img
+            src="/images/save-the-date/stitched-oval-language.png"
+            alt=""
+            className="std-envelope-video-language-frame"
+            aria-hidden="true"
+            draggable={false}
+          />
+
+          <div className="std-envelope-video-language-inner">
+            <div
+              className="std-envelope-video-language-monogram"
+              aria-hidden="true"
+            >
+              <span>{brideInitial}</span>
+
+              <span className="std-envelope-video-language-monogram-divider">
+                /
+              </span>
+
+              <span>{groomInitial}</span>
+            </div>
+
+            <h1 className="std-envelope-video-language-names">
+              <span>{brideName}</span>
+
+              <span className="std-envelope-video-language-amp">
+                &amp;
+              </span>
+
+              <span>{groomName}</span>
+            </h1>
+
+            <div className="std-envelope-video-language-divider" />
+
+            <div className="std-envelope-video-language-copy">
+              <p className="std-envelope-video-language-copy-sr">
+                Odaberite jezik
+              </p>
+
+              <p className="std-envelope-video-language-copy-de">
+                Sprache wählen
+              </p>
+            </div>
+
+            <div className="std-envelope-video-language-buttons">
+              <button
+                type="button"
+                className="std-envelope-video-language-button"
+                onClick={() => handleLanguageSelect("sr")}
+              >
+                <span className="std-envelope-video-language-button-main">
+                  SRPSKI
+                </span>
+              </button>
+
+              <button
+                type="button"
+                className="std-envelope-video-language-button"
+                onClick={() => handleLanguageSelect("de")}
+              >
+                <span className="std-envelope-video-language-button-main">
+                  DEUTSCH
+                </span>
+              </button>
+            </div>
+
+            <p className="std-envelope-video-language-footer">
+              {languageDateLabel}
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -1500,7 +1640,7 @@ function SaveTheDateEnvelopeVideo({
           <span>
             {phase === "opening"
               ? copy.opening
-              : config.envelopeHint || copy.introHint}
+              : envelopeHint}
           </span>
         </div>
 
