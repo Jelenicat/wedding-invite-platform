@@ -7986,7 +7986,7 @@ rsvpClosed: true,
 
   weddingDate: "10 ОКТ 2026",
   weddingTime: "12:00",
-  venue: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
+  venue: "Ресторан „Језеро“ / Event home, Ада Циганлија, Чукарица",
 musicSrc: "/music/nikoleta-marko.mp3",
   /*
     Фотографија која се приказује преко целог екрана
@@ -8038,17 +8038,17 @@ musicSrc: "/music/nikoleta-marko.mp3",
     label: "Окупљање гостију",
     time: "16:00",
     icon: "restaurant",
-    location: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
+    location: "Ресторан „Језеро“ / Event home, Ада Циганлија, Чукарица",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Restoran+Jezero+Ada+Ciganlija+Beograd",
+      "https://www.google.com/maps/place/Event+Home+d.o.o.+Ada+Ciganlija/@44.7892915,20.4109418,699m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a7b4be6082af5:0x327a3b13a45cd002!8m2!3d44.7892915!4d20.4109418!16s%2Fg%2F11zxp_zr_6?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     label: "Грађанско венчање",
     time: "16:30",
     icon: "civil",
-    location: "Ресторан „Језеро“, Ада Циганлија, Чукарица",
+    location: "Ресторан „Језеро“ / Event home, Ада Циганлија, Чукарица",
     mapLink:
-      "https://www.google.com/maps/search/?api=1&query=Restoran+Jezero+Ada+Ciganlija+Beograd",
+      "https://www.google.com/maps/place/Event+Home+d.o.o.+Ada+Ciganlija/@44.7892915,20.4109418,699m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a7b4be6082af5:0x327a3b13a45cd002!8m2!3d44.7892915!4d20.4109418!16s%2Fg%2F11zxp_zr_6?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3DS",
   },
 ],
 
