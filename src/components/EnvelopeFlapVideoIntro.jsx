@@ -390,7 +390,7 @@ export default function EnvelopeFlapVideoIntro({
                   ================================= */}
 
               <p className="efv-language-footer">
-                31 · 07 · 2027
+                12 · 09 · 2027
               </p>
             </div>
           </div>
