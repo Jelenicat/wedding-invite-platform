@@ -1,0 +1,874 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fondamento:ital@0;1&display=swap');
+
+/* Every selector is scoped: existing invitation templates are unaffected. */
+.legend-fantasy {
+  --lf-gold: #dfb869;
+  --lf-ink: #382315;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  isolation: isolate;
+  overflow: hidden;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+.legend-fantasy *, .legend-fantasy *::before, .legend-fantasy *::after { box-sizing: border-box; }
+
+
+
+/* ========== LEGEND FANTASY V2 / CINEMATIC INTRO ========== */
+.legend-fantasy--intro.lf2-intro {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 500px;
+  background: #110c0d;
+  color: #ffebbd;
+  overflow: hidden;
+}
+.lf2-scene, .lf2-scene__art, .lf2-scene__vignette {
+  position: absolute;
+  inset: 0;
+}
+.lf2-scene { isolation: isolate; overflow: hidden; background: #10090b; }
+.lf2-scene__art {
+  background-image: url('/images/legend-fantasy/tower-atmosphere.webp');
+  background-size: cover;
+  background-position: center 46%;
+  transform-origin: 50% 42%;
+  animation: lf2-camera 11.5s cubic-bezier(.17,.48,.29,1) both;
+  will-change: transform;
+}
+.lf2-scene__vignette {
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(7,5,8,.54) 0%,
+    rgba(9,5,8,.14) 20%,
+    rgba(6,4,6,0) 35%,
+    rgba(8,5,7,.03) 53%,
+    rgba(9,5,6,.42) 73%,
+    rgba(7,5,8,.94) 100%);
+}
+.lf2-eye-glow {
+  position: absolute;
+  z-index: 2;
+  top: 15%; left: 50%;
+  width: 39vw;
+  max-width: 200px;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,240,132,.06), rgba(255,105,11,.21) 23%, rgba(243,62,2,.08) 43%, transparent 69%);
+  mix-blend-mode: screen;
+  filter: blur(9px);
+  pointer-events: none;
+  animation: lf2-eye 2.9s ease-in-out infinite alternate;
+}
+.lf2-fog {
+  position: absolute;
+  z-index: 3;
+  left: -30%;
+  width: 160%; height: 24%;
+  pointer-events: none;
+  filter: blur(30px);
+  opacity: .35;
+  background: radial-gradient(ellipse, #ed5b1b26, #25101840 40%, transparent 68%);
+}
+.lf2-fog--front { bottom: -6%; animation: lf2-drift-a 8s ease-in-out infinite alternate; }
+.lf2-fog--back { bottom: 21%; opacity: .2; animation: lf2-drift-b 11s ease-in-out infinite alternate; }
+
+/* Single pre-rendered ring image: vivid gold and engraved highlights without WebGL dependencies. */
+.lf2-ring-flight {
+  position: absolute;
+  z-index: 5;
+  left: 50%; top: 49%;
+  width: min(92vw, 440px);
+  aspect-ratio: 692 / 814;
+  pointer-events: none;
+  transform: translate(-50%,-49%) scale(.45) rotate(-22deg);
+  transform-origin: 50% 50%;
+  animation: lf2-ring-travel 10.9s cubic-bezier(.18,.58,.2,1) both;
+  will-change: transform, opacity;
+}
+.lf2-ring {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px #fff4a77a) drop-shadow(0 0 19px #ff680c88) drop-shadow(0 20px 30px #0008);
+  animation: lf2-ring-light 3.5s ease-in-out infinite alternate;
+}
+.lf2-ring-bloom {
+  position: absolute;
+  z-index: 1;
+  inset: 11% -8%;
+  background: radial-gradient(ellipse, #fff1ab5c 0%, #ff9f3835 21%, #d93d1320 43%, transparent 67%);
+  border-radius: 50%;
+  filter: blur(23px);
+  animation: lf2-bloom 2s ease-in-out infinite alternate;
+}
+.lf2-orbit {
+  position: absolute;
+  z-index: 1;
+  left: 8%; top: 29%;
+  width: 85%; height: 43%;
+  border: 1px solid rgba(255,206,113,.26);
+  border-radius: 50%;
+  transform: rotate(-17deg);
+  box-shadow: 0 0 9px rgba(242,118,21,.16);
+  opacity: 0;
+  animation: lf2-orbit-appear 10.5s both;
+}
+.lf2-orbit--second { transform: rotate(32deg) scale(1.11,.63); border-color: #ffb15820; }
+.lf2-embers { position: absolute; inset: 0; z-index: 6; pointer-events: none; overflow: hidden; }
+.lf2-embers i {
+  position: absolute;
+  left: var(--x);
+  bottom: -4%;
+  width: 2px; height: 2px;
+  background: #ffcb6b;
+  border-radius: 50%;
+  box-shadow: 0 0 9px 2px rgba(255,111,28,.56);
+  opacity: 0;
+  animation: lf2-ember var(--duration) linear var(--delay) infinite;
+}
+.lf2-lightburst {
+  position: absolute;
+  inset: -15%;
+  z-index: 9;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at 50% 49%, #fff9df 0%, #ffe69b 17%, #ff9930 41%, rgba(255,103,18,.5) 65%, transparent 80%);
+  mix-blend-mode: screen;
+  animation: lf2-blast 11.35s ease-in both;
+}
+.lf2-story {
+  position: absolute;
+  z-index: 11;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: max(34px, env(safe-area-inset-top)) 22px max(86px, calc(env(safe-area-inset-bottom) + 56px));
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 2px 12px #070304, 0 0 28px #000a;
+}
+.lf2-story__top {
+  max-width: 340px;
+  opacity: 0;
+  animation: lf2-text-top 1.8s .8s both;
+}
+.lf2-story__top p {
+  margin: 6px 0 0;
+  font: italic 400 clamp(14px,3.7vw,18px)/1.32 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: .035em;
+  color: #f7d9a0;
+}
+.lf2-story__line {
+  display:flex; align-items:center; justify-content: center; gap:10px;
+  color: #d4a75b;
+  font-size:15px;
+}
+.lf2-story__line::before, .lf2-story__line::after {
+  content: '';
+  width:44px; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(225,179,104,.75));
+}
+.lf2-story__line::after { transform: scaleX(-1); }
+.lf2-story__bottom {
+  width: 100%;
+  max-width: 550px;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: lf2-text-bottom 11s ease both;
+}
+.lf2-story__kicker {
+  display: block;
+  font: 400 10px/1.4 'Fondamento', Georgia, serif;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: #f3d3a0;
+}
+.lf2-story__bottom h1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  column-gap: .28em;
+  row-gap: .06em;
+  margin: 13px 0 10px;
+  color: #f4d59a;
+  font: 400 clamp(30px,8vw,53px)/1.16 'Cinzel Decorative', Georgia, serif;
+  letter-spacing: .025em;
+  text-shadow: 0 2px 3px #160a0e, 0 0 20px #cf87274d;
+}
+.lf2-story__bottom h1 em {
+  font: italic 400 .66em/1 'Cormorant Garamond', Georgia, serif;
+  color: #fff0c7;
+}
+.lf2-story__date {
+  display:block;
+  margin-top: 8px;
+  color: #f6dfb0;
+  font: 500 clamp(12px,3.1vw,16px)/1.4 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: .20em;
+  text-transform: uppercase;
+}
+.lf2-story__ornament { margin-top: 18px; color: #eab266; font-size: 13px; }
+.lf2-skip {
+  position: absolute;
+  z-index: 15;
+  right: max(18px,env(safe-area-inset-right));
+  top: max(14px,env(safe-area-inset-top));
+  padding: 9px 11px;
+  border: 1px solid rgba(242,198,122,.25);
+  border-radius: 999px;
+  background: rgba(14,9,12,.44);
+  color: #f9dfae;
+  backdrop-filter: blur(7px);
+  font: 400 10px/1.1 'Fondamento', Georgia, serif;
+  letter-spacing:.06em;
+  cursor: pointer;
+}
+.lf2-skip:hover, .lf2-skip:focus-visible { border-color: #ffd185; background: #4c2a1c; }
+.lf2-skip span { margin-left: 4px; }
+.lf2-progress {
+  position: absolute;
+  z-index: 12;
+  left:0; right:0; bottom:0;
+  height:2px;
+  background:rgba(222,169,90,.16);
+}
+.lf2-progress span {
+  display:block;
+  width:100%; height:100%;
+  transform-origin:left center;
+  background:linear-gradient(90deg,#aa4d1a,#ffd78a);
+  animation:lf2-progress 11.4s linear both;
+}
+.lf2-intro.lf-leaving {
+  pointer-events:none;
+  animation:lf2-exit .85s ease-in-out both;
+}
+@keyframes lf2-camera {
+  0% {transform:scale(1.065) translateY(0); filter:brightness(.73) saturate(.9)}
+  55% {transform:scale(1.025) translateY(.4%); filter:brightness(.96) saturate(1.07)}
+  100% {transform:scale(1.13) translateY(1.5%); filter:brightness(1.3) saturate(1.25)}
+}
+@keyframes lf2-eye {from{opacity:.38;filter:blur(13px);scale:.85}to{opacity:.85;filter:blur(9px);scale:1.18}}
+@keyframes lf2-drift-a {from{transform:translate(-7%,5%)}to{transform:translate(8%,-3%)}}
+@keyframes lf2-drift-b {from{transform:translate(8%,3%)}to{transform:translate(-6%,-4%)}}
+@keyframes lf2-ring-travel {
+  0% {opacity:0;transform:translate(-50%,-44%) scale(.29) rotate(-22deg)}
+  11% {opacity:1}
+  29% {opacity:1;transform:translate(-50%,-48%) scale(.58) rotate(-11deg)}
+  55% {opacity:1;transform:translate(-50%,-52%) scale(.88) rotate(4deg)}
+  76% {opacity:1;transform:translate(-50%,-53%) scale(1.13) rotate(13deg)}
+  94% {opacity:1;transform:translate(-50%,-56%) scale(2.1) rotate(25deg)}
+  100% {opacity:0;transform:translate(-50%,-56%) scale(3.3) rotate(28deg)}
+}
+@keyframes lf2-ring-light {from{filter:drop-shadow(0 0 6px #fff4a77a) drop-shadow(0 0 19px #ff680c88)}to{filter:drop-shadow(0 0 12px #fff3b4b8) drop-shadow(0 0 29px #ff811eaa)}}
+@keyframes lf2-bloom {from{opacity:.55;scale:.92}to{opacity:1;scale:1.2}}
+@keyframes lf2-orbit-appear {0%,22%{opacity:0}42%,77%{opacity:.53}100%{opacity:0}}
+@keyframes lf2-ember {0%{opacity:0;transform:translate3d(0,0,0)}18%{opacity:.88}75%{opacity:.63}100%{opacity:0;transform:translate3d(var(--drift),-75vh,0)}}
+@keyframes lf2-blast {0%,83%{opacity:0}92%{opacity:.12}98%{opacity:.89}100%{opacity:1}}
+@keyframes lf2-text-top {from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes lf2-text-bottom {0%,48%{opacity:0;transform:translateY(20px)}66%,92%{opacity:1;transform:none}100%{opacity:.65;transform:none}}
+@keyframes lf2-progress {from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes lf2-exit {0%{opacity:1;filter:brightness(1)}60%{opacity:1;filter:brightness(2)}100%{opacity:0;filter:brightness(2.7)}}
+@media (max-width:430px) {
+  .lf2-scene__art { background-position:center center; }
+  .lf2-ring-flight { width: 96vw; top: 49%; }
+  .lf2-story { padding-bottom:max(64px,calc(env(safe-area-inset-bottom) + 38px)); }
+  .lf2-story__bottom h1 { font-size:clamp(29px,7.5vw,37px); }
+  .lf2-story__top {padding:0 15px;}
+}
+@media (max-height:620px) {
+  .lf2-story__bottom h1 {font-size:27px;margin:6px 0;}
+  .lf2-story__ornament {margin-top:6px;}
+  .lf2-story {padding-bottom:28px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .lf2-intro *, .lf2-intro *::before, .lf2-intro *::after { animation:none!important;transition:none!important; }
+  .lf2-ring-flight {opacity:1;transform:translate(-50%,-50%) scale(.9) rotate(0);}
+  .lf2-story__top, .lf2-story__bottom {opacity:1; transform:none;}
+  .lf2-lightburst, .lf2-progress {display:none;}
+}
+
+/* ─────────── FIRST PARCHMENT CARD (UNCHANGED) ─────────── */
+
+.legend-fantasy--parchment {
+  color: var(--lf-ink);
+  background:
+    radial-gradient(ellipse 75% 20% at 12% 4%, #fff6d2 0%, transparent 85%),
+    radial-gradient(ellipse 85% 35% at 95% 69%, #d7b87d47 0%, transparent 80%),
+    linear-gradient(90deg, #bd945456, transparent 12% 88%, #bd945456),
+    #f3e5c6;
+}
+.lf-paper-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image: repeating-linear-gradient(0deg, transparent 0 5px, #91612d08 5px 6px), repeating-linear-gradient(90deg, transparent 0 11px, #91612d09 11px 12px);
+}
+.lf-paper-chapter {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  max-width: 680px;
+  margin: auto;
+  padding: clamp(45px, 8vh, 80px) 24px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  animation: lf-page-arrive 1.25s ease both;
+}
+.lf-paper-chapter::before {
+  content: '';
+  position: absolute;
+  inset: 16px 14px;
+  border: 1px solid #9563315c;
+  box-shadow: inset 0 0 0 5px #f1ddb63d, 0 0 0 3px #97744117;
+  pointer-events: none;
+}
+.lf-paper-chapter::after {
+  content: '';
+  position: absolute;
+  inset: 22px 20px;
+  border: 1px solid #a27e3a38;
+  pointer-events: none;
+}
+.lf-paper-ornament { margin-bottom: 24px; color: #aa703c; font-size: 23px; letter-spacing: .1em; }
+.lf-paper-epigraph { max-width: 350px; margin: 0 auto 23px; color: #88563d; font-style: italic; font-size: clamp(16px, 3.6vw, 19px); }
+.lf-paper-kicker { margin: 0 0 13px; font: 400 10px/1.4 'Fondamento', Georgia, serif; text-transform: uppercase; letter-spacing: .16em; color: #8a5126; }
+.lf-paper-names { display: flex; flex-direction: column; align-items: center; margin: 0; max-width: 100%; font: 400 clamp(38px, 9vw, 71px)/1.12 'Cinzel Decorative', Georgia, serif; color: #9c6a2d; text-shadow: 0 1px #fff9dd, 0 2px #c8a7785b; }
+.lf-paper-names span { overflow-wrap: anywhere; }
+.lf-paper-names em { font: italic clamp(27px, 5vw, 42px)/1 'Cormorant Garamond', Georgia, serif; color: #7e5835; margin: 3px 0; }
+.lf-paper-date { color: #663b22; margin: 23px 0 15px; font-size: clamp(17px, 4vw, 20px); font-weight: 600; }
+.lf-paper-prose { max-width: 380px; margin: 0 auto; font-size: clamp(19px, 4vw, 23px); line-height: 1.38; }
+.lf-paper-venue { margin: 18px 0 0; color: #845a34; font-family: 'Fondamento', Georgia, serif; font-size: clamp(14px, 3vw, 17px); }
+.lf-paper-mountains { color: #9b7952; width: min(85%, 330px); height: auto; margin-top: clamp(18px, 5vh, 45px); }
+.lf-paper-foot { margin: 4px 0 14px; font: 400 9px/1.4 'Fondamento', serif; letter-spacing: .13em; text-transform: uppercase; }
+.lf-paper-runes { color: #97593a; font-size: 15px; letter-spacing: .3em; }
+.lf-paper-next { text-align: center; padding: 65px 23px 88px; border-top: 1px solid #a17c4a5c; }
+.lf-paper-next__star { display: block; margin-bottom: 10px; font-size: 26px; color: #af7837; }
+.lf-paper-next p { margin: 0 0 6px; font: 400 clamp(23px, 5vw, 34px)/1.2 'Fondamento', Georgia, serif; }
+.lf-paper-next span:last-child { display: block; max-width: 330px; margin: auto; color: #886a4f; font-size: 17px; line-height: 1.4; }
+
+
+@keyframes lf-page-arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* Keep the original parchment card's mobile layout intact. */
+@media (max-width: 420px) {
+  .lf-paper-chapter { padding-left: 34px; padding-right: 34px; }
+  .lf-paper-chapter::before { inset: 10px; }
+  .lf-paper-chapter::after { inset: 16px; }
+  .lf-paper-ornament { margin-bottom: 15px; }
+  .lf-paper-epigraph { margin-bottom: 15px; }
+  .lf-paper-date { margin-top: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lf-paper-chapter {animation: none;}
+}
+
+/* =====================================================================
+   LEGEND FANTASY — POGLAVLJE 2: MAPA NAŠIH PUTEVA
+   Novi selektori su ograničeni na .legend-fantasy--parchment.
+   Nema promena postojećih template-ova ni introa.
+   ===================================================================== */
+.legend-fantasy--parchment .lf-map {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 70px 0 0;
+  background: linear-gradient(180deg,#e9d7ad 0%,#f5e9cd 9%,#f6ebd0 88%,#e4d0a5 100%);
+  color: #62442d;
+  overflow: clip;
+}
+.legend-fantasy--parchment .lf-map-heading {
+  width: min(100% - 40px, 520px);
+  margin: 0 auto 27px;
+  text-align: center;
+}
+.legend-fantasy--parchment .lf-map-heading__eyebrow {
+  display: block;
+  color: #94613c;
+  font: 400 10px/1.5 'Fondamento', Georgia, serif;
+  letter-spacing: .19em;
+}
+.legend-fantasy--parchment .lf-map-heading__ribbon {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  margin: 22px auto 23px;
+  padding: 9px 23px 12px;
+  background: #e4c994;
+  box-shadow: 0 4px 10px #8c663720, inset 0 0 0 1px #a4784c66;
+  color: #803c30;
+  transform: rotate(-1deg);
+}
+.legend-fantasy--parchment .lf-map-heading__ribbon::before,
+.legend-fantasy--parchment .lf-map-heading__ribbon::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  width: 17px;
+  height: calc(100% - 8px);
+  background: #cba771;
+  z-index: -1;
+}
+.legend-fantasy--parchment .lf-map-heading__ribbon::before { left: -10px; clip-path: polygon(0 0,100% 0,100% 100%,0 100%,35% 50%); }
+.legend-fantasy--parchment .lf-map-heading__ribbon::after { right: -10px; clip-path: polygon(0 0,100% 0,65% 50%,100% 100%,0 100%); }
+.legend-fantasy--parchment .lf-map-heading__ribbon span {
+  font: 400 clamp(21px,5.4vw,30px)/1.2 'Fondamento', Georgia, serif;
+  white-space: nowrap;
+}
+.legend-fantasy--parchment .lf-map-heading h2 {
+  margin: 0;
+  font: 500 clamp(31px,8vw,42px)/1.1 'Cormorant Garamond', Georgia, serif;
+  color: #5b3227;
+}
+.legend-fantasy--parchment .lf-map-heading p {
+  width: min(100%, 360px);
+  margin: 14px auto 0;
+  font: italic 400 19px/1.45 'Cormorant Garamond', Georgia, serif;
+  color: #8a654d;
+}
+.legend-fantasy--parchment .lf-map-heading__scroll {
+  display: block;
+  margin-top: 27px;
+  font: 400 10px/1.5 'Fondamento', Georgia, serif;
+  letter-spacing: .06em;
+  color: #977855;
+}
+.legend-fantasy--parchment .lf-map-heading__scroll span { display: block; margin-top: 8px; font-size: 22px; animation: lf-map-arrow 1.7s ease-in-out infinite; }
+.legend-fantasy--parchment .lf-map-frame {
+  position: relative;
+  width: min(100%, 490px);
+  margin: 0 auto;
+  box-shadow: 0 16px 44px #61472020;
+}
+.legend-fantasy--parchment .lf-map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+}
+.legend-fantasy--parchment .lf-map-marker {
+  filter: drop-shadow(0 2px 4px #6c493753);
+}
+.legend-fantasy--parchment .lf-map-meeting {
+  transform-origin: center;
+  opacity: 0;
+  transition: opacity .75s ease;
+}
+.legend-fantasy--parchment .lf-map-frame.is-met .lf-map-meeting { opacity: 1; }
+.legend-fantasy--parchment .lf-map-outro {
+  position: relative;
+  padding: 42px 28px 86px;
+  background: linear-gradient(180deg,#e6d3a9,#f2e4c2);
+  text-align: center;
+}
+.legend-fantasy--parchment .lf-map-outro__diamond { color: #a97b45; font-size: 26px; }
+.legend-fantasy--parchment .lf-map-outro h3 {
+  max-width: 380px;
+  margin: 12px auto 11px;
+  color: #663e2c;
+  font: 500 clamp(28px,7vw,36px)/1.16 'Cormorant Garamond', Georgia, serif;
+}
+.legend-fantasy--parchment .lf-map-outro p {
+  max-width: 360px;
+  margin: 0 auto;
+  font: italic 400 19px/1.36 'Cormorant Garamond', Georgia, serif;
+  color: #866449;
+}
+.legend-fantasy--parchment .lf-map-outro__line {
+  display: block;
+  width: 90px;
+  height: 1px;
+  margin: 27px auto 0;
+  background: linear-gradient(90deg,transparent,#ad845a,transparent);
+}
+@keyframes lf-map-arrow {0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media (min-width: 700px) {
+  .legend-fantasy--parchment .lf-map { padding-top: 95px; }
+  .legend-fantasy--parchment .lf-map-heading { margin-bottom: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .legend-fantasy--parchment .lf-map-heading__scroll span { animation: none; }
+  .legend-fantasy--parchment .lf-map-meeting { transition: none; }
+}
+
+
+/* =============================================================
+   LEGEND FANTASY — COMPLETE MIDDLE-EARTH STORY (V3)
+   Keeps the original cinematic intro and SVG map CSS above intact.
+   All rules below are scoped to this one invitation template.
+   ============================================================= */
+.legend-fantasy--parchment {
+  --lf-paper:#f3e6c6;
+  --lf-bronze:#a16c37;
+  --lf-forest:#496b4a;
+  --lf-red:#933b2e;
+  --lf-night:#111b32;
+  background:#efe1bf;
+  color:#5e3d29;
+}
+.legend-fantasy--parchment .lf-micro {
+  display:block;
+  font:400 clamp(10px,2.5vw,12px)/1.5 'Fondamento',Georgia,serif;
+  color:inherit;letter-spacing:.16em;text-transform:uppercase;
+}
+.legend-fantasy--parchment .lf-story-opening {
+  background:radial-gradient(ellipse at 50% 42%,#fff9e7 0%,#f5e7c9 60%,#e4d1aa 100%);
+  min-height:100svh; padding:55px 28px 62px;
+}
+.legend-fantasy--parchment .lf-story-opening::before,
+.legend-fantasy--parchment .lf-story-opening::after {border:0;box-shadow:none;}
+.legend-fantasy--parchment .lf-story-opening .lf-paper-epigraph {margin-bottom:14px;}
+.legend-fantasy--parchment .lf-story-opening .lf-paper-ornament {color:#a36e44;letter-spacing:.4em;font-size:16px;margin:0 0 24px;}
+.legend-fantasy--parchment .lf-story-opening .lf-paper-kicker {letter-spacing:.22em;}
+.legend-fantasy--parchment .lf-paper-ring {
+  position:relative;width:clamp(92px,27vw,150px);aspect-ratio:1.3;margin:8px auto 12px;
+  filter:drop-shadow(0 12px 13px #8c63202b);isolation:isolate;
+}
+.legend-fantasy--parchment .lf-paper-ring::before {content:'';position:absolute;inset:15% 2%;background:radial-gradient(ellipse,#e8b95a55 0%,transparent 70%);filter:blur(13px);}
+.legend-fantasy--parchment .lf-paper-ring img {position:relative;display:block;width:100%;height:100%;object-fit:contain;animation:lfw-ring-floating 7s ease-in-out infinite alternate;filter:drop-shadow(0 0 5px #d4a35566);}
+.legend-fantasy--parchment .lf-paper-ring span {position:absolute;left:50%;top:45%;width:9px;height:9px;border-radius:50%;background:#fff6cb;box-shadow:0 0 16px 9px #e8b9654d;animation:lfw-twinkle 3s infinite alternate;}
+.legend-fantasy--parchment .lf-story-opening .lf-paper-names {font-size:clamp(35px,9vw,67px);line-height:1.15;color:#956633;}
+.legend-fantasy--parchment .lf-story-opening .lf-paper-mountains {margin-top:23px;}
+.legend-fantasy--parchment .lf-story-opening__explore {display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;color:#8b6546;margin-top:9px;font:400 11px/1.5 'Fondamento',Georgia,serif;letter-spacing:.08em;}
+.legend-fantasy--parchment .lf-story-opening__explore span {font:normal 31px/1 Georgia;animation:lf-map-arrow 1.8s infinite;}
+@keyframes lfw-ring-floating {0%{transform:translateY(2px) rotate(-9deg) scale(.92)}100%{transform:translateY(-5px) rotate(10deg) scale(1.03)}}
+@keyframes lfw-twinkle {from{opacity:.3;transform:scale(.5)}to{opacity:1;transform:scale(1.2)}}
+
+/* ----------------------- HOBBIT HOME / SCROLL ----------------------- */
+.legend-fantasy--parchment .lf-shire {
+  overflow:hidden;position:relative;text-align:center;
+  padding:48px 0 90px;
+  background:linear-gradient(180deg,#f1e3c2,#f8edcf 35%,#e8d7b1 80%,#e9d4a8);
+}
+.legend-fantasy--parchment .lf-shire__heading {padding:0 22px 6px;max-width:540px;margin:0 auto;}
+.legend-fantasy--parchment .lf-shire__heading .lf-micro {color:#916942;}
+.legend-fantasy--parchment .lf-shire__heading h2 {
+  margin:10px auto 9px;max-width:460px;
+  color:#6b462c;font:400 clamp(28px,7.7vw,44px)/1.17 'Cinzel Decorative',Georgia,serif;
+}
+.legend-fantasy--parchment .lf-shire__heading p {margin:0;color:#826549;font:italic 400 20px/1.4 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lf-shire__world {
+  position:relative;max-width:560px;width:min(100%,560px);margin:23px auto -7px;aspect-ratio:440/400;
+  overflow:hidden;border-radius:4px;
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 5%,#000 92%,transparent 100%);
+}
+.legend-fantasy--parchment .lf-shire__illustration {display:block;width:100%;height:100%;}
+.legend-fantasy--parchment .lf-shire__smoke {animation:lfw-smoke 5.5s ease-in-out infinite alternate;transform-origin:top;}
+.legend-fantasy--parchment .lf-shire__door {
+  position:absolute;left:50%;top:67.5%;width:27%;aspect-ratio:1;
+  transform:translate(-50%,-50%);background:transparent;border:none;border-radius:50%;padding:0;
+  perspective:850px;cursor:pointer;z-index:3;-webkit-tap-highlight-color:transparent;
+}
+.legend-fantasy--parchment .lf-shire__interior {
+  position:absolute;inset:0;border:7px solid #927747;border-radius:50%;
+  background:radial-gradient(circle at 51% 43%,#fff9d2 0%,#f2d595 25%,#c18e53 50%,#503c28 77%);
+  box-shadow:inset 0 0 24px #fff0bf77,0 0 12px #c1a66a88;
+}
+.legend-fantasy--parchment .lf-shire__door-leaf {
+  display:block;position:absolute;inset:0;border-radius:50%;border:7px solid #596c36;
+  background:radial-gradient(circle at 32% 25%,#83a66a,#648348 48%,#38592f 100%);
+  transform-origin:9% 50%;backface-visibility:hidden;
+  box-shadow:inset 0 0 0 4px #a1b77c,inset 0 0 0 13px #6d8950,0 4px 10px #2b3b2a66;
+  transition:transform 1.35s cubic-bezier(.21,.68,.17,1);
+}
+.legend-fantasy--parchment .lf-shire__door-leaf::after {content:'';position:absolute;inset:12%;border:1px solid #e8daad44;border-radius:50%;}
+.legend-fantasy--parchment .lf-shire__door-leaf::before {content:'';position:absolute;inset:8%;border-radius:50%;background:repeating-linear-gradient(90deg,transparent 0 24%,#284a2a19 24% 25%,transparent 25% 47%,#d9d8a91c 47% 48%,transparent 48% 74%);}
+.legend-fantasy--parchment .lf-shire__door-runes {position:absolute;top:20%;left:50%;transform:translateX(-50%);font:14px/1 Georgia,serif;color:#dfdeb3;white-space:nowrap;}
+.legend-fantasy--parchment .lf-shire__door-leaf i {position:absolute;width:10%;aspect-ratio:1;border-radius:50%;left:76%;top:50%;background:radial-gradient(circle at 30% 25%,#fff8c9,#dca75c 65%,#805023);box-shadow:0 0 0 2px #b79c5c;}
+.legend-fantasy--parchment .lf-shire.is-open .lf-shire__door-leaf {transform:rotateY(-122deg);}
+.legend-fantasy--parchment .lf-shire__hint {position:absolute;z-index:4;left:50%;bottom:2%;transform:translateX(-50%);width:max-content;color:#755438;font:12px/1.4 'Fondamento',Georgia,serif;text-shadow:0 1px #ffebc6;}
+.legend-fantasy--parchment .lf-shire__scroll-wrap {display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows 1.15s ease,opacity .7s ease;visibility:hidden;}
+.legend-fantasy--parchment .lf-shire.is-open .lf-shire__scroll-wrap {grid-template-rows:1fr;opacity:1;visibility:visible;}
+.legend-fantasy--parchment .lf-shire__scroll {min-height:0;overflow:hidden;max-width:530px;width:calc(100% - 46px);margin:0 auto;}
+.legend-fantasy--parchment .lf-shire__rod {height:21px;border-radius:50% / 36%;position:relative;background:linear-gradient(180deg,#a77e4c,#e1bf82 26%,#a16b3a 50%,#734520 73%,#b68a51);border:1px solid #7f532a;box-shadow:0 3px 6px #65402237;}
+.legend-fantasy--parchment .lf-shire__rod::before,.legend-fantasy--parchment .lf-shire__rod::after {content:'';position:absolute;top:-5px;width:23px;height:29px;border-radius:6px;background:linear-gradient(90deg,#654522,#d1a461,#71502a);border:1px solid #8b5b2c;}
+.legend-fantasy--parchment .lf-shire__rod::before {left:-6px;}.legend-fantasy--parchment .lf-shire__rod::after {right:-6px;}
+.legend-fantasy--parchment .lf-shire__message {padding:34px 32px 29px;min-height:290px;background:radial-gradient(ellipse at 50% 38%,#fff8e4,#f3e5c6 65%,#dec89b);border-left:1px solid #cbaa78;border-right:1px solid #cbaa78;}
+.legend-fantasy--parchment .lf-shire__message .lf-micro {font-size:10px;color:#8b704c;}
+.legend-fantasy--parchment .lf-shire__dropcap {margin:20px auto 15px;max-width:365px;font:400 clamp(21px,5vw,27px)/1.35 'Cormorant Garamond',Georgia,serif;color:#633f2a;}
+.legend-fantasy--parchment .lf-shire__dropcap::first-letter {float:left;font:400 2.3em/.82 'Cinzel Decorative',Georgia,serif;color:#982f28;margin:5px 8px 0 0;}
+.legend-fantasy--parchment .lf-shire__message strong {display:block;color:#95602c;font:400 clamp(26px,6vw,36px)/1.2 'Cinzel Decorative',Georgia,serif;}
+.legend-fantasy--parchment .lf-shire__message strong em {font:italic 400 .78em 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lf-shire__message > span:not(.lf-micro),.legend-fantasy--parchment .lf-shire__message small {display:block;color:#7d5538;margin-top:7px;font-size:15px;}
+.legend-fantasy--parchment .lf-shire__message-foot {font-style:italic;margin:20px auto 5px;color:#927454;font-size:17px;}
+@keyframes lfw-smoke {from{opacity:.18;transform:translateY(10px)}to{opacity:.7;transform:translate(-11px,-12px)}}
+
+/* --------------------- VISIBLE BURNING TRANSITIONS ------------------ */
+.legend-fantasy--parchment .lfw-world {position:relative;}
+.legend-fantasy--parchment .lfw-burn {
+  position:relative;height:107px;z-index:3;isolation:isolate;
+  background:linear-gradient(180deg,#e9d5a9 0%,#c9a37a 19%,#5c4b3e 36%,#242b36 65%,#111b32 100%);
+  overflow:hidden;
+}
+.legend-fantasy--parchment .lfw-burn__soot {position:absolute;inset:6px 0 0;background:linear-gradient(180deg,#41332e4d,#1421350a);filter:blur(6px);}
+.legend-fantasy--parchment .lfw-burn__edge {
+  position:absolute;left:-4%;right:-4%;top:22px;height:10px;
+  border-radius:48%;background:linear-gradient(90deg,#e86c1a,#ffd36f 9%,#fff7b7 16%,#df5422 24%,#ffad43 32%,#fff6ab 45%,#b84119 53%,#ffba47 68%,#fff6b9 79%,#dd5217 90%,#f9a845);
+  box-shadow:0 -5px 9px #fda1329e,0 5px 9px #fa6c2a85,0 0 23px 6px #f6a23e66;
+  clip-path:polygon(0 35%,5% 0,14% 70%,21% 20%,32% 81%,40% 4%,49% 65%,57% 15%,64% 75%,76% 0,84% 75%,91% 15%,100% 45%,100% 100%,0 100%);
+  animation:lfw-fire-pulse 1.45s ease-in-out infinite alternate;
+}
+.legend-fantasy--parchment .lfw-burn__flames {position:absolute;left:0;right:0;top:5px;height:60px;display:flex;align-items:flex-start;justify-content:space-around;overflow:hidden;}
+.legend-fantasy--parchment .lfw-burn__flames i {display:block;position:relative;flex:1;max-width:30px;height:var(--h);opacity:.9;transform-origin:bottom center;clip-path:polygon(50% 0,79% 37%,100% 100%,0 100%,25% 44%);background:linear-gradient(0deg,#d94211,#ff972c 46%,#fff0a5);mix-blend-mode:screen;filter:blur(1px);animation:lfw-flame .74s ease-in-out var(--delay) infinite alternate;}
+.legend-fantasy--parchment .lfw-burn__embers {position:absolute;inset:0;pointer-events:none;}
+.legend-fantasy--parchment .lfw-burn__embers i {position:absolute;left:var(--x);top:23px;width:3px;height:3px;border-radius:50%;background:#ffdf8c;box-shadow:0 0 5px 2px #f35a16;animation:lfw-ember-rise 3s linear var(--delay) infinite;}
+.legend-fantasy--parchment .lfw-night-exit {background:#101b30;}
+.legend-fantasy--parchment .lfw-night-exit .lfw-burn--return {background:linear-gradient(180deg,#111b32 0%,#1d2533 35%,#573e34 62%,#c6a980 83%,#eadebb 100%);transform:rotate(180deg);}
+.legend-fantasy--parchment .lfw-finale>.lfw-burn {position:absolute;top:0;left:0;right:0;}
+@keyframes lfw-fire-pulse {from{filter:brightness(.84);transform:scaleY(.85)}to{filter:brightness(1.4);transform:scaleY(1.1)}}
+@keyframes lfw-flame {from{transform:scaleY(.68) skewX(-11deg);opacity:.64}to{transform:scaleY(1.2) skewX(12deg);opacity:1}}
+@keyframes lfw-ember-rise {0%{opacity:0;transform:translate(0,20px) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(var(--shift),-60px) scale(.2)}}
+
+/* ------------------------- MOON AND NIGHT -------------------------- */
+.legend-fantasy--parchment .lfw-night {position:relative;isolation:isolate;background:#111b32;color:#efe0bf;text-align:center;overflow:hidden;}
+.legend-fantasy--parchment .lfw-night__stars {position:absolute;z-index:1;inset:0;pointer-events:none;}
+.legend-fantasy--parchment .lfw-night__stars span {position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:#f5e1ba;box-shadow:0 0 7px #f4d89b66;opacity:.46;animation:lfw-night-spark 3.8s ease-in-out var(--delay) infinite alternate;}
+.legend-fantasy--parchment .lfw-night__opening {position:relative;z-index:2;max-width:550px;margin:0 auto;padding:48px 22px 40px;}
+.legend-fantasy--parchment .lfw-night .lf-micro {color:#cdbc9d;}
+.legend-fantasy--parchment .lfw-moon-art {width:clamp(125px,42vw,246px);aspect-ratio:1;margin:25px auto 25px;position:relative;opacity:0;transform:translateY(35px) scale(.72);transition:opacity 1.7s .25s ease,transform 1.9s .25s cubic-bezier(.18,.75,.22,1);}
+.legend-fantasy--parchment .lfw-night.is-visible .lfw-moon-art {opacity:1;transform:none;}
+.legend-fantasy--parchment .lfw-moon-art svg {position:relative;display:block;width:100%;height:100%;filter:drop-shadow(0 0 17px #fff7c750);animation:lfw-moon-float 9s ease-in-out infinite alternate;}
+.legend-fantasy--parchment .lfw-moon-art__halo {position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle,#e4e5cb3a 0,#bcc6d022 32%,transparent 68%);filter:blur(24px);animation:lfw-moon-breathe 7s ease-in-out infinite alternate;}
+.legend-fantasy--parchment .lfw-night__kada {display:block;margin-top:8px;text-transform:uppercase;letter-spacing:.35em;color:#b9b19c;font:10px/1.5 'Fondamento',Georgia,serif;}
+.legend-fantasy--parchment .lfw-night__opening h2 {margin:8px 0 12px;font:400 clamp(33px,8vw,49px)/1.12 'Cinzel Decorative',Georgia,serif;color:#eee2cf;letter-spacing:.016em;}
+.legend-fantasy--parchment .lfw-night__opening p {max-width:330px;margin:0 auto;font:italic 400 clamp(18px,4.5vw,23px)/1.4 'Cormorant Garamond',Georgia,serif;color:#ded4c9;}
+.legend-fantasy--parchment .lfw-night__arch {position:relative;margin:12px auto -30px;width:min(85%,330px);height:158px;border:1px solid #bca98079;border-bottom:0;border-radius:175px 175px 0 0;opacity:.7;}
+.legend-fantasy--parchment .lfw-night__arch::before {content:'';position:absolute;inset:9px 9px 0;border:1px solid #bca9804a;border-bottom:0;border-radius:165px 165px 0 0;}
+.legend-fantasy--parchment .lfw-night__arch::after {content:'';position:absolute;top:17px;left:50%;bottom:9px;border-left:1px solid #bca98025;}
+.legend-fantasy--parchment .lfw-night__arch span {position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:20px;color:#e0c89b;}
+.legend-fantasy--parchment .lfw-night__details {position:relative;z-index:2;padding:75px 22px 32px;max-width:580px;margin:0 auto;}
+.legend-fantasy--parchment .lfw-night__details h3 {font:400 clamp(32px,7.7vw,49px)/1.12 'Cinzel Decorative',Georgia,serif;color:#f5e2bf;margin:14px auto 14px;overflow-wrap:anywhere;}
+.legend-fantasy--parchment .lfw-night__details h3 em {font:italic 400 .72em/1 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-night__details p {font-size:21px;color:#e6d9c5;margin:0 auto 4px;}
+.legend-fantasy--parchment .lfw-night__venue {font-style:italic;font-size:18px;color:#d8c09b;}
+.legend-fantasy--parchment .lfw-night__rule {display:flex;align-items:center;gap:14px;max-width:300px;margin:22px auto;color:#d6bd84;}
+.legend-fantasy--parchment .lfw-night__rule::before,.legend-fantasy--parchment .lfw-night__rule::after {content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,#d6bd8477);}
+.legend-fantasy--parchment .lfw-night__rule::after {transform:scaleX(-1);}
+.legend-fantasy--parchment .lfw-night__calendar {display:inline-block;padding:11px 21px;border:1px solid #d5c1956e;border-radius:999px;color:#f3dfb7;text-decoration:none;font:12px/1.4 'Fondamento',Georgia,serif;transition:background .25s;}
+.legend-fantasy--parchment .lfw-night__calendar:hover {background:#edca8c22;}
+.legend-fantasy--parchment .lfw-countdown {position:relative;z-index:2;max-width:520px;margin:35px auto 0;padding:38px 16px 110px;}
+.legend-fantasy--parchment .lfw-countdown h3 {font:400 clamp(28px,7vw,42px)/1.1 'Cinzel Decorative',Georgia,serif;color:#f1dfb8;margin:12px auto 22px;}
+.legend-fantasy--parchment .lfw-countdown__numbers {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+.legend-fantasy--parchment .lfw-countdown__numbers>div {min-width:0;padding:0 4px;display:flex;flex-direction:column;gap:5px;}
+.legend-fantasy--parchment .lfw-countdown__numbers>div+div {border-left:1px solid #e6cca355;}
+.legend-fantasy--parchment .lfw-countdown__numbers strong {font:400 clamp(27px,8vw,49px)/1 'Cormorant Garamond',Georgia,serif;color:#f8e4be;font-variant-numeric:tabular-nums;}
+.legend-fantasy--parchment .lfw-countdown__numbers span {font:10px/1.6 'Fondamento',Georgia,serif;letter-spacing:.06em;color:#cbb997;text-transform:uppercase;}
+.legend-fantasy--parchment .lfw-countdown>p {font:italic 400 19px/1.4 'Cormorant Garamond',Georgia,serif;color:#dbcebc;margin:26px auto 0;}
+.legend-fantasy--parchment .lfw-night__mountain-shadow {position:absolute;bottom:-2px;width:100%;height:110px;background:#17233e;clip-path:polygon(0 100%,0 77%,7% 86%,17% 40%,25% 83%,37% 30%,48% 87%,63% 55%,72% 82%,83% 23%,94% 74%,100% 54%,100% 100%);opacity:.96;}
+@keyframes lfw-moon-float {from{transform:translateY(0)}to{transform:translateY(-7px)}}
+@keyframes lfw-moon-breathe {from{transform:scale(.88);opacity:.45}to{transform:scale(1.2);opacity:.9}}
+@keyframes lfw-night-spark {from{opacity:.17;transform:scale(.7)}to{opacity:.85;transform:scale(1.4)}}
+
+/* ----------------------- MORDOR / EVENT SCHEDULE ------------------- */
+.legend-fantasy--parchment .lfw-events {position:relative;isolation:isolate;text-align:center;overflow:hidden;min-height:420px;padding:75px 20px 135px;background:radial-gradient(ellipse at 50% 15%,#27385c 0%,#15243f 49%,#11192c 100%);color:#e2d6c6;}
+.legend-fantasy--parchment .lfw-events>.lf-micro {color:#ceb794;}
+.legend-fantasy--parchment .lfw-events h2 {font:400 clamp(32px,7.5vw,47px)/1.17 'Cinzel Decorative',Georgia,serif;color:#f1debd;margin:14px auto 8px;}
+.legend-fantasy--parchment .lfw-events__intro {font:italic 400 20px/1.4 'Cormorant Garamond',Georgia,serif;color:#bfc5d0;max-width:320px;margin:0 auto 35px;}
+.legend-fantasy--parchment .lfw-events__items {position:relative;z-index:2;max-width:545px;margin:0 auto;display:grid;gap:8px;}
+.legend-fantasy--parchment .lfw-events__item {min-height:122px;display:grid;grid-template-columns:minmax(100px,40%) 1fr;align-items:center;text-align:left;gap:15px;position:relative;opacity:0;transform:translateY(22px);transition:transform .85s ease,opacity .85s ease;}
+.legend-fantasy--parchment .lfw-events.is-visible .lfw-events__item {opacity:1;transform:none;}
+.legend-fantasy--parchment .lfw-events__item:nth-child(2){transition-delay:.16s}.legend-fantasy--parchment .lfw-events__item:nth-child(3){transition-delay:.32s}.legend-fantasy--parchment .lfw-events__item:nth-child(4){transition-delay:.48s}.legend-fantasy--parchment .lfw-events__item:nth-child(5){transition-delay:.64s}
+.legend-fantasy--parchment .lfw-events__item:nth-child(even) {grid-template-columns:1fr minmax(100px,40%);text-align:right;}
+.legend-fantasy--parchment .lfw-events__item:nth-child(even) .lfw-volcano {order:2}.legend-fantasy--parchment .lfw-events__item:nth-child(even) .lfw-events__event {order:1}
+.legend-fantasy--parchment .lfw-events__event time {display:block;color:#e9b86d;font:400 22px/1.2 'Cinzel Decorative',Georgia,serif;}
+.legend-fantasy--parchment .lfw-events__event h3 {font:600 clamp(21px,5vw,27px)/1.08 'Cormorant Garamond',Georgia,serif;color:#f2dfbe;margin:2px 0 4px;}
+.legend-fantasy--parchment .lfw-events__event strong {display:block;font:italic 400 17px/1.3 'Cormorant Garamond',Georgia,serif;color:#e0ccaf;}
+.legend-fantasy--parchment .lfw-events__event p {margin:4px 0 0;font:15px/1.3 'Cormorant Garamond',Georgia,serif;color:#b5bfd1;}
+.legend-fantasy--parchment .lfw-volcano {position:relative;min-height:120px;overflow:hidden;}
+.legend-fantasy--parchment .lfw-volcano__peak {position:absolute;z-index:2;left:5%;right:5%;bottom:0;height:96px;clip-path:polygon(0 100%,32% 58%,49% 12%,61% 45%,100% 100%);background:linear-gradient(160deg,#556482,#283552 44%,#111f38 96%);}
+.legend-fantasy--parchment .lfw-volcano__peak::before {content:'';position:absolute;left:45%;top:15%;width:10px;height:75px;filter:blur(2px);background:linear-gradient(#ffe7a6,#f5742c,#8c291f,transparent);transform:rotate(-13deg);}
+.legend-fantasy--parchment .lfw-volcano__smoke {position:absolute;left:43%;top:4px;width:70px;height:60px;border-radius:50%;background:radial-gradient(circle,#d4874d75 0%,#805e4d2f 40%,transparent 80%);filter:blur(9px);animation:lfw-smoke 3.5s infinite alternate;}
+.legend-fantasy--parchment .lfw-volcano__flame {position:absolute;z-index:3;left:47%;top:20%;width:20px;height:39px;clip-path:polygon(52% 0,87% 38%,100% 76%,60% 100%,0 79%,16% 36%);background:radial-gradient(ellipse at 50% 70%,#fffbbd,#ffc15e 45%,#ec491c 75%,transparent 80%);filter:drop-shadow(0 0 8px #ffa839);animation:lfw-volcano-flame .7s infinite alternate;}
+.legend-fantasy--parchment .lfw-volcano__lava {position:absolute;z-index:4;left:49%;top:53px;height:30px;width:2px;background:#ff9e40;box-shadow:0 0 8px 2px #fb6a21;transform:rotate(13deg);}
+.legend-fantasy--parchment .lfw-volcano--1 .lfw-volcano__peak {filter:hue-rotate(10deg)}
+.legend-fantasy--parchment .lfw-events__empty {font-size:19px;color:#e9dbc1;}
+.legend-fantasy--parchment .lfw-events__mountains {position:absolute;bottom:0;left:0;right:0;height:120px;overflow:hidden;}
+.legend-fantasy--parchment .lfw-events__mountains span {position:absolute;bottom:-9px;left:-10%;width:120%;height:100%;background:#0e182c;clip-path:polygon(0 100%,10% 72%,15% 88%,27% 25%,35% 84%,47% 45%,55% 85%,67% 5%,75% 75%,87% 40%,100% 75%,100% 100%);}
+.legend-fantasy--parchment .lfw-events__mountains span:nth-child(2){transform:translateX(15%) scale(.87);bottom:-18px;opacity:.55;background:#304162}.legend-fantasy--parchment .lfw-events__mountains span:nth-child(3){transform:translateX(-20%) scale(.77);bottom:-45px;opacity:.55;background:#425273}
+@keyframes lfw-volcano-flame {from{transform:scale(.7) skewX(-10deg)}to{transform:scale(1.2) skewX(8deg)}}
+
+/* -------------------- LOCATIONS THROUGH ROUND DOORS --------------- */
+.legend-fantasy--parchment .lfw-places {position:relative;background:radial-gradient(ellipse at 50% 20%,#fcf3db,#f1e1bd 67%,#e6d2a9);color:#5b3e2c;text-align:center;padding:70px 17px 80px;}
+.legend-fantasy--parchment .lfw-places__heading .lf-micro {color:#a36746;}
+.legend-fantasy--parchment .lfw-places__heading h2 {margin:6px auto 7px;color:#6e4232;font:500 clamp(35px,8.5vw,48px)/1.1 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-places__heading p {margin:0 auto 30px;color:#927055;font:italic 400 21px/1.4 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-places__grid {max-width:680px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:28px 28px;}
+.legend-fantasy--parchment .lfw-portal {position:relative;padding:6px 6px 18px;min-width:0;}
+.legend-fantasy--parchment .lfw-portal__ribbon {color:#885837;font:400 12px/1.4 'Fondamento',Georgia,serif;letter-spacing:.09em;margin-bottom:16px;}
+.legend-fantasy--parchment .lfw-portal__round {position:relative;max-width:230px;width:80%;aspect-ratio:1;margin:0 auto 18px;border-radius:50%;perspective:700px;}
+.legend-fantasy--parchment .lfw-portal__stone {position:absolute;inset:-9%;border-radius:50%;background:repeating-conic-gradient(from 3deg,#e9d9b6 0 14deg,#c6b18d 14deg 15.5deg,#e2cca6 15.5deg 28deg);box-shadow:0 4px 13px #7152353b,inset 0 0 0 2px #9c845d;}
+.legend-fantasy--parchment .lfw-portal__round::before {content:'';position:absolute;z-index:1;inset:0;border-radius:50%;border:7px solid #997c55;box-shadow:inset 0 0 0 4px #d4c19a;pointer-events:none;}
+.legend-fantasy--parchment .lfw-portal__inside {position:absolute;inset:5%;border-radius:50%;background:radial-gradient(ellipse at 50% 35%,#fff1ba 0%,#c4ccac 35%,#759170 67%,#364b38 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#443a23;padding:15px;}
+.legend-fantasy--parchment .lfw-portal__pin {font:55px/1 Georgia;color:#8c5133;}
+.legend-fantasy--parchment .lfw-portal__inside small {font:italic 17px/1.2 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-portal__door {position:absolute;z-index:2;inset:5%;border:7px solid #714733;border-radius:50%;cursor:pointer;transform-origin:8% center;transform:rotateY(0);transition:transform 1.25s cubic-bezier(.16,.7,.15,1);background:repeating-linear-gradient(90deg,#803f2c 0 20%,#9b5137 20% 24%,#8a432f 24% 46%,#ad6342 46% 49%,#853d2e 49% 74%,#a45135 74% 77%,#813a2c 77% 100%);box-shadow:inset 0 0 0 5px #b8794f,0 5px 15px #4c372c77;backface-visibility:hidden;}
+.legend-fantasy--parchment .lfw-portal:nth-child(even) .lfw-portal__door {background:repeating-linear-gradient(90deg,#427b82 0 20%,#528f92 20% 24%,#39737d 24% 47%,#6a9b98 47% 49%,#38717c 49% 73%,#5c999d 73% 77%,#37717d 77% 100%);border-color:#426773;}
+.legend-fantasy--parchment .lfw-portal__door::before {content:'';position:absolute;inset:16%;border:3px solid #dab2776b;border-radius:50%;}
+.legend-fantasy--parchment .lfw-portal__door::after {content:'';position:absolute;width:13%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff3b3,#d5a15c 58%,#8d522f);left:70%;top:48%;box-shadow:0 1px 3px #2218;}
+.legend-fantasy--parchment .lfw-portal__hinges {position:absolute;top:18%;left:50%;transform:translateX(-50%);color:#edc384;font-size:20px;}
+.legend-fantasy--parchment .lfw-portal.is-open .lfw-portal__door {transform:rotateY(-119deg);}
+.legend-fantasy--parchment .lfw-portal h3 {margin:0 auto 3px;font:500 clamp(23px,5.3vw,28px)/1.2 'Cormorant Garamond',Georgia,serif;color:#6b4530;max-width:240px;overflow-wrap:anywhere;}
+.legend-fantasy--parchment .lfw-portal p {margin:0;color:#886b4d;}
+.legend-fantasy--parchment .lfw-portal__map {display:inline-flex;gap:6px;margin:13px auto 6px;padding:9px 17px;border:1px solid #a37d54;color:#744a32;text-decoration:none;font:11px/1.4 'Fondamento',Georgia,serif;letter-spacing:.05em;background:#f8edce;}
+.legend-fantasy--parchment .lfw-portal__map:hover {background:#ead5aa;}
+.legend-fantasy--parchment .lfw-portal__instruction {display:block;margin-top:5px;color:#987956;font-size:14px;font-style:italic;}
+.legend-fantasy--parchment .lfw-places__missing {font-size:20px;}
+.legend-fantasy--parchment .lfw-places__flourish {font-size:25px;color:#a9835d;letter-spacing:.18em;margin:39px auto 0;}
+
+/* --------------------- INTERACTIVE STORYBOOK ----------------------- */
+.legend-fantasy--parchment .lfw-gallery {padding:70px 15px 88px;background:radial-gradient(ellipse at 50% 20%,#fbf1d7,#ecd9b4 79%,#e3cda5);text-align:center;overflow:hidden;color:#5c382a;}
+.legend-fantasy--parchment .lfw-gallery>.lf-micro {color:#985a3c;}
+.legend-fantasy--parchment .lfw-gallery>h2 {font:500 clamp(34px,8.4vw,48px)/1.1 'Cormorant Garamond',Georgia,serif;margin:9px auto 8px;}
+.legend-fantasy--parchment .lfw-gallery>p {font:italic 400 19px/1.4 'Cormorant Garamond',Georgia,serif;color:#866a51;margin:0 auto 26px;}
+.legend-fantasy--parchment .lfw-book {position:relative;isolation:isolate;width:min(100%,650px);min-height:300px;aspect-ratio:1.9;margin:0 auto 20px;padding:10px;display:grid;grid-template-columns:1fr 1fr;background:#653c2c;border:4px solid #763929;box-shadow:0 15px 25px #6a4e3850,0 2px 2px #ffe6ae inset;perspective:1000px;}
+.legend-fantasy--parchment .lfw-book__left,.legend-fantasy--parchment .lfw-book__right {position:relative;min-width:0;overflow:hidden;background:radial-gradient(ellipse at 40% 25%,#fffaf0 0%,#f8ecd0 69%,#dbc398 100%);}
+.legend-fantasy--parchment .lfw-book__left {padding:15px clamp(10px,3vw,23px) 20px;border-right:1px solid #aa8361;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.legend-fantasy--parchment .lfw-book__left::after {content:'';position:absolute;top:0;bottom:0;right:0;width:18px;background:linear-gradient(90deg,transparent,#5e3d3038);}
+.legend-fantasy--parchment .lfw-book__right {padding:15px 13px;box-shadow:inset 16px 0 22px #5f3c2520;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.legend-fantasy--parchment .lfw-book__leaf-no {font:11px/1.5 'Fondamento',Georgia,serif;color:#9e775b;}
+.legend-fantasy--parchment .lfw-book__quill {color:#b76148;font-size:24px;margin:3px;}
+.legend-fantasy--parchment .lfw-book__chapter {font:400 11px/1.2 'Fondamento',Georgia,serif;color:#a56348;}
+.legend-fantasy--parchment .lfw-book__left h3 {margin:7px auto 11px;color:#704331;font:500 clamp(22px,5vw,35px)/1.1 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-book__left p {margin:0 auto;font:italic 400 clamp(15px,3.4vw,21px)/1.28 'Cormorant Garamond',Georgia,serif;color:#75543b;max-width:225px;}
+.legend-fantasy--parchment .lfw-book__letters {font-size:18px;color:#a16d46;margin-top:18px;}
+.legend-fantasy--parchment .lfw-book__photo {width:100%;aspect-ratio:.82;max-height:250px;border:5px solid #ebd8b3;outline:1px solid #a97f5b;box-shadow:0 4px 14px #42302335;overflow:hidden;position:relative;background:#bec4a2;}
+.legend-fantasy--parchment .lfw-book__photo img {width:100%;height:100%;display:block;object-fit:cover;}
+.legend-fantasy--parchment .lfw-book__caption {display:block;color:#885e44;margin-top:11px;font:italic 15px/1.1 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-book__spine {position:absolute;z-index:3;top:9px;bottom:9px;left:50%;width:10px;transform:translateX(-50%);background:linear-gradient(90deg,#9d7a5838,#3a271f5c,#f8e3c85c);pointer-events:none;}
+.legend-fantasy--parchment .lfw-book__drawing {position:relative;width:100%;height:100%;overflow:hidden;background:linear-gradient(180deg,#e9d9ad,#bfc6a0 54%,#71916d);}
+.legend-fantasy--parchment .lfw-book__drawing--1 {filter:hue-rotate(19deg)}.legend-fantasy--parchment .lfw-book__drawing--2 {filter:hue-rotate(-27deg)}.legend-fantasy--parchment .lfw-book__drawing--3 {filter:sepia(.28)}
+.legend-fantasy--parchment .lfw-book__sun {position:absolute;left:51%;top:17%;height:24%;aspect-ratio:1;border-radius:50%;background:#fff2c4;box-shadow:0 0 25px #fff3a899;}
+.legend-fantasy--parchment .lfw-book__hill1 {position:absolute;left:-20%;right:-20%;bottom:-15%;height:55%;border-radius:50% 50% 0 0;background:#849c75;transform:rotate(-12deg);}
+.legend-fantasy--parchment .lfw-book__hill2 {position:absolute;left:-20%;right:-20%;bottom:-30%;height:63%;border-radius:50% 50% 0 0;background:#4a7358;transform:rotate(21deg);}
+.legend-fantasy--parchment .lfw-book__tree {position:absolute;z-index:1;left:54%;bottom:8%;width:9px;height:34%;background:#60452f;}
+.legend-fantasy--parchment .lfw-book__tree::before {content:'';position:absolute;left:50%;bottom:44%;width:90px;height:105px;transform:translateX(-50%);border-radius:60% 60% 48% 48%;background:radial-gradient(ellipse at 40% 40%,#819b64,#496c4d);}
+.legend-fantasy--parchment .lfw-book__drawing>span {position:absolute;z-index:3;color:#fff1ce;font-size:30px;top:28%;left:22%;}
+.legend-fantasy--parchment .lfw-book__flip {position:absolute;z-index:4;left:50%;top:12px;bottom:12px;width:calc(50% - 16px);background:linear-gradient(95deg,#b8a17d,#f8edcf 22%,#e8d5af);transform-origin:left center;opacity:0;pointer-events:none;}
+.legend-fantasy--parchment .lfw-book.is-turning-next .lfw-book__flip {opacity:1;animation:lfw-page-next .47s ease-in-out both;}
+.legend-fantasy--parchment .lfw-book.is-turning-prev .lfw-book__flip {opacity:1;animation:lfw-page-prev .47s ease-in-out both;}
+.legend-fantasy--parchment .lfw-gallery__nav {display:flex;align-items:center;justify-content:center;gap:16px;}
+.legend-fantasy--parchment .lfw-gallery__nav button {border:1px solid #aa855c;border-radius:50%;width:42px;height:42px;color:#71482d;background:#f4e8c9;cursor:pointer;font-size:19px;transition:background .2s;}
+.legend-fantasy--parchment .lfw-gallery__nav button:hover:not(:disabled){background:#fff8df;}.legend-fantasy--parchment .lfw-gallery__nav button:disabled{opacity:.32;cursor:default;}
+.legend-fantasy--parchment .lfw-gallery__nav>span {display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;max-width:205px;}
+.legend-fantasy--parchment .lfw-gallery__nav i {display:inline-block;height:6px;width:6px;border-radius:50%;background:#ccb38d;transform:rotate(45deg);}
+.legend-fantasy--parchment .lfw-gallery__nav i.is-current {background:#a04438;outline:2px solid #a0443844;}
+.legend-fantasy--parchment .lfw-gallery__nav small {display:block;flex-basis:100%;margin-top:5px;font:11px/1.5 'Fondamento',Georgia,serif;color:#997153;}
+.legend-fantasy--parchment .lfw-gallery p.lfw-gallery__hint {font-size:16px;color:#906e55;margin-top:13px;}
+@keyframes lfw-page-next {0%{transform:rotateY(0);box-shadow:-7px 0 10px #39281922}100%{transform:rotateY(-178deg);box-shadow:-7px 0 10px #39281966;}}
+@keyframes lfw-page-prev {0%{transform:rotateY(-178deg)}100%{transform:rotateY(0);}}
+
+/* ----------------------- PARCHMENT RSVP / WAX ---------------------- */
+.legend-fantasy--parchment .lfw-rsvp {text-align:center;background:radial-gradient(ellipse at 50% 25%,#fff6df,#f1e1bf 65%,#e4cfab);padding:0 22px 83px;color:#5b3e2b;}
+.legend-fantasy--parchment .lfw-rsvp__rod {max-width:510px;margin:0 auto 34px;height:19px;border-radius:18px;background:linear-gradient(180deg,#e1c38e,#a87942 40%,#70431f 67%,#ba8e5d);border:1px solid #8e6036;box-shadow:0 2px 5px #553b2a3d;}
+.legend-fantasy--parchment .lfw-rsvp__rod:last-child {margin:45px auto 0;}
+.legend-fantasy--parchment .lfw-rsvp>.lf-micro {color:#aa6647;}
+.legend-fantasy--parchment .lfw-rsvp>h2 {font:400 clamp(32px,7.5vw,44px)/1.17 'Cinzel Decorative',Georgia,serif;color:#944333;margin:15px auto 12px;}
+.legend-fantasy--parchment .lfw-rsvp>p {margin:0 auto 15px;max-width:370px;color:#866345;font:italic 400 20px/1.35 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-rsvp__deadline {display:block;margin-bottom:24px;color:#996f50;font:11px/1.4 'Fondamento',Georgia,serif;letter-spacing:.08em;text-transform:uppercase;}
+.legend-fantasy--parchment .lfw-rsvp__form {max-width:440px;margin:22px auto 0;display:flex;flex-direction:column;align-items:stretch;}
+.legend-fantasy--parchment .lfw-rsvp__input-label {text-align:left;display:block;margin:14px 0 7px;color:#7a583b;font:11px/1.3 'Fondamento',Georgia,serif;text-transform:uppercase;letter-spacing:.1em;}
+.legend-fantasy--parchment .lfw-rsvp input[type="text"],.legend-fantasy--parchment .lfw-rsvp select,.legend-fantasy--parchment .lfw-rsvp textarea {font:18px/1.4 'Cormorant Garamond',Georgia,serif;padding:12px 13px;border:1px solid #b29a75;border-radius:1px;background:#fff9e9;color:#5a3c2c;width:100%;box-shadow:inset 0 1px 2px #87674218;outline-color:#a56e49;}
+.legend-fantasy--parchment .lfw-rsvp__choices {display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:5px 0 2px;}
+.legend-fantasy--parchment .lfw-rsvp__choices label {display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 5px;border:1px solid #af9774;background:#fdf4de;cursor:pointer;color:#725033;font:12px/1.3 'Fondamento',Georgia,serif;}
+.legend-fantasy--parchment .lfw-rsvp__choices label.is-selected {border-color:#974e3c;background:#fff8e7;box-shadow:inset 0 0 0 1px #a4644a54;}
+.legend-fantasy--parchment .lfw-rsvp__choices input {position:absolute;opacity:0;width:1px;height:1px;}
+.legend-fantasy--parchment .lfw-rsvp__choices label:focus-within {outline:2px solid #a16841;outline-offset:3px;}
+.legend-fantasy--parchment .lfw-rsvp__choice-coin {border-radius:50%;width:22px;height:22px;display:inline-grid;place-items:center;background:#dcc6a2;color:#866b4a;}
+.legend-fantasy--parchment .lfw-rsvp__choices label.is-selected .lfw-rsvp__choice-coin {background:#ae4b3b;color:#fff2d2;}
+.legend-fantasy--parchment .lfw-rsvp textarea {resize:vertical;min-height:78px;}
+.legend-fantasy--parchment .lfw-rsvp__seal {align-self:center;position:relative;border:0;border-radius:50%;width:84px;height:84px;background:radial-gradient(circle at 27% 20%,#e27c6b,#ac342b 46%,#792422 82%);box-shadow:inset 0 0 0 3px #ef9e7770,inset 0 0 0 9px #791c1c5c,0 7px 3px #6f302e35,0 11px 18px #6527223e;color:#f6d5a8;cursor:pointer;margin:33px auto 0;transition:transform .25s,filter .25s;}
+.legend-fantasy--parchment .lfw-rsvp__seal:hover:not(:disabled) {transform:translateY(-3px);filter:brightness(1.1)}
+.legend-fantasy--parchment .lfw-rsvp__seal:disabled {opacity:.78;cursor:default;}
+.legend-fantasy--parchment .lfw-rsvp__seal>span {display:flex;align-items:center;justify-content:center;font:400 23px/1 'Cinzel Decorative',Georgia,serif;}
+.legend-fantasy--parchment .lfw-rsvp__seal small {font:italic 16px/1 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-rsvp__submit-text {margin-top:12px;color:#945940;font:11px/1.4 'Fondamento',Georgia,serif;letter-spacing:.12em;text-transform:uppercase;}
+.legend-fantasy--parchment .lfw-rsvp__status {margin:15px auto 0!important;max-width:330px;color:#754332!important;font-size:17px!important;}
+.legend-fantasy--parchment .lfw-rsvp__external {display:inline-block;margin:15px auto 8px;padding:14px 22px;background:#f9edce;border:1px solid #a37a57;color:#703d2b;text-decoration:none;font:13px/1.5 'Fondamento',Georgia,serif;}
+
+/* ------------------------ FIREWORKS / FINALE ------------------------ */
+.legend-fantasy--parchment .lfw-finale {position:relative;isolation:isolate;min-height:700px;display:flex;align-items:center;justify-content:center;text-align:center;color:#f4deb7;background:radial-gradient(ellipse at 50% 60%,#202b4a,#0d1429 75%);padding:120px 24px 190px;overflow:hidden;}
+.legend-fantasy--parchment .lfw-finale__sky {position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.legend-fantasy--parchment .lfw-firework {position:absolute;width:3px;height:3px;border-radius:50%;left:50%;top:29%;z-index:2;}
+.legend-fantasy--parchment .lfw-firework--1 {left:27%;top:36%;transform:scale(.7)}.legend-fantasy--parchment .lfw-firework--2 {left:74%;top:38%;transform:scale(.8)}
+.legend-fantasy--parchment .lfw-firework i {position:absolute;left:0;top:0;width:3px;height:30px;border-radius:50%;background:linear-gradient(180deg,#fff5c9,#ffe09a 28%,#bf8844 70%,transparent);box-shadow:0 0 7px 1px #f3cf8b8a;transform-origin:50% 0;transform:rotate(var(--a)) translateY(0) scaleY(0);opacity:0;}
+.legend-fantasy--parchment .lfw-finale.is-visible .lfw-firework i {animation:lfw-sky-burst 3.2s ease-out var(--delay) infinite;}
+.legend-fantasy--parchment .lfw-finale__star {position:absolute;left:var(--x);top:var(--y);width:2px;height:2px;background:#f9e8bf;border-radius:50%;box-shadow:0 0 7px 2px #f0ce8665;}
+.legend-fantasy--parchment .lfw-finale__copy {position:relative;z-index:3;max-width:440px;padding:0 14px;opacity:0;transform:translateY(26px);transition:opacity 1.3s .3s ease,transform 1.3s .3s ease;}
+.legend-fantasy--parchment .lfw-finale.is-visible .lfw-finale__copy {opacity:1;transform:none;}
+.legend-fantasy--parchment .lfw-finale__copy .lf-micro {color:#ceb98f;}
+.legend-fantasy--parchment .lfw-finale__copy h2 {font:400 clamp(62px,19vw,125px)/1 'Cinzel Decorative',Georgia,serif;color:#ffe8b4;text-shadow:0 0 16px #c8934777,0 0 42px #d19c4655;margin:22px auto 16px;}
+.legend-fantasy--parchment .lfw-finale__copy h2 em {font:italic 400 .55em/1 'Cormorant Garamond',Georgia,serif;}
+.legend-fantasy--parchment .lfw-finale__copy p {font:italic 400 22px/1.4 'Cormorant Garamond',Georgia,serif;color:#edddc3;margin:0 auto 20px;}
+.legend-fantasy--parchment .lfw-finale__copy strong {font:400 15px/1.35 'Fondamento',Georgia,serif;color:#e1ba7c;}
+.legend-fantasy--parchment .lfw-finale__land {position:absolute;bottom:0;left:0;right:0;height:190px;pointer-events:none;background:radial-gradient(ellipse at 50% 80%,#e9ae5630,transparent 55%),linear-gradient(180deg,transparent 40%,#070e1e 40% 100%);clip-path:polygon(0 45%,8% 36%,18% 46%,28% 32%,37% 42%,46% 25%,57% 36%,71% 23%,85% 42%,95% 32%,100% 44%,100% 100%,0 100%);}
+.legend-fantasy--parchment .lfw-finale__tree {position:absolute;z-index:2;bottom:50px;left:49%;width:12px;height:115px;background:#040915;}
+.legend-fantasy--parchment .lfw-finale__tree::before {content:'';position:absolute;left:50%;bottom:42%;width:175px;height:120px;border-radius:60% 60% 40% 40%;transform:translateX(-50%);background:#040915;}
+.legend-fantasy--parchment .lfw-finale__house {position:absolute;z-index:2;right:18%;bottom:20px;width:70px;height:44px;border-radius:28px 28px 4px 4px;background:#080e1c;}
+.legend-fantasy--parchment .lfw-finale__light {position:absolute;z-index:3;right:22%;bottom:35px;width:8px;height:10px;border-radius:3px;background:#ffc16c;box-shadow:0 0 11px 4px #f5a34199;}
+@keyframes lfw-sky-burst {0%,9%{opacity:0;transform:rotate(var(--a)) translateY(0) scaleY(.1)}20%{opacity:.95;transform:rotate(var(--a)) translateY(22px) scaleY(1.5)}48%{opacity:.7;transform:rotate(var(--a)) translateY(50px) scaleY(1.4)}72%,100%{opacity:0;transform:rotate(var(--a)) translateY(67px) scaleY(.3)}}
+
+/* ------------------------ RESPONSIVE / SAFETY ---------------------- */
+@media (max-width:480px) {
+  .legend-fantasy--parchment .lf-story-opening {padding:35px 20px 42px;}
+  .legend-fantasy--parchment .lf-paper-ring {width:105px;margin:3px auto 7px;}
+  .legend-fantasy--parchment .lf-story-opening .lf-paper-names {font-size:clamp(32px,9vw,42px);}
+  .legend-fantasy--parchment .lf-shire {padding:54px 0 70px;}
+  .legend-fantasy--parchment .lf-shire__world {margin:27px auto -5px;}
+  .legend-fantasy--parchment .lf-shire__door {width:28.2%;}
+  .legend-fantasy--parchment .lf-shire__message {padding:30px 22px 25px;}
+  .legend-fantasy--parchment .lfw-burn {height:91px;}
+  .legend-fantasy--parchment .lfw-night__opening {padding-top:38px;}
+  .legend-fantasy--parchment .lfw-events {padding-top:65px;}
+  .legend-fantasy--parchment .lfw-book {min-height:225px;aspect-ratio:1.43;padding:5px;border-width:3px;}
+  .legend-fantasy--parchment .lfw-book__left {padding:10px 7px;}
+  .legend-fantasy--parchment .lfw-book__right {padding:9px 7px;}
+  .legend-fantasy--parchment .lfw-book__quill {font-size:18px;margin:0;}
+  .legend-fantasy--parchment .lfw-book__left h3 {font-size:23px;margin:4px auto;}
+  .legend-fantasy--parchment .lfw-book__left p {font-size:15px;}
+  .legend-fantasy--parchment .lfw-book__letters {margin-top:9px;}
+  .legend-fantasy--parchment .lfw-book__photo {max-height:218px;border-width:3px;}
+  .legend-fantasy--parchment .lfw-book__caption {font-size:12px;margin-top:5px;}
+  .legend-fantasy--parchment .lfw-events__item {grid-template-columns:minmax(85px,40%) 1fr;gap:7px;}
+  .legend-fantasy--parchment .lfw-events__item:nth-child(even) {grid-template-columns:1fr minmax(85px,40%);}
+  .legend-fantasy--parchment .lfw-events__event time {font-size:19px;}
+  .legend-fantasy--parchment .lfw-places__grid {grid-template-columns:1fr;max-width:300px;gap:17px;}
+  .legend-fantasy--parchment .lfw-portal__round {width:75%;}
+  .legend-fantasy--parchment .lfw-finale {min-height:620px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .legend-fantasy--parchment .lf-paper-ring img,
+  .legend-fantasy--parchment .lf-paper-ring span,
+  .legend-fantasy--parchment .lf-shire__smoke,
+  .legend-fantasy--parchment .lfw-burn *,
+  .legend-fantasy--parchment .lfw-night__stars span,
+  .legend-fantasy--parchment .lfw-moon-art svg,
+  .legend-fantasy--parchment .lfw-moon-art__halo,
+  .legend-fantasy--parchment .lfw-volcano__flame,
+  .legend-fantasy--parchment .lfw-firework i {animation:none!important;}
+  .legend-fantasy--parchment .lf-shire__door-leaf,
+  .legend-fantasy--parchment .lf-shire__scroll-wrap,
+  .legend-fantasy--parchment .lfw-portal__door,
+  .legend-fantasy--parchment .lfw-events__item,
+  .legend-fantasy--parchment .lfw-moon-art,
+  .legend-fantasy--parchment .lfw-finale__copy {transition:none!important;}
+  .legend-fantasy--parchment .lfw-moon-art,
+  .legend-fantasy--parchment .lfw-events__item,
+  .legend-fantasy--parchment .lfw-finale__copy {opacity:1;transform:none;}
+  .legend-fantasy--parchment .lfw-firework i {opacity:.7;transform:rotate(var(--a)) translateY(50px) scaleY(1.1);}
+}

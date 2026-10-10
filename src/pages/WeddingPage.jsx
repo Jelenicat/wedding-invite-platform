@@ -88,6 +88,8 @@ import EnvelopeFlapIntro from "../components/EnvelopeFlapIntro";
 import ScratchInvitationCard from "../components/ScratchInvitationCard";
 import EnvelopeFlapVideoIntro from "../components/EnvelopeFlapVideoIntro";
 import PhotoZoomIntro from "../components/PhotoZoomIntro";
+import LegendFantasyIntro from "../components/LegendFantasyIntro";
+import LegendFantasyInvitationCard from "../components/LegendFantasyInvitationCard";
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
 import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
@@ -349,6 +351,11 @@ const TEMPLATE_COMPONENTS = {
 "photo-zoom-minimal": {
   Intro: PhotoZoomIntro,
   Invitation: MinimalInvitationCard,
+},
+
+"legend-fantasy": {
+  Intro: LegendFantasyIntro,
+  Invitation: LegendFantasyInvitationCard,
 },
 
 };

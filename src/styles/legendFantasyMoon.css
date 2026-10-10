@@ -1,0 +1,219 @@
+/* LEGEND FANTASY — MOON V2: isolated from the intro / parchment / map. */
+.legend-fantasy .lfm, .legend-fantasy .lfm * { box-sizing: border-box; }
+.legend-fantasy .lfm {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: hidden;
+  background: #11172e;
+  color: #e8e5db;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* IRREGULAR BURNED EDGE — visually present even before reveal class. */
+.legend-fantasy .lfm-burn {
+  position: relative;
+  height: clamp(132px, 38vw, 180px);
+  margin-top: -1px;
+  background: linear-gradient(#ead7b0 0%, #b58156 48%, #322332 64%, #11172e 100%);
+  isolation: isolate;
+  overflow: hidden;
+}
+.legend-fantasy .lfm-burn__svg {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+}
+.legend-fantasy .lfm-burn__outerglow { opacity: .9; animation: lfm-fireglow 1.15s ease-in-out infinite alternate; }
+.legend-fantasy .lfm-burn__fireline { filter: drop-shadow(0 0 4px #ffe49f) drop-shadow(0 0 8px #ee651f); }
+.legend-fantasy .lfm-burn__bright { animation: lfm-bright 1.2s ease-in-out infinite alternate; }
+.legend-fantasy .lfm-burn__tongue {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: lfm-tongue 1s ease-in-out infinite alternate;
+  opacity: .73;
+}
+.legend-fantasy .lfm-burn__smoke {
+  position: absolute;
+  z-index: 2;
+  left: -15%; width: 130%; top: 25%; height: 65%;
+  background: radial-gradient(ellipse at 50% 39%, rgba(32,28,34,.8) 10%, rgba(36,35,47,.44) 38%, transparent 73%);
+  filter: blur(14px);
+  animation: lfm-smoke 3.2s ease-in-out infinite alternate;
+}
+.legend-fantasy .lfm-burn__spark {
+  position: absolute;
+  z-index: 5;
+  top: 53%;
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: #ffd878;
+  box-shadow: 0 0 9px 3px rgba(255,135,40,.78);
+  opacity: 0;
+  animation-name: lfm-spark-rise;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+/* FANTASY NIGHT, not flat black cards */
+.legend-fantasy .lfm-night {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 65% 24% at 50% 13%, rgba(72,97,152,.24), transparent 79%),
+    radial-gradient(ellipse 74% 38% at 50% 65%, rgba(35,59,116,.25), transparent 80%),
+    linear-gradient(180deg, #10162c 0%, #1b2a50 32%, #18264c 67%, #11172f 100%);
+}
+.legend-fantasy .lfm-night__stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.legend-fantasy .lfm-night__stars i {
+  display: block; position: absolute;
+  border-radius: 50%;
+  background: #ffeed6;
+  opacity: .35;
+  box-shadow: 0 0 8px 2px rgba(239,229,196,.36);
+  animation: lfm-star 3.4s ease-in-out infinite alternate;
+}
+.legend-fantasy .lfm-night__hero,
+.legend-fantasy .lfm-countdown { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; text-align: center; }
+.legend-fantasy .lfm-night__hero { padding: 65px 20px 35px; }
+.legend-fantasy .lf-reveal { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1.2s cubic-bezier(.17,.7,.2,1); }
+.legend-fantasy .lf-reveal.is-shown { opacity: 1; transform: translateY(0); }
+.legend-fantasy .lfm-moon {
+  position: relative;
+  width: clamp(104px, 31vw, 150px); aspect-ratio: 1;
+  margin: 0 auto 32px;
+  transform: scale(.68) translateY(25px);
+  opacity: 0;
+  transition: transform 1.8s .18s ease, opacity 1.4s .18s;
+}
+.legend-fantasy .lfm--entered .lfm-moon { transform: scale(1) translateY(0); opacity: 1; }
+.legend-fantasy .lfm-moon svg { position: relative; z-index: 2; width: 100%; height: 100%; filter: drop-shadow(0 0 16px #c6c8df66); }
+.legend-fantasy .lfm-moon__glow {
+  position: absolute; inset: -30%; border-radius: 50%;
+  background: radial-gradient(circle, #e6e9f034, #d5dce014 34%, transparent 69%);
+  filter: blur(13px);
+  animation: lfm-moonbreath 5s ease-in-out infinite alternate;
+}
+.legend-fantasy .lfm-smallheading {
+  margin: 0 auto 9px;
+  font: 400 11px/1.4 'Fondamento', Georgia, serif;
+  letter-spacing: .25em;
+  color: #c4c3cb;
+}
+.legend-fantasy .lfm-night__title {
+  max-width: 390px;
+  margin: 0 auto 8px;
+  color: #f3efe8;
+  font: 400 clamp(30px, 8vw, 48px)/1.11 'Cinzel Decorative', 'Cormorant Garamond', serif;
+  text-shadow: 0 0 24px #f3e3be25;
+}
+.legend-fantasy .lfm-night__lead {
+  margin: 0 auto 53px;
+  max-width: 330px;
+  color: #d5d4dd;
+  font: italic 400 clamp(18px,4.8vw,22px)/1.43 'Cormorant Garamond', Georgia, serif;
+}
+/* Gate reveals the actual event date in a framed entrance, not a bare info card. */
+.legend-fantasy .lfm-gate {
+  position: relative;
+  margin: 0 auto;
+  width: min(100%, 350px);
+  height: 410px;
+  display: grid;
+  place-items: center;
+}
+.legend-fantasy .lfm-gate__lines { width: 100%; height: 100%; display: block; filter: drop-shadow(0 0 8px #b1bbd825); }
+.legend-fantasy .lfm-gate__date {
+  position: absolute;
+  inset: 155px 35px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  text-transform: uppercase;
+}
+.legend-fantasy .lfm-gate__weekday {
+  font: 400 12px/1.4 'Fondamento', Georgia, serif;
+  color: #c7c0cb;
+  letter-spacing: .15em;
+}
+.legend-fantasy .lfm-gate__date strong {
+  display: block;
+  color: #f5f3ef;
+  font: 400 clamp(65px, 18vw, 103px)/.97 'Cormorant Garamond', Georgia, serif;
+  text-shadow: 0 0 16px #dbe1fc33;
+}
+.legend-fantasy .lfm-gate__month { color: #d8d1d6; font: 400 21px/1.2 'Cormorant Garamond', Georgia, serif; }
+.legend-fantasy .lfm-gate__time { color: #e2cb9e; margin-top: 11px; font: italic 500 20px/1.2 'Cormorant Garamond', Georgia, serif; }
+.legend-fantasy .lfm-night__below {
+  margin: 25px auto 0;
+  padding: 0 9px 34px;
+  max-width: 390px;
+  text-align: center;
+}
+.legend-fantasy .lfm-night__below > span {
+  display: block;
+  margin-top: 22px;
+  font: 400 10px/1.4 'Fondamento', Georgia, serif;
+  letter-spacing: .22em;
+  color: #b9bbce;
+}
+.legend-fantasy .lfm-night__below > strong { display:block; margin-top:5px; color:#e8e5e2; font:400 24px/1.2 'Cormorant Garamond',serif; }
+.legend-fantasy .lfm-night__below p { color: #d5c8cb; font:italic 19px/1.35 'Cormorant Garamond',serif; margin:12px auto 0; }
+.legend-fantasy .lfm-night__venue { color: #d2bea0 !important; }
+.legend-fantasy .lfm-calendar {
+  display: inline-block;
+  margin-top: 21px;
+  padding: 12px 21px;
+  border: 1px solid #b5b9d086;
+  border-radius: 999px;
+  background: #adb5cd16;
+  color: #e9e8ee;
+  font: 400 11px/1.4 'Fondamento', Georgia, serif;
+  letter-spacing: .06em;
+  text-decoration: none;
+  box-shadow: 0 0 22px #a1b5cf1c;
+}
+.legend-fantasy .lfm-calendar:hover { background:#adb5cd32; }
+.legend-fantasy .lfm-calendar:focus-visible { outline:3px solid #f9db9e; outline-offset:3px; }
+.legend-fantasy .lfm-swatches { display:flex; justify-content:center; gap:9px; margin:12px auto 0; }
+.legend-fantasy .lfm-swatches i { display:block; width:22px; height:22px; border-radius:50%; border:1px solid #e9e4d9a6; }
+.legend-fantasy .lfm-countdown { padding: 55px 14px 100px; }
+.legend-fantasy .lfm-countdown__title {
+  margin: 7px auto 26px;
+  color:#faf7f3;
+  font:400 clamp(31px,8vw,45px)/1.18 'Cinzel Decorative','Cormorant Garamond',serif;
+}
+.legend-fantasy .lfm-dial { position:relative; width:min(86vw,350px); aspect-ratio:1; margin:0 auto; }
+.legend-fantasy .lfm-dial__svg { width:100%; height:100%; display:block; }
+.legend-fantasy .lfm-dial__orbit { transform-origin: 175px 175px; animation: lfm-orbit 26s linear infinite; }
+.legend-fantasy .lfm-dial__center {
+  position:absolute; inset:20%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.legend-fantasy .lfm-dial__center strong { font: 400 clamp(60px, 17vw, 95px)/.94 'Cormorant Garamond',Georgia,serif; color:#f5f0ec; text-shadow:0 0 22px #b2bdde57; }
+.legend-fantasy .lfm-dial__center span { margin-top:2px; color:#c9c7d0; font:400 12px/1.3 'Fondamento',Georgia,serif; letter-spacing:.22em; }
+.legend-fantasy .lfm-dial__center p { color:#dfdadb; margin:13px 0 0; font:400 18px/1.2 'Cormorant Garamond',serif; font-variant-numeric:tabular-nums; }
+.legend-fantasy .lfm-countdown__note { max-width: 310px; margin: 24px auto 0; color:#c4c6d2; font:italic 19px/1.4 'Cormorant Garamond',serif; }
+@keyframes lfm-fireglow { from { opacity:.65; stroke-width:17px; } to { opacity:1; stroke-width:27px; } }
+@keyframes lfm-bright { from { opacity:.64; } to { opacity:1; } }
+@keyframes lfm-tongue { from { transform:scaleY(.6) skewX(-8deg); opacity:.48; } to { transform:scaleY(1.35) skewX(7deg); opacity:1; } }
+@keyframes lfm-smoke { from { transform:translate(-3%,5%); opacity:.5; } to { transform:translate(4%,-6%); opacity:.8; } }
+@keyframes lfm-spark-rise { 0% {opacity:0;transform:translate3d(0,13px,0) scale(.5);} 15% {opacity:1;} 90%{opacity:.75;} 100% {opacity:0;transform:translate3d(12px,-56px,0) scale(.1);} }
+@keyframes lfm-star { from{ opacity:.15; transform:scale(.65);} to{ opacity:.85; transform:scale(1.3);} }
+@keyframes lfm-moonbreath { from{ opacity:.5;transform:scale(.9);} to{ opacity:1;transform:scale(1.14);} }
+@keyframes lfm-orbit { to { transform:rotate(360deg); } }
+@media (max-width:440px) {
+  .legend-fantasy .lfm-night__hero { padding-top:42px; }
+  .legend-fantasy .lfm-gate { width:min(95%,350px); height: 400px; }
+  .legend-fantasy .lfm-night__lead { margin-bottom:39px; }
+  .legend-fantasy .lfm-gate__date { inset:150px 35px 40px; }
+  .legend-fantasy .lfm-countdown { padding-top:42px; padding-bottom:74px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .legend-fantasy .lfm * { animation:none !important; transition:none !important; }
+  .legend-fantasy .lf-reveal, .legend-fantasy .lfm-moon { opacity:1;transform:none; }
+}

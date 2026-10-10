@@ -5383,6 +5383,57 @@ musicSrc: "/music/mina-dragan.mp3",
     },
   },
 },
+
+{
+  slug: "legenda-demo",
+  type: "wedding",
+  template: "legend-fantasy",
+  script: "latin",
+
+  brideName: "Jovana",
+  groomName: "Marko",
+  weddingDate: "12. jun 2027.",
+  weddingTime: "17:00",
+  venue: "Takovski vrt",
+
+  details: {
+    ...createDetails({
+      date: "12. jun 2027.",
+      dateISO: "2027-06-12T17:00:00+02:00",
+      events: [],
+      showDressCode: false,
+    }),
+    dateISO: "2027-06-12T17:00:00+02:00",
+    timeZone: "Europe/Belgrade",
+    showDressCode: false,
+    welcomeText:
+      "Pozivamo vas da zajedno sa nama proslavimo ljubav, prijateljstvo i početak našeg zajedničkog puta!",
+    shireText:
+      "Posle mnogih puteva, skretanja i avantura, naša priča je pronašla svoj Dom. Vreme je da zajedno stvaramo uspomene koje ćemo pamtiti zauvek i tako postati legenda.",
+    events: [
+      {
+        time: "17:00",
+        title: "Dugo očekivana zabava",
+        place: "Takovski vrt",
+        note: "Proslavimo ljubav, prijateljstvo i početak našeg zajedničkog puta.",
+      },
+    ],
+    legendPlaces: [
+      { title: "Proslava", name: "Takovski vrt", time: "17:00" },
+    ],
+    legendGuestInfo: [
+      "Za sve drage goste koji dolaze iz inostranstva, obezbeđen je transfer od i do aerodroma.",
+      "Za vaš komfor, obezbeđen je smeštaj na posebnim mestima, dostojnim svakog putnika.",
+      "A da bi snaga bila uz nas tokom cele avanture, pobrinućemo se za obilje hrane i pića, kao u najboljim gozbama Hobita i Ljudi!",
+    ],
+    legendFamilyText: "S poštovanjem, porodice Milosavljević i Bašarić.",
+    legendClosingText: "Radujemo se što ćete biti deo naše priče!",
+    finalMessage: "Radujemo se što ćete biti deo naše priče!",
+    legendMotto:
+      "Nikada ne sumnjaj u male stvari u životu, jer upravo one mogu u potpunosti promeniti tok budućnosti.",
+  },
+},
+
 // =========================
 // Klijenti
 // =========================
