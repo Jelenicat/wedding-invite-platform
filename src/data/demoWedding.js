@@ -5312,6 +5312,77 @@ musicSrc: "/music/mina-dragan.mp3",
     },
   },
 },
+
+{
+  slug: "sofija-luka-photo-zoom",
+  type: "wedding",
+  template: "photo-zoom-minimal",
+  script: "latin",
+
+  brideName: "Sofija",
+  groomName: "Luka",
+
+  weddingDate: "17.09.2027.",
+  weddingTime: "17:00",
+  venue: "Beograd",
+
+  // Pozadina MinimalInvitationCard-a
+  backgroundImage: "/images/photo-zoom-card-bg.jpg",
+
+  // Ako želiš muziku:
+  // musicSrc: "/music/tvoja-pesma.mp3",
+
+  details: {
+    ...createDetails({
+      backgroundImage: "/images/photo-zoom-card-bg.jpg",
+
+      welcomeText:
+        "S ljubavlju vas pozivamo da budete deo početka naše zajedničke priče.",
+
+      date: "17.09.2027.",
+      dateISO: "2027-09-17T17:00:00+02:00",
+      venue: "Beograd",
+
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+      showDressCode: false,
+
+      events: [
+        {
+          label: "Crkveno venčanje",
+          time: "16:00",
+          icon: "church",
+          location: "Crkva u Beogradu",
+        },
+        {
+          label: "Građansko venčanje",
+          time: "17:00",
+          icon: "civil",
+          location: "Restoran u Beogradu",
+        },
+        {
+          label: "Proslava",
+          time: "18:00",
+          icon: "restaurant",
+          location: "Restoran u Beogradu",
+        },
+      ],
+
+      note: "Molimo vas da potvrdite dolazak do 01.09.2027.",
+      rsvpText: "Molimo vas da potvrdite dolazak do 01.09.2027.",
+    }),
+
+    // Fotografija za intro i podešavanje zuma
+    photoZoomIntro: {
+      imageSrc: "/images/photo-zoom-demo.png",
+      photoPosition: "50% 43%",
+      initialZoom: 1.9,
+      blackAndWhite: true,
+      eyebrow: "Pozivnica za venčanje",
+      buttonText: "Pogledaj pozivnicu",
+    },
+  },
+},
 // =========================
 // Klijenti
 // =========================

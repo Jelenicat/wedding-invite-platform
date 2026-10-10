@@ -13945,3 +13945,588 @@ body,
     background: #171310 !important;
   }
 }
+
+
+/* =========================================================
+   PHOTO ZOOM INTRO — ELEGANT ITALIANNO
+   ========================================================= */
+
+.wedding-page.wedding-page--photo-zoom {
+  display: block;
+  background: #171c18;
+}
+
+.photo-zoom-intro,
+.photo-zoom-intro * {
+  box-sizing: border-box;
+}
+
+.photo-zoom-intro {
+  --pz-zoom: var(--pz-initial-zoom, 2.7);
+  --pz-names-opacity: 1;
+  --pz-names-shift: 0px;
+  --pz-hint-opacity: 1;
+
+  position: relative;
+  width: min(100%, 500px);
+  height: 225vh;
+  height: 225svh;
+  margin: 0 auto;
+  padding: 0;
+
+  color: #fffaf3;
+  color-scheme: only light;
+  font-family: "Manrope", Arial, sans-serif;
+  isolation: isolate;
+}
+
+/* =========================================================
+   STICKY SCENE
+   ========================================================= */
+
+.photo-zoom-intro__scene {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #171c18;
+}
+
+/* =========================================================
+   BACKGROUND PHOTO
+   ========================================================= */
+
+.photo-zoom-intro__photo,
+.photo-zoom-intro__shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.photo-zoom-intro__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+
+  object-fit: cover;
+  object-position: var(--pz-photo-position, 50% 43%);
+  transform: scale(var(--pz-zoom));
+  transform-origin: var(--pz-photo-position, 50% 43%);
+
+  filter: var(--pz-photo-filter, grayscale(1));
+  will-change: transform;
+}
+
+/* =========================================================
+   DARK OVERLAY
+   ========================================================= */
+
+.photo-zoom-intro__shade {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 17, 12, 0.38) 0%,
+    rgba(10, 17, 12, 0.18) 30%,
+    rgba(10, 17, 12, 0.27) 58%,
+    rgba(10, 17, 12, 0.66) 100%
+  );
+}
+
+/* =========================================================
+   MONOGRAM
+   ========================================================= */
+
+.photo-zoom-intro__monogram {
+  position: absolute;
+  z-index: 1;
+
+  top: max(
+    23px,
+    calc(env(safe-area-inset-top, 0px) + 12px)
+  );
+
+  left: 0;
+  right: 0;
+
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  color: #fffaf3;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+}
+
+.photo-zoom-intro__monogram span {
+  margin: 0 0.3em;
+  font-size: 16px;
+  letter-spacing: 0;
+  opacity: 0.8;
+}
+
+/* =========================================================
+   TOP INVITATION TEXT
+   ========================================================= */
+
+.photo-zoom-intro__eyebrow {
+  position: absolute;
+  z-index: 1;
+
+  top: 19%;
+  left: 24px;
+  right: 24px;
+
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  color: #fffaf3;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   NAMES CONTAINER
+   ========================================================= */
+
+.photo-zoom-intro__copy {
+  position: absolute;
+  z-index: 1;
+
+  top: 55%;
+  left: 0;
+  right: 0;
+
+  padding: 0 26px;
+  text-align: center;
+
+  opacity: var(--pz-names-opacity);
+
+  transform: translateY(
+    calc(-50% + var(--pz-names-shift))
+  );
+
+  will-change: transform, opacity;
+}
+
+/* =========================================================
+   BRIDE AND GROOM NAMES — THIN ELEGANT SCRIPT
+   ========================================================= */
+
+.photo-zoom-intro__names {
+  margin: 0;
+  padding: 0;
+
+  color: rgba(255, 250, 243, 0.94);
+  font-family: "Italianno", cursive;
+
+  font-size: calc(
+    clamp(86px, min(30vw, 16svh), 150px) *
+    var(--pz-names-scale, 1)
+  );
+
+  font-weight: 400;
+  font-style: normal;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: none;
+
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.14);
+}
+
+/* INDIVIDUAL NAMES */
+
+.photo-zoom-intro__name {
+  display: block;
+  padding: 0.02em 0;
+  white-space: nowrap;
+}
+
+/* BRIDE NAME */
+
+.photo-zoom-intro__name:first-child {
+  padding-left: 6%;
+  text-align: left;
+}
+
+/* GROOM NAME */
+
+.photo-zoom-intro__name:last-child {
+  padding-right: 6%;
+  text-align: right;
+}
+
+/* =========================================================
+   AMPERSAND — ELEGANT & SYMBOL
+   ========================================================= */
+
+.photo-zoom-intro__amp {
+  display: block;
+  margin: -4px auto 2px;
+
+  color: rgba(255, 250, 243, 0.88);
+
+  font-family: "Italianno", cursive;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.photo-zoom-intro__date {
+  margin: 28px 0 0;
+  padding: 0;
+
+  color: rgba(255, 254, 248, 0.9);
+
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.23em;
+}
+
+/* =========================================================
+   BOTTOM ACTIONS
+   ========================================================= */
+
+.photo-zoom-intro__actions {
+  position: absolute;
+  z-index: 2;
+
+  left: 28px;
+  right: 28px;
+
+  bottom: max(
+    24px,
+    calc(env(safe-area-inset-bottom, 0px) + 18px)
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* =========================================================
+   OPEN INVITATION BUTTON
+   ========================================================= */
+
+.photo-zoom-intro__enter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 56px;
+  max-width: 100%;
+  margin: 0;
+  padding: 6px 22px;
+
+  border: 0;
+  border-radius: 0;
+  appearance: none;
+  box-shadow: none;
+
+  background: transparent;
+  color: #fffaf3;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.025em;
+
+  text-transform: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0s 0.35s;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* BUTTON UNDERLINE */
+
+.photo-zoom-intro__enter::after {
+  content: "";
+  display: block;
+
+  width: 54px;
+  height: 1px;
+
+  background: currentColor;
+  opacity: 0.65;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* SHOW BUTTON AFTER SCROLL */
+
+.photo-zoom-intro__enter.is-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.photo-zoom-intro__enter:active {
+  opacity: 0.8;
+}
+
+.photo-zoom-intro__enter:focus-visible {
+  outline: 1px solid #fffaf3;
+  outline-offset: 7px;
+}
+
+/* =========================================================
+   SCROLL ARROW
+   ========================================================= */
+
+.photo-zoom-intro__cue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  color: #fffaf3;
+  opacity: var(--pz-hint-opacity);
+  pointer-events: none;
+}
+
+.photo-zoom-intro__arrow {
+  display: block;
+  width: 23px;
+  height: 23px;
+  overflow: visible;
+
+  animation:
+    photo-zoom-arrow-drift
+    2.4s ease-in-out infinite;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.photo-zoom-intro__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =========================================================
+   INVITATION CARD REVEAL
+   ========================================================= */
+
+.photo-zoom-card-reveal {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background: #f8f6f1;
+  outline: none;
+
+  animation:
+    photo-zoom-card-enter 0.6s
+    cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes photo-zoom-arrow-drift {
+  0%, 100% {
+    transform: translateY(-4px);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(4px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes photo-zoom-card-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+@media (hover: hover) {
+  .photo-zoom-intro__enter:hover::after {
+    transform: scaleX(1.2);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   SMALLER HEIGHT
+   ========================================================= */
+
+@media (max-height: 720px) {
+  .photo-zoom-intro__date {
+    margin-top: 19px;
+  }
+}
+
+/* =========================================================
+   SHORT SCREENS
+   ========================================================= */
+
+@media (max-height: 650px) {
+  .photo-zoom-intro__eyebrow {
+    top: 16%;
+  }
+
+  .photo-zoom-intro__copy {
+    top: 54%;
+  }
+
+  .photo-zoom-intro__names {
+    font-size: calc(
+      clamp(70px, min(28vw, 13svh), 110px) *
+      var(--pz-names-scale, 1)
+    );
+  }
+
+  .photo-zoom-intro__date {
+    margin-top: 15px;
+  }
+
+  .photo-zoom-intro__actions {
+    gap: 12px;
+
+    bottom: max(
+      20px,
+      calc(env(safe-area-inset-bottom, 0px) + 16px)
+    );
+  }
+
+  .photo-zoom-intro__monogram {
+    top: max(
+      16px,
+      calc(env(safe-area-inset-top, 0px) + 8px)
+    );
+  }
+}
+
+/* =========================================================
+   VERY SHORT SCREENS
+   ========================================================= */
+
+@media (max-height: 480px) {
+  .photo-zoom-intro {
+    min-height: 1100px;
+  }
+
+  .photo-zoom-intro__copy {
+    top: 53%;
+  }
+
+  .photo-zoom-intro__names {
+    font-size: calc(
+      65px * var(--pz-names-scale, 1)
+    );
+  }
+
+  .photo-zoom-intro__amp {
+    font-size: 34px;
+  }
+
+  .photo-zoom-intro__date {
+    margin-top: 8px;
+    font-size: 11px;
+  }
+
+  .photo-zoom-intro__actions {
+    gap: 4px;
+    bottom: 12px;
+  }
+
+  .photo-zoom-intro__enter {
+    min-height: 44px;
+    font-size: 22px;
+    gap: 5px;
+  }
+
+  .photo-zoom-intro__cue {
+    height: 24px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-zoom-intro__photo img {
+    transform: scale(1);
+    will-change: auto;
+  }
+
+  .photo-zoom-intro__copy {
+    opacity: 1;
+    transform: translateY(-50%);
+    will-change: auto;
+  }
+
+  .photo-zoom-intro__arrow {
+    animation: none;
+    transform: none;
+    opacity: 0.8;
+  }
+
+  .photo-zoom-intro__enter,
+  .photo-zoom-intro__enter::after {
+    transition: none;
+  }
+
+  .photo-zoom-card-reveal {
+    animation: none;
+  }
+}

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo,  useLayoutEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import FloralIntro from "../components/FloralIntro";
@@ -87,6 +87,7 @@ import PhotoCardSplitInvitationCard from "../components/PhotoCardSplitInvitation
 import EnvelopeFlapIntro from "../components/EnvelopeFlapIntro";
 import ScratchInvitationCard from "../components/ScratchInvitationCard";
 import EnvelopeFlapVideoIntro from "../components/EnvelopeFlapVideoIntro";
+import PhotoZoomIntro from "../components/PhotoZoomIntro";
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
 import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
@@ -345,6 +346,11 @@ const TEMPLATE_COMPONENTS = {
   Invitation: MinimalInvitationCard,
 },
 
+"photo-zoom-minimal": {
+  Intro: PhotoZoomIntro,
+  Invitation: MinimalInvitationCard,
+},
+
 };
 
 const isObject = (value) =>
@@ -403,11 +409,27 @@ function WeddingPage() {
 
   const introTimeoutRef = useRef(null);
   const audioRef = useRef(null);
+const photoZoomCardRef = useRef(null);
 
   const invitation = useMemo(() => {
     return demoWedding.find((item) => item.slug === slug);
   }, [slug]);
 const templateKey = invitation?.template || "envelope";
+
+useLayoutEffect(() => {
+  if (templateKey !== "photo-zoom-minimal") return;
+
+  const html = document.documentElement;
+  const previousScrollBehavior = html.style.scrollBehavior;
+
+  html.style.scrollBehavior = "auto";
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  html.style.scrollBehavior = previousScrollBehavior;
+
+  if (showInvitation) {
+    photoZoomCardRef.current?.focus({ preventScroll: true });
+  }
+}, [templateKey, slug, showInvitation]);
 
 const musicSrc =
   invitation?.musicSrc ||
@@ -916,7 +938,31 @@ templateKey === "italian-minimal"
       </div>
     );
   }
+if (templateKey === "photo-zoom-minimal") {
+  return (
+    <div className="wedding-page wedding-page--photo-zoom">
+      {audioNode}
 
+      {!showInvitation ? (
+        <IntroComponent key={slug} {...introProps} />
+      ) : (
+        <div
+          ref={photoZoomCardRef}
+          className="photo-zoom-card-reveal"
+          tabIndex={-1}
+          role="region"
+          aria-label={
+            localizedInvitation.script === "cyrillic"
+              ? "Позивница"
+              : "Pozivnica"
+          }
+        >
+          <InvitationComponent {...invitationProps} />
+        </div>
+      )}
+    </div>
+  );
+}
   return (
     <div className="wedding-page">
       {audioNode}
