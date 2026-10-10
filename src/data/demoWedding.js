@@ -5376,7 +5376,7 @@ musicSrc: "/music/mina-dragan.mp3",
     photoZoomIntro: {
       imageSrc: "/images/photo-zoom-demo.png",
       photoPosition: "50% 43%",
-      initialZoom: 1.9,
+      initialZoom: 2.1,
       blackAndWhite: true,
       eyebrow: "Pozivnica za venčanje",
       buttonText: "Pogledaj pozivnicu",
