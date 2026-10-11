@@ -56,6 +56,11 @@ function SplitVideoCountdown({
         calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
       };
 
+  // Samo za Jovanu i Olivera: nemački tekst bez slova ß.
+  if (slug === "jovana-oliver" && language === "de") {
+    t.arrivedKicker = "Unser grosser Tag ist da";
+  }
+
   if (slug === "jovana-oliver" && language !== "de" && !isCyrillic) {
     t.arrivedTitle = "Dan vjenčanja je stigao";
     t.remaining = "Do vjenčanja je ostalo";

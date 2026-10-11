@@ -360,27 +360,66 @@ function SplitVideoInvitationCard({
               </motion.div>
             )}
 
-            {(details.mapLink || details.venue) && (
+            {(details.mapLink || details.venue ||
+              (slug === "jovana-oliver" && timelineItems.some((event) => event.mapLink))) && (
               <motion.div
-                className="split-video-location-box"
+                className={`split-video-location-box ${
+                  slug === "jovana-oliver" ? "jovana-oliver-location-box" : ""
+                }`}
                 {...fadeUp}
                 transition={{ duration: 0.65 }}
               >
                 <h3 className="split-video-section-script">{t.location}</h3>
 
-                {details.venue && (
-                  <p className="split-video-location-text">{details.venue}</p>
-                )}
+                {slug === "jovana-oliver" ? (
+                  <div className="jovana-oliver-location-pair">
+                    {timelineItems
+                      .filter((event) => event.mapLink)
+                      .slice(0, 2)
+                      .map((event, index) => (
+                        <div
+                          className="jovana-oliver-location-item"
+                          key={`${event.label}-${index}`}
+                        >
+                          <span className="jovana-oliver-location-type">
+                            {language === "de"
+                              ? index === 0 ? "Kirche" : "Restaurant"
+                              : index === 0 ? "Crkva" : "Restoran"}
+                          </span>
 
-                {details.mapLink && (
-                  <a
-                    href={details.mapLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="split-video-location-link"
-                  >
-                    {t.map}
-                  </a>
+                          <p className="jovana-oliver-location-name">
+                            {event.location}
+                          </p>
+
+                          <a
+                            href={event.mapLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="jovana-oliver-map-btn"
+                            aria-label={`${t.map}: ${event.location}`}
+                          >
+                            {t.map}
+                          </a>
+                        </div>
+                      ))}
+                  </div>
+                ) : (
+                  <>
+                    {details.venue && (
+                      <p className="split-video-location-text">{details.venue}</p>
+                    )}
+
+                    {details.mapLink && (
+                      <a
+                        href={details.mapLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="split-video-location-link"
+                      >
+                        {t.map}
+                      </a>
+                    )}
+                  </>
                 )}
               </motion.div>
             )}
@@ -585,6 +624,18 @@ function SplitVideoInvitationCard({
                       </p>
                     )}
                   </article>
+
+                  {details.guestInfo.airports?.text && (
+                    <article className="split-video-guest-info__card split-video-guest-info__card--airports">
+                      <div className="split-video-guest-info__card-heading">
+                        <span className="split-video-guest-info__index" aria-hidden="true">03</span>
+                        <h3>{details.guestInfo.airports.title}</h3>
+                      </div>
+                      <p className="split-video-guest-info__description">
+                        {details.guestInfo.airports.text}
+                      </p>
+                    </article>
+                  )}
                 </div>
               </motion.section>
             </div>

@@ -11023,6 +11023,7 @@ dateISO:
 },
 
 
+
 {
   slug: "jovana-oliver",
   type: "wedding",
@@ -11032,11 +11033,12 @@ dateISO:
   brideName: "Jovana",
   groomName: "Oliver",
 
-  // Isti video i fotografija kao kod ANA-OGNJEN
+  // VIDEO, MUZIKA I FOTOGRAFIJA
   videoSrc: "/videos/ana-ognjen-2.mp4",
-musicSrc: "/music/jovana-oliver.mp3",
+  musicSrc: "/music/jovana-oliver.mp3",
+
   weddingDate: "05 JUN 2027",
-  weddingTime: "16:00",
+  weddingTime: "15:30",
   venue: "Kotor i Budva",
 
   introText:
@@ -11050,7 +11052,7 @@ musicSrc: "/music/jovana-oliver.mp3",
         "Sa velikom radošću vas pozivamo da budete dio našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
 
       date: "05 JUN 2027",
-      dateISO: "2027-06-05T16:00:00+02:00",
+      dateISO: "2027-06-05T15:30:00+02:00",
 
       showCalendarButton: true,
 
@@ -11061,26 +11063,30 @@ musicSrc: "/music/jovana-oliver.mp3",
       events: [
         {
           label: "Crkveno vjenčanje",
-          time: "16:00",
+          time: "15:30",
           location: "Crkva Svetog Nikole, Kotor",
+
           mapLink:
             "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
+
           note:
             "Radujemo se što ćete prisustvovati našem crkvenom vjenčanju.",
         },
         {
-          label: "Welcome drink",
+          label: "Slavlje",
           time: "17:30",
           location: "Carević Resort, Budva",
+
           mapLink:
             "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
+
           note:
-            "Nakon ceremonije očekujemo vas na piću dobrodošlice.",
+            "Nakon crkvenog vjenčanja očekujemo vas na zajedničkom slavlju.",
         },
       ],
 
       // =========================
-      // BOJE - ISTE KAO ANA-OGNJEN
+      // BOJE — ISTE KAO ANA-OGNJEN
       // =========================
 
       theme: {
@@ -11121,7 +11127,7 @@ musicSrc: "/music/jovana-oliver.mp3",
       },
 
       // =========================
-      // DODATNA PODEŠAVANJA
+      // LOKACIJE
       // =========================
 
       showDressCode: false,
@@ -11131,10 +11137,12 @@ musicSrc: "/music/jovana-oliver.mp3",
       mapLink:
         "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
 
-     
+      // Oba Google Maps linka nalaze se i u events.
+      // SplitVideoInvitationCard ih prikazuje posebno
+      // samo za ovaj slug.
 
       // =========================
-      // DVOJEZIČNOST SR / DE
+      // IZBOR JEZIKA SR / DE
       // =========================
 
       showLanguageSwitcher: true,
@@ -11161,41 +11169,51 @@ musicSrc: "/music/jovana-oliver.mp3",
 
           details: {
             welcomeText:
-              "Mit großer Freude laden wir euch ein, unseren besonderen Tag mit uns zu feiern und den Beginn unseres gemeinsamen Lebensweges zu begleiten.",
+              "Mit grosser Freude laden wir euch ein, unseren besonderen Tag mit uns zu feiern und den Beginn unseres gemeinsamen Lebensweges zu begleiten.",
 
             date: "05 JUNI 2027",
 
-            venue: "Kirche des Heiligen Nikolaus, Kotor",
+            venue:
+              "Kirche des Heiligen Nikolaus, Kotor",
+
+            // =========================
+            // DOGAĐAJI — DE
+            // =========================
 
             events: [
               {
                 label: "Kirchliche Trauung",
-                time: "16:00",
+                time: "15:30",
+
                 location:
                   "Kirche des Heiligen Nikolaus, Kotor",
+
                 mapLink:
                   "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
+
                 note:
                   "Wir freuen uns, unsere kirchliche Trauung mit euch zu feiern.",
               },
               {
-                label: "Welcome-Drink",
+                label: "Hochzeitsfeier",
                 time: "17:30",
-                location: "Carević Resort, Budva",
+
+                location:
+                  "Carević Resort, Budva",
+
                 mapLink:
                   "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
+
                 note:
-                  "Nach der Trauung laden wir euch herzlich zu einem Begrüßungsgetränk ein.",
+                  "Nach der kirchlichen Trauung freuen wir uns darauf, gemeinsam mit euch zu feiern.",
               },
             ],
 
             mapLink:
               "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
 
-          
-
             // =========================
-            // KORISNE INFORMACIJE - DE
+            // KORISNE INFORMACIJE — DE
             // =========================
 
             guestInfo: {
@@ -11226,9 +11244,13 @@ musicSrc: "/music/jovana-oliver.mp3",
                     location: "Budva",
                   },
                 ],
+              },
 
-                note:
-                  "Wenn ihr in einem dieser Hotels übernachten möchtet, meldet euch gerne bei uns, damit wir euch einen Rabatt ermöglichen können.",
+              airports: {
+                title: "Anreise mit dem Flugzeug",
+
+                text:
+                  "Die nächstgelegenen Flughäfen sind Tivat und Podgorica.",
               },
             },
           },
@@ -11237,15 +11259,16 @@ musicSrc: "/music/jovana-oliver.mp3",
     }),
 
     // =========================
-    // KORISNE INFORMACIJE - SR
+    // KORISNE INFORMACIJE — SR
+    // Izvan createDetails
     // =========================
-    // Izvan createDetails jer helper ne čuva guestInfo
 
     guestInfo: {
       eyebrow: "ZA NAŠE GOSTE",
 
       title: "Korisne informacije",
 
+      // ORGANIZOVANI PREVOZ
       transport: {
         title: "Organizovani prevoz",
 
@@ -11253,6 +11276,7 @@ musicSrc: "/music/jovana-oliver.mp3",
           "Prevoz do crkve, kao i od crkve do lokacije proslave, biće organizovan.",
       },
 
+      // PREPORUČENI SMEŠTAJ
       accommodation: {
         title: "Preporučeni smještaj",
 
@@ -11269,9 +11293,14 @@ musicSrc: "/music/jovana-oliver.mp3",
             location: "Budva",
           },
         ],
+      },
 
-        note:
-          "Ukoliko želite da boravite u nekom od navedenih hotela, javite nam se kako bismo vam omogućili popust.",
+      // AERODROMI
+      airports: {
+        title: "Dolazak avionom",
+
+        text:
+          "Najbliži aerodromi su Tivat i Podgorica.",
       },
     },
 
@@ -11283,7 +11312,6 @@ musicSrc: "/music/jovana-oliver.mp3",
     rsvpDeadlineISO: "2027-02-05",
   },
 },
-
 
 
   // =========================
