@@ -20920,3 +20920,47 @@ margin-bottom: 2px;
       rgba(169, 145, 132, 0.34);
   }
 }
+
+/* =====================================================
+   JOVANA & OLIVER — RSVP imena gostiju
+   Zadrzava postojeci dizajn inputa, menja samo razmake.
+   ===================================================== */
+
+/* Malo vise prostora ispod naslova "Imena gostiju". */
+.split-video-rsvp-jovana-oliver .split-video-rsvp-guest-names > .split-video-rsvp-choice-label {
+  display: block;
+  margin-bottom: 22px;
+}
+
+/* Svaki red (Gost 1, Gost 2...) stoji odvojeno od prethodne linije. */
+.split-video-rsvp-jovana-oliver .split-video-rsvp-guest-names > .split-video-rsvp-field + .split-video-rsvp-field {
+  margin-top: 28px;
+}
+
+/* Naziv gosta i polje za unos ne smeju da se preklapaju. */
+.split-video-rsvp-jovana-oliver .split-video-rsvp-guest-names > .split-video-rsvp-field > label {
+  display: block;
+  position: static;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* Ne diramo okvir, boju, pozadinu ni font inputa. */
+.split-video-rsvp-jovana-oliver .split-video-rsvp-guest-names > .split-video-rsvp-field > input {
+  display: block;
+  position: static;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0;
+}
+
+/* JOVANA & OLIVER — poravnanje oznaka GOST 1, 2, 3... */
+
+.split-video-rsvp-jovana-oliver
+.split-video-rsvp-guest-names
+> .split-video-rsvp-field > label {
+  font-family: Georgia, "Times New Roman", serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "onum" 0, "tnum" 1;
+  line-height: 1.5;
+}

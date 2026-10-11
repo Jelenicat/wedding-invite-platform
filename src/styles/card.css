@@ -29037,3 +29037,241 @@ font-family: "Italianno", cursive;
     color-scheme: light;
   }
 }
+
+
+/* ============================================================
+   JOVANA & OLIVER — KORISNE INFORMACIJE, BEZ UKRASA
+   Zameni prethodni CSS blok za .split-video-guest-info ovim
+   u src/styles/card.css. Važi samo za slug "jovana-oliver".
+   ============================================================ */
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info {
+  width: 100%;
+  max-width: 640px;
+  margin: clamp(40px, 7vw, 62px) auto 42px;
+  color: var(--split-main-text, #fffdf7);
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__heading {
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__eyebrow {
+  display: block;
+  margin: 0 0 12px;
+  color: var(--split-accent-strong, #e2d0a2);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__title {
+  margin: 0;
+  color: var(--split-main-text, #fffdf7);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(29px, 6.5vw, 41px);
+  font-weight: 400 !important;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* Samo tanka linija — bez zvezdice / romba na sredini */
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hairline {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin: 23px auto 0;
+  background: rgba(226, 208, 162, 0.68);
+  opacity: 1;
+  transform: none;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hairline::before,
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hairline::after {
+  content: none;
+  display: none;
+}
+
+/* Jedan lagan, poluprovidan panel preko cvetne pozadine */
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(244, 232, 200, 0.26);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(29, 37, 29, 0.50), rgba(25, 33, 26, 0.43));
+  box-shadow: 0 16px 38px rgba(15, 20, 13, 0.12);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__card {
+  min-width: 0;
+  margin: 0;
+  padding: 34px clamp(22px, 6vw, 45px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  text-align: center;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__card--hotels {
+  border-top: 1px solid rgba(244, 232, 200, 0.20);
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__card-heading {
+  display: block;
+  margin: 0 0 17px;
+  text-align: center;
+}
+
+/* Diskretan broj bez kruga i drugih ukrasa */
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__index {
+  display: block;
+  width: auto;
+  height: auto;
+  flex: initial;
+  margin: 0 auto 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--split-accent-strong, #e2d0a2);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__card h3 {
+  margin: 0;
+  color: var(--split-main-text, #fffdf7);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(21px, 4.6vw, 26px);
+  font-weight: 400 !important;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__description {
+  max-width: 440px;
+  margin: 0 auto;
+  color: var(--split-soft-text, #f7f2e8);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(13.5px, 3.4vw, 15px);
+  font-weight: 400 !important;
+  line-height: 1.8;
+  letter-spacing: 0.003em;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotels {
+  display: grid;
+  gap: 0;
+  max-width: 420px;
+  margin: 23px auto 23px;
+  padding: 6px 0;
+  border-top: 1px solid rgba(244, 232, 200, 0.18);
+  border-bottom: 1px solid rgba(244, 232, 200, 0.18);
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 16px 0;
+  text-align: center;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotel + .split-video-guest-info__hotel {
+  border-top: 1px solid rgba(244, 232, 200, 0.12);
+}
+
+/* Bez rombova kod imena hotela */
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotel::before,
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotel::after {
+  content: none;
+  display: none;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotel-name {
+  display: block;
+  color: var(--split-main-text, #fffdf7);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(17px, 4vw, 19px);
+  font-weight: 400 !important;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotel-place {
+  display: block;
+  color: var(--split-accent-strong, #e2d0a2);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400 !important;
+  letter-spacing: 0.025em;
+  line-height: 1.5;
+}
+
+/* Napomena o popustu — bez srca, zvezdica i dodatne kutije */
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__tip {
+  display: block;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 1px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--split-soft-text, #f7f2e8);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(13px, 3.3vw, 14px);
+  font-weight: 400 !important;
+  font-style: italic;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+}
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__tip-mark {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .split-video-invitation.split-video-jovana-oliver .split-video-guest-info {
+    margin-top: 40px;
+    margin-bottom: 38px;
+  }
+  .split-video-invitation.split-video-jovana-oliver .split-video-guest-info__heading {
+    margin-bottom: 23px;
+  }
+  .split-video-invitation.split-video-jovana-oliver .split-video-guest-info__card {
+    padding: 29px 21px;
+  }
+  .split-video-invitation.split-video-jovana-oliver .split-video-guest-info__hotel {
+    padding: 15px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-video-invitation.split-video-jovana-oliver .split-video-guest-info * {
+    scroll-behavior: auto;
+  }
+}

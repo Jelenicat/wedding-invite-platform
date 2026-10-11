@@ -10,13 +10,27 @@ function SplitVideoCountdown({
   details = {},
   script = "latin",
   slug = "",
+  language = "sr",
 }) {
   const isCyrillic =
     script === "cyrillic" ||
     details.script === "cyrillic" ||
     /[А-Яа-яЉЊЋЂЏђћљњџ]/.test(`${brideName || ""} ${groomName || ""}`);
 
-  const t = isCyrillic
+  const t = language === "de"
+    ? {
+        arrivedKicker: "Unser großer Tag ist da",
+        arrivedTitle: "Unser Hochzeitstag ist da",
+        remaining: "Bis zur Hochzeit verbleiben",
+        days: "Tage",
+        hours: "Std.",
+        minutes: "Min.",
+        seconds: "Sek.",
+        note: "Wir freuen uns darauf, unvergessliche Erinnerungen mit euch zu schaffen.",
+        calendarButton: "Zum Kalender hinzufügen",
+        calendarHint: "Speichert unser Hochzeitsdatum in eurem Kalender.",
+      }
+    : isCyrillic
     ? {
         arrivedKicker: "Наш дан је стигао",
         arrivedTitle: "Дан венчања је стигао",
@@ -41,6 +55,13 @@ function SplitVideoCountdown({
         calendarButton: "Dodaj u kalendar",
         calendarHint: "Sačuvajte datum venčanja u svom telefonu.",
       };
+
+  if (slug === "jovana-oliver" && language !== "de" && !isCyrillic) {
+    t.arrivedTitle = "Dan vjenčanja je stigao";
+    t.remaining = "Do vjenčanja je ostalo";
+    t.note = "Radujemo se zajedničkim uspomenama koje ćemo dugo pamtiti.";
+    t.calendarHint = "Sačuvajte datum vjenčanja u svom telefonu.";
+  }
 
   const calculateTimeLeft = () => {
     const difference =

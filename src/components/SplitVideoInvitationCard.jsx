@@ -11,6 +11,7 @@ function SplitVideoInvitationCard({
   slug,
   type,
   script = "latin",
+  language = "sr",
 }) {
   const isCyrillic =
     script === "cyrillic" ||
@@ -20,7 +21,18 @@ function SplitVideoInvitationCard({
   const safeBrideName = brideName || (isCyrillic ? "Млада" : "Bride");
   const safeGroomName = groomName || (isCyrillic ? "Младожења" : "Groom");
 
-  const t = isCyrillic
+  const t = language === "de"
+    ? {
+        welcome: "Herzlich willkommen",
+        day: "Tag",
+        year: "Jahr",
+        location: "Ort",
+        map: "Karte ansehen",
+        dressCode: "Dresscode",
+        women: "Damen:",
+        men: "Herren:",
+      }
+    : isCyrillic
     ? {
         welcome: "Добродошли",
         day: "Дан",
@@ -495,7 +507,90 @@ function SplitVideoInvitationCard({
         eventType={type}
         details={details}
         script={script}
+        language={language}
       />
+
+      {/* Informacije za goste tek NAKON RSVP-a, samo za Jovanu i Olivera. */}
+      {slug === "jovana-oliver" && details.guestInfo && (
+        <motion.section
+          className="split-video-invitation split-video-jovana-oliver split-video-guest-info-after-rsvp"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.7 }}
+        >
+          <div
+            className="split-video-paper"
+            style={{
+              ...themeStyles,
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="split-video-paper-inner">
+              <motion.section
+                className="split-video-guest-info"
+                aria-label={details.guestInfo.title}
+                {...fadeUp}
+                transition={{ duration: 0.7 }}
+              >
+                <div className="split-video-guest-info__heading">
+                  <span className="split-video-guest-info__eyebrow">
+                    {details.guestInfo.eyebrow}
+                  </span>
+                  <h2 className="split-video-guest-info__title">
+                    {details.guestInfo.title}
+                  </h2>
+                  <span className="split-video-guest-info__hairline" aria-hidden="true" />
+                </div>
+
+                <div className="split-video-guest-info__grid">
+                  <article className="split-video-guest-info__card">
+                    <div className="split-video-guest-info__card-heading">
+                      <span className="split-video-guest-info__index" aria-hidden="true">01</span>
+                      <h3>{details.guestInfo.transport?.title}</h3>
+                    </div>
+                    <p className="split-video-guest-info__description">
+                      {details.guestInfo.transport?.text}
+                    </p>
+                  </article>
+
+                  <article className="split-video-guest-info__card split-video-guest-info__card--hotels">
+                    <div className="split-video-guest-info__card-heading">
+                      <span className="split-video-guest-info__index" aria-hidden="true">02</span>
+                      <h3>{details.guestInfo.accommodation?.title}</h3>
+                    </div>
+
+                    {details.guestInfo.accommodation?.intro && (
+                      <p className="split-video-guest-info__description">
+                        {details.guestInfo.accommodation.intro}
+                      </p>
+                    )}
+
+                    <div className="split-video-guest-info__hotels">
+                      {(details.guestInfo.accommodation?.hotels || []).map((hotel, index) => (
+                        <div className="split-video-guest-info__hotel" key={`${hotel.name}-${index}`}>
+                          <span className="split-video-guest-info__hotel-name">{hotel.name}</span>
+                          <span className="split-video-guest-info__hotel-place">{hotel.location}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {details.guestInfo.accommodation?.note && (
+                      <p className="split-video-guest-info__tip">
+                        <span className="split-video-guest-info__tip-mark" aria-hidden="true">♡</span>
+                        {details.guestInfo.accommodation.note}
+                      </p>
+                    )}
+                  </article>
+                </div>
+              </motion.section>
+            </div>
+          </div>
+        </motion.section>
+      )}
 
       {details.dateISO && (
         <SplitVideoCountdown
@@ -505,6 +600,7 @@ function SplitVideoInvitationCard({
           details={details}
           script={script}
           slug={slug}
+          language={language}
         />
       )}
     </>

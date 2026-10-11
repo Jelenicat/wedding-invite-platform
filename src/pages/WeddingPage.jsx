@@ -792,6 +792,60 @@ const usesManualIntroMusic =
     ...Object.keys(invitation.details?.translations || {}),
   ];
 
+  
+const jovanaOliverLanguageToggle =
+  invitation.slug === "jovana-oliver" && canSwitchLanguage ? (
+    <div
+      role="group"
+      aria-label="Jezik / Sprache"
+      style={{
+        position: "fixed",
+        top: "max(14px, env(safe-area-inset-top))",
+        right: 14,
+        zIndex: 9999,
+        display: "flex",
+        alignItems: "center",
+        gap: 3,
+        padding: 4,
+        borderRadius: 30,
+        border: "1px solid rgba(244,232,200,0.55)",
+        background: "rgba(32,38,29,0.80)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.16)",
+      }}
+    >
+      {languages.map((lang) => (
+        <button
+          key={lang}
+          type="button"
+          onClick={() => setLanguage(lang)}
+          aria-pressed={language === lang}
+          aria-label={
+            lang === "de" ? "Deutsch" : "Srpski (ijekavica)"
+          }
+          style={{
+            border: "none",
+            cursor: "pointer",
+            minWidth: 43,
+            minHeight: 38,
+            padding: "7px 10px",
+            borderRadius: 25,
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            fontSize: 12,
+            color: language === lang ? "#2F352A" : "#FFFDF7",
+            background:
+              language === lang ? "#F4E8C8" : "transparent",
+          }}
+        >
+          {languageLabels[lang] || lang.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  ) : null;
+
+
   const introProps = {
     brideName: localizedInvitation.brideName,
     groomName: localizedInvitation.groomName,
@@ -970,17 +1024,21 @@ if (templateKey === "photo-zoom-minimal") {
     </div>
   );
 }
-  return (
-    <div className="wedding-page">
-      {audioNode}
 
-      {!showInvitation ? (
-        <IntroComponent {...introProps} />
-      ) : (
-        <InvitationComponent {...invitationProps} />
-      )}
-    </div>
-  );
+return (
+  <div className="wedding-page">
+    {audioNode}
+
+  {!showInvitation && jovanaOliverLanguageToggle}
+
+    {!showInvitation ? (
+      <IntroComponent {...introProps} />
+    ) : (
+      <InvitationComponent {...invitationProps} />
+    )}
+  </div>
+);
+
 }
 
 export default WeddingPage;

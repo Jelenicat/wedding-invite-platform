@@ -14530,3 +14530,105 @@ body,
     animation: none;
   }
 }
+
+
+/* ============================================================
+   JOVANA & OLIVER — SR / DE
+   DODATNI CSS (izolovano od ostalih pozivnica)
+
+   Prekidač jezika već ima osnovni izgled kroz inline stilove
+   u WeddingPage.jsx. Ovdje su dopune za fokus, hover i mobilni
+   prikaz, kao i zaštita od prelamanja dužih njemačkih riječi.
+   ============================================================ */
+
+/* Dugmad SR / DE u WeddingPage.jsx */
+.wedding-page [role="group"][aria-label="Jezik / Sprache"] {
+  isolation: isolate;
+}
+
+.wedding-page [role="group"][aria-label="Jezik / Sprache"] button {
+  font-family: inherit;
+  line-height: 1.2;
+  transition: background-color 200ms ease, color 200ms ease,
+    box-shadow 200ms ease, transform 200ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wedding-page [role="group"][aria-label="Jezik / Sprache"] button[aria-pressed="false"]:hover {
+  background: rgba(244, 232, 200, 0.16) !important;
+  color: #fffdf7 !important;
+}
+
+.wedding-page [role="group"][aria-label="Jezik / Sprache"] button:focus-visible {
+  outline: 2px solid #f4e8c8;
+  outline-offset: 3px;
+}
+
+.wedding-page [role="group"][aria-label="Jezik / Sprache"] button:active {
+  transform: scale(0.96);
+}
+
+/* Njemački tekst je često duži od srpskog. */
+.split-video-intro--jovana-oliver .split-extra-title,
+.split-video-jovana-oliver .split-video-text,
+.split-video-jovana-oliver .split-video-flow-title,
+.split-video-jovana-oliver .split-video-flow-note,
+.split-video-jovana-oliver .split-video-location-text,
+.split-video-jovana-oliver .split-video-note,
+.split-video-rsvp-jovana-oliver .split-video-rsvp-title,
+.split-video-rsvp-jovana-oliver .split-video-rsvp-subtitle,
+.split-video-rsvp-jovana-oliver .split-video-rsvp-choice-label,
+.split-video-countdown-jovana-oliver .split-video-countdown-note {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+@media (max-width: 420px) {
+  .split-video-intro--jovana-oliver .split-btn {
+    max-width: calc(100vw - 36px);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .split-video-jovana-oliver .split-video-flow-content,
+  .split-video-rsvp-jovana-oliver .split-video-rsvp-box {
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-page [role="group"][aria-label="Jezik / Sprache"] button {
+    transition: none;
+  }
+}
+
+
+
+
+
+/* JOVANA & OLIVER — izbor jezika */
+
+.wedding-page
+[role="group"][aria-label="Jezik / Sprache"]::after {
+  content: "Odaberite jezik\A Sprache wählen";
+
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 50%;
+  transform: translateX(50%);
+
+  white-space: pre;
+  width: max-content;
+
+  color: #F4E8C8;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-align: center;
+
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+

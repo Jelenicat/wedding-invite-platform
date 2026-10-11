@@ -11,6 +11,7 @@ function SplitVideoIntro({
   hasMusic = false,
   details = {},
   script = "latin",
+  language = "sr",
 }) {
   const theme = details.theme || {};
 
@@ -28,7 +29,13 @@ function SplitVideoIntro({
       `${brideName || ""} ${groomName || ""}`
     );
 
-  const t = isCyrillic
+  const t = language === "de"
+    ? {
+        and: "&",
+        button: "Einladung ansehen",
+        playMusic: "Musik abspielen",
+      }
+    : isCyrillic
     ? {
         and: "&",
         button: "Погледај позивницу",

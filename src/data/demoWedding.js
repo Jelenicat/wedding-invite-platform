@@ -11021,6 +11021,271 @@ dateISO:
     },
   },
 },
+
+
+{
+  slug: "jovana-oliver",
+  type: "wedding",
+  template: "split-video",
+  script: "latin",
+
+  brideName: "Jovana",
+  groomName: "Oliver",
+
+  // Isti video i fotografija kao kod ANA-OGNJEN
+  videoSrc: "/videos/ana-ognjen-2.mp4",
+musicSrc: "/music/jovana-oliver.mp3",
+  weddingDate: "05 JUN 2027",
+  weddingTime: "16:00",
+  venue: "Kotor i Budva",
+
+  introText:
+    "Radujemo se što ćemo naš poseban dan podijeliti sa vama.",
+
+  details: {
+    ...createDetails({
+      backgroundImage: "/images/ANA-OGNJEN-split-2.jpg",
+
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete dio našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
+
+      date: "05 JUN 2027",
+      dateISO: "2027-06-05T16:00:00+02:00",
+
+      showCalendarButton: true,
+
+      // =========================
+      // RASPORED DOGAĐAJA
+      // =========================
+
+      events: [
+        {
+          label: "Crkveno vjenčanje",
+          time: "16:00",
+          location: "Crkva Svetog Nikole, Kotor",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
+          note:
+            "Radujemo se što ćete prisustvovati našem crkvenom vjenčanju.",
+        },
+        {
+          label: "Welcome drink",
+          time: "17:30",
+          location: "Carević Resort, Budva",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
+          note:
+            "Nakon ceremonije očekujemo vas na piću dobrodošlice.",
+        },
+      ],
+
+      // =========================
+      // BOJE - ISTE KAO ANA-OGNJEN
+      // =========================
+
+      theme: {
+        mainText: "#FFFDF7",
+        softText: "#F7F2E8",
+        scriptText: "#FFFDF7",
+        mutedText: "#EEE7D8",
+
+        accent: "#F4E8C8",
+        accentStrong: "#E2D0A2",
+        buttonText: "#2F352A",
+
+        cardBg: "rgba(32, 38, 29, 0.42)",
+        cardBorder: "rgba(255,255,255,0.16)",
+        frameBorder: "rgba(244,232,200,0.32)",
+
+        paperOverlayTop: "rgba(25, 31, 24, 0.58)",
+        paperOverlayBottom: "rgba(25, 31, 24, 0.32)",
+        vignetteColor: "rgba(20, 25, 19, 0.34)",
+
+        flowLine: "#FFF8E8",
+        dividerLine: "rgba(255,248,232,0.42)",
+        nodeRing: "rgba(255,248,232,0.30)",
+
+        backgroundColor: "#343A2E",
+
+        // INTRO
+        introMainText: "#FFFDF7",
+        introAccent: "#F4E8C8",
+        introButtonBg: "rgba(35, 42, 31, 0.42)",
+        introButtonBorder: "rgba(255,248,232,0.55)",
+        introButtonText: "#FFFDF7",
+        introButtonHoverBg: "rgba(35, 42, 31, 0.58)",
+
+        // RSVP
+        rsvpButtonBg: "#596047",
+        rsvpButtonText: "#FFFDF7",
+      },
+
+      // =========================
+      // DODATNA PODEŠAVANJA
+      // =========================
+
+      showDressCode: false,
+
+      venue: "Crkva Svetog Nikole, Kotor",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
+
+     
+
+      // =========================
+      // DVOJEZIČNOST SR / DE
+      // =========================
+
+      showLanguageSwitcher: true,
+      defaultLanguage: "sr",
+
+      languages: ["sr", "de"],
+
+      languageLabels: {
+        sr: "SR",
+        de: "DE",
+      },
+
+      // =========================
+      // NEMAČKI PREVOD
+      // =========================
+
+      translations: {
+        de: {
+          weddingDate: "05 JUNI 2027",
+          venue: "Kotor und Budva",
+
+          introText:
+            "Wir freuen uns darauf, diesen besonderen Tag mit euch zu teilen.",
+
+          details: {
+            welcomeText:
+              "Mit großer Freude laden wir euch ein, unseren besonderen Tag mit uns zu feiern und den Beginn unseres gemeinsamen Lebensweges zu begleiten.",
+
+            date: "05 JUNI 2027",
+
+            venue: "Kirche des Heiligen Nikolaus, Kotor",
+
+            events: [
+              {
+                label: "Kirchliche Trauung",
+                time: "16:00",
+                location:
+                  "Kirche des Heiligen Nikolaus, Kotor",
+                mapLink:
+                  "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
+                note:
+                  "Wir freuen uns, unsere kirchliche Trauung mit euch zu feiern.",
+              },
+              {
+                label: "Welcome-Drink",
+                time: "17:30",
+                location: "Carević Resort, Budva",
+                mapLink:
+                  "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
+                note:
+                  "Nach der Trauung laden wir euch herzlich zu einem Begrüßungsgetränk ein.",
+              },
+            ],
+
+            mapLink:
+              "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
+
+          
+
+            // =========================
+            // KORISNE INFORMACIJE - DE
+            // =========================
+
+            guestInfo: {
+              eyebrow: "FÜR UNSERE GÄSTE",
+
+              title: "Gut zu wissen",
+
+              transport: {
+                title: "Organisierter Transfer",
+
+                text:
+                  "Für unsere Gäste wird der Transfer zur Kirche sowie von der Kirche zum Veranstaltungsort der Feier organisiert.",
+              },
+
+              accommodation: {
+                title: "Hotelempfehlungen",
+
+                intro:
+                  "Für euren Aufenthalt empfehlen wir zwei Hotels:",
+
+                hotels: [
+                  {
+                    name: "Iberostar Bellevue",
+                    location: "Bečići, Budva",
+                  },
+                  {
+                    name: "Iberostar Slavija",
+                    location: "Budva",
+                  },
+                ],
+
+                note:
+                  "Wenn ihr in einem dieser Hotels übernachten möchtet, meldet euch gerne bei uns, damit wir euch einen Rabatt ermöglichen können.",
+              },
+            },
+          },
+        },
+      },
+    }),
+
+    // =========================
+    // KORISNE INFORMACIJE - SR
+    // =========================
+    // Izvan createDetails jer helper ne čuva guestInfo
+
+    guestInfo: {
+      eyebrow: "ZA NAŠE GOSTE",
+
+      title: "Korisne informacije",
+
+      transport: {
+        title: "Organizovani prevoz",
+
+        text:
+          "Prevoz do crkve, kao i od crkve do lokacije proslave, biće organizovan.",
+      },
+
+      accommodation: {
+        title: "Preporučeni smještaj",
+
+        intro:
+          "Za vaš boravak preporučujemo dva hotela:",
+
+        hotels: [
+          {
+            name: "Iberostar Bellevue",
+            location: "Bečići, Budva",
+          },
+          {
+            name: "Iberostar Slavija",
+            location: "Budva",
+          },
+        ],
+
+        note:
+          "Ukoliko želite da boravite u nekom od navedenih hotela, javite nam se kako bismo vam omogućili popust.",
+      },
+    },
+
+    // =========================
+    // RSVP ROK
+    // =========================
+
+    rsvpDeadline: "05.02.2027.",
+    rsvpDeadlineISO: "2027-02-05",
+  },
+},
+
+
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

@@ -10,11 +10,56 @@ import {
 import { db } from "../firebase";
 import "../styles/rsvp.css";
 
-function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
+function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin", language = "sr" }) {
   const isCyrillic =
     script === "cyrillic" || details.script === "cyrillic";
 
-  const t = isCyrillic
+  const isJovanaOliver = slug === "jovana-oliver";
+  const t = language === "de"
+    ? {
+        thankYou: "Vielen Dank!",
+        success: "Eure Rückmeldung wurde erfolgreich gesendet.",
+        title: "Teilnahme bestätigen",
+        subtitle: "Wir würden uns sehr freuen, diesen Tag mit euch zu feiern.",
+        fullName: "Vor- und Nachname",
+        fullNamePlaceholder: "Vor- und Nachnamen eingeben",
+        choiceLabel: "Seid ihr dabei?",
+        yes: "Wir kommen",
+        no: "Wir können nicht kommen",
+        guests: "Anzahl der Personen",
+        loading: "Wird gesendet...",
+        submit: "Antwort senden",
+        error: "Fehler beim Senden der Rückmeldung:",
+        deadline: "Bitte bestätigt eure Teilnahme spätestens bis zum",
+        closed: "Die Anmeldefrist ist abgelaufen.",
+        guestNamesTitle: "Namen der Gäste",
+        guestLabel: "Gast",
+        guestNamePlaceholder: "Vor- und Nachname",
+        missingGuestNames: "Bitte gebt den Vor- und Nachnamen jeder Person ein.",
+      }
+    : isJovanaOliver
+    ? {
+        thankYou: "Hvala!",
+        success: "Vaša potvrda je uspješno poslata.",
+        title: "Potvrdite dolazak",
+        subtitle: "Biće nam izuzetna čast da budete dio našeg dana.",
+        fullName: "Ime i prezime",
+        fullNamePlaceholder: "Unesite ime i prezime",
+        choiceLabel: "Da li dolazite?",
+        yes: "Dolazim",
+        no: "Ne dolazim",
+        guests: "Broj osoba",
+        loading: "Slanje...",
+        submit: "Pošalji potvrdu",
+        error: "Greška pri slanju RSVP:",
+        deadline: "Molimo vas da svoj dolazak potvrdite najkasnije do",
+        closed: "Rok za potvrdu dolaska je istekao.",
+        guestNamesTitle: "Imena gostiju",
+        guestLabel: "Gost",
+        guestNamePlaceholder: "Ime i prezime",
+        missingGuestNames: "Unesite ime i prezime za svaku osobu.",
+      }
+    : isCyrillic
     ? {
         thankYou: "Хвала!",
         success: "Ваша потврда је успешно послата.",
@@ -46,11 +91,27 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
         error: "Greška pri slanju RSVP:",
       };
 
+  // Važi samo za Jovanu i Olivera. 5. februar je zimsko vrijeme u Crnoj Gori (+01:00).
+  // Za potpunu zaštitu rok treba provjeravati i na serveru / u Firestore pravilima.
+  const isAfterRsvpDeadline =
+    isJovanaOliver &&
+    Boolean(details.rsvpDeadlineISO) &&
+    Date.now() > new Date(`${details.rsvpDeadlineISO}T23:59:59+01:00`).getTime();
+
+  const deadlineText =
+    isJovanaOliver && details.rsvpDeadline
+      ? `${t.deadline} ${details.rsvpDeadline}`
+      : "";
+
   const [formData, setFormData] = useState({
     fullName: "",
     attending: "",
     guests: "1",
   });
+
+  // Kao kod andjela-andrija-5: svaka osoba upisuje se posebno.
+  // Isključivo za Jovanu i Olivera; ostali split-video slugovi ostaju nepromenjeni.
+  const [guestNames, setGuestNames] = useState([""]);
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -91,11 +152,37 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
           attending: "",
           guests: "1",
         });
+        setGuestNames([""]);
       }, 3000);
 
       return () => clearTimeout(timer);
     }
   }, [submitted]);
+
+  // Automatski prikazuje tačno onoliko polja za imena koliko ima gostiju.
+  useEffect(() => {
+    if (!isJovanaOliver) return;
+
+    if (formData.attending !== "da") {
+      setGuestNames([""]);
+      return;
+    }
+
+    const requestedCount = Number(formData.guests);
+    const count = Number.isInteger(requestedCount) && requestedCount >= 1
+      ? Math.min(requestedCount, 10)
+      : 1;
+
+    setGuestNames((previous) =>
+      Array.from({ length: count }, (_, index) => previous[index] || "")
+    );
+  }, [isJovanaOliver, formData.attending, formData.guests]);
+
+  const handleGuestNameChange = (index, name) => {
+    setGuestNames((previous) =>
+      previous.map((value, currentIndex) => currentIndex === index ? name : value)
+    );
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -117,15 +204,29 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!slug || !eventType) return;
-    if (!formData.fullName.trim()) return;
+    if (!slug || !eventType || isAfterRsvpDeadline) return;
     if (!formData.attending) return;
+
+    // Za Jovanu i Olivera: ime na početku nije potrebno ako gost dolazi,
+    // jer će se uneti posebno za svaku osobu. Za odbijen dolazak ostaje obavezno.
+    if ((!isJovanaOliver || formData.attending === "ne") &&
+        !formData.fullName.trim()) return;
 
     const guestsCount = Number(formData.guests);
 
     if (formData.attending === "da") {
       if (!formData.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
         return;
+      }
+
+      if (isJovanaOliver) {
+        if (!Number.isInteger(guestsCount) || guestsCount > 10) return;
+
+        const names = guestNames.slice(0, guestsCount).map((name) => name.trim());
+        if (names.length !== guestsCount || names.some((name) => !name)) {
+          alert(t.missingGuestNames);
+          return;
+        }
       }
     }
 
@@ -142,17 +243,46 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
         { merge: true }
       );
 
-      await addDoc(collection(db, "events", slug, "rsvps"), {
-        eventType,
-        fullName: formData.fullName.trim(),
-        attending: formData.attending,
-        guests: formData.attending === "da" ? guestsCount : 0,
-        createdAt: serverTimestamp(),
-      });
+      if (isJovanaOliver && formData.attending === "da") {
+        const names = guestNames.slice(0, guestsCount).map((name) => name.trim());
+        const submissionGroupId = `${Date.now()}-${Math.random()
+          .toString(36)
+          .slice(2, 10)}`;
+
+        // Svako ime se snima u posebnom RSVP dokumentu (guests: 1),
+        // isto kao kod andjela-andrija-5.
+        await Promise.all(
+          names.map((fullName) =>
+            addDoc(collection(db, "events", slug, "rsvps"), {
+              eventType,
+              fullName,
+              attending: "da",
+              guests: 1,
+              submissionGroupId,
+              createdAt: serverTimestamp(),
+            })
+          )
+        );
+      } else {
+        // Odbijen dolazak kod Jovane i Olivera: jedan zapis sa guests: 0.
+        // Svi ostali split-video slugovi: potpuno ista struktura kao ranije.
+        await addDoc(collection(db, "events", slug, "rsvps"), {
+          eventType,
+          fullName: formData.fullName.trim(),
+          attending: formData.attending,
+          guests: formData.attending === "da" ? guestsCount : 0,
+          createdAt: serverTimestamp(),
+        });
+      }
 
       setSubmitted(true);
     } catch (error) {
       console.error(t.error, error);
+      if (isJovanaOliver) {
+        alert(language === "de"
+          ? "Die Rückmeldung konnte nicht gesendet werden. Bitte versucht es erneut."
+          : "Potvrda nije poslata. Molimo vas, pokušajte ponovo.");
+      }
     } finally {
       setLoading(false);
     }
@@ -257,9 +387,26 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
                   {t.subtitle}
                 </motion.p>
 
-                <div className="split-video-rsvp-divider" />
+                 {deadlineText && (
+                   <p
+                     className="split-video-rsvp-subtitle"
+                     style={{ marginTop: 12, fontWeight: 600 }}
+                   >
+                     {deadlineText}
+                   </p>
+                 )}
+
+                 {isAfterRsvpDeadline && (
+                   <p className="split-video-rsvp-subtitle" role="status">
+                     {t.closed}
+                   </p>
+                 )}
+
+                 <div className="split-video-rsvp-divider" />
 
                 <form className="split-video-rsvp-form" onSubmit={handleSubmit}>
+                  {/* Za Jovanu i Olivera: ime se traži tek posle odabira "Ne dolazim". */}
+                  {!isJovanaOliver && (
                   <motion.div
                     className="split-video-rsvp-field"
                     initial={{ opacity: 0, y: 14 }}
@@ -275,6 +422,7 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
                       required
                     />
                   </motion.div>
+                  )}
 
                   <motion.div
                     className="split-video-rsvp-choice-block"
@@ -308,6 +456,26 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
                     </div>
                   </motion.div>
 
+                  {/* Pri odbijanju dolaska upisuje se samo ime osobe koja odgovara. */}
+                  {isJovanaOliver && formData.attending === "ne" && (
+                    <motion.div
+                      className="split-video-rsvp-field"
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      <label htmlFor="jovana-oliver-declining-name">{t.fullName}</label>
+                      <input
+                        id="jovana-oliver-declining-name"
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        placeholder={t.fullNamePlaceholder}
+                        required
+                      />
+                    </motion.div>
+                  )}
+
                   {formData.attending === "da" && (
                     <motion.div
                       className="split-video-rsvp-field"
@@ -327,11 +495,42 @@ function SplitVideoRSVP({ slug, eventType, details = {}, script = "latin" }) {
                     </motion.div>
                   )}
 
+                  {/* Kao kod Anđele i Andrije: po jedno polje za svakog gosta. */}
+                  {isJovanaOliver && formData.attending === "da" &&
+                    Number.isInteger(Number(formData.guests)) &&
+                    Number(formData.guests) >= 1 &&
+                    Number(formData.guests) <= 10 && (
+                    <motion.div
+                      className="split-video-rsvp-guest-names"
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      <p className="split-video-rsvp-choice-label">
+                        {t.guestNamesTitle}
+                      </p>
+                      {guestNames.map((guestName, index) => (
+                        <div className="split-video-rsvp-field" key={`guest-${index}`}>
+                          <label htmlFor={`jovana-oliver-guest-${index}`}>
+                            {t.guestLabel} {index + 1}
+                          </label>
+                          <input
+                            id={`jovana-oliver-guest-${index}`}
+                            type="text"
+                            value={guestName}
+                            onChange={(e) => handleGuestNameChange(index, e.target.value)}
+                            placeholder={t.guestNamePlaceholder}
+                            required
+                          />
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+
                   <motion.button
                     type="submit"
                     className="split-video-rsvp-button"
-                    disabled={loading}
-                    whileTap={{ scale: 0.96 }}
+                     disabled={loading || isAfterRsvpDeadline}
+                     whileTap={{ scale: 0.96 }}
                   >
                     {loading ? t.loading : t.submit}
                   </motion.button>
