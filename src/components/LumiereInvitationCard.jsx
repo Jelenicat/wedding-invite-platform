@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import LumiereRSVP from "./LumiereRSVP";
 import LumiereCountdown from "./LumiereCountdown";
 import { LUMIERE_ASSETS, LumiereIcon, LumierePhoto, LumiereReveal, lumiereDateParts, lumiereNameScale, lumiereText, useLumiereReducedMotion } from "./LumiereIntro";
@@ -64,9 +64,6 @@ function StoryScene({ hero, storyImage, detailPhoto, config, t, brideName, groom
 
 export default function LumiereInvitationCard({ brideName = "", groomName = "", weddingDate, weddingTime, venue, details = {}, backgroundImage, image, image1, image2, image3, slug = "", type = "wedding", script = "latin", language = "sr" }) {
   const rootRef = useRef(null);
-  const heroRef = useRef(null);
-  const rsvpRef = useRef(null);
-  const [stickyVisible, setStickyVisible] = useState(false);
   const reduced = useLumiereReducedMotion();
   const t = lumiereText(language, script);
   const config = details.lumiere || {};
@@ -93,8 +90,9 @@ export default function LumiereInvitationCard({ brideName = "", groomName = "", 
     rootRef.current?.focus({ preventScroll: true });
   }, [slug]);
 
+  // Ažuriranje linije napretka tokom skrolovanja; nezavisno od RSVP dugmeta.
   useEffect(() => {
-    let frame = 0, heroPassed = false, rsvpAhead = true;
+    let frame = 0;
     const update = () => {
       frame = 0;
       if (!rootRef.current) return;
@@ -106,29 +104,16 @@ export default function LumiereInvitationCard({ brideName = "", groomName = "", 
     window.addEventListener("scroll", scroll, { passive: true });
     window.addEventListener("resize", scroll);
     scroll();
-    let observer;
-    if (window.IntersectionObserver && heroRef.current && rsvpRef.current) {
-      const syncSticky = () => setStickyVisible(heroPassed && rsvpAhead && !details.rsvpClosed);
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === heroRef.current) heroPassed = !entry.isIntersecting && entry.boundingClientRect.bottom < 0;
-          if (entry.target === rsvpRef.current) rsvpAhead = !entry.isIntersecting && entry.boundingClientRect.top > window.innerHeight;
-        });
-        syncSticky();
-      }, { rootMargin: "0px 0px 140px 0px", threshold: 0 });
-      observer.observe(heroRef.current); observer.observe(rsvpRef.current);
-    }
-    return () => { window.cancelAnimationFrame(frame); window.removeEventListener("scroll", scroll); window.removeEventListener("resize", scroll); observer?.disconnect(); };
-  }, [slug, details.rsvpClosed]);
-
-  const jumpToRsvp = () => {
-    rsvpRef.current?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-    rsvpRef.current?.focus({ preventScroll: true });
-  };
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("resize", scroll);
+    };
+  }, [slug]);
 
   return <main ref={rootRef} tabIndex={-1} className="lmv lmv-card" data-script={script} aria-label={t.invitation}>
     <div className="lmv-reading-progress" aria-hidden="true" />
-    <header className="lmv-card-hero" ref={heroRef}>
+    <header className="lmv-card-hero">
       <LumierePhoto src={hero} alt={config.heroAlt || ""} eager position={config.heroPosition || "50% 45%"} />
       <div className="lmv-hero-top"><span aria-hidden="true">{brideName.trim()[0]} / {groomName.trim()[0]}</span><span className="lmv-kicker">{t.invitation}</span></div>
       <span className="lmv-hero-amp" aria-hidden="true">&amp;</span>
@@ -143,16 +128,15 @@ export default function LumiereInvitationCard({ brideName = "", groomName = "", 
 
     <StoryScene hero={hero} storyImage={storyImage} detailPhoto={detailPhoto} config={config} t={t} brideName={brideName} groomName={groomName} reduced={reduced} />
 
-    {timeline.length > 0 && <section className="lmv-plan-section"><div className="lmv-wrap"><LumiereReveal><Chapter index="02">{t.plan}</Chapter><h2 className="lmv-heading">{config.planTitle || t.plan}</h2><p className="lmv-body">{config.planNote || t.planNote}</p></LumiereReveal><div className="lmv-timeline">{timeline.map((event, index) => <LumiereReveal key={`${event.label}-${index}`} className="lmv-event" delay={Math.min(index * 50, 180)}><time className="lmv-event-time">{event.time}</time><div className="lmv-event-spine" aria-hidden="true"><LumiereIcon name={EVENT_ICONS[event.icon] || "rings"} size={38} /></div><div className="lmv-event-copy"><h3>{event.label}</h3>{event.location && <a className="lmv-event-location" href={event.mapLink || mapsUrl(event.location)} target="_blank" rel="noopener noreferrer">{event.location} <span aria-hidden="true">↗</span></a>}{event.note && <p className="lmv-event-note">{event.note}</p>}</div></LumiereReveal>)}</div></div></section>}
+    {timeline.length > 0 && <section className="lmv-plan-section"><div className="lmv-wrap"><LumiereReveal><Chapter index="02">{t.plan}</Chapter><h2 className="lmv-heading">{config.planTitle || t.plan}</h2><p className="lmv-body">{config.planNote || t.planNote}</p></LumiereReveal><div className="lmv-timeline">{timeline.map((event, index) => <LumiereReveal key={`${event.label}-${index}`} className="lmv-event" delay={Math.min(index * 50, 180)}><time className="lmv-event-time">{event.time}</time><div className="lmv-event-spine" aria-hidden="true"><LumiereIcon name={EVENT_ICONS[event.icon] || "rings"} size={38} /></div><div className="lmv-event-copy"><h3>{event.label}</h3>{event.location && <a className="lmv-event-location" href={event.mapLink || mapsUrl(event.location)} target="_blank" rel="noopener noreferrer">{event.location}{" "}<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>}{event.note && <p className="lmv-event-note">{event.note}</p>}</div></LumiereReveal>)}</div></div></section>}
 
-    {venueName && <section className="lmv-venue-section"><div className="lmv-wrap"><LumiereReveal><Chapter index="03">{t.location}</Chapter></LumiereReveal></div><LumiereReveal className="lmv-venue-layout"><LumierePhoto src={venueImage} alt={config.venueAlt || ""} className="lmv-venue-photo" position={config.venuePosition || "50% 50%"} /><div className="lmv-venue-paper"><LumiereIcon name="pin" size={32} /><h2 className="lmv-script">{config.locationTitle || t.location}</h2><h3>{venueName}</h3>{details.locationAddress && <p className="lmv-body">{details.locationAddress}</p>}{mapLink && details.showLocationButton !== false && <a className="lmv-button" href={mapLink} target="_blank" rel="noopener noreferrer"><span>{details.locationButtonText || t.map}</span><span className="lmv-arrow" aria-hidden="true">↗</span></a>}</div></LumiereReveal></section>}
+    {venueName && <section className="lmv-venue-section"><div className="lmv-wrap"><LumiereReveal><Chapter index="03">{t.location}</Chapter></LumiereReveal></div><LumiereReveal className="lmv-venue-layout"><LumierePhoto src={venueImage} alt={config.venueAlt || ""} className="lmv-venue-photo" position={config.venuePosition || "50% 50%"} /><div className="lmv-venue-paper"><LumiereIcon name="pin" size={32} /><h2 className="lmv-script">{config.locationTitle || t.location}</h2><h3>{venueName}</h3>{details.locationAddress && <p className="lmv-body">{details.locationAddress}</p>}{mapLink && details.showLocationButton !== false && <a className="lmv-button" href={mapLink} target="_blank" rel="noopener noreferrer"><span>{details.locationButtonText || t.map}</span><svg className="lmv-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>}</div></LumiereReveal></section>}
 
     {dressCode && <LumiereReveal as="section" className="lmv-dress-section"><div className="lmv-wrap"><Chapter index="04">{t.dressCode}</Chapter><div className="lmv-dress-head"><h2 className="lmv-heading">{details.dressCodeTitle || t.dressCode}</h2><LumiereIcon name="dress" size={53} /></div>{details.dressCodeNote && <p className="lmv-body">{details.dressCodeNote}</p>}{Array.isArray(details.dressCodePalette) && details.dressCodePalette.length > 0 && <div className="lmv-palette" role="group" aria-label={t.palette}>{details.dressCodePalette.map((color, index) => <span key={`${color}-${index}`} className="lmv-swatch" style={{ "--lmv-swatch-color": color, "--lmv-swatch-angle": `${(index - (details.dressCodePalette.length - 1) / 2) * 10}deg`, "--lmv-swatch-index": index }} role="img" aria-label={`${t.color} ${index + 1}: ${color}`} />)}</div>}{details.dressCodeWomen && <div className="lmv-dress-person"><p className="lmv-kicker">{t.women}</p><p className="lmv-body">{details.dressCodeWomen}</p></div>}{details.dressCodeMen && <div className="lmv-dress-person"><p className="lmv-kicker">{t.men}</p><p className="lmv-body">{details.dressCodeMen}</p></div>}</div></LumiereReveal>}
 
     {(details.note || info.length > 0 || contacts.length > 0) && <LumiereReveal as="section" className="lmv-info-section"><div className="lmv-wrap"><Chapter index="05">{t.details}</Chapter><h2 className="lmv-heading">{config.infoTitle || t.details}</h2>{details.note && <p className="lmv-body">{details.note}</p>}{info.map((item, index) => <div className="lmv-info-row" key={index}><LumiereIcon name={item.icon || "heart"} size={30} /><div>{item.title && <h3>{item.title}</h3>}{item.text && <p className="lmv-body">{item.text}</p>}</div></div>)}{contacts.length > 0 && <div className="lmv-contact"><p className="lmv-kicker">{t.contact}</p><div className="lmv-contacts">{contacts.filter((contact) => contact.phone).map((contact, index) => <a className="lmv-contact-person" key={index} href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}>{contact.name}<span>{contact.phone}</span></a>)}</div></div>}</div></LumiereReveal>}
 
-    <div ref={rsvpRef} id={rsvpId} tabIndex={-1} className="lmv-rsvp-anchor"><LumiereRSVP key={slug} slug={slug} eventType={type} brideName={brideName} groomName={groomName} details={details} script={script} language={language} /></div>
+    <div id={rsvpId} tabIndex={-1} className="lmv-rsvp-anchor"><LumiereRSVP key={slug} slug={slug} eventType={type} brideName={brideName} groomName={groomName} details={details} script={script} language={language} /></div>
     <LumiereCountdown targetDate={details.dateISO} brideName={brideName} groomName={groomName} details={details} script={script} language={language} slug={slug} />
-    {!details.rsvpClosed && <button className={`lmv-floating-rsvp ${stickyVisible ? "is-visible" : ""}`} type="button" onClick={jumpToRsvp} tabIndex={stickyVisible ? 0 : -1} aria-hidden={!stickyVisible}><span>{t.jumpRsvp}</span><span aria-hidden="true">↓</span></button>}
   </main>;
 }

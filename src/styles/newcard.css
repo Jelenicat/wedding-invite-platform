@@ -91,9 +91,18 @@
   overflow-wrap:normal
 }
 
-.lmv .lmv-hero-title>span:first-child {
-  font-size:calc(1em * var(--lmv-bride-scale,1))
+
+/* Ime mlade – isti Italianno font kao ime mladoženje */
+.lmv .lmv-hero-title > span:first-child {
+  font-family: var(--lmv-script);
+  font-weight: 400;
+  font-size: calc(
+    clamp(99px, 29vw, 175px) * var(--lmv-bride-scale, 1)
+  );
+  line-height: .88;
+  letter-spacing: 0;
 }
+
 
 .lmv .lmv-hero-title .lmv-hero-groom {
   font:400 clamp(99px,29vw,175px)/.88 var(--lmv-script);
@@ -1448,3 +1457,15 @@
   .dnt-dress-content { padding-inline: 19%; }
 }
 @media (prefers-reduced-motion: reduce) { .dnt-card { animation: none; } }
+
+
+
+/* Elegantna strelica za lokaciju */
+.lmv .lmv-event-location svg {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 3px;
+  vertical-align: -1px;
+  flex-shrink: 0;
+}

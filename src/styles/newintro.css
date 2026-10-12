@@ -991,23 +991,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   }
 }
 
-/* DENTELLE — dodaj na KRAJ postojećeg newintro.css.
-   Stilovi za Lumiere i ostale temlejte ostaju u tom fajlu.
-   Fontovi su ugrađeni u ovaj CSS, bez /fonts i bez @import. */
-
-.wedding-page:has(> .dnt) {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  min-height: 100svh;
-  background: #f8f4f0;
-}
-
-
-/* DENTELLE — @import postavi na sam VRH celog newintro.css.
-   Prethodni Dentelle blok zameni stilovima ispod; sačuvaj Lumiere stilove. */
-
 .wedding-page:has(> .dnt) {
   width: 100%;
   max-width: none;
@@ -1159,10 +1142,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .dnt[data-script="cyrillic"] .dnt-closing-names,
 .dnt[data-script="cyrillic"] .dnt-rsvp-signature { font-style: italic; }
 
-/* Koverta: svaki preklop je zasebna površina sa svojom šarkom. */
+/* Koverta: celovit prednji džep, čist preklop i mirno otkrivanje kartice.
+   Ovaj blok zamenjuje prethodne Dentelle intro stilove; JSX ostaje isti. */
 .dnt-intro {
   position: relative; width: 100%; min-height: 100svh; display: grid;
-  place-items: center; overflow: hidden; background: #f1e9e1;
+  place-items: center; overflow: hidden; background: #f3ede7;
 }
 .dnt-intro::before {
   content: ""; position: absolute; inset: -15px;
@@ -1173,60 +1157,64 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   position: relative; width: min(100%, 620px); height: 100svh; max-height: 1100px;
   overflow: hidden; isolation: isolate; background: var(--dnt-paper);
   box-shadow: 0 0 70px #795e5420;
-  perspective: 1650px; perspective-origin: 50% 26%;
+  perspective: 2400px; perspective-origin: 50% 20%;
 }
 .dnt-intro-card {
   position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
-  transform: translateY(21%) scale(.86); transform-origin: 50% 75%;
-  opacity: 1; will-change: transform;
-  box-shadow: 0 14px 40px #79624e30;
+  transform: scale(.985); transform-origin: 50% 50%;
+  opacity: 1; background: var(--dnt-paper); will-change: transform;
+  box-shadow: 0 8px 30px #79624e18;
 }
-.dnt-intro-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
+.dnt-intro-frame {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill;
+  filter: saturate(.7) brightness(1.03);
+}
 .dnt-intro-card .dnt-hero-content {
   min-height: 100%; height: 100%; padding-top: clamp(85px, 15svh, 145px);
   padding-bottom: clamp(87px, 15svh, 142px);
+  opacity: 0;
 }
 .dnt-envelope-flap {
   position: absolute; inset: 0; z-index: 4; transform-origin: 50% 0%;
   transform-style: preserve-3d; transform: rotateX(0deg);
-  transition: transform 1120ms cubic-bezier(.38, .02, .18, 1) 180ms;
-  will-change: transform; pointer-events: none;
+  transition: transform 1120ms cubic-bezier(.4, .05, .2, 1) 120ms,
+    opacity 600ms ease 680ms;
+  will-change: transform, opacity; pointer-events: none;
 }
 .dnt-envelope-face, .dnt-envelope-fold {
   position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
-  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  /* Bez ovalnih izreza: nijedan deo teksta ne proviruje kroz pečat. */
+  -webkit-mask-image: none; mask-image: none;
 }
 .dnt-envelope-face {
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  -webkit-mask-image: url("/icons/dentelle-envelope-flap-mask.svg");
-  mask-image: url("/icons/dentelle-envelope-flap-mask.svg");
+  clip-path: polygon(0 0, 100% 0, 100% 16%, 50% 56%, 0 16%);
 }
 .dnt-envelope-face img, .dnt-envelope-fold img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%; object-fit: fill;
   filter: brightness(1.04) saturate(.66);
 }
 .dnt-envelope-flap-front { transform: rotateX(0deg); }
-.dnt-envelope-flap-back { transform: rotateX(180deg); background: #f6ede4; }
-.dnt-envelope-flap-back img { object-fit: fill; filter: brightness(1.02) saturate(.35); }
-.dnt-envelope-fold { z-index: 3; opacity: 1; will-change: transform, opacity; }
+.dnt-envelope-flap-back {
+  transform: rotateX(180deg);
+  background: linear-gradient(180deg, #e9ddd1, #fbf5ed 68%);
+}
+.dnt-envelope-flap-back img { opacity: .42; filter: brightness(1.02) saturate(.35); }
+.dnt-envelope-fold {
+  z-index: 3; opacity: 1; transform: translateY(0);
+  will-change: transform, opacity;
+  /* Sva tri dela pomeraju se zajedno, kao jedan prednji džep koverte. */
+  transition: transform 1350ms cubic-bezier(.32, .05, .18, 1) 620ms,
+    opacity 850ms ease 880ms;
+}
 .dnt-envelope-left {
-  transform-origin: 0% 56%; transform: rotateY(0deg);
-  -webkit-mask-image: url("/icons/dentelle-envelope-left-mask.svg");
-  mask-image: url("/icons/dentelle-envelope-left-mask.svg");
-  transition: transform 1100ms cubic-bezier(.3,.05,.2,1) 650ms, opacity 550ms ease 1600ms;
+  clip-path: polygon(0 15.9%, 50.1% 56%, 0 78.1%);
 }
 .dnt-envelope-right {
-  transform-origin: 100% 56%; transform: rotateY(0deg);
-  -webkit-mask-image: url("/icons/dentelle-envelope-right-mask.svg");
-  mask-image: url("/icons/dentelle-envelope-right-mask.svg");
-  transition: transform 1100ms cubic-bezier(.3,.05,.2,1) 700ms, opacity 550ms ease 1650ms;
+  clip-path: polygon(100% 15.9%, 49.9% 56%, 100% 78.1%);
 }
 .dnt-envelope-bottom {
-  transform-origin: 50% 100%; transform: rotateX(0deg);
-  -webkit-mask-image: url("/icons/dentelle-envelope-bottom-mask.svg");
-  mask-image: url("/icons/dentelle-envelope-bottom-mask.svg");
-  transition: transform 1000ms cubic-bezier(.3,.05,.2,1) 1050ms, opacity 500ms ease 1850ms;
+  clip-path: polygon(0 78%, 50% 55.9%, 100% 78%, 100% 100%, 0 100%);
 }
 .dnt-intro-vignette {
   position: absolute; inset: 0; z-index: 5; pointer-events: none;
@@ -1245,19 +1233,19 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   transform: translate(-50%, -50%) rotate(-4deg); color: #b29b8c;
   background: radial-gradient(ellipse at 36% 26%, #fffaf1, #f1e5d8 68%, #d8c0aa 91%, #f7ede1);
   box-shadow: 3px 7px 14px #775b4740, inset 2px 3px 3px #fffef5, inset -3px -4px 5px #baa08b55;
-  transition: transform 260ms, opacity 260ms, box-shadow 220ms;
+  transition: transform 360ms cubic-bezier(.2,.6,.2,1), opacity 240ms,
+    box-shadow 220ms;
 }
 .dnt-wax-seal:not(:disabled):hover {
   transform: translate(-50%, -50%) rotate(-1deg) scale(1.035);
   box-shadow: 4px 10px 23px #775b4750, inset 2px 3px 3px #fffef5, inset -3px -4px 5px #baa08b55;
 }
 .dnt-seal-ring-art { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .85; }
-.dnt-seal-monogram {
-  display: block; padding-top: 5px; font-family: var(--dnt-script); font-weight: 400;
-  font-size: clamp(45px, 12vw, 62px); letter-spacing: -.13em; padding-right: .1em; line-height: 1;
-  text-shadow: 1px 1px 0 #fff8ef, -1px -1px 1px #b39b865c;
+.dnt-intro .dnt-seal-monogram { display: none; }
+.dnt-seal-flourish {
+  position: absolute; width: 54%; left: 23%; top: 50%; bottom: auto;
+  margin: 0; transform: translateY(-50%); opacity: .75;
 }
-.dnt-seal-flourish { position: absolute; width: 57%; bottom: 19%; opacity: .8; }
 .dnt-intro-caption {
   position: absolute; z-index: 7; left: 8%; right: 8%; bottom: max(35px, 7.5%);
   text-align: center; display: flex; align-items: center; flex-direction: column;
@@ -1269,29 +1257,30 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 }
 .dnt-intro-names span { padding-inline: 4px; font-family: var(--dnt-serif); font-size: .52em; font-style: italic; }
 .dnt-intro-date { font-family: var(--dnt-serif); font-size: 16px; letter-spacing: .035em; }
-.dnt-is-opening .dnt-envelope-flap { transform: rotateX(-178deg); }
-.dnt-is-opening .dnt-envelope-left { transform: rotateY(-28deg); opacity: 0; }
-.dnt-is-opening .dnt-envelope-right { transform: rotateY(28deg); opacity: 0; }
-.dnt-is-opening .dnt-envelope-bottom { transform: rotateX(24deg); opacity: 0; }
-.dnt-is-opening .dnt-intro-card { animation: dnt-letter-emerge 1850ms cubic-bezier(.24,.08,.2,1) 650ms both; }
+.dnt-is-opening .dnt-envelope-flap { transform: rotateX(-165deg); opacity: 0; }
+.dnt-is-opening .dnt-envelope-fold { transform: translateY(82%); opacity: 0; }
+.dnt-is-opening .dnt-intro-card {
+  animation: dnt-letter-emerge 1400ms cubic-bezier(.2,.65,.2,1) 800ms both;
+}
+.dnt-is-opening .dnt-intro-card .dnt-hero-content {
+  animation: dnt-letter-ink 900ms ease 1000ms both;
+}
 .dnt-is-opening .dnt-intro-vignette,
 .dnt-is-opening .dnt-intro-kicker,
 .dnt-is-opening .dnt-intro-caption { opacity: 0; }
-.dnt-is-opening .dnt-wax-seal { opacity: 0; transform: translate(-50%, -50%) rotate(16deg) scale(1.15); pointer-events: none; }
-.dnt-flap-seal { opacity: 0; pointer-events: none; }
-.dnt-is-opening .dnt-wax-seal:not(.dnt-flap-seal) { transition-duration: 90ms; transform: translate(-50%, -50%) rotate(-4deg); }
-.dnt-is-opening .dnt-flap-seal { opacity: 1; transform: translate(-50%, -50%) rotate(-4deg); transition: none; }
-@keyframes dnt-letter-emerge {
-  0% { z-index: 1; transform: translateY(21%) scale(.86); }
-  24% { z-index: 1; transform: translateY(-12%) scale(.89); }
-  25% { z-index: 5; transform: translateY(-12%) scale(.89); }
-  68% { z-index: 5; transform: translateY(-5%) scale(.96); }
-  100% { z-index: 5; transform: translateY(0%) scale(1); }
+.dnt-is-opening .dnt-wax-seal {
+  opacity: 0; transform: translate(-50%, -57%) rotate(-4deg) scale(1.025);
+  pointer-events: none;
 }
+.dnt-intro .dnt-flap-seal { display: none; }
+@keyframes dnt-letter-emerge {
+  from { transform: scale(.985); }
+  to { transform: scale(1); }
+}
+@keyframes dnt-letter-ink { from { opacity: 0; } to { opacity: 1; } }
 @media (max-height: 580px) {
   .dnt-intro-kicker { top: 20px; font-size: 8px; }
   .dnt-wax-seal { top: 44%; width: 88px; }
-  .dnt-seal-monogram { font-size: 40px; }
   .dnt-intro-caption { bottom: 23px; }
   .dnt-intro-names { font-size: 32px; line-height: 1.25; }
   .dnt-intro-card .dnt-hero-content { padding-top: 55px; padding-bottom: 50px; }
@@ -1305,5 +1294,17 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .dnt .dnt-envelope-flap, .dnt .dnt-envelope-fold,
   .dnt .dnt-wax-seal, .dnt .dnt-intro-caption,
   .dnt .dnt-intro-vignette, .dnt .dnt-intro-kicker { transition-duration: 100ms; transition-delay: 0ms; }
-  .dnt-is-opening .dnt-intro-card { animation-duration: 100ms; animation-delay: 0ms; }
+  .dnt-is-opening .dnt-intro-card,
+  .dnt-is-opening .dnt-intro-card .dnt-hero-content {
+    animation-duration: 100ms; animation-delay: 0ms;
+  }
+}
+
+
+
+/* Manji inicijali na telefonu */
+@media (max-width: 600px) {
+  .lmv.lmv-intro .lmv-intro-monogram {
+    font-size: calc(var(--lmv-emblem-size) * 0.40);
+  }
 }
