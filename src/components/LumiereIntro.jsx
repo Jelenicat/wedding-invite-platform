@@ -12,7 +12,7 @@ export const LUMIERE_ASSETS = {
 const COPY = {
   sr: {
     invitation: "Pozivnica za venčanje", open: "Pogledaj pozivnicu", opening: "Otvaramo našu priču",
-    chapter: "Jedan dan. Naša zauvek.", story: "Naša priča", welcomeTitle: "Najlepše je zajedno.",
+    chapter: "Jedan dan. Naše zauvek.", story: "Naša priča", welcomeTitle: "Najlepše je zajedno.",
     welcome: "Sa velikom radošću vas pozivamo da budete deo početka naše zajedničke priče.",
     date: "Sačuvajte datum", scroll: "Priča se nastavlja", plan: "Plan našeg dana", planNote: "Od prvog zagrljaja do poslednjeg plesa.",
     location: "Mesto susreta", map: "Pogledaj lokaciju", dressCode: "Za ovu priliku", women: "Dame", men: "Muškarci",
