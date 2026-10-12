@@ -90,6 +90,10 @@ import EnvelopeFlapVideoIntro from "../components/EnvelopeFlapVideoIntro";
 import PhotoZoomIntro from "../components/PhotoZoomIntro";
 import LegendFantasyIntro from "../components/LegendFantasyIntro";
 import LegendFantasyInvitationCard from "../components/LegendFantasyInvitationCard";
+import LumiereIntro from "../components/LumiereIntro";
+import LumiereInvitationCard from "../components/LumiereInvitationCard";
+import DentelleIntro from "../components/DentelleIntro";
+import DentelleInvitationCard from "../components/DentelleInvitationCard";
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
 import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
@@ -357,6 +361,17 @@ const TEMPLATE_COMPONENTS = {
   Intro: LegendFantasyIntro,
   Invitation: LegendFantasyInvitationCard,
 },
+
+
+  "lumiere-editorial": {
+    Intro: LumiereIntro,
+    Invitation: LumiereInvitationCard,
+  },
+
+    "dentelle-lace": {
+    Intro: DentelleIntro,
+    Invitation: DentelleInvitationCard,
+  },
 
 };
 

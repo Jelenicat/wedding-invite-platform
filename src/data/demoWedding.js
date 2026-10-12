@@ -5434,6 +5434,189 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+{
+  slug: "lumiere-demo",
+  type: "wedding",
+  template: "lumiere-editorial",
+  script: "latin", // ili "cyrillic"; tada i imena/tekstove unesi ćirilicom
+
+  brideName: "Ana",
+  groomName: "Luka",
+  weddingDate: "17. jul 2027.",
+  weddingTime: "17:00",
+  venue: "Vila Jelena, Beograd",
+  musicSrc: "", // Ovde upiši putanju svoje postojeće muzike, npr. /music/ime.mp3.
+
+  details: {
+    ...createDetails({
+      date: "17. jul 2027.",
+      dateISO: "2027-07-17T17:00:00+02:00",
+      venue: "Vila Jelena, Beograd",
+      locationName: "Vila Jelena",
+      locationAddress: "Beograd, Srbija",
+      welcomeText:
+        "Neke priče počnu sasvim tiho, a onda postanu ceo naš svet. Pozivamo vas da budete deo dana u kome našoj priči dodajemo jedno veliko — zauvek.",
+      events: [
+        { time: "15:30", label: "Okupljanje gostiju", location: "Vila Jelena, Beograd", icon: "gathering" },
+        { time: "17:00", label: "Naše „da”", location: "Vila Jelena, Beograd", icon: "civil" },
+        { time: "18:00", label: "Večera i zdravice", icon: "dinner" },
+        { time: "19:30", label: "Prvi ples", icon: "party" },
+        { time: "21:00", label: "Nešto slatko", icon: "cake" },
+      ],
+      showLocationButton: true,
+      locationButtonText: "Pogledaj lokaciju",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Vila+Jelena+Beograd",
+      showDressCode: true,
+      dressCodeTitle: "Elegantno, u svom stilu.",
+      dressCodeNote: "Obucite ono u čemu se osećate posebno. Crno-beli tonovi i bordo detalji lepo će se uklopiti u atmosferu našeg dana.",
+      dressCodePalette: ["#ffffff", "#d6d6d6", "#171717", "#76172d"],
+      dressCodeWomen: "Svečane haljine u crnim, sivim ili bordo tonovima. Belu prepuštamo mladi.",
+      dressCodeMen: "Odelo ili elegantna kombinacija po vašem izboru.",
+      rsvpOptions: {
+        fasting: true,
+        individualGuests: false, // true: svako ime se unosi i čuva kao poseban gost
+      },
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+      rsvpClosed: false,
+    }),
+
+    // NOVA PODEŠAVANJA IDU POSLE createDetails(), kao ovde.
+    // Ne treba da menjaš createDetails funkciju niti stare slugove.
+    lumiere: {
+      introMonogram: "A/N", // Inicijali u centralnom amblemu. Bez ove stavke uzimaju se iz imena.
+      // introKicker: "", // Opciono uklanja i rečenicu iznad amblema.
+      // introImage: "/images/lumiere/lumiere-arch.webp", // Zasebna fotografija samo za početak.
+      heroImage: "/images/lumiere/lumiere-arch.webp",
+      heroPosition: "50% 45%",
+      heroAlt: "Bela svilena zavesa u praznom kamenom luku",
+      storyImage: "/images/lumiere/lumiere-staircase.webp",
+      storyPosition: "50% 42%",
+      storyAlt: "Prazno elegantno stepenište u crno-beloj fotografiji",
+      detailImage: "/images/lumiere/lumiere-rings.webp",
+      detailPosition: "50% 50%",
+      detailAlt: "Dve burme na beloj svili, bez ruku",
+      venueImage: "/images/lumiere/lumiere-reception.webp",
+      // Generisana slika je ambijent za demo. Za klijenta ubaci fotografiju lokacije.
+      venueAlt: "Crno-beli ambijent proslave bez ljudi",
+      // rsvpImage: "/images/lumiere/lumiere-reception.webp", // opciona slika iza RSVP kartice
+      closingImage: "/images/lumiere/lumiere-arch.webp",
+      closingPosition: "50% 35%",
+      rsvpDeadline: "1. jula 2027.",
+      welcomeTitle: "Najlepše je zajedno.",
+      planTitle: "Dan za pamćenje.",
+      photoQuote: "Jedan dan. Naša zauvek.",
+      closingText: "Hvala što ste deo naše priče. Najlepše uspomene tek dolaze.",
+      information: [
+        { icon: "camera", title: "Uspomene", text: "Ponesite osmeh. Sve ostalo ćemo pamtiti zajedno." },
+        { icon: "party", title: "Ples do kasno", text: "Sačuvajte malo energije i za poslednju pesmu." },
+      ],
+      // Po želji ukloni komentare i dodaj stvarne telefone mladenaca:
+      // contacts: [
+      //   { name: "Ana", phone: "+381XXXXXXXXX" },
+      //   { name: "Luka", phone: "+381XXXXXXXXX" },
+      // ],
+    },
+  },
+},
+
+{
+  slug: "dentelle-demo",
+  type: "wedding",
+  template: "dentelle-lace",
+  script: "latin",
+  brideName: "Ana",
+  groomName: "Nikola",
+  weddingDate: "17. jul 2027.",
+  weddingTime: "17:00",
+  venue: "Vila Jelena, Beograd",
+  musicSrc: "",
+  details: {
+    ...createDetails({
+      date: "17. jul 2027.",
+      dateISO: "2027-07-17T17:00:00+02:00",
+      venue: "Vila Jelena, Beograd",
+      locationName: "Vila Jelena",
+      locationAddress: "Beograd, Srbija",
+      welcomeText:
+        "Neke priče počnu jednim pogledom, a postanu sve. Sa radošću vas pozivamo da budete deo dana u kojem našoj priči dodajemo jedno veliko — zauvek.",
+      events: [
+        {
+          time: "16:00",
+          label: "Okupljanje gostiju",
+          location: "Vila Jelena",
+          description: "Zagrljaji, osmesi i prva čaša u čast ljubavi.",
+          icon: "gathering",
+        },
+        {
+          time: "17:00",
+          label: "Naše „da”",
+          location: "Vila Jelena",
+          description: "Trenutak u kojem zauvek dobija naše ime.",
+          icon: "rings",
+        },
+        {
+          time: "18:00",
+          label: "Zdravice i večera",
+          description: "Za jednim stolom, sa svim ljudima koje volimo.",
+          icon: "dinner",
+        },
+        {
+          time: "20:00",
+          label: "Prvi ples",
+          description: "Naša pesma, a onda plesni podijum pripada svima.",
+          icon: "party",
+        },
+        {
+          time: "22:00",
+          label: "Nešto slatko",
+          description: "Torta, želje i još mnogo lepih uspomena.",
+          icon: "cake",
+        },
+      ],
+      showLocationButton: true,
+      locationButtonText: "Pogledaj lokaciju",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Vila+Jelena+Beograd",
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+      showDressCode: true,
+      dressCodeTitle: "Svečano, u svom stilu.",
+      dressCodeNote:
+        "Elegantne kombinacije, nežne nijanse i poneki bordo detalj lepo će se uklopiti u naš dan. Belu prepuštamo mladi.",
+      dressCodePalette: ["#f7f1e8", "#d9c5bc", "#967681", "#471327"],
+      rsvpOptions: {
+        fasting: false,
+        children: true,
+        dietary: true,
+        individualGuests: false,
+        maxGuests: 10,
+      },
+      rsvpClosed: false,
+    }),
+    dentelle: {
+      monogram: "AN",
+      coverImage: "/images/dentelle/lace-envelope.webp",
+      frameImage: "/images/dentelle/lace-frame.webp",
+      edgeImage: "/images/dentelle/lace-edge.webp",
+      // Dekorativna, generisana vila za demo; nije prikaz stvarne Vile Jelena.
+      // Za klijenta ovde može da ide fotografija ili ilustracija njegove lokacije.
+      venueImage: "/images/dentelle/villa-illustration.webp",
+      venueAlt: "Dekorativna ilustracija romantične vile",
+      venueText:
+        "Mesto za dugo pamćenje, za nežne zdravice i veliko slavlje. Dođite malo ranije, da najlepše trenutke započnemo zajedno.",
+      rsvpDeadline: "1. jula 2027.",
+      welcomeTitle: "Najlepše je zajedno.",
+      countdownTitle: "Do našeg zauvek",
+      scheduleTitle: "Naš dan",
+      showGift: true,
+      giftText: "Vaše prisustvo je naš najlepši poklon.",
+      giftNote: "Najviše nam znači da ovaj dan podelimo sa vama.",
+      closingText: "Jedva čekamo da slavimo ljubav, zajedno sa vama.",
+    },
+  },
+},
+
+
 // =========================
 // Klijenti
 // =========================
@@ -11038,7 +11221,7 @@ dateISO:
   musicSrc: "/music/jovana-oliver.mp3",
 
   weddingDate: "05 JUN 2027",
-  weddingTime: "15:30",
+  weddingTime: "16:00",
   venue: "Kotor i Budva",
 
   introText:
@@ -11052,36 +11235,47 @@ dateISO:
         "Sa velikom radošću vas pozivamo da budete dio našeg posebnog dana i zajedno sa nama proslavite početak našeg novog poglavlja.",
 
       date: "05 JUN 2027",
-      dateISO: "2027-06-05T15:30:00+02:00",
+      dateISO: "2027-06-05T16:00:00+02:00",
 
       showCalendarButton: true,
 
       // =========================
-      // RASPORED DOGAĐAJA
+      // RASPORED DOGAĐAJA — SR
       // =========================
 
       events: [
         {
           label: "Crkveno vjenčanje",
-          time: "15:30",
+          time: "16:00",
           location: "Crkva Svetog Nikole, Kotor",
 
           mapLink:
             "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
 
           note:
-            "Radujemo se što ćete prisustvovati našem crkvenom vjenčanju.",
+            "Sa velikom radošću vas očekujemo na našem crkvenom vjenčanju.",
         },
         {
-          label: "Slavlje",
-          time: "17:30",
+          label: "Piće dobrodošlice i večera",
+          time: "18:00",
           location: "Carević Resort, Budva",
 
           mapLink:
             "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
 
           note:
-            "Nakon crkvenog vjenčanja očekujemo vas na zajedničkom slavlju.",
+            "Nakon crkvenog vjenčanja dočekaćemo vas uz piće dobrodošlice, nakon čega slijedi svečana večera.",
+        },
+        {
+          label: "Slavlje",
+          time: "20:30 – 01:00",
+          location: "Carević Resort, Budva",
+
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
+
+          note:
+            "Veče nastavljamo uz muziku, ples i nezaboravne zajedničke trenutke.",
         },
       ],
 
@@ -11169,7 +11363,7 @@ dateISO:
 
           details: {
             welcomeText:
-              "Mit grosser Freude laden wir euch ein, unseren besonderen Tag mit uns zu feiern und den Beginn unseres gemeinsamen Lebensweges zu begleiten.",
+              "Mit großer Freude laden wir euch ein, unseren besonderen Tag mit uns zu feiern und den Beginn unseres gemeinsamen Lebensweges zu begleiten.",
 
             date: "05 JUNI 2027",
 
@@ -11177,13 +11371,13 @@ dateISO:
               "Kirche des Heiligen Nikolaus, Kotor",
 
             // =========================
-            // DOGAĐAJI — DE
+            // RASPORED DOGAĐAJA — DE
             // =========================
 
             events: [
               {
                 label: "Kirchliche Trauung",
-                time: "15:30",
+                time: "16:00",
 
                 location:
                   "Kirche des Heiligen Nikolaus, Kotor",
@@ -11192,11 +11386,11 @@ dateISO:
                   "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
 
                 note:
-                  "Wir freuen uns, unsere kirchliche Trauung mit euch zu feiern.",
+                  "Wir freuen uns darauf, unsere kirchliche Trauung mit euch zu feiern.",
               },
               {
-                label: "Hochzeitsfeier",
-                time: "17:30",
+                label: "Empfang und Abendessen",
+                time: "18:00",
 
                 location:
                   "Carević Resort, Budva",
@@ -11205,7 +11399,20 @@ dateISO:
                   "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
 
                 note:
-                  "Nach der kirchlichen Trauung freuen wir uns darauf, gemeinsam mit euch zu feiern.",
+                  "Nach der kirchlichen Trauung heißen wir euch herzlich zu einem Empfang willkommen. Anschließend genießen wir gemeinsam das festliche Abendessen.",
+              },
+              {
+                label: "Hochzeitsfeier",
+                time: "20:30 – 01:00",
+
+                location:
+                  "Carević Resort, Budva",
+
+                mapLink:
+                  "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
+
+                note:
+                  "Lasst uns den Abend gemeinsam mit Musik, Tanz und unvergesslichen Momenten ausklingen.",
               },
             ],
 
@@ -11260,7 +11467,6 @@ dateISO:
 
     // =========================
     // KORISNE INFORMACIJE — SR
-    // Izvan createDetails
     // =========================
 
     guestInfo: {

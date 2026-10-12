@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 66" fill="none">
+<g id="dnt-flourish" fill="none" stroke="currentColor" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round">
+
+    <g stroke="currentColor" stroke-width="0.85" stroke-linecap="round">
+      <path d="M160 32c-17-28-48-33-59-18-12 18 18 32 32 17 11-12-11-23-24-12M160 32c17-28 48-33 59-18 12 18-18 32-32 17-11-12 11-23 24-12" />
+      <path d="M151 35c-24-12-43-9-60 5-16 14-30 18-46 8-17-11-4-30 11-23 11 5 7 17-2 16M169 35c24-12 43-9 60 5 16 14 30 18 46 8 17-11 4-30-11-23-11 5-7 17 2 16" />
+      <path d="M113 48c-9 1-13 8-8 11 6 4 18-4 19-13M207 48c9 1 13 8 8 11-6 4-18-4-19-13M72 18c-2-13-19-18-23-12 7 0 15 5 18 11M248 18c2-13 19-18 23-12-7 0-15 5-18 11M18 38c6-2 13-1 18 4M302 38c-6-2-13-1-18 4" />
+      <path d="m160 23 5 9-5 10-5-10 5-9ZM160 14v-7M160 49v8M139 34h-7M181 34h7" />
+      <circle cx="160" cy="2" r="1.4" /><circle cx="160" cy="63" r="1.4" />
+    </g>
+  
+</g>
+</svg>

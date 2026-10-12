@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" fill="none">
+<g id="dnt-rings" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round">
+
+<ellipse cx="27" cy="43" rx="20" ry="11" transform="rotate(-24 27 43)" />
+<ellipse cx="27" cy="43" rx="16" ry="8" transform="rotate(-24 27 43)" stroke-width=".6" />
+<ellipse cx="45" cy="39" rx="14" ry="21" transform="rotate(-31 45 39)" />
+<ellipse cx="45" cy="39" rx="10.5" ry="17" transform="rotate(-31 45 39)" stroke-width=".6" />
+<path d="m37 16 2-8 9-3 8 5 1 8-12 6-8-8ZM39 8l6 16 3-19M56 10 45 24M39 15l18 3" stroke-width=".85" />
+<path d="M13 40c4-5 12-9 17-9M44 51c6 1 11-5 12-10M36 4l-3-3M54 5l3-4M60 14l4-1" stroke-width=".55" />
+
+</g>
+</svg>
