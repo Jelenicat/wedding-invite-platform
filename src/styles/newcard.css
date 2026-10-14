@@ -3267,74 +3267,6 @@
 }
 
 
-/* DENTELLE - CELE GORNJE I DONJE CIPKANE TRAKE */
-
-.dnt.dnt-countdown > .dnt-lace {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: clamp(125px, 35vw, 190px);
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* Gornja traka pocinje od vrha */
-.dnt.dnt-countdown > .dnt-lace-top {
-  top: 0;
-  bottom: auto;
-}
-
-/* Donja traka se zavrsava na dnu */
-.dnt.dnt-countdown > .dnt-lace-bottom {
-  top: auto;
-  bottom: 0;
-  transform: rotate(180deg);
-}
-
-/* Cela slika, bez zumiranja i odsecanja */
-.dnt.dnt-countdown > .dnt-lace img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center top;
-  transform: none;
-}
-
-
-/* DENTELLE — CIPKA TACNO UZ GORNJU I DONJU IVICU */
-
-.dnt.dnt-countdown > .dnt-lace-top {
-  top: 0;
-  bottom: auto;
-  transform: none;
-}
-
-.dnt.dnt-countdown > .dnt-lace-bottom {
-  top: auto;
-  bottom: 0;
-  transform: rotate(180deg);
-}
-
-/* Uklanjamo prazan prostor iz samih slika */
-.dnt.dnt-countdown > .dnt-lace-top img,
-.dnt.dnt-countdown > .dnt-lace-bottom img {
-  position: absolute;
-  top: clamp(-45px, -8vw, -28px);
-  left: 0;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center top;
-  transform: none;
-}
-
 /* ============================================================
    DENTELLE 2026 — fino doterivanje kartice, vremenske linije,
    odbrojavanja i završnice. Nema promena .lmv stilova.
@@ -3573,147 +3505,16 @@
 @media (prefers-reduced-motion: reduce) {
   .dnt-card .dnt-reveal { opacity: 1; transform: none; }
 }
+
 /* ==========================================================
-   DENTELLE — VIDJIVA GORNJA I DONJA CIPKA NA MOBILNOM
-   Ne menja Lumiere niti druga vencanja.
-   Originalna slika: details.dentelle.edgeImage (lace-edge.webp).
+   DENTELLE: STABILAN PRELAZ SEKCIJA NA SAFARIJU
+   Geometriju cipke kontrolise newintro.css i DentelleLace JSX.
+   Bez dupliranja pravila za top/height/transform.
    ========================================================== */
-
-/* Slika ne sme vise da bude prinudno siroka 790px niti pomerena -57px.
-   Cuvamo proporcije originalne slike i lepimo je za ivicu sekcije. */
-.wedding-page--dentelle .dnt .dnt-lace {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: clamp(90px, 29vw, 180px);
-  margin: 0;
-  overflow: hidden;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.wedding-page--dentelle .dnt .dnt-lace-top {
-  top: 0;
-  bottom: auto;
-  transform: none;
-}
-
-.wedding-page--dentelle .dnt .dnt-lace-bottom {
-  top: auto;
-  bottom: 0;
-  transform: rotate(180deg);
-}
-
-.wedding-page--dentelle .dnt .dnt-lace img {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  max-width: none;
-  transform: none;
-  object-fit: contain;
-  object-position: center top;
-  filter: drop-shadow(0 1px 1px rgba(74, 50, 57, .14));
-}
-
-/* Uklanja vestacku prazninu izmedju Dress Code-a i sekcije poklona. */
-.wedding-page--dentelle .dnt-card .dnt-gift {
-  margin-top: 0;
-}
-
-/* Na malim telefonima ne zaklanja naslov ni elemente forme. */
-@media (max-width: 480px) {
-  .wedding-page--dentelle .dnt .dnt-lace {
-    height: clamp(78px, 29vw, 138px);
-  }
-  .wedding-page--dentelle .dnt-card .dnt-welcome {
-    padding-top: max(125px, 32vw);
-  }
-  .wedding-page--dentelle .dnt-card .dnt-day {
-    padding-top: max(130px, 34vw);
-  }
-  .wedding-page--dentelle .dnt-card .dnt-gift {
-    padding-top: max(135px, 36vw);
-  }
-  .wedding-page--dentelle .dnt.dnt-rsvp {
-    padding-top: max(142px, 37vw);
-    padding-bottom: max(130px, 35vw);
-  }
-  .wedding-page--dentelle .dnt.dnt-countdown {
-    padding-top: max(145px, 37vw);
-    padding-bottom: max(140px, 36vw);
-  }
-}
-
-/* ===============================================================
-   DENTELLE — PORAVNANJE CIPKE UZ SAME IVICE SEKCIJA
-   14.10.2026 | Samo Dentelle, bez uticaja na Lumiere / ostale.
-
-   lace-edge.webp sadrzi providan prazan prostor iznad samog veza.
-   Zato top:0 na IMG ostavlja prazan pojas pre vidljive cipke.
-   DRZAC ostaje na ivici; samo se IMG podize za tu prazninu.
-   =============================================================== */
-
-.wedding-page--dentelle {
-  /* Pomak prati sirinu slike (na iPhone ekranu oko 29–32 px). */
-  --dnt-edge-crop: clamp(20px, 8vw, 59px);
-}
-
-/* Isti princip za gornju i donju traku svih Dentelle sekcija. */
-.wedding-page--dentelle .dnt .dnt-lace {
-  position: absolute;
-  inset-inline: 0;
-  width: 100%;
-  height: clamp(94px, 29vw, 190px);
-  margin: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.wedding-page--dentelle .dnt .dnt-lace-top {
-  top: 0;
-  bottom: auto;
-  transform: none;
-}
-
-.wedding-page--dentelle .dnt .dnt-lace-bottom {
-  top: auto;
-  bottom: 0;
-  transform: rotate(180deg);
-  transform-origin: center;
-}
-
-.wedding-page--dentelle .dnt .dnt-lace > img {
-  display: block;
-  position: absolute;
-  top: calc(-1 * var(--dnt-edge-crop));
-  left: 0;
-  width: 100%;
-  max-width: none;
-  height: auto;
-  transform: none;
-  object-fit: contain;
-  object-position: center top;
-}
-
-/* Poklon ide direktno posle prethodne sekcije, bez dodatnog razmaka. */
-.wedding-page--dentelle .dnt-card .dnt-gift {
-  margin-top: 0;
-}
-
-/* Uklanja belu traku izmedju bordo RSVP-a i zavrsnog cipkanog rama. */
-.wedding-page--dentelle .dnt-card .dnt-closing {
-  padding-top: 0;
-}
-
-@media (max-width: 480px) {
-  /* Vec postojece unutrasnje margine ostavljaju tekst ispod cipke.
-     Ne dodajemo nove velike praznine izmedju sekcija. */
-  .wedding-page--dentelle .dnt .dnt-lace {
-    height: clamp(94px, 29vw, 140px);
-  }
-}
+.wedding-page--dentelle .dnt-card .dnt-gift { margin-top: 0; }
+.wedding-page--dentelle .dnt-card .dnt-closing { padding-top: 0; }
+.wedding-page--dentelle .dnt-card .dnt-welcome,
+.wedding-page--dentelle .dnt-card .dnt-day,
+.wedding-page--dentelle .dnt-card .dnt-gift,
+.wedding-page--dentelle .dnt.dnt-countdown,
+.wedding-page--dentelle .dnt.dnt-rsvp { position: relative; }

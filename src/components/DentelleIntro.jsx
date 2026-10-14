@@ -105,9 +105,96 @@ export function DentelleReveal({ children, className = "", as: Tag = "div" }) {
   return <Tag ref={ref} className={"dnt-reveal " + (visible ? "dnt-is-visible " : "") + className}>{children}</Tag>;
 }
 
+// Zajednicki cache: isti lace-edge.webp se koristi vise puta na stranici.
+const DENTELLE_LACE_BOUNDS = new Map();
+
+// Detektuje stvarni vez, bez providnog prostora unutar slike.
+// Radi na iOS Safariju, Chrome-u i Firefox-u; ako Canvas nije dostupan,
+// CSS koristi rezervne dimenzije.
+function dentelleMeasureLace(image) {
+  try {
+    const naturalWidth = image.naturalWidth;
+    const naturalHeight = image.naturalHeight;
+    if (!naturalWidth || !naturalHeight) return null;
+
+    const width = Math.min(naturalWidth, 520);
+    const height = Math.max(1, Math.round(naturalHeight * width / naturalWidth));
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    if (!context) return null;
+    context.drawImage(image, 0, 0, width, height);
+    const pixels = context.getImageData(0, 0, width, height).data;
+
+    // Igorisemo gotovo nevidljive piksele od antialiasinga i kompresije.
+    const rowIsVisible = (y) => {
+      let colored = 0;
+      for (let x = 0; x < width; x += 2) {
+        if (pixels[(y * width + x) * 4 + 3] > 38) colored++;
+      }
+      return colored >= Math.max(2, Math.ceil(width / 130));
+    };
+
+    let first = 0;
+    while (first < height && !rowIsVisible(first)) first++;
+    if (first === height) return null;
+    let last = height - 1;
+    while (last > first && !rowIsVisible(last)) last--;
+
+    // Odnos prema sirini je stabilan i kada je iPhone 390px,
+    // a desktop preview druge sirine.
+    return {
+      offsetRatio: first / width,
+      heightRatio: (last - first + 1) / width,
+    };
+  } catch (error) {
+    // Npr. eksterni URL bez CORS dozvole: ostaje CSS fallback.
+    return null;
+  }
+}
+
 export function DentelleLace({ src = DENTELLE_ASSETS.edge, className = "" }) {
-  return <div className={"dnt-lace " + className} aria-hidden="true">
-    <img src={src} alt="" loading="lazy" decoding="async" />
+  const wrapRef = useRef(null);
+  const [width, setWidth] = useState(0);
+  const [bounds, setBounds] = useState(() => DENTELLE_LACE_BOUNDS.get(src) || null);
+
+  useEffect(() => {
+    setBounds(DENTELLE_LACE_BOUNDS.get(src) || null);
+  }, [src]);
+
+  useEffect(() => {
+    const element = wrapRef.current;
+    if (!element) return undefined;
+    const update = () => {
+      const next = element.clientWidth;
+      if (next > 0) setWidth((previous) => previous === next ? previous : next);
+    };
+    update();
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(update);
+      observer.observe(element);
+      return () => observer.disconnect();
+    }
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const onImageLoad = (event) => {
+    const measured = DENTELLE_LACE_BOUNDS.get(src) || dentelleMeasureLace(event.currentTarget);
+    if (measured) {
+      DENTELLE_LACE_BOUNDS.set(src, measured);
+      setBounds(measured);
+    }
+  };
+
+  const style = bounds && width ? {
+    "--dnt-lace-height": `${Math.ceil(width * bounds.heightRatio) + 1}px`,
+    "--dnt-lace-image-top": `${-Math.round(width * bounds.offsetRatio)}px`,
+  } : undefined;
+
+  return <div ref={wrapRef} className={"dnt-lace " + className} style={style} aria-hidden="true">
+    <img src={src} alt="" loading="lazy" decoding="async" onLoad={onImageLoad} />
   </div>;
 }
 
