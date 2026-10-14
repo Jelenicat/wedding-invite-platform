@@ -3647,3 +3647,73 @@
     padding-bottom: max(140px, 36vw);
   }
 }
+
+/* ===============================================================
+   DENTELLE — PORAVNANJE CIPKE UZ SAME IVICE SEKCIJA
+   14.10.2026 | Samo Dentelle, bez uticaja na Lumiere / ostale.
+
+   lace-edge.webp sadrzi providan prazan prostor iznad samog veza.
+   Zato top:0 na IMG ostavlja prazan pojas pre vidljive cipke.
+   DRZAC ostaje na ivici; samo se IMG podize za tu prazninu.
+   =============================================================== */
+
+.wedding-page--dentelle {
+  /* Pomak prati sirinu slike (na iPhone ekranu oko 29–32 px). */
+  --dnt-edge-crop: clamp(20px, 8vw, 59px);
+}
+
+/* Isti princip za gornju i donju traku svih Dentelle sekcija. */
+.wedding-page--dentelle .dnt .dnt-lace {
+  position: absolute;
+  inset-inline: 0;
+  width: 100%;
+  height: clamp(94px, 29vw, 190px);
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.wedding-page--dentelle .dnt .dnt-lace-top {
+  top: 0;
+  bottom: auto;
+  transform: none;
+}
+
+.wedding-page--dentelle .dnt .dnt-lace-bottom {
+  top: auto;
+  bottom: 0;
+  transform: rotate(180deg);
+  transform-origin: center;
+}
+
+.wedding-page--dentelle .dnt .dnt-lace > img {
+  display: block;
+  position: absolute;
+  top: calc(-1 * var(--dnt-edge-crop));
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  transform: none;
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* Poklon ide direktno posle prethodne sekcije, bez dodatnog razmaka. */
+.wedding-page--dentelle .dnt-card .dnt-gift {
+  margin-top: 0;
+}
+
+/* Uklanja belu traku izmedju bordo RSVP-a i zavrsnog cipkanog rama. */
+.wedding-page--dentelle .dnt-card .dnt-closing {
+  padding-top: 0;
+}
+
+@media (max-width: 480px) {
+  /* Vec postojece unutrasnje margine ostavljaju tekst ispod cipke.
+     Ne dodajemo nove velike praznine izmedju sekcija. */
+  .wedding-page--dentelle .dnt .dnt-lace {
+    height: clamp(94px, 29vw, 140px);
+  }
+}
