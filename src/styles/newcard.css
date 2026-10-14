@@ -3573,3 +3573,77 @@
 @media (prefers-reduced-motion: reduce) {
   .dnt-card .dnt-reveal { opacity: 1; transform: none; }
 }
+/* ==========================================================
+   DENTELLE — VIDJIVA GORNJA I DONJA CIPKA NA MOBILNOM
+   Ne menja Lumiere niti druga vencanja.
+   Originalna slika: details.dentelle.edgeImage (lace-edge.webp).
+   ========================================================== */
+
+/* Slika ne sme vise da bude prinudno siroka 790px niti pomerena -57px.
+   Cuvamo proporcije originalne slike i lepimo je za ivicu sekcije. */
+.wedding-page--dentelle .dnt .dnt-lace {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(90px, 29vw, 180px);
+  margin: 0;
+  overflow: hidden;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.wedding-page--dentelle .dnt .dnt-lace-top {
+  top: 0;
+  bottom: auto;
+  transform: none;
+}
+
+.wedding-page--dentelle .dnt .dnt-lace-bottom {
+  top: auto;
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+.wedding-page--dentelle .dnt .dnt-lace img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  transform: none;
+  object-fit: contain;
+  object-position: center top;
+  filter: drop-shadow(0 1px 1px rgba(74, 50, 57, .14));
+}
+
+/* Uklanja vestacku prazninu izmedju Dress Code-a i sekcije poklona. */
+.wedding-page--dentelle .dnt-card .dnt-gift {
+  margin-top: 0;
+}
+
+/* Na malim telefonima ne zaklanja naslov ni elemente forme. */
+@media (max-width: 480px) {
+  .wedding-page--dentelle .dnt .dnt-lace {
+    height: clamp(78px, 29vw, 138px);
+  }
+  .wedding-page--dentelle .dnt-card .dnt-welcome {
+    padding-top: max(125px, 32vw);
+  }
+  .wedding-page--dentelle .dnt-card .dnt-day {
+    padding-top: max(130px, 34vw);
+  }
+  .wedding-page--dentelle .dnt-card .dnt-gift {
+    padding-top: max(135px, 36vw);
+  }
+  .wedding-page--dentelle .dnt.dnt-rsvp {
+    padding-top: max(142px, 37vw);
+    padding-bottom: max(130px, 35vw);
+  }
+  .wedding-page--dentelle .dnt.dnt-countdown {
+    padding-top: max(145px, 37vw);
+    padding-bottom: max(140px, 36vw);
+  }
+}
