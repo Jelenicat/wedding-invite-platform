@@ -3517,3 +3517,107 @@
   .dnt.dnt-rsvp { padding-top: max(142px, 37vw); padding-bottom: max(130px, 35vw); }
   .dnt.dnt-countdown { padding-top: max(145px, 37vw); padding-bottom: max(140px, 36vw); }
 }
+
+
+/* ============================================================
+   DENTELLE — cinematic scroll, odbrojavanje i detalji (mobile first)
+   ============================================================ */
+@keyframes dnt-m-portrait-arrive {
+  from { opacity: .15; transform: translate3d(0,18px,0) scale(.955); }
+  to { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+}
+@keyframes dnt-m-pearl-pop {
+  0% { opacity: .3; transform: scale(.3); }
+  65% { opacity: 1; transform: scale(1.17); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes dnt-m-clock-tick {
+  from { opacity: .4; transform: translate3d(0,4px,0); }
+  to { opacity: 1; transform: translate3d(0,0,0); }
+}
+@keyframes dnt-m-frame-arrive {
+  from { opacity: .65; transform: scale(.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* Novo: svaki deo rasporeda se otkriva tek kad gost do njega skroluje. */
+.dnt-card .dnt-timeline-item.dnt-reveal {
+  opacity: 0;
+  transform: translate3d(0,17px,0);
+  transition: opacity .68s ease, transform .85s cubic-bezier(.22,1,.36,1);
+}
+.dnt-card .dnt-timeline-item.dnt-reveal.dnt-is-visible {
+  opacity: 1;
+  transform: none;
+}
+.dnt-card .dnt-timeline-item.dnt-is-visible .dnt-timeline-pearl {
+  animation: dnt-m-pearl-pop .64s .27s cubic-bezier(.22,1,.36,1) both;
+}
+.dnt-card .dnt-location .dnt-section-inner.dnt-is-visible .dnt-venue-portrait {
+  animation: dnt-m-portrait-arrive 1.25s .22s cubic-bezier(.22,1,.36,1) both;
+}
+.dnt-card .dnt-location .dnt-section-inner.dnt-is-visible .dnt-location-name {
+  animation: dnt-m-ink-arrive .95s .39s cubic-bezier(.22,1,.36,1) both;
+}
+.dnt-card .dnt-day .dnt-section-inner.dnt-is-visible .dnt-day-illustration {
+  animation: dnt-m-soft-lift 1.15s .18s cubic-bezier(.22,1,.36,1) both;
+}
+.dnt-card .dnt-gift .dnt-section-inner.dnt-is-visible .dnt-gift-heart,
+.dnt-card .dnt-closing .dnt-closing-inner.dnt-is-visible > .dnt-icon {
+  animation: dnt-m-soft-lift 1.15s .04s cubic-bezier(.22,1,.36,1) both;
+}
+.dnt-card .dnt-closing .dnt-closing-inner.dnt-is-visible .dnt-closing-names {
+  animation: dnt-m-ink-arrive 1.15s .4s cubic-bezier(.22,1,.36,1) both;
+}
+/* Odbrojavanje se ne pomera u odnosu na okvir; dolazi kao jedna celina. */
+.dnt.dnt-countdown .dnt-countdown-inner.dnt-reveal {
+  opacity: 0;
+  transform: translate3d(0,19px,0);
+  transition: opacity 1.1s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
+}
+.dnt.dnt-countdown .dnt-countdown-inner.dnt-reveal.dnt-is-visible {
+  opacity: 1;
+  transform: none;
+}
+.dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-frame {
+  animation: dnt-m-frame-arrive 1.35s ease both;
+}
+.dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-content > .dnt-kicker {
+  animation: dnt-m-ink-arrive .85s .22s both;
+}
+.dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-content > .dnt-heading {
+  animation: dnt-m-ink-arrive .85s .38s both;
+}
+/* React menja ključ samo broja koji se promenio: kratko meko 'tik'. */
+.dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-value {
+  display: inline-block;
+  animation: dnt-m-clock-tick .32s ease-out both;
+}
+.dnt.dnt-countdown .dnt-countdown-unit:nth-child(2) { --dnt-num-delay: .06s; }
+.dnt.dnt-countdown .dnt-countdown-unit:nth-child(3) { --dnt-num-delay: .12s; }
+.dnt.dnt-countdown .dnt-countdown-unit:nth-child(4) { --dnt-num-delay: .18s; }
+/* Naglašeni aktivni dodir u Safari-ju; hover ne ostaje zaglavljen. */
+@media (hover: none) and (pointer: coarse) {
+  .dnt-card .dnt-location-actions .dnt-button:active {
+    transform: scale(.975);
+  }
+  .dnt-card .dnt-timeline-map:active { opacity: .65; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dnt-card .dnt-timeline-item.dnt-reveal,
+  .dnt.dnt-countdown .dnt-countdown-inner.dnt-reveal {
+    opacity: 1; transform: none; transition: none;
+  }
+  .dnt-card .dnt-timeline-item.dnt-is-visible .dnt-timeline-pearl,
+  .dnt-card .dnt-location .dnt-section-inner.dnt-is-visible .dnt-venue-portrait,
+  .dnt-card .dnt-location .dnt-section-inner.dnt-is-visible .dnt-location-name,
+  .dnt-card .dnt-day .dnt-section-inner.dnt-is-visible .dnt-day-illustration,
+  .dnt-card .dnt-gift .dnt-section-inner.dnt-is-visible .dnt-gift-heart,
+  .dnt-card .dnt-closing .dnt-closing-inner.dnt-is-visible > .dnt-icon,
+  .dnt-card .dnt-closing .dnt-closing-inner.dnt-is-visible .dnt-closing-names,
+  .dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-frame,
+  .dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-content > .dnt-kicker,
+  .dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-content > .dnt-heading,
+  .dnt.dnt-countdown .dnt-countdown-inner.dnt-is-visible .dnt-countdown-value {
+    animation: none !important; opacity: 1; transform: none;
+  }
+}

@@ -149,7 +149,7 @@ export default function DentelleInvitationCard({
             const place = event.location || event.place;
              const link = dentelleSafeLink(event.mapLink) ||
                (place ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place) : "");
-            return <li className="dnt-timeline-item" key={String(index) + event.time}>
+            return <DentelleReveal as="li" className="dnt-timeline-item" key={String(index) + event.time}>
               <div className="dnt-timeline-art"><DentelleIcon name={event.icon || (index === 0 ? "gathering" : "rings")} size={42} /></div>
               <time className="dnt-timeline-time">{event.time}</time>
               <div className="dnt-timeline-copy">
@@ -159,7 +159,7 @@ export default function DentelleInvitationCard({
                 {(event.description || event.note) && <p className="dnt-body">{event.description || event.note}</p>}
                 {link && <a className="dnt-timeline-map" href={link} target="_blank" rel="noopener noreferrer">{t.directions}</a>}
               </div>
-            </li>;
+            </DentelleReveal>;
           })}
         </ol>
         <img src="/icons/dentelle-tablescape.svg" className="dnt-day-illustration" alt="" aria-hidden="true" loading="lazy" decoding="async" />

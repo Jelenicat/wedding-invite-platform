@@ -109,7 +109,22 @@ export function DentelleLace({ src, className = "" }) {
   // I prazan edgeImage mora da koristi podrazumevanu traku.
   const imageSrc = typeof src === "string" && src.trim() ? src : DENTELLE_ASSETS.edge;
 
-  return <div className={"dnt-lace " + className} aria-hidden="true">
+  const ref = useRef(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setSeen(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.08, rootMargin: "0px 0px -5% 0px" });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return <div ref={ref} className={"dnt-lace " + className + (seen ? " dnt-lace-seen" : "")} aria-hidden="true">
     <img
       src={imageSrc}
       alt=""

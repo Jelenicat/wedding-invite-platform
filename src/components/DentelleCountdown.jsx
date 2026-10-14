@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DentelleLace, dentelleDate, dentelleText } from "./DentelleIntro";
+import { DentelleLace, DentelleReveal, dentelleDate, dentelleText } from "./DentelleIntro";
 import "../styles/newcard.css";
 
 export function dentelleTimeLeft(dateISO, now = Date.now()) {
@@ -41,7 +41,7 @@ export default function DentelleCountdown({ dateISO, details = {}, script = "lat
     <section className="dnt dnt-countdown" data-script={script} aria-label={t.countdown}>
       <DentelleLace src={config.edgeImage} className="dnt-lace-top" />
 
-      <div className="dnt-countdown-inner">
+      <DentelleReveal className="dnt-countdown-inner">
         {/* Samo jedan kompletan okvir; tekst i brojevi su unutar njega. */}
         <img
           src="/icons/dentelle-flourish.svg"
@@ -62,7 +62,7 @@ export default function DentelleCountdown({ dateISO, details = {}, script = "lat
             <div className="dnt-countdown-grid" aria-live="off">
               {["days", "hours", "minutes", "seconds"].map((unit) => (
                 <div className="dnt-countdown-unit" key={unit}>
-                  <span className="dnt-countdown-value">
+                  <span className="dnt-countdown-value" key={left[unit]}>
                     {String(left[unit]).padStart(2, "0")}
                   </span>
                   <span className="dnt-countdown-label">{t[unit]}</span>
@@ -75,7 +75,7 @@ export default function DentelleCountdown({ dateISO, details = {}, script = "lat
             <p className="dnt-body">{config.countdownReachedText || t.celebrate}</p>
           )}
         </div>
-      </div>
+      </DentelleReveal>
 
       <DentelleLace src={config.edgeImage} className="dnt-lace-bottom" />
     </section>

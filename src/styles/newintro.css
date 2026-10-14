@@ -1127,7 +1127,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
    Slika se nikada ne rasteže na fiksnu visinu niti se zumira na 790px.
    Kontrolisano se odseca samo providna margina iznad čipke. */
 .dnt {
-  --dnt-edge-crop: clamp(14px, 6.5vw, 50px);
+  --dnt-edge-crop: clamp(21px, calc(6.5vw + 7px), 57px);
   --dnt-edge-height: clamp(92px, 29vw, 180px);
 }
 .dnt .dnt-lace {
@@ -1703,5 +1703,111 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   .wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-paper > .dnt-hero-content {
     transition-duration: 1ms;
     transition-delay: 0ms;
+  }
+}
+
+
+/* ============================================================
+   DENTELLE MOBILE MOTION — luksuzni detalji, samo ovaj šablon.
+   Transformi se primenjuju samo na decu; NE menjamo geometriju
+   četiri čipkana krila, poziciju čipkane trake ili modalni overlay.
+   ============================================================ */
+@keyframes dnt-m-seal-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(.985); }
+  50% { transform: translate(-50%, -50%) scale(1.027); }
+}
+@keyframes dnt-m-lace-appear {
+  from { opacity: .52; filter: drop-shadow(0 1px 1px rgba(74,50,57,0)); }
+  to { opacity: 1; filter: drop-shadow(0 1px 1px rgba(74,50,57,.10)); }
+}
+@keyframes dnt-m-ink-arrive {
+  from { opacity: 0; transform: translate3d(0,15px,0); }
+  to { opacity: 1; transform: translate3d(0,0,0); }
+}
+@keyframes dnt-m-soft-lift {
+  from { opacity: 0; transform: translate3d(0,17px,0) scale(.985); }
+  to { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+}
+@keyframes dnt-m-swan-breathe {
+  0%, 100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(0,-5px,0); }
+}
+@keyframes dnt-m-sheen {
+  from { transform: translate3d(-135%,0,0) skewX(-20deg); }
+  to { transform: translate3d(240%,0,0) skewX(-20deg); }
+}
+
+/* Blago pulsiranje pečata SAMO dok gost ne otvori pozivnicu. */
+.wedding-page--dentelle .dnt-intro:not(.dnt-is-opening) .dnt-lace-door-seal {
+  animation: dnt-m-seal-breathe 3.4s ease-in-out infinite;
+}
+.wedding-page--dentelle .dnt-intro.dnt-is-opening .dnt-lace-door-seal {
+  animation: none;
+}
+/* Čipka ostaje vidljiva i bez JS-a — animacija se pokrene jednom. */
+.dnt .dnt-lace.dnt-lace-seen > img {
+  animation: dnt-m-lace-appear 1.15s ease-out both;
+}
+/* Imena ulaze kao rukom ispisana, pri KRAJU animacije otvaranja.
+   Animira se samo prava kartica, ne duplirana intro kartica. */
+.wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-family {
+  animation: dnt-m-ink-arrive .85s 2.17s cubic-bezier(.22,1,.36,1) both;
+}
+.wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-names .dnt-script-name:first-child {
+  animation: dnt-m-ink-arrive 1.05s 2.36s cubic-bezier(.22,1,.36,1) both;
+}
+.wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-names .dnt-ampersand {
+  animation: dnt-m-ink-arrive .85s 2.53s cubic-bezier(.22,1,.36,1) both;
+}
+.wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-names .dnt-script-name:last-child {
+  animation: dnt-m-ink-arrive 1.05s 2.69s cubic-bezier(.22,1,.36,1) both;
+}
+.wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-content > .dnt-date {
+  animation: dnt-m-ink-arrive .85s 2.88s cubic-bezier(.22,1,.36,1) both;
+}
+/* Blaga, slojevita pojava teksta, samo kada je sekcija na ekranu. */
+.dnt-reveal.dnt-is-visible > .dnt-kicker {
+  animation: dnt-m-ink-arrive .8s .05s both;
+}
+.dnt-reveal.dnt-is-visible > .dnt-heading,
+.dnt-reveal.dnt-is-visible > .dnt-gift-title,
+.dnt-reveal.dnt-is-visible > .dnt-closing-text {
+  animation: dnt-m-ink-arrive .95s .17s cubic-bezier(.22,1,.36,1) both;
+}
+.dnt-reveal.dnt-is-visible > .dnt-body,
+.dnt-reveal.dnt-is-visible > .dnt-day-note {
+  animation: dnt-m-ink-arrive .9s .29s cubic-bezier(.22,1,.36,1) both;
+}
+.dnt-reveal.dnt-is-visible > .dnt-welcome-swans {
+  animation: dnt-m-soft-lift 1s .07s cubic-bezier(.22,1,.36,1) both,
+             dnt-m-swan-breathe 6s 1.3s ease-in-out infinite;
+}
+/* Korisnik dodiruje celu čipku kao i pre; bez novih UI kontrola. */
+@media (hover: none) and (pointer: coarse) {
+  .dnt .dnt-button,
+  .dnt .dnt-text-button { touch-action: manipulation; }
+  .dnt .dnt-button:active { transform: scale(.975); }
+  .dnt .dnt-text-button:active { opacity: .68; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-page--dentelle .dnt-intro:not(.dnt-is-opening) .dnt-lace-door-seal,
+  .dnt .dnt-lace.dnt-lace-seen > img,
+  .wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-family,
+  .wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-names .dnt-script-name,
+  .wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-names .dnt-ampersand,
+  .wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-content > .dnt-date,
+  .dnt-reveal.dnt-is-visible > .dnt-kicker,
+  .dnt-reveal.dnt-is-visible > .dnt-heading,
+  .dnt-reveal.dnt-is-visible > .dnt-gift-title,
+  .dnt-reveal.dnt-is-visible > .dnt-closing-text,
+  .dnt-reveal.dnt-is-visible > .dnt-body,
+  .dnt-reveal.dnt-is-visible > .dnt-welcome-swans {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  /* Izuzetak: geometrija gornjeg pečata mora da ostane centrirana. */
+  .wedding-page--dentelle .dnt-intro:not(.dnt-is-opening) .dnt-lace-door-seal {
+    transform: translate(-50%, -50%) scale(.985);
   }
 }

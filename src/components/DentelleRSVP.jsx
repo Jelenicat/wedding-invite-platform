@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { collection, doc, serverTimestamp, setDoc, writeBatch } from "firebase/firestore";
 import { db } from "../firebase";
 
-import { DentelleIcon, DentelleLace, dentelleText } from "./DentelleIntro";
+import { DentelleIcon, DentelleLace, DentelleReveal, dentelleText } from "./DentelleIntro";
 import "../styles/newrsvp.css";
 
 // Isti jezici kao u MinimalRSVP, uz očuvanje Dentelle dizajna.
@@ -411,7 +411,7 @@ export default function DentelleRSVP({
         <p className="dnt-rsvp-signature">{brideName} &amp; {groomName}</p>
         <button className="dnt-text-button" type="button" onClick={reset}>{t.another}</button>
       </motion.div> : <>
-        <header className="dnt-rsvp-header">
+        <DentelleReveal as="header" className="dnt-rsvp-header">
           <DentelleIcon name="heart" size={76} />
           <p className="dnt-kicker">{config.rsvpKicker || t.rsvpKicker}</p>
           <h2 className="dnt-heading">RSVP</h2>
@@ -419,7 +419,7 @@ export default function DentelleRSVP({
           <p className="dnt-body">{details.rsvpText || t.rsvpNote}</p>
           {deadline && <p className="dnt-rsvp-deadline">{t.deadline} <strong>{deadline}</strong></p>}
           
-        </header>
+        </DentelleReveal>
         <form className="dnt-rsvp-form" onSubmit={submit} noValidate aria-busy={loading}>
           <fieldset className="dnt-fields" disabled={loading}>
             {!individualGuests && <div className="dnt-field">
