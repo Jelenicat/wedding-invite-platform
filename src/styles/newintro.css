@@ -1123,33 +1123,54 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   transition: opacity 850ms ease, transform 950ms cubic-bezier(0.2, 0.65, 0.2, 1);
 }
 .dnt-reveal.dnt-is-visible { opacity: 1; transform: none; }
-/* Cipka je prikazana prema STVARNIM ivicama veza (iz DentelleLace).
-   Nema min-width:790px, fiksnog pomeranja -57px ni negativnih top/bottom.
-   Rezervne vrednosti se koriste samo dok se slika ne ucita. */
-.dnt-lace {
+/* DENTELLE — jedinstven prikaz čipkane trake na svim sekcijama.
+   Slika se nikada ne rasteže na fiksnu visinu niti se zumira na 790px.
+   Kontrolisano se odseca samo providna margina iznad čipke. */
+.dnt {
+  --dnt-edge-crop: clamp(14px, 6.5vw, 50px);
+  --dnt-edge-height: clamp(92px, 29vw, 180px);
+}
+.dnt .dnt-lace {
   position: absolute;
   left: 0;
   right: 0;
   width: 100%;
-  height: var(--dnt-lace-height, clamp(86px, 26vw, 150px));
-  margin: 0;
+  height: var(--dnt-edge-height);
+  display: block;
   overflow: hidden;
   pointer-events: none;
   z-index: 5;
+  margin: 0;
+  padding: 0;
 }
-.dnt-lace img {
-  position: absolute;
-  left: 0;
-  top: var(--dnt-lace-image-top, calc(-1 * clamp(20px, 8vw, 52px)));
-  width: 100%;
-  max-width: none;
-  height: auto;
-  display: block;
-  object-fit: contain;
+.dnt .dnt-lace-top {
+  top: 0;
+  bottom: auto;
   transform: none;
 }
-.dnt-lace-top { top: 0; bottom: auto; transform: none; }
-.dnt-lace-bottom { top: auto; bottom: 0; transform: rotate(180deg); }
+.dnt .dnt-lace-bottom {
+  top: auto;
+  bottom: 0;
+  transform: scaleY(-1);
+  transform-origin: center center;
+}
+.dnt .dnt-lace > img {
+  position: absolute;
+  display: block;
+  top: calc(-1 * var(--dnt-edge-crop));
+  left: 0;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  height: auto;
+  max-height: none;
+  object-fit: initial;
+  object-position: initial;
+  transform: none;
+  opacity: 1;
+  filter: drop-shadow(0 1px 1px rgba(74, 50, 57, .10));
+}
+
 .dnt-pearl {
   display: block;
   position: absolute;

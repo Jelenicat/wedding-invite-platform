@@ -3505,16 +3505,15 @@
 @media (prefers-reduced-motion: reduce) {
   .dnt-card .dnt-reveal { opacity: 1; transform: none; }
 }
+/* DENTELLE — razmaci između sekcija bez duplih pravila za čipku.
+   Prikaz traka kontrolisan je isključivo u newintro.css. */
+.dnt-card > .dnt-gift { margin-top: 0; }
+.dnt-card > .dnt-closing { padding-top: 0; }
 
-/* ==========================================================
-   DENTELLE: STABILAN PRELAZ SEKCIJA NA SAFARIJU
-   Geometriju cipke kontrolise newintro.css i DentelleLace JSX.
-   Bez dupliranja pravila za top/height/transform.
-   ========================================================== */
-.wedding-page--dentelle .dnt-card .dnt-gift { margin-top: 0; }
-.wedding-page--dentelle .dnt-card .dnt-closing { padding-top: 0; }
-.wedding-page--dentelle .dnt-card .dnt-welcome,
-.wedding-page--dentelle .dnt-card .dnt-day,
-.wedding-page--dentelle .dnt-card .dnt-gift,
-.wedding-page--dentelle .dnt.dnt-countdown,
-.wedding-page--dentelle .dnt.dnt-rsvp { position: relative; }
+@media (max-width: 480px) {
+  .dnt-card > .dnt-welcome { padding-top: max(125px, 32vw); }
+  .dnt-card > .dnt-day { padding-top: max(130px, 34vw); }
+  .dnt-card > .dnt-gift { padding-top: max(135px, 36vw); }
+  .dnt.dnt-rsvp { padding-top: max(142px, 37vw); padding-bottom: max(130px, 35vw); }
+  .dnt.dnt-countdown { padding-top: max(145px, 37vw); padding-bottom: max(140px, 36vw); }
+}
