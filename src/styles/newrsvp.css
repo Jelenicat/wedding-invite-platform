@@ -800,3 +800,206 @@
   .dnt-stepper output { min-width: 25px; }
 }
 @media (prefers-reduced-motion: reduce) { .dnt-success-seal { animation: none; } }
+
+/* ============================================================
+   DENTELLE 2026 — čitljiviji i elegantniji RSVP na telefonu.
+   Samo .dnt-rsvp: ne utiče na Minimal ni Lumiere.
+   ============================================================ */
+.dnt.dnt-rsvp {
+  padding: clamp(125px, 15svh, 170px) clamp(18px, 5.5vw, 40px) clamp(122px, 15svh, 168px);
+  background: radial-gradient(ellipse at 50% 22%, #62243a 0%, #48182e 57%, #350e21 100%);
+}
+.dnt-rsvp .dnt-rsvp-inner {
+  max-width: 465px;
+}
+.dnt-rsvp .dnt-rsvp-header > .dnt-icon {
+  margin-bottom: 14px;
+}
+.dnt-rsvp .dnt-rsvp-header > .dnt-kicker {
+  font-size: 10px;
+  letter-spacing: .16em;
+  color: #e4bcc7;
+}
+.dnt-rsvp .dnt-rsvp-header .dnt-heading {
+  font-size: clamp(51px, 12vw, 70px);
+  line-height: 1.02;
+  letter-spacing: .015em;
+}
+.dnt-rsvp .dnt-rsvp-title {
+  font-size: clamp(24px, 6vw, 31px);
+  line-height: 1.2;
+  color: #fff4ee;
+}
+.dnt-rsvp .dnt-rsvp-header .dnt-body {
+  color: #f0dbe0;
+  max-width: 355px;
+  font-size: 13px;
+  line-height: 1.85;
+}
+.dnt-rsvp .dnt-rsvp-deadline {
+  color: #eed1d4;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.dnt-rsvp .dnt-rsvp-form {
+  margin-top: 35px;
+  padding: 26px 24px 30px;
+  border: 1px solid rgba(231, 196, 200, .24);
+  border-radius: 6px;
+  background: rgba(22, 4, 15, .14);
+  box-shadow: 0 19px 60px rgba(17, 2, 11, .10);
+}
+.dnt-rsvp .dnt-field > label,
+.dnt-rsvp .dnt-field-label,
+.dnt-rsvp .dnt-attendance legend {
+  font-size: 12px;
+  color: #f7e5e5;
+  letter-spacing: .025em;
+  line-height: 1.5;
+}
+.dnt-rsvp .dnt-field input,
+.dnt-rsvp .dnt-field textarea {
+  min-height: 52px;
+  padding: 14px 15px;
+  border-radius: 5px;
+  border-color: rgba(246, 219, 220, .33);
+  background: rgba(255, 244, 244, .06);
+  color: #fff6f1;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.dnt-rsvp .dnt-field input::placeholder,
+.dnt-rsvp .dnt-field textarea::placeholder {
+  color: #e5c6ce;
+  font-size: 13px;
+  opacity: .8;
+}
+.dnt-rsvp .dnt-field input:focus,
+.dnt-rsvp .dnt-field textarea:focus {
+  border-color: #fae1dc;
+  background: rgba(255, 244, 244, .09);
+  box-shadow: 0 0 0 3px rgba(243, 203, 205, .12);
+}
+.dnt-rsvp .dnt-choice-grid {
+  gap: 11px;
+}
+.dnt-rsvp .dnt-choice {
+  min-height: 84px;
+  gap: 11px;
+  padding: 16px 13px;
+  border: 1px solid rgba(239, 213, 212, .31);
+  border-radius: 5px;
+  background: rgba(255, 244, 246, .045);
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.dnt-rsvp .dnt-choice:has(input:focus-visible) {
+  outline-color: #f5d8d6;
+}
+.dnt-rsvp .dnt-choice-active {
+  border-color: #f0d7d5;
+  background: rgba(250, 232, 227, .15);
+  box-shadow: inset 0 0 0 1px rgba(255, 247, 241, .11);
+}
+.dnt-rsvp .dnt-choice-copy {
+  color: #fff3ee;
+  font-size: 15px;
+  line-height: 1.25;
+}
+.dnt-rsvp .dnt-choice-copy small {
+  color: #e6c8ce;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.dnt-rsvp .dnt-choice-small {
+  min-height: 62px;
+}
+.dnt-rsvp .dnt-stepper-row {
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 22px 0;
+}
+.dnt-rsvp .dnt-stepper-row p {
+  font-size: 11px;
+  max-width: 240px;
+  color: #e2c2cb;
+}
+.dnt-rsvp .dnt-stepper button {
+  width: 44px;
+  height: 44px;
+  border-color: rgba(238, 210, 207, .4);
+  border-radius: 5px;
+  font-size: 22px;
+}
+.dnt-rsvp .dnt-stepper button:not(:disabled):focus-visible {
+  outline: 2px solid #f5d8d6;
+  outline-offset: 3px;
+}
+.dnt-rsvp .dnt-stepper output {
+  min-width: 36px;
+  font-size: 27px;
+}
+.dnt-rsvp .dnt-guest-names > .dnt-kicker {
+  font-size: 10px;
+  color: #f1d8dc;
+}
+.dnt-rsvp .dnt-rsvp-submit {
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  margin: 28px auto 0;
+  padding: 14px 20px;
+  justify-content: center;
+  background: #f0ddd4;
+  border: 1px solid #f0ddd4;
+  color: #4b1a2b;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  box-shadow: 0 8px 26px #14041122;
+}
+.dnt-rsvp .dnt-rsvp-submit:not(:disabled):hover {
+  background: #fff4eb;
+  border-color: #fff4eb;
+  color: #461628;
+}
+.dnt-rsvp .dnt-rsvp-submit:focus-visible {
+  outline-color: #fff4eb;
+}
+.dnt-rsvp .dnt-rsvp-error {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.dnt-rsvp .dnt-rsvp-signature {
+  font-size: 42px;
+  line-height: 1.3;
+  color: #f4d6cd;
+  text-wrap: balance;
+}
+.dnt-rsvp[data-script="cyrillic"] .dnt-rsvp-signature {
+  font-size: 30px;
+}
+.dnt-rsvp .dnt-rsvp-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 355px;
+}
+@media (max-width: 390px) {
+  .dnt.dnt-rsvp { padding-inline: 16px; }
+  .dnt-rsvp .dnt-rsvp-form { padding: 23px 17px 27px; }
+  .dnt-rsvp .dnt-choice { gap: 9px; padding: 14px 9px; }
+  .dnt-rsvp .dnt-choice-copy { font-size: 14px; }
+  .dnt-rsvp .dnt-choice-copy small { font-size: 10px; }
+  .dnt-rsvp .dnt-stepper-row p { max-width: 155px; }
+  .dnt-rsvp .dnt-rsvp-header .dnt-heading { font-size: 52px; }
+}
+@media (max-width: 340px) {
+  .dnt-rsvp .dnt-choice-copy { font-size: 13px; }
+  .dnt-rsvp .dnt-choice { padding-inline: 8px; }
+  .dnt-rsvp .dnt-choice-copy small { font-size: 10px; }
+  .dnt-rsvp .dnt-stepper-row p { max-width: 145px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dnt-rsvp .dnt-choice { transition: none; }
+}

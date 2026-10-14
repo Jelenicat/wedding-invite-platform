@@ -1,12 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/newintro.css";
 
+
 // Svi dekorativni elementi su u paketu. Fontovi se uvoze preko Google Fonts u newintro.css.
 export const DENTELLE_ASSETS = {
   cover: "/images/dentelle/lace-envelope.webp",
   frame: "/images/dentelle/lace-frame.webp",
   edge: "/images/dentelle/lace-edge.webp",
   venue: "/icons/dentelle-villa.svg",
+  laceTop: "/images/dentelle/lace-flap-top.webp",
+  laceRight: "/images/dentelle/lace-flap-right.webp",
+  laceBottom: "/images/dentelle/lace-flap-bottom.webp",
+  laceLeft: "/images/dentelle/lace-flap-left.webp",
+  seal: "/images/dentelle/lace-seal.png",
 };
 
 const CYRILLIC = {
@@ -124,11 +130,20 @@ export const DENTELLE_ICONS = {
 };
 
 // Geometrija je u public/icons; currentColor se nasleđuje iz CSS-a.
+
 export function DentelleFlourish({ className = "" }) {
-  return <svg className={"dnt-flourish " + className} viewBox="0 0 320 66" fill="none" aria-hidden="true" focusable="false">
-    <use href="/icons/dentelle-flourish.svg#dnt-flourish" />
-  </svg>;
+  return (
+    <img
+      className={"dnt-flourish " + className}
+      src="/icons/dentelle-flourish.svg"
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+    />
+  );
 }
+
 
 export function DentelleIcon({ name = "rings", className = "", size = 64 }) {
   const key = DENTELLE_ICONS[name] ? name : "rings";
@@ -141,89 +156,159 @@ export function DentelleIcon({ name = "rings", className = "", size = 64 }) {
 }
 
 // Ista unutrašnja kartica tokom otvaranja i nakon prelaska na InvitationCard.
-export function DentelleHeroContent({ brideName, groomName, weddingDate, venue, details = {}, script = "latin", rsvpId }) {
-  const t = dentelleText(script);
+
+export function DentelleHeroContent({
+  brideName,
+  groomName,
+  weddingDate,
+  details = {},
+  script = "latin",
+}) {
   const config = details.dentelle || {};
-  return <div className="dnt-hero-content">
-    <DentelleIcon name="swans" size={44} className="dnt-hero-swans" />
-    <p className="dnt-hero-family">{config.familyText || t.together}</p>
-    <h1 className="dnt-hero-names">
-      <span className="dnt-script-name">{brideName}</span>
-      <span className="dnt-ampersand">&amp;</span>
-      <span className="dnt-script-name">{groomName}</span>
-    </h1>
-    <p className="dnt-date">{weddingDate}</p>
-    <img className="dnt-hero-villa" src={config.heroIllustration || config.venueImage || DENTELLE_ASSETS.venue} alt="" decoding="async" />
-    <p className="dnt-hero-venue">{details.locationName || venue}</p>
-    <p className="dnt-kicker dnt-hero-address">{details.locationAddress || config.heroSubtitle || ""}</p>
-    {rsvpId ? <a className="dnt-hero-reply" href={"#" + rsvpId}>{t.rsvp}</a> : <span className="dnt-hero-reply">{t.rsvp}</span>}
-  </div>;
+
+  const text =
+    config.familyText ||
+    (script === "cyrillic"
+      ? "Са љубављу вас позивамо да будете део нашег најлепшег дана."
+      : "Sa ljubavlju vas pozivamo da budete deo našeg najlepšeg dana.");
+
+  return (
+    <div className="dnt-hero-content">
+      <p className="dnt-hero-family">{text}</p>
+
+      <h1 className="dnt-hero-names">
+        <span className="dnt-script-name">
+          {brideName}
+        </span>
+
+        <span className="dnt-ampersand">&amp;</span>
+
+        <span className="dnt-script-name">
+          {groomName}
+        </span>
+      </h1>
+
+      <p className="dnt-date">{weddingDate}</p>
+    </div>
+  );
 }
 
+
 export default function DentelleIntro({
-  brideName = "", groomName = "", weddingDate = "", venue = "", details = {}, script = "latin",
-  onOpen, onEnter, onStartMusic, isOpen = false,
+  script = "latin",
+  onReveal,
+  onEnter,
+  onOpen,
+  onStartMusic,
+  isOpen = false,
 }) {
   const t = dentelleText(script);
-  const config = details.dentelle || {};
   const [opening, setOpening] = useState(false);
-  const lock = useRef(false);
-  const timer = useRef(null);
-  const initials = config.monogram || [brideName.trim().charAt(0), groomName.trim().charAt(0)].join("");
+  const startedRef = useRef(false);
+  const finishedRef = useRef(false);
+  const fallbackRef = useRef(null);
 
   useEffect(() => {
-    const previous = document.body.style.overflow;
+    const oldBodyOverflow = document.body.style.overflow;
+    const oldHtmlOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
     return () => {
-      document.body.style.overflow = previous;
-      if (timer.current) clearTimeout(timer.current);
+      document.body.style.overflow = oldBodyOverflow;
+      document.documentElement.style.overflow = oldHtmlOverflow;
+      if (fallbackRef.current !== null) window.clearTimeout(fallbackRef.current);
     };
   }, []);
 
-  const open = () => {
-    if (lock.current || isOpen) return;
-    lock.current = true;
-    setOpening(true);
-    onStartMusic?.();
-    // Ne pozivamo onOpen na početku: WeddingPage bi prekinuo preklapanje posle 1600 ms.
-    // Intro sam završava svoju animaciju i tek tada predaje prikaz kartici.
-    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 150 : 2600;
-    timer.current = setTimeout(() => (onEnter || onOpen)?.(), duration);
+  const finishOpening = () => {
+    if (finishedRef.current) return;
+    finishedRef.current = true;
+    if (fallbackRef.current !== null) {
+      window.clearTimeout(fallbackRef.current);
+      fallbackRef.current = null;
+    }
+    // WeddingPage uklanja SAMO cetiri krila. Prava kartica je vec ispod.
+    (onEnter || onOpen)?.();
   };
 
-  return <section className={"dnt dnt-intro " + (opening || isOpen ? "dnt-is-opening" : "")} data-script={script} aria-label={t.invitation}>
-    <div className="dnt-intro-stage">
-      <div className="dnt-intro-card" aria-hidden="true">
-        <img className="dnt-intro-frame" src={config.frameImage || DENTELLE_ASSETS.frame} alt="" decoding="async" />
-        <DentelleHeroContent brideName={brideName} groomName={groomName} weddingDate={weddingDate} venue={venue} details={details} script={script} />
-      </div>
-      <div className="dnt-envelope-flap" aria-hidden="true">
-        <div className="dnt-envelope-face dnt-envelope-flap-front">
-          <img src={config.coverImage || DENTELLE_ASSETS.cover} alt="" fetchPriority="high" decoding="async" />
-          <span className="dnt-wax-seal dnt-flap-seal">
-            <DentelleIcon name="seal" className="dnt-seal-ring-art" size={100} />
-            <span className="dnt-seal-monogram">{initials}</span>
-            <DentelleFlourish className="dnt-seal-flourish" />
-          </span>
+  const open = () => {
+    if (startedRef.current || isOpen) return;
+    startedRef.current = true;
+    // Audio mora krenuti u okviru stvarnog korisnickog klika.
+    onStartMusic?.();
+    // U WeddingPage otkriva postojecu InvitationCard, bez dupliranja hero-a.
+    onReveal?.();
+    setOpening(true);
+
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    // Rezervna zastita: CSS je 3000 ms + poslednje krilo kasni 250 ms.
+    // Inace se prelazi na transitionend donjeg krila.
+    fallbackRef.current = window.setTimeout(finishOpening, reducedMotion ? 100 : 3450);
+  };
+
+  const laceFlaps = [
+    { side: "top", src: DENTELLE_ASSETS.laceTop },
+    { side: "right", src: DENTELLE_ASSETS.laceRight },
+    { side: "bottom", src: DENTELLE_ASSETS.laceBottom },
+    { side: "left", src: DENTELLE_ASSETS.laceLeft },
+  ];
+
+  return (
+    <section
+      className={"dnt dnt-intro " + (opening || isOpen ? "dnt-is-opening" : "")}
+      data-script={script}
+      aria-label={t.invitation}
+    >
+      <div className="dnt-intro-stage">
+        {/* NEMA zasebnog lace-frame.webp ni dupliranog DentelleHeroContent.
+            Pravi DentelleInvitationCard je montiran iza ovog Intro sloja. */}
+        <div className="dnt-four-flaps" aria-hidden="true">
+          <div className="dnt-lace-veil" />
+          {laceFlaps.map(({ side, src }) => (
+            <div
+              key={side}
+              className={"dnt-lace-door dnt-lace-door--" + side}
+              onTransitionEnd={(event) => {
+                if (
+                  side === "bottom" &&
+                  event.target === event.currentTarget &&
+                  event.propertyName === "transform" &&
+                  opening
+                ) {
+                  finishOpening();
+                }
+              }}
+            >
+              <img
+                className={"dnt-lace-door-image dnt-lace-door-image--" + side}
+                src={src}
+                alt=""
+                draggable={false}
+                loading="eager"
+                decoding="async"
+              />
+              {side === "top" && (
+                <img
+                  className="dnt-lace-door-seal"
+                  src={DENTELLE_ASSETS.seal}
+                  alt=""
+                  draggable={false}
+                  decoding="async"
+                />
+              )}
+            </div>
+          ))}
         </div>
-        <div className="dnt-envelope-face dnt-envelope-flap-back">
-          <img src={config.frameImage || DENTELLE_ASSETS.frame} alt="" decoding="async" />
-        </div>
+        <div className="dnt-intro-vignette" aria-hidden="true" />
+        <button
+          type="button"
+          className="dnt-open-surface"
+          onClick={open}
+          disabled={opening || isOpen}
+          aria-label={t.open}
+        />
       </div>
-      {["left", "right", "bottom"].map((fold) => <div key={fold} className={"dnt-envelope-fold dnt-envelope-" + fold} aria-hidden="true">
-        <img src={config.coverImage || DENTELLE_ASSETS.cover} alt="" decoding="async" />
-      </div>)}
-      <div className="dnt-intro-vignette" aria-hidden="true" />
-      <p className="dnt-intro-kicker">{config.introKicker ?? t.forYou}</p>
-      <button type="button" className="dnt-wax-seal" onClick={open} disabled={opening || isOpen} aria-label={t.open}>
-        <DentelleIcon name="seal" className="dnt-seal-ring-art" size={100} />
-        <span className="dnt-seal-monogram" aria-hidden="true">{initials}</span>
-        <DentelleFlourish className="dnt-seal-flourish" />
-      </button>
-      <div className="dnt-intro-caption">
-        <h1 className="dnt-intro-names">{brideName} <span>&amp;</span> {groomName}</h1>
-        <p className="dnt-intro-date">{weddingDate}</p>
-      </div>
-    </div>
-  </section>;
+    </section>
+  );
 }

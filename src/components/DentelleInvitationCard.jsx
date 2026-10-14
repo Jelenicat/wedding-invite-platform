@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import DentelleCountdown from "./DentelleCountdown";
 import DentelleRSVP from "./DentelleRSVP";
 import {
-  DENTELLE_ASSETS, DentelleHeroContent, DentelleIcon, DentelleFlourish, DentelleLace, DentelleReveal,
+  DENTELLE_ASSETS, DentelleHeroContent, DentelleIcon, DentelleLace, DentelleReveal,
   dentelleDate, dentelleSafeLink, dentelleText,
 } from "./DentelleIntro";
 import "../styles/newcard.css";
@@ -51,7 +51,7 @@ export function dentelleCalendar({ dateISO, brideName, groomName, venue, slug, d
 
 export default function DentelleInvitationCard({
   brideName = "", groomName = "", weddingDate = "", weddingTime = "", venue = "",
-  details = {}, slug = "", type = "wedding", script = "latin",
+  details = {}, slug = "", type = "wedding", script = "latin", introReady = true, language = "sr",
 }) {
   const t = dentelleText(script);
   const config = details.dentelle || {};
@@ -67,10 +67,12 @@ export default function DentelleInvitationCard({
   const illustration = config.venueImage || DENTELLE_ASSETS.venue;
 
   useEffect(() => {
-    // Ova komponenta se montira tek kada WeddingPage završi otvaranje koverte.
+    // U Dentelle sablonu kartica se ucitava iza zatvorene cipke.
+    // Fokus i scroll pomeramo tek kada su sva cetiri krila otvorena.
+    if (!introReady) return;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     mainRef.current?.focus({ preventScroll: true });
-  }, [slug]);
+  }, [slug, introReady]);
 
   const saveDate = () => {
     const content = dentelleCalendar({
@@ -99,11 +101,11 @@ export default function DentelleInvitationCard({
     <section className="dnt-welcome">
       <DentelleLace src={config.edgeImage} className="dnt-lace-top" />
       <DentelleReveal className="dnt-welcome-inner">
-        <DentelleIcon name="swans" size={58} />
+        <img src="/icons/dentelle-swans.svg" alt="" className="dnt-welcome-swans" aria-hidden="true" loading="eager" />
         <p className="dnt-kicker">{config.welcomeKicker || t.forYou}</p>
         <h2 className="dnt-heading">{config.welcomeTitle || t.welcomeTitle}</h2>
         <p className="dnt-body">{details.welcomeText || t.welcomeBody}</p>
-        <DentelleFlourish />
+
       </DentelleReveal>
     </section>
 
@@ -117,9 +119,9 @@ export default function DentelleInvitationCard({
           <span className="dnt-pearl dnt-pearl-one" aria-hidden="true" />
           <span className="dnt-pearl dnt-pearl-two" aria-hidden="true" />
           <span className="dnt-pearl dnt-pearl-three" aria-hidden="true" />
-          <DentelleFlourish className="dnt-venue-flourish" />
+
           <img src={illustration} alt={config.venueAlt || t.venueAlt} loading="lazy" decoding="async" />
-          <DentelleFlourish className="dnt-venue-flourish dnt-flourish-bottom" />
+
         </div>
         <h3 className="dnt-location-name">{venueName}</h3>
         {details.locationAddress && <p className="dnt-kicker">{details.locationAddress}</p>}
@@ -144,7 +146,9 @@ export default function DentelleInvitationCard({
         <p className="dnt-body dnt-day-note">{config.scheduleNote || t.dayNote}</p>
         <ol className="dnt-timeline">
           {events.map((event, index) => {
-            const link = dentelleSafeLink(event.mapLink);
+            const place = event.location || event.place;
+             const link = dentelleSafeLink(event.mapLink) ||
+               (place ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place) : "");
             return <li className="dnt-timeline-item" key={String(index) + event.time}>
               <div className="dnt-timeline-art"><DentelleIcon name={event.icon || (index === 0 ? "gathering" : "rings")} size={42} /></div>
               <time className="dnt-timeline-time">{event.time}</time>
@@ -158,17 +162,25 @@ export default function DentelleInvitationCard({
             </li>;
           })}
         </ol>
-        <DentelleIcon name="tablescape" className="dnt-day-illustration" />
+        <img src="/icons/dentelle-tablescape.svg" className="dnt-day-illustration" alt="" aria-hidden="true" loading="lazy" decoding="async" />
       </DentelleReveal>
     </section>}
 
     {details.showDressCode && <section className="dnt-dress">
       <DentelleReveal className="dnt-dress-paper">
-        <img className="dnt-dress-frame" src={frame} alt="" loading="lazy" decoding="async" />
+       
+<img
+  className="dnt-dress-frame"
+  src={config.dressFrameImage || "/images/dentelle-dress-bg.png"}
+  alt=""
+  loading="lazy"
+  decoding="async"
+/>
+
         <div className="dnt-dress-content">
           <p className="dnt-kicker">{t.dress}</p>
           <h2 className="dnt-heading">{details.dressCodeTitle || t.dressTitle}</h2>
-          <DentelleIcon name="dress" size={102} />
+          <img src="/icons/dentelle-dress.svg" className="dnt-dress-illustration" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           <p className="dnt-body">{details.dressCodeNote || t.dressNote}</p>
           {details.dressCodeWomen && <p className="dnt-body dnt-dress-extra">{details.dressCodeWomen}</p>}
           {details.dressCodeMen && <p className="dnt-body dnt-dress-extra">{details.dressCodeMen}</p>}
@@ -177,7 +189,7 @@ export default function DentelleInvitationCard({
               <use href="/icons/dentelle-swatch.svg#dnt-swatch" fill={color} />
             </svg>)}
           </div>}
-          <DentelleFlourish />
+
         </div>
       </DentelleReveal>
     </section>}
@@ -185,7 +197,7 @@ export default function DentelleInvitationCard({
     {config.showGift !== false && <section className="dnt-gift">
       <DentelleLace src={config.edgeImage} className="dnt-lace-top" />
       <DentelleReveal className="dnt-section-inner">
-        <DentelleIcon name="heart" size={55} />
+        <img src="/icons/dentelle-heart.svg" className="dnt-gift-heart" alt="" aria-hidden="true" loading="lazy" decoding="async" />
         <p className="dnt-kicker">{config.giftTitle || t.gift}</p>
         <h2 className="dnt-gift-title">{config.giftText || t.giftText}</h2>
         <p className="dnt-body">{config.giftNote || t.giftNote}</p>
@@ -194,7 +206,7 @@ export default function DentelleInvitationCard({
     </section>}
 
     <div id={rsvpId} className="dnt-rsvp-anchor">
-      <DentelleRSVP key={slug} slug={slug} eventType={type} brideName={brideName} groomName={groomName} details={details} script={script} />
+      <DentelleRSVP key={slug} slug={slug} eventType={type} brideName={brideName} groomName={groomName} details={details} script={script} language={language} />
     </div>
 
     <footer className="dnt-closing">
@@ -206,7 +218,7 @@ export default function DentelleInvitationCard({
           <p className="dnt-kicker">{t.withLove}</p>
           <p className="dnt-closing-names">{brideName}<span>&amp;</span>{groomName}</p>
           <p className="dnt-date">{weddingDate}</p>
-          <DentelleFlourish />
+
         </DentelleReveal>
       </div>
     </footer>

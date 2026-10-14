@@ -5520,101 +5520,183 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+
+
 {
   slug: "dentelle-demo",
   type: "wedding",
   template: "dentelle-lace",
   script: "latin",
+
   brideName: "Ana",
   groomName: "Nikola",
+
   weddingDate: "17. jul 2027.",
   weddingTime: "17:00",
   venue: "Vila Jelena, Beograd",
+
   musicSrc: "",
+
   details: {
     ...createDetails({
       date: "17. jul 2027.",
       dateISO: "2027-07-17T17:00:00+02:00",
+
       venue: "Vila Jelena, Beograd",
       locationName: "Vila Jelena",
       locationAddress: "Beograd, Srbija",
+
       welcomeText:
         "Neke priče počnu jednim pogledom, a postanu sve. Sa radošću vas pozivamo da budete deo dana u kojem našoj priči dodajemo jedno veliko — zauvek.",
+
+      // PROGRAM VENČANJA
       events: [
         {
           time: "16:00",
           label: "Okupljanje gostiju",
           location: "Vila Jelena",
-          description: "Zagrljaji, osmesi i prva čaša u čast ljubavi.",
+          description:
+            "Zagrljaji, osmesi i prva čaša u čast ljubavi.",
           icon: "gathering",
         },
         {
           time: "17:00",
           label: "Naše „da”",
           location: "Vila Jelena",
-          description: "Trenutak u kojem zauvek dobija naše ime.",
+          description:
+            "Trenutak u kojem zauvek dobija naše ime.",
           icon: "rings",
         },
         {
           time: "18:00",
           label: "Zdravice i večera",
-          description: "Za jednim stolom, sa svim ljudima koje volimo.",
+          description:
+            "Za jednim stolom, sa svim ljudima koje volimo.",
           icon: "dinner",
         },
         {
           time: "20:00",
           label: "Prvi ples",
-          description: "Naša pesma, a onda plesni podijum pripada svima.",
+          description:
+            "Naša pesma, a onda plesni podijum pripada svima.",
           icon: "party",
         },
         {
           time: "22:00",
           label: "Nešto slatko",
-          description: "Torta, želje i još mnogo lepih uspomena.",
+          description:
+            "Torta, želje i još mnogo lepih uspomena.",
           icon: "cake",
         },
       ],
+
+      // LOKACIJA
       showLocationButton: true,
       locationButtonText: "Pogledaj lokaciju",
-      mapLink: "https://www.google.com/maps/search/?api=1&query=Vila+Jelena+Beograd",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Vila+Jelena+Beograd",
+
+      // KALENDAR
       showCalendarButton: true,
       calendarDurationHours: 8,
+
+      // DRESS CODE
       showDressCode: true,
       dressCodeTitle: "Svečano, u svom stilu.",
       dressCodeNote:
         "Elegantne kombinacije, nežne nijanse i poneki bordo detalj lepo će se uklopiti u naš dan. Belu prepuštamo mladi.",
-      dressCodePalette: ["#f7f1e8", "#d9c5bc", "#967681", "#471327"],
+
+      dressCodePalette: [
+        "#f7f1e8",
+        "#d9c5bc",
+        "#967681",
+        "#471327",
+      ],
+
+      // RSVP - FUNKCIONALNOSTI KAO MINIMAL
       rsvpOptions: {
+        // Pitanje o postu
         fasting: false,
-        children: true,
-        dietary: true,
+
+        // Broj dece
+        children: false,
+
+        // Alergije i posebna ishrana
+        dietary: false,
+
+        // Svaki gost kao poseban Firebase dokument
         individualGuests: false,
+
+        // Maksimalan broj prijavljenih osoba
         maxGuests: 10,
       },
+
+      // Da li je prijava zatvorena?
       rsvpClosed: false,
+
+      // Tekst ispod imena mladenaca
+      rsvpSignature: "Ana & Nikola",
     }),
+
+    // DENTELLE PODEŠAVANJA
     dentelle: {
       monogram: "AN",
-      coverImage: "/images/dentelle/lace-envelope.webp",
-      frameImage: "/images/dentelle/lace-frame.webp",
-      edgeImage: "/images/dentelle/lace-edge.webp",
-      // Dekorativna, generisana vila za demo; nije prikaz stvarne Vile Jelena.
-      // Za klijenta ovde može da ide fotografija ili ilustracija njegove lokacije.
-      venueImage: "/images/dentelle/villa-illustration.webp",
-      venueAlt: "Dekorativna ilustracija romantične vile",
+
+      // INTRO - 4 ČIPKANA KRILA
+      coverImage:
+        "/images/dentelle/lace-envelope.webp",
+
+      // POČETNA KARTICA
+      frameImage:
+        "/images/dentelle/lace-frame.webp",
+
+      // GORNJE I DONJE ČIPKANE TRAKE
+      edgeImage:
+        "/images/dentelle/lace-edge.webp",
+
+      // DRESS CODE POZADINA
+      dressFrameImage:
+        "/images/dentelle-dress-bg.png",
+
+      // ILUSTRACIJA LOKACIJE
+      venueImage:
+        "/images/dentelle/villa-illustration.webp",
+
+      venueAlt:
+        "Dekorativna ilustracija romantične vile",
+
       venueText:
         "Mesto za dugo pamćenje, za nežne zdravice i veliko slavlje. Dođite malo ranije, da najlepše trenutke započnemo zajedno.",
+
+      // RSVP
       rsvpDeadline: "1. jula 2027.",
+
+      rsvpKicker: "Radujemo se vašem dolasku",
+      rsvpTitle: "Potvrdite dolazak",
+
+      // TEKSTOVI
+      familyText:
+        "Sa ljubavlju vas pozivamo da budete deo našeg najlepšeg dana.",
+
       welcomeTitle: "Najlepše je zajedno.",
       countdownTitle: "Do našeg zauvek",
       scheduleTitle: "Naš dan",
+
+      // POKLON
       showGift: true,
-      giftText: "Vaše prisustvo je naš najlepši poklon.",
-      giftNote: "Najviše nam znači da ovaj dan podelimo sa vama.",
-      closingText: "Jedva čekamo da slavimo ljubav, zajedno sa vama.",
+      giftText:
+        "Vaše prisustvo je naš najlepši poklon.",
+      giftNote:
+        "Najviše nam znači da ovaj dan podelimo sa vama.",
+
+      // ZAVRŠNA SEKCIJA
+      closingText:
+        "Jedva čekamo da slavimo ljubav, zajedno sa vama.",
     },
   },
 },
+
+
 
 
 // =========================

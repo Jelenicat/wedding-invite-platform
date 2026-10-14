@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&family=Monsieur+La+Doulaise&display=swap");
 /*! @license
 Fontovi su ugrađeni u ovaj CSS fajl; ne kopira se zaseban folder sa fontovima.
 
@@ -1007,7 +1007,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   --dnt-wine-light: #622239;
   --dnt-border: #d6c8bf;
   --dnt-serif: "Cormorant Garamond", "Times New Roman", serif;
-  --dnt-script: "Great Vibes", "Cormorant Garamond", Georgia, serif;
+  --dnt-script: "Monsieur La Doulaise", "Great Vibes", "Cormorant Garamond", Georgia, serif;
   --dnt-sans: "Jost", Arial, sans-serif;
   box-sizing: border-box;
   color: var(--dnt-ink);
@@ -1062,8 +1062,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .dnt-script-name {
   display: block;
   font-family: var(--dnt-script);
-  font-size: clamp(54px, 11vw, 79px);
-  line-height: 1.14;
+  font-size: clamp(68px, 13vw, 98px);
+  line-height: 1.02;
   font-weight: 400;
 }
 .dnt-ampersand {
@@ -1142,169 +1142,522 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .dnt[data-script="cyrillic"] .dnt-closing-names,
 .dnt[data-script="cyrillic"] .dnt-rsvp-signature { font-style: italic; }
 
-/* Koverta: celovit prednji džep, čist preklop i mirno otkrivanje kartice.
-   Ovaj blok zamenjuje prethodne Dentelle intro stilove; JSX ostaje isti. */
+/* ============================================================
+   DENTELLE INTRO / 4 ORIGINALNA PROVIDNA KRILA
+   Jedno WebP krilo = celo transparentno platno 1024x1536.
+   Samo aktivni cipkani trougao ima alfa piksele; ne rezemo sliku
+   clip-path-om. Sve cetiri slike ostaju savrseno poravnate.
+   Sarke su na 4 spoljne ivice platna.
+   ============================================================ */
 .dnt-intro {
-  position: relative; width: 100%; min-height: 100svh; display: grid;
-  place-items: center; overflow: hidden; background: #f3ede7;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #efe7e0;
 }
 .dnt-intro::before {
-  content: ""; position: absolute; inset: -15px;
-  background: url("/images/dentelle/lace-envelope.webp") center / cover;
-  filter: blur(10px) saturate(.5); opacity: .25; pointer-events: none;
-}
-.dnt-intro-stage {
-  position: relative; width: min(100%, 620px); height: 100svh; max-height: 1100px;
-  overflow: hidden; isolation: isolate; background: var(--dnt-paper);
-  box-shadow: 0 0 70px #795e5420;
-  perspective: 2400px; perspective-origin: 50% 20%;
-}
-.dnt-intro-card {
-  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
-  transform: scale(.985); transform-origin: 50% 50%;
-  opacity: 1; background: var(--dnt-paper); will-change: transform;
-  box-shadow: 0 8px 30px #79624e18;
-}
-.dnt-intro-frame {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill;
-  filter: saturate(.7) brightness(1.03);
-}
-.dnt-intro-card .dnt-hero-content {
-  min-height: 100%; height: 100%; padding-top: clamp(85px, 15svh, 145px);
-  padding-bottom: clamp(87px, 15svh, 142px);
-  opacity: 0;
-}
-.dnt-envelope-flap {
-  position: absolute; inset: 0; z-index: 4; transform-origin: 50% 0%;
-  transform-style: preserve-3d; transform: rotateX(0deg);
-  transition: transform 1120ms cubic-bezier(.4, .05, .2, 1) 120ms,
-    opacity 600ms ease 680ms;
-  will-change: transform, opacity; pointer-events: none;
-}
-.dnt-envelope-face, .dnt-envelope-fold {
-  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
-  /* Bez ovalnih izreza: nijedan deo teksta ne proviruje kroz pečat. */
-  -webkit-mask-image: none; mask-image: none;
-}
-.dnt-envelope-face {
-  backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  clip-path: polygon(0 0, 100% 0, 100% 16%, 50% 56%, 0 16%);
-}
-.dnt-envelope-face img, .dnt-envelope-fold img {
-  width: 100%; height: 100%; object-fit: fill;
-  filter: brightness(1.04) saturate(.66);
-}
-.dnt-envelope-flap-front { transform: rotateX(0deg); }
-.dnt-envelope-flap-back {
-  transform: rotateX(180deg);
-  background: linear-gradient(180deg, #e9ddd1, #fbf5ed 68%);
-}
-.dnt-envelope-flap-back img { opacity: .42; filter: brightness(1.02) saturate(.35); }
-.dnt-envelope-fold {
-  z-index: 3; opacity: 1; transform: translateY(0);
-  will-change: transform, opacity;
-  /* Sva tri dela pomeraju se zajedno, kao jedan prednji džep koverte. */
-  transition: transform 1350ms cubic-bezier(.32, .05, .18, 1) 620ms,
-    opacity 850ms ease 880ms;
-}
-.dnt-envelope-left {
-  clip-path: polygon(0 15.9%, 50.1% 56%, 0 78.1%);
-}
-.dnt-envelope-right {
-  clip-path: polygon(100% 15.9%, 49.9% 56%, 100% 78.1%);
-}
-.dnt-envelope-bottom {
-  clip-path: polygon(0 78%, 50% 55.9%, 100% 78%, 100% 100%, 0 100%);
-}
-.dnt-intro-vignette {
-  position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(180deg, #f9f4ef66, transparent 18%, transparent 64%, #f8f2ebaa 88%, #f8f2ebc7);
-  transition: opacity 330ms;
-}
-.dnt-intro-kicker {
-  position: absolute; z-index: 6; top: max(40px, 6.2%); left: 15px; right: 15px;
-  text-align: center; font-size: 9px; font-weight: 400; letter-spacing: .3em;
-  text-transform: uppercase; color: #65474c; transition: opacity 220ms;
-}
-.dnt-wax-seal {
-  position: absolute; z-index: 8; top: 48.6%; left: 50%; display: grid; place-items: center;
-  width: clamp(111px, 27vw, 148px); aspect-ratio: 1; border: 1px solid #e7dace;
-  border-radius: 48% 51% 49% 52% / 51% 48% 52% 49%; padding: 0;
-  transform: translate(-50%, -50%) rotate(-4deg); color: #b29b8c;
-  background: radial-gradient(ellipse at 36% 26%, #fffaf1, #f1e5d8 68%, #d8c0aa 91%, #f7ede1);
-  box-shadow: 3px 7px 14px #775b4740, inset 2px 3px 3px #fffef5, inset -3px -4px 5px #baa08b55;
-  transition: transform 360ms cubic-bezier(.2,.6,.2,1), opacity 240ms,
-    box-shadow 220ms;
-}
-.dnt-wax-seal:not(:disabled):hover {
-  transform: translate(-50%, -50%) rotate(-1deg) scale(1.035);
-  box-shadow: 4px 10px 23px #775b4750, inset 2px 3px 3px #fffef5, inset -3px -4px 5px #baa08b55;
-}
-.dnt-seal-ring-art { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .85; }
-.dnt-intro .dnt-seal-monogram { display: none; }
-.dnt-seal-flourish {
-  position: absolute; width: 54%; left: 23%; top: 50%; bottom: auto;
-  margin: 0; transform: translateY(-50%); opacity: .75;
-}
-.dnt-intro-caption {
-  position: absolute; z-index: 7; left: 8%; right: 8%; bottom: max(35px, 7.5%);
-  text-align: center; display: flex; align-items: center; flex-direction: column;
-  pointer-events: none; transition: opacity 220ms;
-}
-.dnt-intro-names {
-  font-family: var(--dnt-script); font-size: clamp(34px, 8vw, 47px); font-weight: 400;
-  line-height: 1.5; color: #54343e; text-wrap: balance;
-}
-.dnt-intro-names span { padding-inline: 4px; font-family: var(--dnt-serif); font-size: .52em; font-style: italic; }
-.dnt-intro-date { font-family: var(--dnt-serif); font-size: 16px; letter-spacing: .035em; }
-.dnt-is-opening .dnt-envelope-flap { transform: rotateX(-165deg); opacity: 0; }
-.dnt-is-opening .dnt-envelope-fold { transform: translateY(82%); opacity: 0; }
-.dnt-is-opening .dnt-intro-card {
-  animation: dnt-letter-emerge 1400ms cubic-bezier(.2,.65,.2,1) 800ms both;
-}
-.dnt-is-opening .dnt-intro-card .dnt-hero-content {
-  animation: dnt-letter-ink 900ms ease 1000ms both;
-}
-.dnt-is-opening .dnt-intro-vignette,
-.dnt-is-opening .dnt-intro-kicker,
-.dnt-is-opening .dnt-intro-caption { opacity: 0; }
-.dnt-is-opening .dnt-wax-seal {
-  opacity: 0; transform: translate(-50%, -57%) rotate(-4deg) scale(1.025);
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(ellipse, #fcf8f5 8%, #e7d9cf 100%);
   pointer-events: none;
 }
-.dnt-intro .dnt-flap-seal { display: none; }
-@keyframes dnt-letter-emerge {
-  from { transform: scale(.985); }
-  to { transform: scale(1); }
+.dnt-intro-stage {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 620px);
+  /* Visinu sada diktira isti sadrzaj kao u zavrsnoj kartici. */
+  height: auto;
+  min-height: min(100svh, 980px);
+  max-height: none;
+  background: #faf6f2;
+  box-shadow: 0 0 65px #795e5420;
+  overflow: hidden;
+  perspective: 1500px;
+  perspective-origin: center center;
 }
-@keyframes dnt-letter-ink { from { opacity: 0; } to { opacity: 1; } }
+/* Nevidljiva, ali u layout-u: identicna visina stvarne InvitationCard. */
+.dnt-intro .dnt-intro-sizing {
+  width: 100%;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+.dnt-intro .dnt-intro-card,
+.dnt-intro .dnt-four-flaps,
+.dnt-intro .dnt-intro-vignette {
+  position: absolute;
+  inset: 0;
+}
+/* Ovo je JEDINA pozivnica, ispod krila. */
+.dnt-intro .dnt-intro-card {
+  z-index: 1;
+  background: var(--dnt-paper, #fffaf5);
+  overflow: hidden;
+  pointer-events: none;
+}
+.dnt-intro .dnt-intro-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  /* Potpuno isti filter kao dnt-hero-frame na sledecoj kartici. */
+  filter: saturate(0.7) brightness(1.03);
+  pointer-events: none;
+  user-select: none;
+}
+.dnt-intro .dnt-intro-card .dnt-hero-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  min-height: 100%;
+  padding-top: clamp(82px, 14svh, 142px);
+  padding-bottom: clamp(82px, 14svh, 142px);
+  opacity: 1;
+  transform: none;
+  pointer-events: none;
+}
+
+.dnt-intro .dnt-four-flaps {
+  z-index: 7;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+/* Providni veo smanjuje citljivost slike ispod dok su krila zatvorena. */
+.dnt-intro .dnt-lace-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(252, 245, 239, .36);
+  pointer-events: none;
+  transition: opacity 1350ms ease 350ms;
+}
+.dnt-intro.dnt-is-opening .dnt-lace-veil {
+  opacity: 0;
+}
+/* Sva cetiri istovetna platna potpuno se preklapaju,
+   ali stvarni vidljivi delovi su razliciti zahvaljujuci alfa kanalu. */
+.dnt-intro .dnt-lace-door {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+  will-change: transform;
+  transition: transform 3000ms cubic-bezier(.65, 0, .35, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.dnt-intro .dnt-lace-door-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.dnt-intro .dnt-lace-door--top {
+  z-index: 4;
+  transform-origin: 50% 0%;
+  transition-delay: 0ms;
+}
+.dnt-intro .dnt-lace-door--right {
+  z-index: 3;
+  transform-origin: 100% 50%;
+  transition-delay: 140ms;
+}
+.dnt-intro .dnt-lace-door--bottom {
+  z-index: 2;
+  transform-origin: 50% 100%;
+  transition-delay: 250ms;
+}
+.dnt-intro .dnt-lace-door--left {
+  z-index: 3;
+  transform-origin: 0% 50%;
+  transition-delay: 140ms;
+}
+
+/* Kao 4 sarke: otvaraju se ka spoljasnjosti,
+   bez translacije i bez dodatne koverte. */
+.dnt-intro.dnt-is-opening .dnt-lace-door--top {
+  transform: rotateX(-169deg);
+}
+.dnt-intro.dnt-is-opening .dnt-lace-door--right {
+  transform: rotateY(-169deg);
+}
+.dnt-intro.dnt-is-opening .dnt-lace-door--bottom {
+  transform: rotateX(169deg);
+}
+.dnt-intro.dnt-is-opening .dnt-lace-door--left {
+  transform: rotateY(169deg);
+}
+
+/* Pecat je sada fizicki vezan za gornje krilo, pa se krece zajedno s njim. */
+.dnt-intro .dnt-lace-door-seal {
+  position: absolute;
+  z-index: 2;
+  width: 27.1%;
+  left: 50%;
+  top: 45.83%;
+  object-fit: contain;
+  transform: translate(-50%, -50%) scale(.985);
+  pointer-events: none;
+  user-select: none;
+  background: transparent;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 2px 4px rgba(99,75,64,.11)) brightness(.99) contrast(1.02);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.dnt-intro .dnt-intro-vignette {
+  z-index: 8;
+  background: linear-gradient(180deg, #faf4ed22, transparent 22%, transparent 71%, #f5eee733);
+  pointer-events: none;
+  transition: opacity 320ms ease;
+}
+.dnt-intro .dnt-intro-kicker {
+  position: absolute;
+  z-index: 9;
+  top: max(36px, 6%);
+  left: 15px;
+  right: 15px;
+  margin: 0;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .3em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #65474c;
+  pointer-events: none;
+  transition: opacity 320ms ease;
+}
+.dnt-intro .dnt-intro-caption {
+  position: absolute;
+  z-index: 9;
+  left: 8%;
+  right: 8%;
+  bottom: max(35px, 7.5%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 320ms ease;
+}
+.dnt-intro .dnt-intro-names {
+  font-family: var(--dnt-script);
+  font-size: clamp(34px, 8vw, 47px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #54343e;
+  text-wrap: balance;
+}
+.dnt-intro .dnt-intro-names span {
+  padding-inline: 4px;
+  font-family: var(--dnt-serif);
+  font-size: .52em;
+  font-style: italic;
+}
+.dnt-intro .dnt-intro-date {
+  font-family: var(--dnt-serif);
+  font-size: 16px;
+  letter-spacing: .035em;
+}
+.dnt-intro .dnt-open-surface {
+  position: absolute;
+  z-index: 11;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.dnt-intro .dnt-open-surface:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+.dnt-intro .dnt-open-surface:focus-visible {
+  outline: 2px solid #967365;
+  outline-offset: -5px;
+}
+.dnt-intro .dnt-wax-seal { display: none; }
+.dnt-intro.dnt-is-opening .dnt-intro-caption,
+.dnt-intro.dnt-is-opening .dnt-intro-kicker,
+.dnt-intro.dnt-is-opening .dnt-intro-vignette { opacity: 0; }
+.dnt-intro.dnt-is-opening .dnt-intro-card .dnt-hero-content {
+  opacity: 1;
+  transform: none;
+}
 @media (max-height: 580px) {
-  .dnt-intro-kicker { top: 20px; font-size: 8px; }
-  .dnt-wax-seal { top: 44%; width: 88px; }
-  .dnt-intro-caption { bottom: 23px; }
-  .dnt-intro-names { font-size: 32px; line-height: 1.25; }
-  .dnt-intro-card .dnt-hero-content { padding-top: 55px; padding-bottom: 50px; }
-  .dnt-intro-card .dnt-hero-names .dnt-script-name { font-size: 40px; }
-  .dnt-intro-card .dnt-hero-names { margin-block: 15px; }
-  .dnt-intro-card .dnt-hero-villa { width: 155px; margin-block: 15px; }
+  .dnt-intro .dnt-intro-kicker { top: 20px; font-size: 8px; }
+  .dnt-intro .dnt-intro-caption { bottom: 23px; }
+  .dnt-intro .dnt-intro-names { font-size: 32px; line-height: 1.25; }
+  .dnt-intro .dnt-intro-card .dnt-hero-content { padding-top: 55px; padding-bottom: 50px; }
+  .dnt-intro .dnt-intro-card .dnt-hero-names .dnt-script-name { font-size: 40px; }
+  .dnt-intro .dnt-intro-card .dnt-hero-names { margin-block: 15px; }
+  .dnt-intro .dnt-intro-card .dnt-hero-villa { width: 155px; margin-block: 15px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .dnt-reveal { opacity: 1; transform: none; transition: none; }
   .dnt .dnt-button { transition: none; }
-  .dnt .dnt-envelope-flap, .dnt .dnt-envelope-fold,
-  .dnt .dnt-wax-seal, .dnt .dnt-intro-caption,
-  .dnt .dnt-intro-vignette, .dnt .dnt-intro-kicker { transition-duration: 100ms; transition-delay: 0ms; }
-  .dnt-is-opening .dnt-intro-card,
-  .dnt-is-opening .dnt-intro-card .dnt-hero-content {
-    animation-duration: 100ms; animation-delay: 0ms;
+  .dnt-intro .dnt-lace-door,
+  .dnt-intro .dnt-lace-veil,
+  .dnt-intro .dnt-lace-door-seal,
+  .dnt-intro .dnt-intro-caption,
+  .dnt-intro .dnt-intro-vignette,
+  .dnt-intro .dnt-intro-kicker {
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+  }
+  .dnt-intro.dnt-is-opening .dnt-intro-card .dnt-hero-content {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
   }
 }
-
-
 
 /* Manji inicijali na telefonu */
 @media (max-width: 600px) {
   .lmv.lmv-intro .lmv-intro-monogram {
     font-size: calc(var(--lmv-emblem-size) * 0.40);
+  }
+}
+
+
+/* ================================================================
+   DENTELLE – STARI PRIKAZ ZATVORENOG PISMA
+   Samo vidljiva cipkana krila/pecat/tekst zatvorenog pisma.
+   Pozadina prave kartice ostaje u originalnoj geometriji, tako
+   da nema ponovnog rastezanja okvira posle animacije.
+   ================================================================ */
+.dnt-intro .dnt-four-flaps,
+.dnt-intro .dnt-intro-vignette {
+  top: 0;
+  bottom: auto;
+  height: min(100svh, 1100px);
+}
+
+/* Vraćamo originalni centar 3D otvaranja, nezavisno od
+   ukupne visine prave pozivnice koja se nalazi ispod. */
+.dnt-intro .dnt-intro-stage {
+  perspective-origin: 50% min(50svh, 550px);
+}
+
+/* Iznad krila kao i ranije. */
+.dnt-intro .dnt-intro-kicker {
+  top: max(36px, 6svh);
+}
+
+/* Imena i datum opet stoje pri dnu VIDLJIVOG pisma,
+   a ne pri dnu vise, nevidljive unutrasnje kartice. */
+.dnt-intro .dnt-intro-caption {
+  bottom: auto;
+  top: calc(min(100svh, 1100px) - max(35px, 7.5svh));
+  transform: translateY(-100%);
+}
+
+@media (max-height: 580px) {
+  .dnt-intro .dnt-intro-kicker { top: 20px; }
+  .dnt-intro .dnt-intro-caption {
+    top: calc(100svh - 23px);
+  }
+}
+
+
+/* =========================================
+   DENTELLE — PRELAZ SA ČIPKE NA POZIVNICU
+   ========================================= */
+
+.wedding-page--dentelle {
+  position: relative;
+  min-height: 100svh;
+  overflow: visible;
+}
+
+/* Prava InvitationCard je stalno učitana */
+.wedding-page--dentelle .dentelle-card-layer {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.wedding-page--dentelle .dentelle-card-layer.is-revealed {
+  opacity: 1;
+}
+
+.wedding-page--dentelle .dentelle-card-layer.is-interactive {
+  pointer-events: auto;
+}
+
+/* Sadržaj se pojavljuje pred kraj otvaranja */
+.wedding-page--dentelle .dentelle-card-layer .dnt-hero-content {
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.wedding-page--dentelle
+  .dentelle-card-layer.is-revealed
+  .dnt-hero-content {
+  opacity: 1;
+  transition-delay: 2800ms;
+}
+
+/* Četiri čipkana krila preko prave kartice */
+.wedding-page--dentelle > .dnt-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100svh;
+  min-height: 100svh;
+  margin: 0;
+  background: transparent;
+}
+
+/* Uklanjanje vela prilikom otvaranja */
+.wedding-page--dentelle > .dnt-intro::before {
+  opacity: 1;
+  transition: opacity 280ms ease;
+}
+
+.wedding-page--dentelle > .dnt-intro.dnt-is-opening::before {
+  opacity: 0;
+}
+
+/* Usklađivanje čipke sa unutrašnjom karticom */
+.wedding-page--dentelle .dnt-intro-stage {
+  width: min(100%, 620px);
+  height: min(100svh, 980px);
+  min-height: min(100svh, 980px);
+  max-height: min(100svh, 980px);
+  background: transparent;
+  box-shadow: none;
+}
+
+.wedding-page--dentelle .dnt-intro .dnt-four-flaps,
+.wedding-page--dentelle .dnt-intro .dnt-intro-vignette {
+  top: 0;
+  bottom: auto;
+  height: 100%;
+}
+
+/* Pristupačnost */
+@media (prefers-reduced-motion: reduce) {
+  .wedding-page--dentelle .dentelle-card-layer,
+  .wedding-page--dentelle
+    .dentelle-card-layer .dnt-hero-content,
+  .wedding-page--dentelle > .dnt-intro::before {
+    transition: none;
+  }
+}
+
+
+.dnt-intro .dnt-lace-door-seal {
+  position: absolute;
+  z-index: 2;
+  width: 27.1%;
+  left: 50%;
+  top: 45.83%;
+  object-fit: contain;
+
+  transform: translate(-50%, -50%) scale(.985);
+
+  opacity: 1;
+  mix-blend-mode: normal;
+
+  background-color: #eee1d3;
+  border-radius: 50%;
+
+  filter: drop-shadow(0 3px 6px rgba(99, 75, 64, .18));
+
+  pointer-events: none;
+  user-select: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.dnt-hero-swans {
+  display: block;
+  width: 82px;
+  max-width: 38%;
+  height: auto;
+  margin: 0 auto 16px;
+  opacity: 1;
+}
+/* ============================================================
+   DENTELLE 2026 — završno usklađivanje introa i glavne kartice
+   Isključivo Dentelle: Lumiere stilovi ostaju neizmenjeni.
+   Četiri originalna providna krila i dalje se otvaraju na četiri strane.
+   ============================================================ */
+.wedding-page--dentelle .dentelle-card-layer {
+  /* Originalni lace-frame.webp postoji i ISPOD zatvorenih krila.
+     Ne prikazujemo drugi, lažni okvir pri završetku animacije. */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+}
+.wedding-page--dentelle .dentelle-card-layer.is-interactive {
+  pointer-events: auto;
+}
+.wedding-page--dentelle .dentelle-card-layer .dnt-hero-paper > .dnt-hero-content {
+  animation: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 750ms ease, transform 900ms cubic-bezier(.22, 1, .36, 1);
+}
+.wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-paper > .dnt-hero-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1850ms;
+}
+.wedding-page--dentelle > .dnt-intro::before {
+  /* Raniji puni, neprovidni sloj skrivao je lace-frame pozivnicu. */
+  background: transparent;
+}
+.wedding-page--dentelle .dnt-intro .dnt-intro-stage {
+  background: transparent;
+}
+.wedding-page--dentelle .dnt-intro .dnt-lace-veil {
+  background: rgba(252, 246, 240, .26);
+}
+.wedding-page--dentelle .dnt-intro .dnt-intro-vignette {
+  background: linear-gradient(180deg, #fffaf523, transparent 28%, transparent 70%, #f7efe33b);
+}
+.wedding-page--dentelle .dnt-intro .dnt-lace-door-seal {
+  background: transparent;
+  filter: drop-shadow(0 3px 7px rgba(74, 43, 49, .22));
+}
+/* Zadržavamo originalnu površinu za klik, bez dodatnog dugmeta. */
+.wedding-page--dentelle .dnt-intro .dnt-open-surface {
+  touch-action: manipulation;
+}
+
+@media (max-width: 599px) {
+  .wedding-page--dentelle .dnt-intro .dnt-lace-veil {
+    background: rgba(252, 246, 240, .21);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-page--dentelle .dentelle-card-layer .dnt-hero-paper > .dnt-hero-content,
+  .wedding-page--dentelle .dentelle-card-layer.is-revealed .dnt-hero-paper > .dnt-hero-content {
+    transition-duration: 1ms;
+    transition-delay: 0ms;
   }
 }

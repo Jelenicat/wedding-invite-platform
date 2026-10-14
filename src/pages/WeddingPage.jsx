@@ -947,6 +947,44 @@ sliderImages: localizedInvitation.details?.sliderImages || [],
       </button>
     ) : null;
 
+    
+  // DENTELLE — pravi InvitationCard je ispod četiri krila.
+  if (templateKey === "dentelle-lace") {
+    return (
+      <div className="wedding-page wedding-page--dentelle">
+        {audioNode}
+
+        <div
+          className={
+            "dentelle-card-layer" +
+            (envelopeRevealed ? " is-revealed" : "") +
+            (showInvitation ? " is-interactive" : "")
+          }
+          aria-hidden={!showInvitation}
+          inert={!showInvitation}
+        >
+          <InvitationComponent
+            {...invitationProps}
+            introReady={showInvitation}
+          />
+        </div>
+
+        {!showInvitation && (
+          <IntroComponent
+            key={slug}
+            {...introProps}
+            onStartMusic={playInvitationMusic}
+            onReveal={() => setEnvelopeRevealed(true)}
+            onEnter={handleIntroEnter}
+          />
+        )}
+      </div>
+    );
+  }
+
+
+
+
   if (templateKey === "angel" || templateKey === "classic") {
     return (
       <div className="wedding-page">
