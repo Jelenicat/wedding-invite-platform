@@ -2510,4 +2510,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
 .bvs.bvs-intro[data-variant="onyx"] .bvs-oval-frame {
   background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 50% !important;
 }
