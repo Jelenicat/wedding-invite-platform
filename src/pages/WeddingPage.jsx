@@ -117,6 +117,14 @@ import BirthdayHeartsIntro from "../components/BirthdayHeartsIntro";
 import BirthdayHeartsInvitationCard from "../components/BirthdayHeartsInvitationCard";
 import BirthdayScratchIntro from "../components/BirthdayScratchIntro";
 import BirthdayTeddyElegantIntro from "../components/BirthdayTeddyElegantIntro";
+import BirthdayEditionIntro from "../components/BirthdayEditionIntro";
+import BirthdayEditionInvitationCard from "../components/BirthdayEditionInvitationCard";
+import BirthdayNoirIntro from "../components/BirthdayNoirIntro";
+import BirthdayNoirInvitationCard from "../components/BirthdayNoirInvitationCard";
+import BirthdayCherryIntro from "../components/BirthdayCherryIntro";
+import BirthdayCherryInvitationCard from "../components/BirthdayCherryInvitationCard";
+import BirthdayVelvetIntro from "../components/BirthdayVelvetIntro";
+import BirthdayVelvetInvitationCard from "../components/BirthdayVelvetInvitationCard";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -372,6 +380,31 @@ const TEMPLATE_COMPONENTS = {
     Intro: DentelleIntro,
     Invitation: DentelleInvitationCard,
   },
+
+  "birthday-edition": {
+  Intro: BirthdayEditionIntro,
+  Invitation: BirthdayEditionInvitationCard,
+},
+
+"birthday-noir": {
+  Intro: BirthdayNoirIntro,
+  Invitation: BirthdayNoirInvitationCard,
+},
+
+"birthday-cherry": {
+  Intro: BirthdayCherryIntro,
+  Invitation: BirthdayCherryInvitationCard,
+},
+
+"birthday-velvet-rose": {
+  Intro: BirthdayVelvetIntro,
+  Invitation: BirthdayVelvetInvitationCard,
+},
+
+"birthday-velvet-onyx": {
+  Intro: BirthdayVelvetIntro,
+  Invitation: BirthdayVelvetInvitationCard,
+},
 
 };
 

@@ -5696,8 +5696,390 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+{
+  slug: "lena-edition",
+  type: "birthday",
+  template: "birthday-edition",
+  script: "latin",
+
+  brideName: "Lena",
+
+  weddingDate: "20.06.2027.",
+  weddingTime: "19:00",
+  venue: "Restoran Primer",
+
+  musicSrc: "/music/eva-1.mp3",
+
+  introPreviewImage:
+    "/images/birthday-edition/edition-cover.webp",
+
+  details: {
+    ...createDetails({
+      age: 18,
+
+      date: "20.06.2027.",
+      dateISO: "2027-06-20T19:00:00+02:00",
+
+      welcomeText:
+        "Novo poglavlje zaslužuje posebno veče. Pozivam vas da zajedno proslavimo moj 18. rođendan — uz muziku, smeh i uspomene koje ostaju.",
+
+      locationName: "Restoran Primer",
+      locationAddress: "Adresa restorana, Beograd",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Beograd",
+
+      rsvpText:
+        "Molim te da svoj dolazak potvrdiš do 10.06.2027.",
+
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+
+      showDressCode: true,
+      dressCodeTitle: "Elegant & effortless",
+      dressCodeNote:
+        "Elegantno, ali sasvim u svom stilu.",
+      dressCodePalette: [],
+
+      events: [],
+
+      rsvpClosed: false,
+    }),
+
+    rsvpMaxGuests: 8,
+
+    edition: {
+      // INTRO
+      coverImage:
+        "/images/birthday-edition/edition-cover.webp",
+
+      coverPosition: "50% 55%",
+      coverCity: "BEOGRAD",
+
+      coverKicker: "POSEBNO IZDANJE",
+      introLine: "POZIVAM TE NA SVOJ",
+
+      // POZIVNICA
+      storyImage:
+        "/images/birthday-edition/edition-cake.webp",
+
+      storyPosition: "50% 63%",
+
+      heroTitle: "Noć za",
+      heroScript: "uspomene",
+
+      photoCaption:
+        "DOBRE PRIČE POČINJU OVDE.",
+
+      letterTitle: "Dragi moji,",
+
+      // FOTO SEKCIJA
+      interludeImage:
+        "/images/birthday-edition/edition-cover.webp",
+
+      interludePosition: "50% 72%",
+
+      interludeText:
+        "NAŠE POSEBNO VEČE.",
+
+      interludeScript:
+        "Slavimo zajedno.",
+    },
+  },
+},
 
 
+{
+  slug: "lena-noir",
+  type: "birthday",
+  template: "birthday-noir",
+  script: "latin",
+
+  brideName: "Lena",
+
+  weddingDate: "20.06.2027.",
+  weddingTime: "19:00",
+  venue: "Restoran Primer",
+
+  musicSrc: "/music/eva-1.mp3",
+
+  introPreviewImage:
+    "/images/birthday-noir/noir-glasses.webp",
+
+  details: {
+    ...createDetails({
+      age: 18,
+
+      date: "20.06.2027.",
+      dateISO: "2027-06-20T19:00:00+02:00",
+
+      welcomeText:
+        "Pozivam vas da zajedno proslavimo moj 18. rođendan. Dođite da plešemo, smejemo se i uživamo u večeri koju ćemo dugo pamtiti.",
+
+      locationName: "Restoran Primer",
+      locationAddress: "Adresa restorana, Beograd",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Beograd",
+
+      rsvpText:
+        "Molim te da svoj dolazak potvrdiš do 10.06.2027.",
+
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+
+      showDressCode: true,
+      dressCodeTitle: "Black & Silver",
+      dressCodeNote:
+        "Crna, srebrna i tvoj omiljeni detalj.",
+
+      dressCodePalette: [
+        "#151717",
+        "#c9cecf",
+      ],
+
+      events: [],
+      rsvpClosed: false,
+    }),
+
+    rsvpMaxGuests: 8,
+
+    noir: {
+      coverImage:
+        "/images/birthday-noir/noir-glasses.webp",
+
+      coverPosition: "58% 55%",
+      coverCity: "BEOGRAD",
+      introLine: "POZIVAM TE NA SVOJ",
+
+      discoImage:
+        "/images/birthday-noir/noir-disco.webp",
+
+      heroTitle: "Slavimo",
+      heroScript: "zajedno.",
+
+      heroText:
+        "Jedno posebno veče. Ljudi koje volim. Uspomene koje ostaju.",
+
+      heroPosition: "35% 40%",
+
+      toastTitle: "Za trenutke",
+      toastScript: "koji ostaju.",
+
+      toastImage:
+        "/images/birthday-noir/noir-glasses.webp",
+
+      toastPosition: "50% 78%",
+    },
+  },
+},
+
+{
+  slug: "mila-cherry",
+  type: "birthday",
+  template: "birthday-cherry",
+  script: "latin",
+  brideName: "Mila",
+  weddingDate: "20.06.2027.",
+  weddingTime: "19:00",
+  venue: "Restoran Primer",
+  musicSrc: "/music/eva-1.mp3",
+  introPreviewImage: "/images/birthday-cherry/cherry-evening.webp",
+
+  details: {
+    ...createDetails({
+      age: 18,
+      date: "20.06.2027.",
+      dateISO: "2027-06-20T19:00:00+02:00",
+      welcomeText:
+        "Pozivam vas da zajedno proslavimo moj 18. rođendan. Čekaju nas muzika, smeh, nešto slatko i mnogo lepih uspomena!",
+      locationName: "Restoran Primer",
+      locationAddress: "Adresa restorana, Beograd",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Beograd",
+      rsvpText: "Molim te da svoj dolazak potvrdiš do 10.06.2027.",
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+
+      showDressCode: true,
+      dressCodeTitle: "Dress code",
+      dressCodeNote: "Crveni ili roze detalj, uz tvoj omiljeni osmeh.",
+      dressCodePalette: ["#b21e32", "#efbec9", "#fff9ed"],
+
+      events: [],
+      rsvpClosed: false,
+    }),
+
+    rsvpMaxGuests: 8,
+
+    cherry: {
+      cakeImage: "/images/birthday-cherry/cherry-cake.webp",
+      eveningImage: "/images/birthday-cherry/cherry-evening.webp",
+      eveningPosition: "50% 55%",
+      coverCity: "BEOGRAD",
+      introLine: "POZIVAM TE NA SVOJ",
+
+      dressImage: "",
+      dressPosition: "50% 50%",
+    },
+  },
+},
+
+// ŽENSKA VERZIJA — VELVET ROSE
+{
+  slug: "nina-velvet",
+  type: "birthday",
+  template: "birthday-velvet-rose",
+  script: "latin",
+
+  brideName: "Nina",
+  weddingDate: "20.06.2027.",
+  weddingTime: "19:00",
+  venue: "Restoran Primer",
+
+  musicSrc: "/music/eva-1.mp3",
+  introPreviewImage: "/images/birthday-velvet/rose-silk.webp",
+
+  details: {
+    ...createDetails({
+      age: 18,
+      date: "20.06.2027.",
+      dateISO: "2027-06-20T19:00:00+02:00",
+
+      welcomeText:
+        "Pozivam vas da zajedno proslavimo moj 18. rođendan. Neka ovo veče bude puno muzike, smeha i uspomena koje ćemo dugo pamtiti.",
+
+      locationName: "Restoran Primer",
+      locationAddress: "Adresa restorana, Beograd",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Beograd",
+
+      rsvpText:
+        "Molim te da svoj dolazak potvrdiš do 10.06.2027.",
+      rsvpClosed: false,
+
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+
+      showDressCode: true,
+      dressCodeTitle: "Dress code",
+      dressCodeNote:
+        "Bilo bi mi drago da odabereš neki od ovih tonova — puder roze, nežnu krem ili bordo.",
+      dressCodePalette: [
+        "#f2e7da",
+        "#d3a3af",
+        "#78444e",
+      ],
+
+      events: [
+        { time: "19:00", title: "Okupljanje gostiju" },
+        { time: "20:00", title: "Večera i muzika" },
+        { time: "00:00", title: "Rođendanska torta" },
+      ],
+    }),
+
+    rsvpMaxGuests: 8,
+
+    velvet: {
+      variant: "rose",
+      coverCity: "BEOGRAD",
+      introLine: "VEČE ZA NAŠE USPOMENE",
+      dateLine: "20. jun 2027.",
+
+      silkImage: "/images/birthday-velvet/rose-silk.webp",
+      laceImage: "/images/birthday-velvet/lace-oval.webp",
+      eveningImage: "/images/birthday-velvet/rose-evening.webp",
+      eveningPosition: "50% 55%",
+
+      locationImage: "/images/birthday-velvet/rose-evening.webp",
+      locationPosition: "50% 58%",
+
+      dressImage: "",
+      dressPosition: "50% 50%",
+
+      detailsText:
+        "Najlepši deo ove proslave biće ljudi koji su uz mene. Hvala što si deo mog dana.",
+      signoff: "S LJUBAVLJU,",
+    },
+  },
+},
+
+// MUŠKA VERZIJA — VELVET ONYX
+{
+  slug: "luka-velvet",
+  type: "birthday",
+  template: "birthday-velvet-onyx",
+  script: "latin",
+
+  brideName: "Luka",
+  weddingDate: "27.06.2027.",
+  weddingTime: "20:00",
+  venue: "Restoran Primer",
+
+  musicSrc: "/music/eva-1.mp3",
+  introPreviewImage: "/images/birthday-velvet/onyx-silk.webp",
+
+  details: {
+    ...createDetails({
+      age: 18,
+      date: "27.06.2027.",
+      dateISO: "2027-06-27T20:00:00+02:00",
+
+      welcomeText:
+        "Pozivam vas da zajedno proslavimo moj 18. rođendan. Spremite se za dobro društvo, muziku i veče koje ćemo dugo pamtiti.",
+
+      locationName: "Restoran Primer",
+      locationAddress: "Adresa restorana, Beograd",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Beograd",
+
+      rsvpText:
+        "Molim te da svoj dolazak potvrdiš do 17.06.2027.",
+      rsvpClosed: false,
+
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+
+      showDressCode: true,
+      dressCodeTitle: "Dress code",
+      dressCodeNote:
+        "Elegantno i opušteno — crna, topla siva ili šampanj detalj, po tvom izboru.",
+      dressCodePalette: [
+        "#1d1c1b",
+        "#8d8174",
+        "#d5bea0",
+      ],
+
+      events: [
+        { time: "20:00", title: "Okupljanje gostiju" },
+        { time: "21:00", title: "Večera i muzika" },
+        { time: "00:00", title: "Rođendanska torta" },
+      ],
+    }),
+
+    rsvpMaxGuests: 8,
+
+    velvet: {
+      variant: "onyx",
+      coverCity: "BEOGRAD",
+      introLine: "VEČE ZA NAŠE USPOMENE",
+      dateLine: "27. jun 2027.",
+
+      silkImage: "/images/birthday-velvet/onyx-silk.webp",
+      eveningImage: "/images/birthday-velvet/onyx-evening.webp",
+      eveningPosition: "50% 55%",
+
+      locationImage: "/images/birthday-velvet/onyx-evening.webp",
+      locationPosition: "50% 58%",
+
+      dressImage: "",
+      dressPosition: "50% 50%",
+
+      detailsText:
+        "Najvažnije je da smo na okupu. Ponesi dobro raspoloženje — vidimo se na proslavi!",
+      signoff: "VIDIMO SE,",
+    },
+  },
+},
 
 // =========================
 // Klijenti
