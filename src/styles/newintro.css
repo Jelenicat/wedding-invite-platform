@@ -2495,3 +2495,19 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 .bch.bch-intro .bch-cover-button:active {
   background: transparent;
 }
+
+.bvs.bvs-intro[data-variant="onyx"] .bvs-medallion {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.bvs.bvs-intro[data-variant="onyx"] .bvs-medallion-paper {
+  border-radius: 50% !important;
+  -webkit-clip-path: ellipse(50% 50% at 50% 50%);
+  clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+.bvs.bvs-intro[data-variant="onyx"] .bvs-oval-frame {
+  background: transparent !important;
+}
