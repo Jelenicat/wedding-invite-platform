@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 110" fill="none">
+<g stroke="#6e7067" stroke-width=".85" stroke-linecap="round" stroke-linejoin="round"><defs><g id="rose"><path d="M0-8C-7-13-13-6-9-1c-7 4-2 13 4 10 2 8 12 5 12-1 8 1 12-8 5-11 2-6-6-12-12-5Z"/><path d="M0-5C-5-8-9-3-6 0c-4 4 1 8 4 6 5 4 9-2 6-5 5-2 1-7-4-6Z"/><path d="M-2-2c-3 4 3 7 5 2-2-3-4-3-5-2Z"/></g></defs>
+<path d="M12 94h73M18 88h61v4H18ZM21 62h55v24H21Zm7-23h41v23H28Zm9-19h24v19H37Z"/>
+<ellipse cx="49" cy="20" rx="12" ry="2.5"/><path d="M37 22c7 3 17 3 24 0M28 41c13 4 29 4 41 0M21 65c16 4 39 4 55 0M30 57c14 3 26 3 37 0M24 81c14 3 34 3 48 0"/>
+<path d="M29 45c2 8 5 10 9 0 3 11 8 12 11 0 3 11 8 10 10 0 3 9 7 9 10 0M22 69c3 9 7 9 10 0 3 10 8 10 11 0 3 10 8 10 11 0 3 10 8 10 11 0 4 9 8 8 11 0" stroke-width=".65"/>
+<path d="M47 18c-7-7-10-13-6-15 4-2 7 4 7 4 4-7 11-5 9 1-1 4-6 7-10 10M48 86v8m-1 0-7 7m8-7 8 7M25 102h48"/>
+<use href="#rose" transform="translate(64 59) scale(.56)"/><use href="#rose" transform="translate(31 80) scale(.65)"/><use href="#rose" transform="translate(37 34) scale(.45)"/>
+<path d="M62 66c-7 1-12 0-16-4 8-2 13 0 16 4Zm5-1c5-1 9-5 9-10-6 1-8 5-9 10M28 86c-8 3-14 1-16-2 6-3 11-2 16 2M32 87c6 0 11-3 13-6-7 0-12 1-13 6"/>
+<path d="M40 28v5m3-5v5m3-5v5m3-5v5m3-5v5m3-5v5M33 52v4m8-4v5m8-4v4m8-5v5m8-5v4M26 76v4m9-4v4m10-3v4m9-4v4m10-5v4m8-4v4" stroke-width=".4"/>
+</g>
+</svg>

@@ -2951,3 +2951,189 @@
   stroke: #b29a77;
 }
 
+
+
+/* AMORE — DODATI NA KRAJ postojećeg newrsvp.css. */
+.amr-rsvp { width: 100%; padding: 48px 0 50px; background: #f4f1ed; }
+.amr-rsvp-inner { width: min(84%, 410px); margin: 0 auto; }
+.amr-invitation .amr-rsvp-title { font-size: clamp(42px, 11.8vw, 58px); line-height: 1.2; text-wrap: balance; }
+.amr-rsvp-note { max-width: 340px; margin: 17px auto 0 !important; font-size: 16px; line-height: 1.45; text-wrap: pretty; }
+.amr-rsvp-deadline { max-width: 340px; margin: 12px auto 0 !important; font-size: 15px; line-height: 1.45; }
+.amr-rsvp-deadline strong { font-weight: 600; white-space: nowrap; }
+.amr-rsvp-form { margin-top: 32px; text-align: left; }
+.amr-rsvp-fields, .amr-rsvp-choice-field, .amr-guest-names { min-width: 0; border: 0; padding: 0; margin: 0; }
+.amr-field { margin-bottom: 25px; }
+.amr-field > label, .amr-stepper-field > div > label, .amr-rsvp-choice-field > legend, .amr-guest-names > legend { display: block; margin-bottom: 9px; padding: 0; font-size: 15px; letter-spacing: .02em; font-weight: 500; line-height: 1.4; }
+.amr-invitation .amr-field input, .amr-invitation .amr-field textarea { display: block; width: 100%; min-height: 49px; margin: 0; padding: 11px 13px; border: 1px solid #bdb7af; border-radius: 0; color: var(--amr-ink); background: #ffffffb3; font-family: var(--amr-serif); font-size: 17px; font-weight: 400; line-height: 1.45; -webkit-appearance: none; appearance: none; transition: border-color .2s, background .2s; }
+.amr-invitation .amr-field input::placeholder { color: #8d867e; opacity: 1; }
+.amr-invitation .amr-field input:focus, .amr-invitation .amr-field textarea:focus { outline: 0; border-color: var(--amr-red); background: #fff; box-shadow: 0 0 0 1px var(--amr-red); }
+.amr-field textarea { resize: vertical; }
+.amr-rsvp-choice-field { margin-bottom: 26px; }
+.amr-rsvp-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.amr-radio { position: relative; display: block; min-width: 0; cursor: pointer; }
+.amr-radio > input { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0; opacity: 0; cursor: pointer; touch-action: manipulation; }
+.amr-radio > span { display: flex; min-height: 47px; justify-content: center; align-items: center; gap: 9px; padding: 8px; border: 1px solid #bdb7af; border-radius: 0; background: transparent; font-size: 16px; transition: border-color .2s, color .2s, background .2s; }
+.amr-radio-dot { display: block; flex-shrink: 0; width: 13px; height: 13px; border: 1px solid #9b958b; border-radius: 50%; background: transparent; box-shadow: inset 0 0 0 3px #f4f1ed; }
+.amr-radio input:checked + span { border-color: var(--amr-red); color: var(--amr-red); background: #9c263607; }
+.amr-radio input:checked + span .amr-radio-dot { background: var(--amr-red); border-color: var(--amr-red); }
+.amr-radio input:focus-visible + span { outline: 2px solid var(--amr-red); outline-offset: 4px; }
+.amr-field-hint { margin: 4px 0 0 !important; font-size: 12px; line-height: 1.3; color: var(--amr-muted); }
+.amr-stepper-field { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.amr-stepper-field label { margin: 0 !important; }
+.amr-stepper { display: grid; grid-template-columns: 44px 32px 44px; min-height: 44px; align-items: center; border: 1px solid #bdb7af; background: #ffffff70; }
+.amr-stepper button { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--amr-ink); font-family: Arial, sans-serif; font-size: 20px; cursor: pointer; }
+.amr-stepper output { display: block; text-align: center; font-size: 19px; font-variant-numeric: lining-nums tabular-nums; }
+.amr-stepper button:disabled { opacity: .3; cursor: default; }
+.amr-rsvp-conditional { animation: amr-form-open .45s cubic-bezier(.22,1,.36,1) both; }
+.amr-guest-names > legend { margin-bottom: 17px; }
+.amr-rsvp-fields:disabled { opacity: .65; }
+.amr-rsvp-error { padding: 12px 13px; margin: 6px 0 18px !important; border-left: 2px solid var(--amr-red); background: #9c26360b; color: #85202e; font-size: 15px; line-height: 1.4; }
+.amr-invitation .amr-submit { width: 100%; min-height: 49px; margin-top: 2px; font-size: 16px; border-radius: 50px; }
+.amr-invitation .amr-submit:disabled { opacity: .65; cursor: wait; transform: none; }
+.amr-submit-spinner { display: inline-block; width: 14px; height: 14px; border: 1.5px solid #ffffff60; border-top-color: #fff; border-radius: 50%; animation: amr-spinner .7s linear infinite; }
+.amr-rsvp-result { padding: 25px 0 12px; text-align: center; outline: none; }
+.amr-rsvp-result-title { font-size: 23px; }
+.amr-rsvp-success { animation: amr-form-open .6s cubic-bezier(.22,1,.36,1) both; }
+.amr-success-mark { display: block; width: 64px; height: 64px; margin: 0 auto 17px; color: var(--amr-red); }
+.amr-success-mark circle { stroke: currentColor; stroke-width: .8; opacity: .45; }
+.amr-success-mark path { stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: amr-rsvp-check .7s ease .2s both; }
+.amr-invitation .amr-thank-you { font-size: 57px; }
+.amr-invitation .amr-result-names { font-size: 36px; margin-top: 20px; }
+.amr-rsvp-text-button { display: inline-block; min-height: 44px; padding: 9px 5px; margin-top: 20px; border: none; background: none; color: var(--amr-muted); text-decoration: underline; text-underline-offset: 4px; font-size: 14px; cursor: pointer; }
+@keyframes amr-form-open { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes amr-rsvp-check { to { stroke-dashoffset: 0; } }
+@keyframes amr-spinner { to { transform: rotate(360deg); } }
+@media (max-width: 359px) {
+  .amr-rsvp-inner { width: 86%; }
+  .amr-invitation .amr-rsvp-title { font-size: 40px; }
+  .amr-rsvp-choices { gap: 8px; }
+  .amr-radio > span { font-size: 15px; gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .amr-rsvp .amr-success-mark path { stroke-dashoffset: 0; }
+}
+
+/* ===== DODAJ NA KRAJ newrsvp.css: BIRTHDAY STARLIGHT ===== */
+.bsl-rsvp { position: relative; padding: 0 27px; background: var(--bsl-cream); }
+.bsl-rsvp-arch { position: relative; padding: 95px 25px 24px; background: var(--bsl-black); border-radius: 50% 50% 0 0 / 155px 155px 0 0; }
+.bsl .bsl-rsvp-heading { font-size: clamp(52px, 16.3vw, 75px); line-height: .85; margin-bottom: 28px; }
+.bsl-rsvp-heading > .bsl-script { display: block; width: max-content; max-width: 100%; margin-inline: auto; }
+.bsl-rsvp-heading > .bsl-script + .bsl-script { margin-top: -.38em; }
+.bsl .bsl-rsvp-note { max-width: 270px; margin: 0 auto 28px; font-size: 11px; line-height: 1.8; text-wrap: pretty; }
+.bsl-rsvp-form { text-align: left; }
+.bsl .bsl-fields { display: grid; gap: 22px; min-width: 0; border: 0; padding: 0; margin: 0; }
+.bsl-name-field, .bsl-message-field { display: grid; gap: 9px; }
+.bsl .bsl-name-field > label, .bsl .bsl-message-field > label, .bsl .bsl-attendance legend { color: var(--bsl-cream); font-size: 11px; line-height: 1.5; }
+.bsl .bsl-name-field input, .bsl .bsl-message-field textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 12px 13px;
+  border: 1px solid #8d8779;
+  border-radius: 4px;
+  color: var(--bsl-cream);
+  background: transparent;
+  box-shadow: none;
+  font-family: var(--bsl-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  caret-color: var(--bsl-cream);
+  outline: none;
+}
+.bsl .bsl-name-field input::placeholder { color: #a69f90; opacity: 1; font-size: 11px; }
+.bsl .bsl-name-field input:focus, .bsl .bsl-message-field textarea:focus { border-color: #f1e6d4; outline: 1px solid #f1e6d4; outline-offset: 2px; }
+.bsl .bsl-name-field input:-webkit-autofill { -webkit-text-fill-color: var(--bsl-cream); -webkit-box-shadow: 0 0 0 1000px #171713 inset; caret-color: var(--bsl-cream); }
+.bsl .bsl-message-field textarea { resize: vertical; min-height: 100px; }
+.bsl .bsl-attendance { border: 0; min-width: 0; padding: 0; margin: 0; }
+.bsl .bsl-attendance legend { padding: 0; margin-bottom: 10px; }
+.bsl-choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.bsl-choice { position: relative; display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; min-height: 48px; padding: 10px 8px; border: 1px solid #8d8779; border-radius: 999px; cursor: pointer; color: var(--bsl-cream); font-size: 11px; line-height: 1.4; transition: color .2s ease, background .2s ease, border-color .2s ease; -webkit-tap-highlight-color: transparent; }
+.bsl-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.bsl-radio-mark { display: block; width: 11px; height: 11px; flex: 0 0 11px; border: 1px solid currentColor; border-radius: 50%; }
+.bsl-choice-selected { background: var(--bsl-cream); color: var(--bsl-black); border-color: var(--bsl-cream); }
+.bsl-choice-selected .bsl-radio-mark { box-shadow: inset 0 0 0 2px var(--bsl-cream); background: var(--bsl-black); }
+.bsl-choice:focus-within { outline: 2px solid var(--bsl-cream); outline-offset: 4px; }
+.bsl-guests-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; animation: bsl-form-in .4s var(--bsl-ease) both; }
+.bsl-guests-row > div:first-child { display: grid; gap: 4px; font-size: 11px; line-height: 1.4; }
+.bsl-guests-row small { font-size: 8px; color: #bcb6a8; }
+.bsl-stepper { display: flex; align-items: center; gap: 0; flex: 0 0 auto; }
+.bsl .bsl-stepper button { appearance: none; -webkit-appearance: none; display: grid; place-items: center; width: 44px; height: 44px; margin: 0; padding: 0; border: 1px solid #8d8779; border-radius: 50%; color: var(--bsl-cream); background: transparent; font-size: 21px; line-height: 1; box-shadow: none; }
+.bsl .bsl-stepper button:disabled { opacity: .3; }
+.bsl-stepper output { display: block; width: 25px; text-align: center; font-size: 14px; font-variant-numeric: tabular-nums; }
+.bsl .bsl-submit { display: flex; width: 100%; margin-top: 3px; min-height: 48px; font-size: 11px; }
+.bsl .bsl-form-error { color: #f6baad; font-size: 11px; line-height: 1.7; }
+.bsl-rsvp-feedback { padding: 10px 0 20px; text-align: center; animation: bsl-form-in .6s var(--bsl-ease) both; }
+.bsl-rsvp-feedback .bsl-icon { width: 40px; height: 40px; margin: 0 auto 20px; }
+.bsl .bsl-feedback-title { font-family: var(--bsl-script); font-size: 61px; line-height: 1; margin-bottom: 18px; }
+.bsl .bsl-rsvp-feedback p { font-size: 12px; line-height: 1.8; }
+.bsl .bsl-text-button { appearance: none; -webkit-appearance: none; display: inline-block; min-height: 44px; margin-top: 14px; padding: 9px 0; border: 0; border-bottom: 1px solid #8d8779; border-radius: 0; color: var(--bsl-cream); background: transparent; font-size: 10px; line-height: 1.6; box-shadow: none; }
+.bsl-loader { width: 14px; height: 14px; border: 1px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: bsl-loading .7s linear infinite; }
+.bsl-toast-photo { width: calc(100% + 104px); margin: 38px -52px 0; }
+.bsl-toast-photo img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
+.bsl .bsl-see-you { position: relative; margin: 2px -12px 0; font-size: clamp(53px, 17vw, 80px); line-height: 1.1; }
+.bsl[data-script="cyrillic"] .bsl-rsvp-heading { font-size: clamp(38px, 11vw, 55px); line-height: 1.1; }
+.bsl[data-script="cyrillic"] .bsl-rsvp-heading > .bsl-script + .bsl-script { margin-top: .05em; }
+.bsl[data-script="cyrillic"] .bsl-see-you { font-size: clamp(40px, 12vw, 62px); }
+@keyframes bsl-form-in { from { opacity: 0; transform: translate3d(0, 12px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes bsl-loading { to { transform: rotate(360deg); } }
+@media (max-width: 359px) {
+  .bsl-rsvp { padding-inline: 22px; }
+  .bsl-rsvp-arch { padding: 85px 19px 20px; border-top-left-radius: 50% 130px; border-top-right-radius: 50% 130px; }
+  .bsl-toast-photo { width: calc(100% + 82px); margin-inline: -41px; }
+  .bsl-guests-row small { max-width: 95px; }
+}
+
+/* DODATAK za kraj postojećeg newrsvp.css — BIRTHDAY SATIN */
+.bsa-rsvp{padding:52px 28px 38px;background:#1b1b1a;color:#fff;border-radius:0 72px 0 72px;--bsa-ink:#fff;--bsa-line:rgba(255,255,255,.22)}
+.bsa-rsvp>.bsa-section-title{margin-bottom:15px}
+.bsa-rsvp .bsa-icon{filter:invert(1);width:37px;height:42px;margin-bottom:16px}
+.bsa-rsvp .bsa-kicker{font-size:8px;letter-spacing:.2em;color:#d1d1cc}
+.bsa-section-title{font-family:"BSA Serif",Georgia,serif;font-size:49px;font-weight:400;font-style:italic;line-height:1.3;letter-spacing:-.04em;overflow:visible;margin:9px 0 4px!important}
+.bsa-section-title .bsa-script{font-family:"BSA Serif",Georgia,serif;font-size:1em;font-style:italic;padding:.08em .1em .15em;line-height:1.25}
+.bsa-rsvp-deadline{max-width:31ch;margin:0 auto 30px!important;font-size:12px;line-height:1.85;white-space:pre-line;color:#deded9}
+.bsa-rsvp-form{max-width:390px;margin-inline:auto;text-align:left}
+.bsa-form-fields,.bsa-attendance{border:0;padding:0;margin:0;min-width:0}
+.bsa-field-label{display:block;font-size:9px;letter-spacing:.1em;line-height:1.75;color:#efefe9;text-align:left;font-weight:400}
+.bsa-name-field{margin-bottom:29px}
+.bsa-name-field input{display:block;width:100%;min-width:0;min-height:50px;margin:6px 0 0;border:0;border-bottom:1px solid #8a8a82;border-radius:0;padding:10px 0;background:transparent;color:#fff;font-size:16px;line-height:1.65;box-shadow:none;outline-offset:5px!important;-webkit-appearance:none;appearance:none}
+.bsa-name-field input::placeholder{color:#a9a9a1;opacity:1;font-size:12px}
+.bsa-attendance legend{padding:0;margin:0 0 11px}
+.bsa-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bsa-choice{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;min-height:119px;padding:15px 13px 13px;border:1px solid #64645e;border-radius:2px;background:transparent;cursor:pointer;transition:border-color .25s ease,background .25s ease}
+.bsa-choice-selected{border-color:#fff;background:rgba(255,255,255,.075)}
+.bsa-choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.bsa-choice:focus-within{outline:2px solid #fff;outline-offset:4px}
+.bsa-choice-top{display:block;margin-bottom:12px;line-height:1}
+.bsa-choice-dot{position:relative;display:block;width:17px;height:17px;border:1px solid #a8a89f;border-radius:50%}
+.bsa-choice-selected .bsa-choice-dot{border-color:#fff}
+.bsa-choice-selected .bsa-choice-dot::after{content:"";position:absolute;inset:4px;border-radius:50%;background:#fff}
+.bsa-choice strong{display:block;font-family:"BSA Serif",Georgia,serif;font-weight:400;font-size:25px;font-style:italic;line-height:1.3;letter-spacing:-.02em;color:#fff}
+.bsa-choice-note{display:block;margin-top:4px;font-size:9px;line-height:1.65;color:#cccac2}
+.bsa-guest-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:23px;padding:15px 0 18px;border-bottom:1px solid var(--bsa-line);overflow:visible}
+.bsa-guest-row small{display:block;font-size:10px;line-height:1.6;color:#bdbdb5;margin-top:3px}
+.bsa-stepper{display:flex;align-items:center;gap:3px;flex-shrink:0}
+.bsa-stepper button{display:grid;place-items:center;width:44px;min-width:44px;height:44px;padding:0;border:1px solid #77776f;border-radius:50%;background:transparent;color:#fff;font-size:22px;font-weight:400;line-height:1;touch-action:manipulation;box-shadow:none}
+.bsa-stepper button:disabled{opacity:.35;cursor:default}
+.bsa-stepper output{display:block;min-width:31px;text-align:center;color:#fff;font-size:19px;font-family:"BSA Serif",Georgia,serif;font-variant-numeric:lining-nums tabular-nums}
+.bsa-submit{display:flex;width:100%;margin:27px auto 0;min-height:53px;padding:15px 21px;border:1px solid #fff;background:#fff;color:#181817;font-size:10px;letter-spacing:.12em}
+.bsa-submit .bsa-arrow{filter:none;width:24px;height:17px;margin:0}
+.bsa-submit:disabled{opacity:.6}
+.bsa-form-error{color:#ffc7c7;font-size:12px;line-height:1.75;margin:18px 0 0!important}
+.bsa-form-fields:disabled .bsa-choice{cursor:wait;opacity:.65}
+.bsa-rsvp-signoff{display:flex;flex-direction:column;align-items:center;margin-top:37px!important;padding:0 8px;overflow:visible}
+.bsa-rsvp-signoff>span:first-child{font-size:8px;line-height:1.7;letter-spacing:.2em;color:#c9c9c0}
+.bsa-rsvp-signoff .bsa-script{font-size:calc(65px * var(--bsa-name-scale));line-height:1.3;margin-top:5px;max-width:100%;overflow-wrap:anywhere}
+.bsa-rsvp-success,.bsa-rsvp-status{max-width:34ch;margin:0 auto;padding:12px 0 6px;text-align:center;font-size:12px;line-height:1.9}
+.bsa-success-mark{display:block;width:63px;height:63px;margin:7px auto 15px;stroke:#fff;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.bsa-rsvp-success h3{font-family:"BSA Serif",Georgia,serif;font-size:47px;font-style:italic;font-weight:400;line-height:1.3;margin-bottom:9px}
+.bsa-rsvp-success h3 .bsa-script{font-family:"BSA Serif",Georgia,serif;font-style:italic;font-size:1em}
+.bsa-text-link{display:flex;align-items:center;justify-content:center;gap:12px;min-height:44px;max-width:100%;padding:9px 0;border:0;border-bottom:1px solid #8c8c84;border-radius:0;margin:24px auto 0;background:transparent;color:#fff;font-size:8px;letter-spacing:.08em;line-height:1.7;box-shadow:none}
+.bsa-text-link .bsa-arrow{width:19px;height:15px;filter:invert(1);margin:0}
+.bsa-loader{display:inline-block;width:17px;height:17px;border:1px solid rgba(0,0,0,.2);border-top-color:#1a1a19;border-radius:50%;animation:bsa-loading .75s linear infinite}
+@keyframes bsa-loading{to{transform:rotate(360deg)}}
+@media(min-width:600px){.bsa-rsvp{padding:60px 45px 43px}.bsa-section-title{font-size:57px}.bsa-choice{padding:17px;min-height:126px}}
+@media(max-width:360px){.bsa-rsvp{padding-inline:24px}.bsa-section-title{font-size:45px}.bsa-choice{padding:13px 10px}.bsa-choice strong{font-size:24px}.bsa-choice-note{font-size:8px}.bsa-guest-row{gap:6px}.bsa-guest-row .bsa-field-label{font-size:8px}.bsa-stepper{gap:1px}.bsa-stepper output{min-width:27px}}

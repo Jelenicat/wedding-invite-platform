@@ -6081,6 +6081,254 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+{
+  slug: "amore-demo",
+  type: "wedding",
+  template: "amore-editorial",
+  script: "latin",
+
+  brideName: "Ana",
+  groomName: "Nikola",
+  weddingDate: "10. jul 2027.",
+  weddingTime: "15:00",
+  venue: "Hotel Izvor, Aranđelovac",
+
+  musicSrc: "/music/mina-dragan.mp3",
+
+  details: {
+    ...createDetails({
+      welcomeText:
+        "Sa velikom radošću vas pozivamo da budete deo našeg posebnog dana i zajedno sa nama proslavite početak naše zajedničke priče.",
+
+      date: "10. jul 2027.",
+      dateISO: "2027-07-10T15:00:00+02:00",
+
+      locationName: "Hotel Izvor",
+      locationAddress: "Aranđelovac",
+      showLocationButton: true,
+      locationButtonText: "Pogledaj lokaciju",
+      locationButtonLink:
+        "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+      events: [
+        {
+          label: "Okupljanje gostiju",
+          time: "15:00",
+          icon: "gathering",
+          location: "Hotel Izvor, Aranđelovac",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+        {
+          label: "Koktel dobrodošlice",
+          time: "15:00–16:30",
+          icon: "buffet",
+          location: "Hotel Izvor, Aranđelovac",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+        {
+          label: "Građansko venčanje",
+          time: "16:30",
+          icon: "civil",
+          location: "Hotel Izvor, Aranđelovac",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+        {
+          label: "Svečana večera",
+          time: "17:00",
+          icon: "dinner",
+          location: "Hotel Izvor, Aranđelovac",
+          mapLink:
+            "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+        },
+      ],
+
+      showDressCode: true,
+      dressCodeTitle: "DRESS CODE",
+      dressCodePalette: [
+        "#e9e6d9",
+        "#f0d85b",
+        "#7b6540",
+        "#333536",
+      ],
+      dressCodeNote:
+        "Biće nam drago da svojim izborom garderobe upotpunite paletu našeg dana.",
+
+      showCalendarButton: true,
+      calendarDurationHours: 10,
+
+      rsvpText:
+        "Javite nam da li ćete biti deo naše proslave.",
+
+      rsvpOptions: {
+        maxGuests: 6,
+        fasting: false,
+        individualGuests: false,
+        children: false,
+        dietary: false,
+        message: false,
+      },
+
+      rsvpClosed: false,
+    }),
+
+    // Ovi objekti ostaju VAN createDetails(...).
+    envelopeFlap: {
+      hingePercent: 0,
+    },
+
+    amore: {
+      // Koristi postojeću kovertu ana-nemanja.
+      envelopeAssetSlug: "ana-nemanja",
+      openHint: "Dodirnite da otvorite pismo",
+
+      heroImage: "/images/amore/hero.webp",
+      toastImage: "/images/amore/toast.webp",
+      detailsImage: "/images/amore/details.webp",
+
+      heroPosition: "50% 43%",
+      toastPosition: "50% 50%",
+      detailsPosition: "50% 50%",
+
+      heroNote: "s tobom, do kraja života",
+      welcomeTitle: "Dragi gosti!",
+      locationTitle: "Lokacija",
+      timingTitle: "Satnica",
+
+      detailsText:
+        "Najlepši poklon biće nam vaše prisustvo i osmesi koje ćemo pamtiti.",
+      additionalNote:
+        "Ponesite dobro raspoloženje. Sve ostalo smo pripremili za vas.",
+
+      closingTitle: "Jedva čekamo!",
+      signature: "Vaši Ana & Nikola",
+
+      rsvpTitle: "Potvrdite dolazak",
+      rsvpDeadline: "20. juna 2027",
+    },
+  },
+},
+{
+  slug: "anastasija-starlight",
+  type: "birthday",
+  template: "birthday-starlight",
+  script: "latin",
+
+  brideName: "Anastasija",
+  groomName: "",
+  weddingDate: "21.11.2026.",
+  weddingTime: "17:00",
+  venue: "Restoran Primer",
+
+  // Ako želiš muziku, ovde stavi putanju do postojećeg MP3 fajla.
+  musicSrc: "",
+  introPreviewImage: "/images/birthday-starlight/champagne-toast.webp",
+
+  details: {
+    ...createDetails({
+      age: 25,
+      date: "21.11.2026.",
+      dateISO: "2026-11-21T17:00:00+01:00",
+      gatheringTime: "17:00",
+      welcomeText:
+        "Sa velikim zadovoljstvom vas pozivam da zajedno proslavimo moj jubilarni 25. rođendan!",
+      locationName: "Restoran Primer",
+      locationAddress: "Adresa restorana, Beograd",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Beograd",
+      locationButtonText: "Pogledaj lokaciju",
+      showDressCode: true,
+      dressCodeTitle: "All Black",
+      dressCodeNote:
+        "Volim eleganciju crne boje i biće mi drago da budete deo ove večeri u crnim odevnim kombinacijama.",
+      rsvpText:
+        "Molim te da potvrdiš svoje prisustvo do 10. novembra 2026. Radujem se što ćemo slaviti zajedno!",
+      rsvpClosed: false,
+      rsvpOptions: { maxGuests: 8, message: false },
+      showCalendarButton: false,
+      calendarDurationHours: 6,
+      events: [],
+      birthdayIntro: { buttonText: "Pogledaj pozivnicu" },
+    }),
+
+    rsvpMaxGuests: 8,
+
+    starlight: {
+      heroTitle: "Birthday",
+      heroSubtitle: "party",
+      introKicker: "JEDNO VEČE ZA PAMĆENJE",
+      welcomeTitle: "Dragi prijatelji!",
+      locationTitle: "Mesto proslave",
+      gatheringTitle: "Okupljanje gostiju",
+      rsvpTitle: "Potvrda",
+      rsvpSubtitle: "prisustva",
+      closingTitle: "Vidimo se!",
+      countdownKicker: "JEDVA ČEKAM DA SLAVIMO",
+      countdownTitle: "Još samo...",
+      finaleText: "ZA VEČE KOJE ĆEMO PAMTITI.",
+      pourImage: "/images/birthday-starlight/champagne-pour.webp",
+      toastImage: "/images/birthday-starlight/champagne-toast.webp",
+      dressImage: "/images/birthday-starlight/black-tie-looks.webp",
+
+      // Opciono: tri sopstvene slike umesto generisanog triptiha.
+      // dressPhotos: ["/images/look-1.jpg", "/images/look-2.jpg", "/images/look-3.jpg"],
+    },
+  },
+},
+
+{
+  slug: "darija-satin",
+  type: "birthday",
+  template: "birthday-satin",
+  script: "latin",
+  brideName: "Darija",
+  weddingDate: "26.09.2027.",
+  weddingTime: "17:00",
+  venue: "Restoran Primer",
+  // Ako želiš muziku, ovde dodaj putanju do svog postojećeg MP3 fajla:
+  // musicSrc: "/music/tvoja-pesma.mp3",
+
+  details: {
+    ...createDetails({
+      age: 30,
+      date: "26.09.2027.",
+      dateISO: "2027-09-26T17:00:00+02:00",
+      welcomeText:
+        "Uskoro slavim svojih 30 i želim da ovaj poseban dan podelim sa vama! Biće mi veliko zadovoljstvo da okupim najdraže ljude, nazdravimo lepim trenucima i zajedno stvorimo nove uspomene.",
+      locationName: "Restoran Primer",
+      locationAddress: "Adresa restorana, Beograd",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Beograd",
+      showLocationButton: true,
+      locationButtonText: "Pogledaj na mapi",
+      showCalendarButton: true,
+      calendarDurationHours: 7,
+      showDressCode: true,
+      dressCodeTitle: "Dress code",
+      dressCodeNote:
+        "Biće mi posebno drago ako svojim odevnim kombinacijama u crnoj ili beloj boji ulepšate atmosferu naše večeri.",
+      dressCodePalette: ["#f4f4f1", "#171717"],
+      rsvpText: "Molim te da potvrdiš svoj dolazak do 20. septembra 2027.",
+      rsvpClosed: false,
+      events: [],
+    }),
+    rsvpMaxGuests: 8,
+    satin: {
+      introKicker: "JEDNO POSEBNO VEČE",
+      introLine: "Pozivnica za moj 30. rođendan",
+      welcomeTitle: "Dragi gosti!",
+      welcomeEnding: "Sa nestrpljenjem vas očekujem",
+      locationTitle: "Mesto proslave",
+      gatheringTitle: "Okupljanje gostiju",
+      countdownTitle: "Još samo…",
+      countdownText: "Do večeri koju ćemo pamtiti.",
+      footerText: "Jedva čekam da slavimo zajedno!",
+      timeZone: "Europe/Belgrade",
+    },
+  },
+},
+
+
 // =========================
 // Klijenti
 // =========================

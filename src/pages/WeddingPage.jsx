@@ -94,6 +94,7 @@ import LumiereIntro from "../components/LumiereIntro";
 import LumiereInvitationCard from "../components/LumiereInvitationCard";
 import DentelleIntro from "../components/DentelleIntro";
 import DentelleInvitationCard from "../components/DentelleInvitationCard";
+import AmoreInvitationCard from "../components/AmoreInvitationCard";
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
 import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
@@ -125,6 +126,10 @@ import BirthdayCherryIntro from "../components/BirthdayCherryIntro";
 import BirthdayCherryInvitationCard from "../components/BirthdayCherryInvitationCard";
 import BirthdayVelvetIntro from "../components/BirthdayVelvetIntro";
 import BirthdayVelvetInvitationCard from "../components/BirthdayVelvetInvitationCard";
+import BirthdayStarlightIntro from "../components/BirthdayStarlightIntro";
+import BirthdayStarlightInvitationCard from "../components/BirthdayStarlightInvitationCard";
+import BirthdaySatinIntro from "../components/BirthdaySatinIntro";
+import BirthdaySatinInvitationCard from "../components/BirthdaySatinInvitationCard";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -404,6 +409,20 @@ const TEMPLATE_COMPONENTS = {
 "birthday-velvet-onyx": {
   Intro: BirthdayVelvetIntro,
   Invitation: BirthdayVelvetInvitationCard,
+},
+
+"amore-editorial": {
+  Intro: EnvelopeFlapIntro,
+  Invitation: AmoreInvitationCard,
+},
+
+"birthday-starlight": {
+  Intro: BirthdayStarlightIntro,
+  Invitation: BirthdayStarlightInvitationCard,
+},
+"birthday-satin": {
+  Intro: BirthdaySatinIntro,
+  Invitation: BirthdaySatinInvitationCard,
 },
 
 };
@@ -980,7 +999,49 @@ sliderImages: localizedInvitation.details?.sliderImages || [],
       </button>
     ) : null;
 
-    
+    if (templateKey === "amore-editorial") {
+  const amore = localizedInvitation.details?.amore || {};
+
+  return (
+    <div className="wedding-page wedding-page--amore">
+      {audioNode}
+
+      <div
+        className={
+          "amr-card-layer" +
+          (showInvitation ? " amr-is-interactive" : "")
+        }
+        aria-hidden={!showInvitation}
+   inert={!showInvitation}
+      >
+        <InvitationComponent
+          key={slug}
+          {...invitationProps}
+          introReady={showInvitation}
+        />
+      </div>
+
+      {!showInvitation && (
+        <IntroComponent
+          key={slug}
+          {...introProps}
+          slug={amore.envelopeAssetSlug || slug}
+          openHint={
+            amore.openHint ||
+            (localizedInvitation.script === "cyrillic"
+              ? "Додирните да отворите писмо"
+              : "Dodirnite da otvorite pismo")
+          }
+          onStartMusic={playInvitationMusic}
+          onReveal={() => setEnvelopeRevealed(true)}
+          onEnter={handleIntroEnter}
+        />
+      )}
+    </div>
+  );
+}
+
+
   // DENTELLE — pravi InvitationCard je ispod četiri krila.
   if (templateKey === "dentelle-lace") {
     return (
