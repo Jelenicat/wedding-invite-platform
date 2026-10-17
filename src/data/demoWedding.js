@@ -11964,8 +11964,8 @@ dateISO:
           mapLink:
             "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
 
-          note:
-            "Sa velikom radošću vas očekujemo na našem crkvenom vjenčanju.",
+         note:
+  "Budite uz nas dok jedno drugom obećavamo ljubav i vjernost za cijeli život.",
         },
         {
           label: "Piće dobrodošlice i večera",
@@ -12093,7 +12093,7 @@ dateISO:
                   "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
 
                 note:
-                  "Wir freuen uns darauf, unsere kirchliche Trauung mit euch zu feiern.",
+  "Seid dabei, wenn wir einander Liebe und Treue fürs Leben versprechen.",
               },
               {
                 label: "Empfang und Abendessen",
