@@ -11928,7 +11928,7 @@ dateISO:
   brideName: "Jovana",
   groomName: "Oliver",
 
-  // VIDEO, MUZIKA I FOTOGRAFIJA
+  // VIDEO I MUZIKA
   videoSrc: "/videos/ana-ognjen-2.mp4",
   musicSrc: "/music/jovana-oliver.mp3",
 
@@ -11992,7 +11992,7 @@ dateISO:
       ],
 
       // =========================
-      // BOJE — ISTE KAO ANA-OGNJEN
+      // BOJE
       // =========================
 
       theme: {
@@ -12043,10 +12043,6 @@ dateISO:
       mapLink:
         "https://www.google.com/maps/search/?api=1&query=Crkva+Svetog+Nikole+Kotor",
 
-      // Oba Google Maps linka nalaze se i u events.
-      // SplitVideoInvitationCard ih prikazuje posebno
-      // samo za ovaj slug.
-
       // =========================
       // IZBOR JEZIKA SR / DE
       // =========================
@@ -12075,12 +12071,11 @@ dateISO:
 
           details: {
             welcomeText:
-              "Mit großer Freude laden wir euch ein, unseren besonderen Tag mit uns zu feiern und den Beginn unseres gemeinsamen Lebensweges zu begleiten.",
+              "Mit grosser Freude laden wir euch ein, unseren besonderen Tag mit uns zu feiern und den Beginn unseres gemeinsamen Lebensweges zu begleiten.",
 
             date: "05 JUNI 2027",
 
-            venue:
-              "Kirche des Heiligen Nikolaus, Kotor",
+            venue: "Kirche des Heiligen Nikolaus, Kotor",
 
             // =========================
             // RASPORED DOGAĐAJA — DE
@@ -12104,21 +12099,19 @@ dateISO:
                 label: "Empfang und Abendessen",
                 time: "18:00",
 
-                location:
-                  "Carević Resort, Budva",
+                location: "Carević Resort, Budva",
 
                 mapLink:
                   "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
 
                 note:
-                  "Nach der kirchlichen Trauung heißen wir euch herzlich zu einem Empfang willkommen. Anschließend genießen wir gemeinsam das festliche Abendessen.",
+                  "Nach der kirchlichen Trauung heissen wir euch herzlich zu einem Empfang willkommen. Anschliessend geniessen wir gemeinsam das festliche Abendessen.",
               },
               {
                 label: "Hochzeitsfeier",
                 time: "20:30 – 01:00",
 
-                location:
-                  "Carević Resort, Budva",
+                location: "Carević Resort, Budva",
 
                 mapLink:
                   "https://www.google.com/maps/search/?api=1&query=Carevic+Resort+Budva",
@@ -12137,7 +12130,6 @@ dateISO:
 
             guestInfo: {
               eyebrow: "FÜR UNSERE GÄSTE",
-
               title: "Gut zu wissen",
 
               transport: {
@@ -12151,7 +12143,7 @@ dateISO:
                 title: "Hotelempfehlungen",
 
                 intro:
-                  "Für euren Aufenthalt empfehlen wir zwei Hotels:",
+                  "Für euren Aufenthalt empfehlen wir folgende Hotels:",
 
                 hotels: [
                   {
@@ -12162,7 +12154,14 @@ dateISO:
                     name: "Iberostar Slavija",
                     location: "Budva",
                   },
+                  {
+                    name: "Hotel Avala",
+                    location: "Budva",
+                  },
                 ],
+
+                note:
+                  "Für 20% Rabatt in den Hotels Iberostar Bellevue und Iberostar Slavija meldet euch bitte vor der Buchung direkt bei uns.",
               },
 
               airports: {
@@ -12170,6 +12169,33 @@ dateISO:
 
                 text:
                   "Die nächstgelegenen Flughäfen sind Tivat und Podgorica.",
+              },
+
+              // KONTAKTI NA KRAJU POZIVNICE
+              contacts: {
+                eyebrow: "WIR SIND FÜR EUCH DA",
+                title: "Unsere Kontakte",
+
+                text:
+                  "Bei Fragen oder für Unterstützung bei der Unterkunft meldet euch gerne bei uns.",
+
+                callLabel: "Anrufen",
+
+                hint:
+                  "Tippt auf eine Telefonnummer, um uns anzurufen.",
+
+                people: [
+                  {
+                    name: "Oliver Janjic",
+                    phone: "+41764438445",
+                    displayPhone: "+41 76 443 84 45",
+                  },
+                  {
+                    name: "Jovana Adamovic",
+                    phone: "+41796772426",
+                    displayPhone: "+41 79 677 24 26",
+                  },
+                ],
               },
             },
           },
@@ -12183,7 +12209,6 @@ dateISO:
 
     guestInfo: {
       eyebrow: "ZA NAŠE GOSTE",
-
       title: "Korisne informacije",
 
       // ORGANIZOVANI PREVOZ
@@ -12199,7 +12224,7 @@ dateISO:
         title: "Preporučeni smještaj",
 
         intro:
-          "Za vaš boravak preporučujemo dva hotela:",
+          "Za vaš boravak preporučujemo sljedeće hotele:",
 
         hotels: [
           {
@@ -12210,7 +12235,14 @@ dateISO:
             name: "Iberostar Slavija",
             location: "Budva",
           },
+          {
+            name: "Hotel Avala",
+            location: "Budva",
+          },
         ],
+
+        note:
+          "Za 20% popusta u hotelima Iberostar Bellevue i Iberostar Slavija, javite se direktno nama prije rezervacije.",
       },
 
       // AERODROMI
@@ -12219,6 +12251,33 @@ dateISO:
 
         text:
           "Najbliži aerodromi su Tivat i Podgorica.",
+      },
+
+      // KONTAKTI NA KRAJU POZIVNICE
+      contacts: {
+        eyebrow: "TU SMO ZA VAS",
+        title: "Naši kontakti",
+
+        text:
+          "Za sva pitanja i pomoć oko smještaja, slobodno nam se javite.",
+
+        callLabel: "Pozovi",
+
+        hint:
+          "Dodirnite broj telefona da nas pozovete.",
+
+        people: [
+          {
+            name: "Oliver Janjic",
+            phone: "+41764438445",
+            displayPhone: "+41 76 443 84 45",
+          },
+          {
+            name: "Jovana Adamovic",
+            phone: "+41796772426",
+            displayPhone: "+41 79 677 24 26",
+          },
+        ],
       },
     },
 
@@ -12230,7 +12289,6 @@ dateISO:
     rsvpDeadlineISO: "2027-02-05",
   },
 },
-
 
   // =========================
   // BIRTHDAY TEMPLATES

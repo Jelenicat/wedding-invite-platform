@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import AmoreCountdown, {
   AMORE_HEART_PATH, AmoreIcon, AmoreReveal, AmoreText,
-  amoreCalendarURL, amoreText, getAmoreDate, useAmoreMotion,
+  amoreText, getAmoreDate, useAmoreMotion,
 } from "./AmoreCountdown";
 import AmoreRSVP from "./AmoreRSVP";
+import { addToCalendar } from "../utils/calendar";
 import "../styles/newcard.css";
 import "../styles/newintro.css";
 
@@ -26,7 +27,7 @@ function Photo({ src, fallback, alt = "", className = "", position = "50% 50%", 
     }} />;
 }
 
-function DateCalendar({ date, label, href, t }) {
+function DateCalendar({ date, label, onSave, t }) {
   if (!date) return null;
   return (
     <AmoreReveal className="amr-calendar-wrap">
@@ -42,9 +43,9 @@ function DateCalendar({ date, label, href, t }) {
           </div>
         ))}
       </div>
-      {href && <a className="amr-calendar-link" href={href} target="_blank" rel="noopener noreferrer">
+      {onSave && <button className="amr-calendar-link" type="button" onClick={onSave}>
         <img src="/icons/amore-calendar.svg" width="16" height="16" alt="" aria-hidden="true" />{t.calendar}
-      </a>}
+      </button>}
     </AmoreReveal>
   );
 }
@@ -64,10 +65,10 @@ function SaveTheDateTape() {
 export default function AmoreInvitationCard({
   brideName = "Ana", groomName = "Nikola", weddingDate = "", venue = "",
   backgroundImage = "", image1 = "", image2 = "", image3 = "",
-  slug, type = "wedding", details = {}, script = "latin", introReady = true,
+  slug, type = "wedding", details = {}, script = "latin", introReady = true, introOpening = false,
 }) {
   const root = useRef(null);
-  useAmoreMotion(root, introReady);
+  useAmoreMotion(root, introReady, introOpening);
   const t = amoreText(script);
   const config = details.amore || {};
   const date = getAmoreDate(details.dateISO, script);
@@ -79,15 +80,23 @@ export default function AmoreInvitationCard({
   const address = config.locationAddress || details.locationAddress;
   const map = details.locationButtonLink || details.mapLink ||
     (location ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([location, address].filter(Boolean).join(", "))}` : "");
-  const calendar = details.showCalendarButton ? amoreCalendarURL({
-    dateISO: details.dateISO, names, venue: [location, address].filter(Boolean).join(", "),
-    duration: details.calendarDurationHours, description: details.welcomeText || "",
-  }) : "";
+  const saveDate = () => {
+    const durationHours = Number(details.calendarDurationHours);
+    addToCalendar({
+      brideName,
+      groomName,
+      dateISO: details.dateISO,
+      venue: [location, address].filter(Boolean).join(", "),
+      mapLink: map,
+      note: details.note || details.welcomeText || "",
+      ...(Number.isFinite(durationHours) && durationHours > 0 ? { durationHours } : {}),
+    });
+  };
   const events = Array.isArray(details.events) ? details.events : [];
   const palette = details.dressCodePalette?.length ? details.dressCodePalette : ["#e9e6d9", "#f0d85b", "#7b6540", "#333536"];
 
   return (
-    <main ref={root} className="amr-invitation" data-script={script} data-amr-active={introReady ? "true" : "false"}>
+    <main ref={root} className="amr-invitation" data-script={script} data-amr-active={introReady || introOpening ? "true" : "false"}>
       <header className="amr-hero">
         <Photo src={config.heroImage || backgroundImage || image1} fallback={AMORE_PHOTOS.hero}
           alt={`${brideName} i ${groomName}`} priority parallax position={config.heroPosition || "50% 43%"} />
@@ -103,7 +112,7 @@ export default function AmoreInvitationCard({
         {dateLabel && <AmoreText as="p" text={dateLabel} className="amr-wedding-date" />}
         <AmoreText as="h2" text={config.welcomeTitle || t.welcome} className="amr-small-title" />
         <AmoreReveal as="p" className="amr-body amr-welcome-copy">{details.welcomeText || t.welcomeBody}</AmoreReveal>
-        <DateCalendar date={date} label={dateLabel} href={calendar} t={t} />
+        <DateCalendar date={date} label={dateLabel} onSave={details.showCalendarButton ? saveDate : undefined} t={t} />
       </section>
 
       <SaveTheDateTape />

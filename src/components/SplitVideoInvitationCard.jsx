@@ -21,6 +21,9 @@ function SplitVideoInvitationCard({
   const safeBrideName = brideName || (isCyrillic ? "Млада" : "Bride");
   const safeGroomName = groomName || (isCyrillic ? "Младожења" : "Groom");
 
+  const contactInfo =
+    slug === "jovana-oliver" ? details.guestInfo?.contacts : null;
+
   const t = language === "de"
     ? {
         welcome: "Herzlich willkommen",
@@ -653,6 +656,75 @@ function SplitVideoInvitationCard({
           slug={slug}
           language={language}
         />
+      )}
+
+      {contactInfo?.people?.length > 0 && (
+        <motion.section
+          id="jovana-oliver-kontakti"
+          className="split-video-invitation split-video-jovana-oliver jovana-oliver-contacts-footer"
+          style={themeStyles}
+          lang={language === "de" ? "de-CH" : "sr-Latn-ME"}
+          aria-labelledby="jovana-oliver-contacts-title"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.65 }}
+        >
+          <div
+            className="split-video-paper"
+            style={{
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="split-video-paper-inner">
+              <span className="split-video-guest-info__eyebrow">
+                {contactInfo.eyebrow}
+              </span>
+
+              <h2
+                id="jovana-oliver-contacts-title"
+                className="split-video-guest-info__title"
+              >
+                {contactInfo.title}
+              </h2>
+
+              {contactInfo.text && (
+                <p className="jovana-oliver-contacts-description">
+                  {contactInfo.text}
+                </p>
+              )}
+
+              <div className="jovana-oliver-contacts-list">
+                {contactInfo.people.map((person) => (
+                  <a
+                    key={person.phone}
+                    className="jovana-oliver-contact"
+                    href={`tel:${person.phone}`}
+                    aria-label={`${contactInfo.callLabel}: ${person.name}, ${
+                      person.displayPhone || person.phone
+                    }`}
+                  >
+                    <span className="jovana-oliver-contact-name">
+                      {person.name}
+                    </span>
+                    <span className="jovana-oliver-contact-phone" dir="ltr">
+                      {person.displayPhone || person.phone}
+                    </span>
+                  </a>
+                ))}
+              </div>
+
+              {contactInfo.hint && (
+                <p className="jovana-oliver-contacts-hint">
+                  {contactInfo.hint}
+                </p>
+              )}
+            </div>
+          </div>
+        </motion.section>
       )}
     </>
   );

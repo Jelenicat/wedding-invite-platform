@@ -29878,3 +29878,237 @@ font-family: "Italianno", cursive;
     font-size: 22px;
   }
 }
+
+/* Dodaj na kraj src/styles/card.css. Samo za slug jovana-oliver. */
+
+.split-video-invitation.split-video-jovana-oliver .split-video-guest-info__tip {
+  max-width: 360px;
+  margin: 20px auto 0;
+  padding-top: 17px;
+  border-top: 1px solid rgba(244, 232, 200, 0.2);
+  color: var(--split-soft-text, #f7f2e8);
+  line-height: 1.75;
+}
+
+.split-video-invitation.split-video-jovana-oliver.jovana-oliver-contacts-footer {
+  min-height: 0;
+  scroll-margin-top: 24px;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer > .split-video-paper {
+  min-height: 0;
+  border-top: 1px solid rgba(244, 232, 200, 0.18);
+  box-shadow: none;
+  animation: none;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .split-video-paper-inner {
+  width: 100%;
+  max-width: 550px;
+  box-sizing: border-box;
+  padding: clamp(42px, 10vw, 64px) 24px calc(36px + env(safe-area-inset-bottom, 0px));
+  animation: none;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .split-video-paper-inner::before {
+  content: none;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .split-video-guest-info__eyebrow {
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .split-video-guest-info__title {
+  margin: 0;
+  font-size: clamp(32px, 8vw, 40px);
+  line-height: 1.2;
+}
+
+.split-video-jovana-oliver .jovana-oliver-contacts-description {
+  max-width: 350px;
+  margin: 16px auto 25px;
+  color: var(--split-soft-text, #f7f2e8);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+.split-video-jovana-oliver .jovana-oliver-contacts-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(244, 232, 200, 0.23);
+  border-bottom: 1px solid rgba(244, 232, 200, 0.23);
+}
+
+.split-video-jovana-oliver .jovana-oliver-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 92px;
+  box-sizing: border-box;
+  padding: 19px 10px;
+  color: var(--split-main-text, #fffdf7);
+  text-decoration: none;
+  text-align: center;
+  -webkit-tap-highlight-color: rgba(244, 232, 200, 0.12);
+  transition: background-color 180ms ease;
+}
+
+.split-video-jovana-oliver .jovana-oliver-contact + .jovana-oliver-contact {
+  border-top: 1px solid rgba(244, 232, 200, 0.15);
+}
+
+.split-video-jovana-oliver .jovana-oliver-contact:hover {
+  background-color: rgba(244, 232, 200, 0.07);
+}
+
+.split-video-jovana-oliver .jovana-oliver-contact:focus-visible {
+  outline: 2px solid var(--split-accent, #f4e8c8);
+  outline-offset: 3px;
+}
+
+.split-video-jovana-oliver .jovana-oliver-contact-name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(24px, 6vw, 29px);
+  font-weight: 400;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.split-video-jovana-oliver .jovana-oliver-contact-phone {
+  color: var(--split-accent-strong, #e2d0a2);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(15px, 4vw, 17px);
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.5;
+  letter-spacing: 0.035em;
+  white-space: nowrap;
+}
+
+.split-video-jovana-oliver .jovana-oliver-contacts-hint {
+  margin: 18px 0 0;
+  color: var(--split-muted-text, #eee7d8);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-video-jovana-oliver .jovana-oliver-contact {
+    transition: none;
+  }
+}
+
+
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer > .split-video-paper {
+  --split-main-text: #fffdf7;
+  --split-soft-text: #fffaf0;
+  --split-muted-text: #f0e7d4;
+  --split-accent: #f4e8c8;
+  --split-accent-strong: #f4e8c8;
+
+  --split-paper-overlay-top: rgba(17, 26, 19, 0.7);
+  --split-paper-overlay-bottom: rgba(17, 26, 19, 0.7);
+  --split-vignette: rgba(9, 17, 11, 0.24);
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .split-video-paper-inner {
+  color: #fffdf7;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .split-video-guest-info__eyebrow {
+  color: #f4e8c8;
+  font-size: 11px;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .split-video-guest-info__title {
+  color: #fffdf7;
+  font-size: clamp(34px, 8vw, 42px);
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .jovana-oliver-contacts-description {
+  color: #fffaf0;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .jovana-oliver-contact-name {
+  color: #fffdf7;
+  font-size: clamp(27px, 6.5vw, 31px);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .jovana-oliver-contact-phone {
+  color: #f4e8c8;
+  font-size: clamp(18px, 4.6vw, 20px);
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .jovana-oliver-contacts-hint {
+  color: #f0e7d4;
+  font-size: 13px;
+  line-height: 1.8;
+  opacity: 1;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #2f352a;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer > .split-video-paper {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #2f352a;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      #2f352a 0,
+      rgba(29, 39, 28, 0.68) 80px,
+      rgba(29, 39, 28, 0.64) 45%,
+      rgba(29, 39, 28, 0.66) 100%
+    ),
+    url("/images/ANA-OGNJEN-split-2.jpg") !important;
+
+  background-size: 100% 100%, cover !important;
+  background-position: center, center top !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Filter je sada u samoj pozadini. */
+.split-video-jovana-oliver.jovana-oliver-contacts-footer > .split-video-paper::before,
+.split-video-jovana-oliver.jovana-oliver-contacts-footer > .split-video-paper::after {
+  content: none;
+  display: none;
+}
+
+/* Svetliji sitniji tekst preko blaže zatamnjene slike. */
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .jovana-oliver-contact-phone,
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .jovana-oliver-contacts-hint {
+  color: #fffaf0;
+}
+
+.split-video-jovana-oliver.jovana-oliver-contacts-footer .jovana-oliver-contact:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}

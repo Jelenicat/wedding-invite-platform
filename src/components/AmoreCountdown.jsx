@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "../styles/newcard.css";
 
 // Zajednički elementi su ovde da ceo template ostane u tačno tri JSX fajla.
@@ -138,40 +138,66 @@ export function AmoreIcon({ name = "rings", className = "" }) {
     alt="" aria-hidden="true" width="96" height="110" loading="lazy" decoding="async" draggable={false} />;
 }
 
-export function useAmoreMotion(rootRef, active = true) {
-  useEffect(() => {
+// Naslovna sekcija se priprema tokom otvaranja koverte.
+// Ostali elementi čekaju kraj introa i svoj ulazak u kadar.
+export function useAmoreMotion(rootRef, active = true, opening = active) {
+  useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const targets = () => root.querySelectorAll("[data-amr-reveal]");
+    const inHero = (node) => Boolean(node.closest(".amr-hero"));
     const revealAll = () => {
       root.dataset.amrMotion = "reduced";
-      root.querySelectorAll("[data-amr-reveal]").forEach((node) => node.classList.add("amr-is-visible"));
+      targets().forEach((node) => node.classList.add("amr-is-visible"));
     };
     if (!window.IntersectionObserver || preference.matches) {
       revealAll();
       return undefined;
     }
-    root.dataset.amrMotion = "on";
-    if (!active) return undefined;
 
+    root.dataset.amrMotion = "on";
+    if (opening || active) {
+      root.querySelectorAll(".amr-hero [data-amr-reveal]")
+        .forEach((node) => node.classList.add("amr-is-visible"));
+    }
+    if (!active) {
+      // Čak i unapred označena RSVP forma čeka da se koverta skloni.
+      targets().forEach((node) => {
+        if (!inHero(node)) node.classList.remove("amr-is-visible");
+      });
+      return undefined;
+    }
+
+    const seen = new WeakSet();
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("amr-is-visible");
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("amr-is-visible");
+        observer.unobserve(entry.target);
       });
-    }, { threshold: 0, rootMargin: "0px 0px 100px 0px" });
-    const targets = Array.from(root.querySelectorAll("[data-amr-reveal]"));
-    // Prvi kadar ne čeka asinhroni callback observera. Merenja su grupisana pre izmena.
-    const nearViewport = new Set(targets.filter((node) => {
-      const bounds = node.getBoundingClientRect();
-      return bounds.bottom > 0 && bounds.top < window.innerHeight + 100;
-    }));
-    targets.forEach((node) => {
-      if (nearViewport.has(node)) node.classList.add("amr-is-visible");
-      else if (!node.classList.contains("amr-is-visible")) observer.observe(node);
+    }, { threshold: 0.08, rootMargin: "0px 0px -16px 0px" });
+    const register = (node) => {
+      if (inHero(node) || seen.has(node)) return;
+      seen.add(node);
+      if (preference.matches) {
+        node.classList.add("amr-is-visible");
+        return;
+      }
+      node.classList.remove("amr-is-visible");
+      observer.observe(node);
+    };
+    targets().forEach(register);
+
+    // Posmatramo i ponovo prikazanu RSVP formu posle slanja potvrde.
+    const additions = new MutationObserver((records) => {
+      records.forEach((record) => record.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+        if (node.matches("[data-amr-reveal]")) register(node);
+        node.querySelectorAll("[data-amr-reveal]").forEach(register);
+      }));
     });
+    additions.observe(root, { childList: true, subtree: true });
 
     const loops = new IntersectionObserver((entries) => entries.forEach((entry) => {
       entry.target.classList.toggle("amr-loop-in-view", entry.isIntersecting);
@@ -179,7 +205,8 @@ export function useAmoreMotion(rootRef, active = true) {
     root.querySelectorAll(".amr-date-tapes, .amr-details-wall").forEach((node) => loops.observe(node));
 
     let frame = 0;
-    const photos = Array.from(root.querySelectorAll("[data-amr-parallax]"));
+    const photos = Array.from(root.querySelectorAll("[data-amr-parallax]"))
+      .filter((photo) => !photo.closest(".amr-hero"));
     const draw = () => {
       photos.forEach((photo) => {
         const bounds = photo.parentElement.getBoundingClientRect();
@@ -198,13 +225,14 @@ export function useAmoreMotion(rootRef, active = true) {
     scroll();
     return () => {
       observer.disconnect();
+      additions.disconnect();
       loops.disconnect();
       window.removeEventListener("scroll", scroll);
       window.removeEventListener("resize", scroll);
       preference.removeEventListener?.("change", onPreference);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, [rootRef, active]);
+  }, [rootRef, active, opening]);
 }
 
 export function getAmoreCountdown(dateISO, now = Date.now()) {

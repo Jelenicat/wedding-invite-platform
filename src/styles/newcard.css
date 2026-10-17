@@ -6260,3 +6260,10 @@ body:has(.bde-card),
 @media(min-width:600px){.bsa-card{box-shadow:0 0 85px rgba(0,0,0,.045)}.bsa-section{padding-left:45px;padding-right:45px}.bsa-title{font-size:57px}.bsa-welcome{padding-top:68px}.bsa-welcome-title{font-size:68px}.bsa-location{padding-top:65px;padding-bottom:67px}.bsa-location .bsa-title{font-size:55px}.bsa-countdown{padding-inline:30px}}
 @media(max-width:360px){.bsa-section{padding-left:23px;padding-right:23px}.bsa-title{font-size:40px}.bsa-copy{font-size:12px}.bsa-location{padding-inline:25px}.bsa-location .bsa-title{font-size:39px}.bsa-countdown{padding-inline:16px}.bsa-count-label{font-size:7px;letter-spacing:.1em}.bsa-count-number{font-size:38px}.bsa-special-date{font-size:39px}}
 
+
+
+.amr-invitation button.amr-calendar-link {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}

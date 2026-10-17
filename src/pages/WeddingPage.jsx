@@ -1014,11 +1014,12 @@ sliderImages: localizedInvitation.details?.sliderImages || [],
         aria-hidden={!showInvitation}
    inert={!showInvitation}
       >
-        <InvitationComponent
-          key={slug}
-          {...invitationProps}
-          introReady={showInvitation}
-        />
+   <InvitationComponent
+  key={slug}
+  {...invitationProps}
+  introReady={showInvitation}
+  introOpening={envelopeRevealed || showInvitation}
+/>
       </div>
 
       {!showInvitation && (
