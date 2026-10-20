@@ -95,6 +95,13 @@ import LumiereInvitationCard from "../components/LumiereInvitationCard";
 import DentelleIntro from "../components/DentelleIntro";
 import DentelleInvitationCard from "../components/DentelleInvitationCard";
 import AmoreInvitationCard from "../components/AmoreInvitationCard";
+import IvoryLaceIntro from "../components/IvoryLaceIntro";
+import IvoryLaceInvitationCard from "../components/IvoryLaceInvitationCard";
+import BordeauxBloomIntro from "../components/BordeauxBloomIntro";
+import BordeauxBloomInvitationCard from "../components/BordeauxBloomInvitationCard";
+import NewlywedTimesIntro from "../components/NewlywedTimesIntro";
+import NewlywedTimesInvitationCard from "../components/NewlywedTimesInvitationCard";
+
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
 import SaveTheDateEnvelope from "../components/SaveTheDateEnvelope";
@@ -423,6 +430,20 @@ const TEMPLATE_COMPONENTS = {
 "birthday-satin": {
   Intro: BirthdaySatinIntro,
   Invitation: BirthdaySatinInvitationCard,
+},
+
+"ivory-lace": {
+  Intro: IvoryLaceIntro,
+  Invitation: IvoryLaceInvitationCard,
+},
+"bordeaux-bloom": {
+  Intro: BordeauxBloomIntro,
+  Invitation: BordeauxBloomInvitationCard,
+},
+
+"newlywed-times": {
+  Intro: NewlywedTimesIntro,
+  Invitation: NewlywedTimesInvitationCard,
 },
 
 };
@@ -1077,8 +1098,53 @@ sliderImages: localizedInvitation.details?.sliderImages || [],
     );
   }
 
+if (templateKey === "bordeaux-bloom") {
+  return (
+    <div className="wedding-page">
+      {audioNode}
+      {envelopeRevealed && (
+        <InvitationComponent {...invitationProps} />
+      )}
+      {!showInvitation && (
+        <IntroComponent
+          key={slug}
+          {...introProps}
+          onReveal={() => setEnvelopeRevealed(true)}
+          onEnter={handleIntroEnter}
+        />
+      )}
+    </div>
+  );
+}
 
-
+if (templateKey === "newlywed-times") {
+  return (
+    <div className="wedding-page wedding-page--newlywed">
+      {audioNode}
+      {envelopeRevealed && (
+        <div
+          className="nwt-card-layer"
+          aria-hidden={!showInvitation}
+          inert={!showInvitation}
+        >
+          <InvitationComponent
+            key={slug}
+            {...invitationProps}
+            introReady={showInvitation}
+          />
+        </div>
+      )}
+      {!showInvitation && (
+        <IntroComponent
+          key={slug}
+          {...introProps}
+          onReveal={() => setEnvelopeRevealed(true)}
+          onEnter={handleIntroEnter}
+        />
+      )}
+    </div>
+  );
+}
 
   if (templateKey === "angel" || templateKey === "classic") {
     return (
