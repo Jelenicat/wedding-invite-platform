@@ -961,3 +961,102 @@
     transition: none !important;
   }
 }
+
+/* Crveni saten - birthday-red-satin */
+.brs-page .brs-countdown {
+  background: linear-gradient(180deg, #270610ef, #390a16dc 68%, #370813de),
+    var(--brs-silk) center / cover no-repeat, var(--brs-wine);
+  padding-inline: clamp(1.1rem, 6vw, 2.6rem);
+}
+.brs-page .brs-time-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 25rem;
+  margin: 1.5rem auto .9rem;
+  padding: .65rem 0 .84rem;
+  border-bottom: 1px solid #f6d8c26e;
+}
+.brs-page .brs-time-value {
+  display: block;
+  color: var(--brs-light);
+  font-size: clamp(1.9rem, 9vw, 3.65rem);
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.02;
+}
+.brs-page .brs-time-label { color: #ffe3cd; font-size: clamp(.59rem, 2.6vw, .78rem); letter-spacing: .085em; }
+.brs-page .brs-countdown-finished { margin: 1.45rem 0 .8rem; }
+.brs-page .brs-date-details { max-width: 19rem; margin: 0 auto .7rem; }
+.brs-page .brs-date-details summary {
+  display: flex;
+  width: fit-content;
+  min-height: 44px;
+  margin-inline: auto;
+  align-items: center;
+  gap: .5rem;
+  color: #ffe6ce;
+  font-size: 1rem;
+}
+.brs-page .brs-date-details summary .brs-icon { width: .9rem; height: .9rem; }
+.brs-page details .brs-when-open, .brs-page details[open] .brs-when-closed { display: none; }
+.brs-page details[open] .brs-when-open { display: inline-block; }
+.brs-page .brs-date-calendar {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: .16rem;
+  margin-bottom: .85rem;
+  font-size: .91rem;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.brs-page .brs-date-calendar th { height: 1.8rem; color: #ffe6ce; font-size: .78rem; font-weight: 500; }
+.brs-page .brs-date-calendar td { height: 1.85rem; }
+.brs-page .brs-date-calendar .brs-celebration-day { border-radius: 99px; background: #ffe6ce; color: var(--brs-wine); font-weight: 650; }
+.brs-page.brs-motion-ready .brs-date-details[open] .brs-date-calendar { animation: brs-rise-in .42s var(--brs-ease) both; }
+
+/* Crveni saten — prelaz samo cifre koja se menja */
+.brs-page .brs-countdown {
+  background:
+    radial-gradient(ellipse at 50% 10%, #6e243a50, transparent 74%),
+    linear-gradient(180deg, #270710e6, #350b18eb 74%, #2b0713ed),
+    var(--brs-silk) center 53% / cover no-repeat,
+    var(--brs-wine);
+}
+
+.brs-page .brs-countdown .brs-time-grid {
+  padding-bottom: 1.2rem;
+  border-bottom-color: #e2bfc36f;
+}
+
+.brs-page .brs-countdown .brs-time-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff2e2;
+  font-size: clamp(1.9rem, 8.35vw, 3.52rem);
+  font-variation-settings: "opsz" 21;
+  font-weight: 450;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.12;
+}
+
+.brs-page .brs-countdown .brs-time-slot {
+  display: inline-flex;
+  min-width: .53em;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 3.5em;
+}
+
+.brs-page .brs-countdown .brs-time-digit {
+  display: inline-block;
+  transform-origin: 50% 85%;
+}
+
+.brs-page.brs-motion-ready .brs-countdown .brs-time-grid.brs-is-visible .brs-time-digit {
+  animation: brs-countdown-flip .38s var(--brs-ease) both;
+}
+
+@keyframes brs-countdown-flip {
+  from { opacity: .25; transform: translateY(.53em) rotateX(-28deg); }
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}

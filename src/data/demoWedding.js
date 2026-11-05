@@ -6575,6 +6575,69 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+  {
+    slug: "crveni-saten-demo",
+    type: "birthday",
+    template: "birthday-red-satin",
+    script: "latin",
+
+    brideName: "Isidora",
+    childName: "Isidora",
+    weddingDate: "19.12.2026.",
+    weddingTime: "19:00",
+    venue: "Kalemegdanska terasa",
+    musicSrc: "/music/birthday-red-satin-demo.mp3",
+
+    details: {
+      age: 18,
+      date: "19.12.2026.",
+      dateISO: "2026-12-19T19:00:00+01:00",
+      welcomeText:
+        "Da zajedno nazdravimo mom punoletstvu\ni proslavimo ga uz muziku i ples.",
+
+      locationName: "Kalemegdanska terasa",
+      locationAddress: "Kalemegdan, Beograd",
+      showLocationButton: true,
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Kalemegdanska+terasa%2C+Beograd",
+
+      events: [
+        {
+          label: "Okupljanje gostiju",
+          time: "19:00",
+          description: "Doček i piće dobrodošlice",
+          location: "Kalemegdanska terasa",
+        },
+        {
+          label: "Torta i svećice",
+          time: "20:30",
+          description: "Vreme za rođendansku želju",
+          location: "Kalemegdanska terasa",
+        },
+        {
+          label: "Muzika i ples",
+          time: "21:00",
+          description: "Otvaramo podijum",
+          location: "Kalemegdanska terasa",
+        },
+      ],
+
+      showDressCode: true,
+      dressCodeTitle: "Dress code",
+      dressCodeNote: "Ako želiš, dodaj bordo ili zlatni detalj.",
+      dressCodePalette: ["#181014", "#801e34", "#dfc099"],
+
+      rsvpDeadline: "12. decembra 2026.",
+      rsvpDeadlineISO: "2026-12-12",
+      rsvpClosed: false,
+
+      showCalendarButton: true,
+      calendarDurationHours: 5,
+
+      note: "S ljubavlju, Isidora",
+    },
+  },
+
 
 // =========================
 // Klijenti

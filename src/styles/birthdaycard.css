@@ -4483,3 +4483,717 @@ a.bhc-info-row:hover {
     margin-bottom: 14px !important;
   }
 }
+
+/* Crveni saten - birthday-red-satin */
+.brs-page .brs-letter { overflow: hidden; }
+.brs-page .brs-letter-copy {
+  position: relative;
+  z-index: 1;
+  padding: clamp(3.15rem, 12vw, 5.3rem) 1.05rem 0;
+}
+.brs-page .brs-letter h1 {
+  color: var(--brs-red);
+  padding: .1em .12em .02em;
+  font-size: clamp(3.7rem, 17vw, 7rem);
+  line-height: 1.02;
+}
+.brs-page .brs-letter-welcome { color: var(--brs-muted); font-size: clamp(1.04rem, 4.4vw, 1.29rem); }
+.brs-page .brs-letter-when { margin-top: clamp(1.4rem, 7vw, 2.45rem); }
+.brs-page .brs-letter-date {
+  display: block;
+  color: var(--brs-red);
+  font-size: clamp(2.5rem, 11.25vw, 4.65rem);
+  font-variation-settings: "opsz" 18;
+  font-variant-numeric: lining-nums;
+  letter-spacing: -.052em;
+  line-height: 1.03;
+  white-space: nowrap;
+}
+.brs-page .brs-letter-time { margin-top: .34rem; color: var(--brs-red); font-size: .83rem; }
+.brs-page .brs-letter-art {
+  position: relative;
+  width: 100%;
+  margin: -.85rem auto 0;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, transparent 0, #000 24%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 24%);
+}
+.brs-page .brs-toast-art {
+  width: 100%;
+  height: auto;
+  max-height: 28rem;
+  aspect-ratio: 1.17;
+  object-fit: cover;
+  object-position: center 29%;
+  filter: brightness(1.18) saturate(.83);
+}
+
+.brs-page .brs-venue { isolation: isolate; padding: 4.2rem 1.2rem 4.5rem; }
+.brs-page .brs-venue-silk {
+  position: absolute;
+  z-index: -1;
+  inset: -3.6rem 0 0;
+  background:
+    linear-gradient(180deg, #3a081118, #3806127a 38%, #350710a6 100%),
+    var(--brs-silk) center 54% / cover no-repeat, #651326;
+  clip-path: url(#brs-silk-venue);
+  overflow: hidden;
+}
+.brs-page .brs-venue-silk::after {
+  position: absolute;
+  inset: -30%;
+  background: linear-gradient(106deg, transparent 34%, #ffbbb435 51%, transparent 67%);
+  content: "";
+  opacity: 0;
+}
+.brs-page .brs-venue:has(.brs-venue-content .brs-is-visible) .brs-venue-silk::after { animation: brs-silk-shine 2.4s .2s ease-out both; }
+.brs-page .brs-venue-content { text-shadow: 0 1px 20px #28040d; }
+.brs-page .brs-venue-info { margin-top: 1.3rem; }
+.brs-page .brs-venue-name { font-size: clamp(1.5rem, 6vw, 2.12rem); line-height: 1.18; }
+.brs-page .brs-venue-city { margin: .2rem 0 1.35rem; font-size: 1.08rem; color: #ffece0; }
+
+.brs-page .brs-program { padding-bottom: 1.95rem; }
+.brs-page .brs-schedule { max-width: 23rem; margin: 1.75rem auto 0; list-style: none; text-align: left; }
+.brs-page .brs-schedule li {
+  display: grid;
+  grid-template-columns: minmax(3.7rem, 1fr) 3.5fr;
+  align-items: start;
+  column-gap: clamp(.66rem, 3.8vw, 1.4rem);
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--brs-line);
+}
+.brs-page .brs-schedule li:last-child { border-bottom: 0; }
+.brs-page .brs-schedule time {
+  color: var(--brs-red);
+  font-size: 1.34rem;
+  font-variant-numeric: lining-nums;
+  line-height: 1.29;
+}
+.brs-page .brs-schedule h3 { font: 500 1.18rem/1.35 var(--brs-serif); }
+.brs-page .brs-schedule p { margin-top: .16rem; color: var(--brs-muted); font-size: 1rem; }
+.brs-page .brs-silk-fold {
+  position: relative;
+  height: clamp(6.1rem, 29vw, 11rem);
+  background: var(--brs-paper);
+}
+.brs-page .brs-silk-fold span {
+  position: absolute;
+  inset: -4% 0;
+  display: block;
+  transform-origin: 50% 50%;
+  background: var(--brs-silk) center 49% / cover no-repeat;
+}
+.brs-page .brs-silk-fold-back { clip-path: url(#brs-silk-back); filter: brightness(.69) saturate(1.05); }
+.brs-page .brs-silk-fold-front { clip-path: url(#brs-silk-front); }
+
+.brs-page .brs-dress { background: #fdf5ee; text-align: center; }
+.brs-page .brs-dress-stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: clamp(24rem, 99vw, 31rem);
+  grid-template-areas: "stage" "control";
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 47%, #fffdf8 30%, #f0dace 100%);
+}
+.brs-page .brs-dress .brs-curtain-wing {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, #23040c66, #21030c14 47%, #1d030b8c 100%),
+    var(--brs-curtain) center 43% / cover no-repeat,
+    var(--brs-wine);
+  transition-duration: .96s;
+}
+.brs-page .brs-dress .brs-curtain-light { z-index: 2; opacity: .43; }
+.brs-page .brs-dress-cover, .brs-page .brs-dress-room { grid-area: stage; align-self: center; }
+.brs-page .brs-dress-cover {
+  z-index: 3;
+  padding: 1.6rem 1.1rem 0;
+  color: var(--brs-light);
+  transition: opacity .25s ease;
+}
+.brs-page .brs-dress-cover .brs-section-title { font-size: clamp(5.15rem, 21vw, 8.4rem); }
+.brs-page .brs-dress-cover .brs-title-tail { transform: translateX(2.05rem); }
+.brs-page .brs-dress-toggle {
+  z-index: 4;
+  grid-area: control;
+  margin: .75rem 1rem clamp(1.6rem, 6vw, 2.8rem);
+  padding-inline: .4rem;
+  border-block-end-color: #fff0e09c;
+  color: var(--brs-light);
+}
+.brs-page .brs-dress-toggle .brs-icon { width: 1.35rem; height: 1.35rem; }
+.brs-page .brs-dress-room {
+  width: min(100%, 25rem);
+  padding: clamp(1.65rem, 6vw, 3.3rem) clamp(1.8rem, 7vw, 2.4rem) .5rem;
+  color: var(--brs-ink);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .26s ease, visibility .26s;
+}
+.brs-page .brs-dress-reveal-title {
+  color: var(--brs-red);
+  font-size: clamp(2.7rem, 11.6vw, 4.85rem);
+  line-height: 1.04;
+}
+.brs-page .brs-dress-room > p + p {
+  margin: .43rem auto 0;
+  color: var(--brs-muted);
+  font-size: clamp(.99rem, 4vw, 1.16rem);
+}
+.brs-page .brs-palette {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: end;
+  gap: clamp(.45rem, 2.7vw, 1rem);
+  max-width: 18.5rem;
+  margin: 1.2rem auto .12rem;
+  list-style: none;
+}
+.brs-page .brs-palette li {
+  --brs-lean: -5deg;
+  --brs-drop: .33s;
+  min-width: 0;
+  text-align: center;
+  color: var(--brs-ink);
+  font-size: clamp(.83rem, 3.7vw, 1.04rem);
+}
+.brs-page .brs-palette li:nth-child(2) { --brs-lean: 3deg; --brs-drop: .42s; }
+.brs-page .brs-palette li:nth-child(3) { --brs-lean: 6deg; --brs-drop: .51s; }
+.brs-page .brs-fabric {
+  position: relative;
+  display: block;
+  width: 94%;
+  aspect-ratio: .82;
+  margin: 0 auto .45rem;
+  overflow: hidden;
+  clip-path: polygon(0 3%, 93% 0, 100% 93%, 74% 100%, 49% 94%, 6% 99%);
+  transform: rotate(var(--brs-lean));
+}
+.brs-page .brs-fabric::before {
+  position: absolute;
+  inset: -4%;
+  content: "";
+  background: var(--brs-silk) center / cover no-repeat;
+}
+.brs-page .brs-fabric--black::before { filter: grayscale(1) brightness(.45) contrast(1.05); }
+.brs-page .brs-fabric--red::before { filter: brightness(.86) saturate(.94); background-position: 32% 70%; }
+.brs-page .brs-fabric--gold::before {
+  background-color: #d9ae84;
+  background-image: linear-gradient(25deg, #cda87c72, #ffebc887), var(--brs-silk);
+  background-blend-mode: screen, luminosity;
+  filter: brightness(1.15) saturate(.72);
+  background-position: center, 63% 24%;
+}
+.brs-page .brs-dress.brs-is-open .brs-curtain-wing--left { transform: translateX(-47%) skewY(-3.3deg); }
+.brs-page .brs-dress.brs-is-open .brs-curtain-wing--right { transform: translateX(47%) skewY(3.3deg); }
+.brs-page .brs-dress.brs-is-open .brs-curtain-light, .brs-page .brs-dress.brs-is-open .brs-dress-cover { opacity: 0; }
+.brs-page .brs-dress.brs-is-open .brs-dress-room { visibility: visible; opacity: 1; transition-delay: .18s; }
+.brs-page .brs-dress.brs-is-open .brs-dress-toggle { color: var(--brs-red); border-block-end-color: #a56d77; }
+.brs-page.brs-motion-ready .brs-dress.brs-is-open .brs-palette li { animation: brs-swatch-in .67s var(--brs-drop) var(--brs-ease) both; }
+.brs-page.brs-motion-ready .brs-dress.brs-is-open .brs-dress-room > p { animation: brs-rise-in .66s .25s var(--brs-ease) both; }
+
+.brs-page .brs-farewell { overflow: hidden; padding: clamp(3.25rem, 12vw, 5rem) 0 2.25rem; }
+.brs-page .brs-farewell .brs-section-title { display: block; padding: .12em .2em .02em; }
+.brs-page .brs-gift-art {
+  width: min(100%, 28rem);
+  height: auto;
+  margin: .3rem auto .52rem;
+  filter: brightness(1.12) saturate(.82);
+  mask-image: radial-gradient(ellipse closest-side, #000 78%, transparent 137%);
+  -webkit-mask-image: radial-gradient(ellipse closest-side, #000 78%, transparent 137%);
+}
+.brs-page .brs-farewell p { color: var(--brs-red); font-size: 1.12rem; }
+
+.brs-page .brs-music-button {
+  position: fixed;
+  z-index: 6;
+  right: max(.9rem, calc((100vw - var(--brs-shell)) / 2 + .9rem), env(safe-area-inset-right));
+  bottom: max(.9rem, env(safe-area-inset-bottom));
+  display: grid;
+  width: 45px;
+  height: 45px;
+  place-items: center;
+  border: 1px solid #ffe4d391;
+  border-radius: 50%;
+  color: var(--brs-light);
+  background: #5b1429ed;
+  box-shadow: 0 4px 14px #31060f30;
+  cursor: pointer;
+}
+.brs-page .brs-music-button[aria-pressed="true"] .brs-music-slash { display: none; }
+
+.brs-page .brs-scroll-motion [data-brs-reveal].brs-awaiting-reveal:not(:focus-within) { opacity: 0; }
+.brs-page .brs-scroll-motion [data-brs-reveal].brs-is-visible { animation: brs-rise-in .73s var(--brs-ease) both; }
+.brs-page .brs-scroll-motion [data-brs-reveal="write"].brs-is-visible { animation: brs-ink-in 1.02s var(--brs-ease) both; }
+.brs-page .brs-scroll-motion .brs-dress-cover[data-brs-reveal="write"].brs-is-visible { animation: none; }
+.brs-page .brs-scroll-motion .brs-dress-cover.brs-is-visible .brs-section-title { animation: brs-ink-in 1.02s var(--brs-ease) both; }
+.brs-page .brs-scroll-motion [data-brs-reveal="photo"].brs-is-visible { animation: brs-photo-in 1.05s var(--brs-ease) both; }
+.brs-page .brs-scroll-motion [data-brs-reveal="schedule"].brs-is-visible,
+.brs-page .brs-scroll-motion [data-brs-reveal="silk"].brs-is-visible { animation: none; }
+.brs-page .brs-scroll-motion .brs-schedule.brs-is-visible li { animation: brs-rise-in .64s var(--brs-ease) both; }
+.brs-page .brs-scroll-motion .brs-schedule.brs-is-visible li:nth-child(2) { animation-delay: .11s; }
+.brs-page .brs-scroll-motion .brs-schedule.brs-is-visible li:nth-child(3) { animation-delay: .22s; }
+.brs-page .brs-scroll-motion .brs-silk-fold.brs-is-visible .brs-silk-fold-back { animation: brs-ribbon-left 1s .07s var(--brs-ease) both; }
+.brs-page .brs-scroll-motion .brs-silk-fold.brs-is-visible .brs-silk-fold-front { animation: brs-ribbon-right 1.15s var(--brs-ease) both; }
+.brs-page .brs-scroll-motion .brs-letter-welcome.brs-is-visible { animation-delay: .12s; }
+.brs-page .brs-scroll-motion .brs-letter-when.brs-is-visible { animation-delay: .24s; }
+
+@keyframes brs-photo-in {
+  from { opacity: 0; transform: translateY(1.1rem) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes brs-silk-shine {
+  from { opacity: 0; transform: translateX(-55%); }
+  44% { opacity: .8; }
+  to { opacity: 0; transform: translateX(55%); }
+}
+@keyframes brs-ribbon-left {
+  from { opacity: 0; transform: translateX(-13%) translateY(-.9rem) rotate(-4deg); }
+  to { opacity: 1; transform: translateX(0) translateY(0) rotate(0); }
+}
+@keyframes brs-ribbon-right {
+  from { opacity: 0; transform: translateX(13%) translateY(.75rem) rotate(4deg); }
+  to { opacity: 1; transform: translateX(0) translateY(0) rotate(0); }
+}
+@keyframes brs-swatch-in {
+  from { opacity: 0; transform: translateY(1.05rem) rotate(calc(var(--brs-lean) * -1)); }
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+.brs-page .brs-dress-custom-title { font-size: .7em; overflow-wrap: anywhere; }
+.brs-page .brs-fabric--custom::before {
+  background-color: var(--brs-fabric-color);
+  background-blend-mode: luminosity;
+  filter: brightness(1.22) saturate(.84);
+}
+.brs-page .brs-palette li > span:last-child { overflow-wrap: anywhere; }
+.brs-page .brs-event-map {
+  display: inline-block;
+  margin-top: .18rem;
+  color: var(--brs-red);
+  font-size: .9rem;
+  text-underline-offset: .18em;
+}
+@media (min-width: 25.0625rem) {
+  .brs-page .brs-letter-welcome { white-space: pre-line; }
+}
+
+/* Crveni saten — dress code sa fotografijom tkanina */
+.brs-page .brs-dress-stage {
+  min-height: clamp(25rem, 115vw, 33.5rem);
+  background: linear-gradient(180deg, #faf4ee 0%, #fffbf7 28%, #fffcf9 100%);
+}
+
+.brs-page .brs-dress-room {
+  width: 100%;
+  padding: clamp(2.55rem, 10vw, 3.9rem) 0 .35rem;
+}
+
+.brs-page .brs-dress-reveal-title {
+  max-width: 94%;
+  margin-inline: auto;
+  padding-inline: .2em;
+  color: var(--brs-red);
+  font-size: clamp(2.38rem, 11.6vw, 4.55rem);
+  line-height: 1.03;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.brs-page .brs-dress-room > p + p {
+  max-width: 29ch;
+  margin: .65rem auto 0;
+  padding-inline: .5rem;
+  color: #67414a;
+  font-size: clamp(.99rem, 4.35vw, 1.18rem);
+  line-height: 1.42;
+  text-wrap: balance;
+}
+
+.brs-page .brs-dress .brs-palette {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem 1.25rem;
+  max-width: none;
+  margin: 1.3rem auto .25rem;
+  padding: 0 1rem;
+}
+
+/* Fotografija prati tačno redosled materijala crna, bordo, šampanj. */
+.brs-page .brs-dress .brs-palette--atelier {
+  --brs-atelier-image-content: "";
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .78rem 0;
+  width: 100%;
+  padding: 0;
+}
+
+.brs-page .brs-dress .brs-palette::before {
+  content: var(--brs-atelier-image-content, none);
+  grid-column: 1 / -1;
+  display: block;
+  height: clamp(9.5rem, 49vw, 16rem);
+  background:
+    linear-gradient(112deg, transparent 34%, #fff3e325 50%, transparent 65%) 0% 50% / 230% 100% no-repeat,
+    url("/images/birthday-red-satin/dress-code-atelier.webp") center 53% / cover no-repeat;
+}
+
+.brs-page .brs-dress .brs-palette li {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: .44rem;
+  padding: .14rem .18rem;
+  color: #542633;
+  font-size: clamp(.74rem, 2.85vw, .88rem);
+  font-weight: 550;
+  line-height: 1.35;
+  letter-spacing: .095em;
+  text-transform: uppercase;
+}
+
+.brs-page .brs-dress .brs-palette li > span:last-child {
+  overflow-wrap: anywhere;
+}
+
+.brs-page .brs-dress .brs-fabric {
+  width: .48rem;
+  height: .48rem;
+  flex: none;
+  margin: 0;
+  border-radius: 50%;
+  clip-path: none;
+  transform: none;
+}
+
+.brs-page .brs-dress .brs-fabric::before { content: none; }
+.brs-page .brs-dress .brs-fabric--black { background: #181014; }
+.brs-page .brs-dress .brs-fabric--red { background: #801e34; }
+.brs-page .brs-dress .brs-fabric--gold { background: #dfc099; }
+.brs-page .brs-dress .brs-fabric--custom { background: var(--brs-fabric-color, #a47b75); }
+
+.brs-page .brs-dress .brs-dress-toggle {
+  margin: 1rem 1rem clamp(1.5rem, 5.2vw, 2.3rem);
+  padding-inline: .25rem;
+}
+
+.brs-page .brs-dress.brs-is-open .brs-dress-toggle {
+  color: #74263a;
+  border-block-end-color: #74263a58;
+  font-size: .72rem;
+}
+
+.brs-page .brs-dress.brs-is-open .brs-curtain-wing--left {
+  transform: translateX(-55%) skewY(-2.5deg);
+}
+
+.brs-page .brs-dress.brs-is-open .brs-curtain-wing--right {
+  transform: translateX(55%) skewY(2.5deg);
+}
+
+.brs-page.brs-motion-ready .brs-dress.brs-is-open .brs-palette::before {
+  animation: brs-atelier-reveal 1.3s .23s var(--brs-ease) both;
+}
+
+.brs-page.brs-motion-ready .brs-dress.brs-is-open .brs-palette li {
+  animation: brs-rise-in .62s calc(var(--brs-drop) + .16s) var(--brs-ease) both;
+}
+
+@keyframes brs-atelier-reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(8% 6%);
+    background-position: 0% 50%, center 53%;
+  }
+  45% { opacity: 1; }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    background-position: 100% 50%, center 53%;
+  }
+}
+
+/* Crveni saten — svetlo, papir i saten */
+.brs-page .brs-letter {
+  --brs-letter-gutter: clamp(1.65rem, 8.4vw, 4.15rem);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 3% 10%, #edd7c759, transparent 61%),
+    radial-gradient(ellipse at 90% 85%, #f4e6db60, transparent 56%),
+    var(--brs-paper);
+  text-align: left;
+}
+
+.brs-page .brs-letter-copy {
+  padding: clamp(3.4rem, 14.4vw, 5.55rem) var(--brs-letter-gutter) 0;
+}
+
+.brs-page .brs-letter h1 {
+  margin-inline-start: -.1em;
+  font-size: clamp(3.7rem, 17.1vw, 6.9rem);
+  text-wrap: balance;
+}
+
+.brs-page .brs-letter-welcome {
+  max-width: 31ch;
+  margin-top: .35rem;
+  color: #623844;
+  font-size: clamp(1rem, 4.55vw, 1.25rem);
+  line-height: 1.48;
+}
+
+.brs-page .brs-letter-when {
+  margin-top: clamp(1.45rem, 7vw, 2.6rem);
+}
+
+.brs-page .brs-letter-date {
+  font-size: clamp(2.18rem, 11.65vw, 4.48rem);
+  font-variation-settings: "opsz" 17;
+  font-weight: 430;
+  letter-spacing: -.043em;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.brs-page .brs-letter-time {
+  margin-top: .6rem;
+  font-size: .77rem;
+  font-weight: 570;
+  letter-spacing: .16em;
+}
+
+.brs-page .brs-letter-art--cutout {
+  height: clamp(13.1rem, 66vw, 21.25rem);
+  margin: -.35rem 0 0;
+  overflow: visible;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.brs-page .brs-letter-art--cutout .brs-toast-art {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: -1.45rem;
+  width: min(83%, 25rem);
+  height: 116%;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 .9rem 1.25rem #58303536);
+}
+
+.brs-page .brs-venue {
+  padding-block: clamp(4.3rem, 15vw, 5.6rem) clamp(3.75rem, 13vw, 5.15rem);
+}
+
+.brs-page .brs-venue-silk {
+  inset-block-start: -3.9rem;
+  background:
+    linear-gradient(180deg, #3807121a, #380913a1 49%, #27050fba 100%),
+    var(--brs-silk) center 52% / cover no-repeat,
+    #581426;
+}
+
+.brs-page .brs-venue .brs-section-title { margin-bottom: 1.45rem; }
+
+.brs-page .brs-venue .brs-button {
+  margin-top: .3rem;
+  padding-inline: 1.3rem;
+  border-color: #f3dcc5a1;
+}
+
+.brs-page .brs-program {
+  padding-block: clamp(3.45rem, 12vw, 4.65rem);
+  background: linear-gradient(180deg, #fffcf9, #fbf3ef);
+}
+
+.brs-page .brs-schedule {
+  --brs-schedule-time: clamp(3.2rem, 14vw, 4.2rem);
+  --brs-thread-x: calc(var(--brs-schedule-time) + .48rem);
+  position: relative;
+  max-width: 24.4rem;
+  margin-top: 1.65rem;
+}
+
+.brs-page .brs-schedule::before {
+  content: "";
+  position: absolute;
+  inset-block: 1.45rem 1.55rem;
+  inset-inline-start: var(--brs-thread-x);
+  width: 1px;
+  background: linear-gradient(180deg, #a66b78, #dfb9b2 88%, transparent);
+  transform-origin: top;
+}
+
+.brs-page .brs-schedule li {
+  position: relative;
+  grid-template-columns: var(--brs-schedule-time) minmax(0, 1fr);
+  column-gap: 1.35rem;
+  padding: .95rem 0;
+  border-bottom: 0;
+}
+
+.brs-page .brs-schedule li::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 1.45rem;
+  inset-inline-start: calc(var(--brs-thread-x) - .1875rem);
+  width: .4375rem;
+  height: .4375rem;
+  border: 1px solid #fdf4ef;
+  border-radius: 50%;
+  background: #8b304a;
+}
+
+.brs-page .brs-schedule time {
+  font-variation-settings: "opsz" 20;
+  font-size: clamp(1.14rem, 5.1vw, 1.42rem);
+  font-weight: 510;
+}
+
+.brs-page .brs-schedule h3 { text-wrap: balance; }
+.brs-page .brs-schedule p { text-wrap: pretty; }
+
+.brs-page .brs-scroll-motion .brs-schedule.brs-is-visible::before {
+  animation: brs-thread-grow .94s var(--brs-ease) both;
+}
+
+@keyframes brs-thread-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* Registrovana promenljiva omogućava da svetlo klizi između boja. */
+@property --brs-material-focus {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+
+.brs-page .brs-dress .brs-palette--atelier {
+  --brs-atelier-height: clamp(9.5rem, 49vw, 16rem);
+  --brs-material-focus: 50%;
+  position: relative;
+  gap: .42rem 0;
+  transition: --brs-material-focus .53s var(--brs-ease);
+}
+
+.brs-page .brs-dress .brs-palette--atelier[data-brs-material="0"] { --brs-material-focus: 13%; }
+.brs-page .brs-dress .brs-palette--atelier[data-brs-material="1"] { --brs-material-focus: 50%; }
+.brs-page .brs-dress .brs-palette--atelier[data-brs-material="2"] { --brs-material-focus: 86%; }
+
+.brs-page .brs-dress .brs-palette--atelier::before {
+  height: var(--brs-atelier-height);
+}
+
+.brs-page .brs-dress .brs-palette--atelier::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--brs-atelier-height);
+  pointer-events: none;
+  background: radial-gradient(ellipse 66% 88% at var(--brs-material-focus) 51%,
+    #fff1d62c, transparent 27%, #18060dab 100%);
+  opacity: 0;
+  transition: opacity .36s ease;
+}
+
+.brs-page .brs-dress .brs-palette--atelier[data-brs-material]::after { opacity: 1; }
+
+.brs-page .brs-dress .brs-palette--atelier li { padding: 0 .33rem; }
+
+.brs-page .brs-dress .brs-material-button {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: .4rem .12rem;
+  border: 0;
+  border-bottom: 1px solid #dac1bb;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  transition: color .22s ease, border-color .22s ease;
+}
+
+.brs-page .brs-dress .brs-material-button[aria-pressed="true"] {
+  border-bottom-color: #9c596b;
+  color: #75172e;
+}
+
+.brs-page .brs-dress .brs-palette-hint {
+  margin: .25rem .8rem 0;
+  color: #70505a;
+  font-size: .83rem;
+  line-height: 1.35;
+}
+
+.brs-page .brs-dress .brs-material-button:focus-visible {
+  outline-offset: 1px;
+}
+
+@media (hover: hover) {
+  .brs-page .brs-dress .brs-material-button:hover { color: #75172e; border-bottom-color: #c897a1; }
+}
+
+.brs-page .brs-farewell {
+  padding-top: clamp(3.25rem, 13.8vw, 5.55rem);
+  padding-bottom: clamp(2.65rem, 9.4vw, 4.15rem);
+  background: radial-gradient(ellipse at 49% 25%, #f5e9e1, #fffcf9 70%);
+}
+
+.brs-page .brs-farewell .brs-gift-art--letter {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 1.15rem 0 1.25rem;
+  filter: none;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.brs-page .brs-farewell p {
+  margin: 1rem auto 0;
+  padding-inline: 1rem;
+  font-size: clamp(1.06rem, 4.6vw, 1.3rem);
+}
+
+@supports (animation-timeline: view()) and (animation-range: entry 0% cover 65%) {
+  .brs-page .brs-scroll-motion .brs-schedule.brs-is-visible::before {
+    animation: brs-thread-grow linear both;
+    animation-timeline: view(block);
+    animation-range: entry 8% cover 65%;
+  }
+
+  .brs-page .brs-scroll-motion .brs-gift-art--letter.brs-is-visible {
+    animation: brs-last-letter linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 59%;
+  }
+}
+
+@keyframes brs-last-letter {
+  from { opacity: .58; transform: translateY(.95rem) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brs-page .brs-scroll-motion .brs-schedule.brs-is-visible::before,
+  .brs-page .brs-scroll-motion .brs-gift-art--letter.brs-is-visible {
+    animation: none !important;
+  }
+}

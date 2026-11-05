@@ -137,6 +137,8 @@ import BirthdayStarlightIntro from "../components/BirthdayStarlightIntro";
 import BirthdayStarlightInvitationCard from "../components/BirthdayStarlightInvitationCard";
 import BirthdaySatinIntro from "../components/BirthdaySatinIntro";
 import BirthdaySatinInvitationCard from "../components/BirthdaySatinInvitationCard";
+import BirthdayRedSatinIntro from "../components/BirthdayRedSatinIntro";
+import BirthdayRedSatinInvitationCard from "../components/BirthdayRedSatinInvitationCard";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -445,6 +447,11 @@ const TEMPLATE_COMPONENTS = {
   Intro: NewlywedTimesIntro,
   Invitation: NewlywedTimesInvitationCard,
 },
+
+  "birthday-red-satin": {
+    Intro: BirthdayRedSatinIntro,
+    Invitation: BirthdayRedSatinInvitationCard,
+  },
 
 };
 
@@ -1238,6 +1245,38 @@ if (templateKey === "photo-zoom-minimal") {
     </div>
   );
 }
+
+ if (templateKey === "birthday-red-satin") {
+    return (
+      <div className="wedding-page brs-page brs-motion-ready" key={slug}>
+        {audioNode}
+
+        {(envelopeRevealed || showInvitation) && (
+          <div
+            className="brs-card-layer"
+            aria-hidden={!showInvitation}
+            inert={!showInvitation}
+          >
+            <InvitationComponent
+              {...invitationProps}
+              introReady={showInvitation}
+              audioRef={audioRef}
+              hasMusic={Boolean(musicSrc)}
+            />
+          </div>
+        )}
+
+        {!showInvitation && (
+          <IntroComponent
+            {...introProps}
+            onReveal={() => setEnvelopeRevealed(true)}
+            onEnter={() => setShowInvitation(true)}
+          />
+        )}
+      </div>
+    );
+  }
+
 
 return (
   <div className="wedding-page">
