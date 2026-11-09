@@ -139,6 +139,8 @@ import BirthdaySatinIntro from "../components/BirthdaySatinIntro";
 import BirthdaySatinInvitationCard from "../components/BirthdaySatinInvitationCard";
 import BirthdayRedSatinIntro from "../components/BirthdayRedSatinIntro";
 import BirthdayRedSatinInvitationCard from "../components/BirthdayRedSatinInvitationCard";
+import BirthdayCreamIntro from "../components/BirthdayCreamIntro";
+import BirthdayCreamInvitationCard from "../components/BirthdayCreamInvitationCard";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -452,6 +454,12 @@ const TEMPLATE_COMPONENTS = {
     Intro: BirthdayRedSatinIntro,
     Invitation: BirthdayRedSatinInvitationCard,
   },
+
+    "birthday-cream-glass": {
+    Intro: BirthdayCreamIntro,
+    Invitation: BirthdayCreamInvitationCard,
+  },
+
 
 };
 

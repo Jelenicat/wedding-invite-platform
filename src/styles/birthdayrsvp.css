@@ -5613,3 +5613,78 @@ padding:
 @media (prefers-reduced-motion: reduce) {
   .brs-page .brs-rsvp .brs-rsvp-spinner { animation: none; }
 }
+/* === BIRTHDAY CREAM GLASS PREMIUM — POČETAK ===
+   Zameni prethodni mcr- blok ovim, ili dodaj na kraj birthdayrsvp.css. */
+
+.mcr-rsvp-section { padding: 16px 22px 38px; background: rgba(242, 234, 219, 0.85); }
+.mcr-rsvp-section .mcr-rsvp-panel { position: relative; width: min(100%, 430px); margin: 0 auto; padding: 41px 26px 37px; border: 0; border-radius: 0; background: rgba(251, 247, 239, 0.66); box-shadow: none; }
+.mcr-rsvp-section .mcr-rsvp-panel::before { display: none; content: none; }
+.mcr-rsvp-section .mcr-rsvp-intro { max-width: 290px; margin: 0 auto; color: #6c5a42; font: 400 21px/1.4 var(--mcr-serif); }
+.mcr-rsvp-section .mcr-rsvp-deadline { max-width: 275px; margin: 18px auto 0; color: #6a5841; font: 400 10px/1.9 var(--mcr-sans); }
+.mcr-rsvp-section .mcr-rsvp-deadline strong { display: block; margin-top: 3px; font-weight: 600; letter-spacing: 0.08em; }
+.mcr-rsvp-section .mcr-rsvp-form { position: relative; display: flex; flex-direction: column; gap: 23px; margin-top: 29px; padding-top: 26px; border-top: 1px solid var(--mcr-line); text-align: left; }
+.mcr-rsvp-section .mcr-form-field { display: flex; flex-direction: column; gap: 9px; }
+.mcr-rsvp-section .mcr-form-field > label, .mcr-rsvp-section .mcr-attendance legend { color: #65513a; font: 500 10px/1.7 var(--mcr-sans); }
+.mcr-rsvp-section .mcr-form-field input { display: block; width: 100%; min-width: 0; min-height: 54px; padding: 14px 13px; border: 1px solid #c5b598; border-radius: 0; background: rgba(255, 253, 247, 0.6); color: #493923; font: 400 16px/1.5 var(--mcr-sans); box-shadow: none; }
+.mcr-rsvp-section .mcr-form-field input::placeholder { color: #8b7a63; font-size: 11px; opacity: 1; }
+.mcr-rsvp-section .mcr-form-field input:focus-visible { outline-offset: 2px; }
+.mcr-rsvp-section .mcr-attendance { display: block; width: 100%; min-width: 0; margin: 0; padding: 0; border: 0; }
+.mcr-rsvp-section .mcr-attendance legend { float: none; width: 100%; margin-bottom: 11px; padding: 0; }
+.mcr-rsvp-section .mcr-attendance-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.mcr-rsvp-section .mcr-choice { position: relative; display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 60px; padding: 12px 7px; border: 1px solid #bfae8f; border-radius: 0; background: rgba(255, 253, 247, 0.38); color: #645035; font: 400 11px/1.5 var(--mcr-sans); text-align: center; cursor: pointer; transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.mcr-rsvp-section .mcr-choice input { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; opacity: 0; }
+.mcr-rsvp-section .mcr-choice:has(input:focus-visible) { outline: 2px solid #735434; outline-offset: 3px; }
+.mcr-rsvp-section .mcr-choice-selected { border-color: #7b6341; background: #ded0b8; color: #49381f; }
+.mcr-rsvp-section .mcr-radio-indicator { display: inline-block; width: 12px; height: 12px; padding: 2px; border: 1px solid #9b8564; border-radius: 50%; background-clip: content-box; flex: 0 0 auto; }
+.mcr-rsvp-section .mcr-choice-selected .mcr-radio-indicator { background-color: #79603c; border-color: #79603c; }
+.mcr-rsvp-section .mcr-attendance:disabled .mcr-choice { opacity: 0.6; cursor: wait; }
+.mcr-rsvp-section .mcr-submit-button { display: flex; max-width: none; margin-top: 3px; }
+.mcr-rsvp-section .mcr-form-error { padding: 11px 12px; border-left: 2px solid #99503b; background: #f7e9df; color: #763c2c; font: 400 12px/1.7 var(--mcr-sans); }
+.mcr-rsvp-section .mcr-rsvp-success { position: relative; min-height: 285px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 25px; padding: 24px 0 8px; border-top: 1px solid var(--mcr-line); }
+.mcr-rsvp-section .mcr-success-mark { width: 44px; height: 44px; margin-bottom: 20px; stroke: #86704b; stroke-width: 1.1; }
+.mcr-rsvp-section .mcr-rsvp-success h3 { color: #61492d; font: 500 30px/1.2 var(--mcr-serif); }
+.mcr-rsvp-section .mcr-rsvp-success > p:not(.mcr-rsvp-signature) { margin-top: 15px; font: 400 11px/1.9 var(--mcr-sans); }
+.mcr-rsvp-section .mcr-rsvp-signature { margin: 22px 0 8px; padding-left: 0.25em; color: #806641; font: 500 19px/1.4 var(--mcr-sans); letter-spacing: 0.25em; text-transform: uppercase; }
+.mcr-rsvp-section .mcr-rsvp-success .mcr-text-link { margin-top: 14px; font-size: 8px; }
+.mcr-rsvp-section .mcr-rsvp-closed { padding: 29px 5px; font: 400 24px/1.4 var(--mcr-serif); }
+@media (max-width: 359px) {
+  .mcr-rsvp-section { padding-inline: 16px; }
+  .mcr-rsvp-section .mcr-rsvp-panel { padding: 36px 21px 33px; }
+  .mcr-rsvp-section .mcr-choice { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .mcr-rsvp-section .mcr-choice { transition: none; } }
+/* === BIRTHDAY CREAM GLASS PREMIUM — KRAJ === */
+
+
+
+/* CREAM EDITORIAL — usklađeno sa novom karticom; samo Cream stranica. */
+.mcr-editorial .mcr-rsvp-section { padding:25px 22px 35px; background:linear-gradient(180deg,rgba(246,240,229,.65),#f7f2e9); }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-panel {
+  padding:38px 24px; border:1px solid #d8cbb5; border-radius:22px;
+  background:linear-gradient(145deg,rgba(255,253,248,.9),rgba(244,237,224,.8));
+  box-shadow:0 15px 35px rgba(95,77,51,.07); color:#82715d;
+}
+.mcr-editorial .mcr-rsvp-section .mcr-eyebrow { color:#93816a; letter-spacing:.22em; font-size:8px; }
+.mcr-editorial .mcr-rsvp-section .mcr-section-title { color:#766047; font-weight:400; font-size:clamp(31px,9vw,42px); line-height:1.15; margin:17px auto; }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-intro { color:#877660; font-size:21px; }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-deadline { color:#8a7964; }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-deadline strong { color:#756047; font-weight:500; }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-form { border-color:#dfd4c2; gap:24px; }
+.mcr-editorial .mcr-rsvp-section .mcr-form-field > label,
+.mcr-editorial .mcr-rsvp-section .mcr-attendance legend { color:#7a6853; font-size:10px; letter-spacing:.025em; }
+.mcr-editorial .mcr-rsvp-section .mcr-form-field input { box-sizing:border-box; border:0; border-bottom:1px solid #cbbba1; border-radius:0; background:rgba(255,253,248,.5); color:#6f5c46; padding:14px 10px; }
+.mcr-editorial .mcr-rsvp-section .mcr-form-field input::placeholder { color:#968570; }
+.mcr-editorial .mcr-rsvp-section .mcr-form-field input:focus-visible { outline:2px solid #a18c69; outline-offset:3px; }
+.mcr-editorial .mcr-rsvp-section .mcr-choice { min-height:54px; border-color:#d5c7b0; border-radius:5px; color:#7a6852; background:rgba(255,253,248,.55); }
+.mcr-editorial .mcr-rsvp-section .mcr-choice-selected { background:#e9deca; border-color:#b09a76; color:#68563e; }
+.mcr-editorial .mcr-rsvp-section .mcr-choice-selected .mcr-radio-indicator { background-color:#a08a67; border-color:#a08a67; }
+.mcr-editorial .mcr-rsvp-section .mcr-submit-button { width:100%; min-height:54px; border:1px solid #c4b28e; border-radius:5px; background:linear-gradient(120deg,#eee3ce,#ddcbaa); color:#6d5a42; box-shadow:inset 0 1px 0 #fff9ed,0 5px 12px #64503212; font-size:10px; letter-spacing:.15em; }
+.mcr-editorial .mcr-rsvp-section .mcr-submit-button:disabled { opacity:.6; cursor:wait; }
+.mcr-editorial .mcr-rsvp-section .mcr-submit-button:focus-visible { outline:2px solid #8b7656; outline-offset:4px; }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-success { border-color:#dfd4c2; }
+.mcr-editorial .mcr-rsvp-section .mcr-success-mark { stroke:#a18c69; width:52px; height:52px; }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-success h3 { color:#766047; font-weight:400; }
+.mcr-editorial .mcr-rsvp-section .mcr-rsvp-signature,
+.mcr-editorial .mcr-rsvp-section .mcr-text-link { color:#88745a; }
+@media(hover:hover) { .mcr-editorial .mcr-rsvp-section .mcr-submit-button:not(:disabled):hover { background:linear-gradient(120deg,#e8dcc5,#d6c19a); color:#68553d; } }
+@media(max-width:359px) { .mcr-editorial .mcr-rsvp-section { padding-inline:16px; } .mcr-editorial .mcr-rsvp-section .mcr-rsvp-panel { padding:32px 18px; } }

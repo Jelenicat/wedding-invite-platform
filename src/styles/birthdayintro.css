@@ -7936,3 +7936,179 @@ THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
 @media (hover: hover) {
   .brs-page .brs-intro .brs-intro-button:hover { background: #fff2de24; }
 }
+
+/* === BIRTHDAY CREAM GLASS PREMIUM — POČETAK ===
+   Zameni prethodni mcr- blok ovim. Ako ga nemaš, dodaj na kraj birthdayintro.css.
+   Ovo nije zamena za ceo postojeći CSS fajl.
+   Fontovi ostaju iz postojećeg Google Fonts importa. */
+
+.mcr-theme {
+  --mcr-ink: #443a2e;
+  --mcr-soft: #746653;
+  --mcr-bronze: #826a47;
+  --mcr-line: rgba(113, 93, 64, 0.24);
+  --mcr-paper: #f4eee4;
+  --mcr-serif: "Cormorant Garamond", Georgia, serif;
+  --mcr-sans: "Montserrat", Arial, sans-serif;
+  color: var(--mcr-ink);
+  font: 400 14px/1.6 var(--mcr-sans);
+  font-style: normal;
+  text-align: center;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
+}
+.mcr-theme *, .mcr-theme *::before, .mcr-theme *::after { box-sizing: border-box; }
+.mcr-theme :where(h1, h2, h3, p) { margin: 0; }
+.mcr-theme :where(button, input) { font: inherit; }
+.mcr-theme :where(button, a) { -webkit-tap-highlight-color: transparent; }
+.mcr-theme :where(button, a, input):focus-visible { outline: 2px solid #705838; outline-offset: 4px; }
+.mcr-theme :where(img, svg) { display: block; }
+.mcr-theme :where(a) { color: inherit; }
+.mcr-theme button { cursor: pointer; }
+.mcr-theme button:disabled { cursor: wait; opacity: 0.65; }
+.mcr-theme .mcr-eyebrow { color: var(--mcr-soft); font: 500 8px/1.9 var(--mcr-sans); letter-spacing: 0.22em; text-transform: uppercase; }
+.mcr-theme .mcr-section-title { margin: 13px 0 15px; color: var(--mcr-ink); font: 500 clamp(33px, 8.5vw, 41px)/1.08 var(--mcr-serif); letter-spacing: -0.025em; }
+.mcr-theme .mcr-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 290px;
+  min-height: 56px;
+  margin-inline: auto;
+  padding: 16px 12px;
+  border: 1px solid #665237;
+  border-radius: 0;
+  background: #665237;
+  color: #fffaf0;
+  font: 500 9px/1.6 var(--mcr-sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 9px 24px rgba(64, 49, 27, 0.1);
+  transition: background 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.mcr-theme .mcr-button svg { width: 18px; height: 21px; flex: 0 0 auto; stroke: currentColor; stroke-width: 1.1; }
+.mcr-theme .mcr-text-link { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 9px 0; border: 0; border-bottom: 1px solid #9d8662; border-radius: 0; background: transparent; color: #5c492f; font: 500 9px/1.6 var(--mcr-sans); letter-spacing: 0.09em; text-decoration: none; }
+.mcr-theme .mcr-text-link svg { width: 17px; height: 17px; stroke: currentColor; stroke-width: 1.2; }
+
+.mcr-experience { position: relative; isolation: isolate; min-height: 100vh; min-height: 100svh; background: #ece3d4; }
+.mcr-experience .mcr-shared-backdrop { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: #e7ddca; pointer-events: none; }
+.mcr-experience .mcr-shared-backdrop img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.mcr-experience .mcr-card-stage { position: relative; z-index: 1; }
+.mcr-experience:not(.mcr-is-open) .mcr-card-stage { position: fixed; inset: 0; overflow: hidden; }
+.mcr-experience .mcr-card-stage[inert] { pointer-events: none; user-select: none; }
+.mcr-experience .mcr-intro-cover { position: relative; z-index: 2; }
+.mcr-experience .mcr-intro--shared { background: transparent; }
+
+.mcr-intro { position: relative; isolation: isolate; display: grid; place-items: center; width: 100%; min-height: 100vh; min-height: 100svh; overflow: hidden; padding: max(42px, env(safe-area-inset-top)) 24px max(42px, env(safe-area-inset-bottom)); background: #e6dccb; }
+.mcr-intro .mcr-intro-photo { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.mcr-intro .mcr-intro-wash { position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, rgba(249, 244, 234, 0.04), rgba(238, 228, 211, 0.1)); pointer-events: none; }
+.mcr-intro .mcr-intro-light { position: absolute; inset: -35%; z-index: -1; background: linear-gradient(108deg, transparent 36%, rgba(255, 253, 241, 0.45) 49%, transparent 62%); mix-blend-mode: soft-light; pointer-events: none; animation: mcr-light-pass 4.6s 0.35s both cubic-bezier(0.22, 1, 0.36, 1); }
+.mcr-intro .mcr-intro-panel {
+  position: relative;
+  display: grid;
+  align-items: center;
+  width: min(100%, 362px);
+  min-height: min(650px, calc(100svh - 88px));
+  padding: 42px 27px;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(145deg, rgba(253, 249, 240, 0.53), rgba(238, 229, 210, 0.25));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: none;
+  perspective: 900px;
+}
+.mcr-intro .mcr-intro-panel::before { display: none; content: none; }
+.mcr-intro .mcr-intro-name { margin: 0; padding: 3px 0 4px 0.22em; color: #4d3d29; font: 500 clamp(32px, 10.4vw, 45px)/1.35 var(--mcr-sans); letter-spacing: 0.22em; overflow-wrap: anywhere; perspective: 500px; }
+.mcr-intro .mcr-intro-name > span { display: inline-block; transform-origin: center bottom; }
+.mcr-intro .mcr-intro-proslavlja { margin-top: 10px; color: #6d5d47; font: 400 8px/1.8 var(--mcr-sans); letter-spacing: 0.28em; text-indent: 0.28em; text-transform: uppercase; }
+.mcr-intro .mcr-intro-age { margin: 12px 0 0; color: #7c6240; font: 500 clamp(202px, 54vw, 238px)/0.98 var(--mcr-serif); letter-spacing: -0.085em; }
+.mcr-intro .mcr-age-sculpture { position: relative; display: inline-grid; isolation: isolate; vertical-align: middle; }
+.mcr-intro .mcr-age-glyph, .mcr-intro .mcr-age-depth { display: block; grid-area: 1 / 1; padding: 4px 10px 9px 2px; }
+.mcr-intro .mcr-age-depth { color: #846c4a; transform: translate(1px, 1.6px); text-shadow: 0 1px 0 #735b3d, 1px 2px 0 #8d744f, 2px 3px 4px rgba(63, 45, 22, 0.2), -1px -1px 0 rgba(255, 249, 229, 0.8); }
+.mcr-intro .mcr-age-glyph { position: relative; background: linear-gradient(115deg, #70563a 15%, #aa8b5e 35%, #e2cda3 44%, #927247 52%, #715637 75%); background-size: 230% 100%; background-position: 100% 50%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0.3px rgba(106, 80, 43, 0.24); animation: mcr-metal-pass 3.3s 0.5s both ease-out; }
+.mcr-intro .mcr-age-sculpture small { margin-left: -0.06em; font-size: 0.48em; font-weight: 400; letter-spacing: -0.1em; }
+.mcr-intro .mcr-intro-birthday { margin-top: 4px; color: #5a4831; font: 500 10px/1.8 var(--mcr-sans); letter-spacing: 0.4em; text-indent: 0.4em; text-transform: uppercase; }
+.mcr-intro .mcr-intro-date { display: flex; align-items: center; justify-content: center; gap: 13px; width: fit-content; min-height: 52px; margin: 25px auto 0; padding: 0; color: #5f4d33; font: 400 11px/1.8 var(--mcr-sans); }
+.mcr-intro .mcr-intro-date > strong { color: #6a5030; font: 500 44px/1 var(--mcr-serif); font-variant-numeric: lining-nums; }
+.mcr-intro .mcr-intro-date-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding-left: 13px; border-left: 1px solid rgba(107, 86, 53, 0.3); }
+.mcr-intro .mcr-intro-date-meta > b { font: 500 9px/1.6 var(--mcr-sans); letter-spacing: 0.18em; text-transform: uppercase; }
+.mcr-intro .mcr-intro-date-meta > small { font: 400 10px/1.6 var(--mcr-sans); letter-spacing: 0.12em; }
+.mcr-intro .mcr-intro-button { display: flex; margin-top: 31px; }
+@keyframes mcr-light-pass { from { opacity: 0; transform: translateX(-25%); } 35% { opacity: 0.9; } to { opacity: 0; transform: translateX(30%); } }
+@keyframes mcr-metal-pass { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@media (hover: hover) { .mcr-theme .mcr-button:hover { background: #51402b; box-shadow: 0 13px 28px rgba(64, 49, 27, 0.18); transform: translateY(-1px); } }
+@media (max-width: 359px) {
+  .mcr-intro { padding-inline: 19px; }
+  .mcr-intro .mcr-intro-panel { padding-inline: 20px; }
+  .mcr-intro .mcr-intro-age { font-size: 193px; }
+  .mcr-theme .mcr-button { font-size: 8px; letter-spacing: 0.14em; }
+}
+@media (max-height: 730px) and (max-width: 600px) {
+  .mcr-intro { padding-block: 32px; }
+  .mcr-intro .mcr-intro-panel { min-height: 0; padding-block: 28px; }
+  .mcr-intro .mcr-intro-age { font-size: 174px; }
+  .mcr-intro .mcr-intro-date { margin-top: 16px; }
+  .mcr-intro .mcr-intro-button { margin-top: 20px; }
+}
+@media (min-width: 768px) {
+  .mcr-intro .mcr-intro-panel { width: 400px; padding-inline: 40px; }
+  .mcr-intro .mcr-intro-name { font-size: 44px; }
+  .mcr-intro .mcr-intro-age { font-size: 246px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mcr-intro .mcr-intro-light { display: none; }
+  .mcr-intro .mcr-age-glyph { animation: none; }
+  .mcr-theme .mcr-button { transition: none; }
+}
+/* === BIRTHDAY CREAM GLASS PREMIUM — KRAJ === */
+
+
+/* MATEJ — DORADA PROPORCIJA
+   Ako već imaš poslednju verziju pozivnice, dodaj ovaj sadržaj na KRAJ
+   src/styles/birthdayintro.css. Nije potrebno menjati JSX ili ostale CSS fajlove.
+   U kompletnom ažuriranom paketu ove izmene su već uključene. */
+
+.mcr-intro .mcr-intro-panel {
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(253, 249, 240, 0.46) 0%,
+    rgba(248, 240, 224, 0.18) 44%,
+    rgba(248, 240, 224, 0) 74%
+  );
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.mcr-intro .mcr-intro-age {
+  margin: 3px 0 -2px;
+  font-size: clamp(190px, 50vw, 222px);
+  line-height: 0.96;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+}
+
+.mcr-intro .mcr-intro-button {
+  width: 100%;
+  max-width: 262px;
+  min-height: 50px;
+  margin-top: 28px;
+  padding: 14px 12px;
+}
+
+@media (max-width: 359px) {
+  .mcr-intro .mcr-intro-age { font-size: 180px; }
+}
+
+@media (max-height: 730px) and (max-width: 600px) {
+  .mcr-intro .mcr-intro-age { font-size: 162px; }
+  .mcr-intro .mcr-intro-button { margin-top: 20px; }
+}
+
+@media (min-width: 768px) {
+  .mcr-intro .mcr-intro-age { font-size: 224px; }
+}

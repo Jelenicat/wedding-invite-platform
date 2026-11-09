@@ -1060,3 +1060,124 @@
   from { opacity: .25; transform: translateY(.53em) rotateX(-28deg); }
   to { opacity: 1; transform: translateY(0) rotateX(0); }
 }
+
+
+/* === BIRTHDAY CREAM GLASS PREMIUM — POČETAK ===
+   Zameni prethodni mcr- blok ovim, ili dodaj na kraj birthdaycountdown.css. */
+
+.mcr-calendar-section { padding: 18px 22px 24px; background: rgba(245, 239, 228, 0.95); }
+.mcr-calendar-section .mcr-calendar-panel { width: min(100%, 430px); margin: 0 auto; padding: 28px 23px 36px; }
+.mcr-calendar-section .mcr-section-title { max-width: 295px; margin-inline: auto; }
+.mcr-calendar-section .mcr-countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; margin: 31px auto 33px; }
+.mcr-calendar-section .mcr-countdown-unit { padding: 15px 0 13px; border-top: 1px solid var(--mcr-line); border-bottom: 1px solid var(--mcr-line); }
+.mcr-calendar-section .mcr-countdown-unit strong { display: block; color: #795e3b; font: 500 clamp(30px, 8.2vw, 39px)/1.15 var(--mcr-serif); font-variant-numeric: lining-nums tabular-nums; }
+.mcr-calendar-section .mcr-countdown-unit > span { display: block; margin-top: 8px; color: #77644a; font: 500 7px/1.8 var(--mcr-sans); letter-spacing: 0.13em; text-transform: uppercase; }
+.mcr-calendar-section .mcr-party-time { margin: 26px 0; color: #826640; font: 500 29px/1.2 var(--mcr-serif); }
+.mcr-calendar-section .mcr-calendar { max-width: 315px; margin: 0 auto; padding: 24px 15px 21px; border: 1px solid rgba(128, 105, 69, 0.29); background: rgba(255, 252, 244, 0.54); }
+.mcr-calendar-section .mcr-calendar-heading { display: flex; align-items: baseline; justify-content: space-between; margin: 0 6px 24px; color: #6e5638; }
+.mcr-calendar-section .mcr-calendar-heading > span { font: 500 12px/1.5 var(--mcr-sans); letter-spacing: 0.15em; text-transform: uppercase; }
+.mcr-calendar-section .mcr-calendar-heading > strong { font: 400 24px/1.2 var(--mcr-serif); }
+.mcr-calendar-section .mcr-calendar-weekdays, .mcr-calendar-section .mcr-calendar-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.mcr-calendar-section .mcr-calendar-weekdays { margin-bottom: 10px; }
+.mcr-calendar-section .mcr-calendar-weekdays > span { padding-block: 5px; color: #806b4f; font: 500 8px/1.4 var(--mcr-sans); text-transform: lowercase; }
+.mcr-calendar-section .mcr-calendar-days { gap: 3px 0; }
+.mcr-calendar-section .mcr-calendar-days > span { position: relative; display: grid; place-items: center; min-width: 0; height: 38px; color: #67523a; font: 400 19px/1 var(--mcr-serif); }
+.mcr-calendar-section .mcr-calendar-days > .mcr-calendar-selected { background: #79613f; color: #fffaf1; font-weight: 600; box-shadow: 0 6px 14px rgba(86, 63, 30, 0.14); }
+.mcr-calendar-section .mcr-calendar-date { margin: 25px auto; color: #675037; font: 400 23px/1.5 var(--mcr-serif); }
+.mcr-calendar-section .mcr-calendar-date > span { display: block; margin-top: 3px; font: 400 10px/1.8 var(--mcr-sans); letter-spacing: 0.08em; }
+.mcr-calendar-section .mcr-calendar-button { display: flex; margin-top: 27px; border-color: #9a825c; background: transparent; color: #675034; box-shadow: none; }
+@media (max-width: 359px) {
+  .mcr-calendar-section { padding-inline: 16px; }
+  .mcr-calendar-section .mcr-calendar-panel { padding-inline: 8px; }
+  .mcr-calendar-section .mcr-calendar { padding-inline: 12px; }
+}
+@media (hover: hover) { .mcr-calendar-section .mcr-calendar-button:hover { background: #e4d7c0; color: #51402b; } }
+/* === BIRTHDAY CREAM GLASS PREMIUM — KRAJ === */
+
+/* CREAM EDITORIAL — kalendar i odbrojavanje, isti nežni tonovi. */
+.mcr-editorial .mcr-calendar-section { padding:10px 22px 35px; background:#f7f2e9; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-panel { padding:32px 23px; border-top:1px solid #d8cbb5; color:#82715d; }
+.mcr-editorial .mcr-calendar-section .mcr-eyebrow { color:#93816a; font-size:8px; letter-spacing:.22em; }
+.mcr-editorial .mcr-calendar-section .mcr-section-title { margin:17px auto 0; color:#766047; font-size:clamp(31px,9vw,41px); line-height:1.15; font-weight:400; text-wrap:balance; }
+.mcr-editorial .mcr-calendar-section .mcr-countdown { gap:0; margin:30px auto 35px; padding:18px 0; border-block:1px solid #ded2bf; }
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit { min-width:0; padding:0 3px; border:0; }
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit + .mcr-countdown-unit { border-left:1px solid #e1d7c7; }
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit strong { color:#826c50; font-weight:400; font-size:clamp(25px,8vw,37px); line-height:1.2; }
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit > span { color:#8e7c65; font-size:7px; letter-spacing:.09em; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar { padding:24px 13px; border:1px solid #dfd4c2; border-radius:16px; background:rgba(255,253,248,.7); box-shadow:0 10px 25px #64503208; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-heading { color:#806b51; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-heading > strong { color:#a18b68; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-weekdays > span { color:#9a886f; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-days > span { color:#806e58; height:36px; font-variant-numeric:lining-nums; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-days > .mcr-calendar-selected { border:1px solid #c3ac84; border-radius:50%; background:#e8dcc5; color:#69553a; font-weight:600; box-shadow:0 3px 8px #6450320d; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-date { color:#806c52; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-date > span { color:#928068; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-button { box-sizing:border-box; width:100%; max-width:280px; min-height:52px; margin-inline:auto; justify-content:center; gap:10px; border:1px solid #c8b694; border-radius:5px; background:transparent; color:#7b674c; box-shadow:none; font-size:10px; letter-spacing:.13em; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-button svg { width:18px; height:20px; flex-shrink:0; stroke:currentColor; stroke-width:1.2; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-button:focus-visible { outline:2px solid #8b7656; outline-offset:4px; }
+.mcr-editorial .mcr-calendar-section .mcr-party-time { color:#826c50; }
+@media(hover:hover) { .mcr-editorial .mcr-calendar-section .mcr-calendar-button:hover { background:#eae0ce; color:#6d593e; } }
+@media(max-width:359px) { .mcr-editorial .mcr-calendar-section { padding-inline:16px; } .mcr-editorial .mcr-calendar-section .mcr-calendar-panel { padding-inline:9px; } }
+
+/* CREAM — izraženije odbrojavanje i kompaktniji kalendar */
+.mcr-editorial .mcr-calendar-section {
+  background:linear-gradient(180deg,#f7f2e9 0%,#eee5d6 52%,#f7f2e9 100%);
+  padding-top:18px;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-panel {
+  position:relative; padding:36px 16px 28px; border-top:0;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-panel::before {
+  content:""; display:block; width:42px; height:2px; margin:0 auto 25px; background:#b39a73;
+}
+.mcr-editorial .mcr-calendar-section .mcr-eyebrow { color:#8a7456; letter-spacing:.2em; }
+.mcr-editorial .mcr-calendar-section .mcr-section-title {
+  max-width:285px; margin:15px auto 26px; color:#70583d;
+  font-size:clamp(34px,9.8vw,44px); font-style:italic; line-height:1.04;
+}
+.mcr-editorial .mcr-calendar-section .mcr-countdown {
+  position:relative; gap:6px; margin:25px -5px 30px; padding:20px 7px 18px;
+  border:1px solid #cfbb99; border-radius:6px;
+  background:linear-gradient(135deg,#eee1c8,#e2cfac);
+  box-shadow:inset 0 1px 0 #fff7e7,0 10px 24px #71553212;
+}
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit { padding:0 2px; }
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit + .mcr-countdown-unit { border-left:1px solid #bba27a66; }
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit strong {
+  color:#725739; font-size:clamp(27px,8.5vw,39px); font-weight:500;
+  text-shadow:0 1px 0 #fff6e6; letter-spacing:-.025em;
+}
+.mcr-editorial .mcr-calendar-section .mcr-countdown-unit > span { color:#806747; margin-top:7px; font-size:7px; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar {
+  max-width:310px; padding:22px 14px 19px; border:0; border-radius:0;
+  background:transparent; box-shadow:none;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-heading {
+  margin:0 2px 17px; padding-bottom:14px; border-bottom:1px solid #c9b594;
+  color:#755a39;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-heading > span {
+  font:italic 400 31px/1.1 var(--mcr-serif); letter-spacing:0; text-transform:capitalize;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-heading > strong { color:#8a6e49; font-size:22px; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-weekdays { margin-bottom:7px; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-weekdays > span { color:#977c57; font-size:9px; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-days { gap:2px 0; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-days > span { height:34px; color:#795f40; font-size:19px; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-days > .mcr-calendar-selected {
+  z-index:1; background:#9e8057; border:1px solid #98774b; color:#fffaf0;
+  border-radius:50%; box-shadow:0 3px 10px #76573322; font-weight:600;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-days > .mcr-calendar-selected::after {
+  content:""; position:absolute; inset:-3px; border:1px solid #b49a70; border-radius:50%; pointer-events:none;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-date {
+  margin:20px auto 0; padding-top:20px; border-top:1px solid #d5c5ab;
+  color:#775b3c; font-size:25px;
+}
+.mcr-editorial .mcr-calendar-section .mcr-calendar-date > span { margin-top:5px; color:#8a704f; font-size:11px; }
+.mcr-editorial .mcr-calendar-section .mcr-calendar-button { margin-top:22px; border-color:#bda47d; color:#755b3b; background:#f5ecdd; }
+@media(max-width:359px) {
+ .mcr-editorial .mcr-calendar-section .mcr-calendar-panel { padding-inline:8px; }
+ .mcr-editorial .mcr-calendar-section .mcr-countdown { margin-inline:0; }
+}

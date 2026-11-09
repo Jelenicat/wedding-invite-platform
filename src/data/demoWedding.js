@@ -6639,6 +6639,9 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 
 
+
+
+
 // =========================
 // Klijenti
 // =========================
@@ -12597,6 +12600,59 @@ dateISO:
 
     rsvpDeadline: "05.02.2027.",
     rsvpDeadlineISO: "2027-02-05",
+  },
+},
+
+  {
+  slug: "matej-18",
+  type: "birthday",
+  template: "birthday-cream-glass",
+  script: "latin",
+
+  brideName: "Matej",
+  weddingDate: "21.08.2027.",
+  weddingTime: "18:00",
+  venue: "Dami resort, Prosek",
+
+  backgroundImage: "/images/birthday-cream/cream-stone-premium.webp",
+  introPreviewImage: "/images/birthday-cream/cream-stone-premium.webp",
+  uploadCoverImage: "/images/birthday-cream/cream-stone-premium.webp",
+  musicSrc: "",
+
+  details: {
+    ...createDetails({
+      age: 18,
+      backgroundImage: "/images/birthday-cream/cream-stone-premium.webp",
+
+      welcomeText:
+        "Slavim punoletstvo i želim da budete deo večeri koju ću zauvek pamtiti.",
+
+      date: "21.08.2027.",
+      dateISO: "2027-08-21T18:00:00+02:00",
+
+      venue: "DAMI resort, Prosek",
+      locationName: "Dami resort",
+      locationAddress: "Pukovnika Slobodana Perića 74, Prosek",
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Dami%20resort%2C%20Pukovnika%20Slobodana%20Peri%C4%87a%2074%2C%20Prosek",
+      showLocationButton: true,
+      locationButtonText: "Pogledaj lokaciju",
+      locationButtonLink:
+        "https://www.google.com/maps/search/?api=1&query=Dami%20resort%2C%20Pukovnika%20Slobodana%20Peri%C4%87a%2074%2C%20Prosek",
+
+      note:
+        "Uz drage ljude, muziku i osmehe, svako veče postaje posebno. Radujem se što ćemo ovo pamtiti zajedno.",
+      rsvpSignature: "Matej",
+      showCalendarButton: true,
+      showDressCode: true,
+      dressCodeTitle: "Dress code",
+      dressCodeNote: "Dobro raspoloženje",
+      events: [],
+    }),
+
+    // Ova polja su VAN createDetails jer ih postojeći helper ne prenosi.
+    rsvpDeadline: "05.08.2027.",
+    rsvpText: "Biće mi drago da ovaj poseban dan provedemo zajedno.",
   },
 },
 
