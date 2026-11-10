@@ -12613,11 +12613,11 @@ dateISO:
   weddingDate: "21.08.2027.",
   weddingTime: "18:00",
   venue: "Dami resort, Prosek",
-
+musicSrc: "/music/matej-18.mp3",
   backgroundImage: "/images/birthday-cream/cream-stone-premium.webp",
   introPreviewImage: "/images/birthday-cream/cream-stone-premium.webp",
   uploadCoverImage: "/images/birthday-cream/cream-stone-premium.webp",
-  musicSrc: "",
+
 
   details: {
     ...createDetails({
@@ -12631,7 +12631,7 @@ dateISO:
       dateISO: "2027-08-21T18:00:00+02:00",
 
       venue: "DAMI resort, Prosek",
-      locationName: "Dami resort",
+      locationName: "DAMI resort",
       locationAddress: "Pukovnika Slobodana Perića 74, Prosek",
       mapLink:
         "https://www.google.com/maps/search/?api=1&query=Dami%20resort%2C%20Pukovnika%20Slobodana%20Peri%C4%87a%2074%2C%20Prosek",
