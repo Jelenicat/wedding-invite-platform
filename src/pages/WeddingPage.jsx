@@ -101,6 +101,8 @@ import BordeauxBloomIntro from "../components/BordeauxBloomIntro";
 import BordeauxBloomInvitationCard from "../components/BordeauxBloomInvitationCard";
 import NewlywedTimesIntro from "../components/NewlywedTimesIntro";
 import NewlywedTimesInvitationCard from "../components/NewlywedTimesInvitationCard";
+import KeepsakeIntro from "../components/KeepsakeIntro";
+import KeepsakeInvitationCard from "../components/KeepsakeInvitationCard";
 
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
@@ -459,7 +461,10 @@ const TEMPLATE_COMPONENTS = {
     Intro: BirthdayCreamIntro,
     Invitation: BirthdayCreamInvitationCard,
   },
-
+ "keepsake": {
+    Intro: KeepsakeIntro,
+    Invitation: KeepsakeInvitationCard,
+  },
 
 };
 

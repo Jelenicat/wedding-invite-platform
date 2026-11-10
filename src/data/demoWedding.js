@@ -6639,6 +6639,84 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 
 
+// Dodaj ovaj objekat kao novu stavku NIZА demoWedding, pre završnog ];
+// Ako prethodni objekat nema zarez, dodaj zarez posle njegovog završnog }.
+// Ne dodavati keepsake UNUTAR createDetails(): ta funkcija odbacuje nepoznata polja.
+{
+  slug: "keepsake-demo",
+  type: "wedding",
+  template: "keepsake",
+  script: "latin",
+  brideName: "Ana",
+  groomName: "Marko",
+  weddingDate: "28.07.2027.",
+  weddingTime: "16:00",
+  venue: "Beograd",
+  // Upiši putanju do postojeće pesme kada je izabereš.
+  musicSrc: "",
+
+  details: {
+    ...createDetails({
+      welcomeText:
+        "Pozivamo vas da podelite radost ovog posebnog dana sa nama i postanete deo naših najlepših uspomena.",
+      date: "28. jul 2027.",
+      dateISO: "2027-07-28T16:00:00+02:00",
+      venue: "Beograd",
+      locationName: "Naše mesto za slavlje",
+      locationAddress: "Beograd, Srbija",
+      showLocationButton: true,
+      locationButtonText: "Pogledaj lokaciju",
+      // Demo pretraga grada; za klijenta uneti link stvarnog prostora.
+      locationButtonLink: "https://www.google.com/maps/search/?api=1&query=Beograd+Srbija",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Beograd+Srbija",
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+      events: [
+        { label: "Okupljanje gostiju", time: "16:00", icon: "gathering", location: "Mesto proslave, Beograd" },
+        { label: "Građansko venčanje", time: "16:30", icon: "rings", location: "U bašti prostora za slavlje" },
+        { label: "Svečana večera", time: "18:00", icon: "dinner" },
+        { label: "Vreme za slavlje", time: "20:00", icon: "/icons/keepsake-car.svg" },
+      ],
+      showDressCode: true,
+      dressCodeTitle: "DRES KOD",
+      dressCodeNote:
+        "Budite svoji, osećajte se lepo i ponesite osmeh. Za one koji vole malo inspiracije, ovo su naše boje.",
+      dressCodeWomen: "Elegantne haljine u toplim, prigušenim nijansama.",
+      dressCodeWomenPalette: ["#b85e43", "#d8987c", "#a7a58f", "#67705b"],
+      dressCodeMen: "Odela ili košulje u neutralnim i tamnim tonovima.",
+      dressCodeMenPalette: ["#b7ab92", "#646755", "#3d4545"],
+      // Post se uključuje postojećom opcijom: fasting: true.
+      rsvpOptions: { fasting: false },
+      rsvpText: "Da bismo pripremili sve male detalje, molimo vas da nam javite da li dolazite.",
+      rsvpClosed: false,
+    }),
+
+    // Nova polja pripadaju SAMO ovom šablonu. Ne menjati createDetails().
+    keepsake: {
+      introTitle: ["Wedding", "Day"],
+      childhoodPhotos: [
+        { src: "/images/keepsake/childhood-groom.png", name: "Marko", alt: "Demo fotografija dečaka iz detinjstva", position: "center" },
+        { src: "/images/keepsake/childhood-bride.png", name: "Ana", alt: "Demo fotografija devojčice iz detinjstva", position: "center" },
+      ],
+      venueImage: "/images/keepsake/venue-demo.png",
+      venueImageAlt: "Generisana ilustrativna fotografija prostora za demo",
+      wishes: [
+        { title: "Najlepši poklon je vaše prisustvo.", text: "Ponesite dobro raspoloženje i udobne cipele za ples. Sve ostalo ćemo pretvoriti u uspomene zajedno." },
+        { text: "Ako razmišljate o cveću, radije nam poklonite zagrljaj. Naše najlepše bukete čuvaćemo na fotografijama." },
+      ],
+      petImage: "/images/keepsake/pomeranian.png",
+      petName: "Luna",
+      petNote: "Naša mala čupava sreća ostaje da čuva kuću. Za nas sačuvajte jedan ples!",
+      rsvpDeadline: "10.07.2027.",
+      showRSVP: true,
+      closingText: "Od malih nogu, do velikog dana.",
+      // Opcioni prevodi pojedinačnih UI tekstova:
+      // copy: { dear: "DRAGI NAŠI!", plan: "NAŠ PLAN DANA" },
+      // Za ćirilicu: script: "cyrillic" na korenu i introTitle: ["Наше", "венчање"].
+      // Slike iz demo paketa su generisane; za klijenta ih zameniti ličnim.
+    },
+  },
+},
 
 
 

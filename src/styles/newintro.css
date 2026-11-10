@@ -4541,3 +4541,88 @@ html:has(.bb.bb-card) {
   .nwt .nwt-intro-foot { padding-top:6px; font-size:6px; }
   .nwt .nwt-intro-button { min-height:48px; }
 }
+
+/* KEEPSAKE:INTRO:BEGIN — append to the existing newintro.css, never replace it */
+.keepsake-intro {
+  --keepsake-paper: #ebe8df;
+  --keepsake-ink: #35352f;
+  --keepsake-orange: #ed5d36;
+  width: 100%; max-width: 560px; min-height: 100svh; margin: 0 auto;
+  color: var(--keepsake-ink); background: var(--keepsake-paper) url('/icons/keepsake-paper.svg') repeat;
+  background-size: 240px 240px; font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400; line-height: 1.35; text-align: center; isolation: isolate;
+  overflow-x: clip; -webkit-font-smoothing: antialiased;
+}
+.keepsake-intro, .keepsake-intro * { box-sizing: border-box; }
+.keepsake-intro :where(h1, p, figure) { margin: 0; padding: 0; }
+.keepsake-intro .keepsake-intro-sheet {
+  width: 100%; min-height: 100svh; display: flex; flex-direction: column;
+  padding: max(38px, env(safe-area-inset-top)) 28px max(34px, env(safe-area-inset-bottom));
+}
+.keepsake-intro .keepsake-intro-kicker { font-size: 16px; letter-spacing: .07em; font-weight: 500; line-height: 1.25; }
+.keepsake-intro .keepsake-intro-collage { position: relative; flex: 0 0 auto; width: 100%; height: clamp(414px, 118vw, 600px); margin: 12px 0 0; }
+.keepsake-intro .keepsake-intro-title { position: absolute; inset: 0; font-weight: 400; z-index: 1; line-height: 1; }
+.keepsake-intro .keepsake-intro-word {
+  display: block; position: absolute; color: var(--keepsake-orange); font-family: 'Italianno', cursive;
+  font-weight: 400; text-transform: none; letter-spacing: -.025em; line-height: 1.2;
+  white-space: nowrap; transform-origin: 50% 50%; padding: 10px 10px 24px;
+}
+.keepsake-intro .keepsake-intro-word--1 { top: 0; left: -6px; font-size: clamp(108px, 32vw, 178px); }
+.keepsake-intro .keepsake-intro-word--2 { top: 106px; right: -5px; font-size: clamp(138px, 39vw, 216px); }
+.keepsake-intro[data-script='cyrillic'] .keepsake-intro-word { font-family: 'Marck Script', cursive; letter-spacing: -.06em; }
+.keepsake-intro[data-script='cyrillic'] .keepsake-intro-word--1 { font-size: clamp(72px, 22vw, 123px); top: 22px; left: -4px; }
+.keepsake-intro[data-script='cyrillic'] .keepsake-intro-word--2 { font-size: clamp(69px, 21vw, 117px); right: -2px; top: 110px; }
+.keepsake-intro .keepsake-intro-photo {
+  position: absolute; width: 49%; padding: 7px 7px 3px; background: #faf9f4; z-index: 2;
+  box-shadow: 0 2px 3px #36312725; border: 1px solid #b8b4a755;
+}
+.keepsake-intro .keepsake-intro-photo--1 { left: 7px; top: 142px; }
+.keepsake-intro .keepsake-intro-photo--2 { right: 4px; top: 238px; z-index: 3; }
+.keepsake-intro .keepsake-intro-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border: 0; border-radius: 0; }
+.keepsake-intro .keepsake-intro-photo figcaption { min-height: 25px; padding: 3px 0 2px; font: 23px/1 'Italianno', cursive; overflow-wrap: anywhere; }
+.keepsake-intro[data-script='cyrillic'] .keepsake-intro-photo figcaption { font: 16px/1.5 'Marck Script', cursive; }
+.keepsake-intro .keepsake-intro-marginalia {
+  position: absolute; left: -13px; top: 304px; width: 105px; text-align: left; white-space: pre-line;
+  font: 22px/.85 'Italianno', cursive; opacity: .32; transform: rotate(-10deg); z-index: 0;
+}
+.keepsake-intro .keepsake-intro-swoop { position: absolute; width: 160px; height: auto; left: 0; bottom: 7px; color: var(--keepsake-orange); transform: rotate(-16deg); opacity: .7; }
+.keepsake-intro .keepsake-intro-message { max-width: 32ch; margin: 15px auto 0; font-size: 17px; line-height: 1.3; }
+.keepsake-intro .keepsake-intro-bottom { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: end; margin-top: auto; padding-top: 28px; text-align: left; }
+.keepsake-intro .keepsake-intro-names { display: flex; flex-wrap: wrap; align-items: center; gap: 0 5px; font: 33px/1.1 'Italianno', cursive; padding: 0 0 6px; }
+.keepsake-intro .keepsake-intro-names > span { display: inline-flex; align-items: center; max-width: 100%; overflow-wrap: anywhere; min-width: 0; }
+.keepsake-intro .keepsake-intro-name-heart { flex: 0 0 17px; width: 17px; height: 17px; color: var(--keepsake-orange); margin: 0 6px 0 1px; }
+.keepsake-intro[data-script='cyrillic'] .keepsake-intro-names { font: 21px/1.3 'Marck Script', cursive; }
+.keepsake-intro .keepsake-intro-date { font: 700 clamp(15px, 4.1vw, 21px)/1.25 'Manrope', sans-serif; letter-spacing: -.05em; overflow-wrap: anywhere; }
+.keepsake-intro .keepsake-intro-open {
+  appearance: none; display: flex; align-items: center; gap: 8px; min-height: 48px; max-width: 142px;
+  margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none;
+  color: var(--keepsake-orange); cursor: pointer; text-align: right; touch-action: manipulation;
+  font: 600 10px/1.5 'Manrope', sans-serif; letter-spacing: .08em; text-transform: uppercase;
+  transition: color .25s ease, transform .25s ease;
+}
+.keepsake-intro .keepsake-intro-open svg { display: block; width: 48px; height: 48px; flex: 0 0 48px; }
+.keepsake-intro .keepsake-intro-open:active { transform: scale(.97); }
+.keepsake-intro .keepsake-intro-open:focus-visible { outline: 2px solid currentColor; outline-offset: 7px; }
+.keepsake-intro .keepsake-intro-open:disabled { cursor: progress; opacity: .7; }
+.keepsake-intro .keepsake-intro-collage--type { height: 340px; }
+@media (min-width: 500px) {
+  .keepsake-intro .keepsake-intro-sheet { padding: max(48px, env(safe-area-inset-top)) 42px max(40px, env(safe-area-inset-bottom)); }
+  .keepsake-intro .keepsake-intro-word--2 { top: 138px; }
+  .keepsake-intro .keepsake-intro-photo--1 { top: 186px; }
+  .keepsake-intro .keepsake-intro-photo--2 { top: 320px; }
+  .keepsake-intro .keepsake-intro-marginalia { top: 408px; }
+}
+@media (max-width: 359px) {
+  .keepsake-intro .keepsake-intro-sheet { padding-inline: 22px; }
+  .keepsake-intro .keepsake-intro-kicker { font-size: 14px; }
+  .keepsake-intro .keepsake-intro-photo--1 { top: 124px; }
+  .keepsake-intro .keepsake-intro-photo--2 { top: 211px; }
+  .keepsake-intro .keepsake-intro-word--2 { top: 93px; }
+  .keepsake-intro .keepsake-intro-names { font-size: 29px; }
+  .keepsake-intro .keepsake-intro-open { max-width: 124px; font-size: 9px; gap: 5px; }
+  .keepsake-intro .keepsake-intro-open svg { width: 44px; height: 44px; flex-basis: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .keepsake-intro *, .keepsake-intro *::before, .keepsake-intro *::after { animation: none !important; transition: none !important; }
+}
+/* KEEPSAKE:INTRO:END */
