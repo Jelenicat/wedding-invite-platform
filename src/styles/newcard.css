@@ -9160,3 +9160,69 @@ html:has(.nwt.nwt-card) {
 }
 
 /* ADRIATICA – KRAJ */
+
+
+/* ============================================================
+   ADRIATICA — polagano nastajanje zlatnog ovalnog ornamenta (VM)
+   Menja samo vec postojecu .adriatica-cover-monogram sliku.
+   Pozadinski akvarel ostaje nepomican.
+   ============================================================ */
+.adriatica .adriatica-cover-monogram {
+  /* Gradijent je veci od slike: iz pocetnog praznog polja
+     nezno otkriva ornament odozgo nadole, bez grubog reza. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 40%,
+    transparent 53%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 40%,
+    transparent 53%,
+    transparent 100%
+  );
+  -webkit-mask-size: 100% 260%;
+  mask-size: 100% 260%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center top;
+  mask-position: center top;
+  transform-origin: 50% 50%;
+  animation: adriatica-vm-ornament-appear 4.2s .25s cubic-bezier(.42, 0, .19, 1) both;
+}
+
+@keyframes adriatica-vm-ornament-appear {
+  0% {
+    opacity: 0;
+    -webkit-mask-position: center bottom;
+    mask-position: center bottom;
+    transform: translate3d(0, 8px, 0) scale(.975);
+    filter: blur(1.3px) brightness(1.28) saturate(.8) drop-shadow(0 1px 3px #16191055);
+  }
+  14% { opacity: 1; }
+  83% {
+    opacity: 1;
+    -webkit-mask-position: center top;
+    mask-position: center top;
+  }
+  100% {
+    opacity: 1;
+    -webkit-mask-position: center top;
+    mask-position: center top;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0) brightness(1.18) saturate(.92) drop-shadow(0 2px 5px #1619109c);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adriatica .adriatica-cover-monogram {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    -webkit-mask-position: center top;
+    mask-position: center top;
+  }
+}
