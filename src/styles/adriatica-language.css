@@ -134,17 +134,18 @@
   align-items: center;
   gap: 0;
   width: auto;
-  color: #353a2a;
+  color: #514536;
   text-align: center;
   letter-spacing: normal;
   pointer-events: none;
-  text-shadow: 0 1px 1px rgba(243, 240, 218, 0.55);
+  text-shadow: 0 1px 0 rgba(250, 243, 223, 0.26);
 }
 
 .adriatica .adriatica-screen-cue-script {
   display: block;
   font: 400 clamp(2.95rem, 12vw, 4rem)/1.04 "Italianno", "Cormorant Garamond", Georgia, serif;
   white-space: nowrap;
+  color: #514536;
 }
 
 .adriatica .adriatica-screen-cue-detail {
@@ -157,6 +158,7 @@
   letter-spacing: 0.17em;
   text-transform: uppercase;
   white-space: nowrap;
+  color: #514536;
 }
 
 .adriatica .adriatica-screen-cue-detail::before,

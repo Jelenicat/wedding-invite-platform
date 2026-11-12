@@ -1,70 +1,113 @@
 <!doctype html>
 <html lang="sr-Latn" prefix="og: https://ogp.me/ns#">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#263d33" />
+
     <title>Valerija i Marko | Pozivnica za venčanje</title>
     <meta
       name="description"
-      content="12. jun 2027. · Restoran Adriatica, Kamenari, Crna Gora. Otvorite pozivnicu za venčanje Valerije i Marka."
+      content="Valerija i Marko vas pozivaju da zajedno proslavite njihovo venčanje 12. juna 2027. godine u restoranu Adriatica, Kamenari, Crna Gora. Otvorite digitalnu pozivnicu."
     />
-    <meta name="theme-color" content="#263d33" />
-    <link rel="canonical" href="https://mojapozivnica.app/valerija-marko.html" />
 
+    <!-- Prava pozivnica je kanonska stranica, a ovaj HTML služi za deljenje. -->
+    <link rel="canonical" href="https://mojapozivnica.app/valerija-marko" />
+
+    <!-- Open Graph: WhatsApp, Viber, Facebook i druge aplikacije. -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="sr_RS" />
     <meta property="og:site_name" content="Moja Pozivnica" />
     <meta property="og:title" content="Valerija i Marko | Pozivnica za venčanje" />
     <meta
       property="og:description"
-      content="12. jun 2027. · Restoran Adriatica, Kamenari, Crna Gora. Otvorite pozivnicu za venčanje Valerije i Marka."
+      content="12. jun 2027. · Restoran Adriatica, Kamenari, Crna Gora. Sa radošću vas pozivamo da budete deo našeg posebnog dana."
     />
     <meta property="og:url" content="https://mojapozivnica.app/valerija-marko.html" />
-    <meta property="og:image" content="https://mojapozivnica.app/previews/valerija-marko.jpg" />
+
+    <!-- Nova putanja sprečava da društvene mreže zadrže staru preview sliku. -->
+    <meta
+      property="og:image"
+      content="https://mojapozivnica.app/previews/valerija-marko-v2.jpg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://mojapozivnica.app/previews/valerija-marko-v2.jpg"
+    />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Valerija i Marko, 12. jun 2027, uz akvarel Boke Kotorske" />
+    <meta
+      property="og:image:alt"
+      content="Valerija i Marko · 12. jun 2027. · Akvarel Boke Kotorske"
+    />
 
+    <!-- X / Twitter veliki prikaz. -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Valerija i Marko | Pozivnica za venčanje" />
     <meta
       name="twitter:description"
-      content="12. jun 2027. · Restoran Adriatica, Kamenari, Crna Gora. Otvorite pozivnicu za venčanje Valerije i Marka."
+      content="12. jun 2027. · Restoran Adriatica, Kamenari, Crna Gora. Otvorite našu pozivnicu za venčanje."
     />
-    <meta name="twitter:image" content="https://mojapozivnica.app/previews/valerija-marko.jpg" />
-    <meta name="twitter:image:alt" content="Valerija i Marko, 12. jun 2027, uz akvarel Boke Kotorske" />
+    <meta
+      name="twitter:image"
+      content="https://mojapozivnica.app/previews/valerija-marko-v2.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Valerija i Marko · 12. jun 2027. · Akvarel Boke Kotorske"
+    />
 
     <style>
-      body {
-        display: grid;
-        min-height: 100vh;
-        margin: 0;
-        place-items: center;
+      :root {
+        color-scheme: light;
+        font-family: Georgia, "Times New Roman", serif;
         background: #263d33;
         color: #f7efdc;
-        font-family: Georgia, serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px 16px;
       }
 
       main {
         display: grid;
-        width: min(680px, calc(100% - 32px));
-        gap: 20px;
-        padding-block: 24px;
+        width: min(100%, 760px);
         justify-items: center;
+        gap: 18px;
+        text-align: center;
       }
 
       img {
         display: block;
         width: 100%;
         height: auto;
+        border: 1px solid rgb(218 194 148 / 45%);
+        box-shadow: 0 20px 55px rgb(0 0 0 / 18%);
+      }
+
+      p {
+        margin: 0;
+        font-size: clamp(1rem, 3.4vw, 1.18rem);
+        line-height: 1.5;
       }
 
       a {
-        padding: 12px 24px;
+        display: inline-block;
+        padding: 12px 25px;
         border: 1px solid #c5ab75;
+        border-radius: 2px;
         color: inherit;
         text-decoration: none;
+        font-size: 1rem;
+        transition: background-color 180ms ease, color 180ms ease;
       }
 
       a:hover,
@@ -72,18 +115,24 @@
         background: #f7efdc;
         color: #263d33;
       }
+
+      a:focus-visible { outline: 2px solid #f7efdc; outline-offset: 3px; }
     </style>
   </head>
+
   <body>
     <main aria-label="Pozivnica za venčanje Valerije i Marka">
       <img
-        src="./previews/valerija-marko.jpg"
+        src="/previews/valerija-marko-v2.jpg"
         width="1200"
         height="630"
         alt="Valerija i Marko · 12. jun 2027. · Boka Kotorska, Crna Gora"
       />
+      <p>Radujemo se što ćemo naš poseban dan podeliti sa vama.</p>
       <a href="https://mojapozivnica.app/valerija-marko">Otvori pozivnicu</a>
     </main>
+
+    <!-- Gost se preusmerava na React pozivnicu; OG metapodaci ostaju u HTML-u. -->
     <script>
       if (location.protocol === "https:" || location.protocol === "http:") {
         location.replace("/valerija-marko" + location.search + location.hash);
