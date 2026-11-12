@@ -1,4 +1,4 @@
-import { useEffect, useMemo,  useLayoutEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useLayoutEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import FloralIntro from "../components/FloralIntro";
@@ -103,6 +103,8 @@ import NewlywedTimesIntro from "../components/NewlywedTimesIntro";
 import NewlywedTimesInvitationCard from "../components/NewlywedTimesInvitationCard";
 import KeepsakeIntro from "../components/KeepsakeIntro";
 import KeepsakeInvitationCard from "../components/KeepsakeInvitationCard";
+import AdriaticaIntro from "../components/AdriaticaIntro.jsx";
+import AdriaticaInvitationCard from "../components/AdriaticaInvitationCard.jsx";
 
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
@@ -147,6 +149,8 @@ import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
 import "../styles/intro.css";
+
+
 
 const TEMPLATE_COMPONENTS = {
   floral: {
@@ -465,6 +469,11 @@ const TEMPLATE_COMPONENTS = {
     Intro: KeepsakeIntro,
     Invitation: KeepsakeInvitationCard,
   },
+
+  "adriatica-destination": {
+  Intro: AdriaticaIntro,
+  Invitation: AdriaticaInvitationCard,
+},
 
 };
 

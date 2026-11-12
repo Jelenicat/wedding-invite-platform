@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
@@ -8,6 +8,15 @@ import html2pdf from "html2pdf.js";
 
 function GuestPreferencesPage() {
   const { slug } = useParams();
+
+  if (slug === "valerija-marko") {
+    return <Navigate to={`/admin/${slug}`} replace />;
+  }
+
+  return <GuestPreferencesPanel key={slug} slug={slug} />;
+}
+
+function GuestPreferencesPanel({ slug }) {
   const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
@@ -31,7 +40,6 @@ function GuestPreferencesPage() {
   );
 
   const rsvpOptions = invitation?.details?.rsvpOptions || {};
-
   const hasFoodPreferences = Boolean(rsvpOptions.foodPreferences);
   const hasMusicWish = Boolean(rsvpOptions.musicWish);
   const hasFastingOption = Boolean(rsvpOptions.fasting);

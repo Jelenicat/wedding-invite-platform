@@ -13,9 +13,15 @@ import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
 import html2pdf from "html2pdf.js";
 import { getDocs } from "firebase/firestore";
+
 function SeatingPage() {
   const { slug } = useParams();
+  return <SeatingPanel key={slug} slug={slug} />;
+}
+
+function SeatingPanel({ slug }) {
   const navigate = useNavigate();
+  const waitForConfirmedGuests = slug === "valerija-marko";
 
   const [password, setPassword] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -26,6 +32,7 @@ function SeatingPage() {
   const [tableGuests, setTableGuests] = useState([]);
 
   const [loading, setLoading] = useState(true);
+  const [guestsReady, setGuestsReady] = useState(false);
 
   const [tableForm, setTableForm] = useState({
     name: "",
@@ -183,7 +190,16 @@ function SeatingPage() {
 
     const unsubscribeGuests = onSnapshot(
       guestsRef,
+      { includeMetadataChanges: waitForConfirmedGuests },
       (snapshot) => {
+        if (
+          waitForConfirmedGuests &&
+          (snapshot.metadata.fromCache || snapshot.metadata.hasPendingWrites)
+        ) {
+          setGuestsReady(false);
+          return;
+        }
+
         const guestsData = snapshot.docs
           .map((d) => ({
             id: d.id,
@@ -197,10 +213,12 @@ function SeatingPage() {
           });
 
         setComingGuests(guestsData);
+        if (waitForConfirmedGuests) setGuestsReady(true);
         guestsLoaded = true;
         stopLoadingIfReady();
       },
       (error) => {
+        if (waitForConfirmedGuests) setGuestsReady(false);
         console.error("Greška pri učitavanju gostiju:", error);
         openMessageModal({
           title: "Greška",
@@ -237,34 +255,38 @@ function SeatingPage() {
       unsubscribeGuests();
       unsubscribeTableGuests();
     };
-  }, [slug, isAuthorized]);
-useEffect(() => {
-  if (!slug || !isAuthorized) return;
-  
+  }, [slug, isAuthorized, waitForConfirmedGuests]);
 
+  useEffect(() => {
+    if (!slug || !isAuthorized || (waitForConfirmedGuests && !guestsReady)) return;
 
-  const cleanupDeletedGuests = async () => {
-    const existingGuestIds = new Set(comingGuests.map((g) => g.id));
+    const cleanupDeletedGuests = async () => {
+      const existingGuestIds = new Set(comingGuests.map((guest) => guest.id));
+      const toDelete = tableGuests.filter(
+        (assignment) => !existingGuestIds.has(assignment.guestId)
+      );
 
-    const toDelete = tableGuests.filter(
-      (assignment) => !existingGuestIds.has(assignment.guestId)
-    );
+      if (toDelete.length === 0) return;
 
-    if (toDelete.length === 0) return;
+      try {
+        for (const item of toDelete) {
+          await deleteDoc(doc(db, "events", slug, "tableGuests", item.id));
+        }
+      } catch (err) {
+        console.error("Cleanup error:", err);
+      }
+    };
 
-    try {
-     
+    cleanupDeletedGuests();
+  }, [
+    comingGuests,
+    tableGuests,
+    slug,
+    isAuthorized,
+    waitForConfirmedGuests,
+    guestsReady,
+  ]);
 
-    for (const item of toDelete) {
-  await deleteDoc(doc(db, "events", slug, "tableGuests", item.id));
-}
-    } catch (err) {
-      console.error("Cleanup error:", err);
-    }
-  };
-
-  cleanupDeletedGuests();
-}, [comingGuests, tableGuests, slug, isAuthorized]);
   useEffect(() => {
     setSelectedGuestsByTable((prev) => {
       let hasChanges = false;
@@ -371,6 +393,7 @@ useEffect(() => {
   const handleLogout = () => {
     setIsAuthorized(false);
     setPassword("");
+    setGuestsReady(false);
     localStorage.removeItem(`admin-access-${slug}`);
   };
 

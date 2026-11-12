@@ -12734,6 +12734,259 @@ musicSrc: "/music/matej-18.mp3",
   },
 },
 
+  {
+    slug: "valerija-marko",
+    type: "wedding",
+    template: "adriatica-destination",
+    script: "latin",
+    brideName: "Valerija",
+    groomName: "Marko",
+    weddingDate: "12. jun 2027.",
+    weddingTime: "13:00",
+    venue: "Restoran Adriatica, Kamenari, Crna Gora",
+    musicSrc: "/music/jovana-oliver.mp3",
+
+    details: {
+      defaultLanguage: "sr",
+      showLanguageSwitcher: true,
+      languages: ["sr", "de"],
+      date: "12. jun 2027.",
+      dateISO: "2027-06-12T13:00:00+02:00",
+      venue: "Restoran Adriatica, Kamenari, Crna Gora",
+      locationName: "Restoran Adriatica",
+      locationAddress: "Kamenari, Crna Gora",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Restoran%20Adriatica%2C%20Kamenari%2C%20Crna%20Gora",
+      showCalendarButton: true,
+      calendarDurationHours: 1, // Trajanje rezervacije u kalendaru.
+      welcomeText:
+        "Od zaveta u crkvi do večere kraj mora, želimo da ovaj dan provedemo sa ljudima koji su nam bliski. Biće nam drago da sa nama proslavite venčanje u Boki.",
+      showDressCode: true,
+      dressCodeNote: "Molimo vas da za venčanje belu boju ostavite za mladu.",
+      rsvpClosed: false,
+      rsvpOptions: {
+        individualMenus: true,
+        menuChoices: ["meat", "fish", "vegetarian"],
+        showGuestAllergies: true,
+        maxGuests: 8,
+        deadlineLabel: "20. decembra 2026.",
+        closesAt: "2026-12-21T00:00:00+01:00",
+      },
+      events: [
+        {
+          label: "Crkveno venčanje",
+          time: "13:00",
+          icon: "chapel",
+          location: "", // Dodati crkvu i link kada lokacija bude potvrđena.
+          mapLink: "",
+          pendingLocation: "Lokaciju crkve objavićemo naknadno.",
+        },
+        {
+          label: "Putovanje katamaranom",
+          time: "14:10–15:30",
+          icon: "boat",
+          description:
+            "Za goste je organizovan prevoz katamaranom iz Kotora do restorana Adriatica u Kamenarima.",
+          journey: {
+            from: "Kotor",
+            to: "Kamenari",
+            boarding: "", // Naziv i adresa mesta ukrcavanja, kada budu potvrđeni.
+            boardingMapLink: "",
+            pendingBoarding: "Tačno mesto ukrcavanja objavićemo naknadno.",
+          },
+        },
+        {
+          label: "Dobrodošlica u restoranu Adriatica",
+          time: "15:30",
+          icon: "glass",
+          description: "Doček gostiju i piće dobrodošlice.",
+        },
+        { label: "Početak ceremonije", time: "16:20", icon: "rings" },
+        { label: "Cocktail Hour", time: "16:40", icon: "glass" },
+        { label: "Početak večere", time: "18:00", icon: "dinner" },
+      ],
+      adriatica: {
+        placeLine: "Boka Kotorska · Crna Gora",
+        artwork: "/images/adriatica-destination/adriatica-restoran-akvarel.webp",
+        artworkAlt: "Akvarel kamene fasade restorana Adriatica i terase sa maslinama",
+        timeZone: "Europe/Podgorica",
+        calendarLocation: "", // Popuniti lokacijom crkve kada bude potvrđena.
+        calendarNote:
+          "Početak programa je crkveno venčanje u 13:00. Restoran Adriatica u Kamenarima je glavna lokacija proslave. Trajanje unosa u kalendar je tehničko.",
+        transport: {
+          airports: [
+            {
+              name: "Aerodrom Tivat",
+              code: "TIV",
+              description: "Najbliži Kotoru.",
+              mapLink: "https://www.google.com/maps/search/?api=1&query=Aerodrom%20Tivat%2C%20Crna%20Gora",
+            },
+            {
+              name: "Aerodrom Podgorica",
+              code: "TGD",
+              description: "Oko dva sata vožnje do Kotora.",
+              mapLink: "https://www.google.com/maps/search/?api=1&query=Aerodrom%20Podgorica%2C%20Crna%20Gora",
+            },
+          ],
+          transfers: "", // Upisati samo potvrđene informacije o transferu.
+          flights: [], // { name, description, url }
+        },
+        accommodation: {
+          bookingLink: "https://www.booking.com/",
+          hotels: [
+            { name: "Huma Kotor Bay Hotel & Villas", location: "Kotor" },
+            { name: "Hyatt Regency Kotor Bay Resort", location: "Kotor" },
+            { name: "Boutique Hotel R Palazzo", location: "Kotor" },
+            { name: "Kotor Nest", location: "Kotor" },
+            { name: "Villa Teona Kotor Bay Residence", location: "Kotor" },
+            { name: "The Quince, Porto Montenegro", location: "Tivat" },
+            { name: "SIRO Porto Montenegro", location: "Tivat" },
+            { name: "Porto Montenegro Residences", location: "Tivat" },
+          ],
+        },
+        guide: {
+          intro:
+            "Ako ostajete duže, izdvojili smo nekoliko mesta za ručak i dan na plaži.",
+          places: [
+            {
+              name: "Verige 65",
+              category: "Restorani",
+              location: "Kostanjica · Kotor",
+            },
+            {
+              name: "Forza Kuk",
+              category: "Restorani",
+              location: "Žanjev Do · Lovćen",
+            },
+            {
+              name: "Maya Bay",
+              category: "Restorani",
+              location: "Porto Montenegro · Tivat",
+            },
+            {
+              name: "Murano Restaurant",
+              category: "Restorani",
+              location: "Porto Montenegro · Tivat",
+            },
+            {
+              name: "Ribarsko Selo",
+              category: "Restorani",
+              location: "Žanjice · Luštica",
+            },
+            {
+              name: "Vidikovac",
+              category: "Restorani",
+              location: "Škaljari · Kotor",
+              mapLink: "https://www.google.com/maps/search/?api=1&query=Restoran%20Vidikovac%2C%20%C5%A0kaljari%2C%20Kotor%2C%20Crna%20Gora",
+            },
+            {
+              name: "Tapasake Portonovi",
+              category: "Klubovi na plaži",
+              location: "Portonovi · Herceg Novi",
+            },
+            {
+              name: "Limoneto",
+              category: "Klubovi na plaži",
+              location: "Đurići · Herceg Novi",
+              mapLink: "https://www.google.com/maps/search/?api=1&query=Limoneto%20Restaurant%20%26%20Beach%2C%20%C4%90uri%C4%87i%2C%20Crna%20Gora",
+            },
+            {
+              name: "Monte Palm",
+              category: "Klubovi na plaži",
+              location: "Bogišići · Tivat",
+              mapLink: "https://www.google.com/maps/search/?api=1&query=Monte%20Palm%20Beach%2C%20Bogi%C5%A1i%C4%87i%2C%20Tivat%2C%20Crna%20Gora",
+            },
+            {
+              name: "Galija",
+              category: "Klubovi na plaži",
+              location: "Sveti Stefan",
+              mapLink: "https://www.google.com/maps/search/?api=1&query=Galija%20Beach%2C%20Sveti%20Stefan%2C%20Crna%20Gora",
+            },
+            {
+              name: "Ribarsko Selo",
+              category: "Klubovi na plaži",
+              location: "Žanjice · Luštica",
+            },
+            {
+              name: "Almara Beach",
+              category: "Klubovi na plaži",
+              location: "Oblatno · Luštica",
+              mapLink: "https://www.google.com/maps/search/?api=1&query=Almara%20Beach%20Club%2C%20Oblatno%2C%20Lu%C5%A1tica%2C%20Crna%20Gora",
+            },
+          ],
+        },
+        contacts: [
+          {
+            name: "Alina Kojičić",
+            description: "Za hitna pitanja na licu mesta. Govori srpski i engleski.",
+            phone: "+382 67 268560",
+          },
+        ],
+      },
+      translations: {
+        de: {
+          weddingDate: "12. Juni 2027",
+          venue: "Restaurant Adriatica, Kamenari, Montenegro",
+          details: {
+            date: "12. Juni 2027",
+            venue: "Restaurant Adriatica, Kamenari, Montenegro",
+            locationName: "Restaurant Adriatica",
+            locationAddress: "Kamenari, Montenegro",
+            welcomeText:
+              "Vom Ja-Wort in der Kirche bis zum Abendessen am Meer möchten wir diesen Tag mit den Menschen verbringen, die uns nahestehen. Wir freuen uns, mit euch in der Bucht von Kotor zu feiern.",
+            dressCodeNote: "Bitte überlasst der Braut an diesem Tag die Farbe Weiss.",
+            rsvpOptions: {
+              deadlineLabel: "20. Dezember 2026",
+            },
+            events: [
+              {
+                label: "Kirchliche Trauung",
+                pendingLocation: "Den Ort der kirchlichen Trauung geben wir noch bekannt.",
+              },
+              {
+                label: "Fahrt mit dem Katamaran",
+                description:
+                  "Für unsere Gäste organisieren wir einen Transfer mit dem Katamaran von Kotor zum Restaurant Adriatica in Kamenari.",
+                journey: {
+                  pendingBoarding: "Den genauen Treffpunkt zum Einsteigen geben wir noch bekannt.",
+                },
+              },
+              {
+                label: "Willkommensempfang im Restaurant Adriatica",
+                description: "Empfang der Gäste mit einem Willkommensdrink.",
+              },
+              { label: "Beginn der Zeremonie" },
+              { label: "Cocktailempfang" },
+              { label: "Beginn des Abendessens" },
+            ],
+            adriatica: {
+              placeLine: "Bucht von Kotor · Montenegro",
+              artworkAlt: "Aquarell des Restaurants Adriatica mit Steinfassade und Oliventerrasse",
+              calendarNote:
+                "Der Tag beginnt um 13:00 Uhr mit der kirchlichen Trauung. Die Feier findet im Restaurant Adriatica in Kamenari statt. Die Dauer im Kalender ist ein Platzhalter.",
+              transport: {
+                airports: [
+                  { description: "Der nächstgelegene Flughafen zu Kotor." },
+                  { description: "Etwa zwei Stunden Fahrt bis Kotor." },
+                ],
+              },
+              guide: {
+                intro:
+                  "Wenn ihr länger bleibt, findet ihr hier ein paar Empfehlungen zum Essen und für einen Tag am Strand.",
+              },
+              contacts: [
+                {
+                  description:
+                    "Bei dringenden Fragen vor Ort. Spricht Serbisch und Englisch.",
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+  },
+
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

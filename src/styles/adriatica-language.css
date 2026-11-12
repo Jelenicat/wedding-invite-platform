@@ -1,0 +1,202 @@
+.adriatica .adriatica-language-screen {
+  display: grid;
+  min-block-size: 100vh;
+  min-block-size: 100svh;
+  place-items: center;
+  padding: max(22px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(22px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+  background:
+    linear-gradient(180deg, #faf2de38, #f5ecd82e 48%, #eee3ca4a),
+    url("/images/adriatica-destination/cvetna-postava.webp") center / cover no-repeat,
+    #f2e7cf;
+}
+
+.adriatica-language-plaque {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  inline-size: min(100%, 410px);
+  aspect-ratio: 5 / 7;
+}
+
+.adriatica .adriatica-language-paper {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 18px #51442a24);
+  pointer-events: none;
+}
+
+.adriatica-language-content {
+  display: grid;
+  justify-items: center;
+  gap: clamp(16px, 4.8vw, 24px);
+  inline-size: 72%;
+  padding-block: 1rem;
+  color: #5b4e39;
+  text-align: center;
+}
+
+.adriatica .adriatica-language-title {
+  font: 500 clamp(1.6rem, 7.5vw, 2.45rem)/1.12 var(--adriatica-serif, Georgia, serif);
+  text-wrap: balance;
+}
+
+.adriatica-language-title span {
+  display: block;
+  margin-block-start: 7px;
+  color: #746149;
+  font: italic 500 clamp(1.08rem, 4.65vw, 1.4rem)/1.2 var(--adriatica-serif, Georgia, serif);
+}
+
+.adriatica-language-options {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  inline-size: min(100%, 255px);
+}
+
+.adriatica-language-options::before {
+  content: "";
+  position: absolute;
+  inset-block: 11px;
+  inset-inline-start: 50%;
+  inline-size: 1px;
+  background: #9a805457;
+  pointer-events: none;
+}
+
+.adriatica .adriatica-language-options button {
+  min-block-size: 48px;
+  padding: 6px 4px;
+  border: 0;
+  background: transparent;
+  color: #57482e;
+  font: 600 clamp(1.17rem, 5.1vw, 1.48rem)/1.2 var(--adriatica-serif, Georgia, serif);
+  cursor: pointer;
+}
+
+.adriatica .adriatica-language-options button:focus-visible,
+.adriatica .adriatica-language-back:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+.adriatica .adriatica-language-back {
+  position: absolute;
+  z-index: 6;
+  inset-block-start: max(12px, env(safe-area-inset-top));
+  inset-inline-start: max(12px, env(safe-area-inset-left));
+  min-block-size: 44px;
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #253024e0;
+  color: #fff7e3;
+  font: 600 0.8rem/1.2 var(--adriatica-sans, sans-serif);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .adriatica .adriatica-language-options button:hover {
+    color: #82612e;
+    text-shadow: 0 1px #fff8e7;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .adriatica-language-plaque {
+    inline-size: min(100%, 255px);
+  }
+
+  .adriatica .adriatica-language-title {
+    font-size: 1.7rem;
+  }
+
+  .adriatica .adriatica-language-options button {
+    font-size: 1.25rem;
+  }
+}
+
+
+/* Adriatica: natpis na zatvorenoj koverti.
+   Samo ovaj šablon: ne dira globalni newintro.css ni druge intro komponente. */
+.adriatica .adriatica-envelope-screen .adriatica-screen-cue {
+  inset: auto 14px max(45px, calc(env(safe-area-inset-bottom, 0px) + 36px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: auto;
+  color: #353a2a;
+  text-align: center;
+  letter-spacing: normal;
+  pointer-events: none;
+  text-shadow: 0 1px 1px rgba(243, 240, 218, 0.55);
+}
+
+.adriatica .adriatica-screen-cue-script {
+  display: block;
+  font: 400 clamp(2.95rem, 12vw, 4rem)/1.04 "Italianno", "Cormorant Garamond", Georgia, serif;
+  white-space: nowrap;
+}
+
+.adriatica .adriatica-screen-cue-detail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 1px;
+  font: 500 clamp(0.67rem, 2.7vw, 0.76rem)/1.35 var(--adriatica-sans, sans-serif);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.adriatica .adriatica-screen-cue-detail::before,
+.adriatica .adriatica-screen-cue-detail::after {
+  content: "";
+  display: block;
+  width: clamp(17px, 5vw, 28px);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.52;
+}
+
+.adriatica[lang="de"] .adriatica-screen-cue-script {
+  font-size: clamp(2.3rem, 9vw, 3.35rem);
+}
+
+.adriatica[lang="de"] .adriatica-screen-cue-detail {
+  font-size: clamp(0.61rem, 2.25vw, 0.73rem);
+  letter-spacing: 0.10em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .adriatica .adriatica-envelope-screen:not(.adriatica-envelope-screen--opening) .adriatica-screen-cue {
+    animation: adriatica-cue-appear 900ms 250ms ease-out both;
+  }
+}
+
+@keyframes adriatica-cue-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 360px) {
+  .adriatica .adriatica-screen-cue-detail {
+    gap: 7px;
+    letter-spacing: 0.10em;
+  }
+
+  .adriatica[lang="de"] .adriatica-screen-cue-detail::before,
+  .adriatica[lang="de"] .adriatica-screen-cue-detail::after {
+    width: 10px;
+  }
+}

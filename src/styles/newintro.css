@@ -4626,3 +4626,256 @@ html:has(.bb.bb-card) {
   .keepsake-intro *, .keepsake-intro *::before, .keepsake-intro *::after { animation: none !important; transition: none !important; }
 }
 /* KEEPSAKE:INTRO:END */
+
+
+/* ADRIATICA – VALERIJA I MARKO */
+
+.adriatica,
+.adriatica-admin {
+  --adriatica-ink: #362e26;
+  --adriatica-muted: #685d50;
+  --adriatica-paper: #fbf7ef;
+  --adriatica-light: #fffaf2;
+  --adriatica-line: #d6c8b4;
+  --adriatica-gold: #81674e;
+  --adriatica-serif: "Cormorant Garamond", Georgia, serif;
+  --adriatica-script: "Monsieur La Doulaise", "Great Vibes", "Italianno", cursive;
+  --adriatica-sans: "Manrope", system-ui, sans-serif;
+  --adriatica-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%2378603e' opacity='.085' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  color: var(--adriatica-ink);
+  font: 400 1rem/1.55 var(--adriatica-sans);
+  overflow-wrap: break-word;
+}
+.adriatica {
+  background: var(--adriatica-paper);
+  isolation: isolate;
+}
+.adriatica *,
+.adriatica *::before,
+.adriatica *::after,
+.adriatica-admin *,
+.adriatica-admin *::before,
+.adriatica-admin *::after {
+  box-sizing: border-box;
+}
+.adriatica :where(h1, h2, h3, p, figure, dl, dd),
+.adriatica-admin :where(h1, h2, p, dl, dd) {
+  margin: 0;
+}
+.adriatica :is(h1, h2, h3),
+.adriatica-admin :is(h1, h2) {
+  color: inherit;
+  font-family: var(--adriatica-serif);
+  line-height: 1.04;
+  font-weight: 600;
+}
+.adriatica h2 {
+  font-size: clamp(2.15rem, 6vw, 3.6rem);
+}
+.adriatica h3 {
+  font-size: clamp(1.48rem, 4vw, 1.94rem);
+}
+.adriatica img {
+  display: block;
+  max-width: 100%;
+}
+.adriatica :where(button, input, textarea, select),
+.adriatica-admin :where(button, input) {
+  font: inherit;
+}
+.adriatica :is(a, button, input, textarea):focus-visible,
+.adriatica-admin :is(a, button, input):focus-visible {
+  outline: 2px solid #966d39;
+  outline-offset: 4px;
+}
+.adriatica :is(a, button) {
+  -webkit-tap-highlight-color: transparent;
+}
+.adriatica button:disabled,
+.adriatica-admin button:disabled {
+  cursor: wait;
+}
+.adriatica .adriatica-flourish {
+  display: block;
+  width: 116px;
+  max-width: 100%;
+  height: auto;
+  color: var(--adriatica-gold);
+}
+.adriatica .adriatica-eyebrow {
+  font-size: 0.72rem;
+  line-height: 1.35;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.adriatica .adriatica-signature {
+  font: 400 clamp(2.55rem, 9vw, 4rem)/1.19 var(--adriatica-script);
+}
+
+/* Koverta od ivice do ivice */
+.adriatica-envelope-screen {
+  --adriatica-screen-seal-y: 58%;
+  --adriatica-screen-seal-size: clamp(80px, 23.5vw, 116px);
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  isolation: isolate;
+  overflow: hidden;
+  background: #4a5141;
+}
+.adriatica-envelope-screen::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    180deg, #fff4d809 0%, #27312329 31%, #27312368 62%, #242b1dca 100%
+  );
+  pointer-events: none;
+}
+.adriatica-screen-envelope {
+  --adriatica-screen-paper: url("/images/adriatica-destination/koverta-zalfija.webp");
+  /* Ista zaobljena ivica spaja poklopac i džep u zatvorenom položaju. */
+  --adriatica-screen-fold-edge:
+    100% 27%, 97.48% 28.72%, 94.45% 30.86%, 90.98% 33.34%, 87.12% 36.1%,
+    82.94% 39.09%, 78.48% 42.24%, 73.82% 45.5%, 69% 48.8%, 66.4% 50.54%,
+    63.92% 52.14%, 61.56% 53.59%, 59.33% 54.86%, 57.22% 55.94%, 55.24% 56.81%,
+    53.37% 57.46%, 51.63% 57.86%, 50% 58%, 48.37% 57.86%, 46.63% 57.46%,
+    44.76% 56.81%, 42.78% 55.94%, 40.67% 54.86%, 38.44% 53.59%, 36.08% 52.14%,
+    33.6% 50.54%, 31% 48.8%, 26.18% 45.5%, 21.52% 42.24%, 17.06% 39.09%,
+    12.88% 36.1%, 9.02% 33.34%, 5.55% 30.86%, 2.52% 28.72%, 0% 27%;
+  position: absolute;
+  inset: 0;
+  perspective: max(950px, 165svh);
+}
+.adriatica-screen-envelope-flap,
+.adriatica-screen-envelope-pocket,
+.adriatica-screen-envelope-flap::before {
+  position: absolute;
+  inset: 0;
+}
+.adriatica-screen-envelope-flap {
+  z-index: 2;
+  transform-origin: 50% 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  filter: drop-shadow(0 5px 5px #27312378);
+}
+.adriatica-screen-envelope-flap::before {
+  content: "";
+  background: #9a9d84 var(--adriatica-screen-paper) center 2% / 225% 185% no-repeat;
+  clip-path: polygon(0 0, 100% 0, var(--adriatica-screen-fold-edge));
+}
+.adriatica-screen-envelope-pocket {
+  --adriatica-pocket-paper: var(--adriatica-screen-paper)
+    center 26svh / max(220%, 230svh) auto no-repeat;
+  z-index: 1;
+  inset-block-start: -2px;
+  background:
+    linear-gradient(150deg, #25301e19, #25301e08 58%, #25301e18),
+    var(--adriatica-pocket-paper),
+    #92977e;
+  clip-path: polygon(var(--adriatica-screen-fold-edge), 0 100%, 100% 100%);
+}
+.adriatica-screen-envelope-pocket::before,
+.adriatica-screen-envelope-pocket::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.adriatica-screen-envelope-pocket::before {
+  background: linear-gradient(180deg, #2c321c42, #353d2526);
+  clip-path: polygon(0 100%, 50% 44%, 100% 100%);
+}
+.adriatica-screen-envelope-pocket::after {
+  background:
+    linear-gradient(180deg, #fff3cd15, #fff3cd02),
+    var(--adriatica-pocket-paper),
+    #92977e;
+  clip-path: polygon(0 100%, 50% 44.5%, 100% 100%);
+}
+.adriatica .adriatica-screen-open {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #242c1e;
+  text-align: center;
+  cursor: pointer;
+}
+.adriatica .adriatica-screen-open:focus-visible {
+  outline: 2px solid #fff6df;
+  outline-offset: -5px;
+}
+.adriatica .adriatica-screen-open[aria-disabled="true"] {
+  cursor: wait;
+}
+.adriatica-screen-seal {
+  position: absolute;
+  top: var(--adriatica-screen-seal-y);
+  left: 50%;
+  display: grid;
+  width: var(--adriatica-screen-seal-size);
+  aspect-ratio: 1;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  filter: saturate(0.73) drop-shadow(0 3px 4px #28201477);
+}
+.adriatica-screen-seal img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.adriatica-screen-seal span {
+  grid-area: 1 / 1;
+  color: #432b1e;
+  font: 400 calc(var(--adriatica-screen-seal-size) * 0.268)/1 var(--adriatica-script);
+  white-space: nowrap;
+  text-shadow: 0 1px #ecd1a6b3;
+}
+.adriatica-screen-cue {
+  position: absolute;
+  inset: auto 18px max(28px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+  font: italic 600 clamp(1.25rem, 5.1vw, 1.55rem)/1.2 var(--adriatica-serif);
+  letter-spacing: 0.025em;
+}
+.adriatica-envelope-screen--opening .adriatica-screen-seal,
+.adriatica-envelope-screen--opening .adriatica-screen-cue {
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.adriatica-envelope-screen--opening .adriatica-screen-envelope-flap {
+  animation: adriatica-screen-open-flap 760ms 90ms cubic-bezier(0.52, 0.08, 0.28, 1) both;
+}
+.adriatica-envelope-screen--opening .adriatica-screen-envelope-pocket {
+  animation: adriatica-screen-lower-pocket 540ms 850ms cubic-bezier(0.38, 0, 0.29, 1) both;
+}
+@keyframes adriatica-screen-open-flap {
+  from { transform: rotateX(0deg); }
+  to { transform: rotateX(106deg); }
+}
+@keyframes adriatica-screen-lower-pocket {
+  to { transform: translateY(101%); }
+}
+@media (max-height: 460px) and (orientation: landscape) {
+  .adriatica-envelope-screen {
+    --adriatica-screen-seal-size: 70px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .adriatica *,
+  .adriatica *::before,
+  .adriatica *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ADRIATICA – KRAJ */

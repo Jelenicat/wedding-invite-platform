@@ -3876,3 +3876,485 @@
   .keepsake-rsvp *, .keepsake-rsvp *::before, .keepsake-rsvp *::after, .keepsake-countdown *, .keepsake-countdown *::before, .keepsake-countdown *::after { animation: none !important; transition: none !important; }
 }
 /* KEEPSAKE:RSVP:END */
+
+
+/* ADRIATICA – VALERIJA I MARKO */
+
+.adriatica-rsvp {
+  --adriatica-form-ink: var(--adriatica-letter-detail-ink, #70654d);
+  --adriatica-form-line: #cdbda2;
+  --adriatica-form-olive: #515c43;
+  color: var(--adriatica-form-ink);
+}
+
+/* Odbrojavanje i kalendar */
+.adriatica-countdown {
+  --adriatica-clock-ink: #776249;
+  --adriatica-clock-gold: #806344;
+  --adriatica-clock-line: #a98b65;
+  display: grid;
+  justify-items: center;
+  gap: clamp(18px, 4.6vw, 29px);
+  width: min(100%, 640px);
+  margin-inline: auto;
+  padding-block-end: clamp(44px, 9vw, 72px);
+  container-type: inline-size;
+  text-align: center;
+}
+.adriatica-rsvp + .adriatica-countdown {
+  margin-block-start: clamp(30px, 8vw, 56px);
+}
+.adriatica-countdown-heading {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+}
+.adriatica .adriatica-countdown h2 {
+  padding-inline: 0.16em;
+  color: var(--adriatica-clock-ink);
+  font: 400 clamp(2.13rem, 12.4cqw, 4.15rem)/1.2 var(--adriatica-script);
+  text-wrap: balance;
+}
+.adriatica-countdown-date {
+  color: var(--adriatica-clock-gold);
+  font: 650 0.72rem/1.35 var(--adriatica-sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.adriatica-clock {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(2px, 1.6cqw, 10px);
+  width: min(100%, 480px);
+  padding-block: 8px;
+  background: radial-gradient(
+    ellipse closest-side,
+    #eadbc38a,
+    #f1e7d360 56%,
+    transparent
+  );
+}
+.adriatica-clock > div {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.adriatica-clock dt {
+  color: var(--adriatica-clock-gold);
+  font: 650 clamp(0.63rem, 3.1cqw, 0.75rem)/1.25 var(--adriatica-sans);
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+}
+.adriatica-clock dd {
+  color: var(--adriatica-clock-ink);
+  font: 500 clamp(2.05rem, 12.6cqw, 4.45rem)/1 var(--adriatica-serif);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.adriatica .adriatica-countdown-calendar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  gap: 9px;
+  padding: 10px 25px;
+  border: 1px solid var(--adriatica-clock-line);
+  border-radius: 1px;
+  background: #f6eddd70;
+  color: var(--adriatica-clock-ink);
+  font: 600 1.13rem/1.2 var(--adriatica-serif);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.adriatica-countdown-calendar svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--adriatica-clock-gold);
+}
+
+/* Potvrda dolaska */
+.adriatica-rsvp {
+  width: min(100%, 680px);
+  margin-inline: auto;
+  padding-block: clamp(38px, 7vw, 62px) clamp(40px, 8vw, 70px);
+}
+.adriatica .adriatica-rsvp h2 {
+  padding-inline: 0.14em;
+  color: var(--adriatica-form-ink);
+  font: 400 clamp(2.35rem, 8.3vw, 3.45rem)/1.22 var(--adriatica-script);
+  text-wrap: balance;
+}
+.adriatica-rsvp .adriatica-section-heading p {
+  max-width: 32ch;
+  font: 500 clamp(1.04rem, 4.1vw, 1.2rem)/1.35 var(--adriatica-serif);
+  text-wrap: balance;
+}
+.adriatica-rsvp .adriatica-section-heading strong {
+  color: var(--adriatica-form-ink);
+  font-weight: 650;
+}
+.adriatica-rsvp-form {
+  width: min(100%, 520px);
+  margin-inline: auto;
+}
+.adriatica-rsvp fieldset {
+  min-inline-size: 0;
+  margin: 0;
+}
+.adriatica-rsvp :is(.adriatica-rsvp-form-fields, .adriatica-attendance, .adriatica-menu-group) {
+  border: 0;
+  padding: 0;
+}
+.adriatica-rsvp-form-fields {
+  display: grid;
+  gap: 27px;
+}
+.adriatica-rsvp legend {
+  padding: 0;
+}
+.adriatica-attendance > legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.adriatica-attendance-options,
+.adriatica-menu-options {
+  display: grid;
+  gap: 5px 10px;
+}
+.adriatica-attendance-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.adriatica-menu-options {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
+}
+.adriatica-option {
+  position: relative;
+  min-width: 0;
+}
+.adriatica-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+.adriatica-option > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  height: 100%;
+  padding: 8px 11px;
+  border: 1px solid transparent;
+  color: var(--adriatica-form-ink);
+  font: 600 1.08rem/1.2 var(--adriatica-serif);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.adriatica-attendance-options .adriatica-option > span {
+  justify-content: center;
+  min-height: 50px;
+  border-color: var(--adriatica-form-line);
+  background: #fff9ec80;
+  font-size: clamp(1.12rem, 4.4vw, 1.3rem);
+  text-align: center;
+}
+.adriatica-option > span::before {
+  content: "";
+  flex: 0 0 13px;
+  aspect-ratio: 1;
+  border: 1px solid var(--adriatica-gold);
+  border-radius: 50%;
+}
+.adriatica-option input:checked + span {
+  border-color: #808769;
+  background: #e8eadb;
+  color: #435036;
+}
+.adriatica-option input:checked + span::before {
+  background: #6b7257;
+  box-shadow: inset 0 0 0 2px #e8eadb;
+}
+.adriatica-option input:focus-visible + span {
+  outline: 2px solid #966d39;
+  outline-offset: 2px;
+}
+.adriatica-option input:disabled + span {
+  cursor: wait;
+}
+.adriatica-rsvp-guests {
+  display: grid;
+  gap: 22px;
+}
+.adriatica-guest-count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  font: 600 1.15rem/1.25 var(--adriatica-serif);
+}
+.adriatica-stepper {
+  display: grid;
+  grid-template-columns: 44px 34px 44px;
+  align-items: center;
+  border: 1px solid var(--adriatica-form-line);
+  background: #fff9ec80;
+  text-align: center;
+}
+.adriatica-stepper button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.adriatica-stepper button:disabled {
+  opacity: 0.42;
+  cursor: default;
+}
+.adriatica-rsvp-privacy {
+  color: var(--adriatica-muted);
+  font: 400 0.79rem/1.5 var(--adriatica-sans);
+}
+.adriatica-guest-card {
+  display: grid;
+  gap: 17px;
+  padding: 16px 0 5px;
+  border: 0;
+  border-top: 1px solid var(--adriatica-form-line);
+}
+.adriatica .adriatica-guest-card > legend {
+  margin-inline: auto;
+  padding-inline: 12px;
+  color: var(--adriatica-form-olive);
+  font: 600 1.43rem/1.15 var(--adriatica-serif);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.adriatica-rsvp-field {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.adriatica-rsvp-field :is(label:not(.adriatica-option), legend) {
+  font: 600 1.08rem/1.25 var(--adriatica-serif);
+}
+.adriatica-rsvp-field label:not(.adriatica-option) > span {
+  color: var(--adriatica-muted);
+  font: 400 0.76rem/1.4 var(--adriatica-sans);
+}
+.adriatica-menu-group legend {
+  margin-bottom: 5px;
+}
+.adriatica-rsvp-field :is(input:not([type="radio"]), textarea) {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 7px 9px;
+  border: 0;
+  border-bottom: 1px solid var(--adriatica-form-line);
+  border-radius: 0;
+  background: #fff9ec80;
+  color: var(--adriatica-form-ink);
+  font: 600 1.15rem/1.3 var(--adriatica-serif);
+}
+.adriatica-rsvp-field textarea {
+  resize: vertical;
+}
+.adriatica-rsvp-field [aria-invalid="true"]:not([type="radio"]),
+.adriatica-option input[aria-invalid="true"] + span::before {
+  border-color: #a13731;
+}
+.adriatica .adriatica-rsvp-error {
+  margin-top: 5px;
+  color: #873a34;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+.adriatica .adriatica-rsvp-status {
+  margin-top: 10px;
+  color: var(--adriatica-muted);
+}
+.adriatica .adriatica-rsvp .adriatica-rsvp-submit {
+  display: flex;
+  width: min(100%, 248px);
+  min-height: 48px;
+  margin: 28px auto 0;
+  padding: 10px 16px;
+  border: 1px solid var(--adriatica-form-olive);
+  background: var(--adriatica-form-olive);
+  color: #fff4dd;
+}
+.adriatica-rsvp-submit:disabled {
+  opacity: 0.68;
+}
+.adriatica-rsvp-receipt {
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  padding: 25px 10px;
+  background: radial-gradient(ellipse closest-side, #e8eadb99, transparent);
+  text-align: center;
+}
+.adriatica-rsvp-receipt > svg {
+  width: 30px;
+  height: 30px;
+  color: var(--adriatica-form-olive);
+}
+.adriatica-rsvp-receipt p,
+.adriatica-rsvp-closed {
+  max-width: 40ch;
+  margin-inline: auto;
+  text-align: center;
+}
+@media (hover: hover) {
+  .adriatica .adriatica-countdown-calendar:hover {
+    border-color: var(--adriatica-clock-gold);
+    background-color: #f0e4cf;
+  }
+  .adriatica .adriatica-rsvp .adriatica-rsvp-submit:not(:disabled):hover {
+    background: #444e36;
+  }
+}
+@media (max-width: 480px) {
+  .adriatica-menu-options {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1px;
+  }
+  .adriatica-guest-count {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .adriatica .adriatica-countdown-calendar,
+  .adriatica-option > span,
+  .adriatica .adriatica-rsvp .adriatica-rsvp-submit {
+    transition: none;
+  }
+}
+
+/* Privatni pregled organizatora */
+.adriatica-admin {
+  min-height: 100vh;
+  padding: clamp(16px, 4vw, 40px);
+  background: #f3ede2;
+}
+.adriatica-admin h1 {
+  font-size: clamp(2.15rem, 6vw, 3.2rem);
+}
+.adriatica-admin h2 {
+  font-size: 1.6rem;
+}
+.adriatica-admin a {
+  color: #34573d;
+  text-underline-offset: 3px;
+}
+.adriatica-admin-login,
+.adriatica-admin-panel {
+  width: min(100%, 950px);
+  margin: 0 auto;
+}
+.adriatica-admin-login {
+  display: grid;
+  gap: 16px;
+  max-width: 420px;
+  padding: 24px;
+  background: #fcf8ee;
+  border: 1px solid #c7b790;
+}
+.adriatica-admin-login form {
+  display: grid;
+  gap: 8px;
+}
+.adriatica-admin-login input {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  background: white;
+  border: 1px solid #b8a886;
+  font-size: 16px;
+}
+.adriatica-admin-button {
+  min-height: 44px;
+  padding: 9px 14px;
+  border: 1px solid #26352b;
+  background: #26352b;
+  color: #fff9ec;
+  cursor: pointer;
+}
+.adriatica-admin-error,
+.adriatica-admin-error-banner {
+  color: #84211f;
+  font-weight: 600;
+}
+.adriatica-admin-error-banner {
+  padding: 12px;
+  background: #fff4ec;
+}
+.adriatica-admin-header,
+.adriatica-admin-record > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.adriatica-admin-header {
+  margin-bottom: 20px;
+}
+.adriatica-admin-header h1 {
+  margin-top: 7px;
+}
+.adriatica-admin .adriatica-admin-totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 7px;
+  margin: 0 0 20px;
+}
+.adriatica-admin-totals > div,
+.adriatica-admin-record {
+  padding: 12px;
+  border: 1px solid #c8b998;
+  background: #fff9ed;
+}
+.adriatica-admin-totals dt {
+  font-size: 0.88rem;
+}
+.adriatica-admin-totals dd {
+  font: 650 1.92rem/1 var(--adriatica-serif);
+}
+.adriatica-admin-records {
+  display: grid;
+  gap: 8px;
+}
+.adriatica-admin-record ul {
+  list-style: none;
+  padding: 0;
+  margin: 9px 0 0;
+}
+.adriatica-admin-record li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
+  gap: 3px 10px;
+  border-top: 1px solid #d6c8a9;
+  padding: 7px 0;
+}
+.adriatica-admin-record li p {
+  grid-column: 1 / -1;
+  white-space: pre-wrap;
+}
+
+/* ADRIATICA – KRAJ */

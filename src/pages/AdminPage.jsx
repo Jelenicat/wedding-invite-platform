@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   collection,
@@ -9,14 +9,69 @@ import {
   setDoc,
   onSnapshot,
   getDocs,
+  writeBatch,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import adminAccess from "../data/adminAccess";
 import demoWedding from "../data/demoWedding";
 import html2pdf from "html2pdf.js";
 
+const MAX_MANUAL_GUESTS = 20;
+const ADRIATICA_MENUS = new Map([
+  ["meat", "Mesni meni"],
+  ["fish", "Riblji meni"],
+  ["vegetarian", "Vegetarijanski meni"],
+]);
+const EMPTY_MANUAL_GUEST = {
+  fullName: "",
+  guests: "1",
+  fasting: "",
+  guestDetails: [],
+};
+
+function getAdriaticaGuests(response) {
+  const details = Array.isArray(response.guestDetails)
+    ? response.guestDetails
+    : [];
+  const declaredCount = Number(response.guests);
+  const legacyCount = Number.isSafeInteger(declaredCount)
+    ? Math.min(declaredCount, MAX_MANUAL_GUESTS)
+    : 0;
+  const count = Math.max(1, legacyCount, details.length);
+  const responseName =
+    typeof response.fullName === "string" ? response.fullName.trim() : "";
+
+  return Array.from({ length: count }, (_, index) => {
+    const guest = details[index];
+    const savedName =
+      typeof guest?.fullName === "string" ? guest.fullName.trim() : "";
+    const fullName = savedName || (index === 0 ? responseName : "");
+    const allergies = guest?.allergies ?? (index === 0 ? response.allergies : "");
+
+    return {
+      index,
+      fullName: fullName || `Gost ${index + 1} (ime nije uneto)`,
+      guests: 1,
+      menu: guest?.menu ?? (index === 0 ? response.menu : ""),
+      allergies: typeof allergies === "string" ? allergies.trim() : "",
+      fasting: response.fasting,
+      source: response.source,
+    };
+  });
+}
+
+function getFastingLabel(value) {
+  if (value === "posti") return "Posti";
+  if (value === "ne_posti") return "Ne posti";
+  return "";
+}
+
 function AdminPage() {
   const { slug } = useParams();
+  return <AdminPanel key={slug} slug={slug} />;
+}
+
+function AdminPanel({ slug }) {
   const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
@@ -28,13 +83,9 @@ function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [manualGuest, setManualGuest] = useState({
-    fullName: "",
-    guests: "1",
-    fasting: "",
-  });
-
+  const [manualGuest, setManualGuest] = useState(EMPTY_MANUAL_GUEST);
   const [addingGuest, setAddingGuest] = useState(false);
+  const savingGuest = useRef(false);
 
   const [showExpenses, setShowExpenses] = useState(false);
   const [budgetInput, setBudgetInput] = useState("");
@@ -100,11 +151,17 @@ function AdminPage() {
 
   const rsvpOptions = invitation?.details?.rsvpOptions || {};
   const hasFastingOption = Boolean(rsvpOptions.fasting);
+  const usesIndividualGuests = slug === "valerija-marko";
+  const manualGuestCount = Number(manualGuest.guests);
+  const manualPersonCount = Number.isInteger(manualGuestCount)
+    ? Math.max(0, Math.min(MAX_MANUAL_GUESTS, manualGuestCount))
+    : 0;
 
   const hasGuestPreferencesPage =
-    Boolean(rsvpOptions.foodPreferences) ||
-    Boolean(rsvpOptions.musicWish) ||
-    hasFastingOption;
+    !usesIndividualGuests &&
+    (Boolean(rsvpOptions.foodPreferences) ||
+      Boolean(rsvpOptions.musicWish) ||
+      hasFastingOption);
 
   const sanitizeNumberInput = (value) => {
     return value.replace(/[^\d]/g, "");
@@ -113,12 +170,6 @@ function AdminPage() {
   const formatNumberForDisplay = (value) => {
     if (!value) return "";
     return new Intl.NumberFormat("sr-RS").format(Number(value));
-  };
-
-  const getFastingLabel = (value) => {
-    if (value === "posti") return "Posti";
-    if (value === "ne_posti") return "Ne posti";
-    return "";
   };
 
   const openMessageModal = ({ title, text, variant = "default" }) => {
@@ -327,10 +378,19 @@ function AdminPage() {
     }));
   };
 
+  const handleManualPersonChange = (index, field, value) => {
+    setManualGuest((previous) => {
+      const guestDetails = [...previous.guestDetails];
+      guestDetails[index] = { ...guestDetails[index], [field]: value };
+      return { ...previous, guestDetails };
+    });
+  };
+
   const handleAddGuest = async (e) => {
     e.preventDefault();
+    if (savingGuest.current) return;
 
-    if (!manualGuest.fullName.trim()) {
+    if (!usesIndividualGuests && !manualGuest.fullName.trim()) {
       openMessageModal({
         title: "Nedostaje ime gosta",
         text: "Unesi ime i prezime gosta pre čuvanja.",
@@ -339,12 +399,37 @@ function AdminPage() {
       return;
     }
 
-    const guestsCount = Number(manualGuest.guests);
-
-    if (!manualGuest.guests || Number.isNaN(guestsCount) || guestsCount < 1) {
+    if (
+      !manualGuest.guests ||
+      Number.isNaN(manualGuestCount) ||
+      manualGuestCount < 1 ||
+      (usesIndividualGuests && manualGuestCount !== manualPersonCount)
+    ) {
       openMessageModal({
         title: "Neispravan broj osoba",
-        text: "Broj osoba mora biti veći od 0.",
+        text: usesIndividualGuests
+          ? `Unesi ceo broj osoba od 1 do ${MAX_MANUAL_GUESTS}.`
+          : "Broj osoba mora biti veći od 0.",
+        variant: "warning",
+      });
+      return;
+    }
+
+    const people = usesIndividualGuests
+      ? Array.from({ length: manualPersonCount }, (_, index) => {
+          const guest = manualGuest.guestDetails[index];
+          return {
+            fullName: (guest?.fullName ?? "").trim(),
+            menu: guest?.menu ?? "",
+            allergies: (guest?.allergies ?? "").trim(),
+          };
+        })
+      : [];
+
+    if (people.some((guest) => !guest.fullName)) {
+      openMessageModal({
+        title: "Nedostaje ime gosta",
+        text: "Unesi ime i prezime svake osobe pre čuvanja.",
         variant: "warning",
       });
       return;
@@ -368,38 +453,50 @@ function AdminPage() {
       return;
     }
 
+    savingGuest.current = true;
+    setAddingGuest(true);
     try {
-      setAddingGuest(true);
-
-      await setDoc(
-        doc(db, "events", slug),
-        {
-          slug,
-          updatedAt: serverTimestamp(),
-        },
-        { merge: true }
-      );
-
-      await addDoc(collection(db, "events", slug, "rsvps"), {
+      const eventRef = doc(db, "events", slug);
+      const eventUpdate = { slug, updatedAt: serverTimestamp() };
+      const rsvps = collection(db, "events", slug, "rsvps");
+      const response = {
         slug,
         eventType: "manual",
-        fullName: manualGuest.fullName.trim(),
         attending: "da",
-        guests: guestsCount,
         fasting: hasFastingOption ? manualGuest.fasting : "",
         source: "admin",
         createdAt: serverTimestamp(),
-      });
+      };
 
-      setManualGuest({
-        fullName: "",
-        guests: "1",
-        fasting: "",
-      });
+      if (usesIndividualGuests) {
+        const batch = writeBatch(db);
+        batch.set(eventRef, eventUpdate, { merge: true });
+        for (const guest of people) {
+          batch.set(doc(rsvps), {
+            ...response,
+            fullName: guest.fullName,
+            guests: 1,
+            guestDetails: [guest],
+          });
+        }
+        await batch.commit();
+      } else {
+        await setDoc(eventRef, eventUpdate, { merge: true });
+        await addDoc(rsvps, {
+          ...response,
+          fullName: manualGuest.fullName.trim(),
+          guests: manualGuestCount,
+        });
+      }
 
+      setManualGuest(EMPTY_MANUAL_GUEST);
+
+      const addedMultiple = people.length > 1;
       openMessageModal({
-        title: "Gost je dodat",
-        text: "Gost je uspešno dodat u listu dolazaka.",
+        title: addedMultiple ? "Gosti su dodati" : "Gost je dodat",
+        text: addedMultiple
+          ? `U listu dolazaka dodato je ${people.length} osoba.`
+          : "Gost je uspešno dodat u listu dolazaka.",
         variant: "success",
       });
     } catch (err) {
@@ -410,18 +507,22 @@ function AdminPage() {
         variant: "danger",
       });
     } finally {
+      savingGuest.current = false;
       setAddingGuest(false);
     }
   };
 
-  const requestDeleteGuest = (guestId, guestName) => {
+  const requestDeleteGuest = (guestId, guestName, groupSize = 1) => {
+    const isGroup = groupSize > 1;
     openConfirmModal({
-      title: "Obriši gosta?",
-      text: `Gost "${guestName}" biće trajno uklonjen iz odgovora za ovaj događaj.`,
-      confirmText: "Obriši gosta",
+      title: isGroup ? "Obriši celu prijavu?" : "Obriši gosta?",
+      text: isGroup
+        ? `Svih ${groupSize} osoba iz prijave „${guestName}“ biće trajno uklonjeno.`
+        : `Gost "${guestName}" biće trajno uklonjen iz odgovora za ovaj događaj.`,
+      confirmText: isGroup ? "Obriši celu prijavu" : "Obriši gosta",
       variant: "danger",
       actionType: "deleteGuest",
-      payload: { guestId },
+      payload: { guestId, groupSize },
     });
   };
 
@@ -609,7 +710,7 @@ function AdminPage() {
       setConfirmModal((prev) => ({ ...prev, loading: true }));
 
       if (actionType === "deleteGuest") {
-        const guestId = payload.guestId;
+        const { guestId, groupSize } = payload;
 
         await deleteDoc(doc(db, "events", slug, "rsvps", guestId));
 
@@ -624,8 +725,10 @@ function AdminPage() {
 
         closeConfirmModal();
         openMessageModal({
-          title: "Gost je obrisan",
-          text: "Gost je uklonjen i iz rasporeda sedenja.",
+          title: groupSize > 1 ? "Prijava je obrisana" : "Gost je obrisan",
+          text: groupSize > 1
+            ? "Prijava je uklonjena i iz rasporeda sedenja."
+            : "Gost je uklonjen i iz rasporeda sedenja.",
           variant: "success",
         });
 
@@ -681,24 +784,24 @@ function AdminPage() {
 
   const normalizedSearch = debouncedSearch.trim().toLowerCase();
 
-  const comingGuests = useMemo(
+  const comingGuestGroups = useMemo(
     () =>
-      guests.filter((guest) => {
-        if (guest.attending !== "da") return false;
+      guests
+        .filter((response) => response.attending === "da")
+        .map((response) => {
+          const people = usesIndividualGuests ? getAdriaticaGuests(response) : [response];
+          const matchingGuests = normalizedSearch
+            ? people.filter(
+                (guest) =>
+                  (guest.fullName || "").toLowerCase().includes(normalizedSearch) ||
+                  getFastingLabel(guest.fasting).toLowerCase().includes(normalizedSearch)
+              )
+            : people;
 
-        if (!normalizedSearch) return true;
-
-        const nameMatch = (guest.fullName || "")
-          .toLowerCase()
-          .includes(normalizedSearch);
-
-        const fastingMatch = getFastingLabel(guest.fasting)
-          .toLowerCase()
-          .includes(normalizedSearch);
-
-        return nameMatch || fastingMatch;
-      }),
-    [guests, normalizedSearch]
+          return { response, matchingGuests, groupSize: people.length };
+        })
+        .filter(({ matchingGuests }) => matchingGuests.length > 0),
+    [guests, normalizedSearch, usesIndividualGuests]
   );
 
   const notComingGuests = useMemo(
@@ -1715,24 +1818,33 @@ ${hasFastingOption ? `<th>Post</th>` : ""}
           }}
         >
           <p style={styles.manualKicker}>Ručni unos</p>
-          <h2 style={styles.sectionTitle}>Dodaj gosta koji dolazi</h2>
+          <h2 style={styles.sectionTitle}>
+            {usesIndividualGuests ? "Dodaj goste koji dolaze" : "Dodaj gosta koji dolazi"}
+          </h2>
 
-          <form onSubmit={handleAddGuest} style={styles.manualForm}>
-            <div style={styles.field}>
-              <label htmlFor="manual-fullName" style={styles.label}>
-                Ime i prezime
-              </label>
-              <input
-                id="manual-fullName"
-                type="text"
-                name="fullName"
-                value={manualGuest.fullName}
-                onChange={handleManualGuestChange}
-                placeholder="Unesite ime i prezime"
-                style={styles.input}
-                required
-              />
-            </div>
+          <form
+            onSubmit={handleAddGuest}
+            style={usesIndividualGuests
+              ? { ...styles.manualForm, gridTemplateColumns: "minmax(0, 1fr)" }
+              : styles.manualForm}
+          >
+            {!usesIndividualGuests && (
+              <div style={styles.field}>
+                <label htmlFor="manual-fullName" style={styles.label}>
+                  Ime i prezime
+                </label>
+                <input
+                  id="manual-fullName"
+                  type="text"
+                  name="fullName"
+                  value={manualGuest.fullName}
+                  onChange={handleManualGuestChange}
+                  placeholder="Unesite ime i prezime"
+                  style={styles.input}
+                  required
+                />
+              </div>
+            )}
 
             <div style={styles.field}>
               <label htmlFor="manual-guests" style={styles.label}>
@@ -1743,13 +1855,95 @@ ${hasFastingOption ? `<th>Post</th>` : ""}
                 type="number"
                 name="guests"
                 min="1"
-                max="20"
+                max={MAX_MANUAL_GUESTS}
                 value={manualGuest.guests}
                 onChange={handleManualGuestChange}
                 style={styles.input}
                 required
               />
             </div>
+
+            {usesIndividualGuests && Array.from({ length: manualPersonCount }, (_, index) => {
+              const guest = manualGuest.guestDetails[index];
+              const id = `manual-guest-${index + 1}`;
+              const selectedMenu = guest?.menu ?? "";
+
+              return (
+                <fieldset key={id} style={styles.manualGuestFields} disabled={addingGuest}>
+                  <legend style={styles.manualGuestLegend}>Gost {index + 1}</legend>
+                  <div style={styles.field}>
+                    <label htmlFor={`${id}-name`} style={styles.label}>Ime i prezime</label>
+                    <input
+                      id={`${id}-name`}
+                      value={guest?.fullName ?? ""}
+                      onChange={(event) => handleManualPersonChange(index, "fullName", event.target.value)}
+                      style={styles.input}
+                      required
+                    />
+                  </div>
+                  <div style={styles.field}>
+                    <div style={styles.manualMenuHeader}>
+                      <span id={`${id}-menu-label`} style={styles.label}>Meni</span>
+                      {selectedMenu && (
+                        <button
+                          type="button"
+                          style={styles.manualMenuClear}
+                          onClick={() => {
+                            handleManualPersonChange(index, "menu", "");
+                            document.getElementById(`${id}-menu-${selectedMenu}`)?.focus();
+                          }}
+                        >
+                          Poništi izbor
+                        </button>
+                      )}
+                    </div>
+                    <div
+                      role="radiogroup"
+                      aria-labelledby={`${id}-menu-label`}
+                      style={styles.manualMenuOptions}
+                    >
+                      {Array.from(ADRIATICA_MENUS, ([value, label]) => {
+                        const isSelected = selectedMenu === value;
+
+                        return (
+                          <label
+                            key={value}
+                            style={{
+                              ...styles.manualMenuOption,
+                              ...(isSelected ? styles.manualMenuOptionSelected : {}),
+                            }}
+                          >
+                            <input
+                              id={`${id}-menu-${value}`}
+                              name={`${id}-menu`}
+                              type="radio"
+                              value={value}
+                              checked={isSelected}
+                              aria-label={label}
+                              onChange={() => handleManualPersonChange(index, "menu", value)}
+                              style={styles.manualMenuRadio}
+                            />
+                            <span>{label.replace(/ meni$/, "")}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div style={styles.field}>
+                    <label htmlFor={`${id}-allergies`} style={styles.label}>
+                      Alergije ili napomena o ishrani
+                    </label>
+                    <textarea
+                      id={`${id}-allergies`}
+                      value={guest?.allergies ?? ""}
+                      onChange={(event) => handleManualPersonChange(index, "allergies", event.target.value)}
+                      style={{ ...styles.input, ...styles.manualAllergies }}
+                      maxLength={500}
+                    />
+                  </div>
+                </fieldset>
+              );
+            })}
 
             {hasFastingOption && (
               <div style={styles.field}>
@@ -1780,7 +1974,9 @@ ${hasFastingOption ? `<th>Post</th>` : ""}
               )}
               disabled={addingGuest}
             >
-              {addingGuest ? "Dodavanje..." : "Dodaj gosta"}
+              {addingGuest ? "Dodavanje..." : usesIndividualGuests && manualPersonCount > 1
+                ? "Dodaj goste"
+                : "Dodaj gosta"}
             </button>
           </form>
         </div>
@@ -1814,7 +2010,7 @@ ${hasFastingOption ? `<th>Post</th>` : ""}
           <section style={styles.card}>
             <h2 style={styles.sectionTitle}>Dolaze</h2>
 
-            {comingGuests.length === 0 ? (
+            {comingGuestGroups.length === 0 ? (
               <p style={styles.emptyText}>
                 {guestSearch.trim()
                   ? "Nema rezultata za ovu pretragu."
@@ -1823,38 +2019,61 @@ ${hasFastingOption ? `<th>Post</th>` : ""}
             ) : (
               <div style={styles.scrollList}>
                 <div style={styles.list}>
-                  {comingGuests.map((guest) => (
-                    <div key={guest.id} style={styles.guestRow}>
-                      <div style={styles.guestRowTop}>
-                        <div>
-                          <p style={styles.guestName}>{guest.fullName}</p>
+                  {comingGuestGroups.map(({ response, matchingGuests, groupSize }) => (
+                    <Fragment key={response.id}>
+                      {matchingGuests.map((guest) => (
+                        <div key={guest.index ?? response.id} style={styles.guestRow}>
+                          <div style={styles.guestRowTop}>
+                            <div style={usesIndividualGuests ? styles.individualGuestDetails : undefined}>
+                              <p style={styles.guestName}>{guest.fullName}</p>
+                              <p style={styles.guestMeta}>Broj osoba: {guest.guests || 0}</p>
 
-                          <p style={styles.guestMeta}>
-                            Broj osoba: {guest.guests || 0}
-                          </p>
+                              {usesIndividualGuests && (
+                                <>
+                                  <p style={styles.guestMeta}>
+                                    Meni: {ADRIATICA_MENUS.get(guest.menu) || "Nije unet"}
+                                  </p>
+                                  <p style={styles.guestMeta}>
+                                    Alergije: {guest.allergies || "Nisu navedene"}
+                                  </p>
+                                </>
+                              )}
 
-                       {hasFastingOption && guest.fasting && (
-  <p style={styles.guestMeta}>
-    Post: {getFastingLabel(guest.fasting)}
-  </p>
-)}
+                              {hasFastingOption && guest.fasting && (
+                                <p style={styles.guestMeta}>Post: {getFastingLabel(guest.fasting)}</p>
+                              )}
 
-                          {guest.source === "admin" && (
-                            <p style={styles.manualBadge}>Ručno dodat</p>
-                          )}
+                              {guest.source === "admin" && (
+                                <p style={styles.manualBadge}>Ručno dodat</p>
+                              )}
+                            </div>
+
+                            {groupSize === 1 && (
+                              <button
+                                type="button"
+                                style={styles.deleteButton}
+                                onClick={() => requestDeleteGuest(response.id, guest.fullName)}
+                              >
+                                Obriši
+                              </button>
+                            )}
+                          </div>
                         </div>
-
+                      ))}
+                      {groupSize > 1 && (
                         <button
                           type="button"
-                          style={styles.deleteButton}
-                          onClick={() =>
-                            requestDeleteGuest(guest.id, guest.fullName)
-                          }
+                          style={{ ...styles.deleteButton, alignSelf: "flex-end" }}
+                          onClick={() => requestDeleteGuest(
+                            response.id,
+                            response.fullName || "Grupna prijava",
+                            groupSize
+                          )}
                         >
-                          Obriši
+                          Obriši prijavu ({groupSize})
                         </button>
-                      </div>
-                    </div>
+                      )}
+                    </Fragment>
                   ))}
                 </div>
               </div>
@@ -1997,7 +2216,10 @@ const styles = {
   },
   loginCard: {
     maxWidth: "480px",
-    margin: "80px auto",
+    marginTop: "80px",
+    marginRight: "auto",
+    marginBottom: "80px",
+    marginLeft: "auto",
     background: "#fffdf9",
     borderRadius: "24px",
     padding: "28px",
@@ -2006,7 +2228,10 @@ const styles = {
   },
   headerCard: {
     maxWidth: "1100px",
-    margin: "0 auto 24px",
+    marginTop: 0,
+    marginRight: "auto",
+    marginBottom: "24px",
+    marginLeft: "auto",
     background: "#fffdf9",
     borderRadius: "24px",
     padding: "28px",
@@ -2015,7 +2240,10 @@ const styles = {
   },
   manualCard: {
     maxWidth: "1100px",
-    margin: "0 auto 24px",
+    marginTop: 0,
+    marginRight: "auto",
+    marginBottom: "24px",
+    marginLeft: "auto",
     background: "#fffdf9",
     borderRadius: "24px",
     padding: "24px",
@@ -2024,7 +2252,10 @@ const styles = {
   },
   expensesCard: {
     maxWidth: "1100px",
-    margin: "0 auto 24px",
+    marginTop: 0,
+    marginRight: "auto",
+    marginBottom: "24px",
+    marginLeft: "auto",
     background: "#fffdf9",
     borderRadius: "24px",
     padding: "24px",
@@ -2038,7 +2269,10 @@ const styles = {
   },
   searchCard: {
     maxWidth: "1100px",
-    margin: "0 auto 24px",
+    marginTop: 0,
+    marginRight: "auto",
+    marginBottom: "24px",
+    marginLeft: "auto",
     background: "#fffdf9",
     borderRadius: "24px",
     padding: "20px 24px",
@@ -2135,6 +2369,80 @@ const styles = {
     gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
     gap: "16px",
     alignItems: "end",
+  },
+  manualGuestFields: {
+    minWidth: 0,
+    margin: 0,
+    padding: "8px 0 16px",
+    border: 0,
+    borderBottom: "1px solid rgba(120, 90, 70, 0.18)",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+    alignItems: "start",
+    gap: "12px",
+  },
+  manualGuestLegend: {
+    padding: 0,
+    fontWeight: 600,
+    color: "#6c5a4f",
+  },
+  manualMenuHeader: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "8px",
+    minHeight: "22px",
+  },
+  manualMenuOptions: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "6px",
+  },
+  manualMenuOption: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "6px",
+    minHeight: "44px",
+    padding: "0 8px",
+    boxSizing: "border-box",
+    borderRadius: "999px",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "rgba(120, 90, 70, 0.22)",
+    background: "#fffdf9",
+    color: "#6c5a4f",
+    fontSize: "14px",
+    whiteSpace: "nowrap",
+    cursor: "pointer",
+  },
+  manualMenuOptionSelected: {
+    borderColor: "#a06a57",
+    background: "#f1e4d9",
+    color: "#533b30",
+  },
+  manualMenuRadio: {
+    width: "14px",
+    height: "14px",
+    margin: 0,
+    flexShrink: 0,
+    accentColor: "#93644f",
+  },
+  manualMenuClear: {
+    padding: 0,
+    border: 0,
+    background: "transparent",
+    color: "#805548",
+    fontFamily: "inherit",
+    fontSize: "13px",
+    textDecoration: "underline",
+    textUnderlineOffset: "2px",
+    cursor: "pointer",
+  },
+  manualAllergies: {
+    height: "auto",
+    minHeight: "52px",
+    padding: "12px 16px",
+    resize: "vertical",
   },
   expenseForm: {
     marginTop: "18px",
@@ -2322,6 +2630,10 @@ const styles = {
     margin: "6px 0 0",
     color: "#7a675b",
     fontSize: "14px",
+  },
+  individualGuestDetails: {
+    minWidth: 0,
+    overflowWrap: "anywhere",
   },
   manualBadge: {
     margin: "8px 0 0",
