@@ -93,6 +93,7 @@ export default function AdriaticaInvitationCard({
   const coverRef = useRef(null);
   const cardRef = useRef(null);
   const [coverScrolled, setCoverScrolled] = useState(false);
+  const [ornamentStatus, setOrnamentStatus] = useState("loading");
   const reducedMotion = useReducedMotion();
   const copy = language === "de" ? invitationCopy.de : invitationCopy.sr;
   const adriatica = details.adriatica || {};
@@ -132,6 +133,7 @@ export default function AdriaticaInvitationCard({
           ref={coverRef}
           tabIndex={-1}
           className="adriatica-cover"
+          data-ornament={ornamentStatus}
           aria-label={`${brideName} ${copy.and} ${groomName}`}
         >
           <div className="adriatica-cover-art" aria-hidden="true">
@@ -145,12 +147,16 @@ export default function AdriaticaInvitationCard({
               draggable={false}
             />
           </div>
-          <Motion.img
+          <img
             className="adriatica-cover-monogram"
-            initial={reducedMotion ? false : { opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: reducedMotion ? 0 : 0.65 }}
             src={adriaticaCoverImages.monogram}
+            onLoad={() => setOrnamentStatus("revealing")}
+            onError={() => setOrnamentStatus("unavailable")}
+            onAnimationEnd={({ animationName }) => {
+              if (animationName === "adriatica-vm-ornament-appear") {
+                setOrnamentStatus("revealed");
+              }
+            }}
             alt=""
             width={864}
             height={1296}

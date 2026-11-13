@@ -8387,10 +8387,13 @@ html:has(.nwt.nwt-card) {
   cursor: pointer;
   transition: opacity 0.22s ease-out, visibility 0s;
 }
+.adriatica .adriatica-cover[data-ornament="loading"] .adriatica-cover-action,
 .adriatica .adriatica-cover-action[data-scrolled] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+.adriatica .adriatica-cover-action[data-scrolled] {
   transition-delay: 0s, 0.22s;
 }
 .adriatica-cover-action svg {
@@ -9191,7 +9194,21 @@ html:has(.nwt.nwt-card) {
   -webkit-mask-position: center top;
   mask-position: center top;
   transform-origin: 50% 50%;
-  animation: adriatica-vm-ornament-appear 4.2s .25s cubic-bezier(.42, 0, .19, 1) both;
+}
+
+.adriatica .adriatica-cover:is([data-ornament="loading"], [data-ornament="unavailable"]) .adriatica-cover-monogram {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .adriatica .adriatica-cover[data-ornament="revealing"] .adriatica-cover-monogram {
+    animation: adriatica-vm-ornament-appear 4.2s .25s cubic-bezier(.42, 0, .19, 1) both;
+  }
+  .adriatica .adriatica-cover[data-ornament="revealing"] .adriatica-cover-action {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 @keyframes adriatica-vm-ornament-appear {
@@ -9214,15 +9231,5 @@ html:has(.nwt.nwt-card) {
     mask-position: center top;
     transform: translate3d(0, 0, 0) scale(1);
     filter: blur(0) brightness(1.18) saturate(.92) drop-shadow(0 2px 5px #1619109c);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .adriatica .adriatica-cover-monogram {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    -webkit-mask-position: center top;
-    mask-position: center top;
   }
 }

@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Valerija i Marko | Pozivnica za venčanje</title>
-    <meta name="description" content="Pozivnica za venčanje." />
+    <meta name="description" content="Sa radošću vas pozivamo na naše venčanje. Wir laden euch herzlich zu unserer Hochzeit ein." />
     <link rel="canonical" href="https://mojapozivnica.app/valerija-marko.html" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Valerija i Marko" />
-    <meta property="og:description" content="Pozivnica za venčanje." />
+    <meta property="og:description" content="Sa radošću vas pozivamo na naše venčanje. Wir laden euch herzlich zu unserer Hochzeit ein." />
     <meta property="og:url" content="https://mojapozivnica.app/valerija-marko.html" />
     <meta property="og:image" content="https://mojapozivnica.app/previews/valerija-marko-v3.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -18,19 +18,36 @@
     <meta property="og:image:alt" content="Monogram Valerije i Marka na akvarelu Boke Kotorske" />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <script>
+      if (location.protocol === "https:" || location.protocol === "http:") {
+        document.documentElement.classList.add("is-redirecting");
+        location.replace("/valerija-marko" + location.search + location.hash);
+      }
+    </script>
+
     <style>
+      html {
+        color-scheme: light;
+        background: #f6f1e8;
+        color: #514536;
+      }
+
+      html.is-redirecting body {
+        display: none;
+      }
+
       body {
         display: grid;
         min-height: 100vh;
         min-height: 100dvh;
         margin: 0;
         place-items: center;
-        background: #263d33;
         font-family: Georgia, serif;
       }
 
       main {
         width: min(calc(100% - 32px), 760px);
+        padding-block: 24px;
         text-align: center;
       }
 
@@ -40,13 +57,30 @@
         height: auto;
       }
 
+      h1 {
+        margin: 20px 0 8px;
+        font-size: clamp(1.6rem, 6vw, 2.3rem);
+        font-weight: 400;
+      }
+
+      p {
+        margin: 4px 0;
+        line-height: 1.5;
+      }
+
       a {
         display: inline-block;
         margin-top: 16px;
         padding: 12px 24px;
         border: 1px solid #c5ab75;
-        color: #f7efdc;
+        color: inherit;
         text-decoration: none;
+      }
+
+      a span {
+        display: block;
+        margin-top: 3px;
+        font-size: 0.88rem;
       }
     </style>
   </head>
@@ -58,12 +92,13 @@
         height="909"
         alt="Monogram Valerije i Marka na akvarelu Boke Kotorske"
       />
-      <a href="https://mojapozivnica.app/valerija-marko">Otvori pozivnicu</a>
+      <h1>Valerija i Marko</h1>
+      <p>Sa radošću vas pozivamo na naše venčanje.</p>
+      <p lang="de">Wir laden euch herzlich zu unserer Hochzeit ein.</p>
+      <a href="https://mojapozivnica.app/valerija-marko">
+        Otvori pozivnicu
+        <span lang="de">Einladung öffnen</span>
+      </a>
     </main>
-    <script>
-      if (location.protocol === "https:" || location.protocol === "http:") {
-        location.replace("/valerija-marko" + location.search + location.hash);
-      }
-    </script>
   </body>
 </html>

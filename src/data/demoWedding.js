@@ -12757,7 +12757,7 @@ musicSrc: "/music/matej-18.mp3",
       locationAddress: "Kamenari, Crna Gora",
       mapLink: "https://www.google.com/maps/search/?api=1&query=Restoran%20Adriatica%2C%20Kamenari%2C%20Crna%20Gora",
       showCalendarButton: true,
-      calendarDurationHours: 1, // Trajanje rezervacije u kalendaru.
+      calendarDurationHours: 10, // Trajanje rezervacije u kalendaru.
       welcomeText:
         "Od zaveta u crkvi do večere kraj mora, želimo da ovaj dan provedemo sa ljudima koji su nam bliski. Biće nam drago da sa nama proslavite venčanje u Boki.",
       showDressCode: true,
