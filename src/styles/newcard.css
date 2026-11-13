@@ -8320,6 +8320,18 @@ html:has(.nwt.nwt-card) {
   padding: max(24px, env(safe-area-inset-top)) 20px
     max(clamp(30px, 8svh, 76px), env(safe-area-inset-bottom));
 }
+.adriatica .adriatica-cover-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+}
+.adriatica-cover-intro .adriatica-envelope-screen {
+  background: transparent;
+}
+.adriatica-cover-intro .adriatica-envelope-screen::after {
+  content: none;
+}
 .adriatica-cover-art {
   --adriatica-cover-mask: linear-gradient(
     to top,
@@ -8385,16 +8397,12 @@ html:has(.nwt.nwt-card) {
   font: 400 clamp(1.75rem, 7.8vw, 2.15rem)/1.1 var(--adriatica-script);
   text-shadow: 0 1px 3px #314032ad;
   cursor: pointer;
-  transition: opacity 0.22s ease-out, visibility 0s;
 }
 .adriatica .adriatica-cover[data-ornament="loading"] .adriatica-cover-action,
-.adriatica .adriatica-cover-action[data-scrolled] {
+.adriatica .adriatica-cover-action:is(:disabled, [data-scrolled]) {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-}
-.adriatica .adriatica-cover-action[data-scrolled] {
-  transition-delay: 0s, 0.22s;
 }
 .adriatica-cover-action svg {
   width: 13px;
@@ -8410,9 +8418,9 @@ html:has(.nwt.nwt-card) {
     font-size: 1.7rem;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .adriatica .adriatica-cover-action {
-    transition: none;
+@media (prefers-reduced-motion: no-preference) {
+  .adriatica .adriatica-cover-action[data-scrolled] {
+    transition: opacity 0.22s ease-out, visibility 0s 0.22s;
   }
 }
 .adriatica-cover:focus,
@@ -9196,13 +9204,18 @@ html:has(.nwt.nwt-card) {
   transform-origin: 50% 50%;
 }
 
-.adriatica .adriatica-cover:is([data-ornament="loading"], [data-ornament="unavailable"]) .adriatica-cover-monogram {
+.adriatica .adriatica-cover:is([data-ornament="waiting"], [data-ornament="loading"], [data-ornament="unavailable"]) .adriatica-cover-monogram {
   visibility: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .adriatica .adriatica-cover[data-ornament="revealing"] .adriatica-cover-monogram {
-    animation: adriatica-vm-ornament-appear 4.2s .25s cubic-bezier(.42, 0, .19, 1) both;
+    animation: adriatica-vm-ornament-appear 3s .25s cubic-bezier(.42, 0, .62, .78) both;
+  }
+  .wedding-page--adriatica .adriatica-cover[data-ornament="revealing"] .adriatica-cover-monogram {
+    animation-duration: 2.1s;
+    animation-delay: 0s;
+    animation-timing-function: cubic-bezier(.25, .35, .65, .8);
   }
   .adriatica .adriatica-cover[data-ornament="revealing"] .adriatica-cover-action {
     opacity: 0;
@@ -9220,11 +9233,6 @@ html:has(.nwt.nwt-card) {
     filter: blur(1.3px) brightness(1.28) saturate(.8) drop-shadow(0 1px 3px #16191055);
   }
   14% { opacity: 1; }
-  83% {
-    opacity: 1;
-    -webkit-mask-position: center top;
-    mask-position: center top;
-  }
   100% {
     opacity: 1;
     -webkit-mask-position: center top;

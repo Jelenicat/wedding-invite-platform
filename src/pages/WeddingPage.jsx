@@ -1300,6 +1300,31 @@ if (templateKey === "photo-zoom-minimal") {
   }
 
 
+  if (templateKey === "adriatica-destination" && slug === "valerija-marko") {
+    return (
+      <div className="wedding-page wedding-page--adriatica">
+        {audioNode}
+        <InvitationComponent
+          key={slug}
+          {...invitationProps}
+          introReady={showInvitation}
+          revealOrnament={envelopeRevealed || showInvitation}
+          intro={
+            !showInvitation && (
+              <IntroComponent
+                {...introProps}
+                overCover
+                onReveal={() => setEnvelopeRevealed(true)}
+                onEnter={() => setShowInvitation(true)}
+              />
+            )
+          }
+        />
+      </div>
+    );
+  }
+
+
 return (
   <div className="wedding-page">
     {audioNode}

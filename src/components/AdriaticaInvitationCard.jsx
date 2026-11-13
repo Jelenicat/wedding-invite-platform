@@ -89,6 +89,9 @@ export default function AdriaticaInvitationCard({
   details = {},
   slug,
   language = "sr",
+  intro,
+  introReady = true,
+  revealOrnament = introReady,
 }) {
   const coverRef = useRef(null);
   const cardRef = useRef(null);
@@ -110,13 +113,15 @@ export default function AdriaticaInvitationCard({
       };
 
   useLayoutEffect(() => {
+    if (!introReady) return;
+
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     coverRef.current?.focus({ preventScroll: true });
 
     const updateCoverCue = () => setCoverScrolled(window.scrollY > 2);
     window.addEventListener("scroll", updateCoverCue, { passive: true });
     return () => window.removeEventListener("scroll", updateCoverCue);
-  }, []);
+  }, [introReady]);
 
   const scrollToCard = () => {
     cardRef.current?.focus({ preventScroll: true });
@@ -133,7 +138,7 @@ export default function AdriaticaInvitationCard({
           ref={coverRef}
           tabIndex={-1}
           className="adriatica-cover"
-          data-ornament={ornamentStatus}
+          data-ornament={revealOrnament ? ornamentStatus : "waiting"}
           aria-label={`${brideName} ${copy.and} ${groomName}`}
         >
           <div className="adriatica-cover-art" aria-hidden="true">
@@ -150,7 +155,11 @@ export default function AdriaticaInvitationCard({
           <img
             className="adriatica-cover-monogram"
             src={adriaticaCoverImages.monogram}
-            onLoad={() => setOrnamentStatus("revealing")}
+            onLoad={() =>
+              setOrnamentStatus((status) =>
+                status === "loading" ? "revealing" : status,
+              )
+            }
             onError={() => setOrnamentStatus("unavailable")}
             onAnimationEnd={({ animationName }) => {
               if (animationName === "adriatica-vm-ornament-appear") {
@@ -168,216 +177,222 @@ export default function AdriaticaInvitationCard({
             onClick={scrollToCard}
             aria-controls="adriatica-pismo"
             aria-label={copy.scrollLabel}
+            disabled={!introReady}
             data-scrolled={coverScrolled || undefined}
             tabIndex={coverScrolled ? -1 : undefined}
           >
             {copy.scroll}
             <AdriaticaIcon name="down" />
           </button>
+          {intro}
         </section>
 
-        <header
-          ref={cardRef}
-          id="adriatica-pismo"
-          className="adriatica-hero"
-          tabIndex={-1}
-          aria-labelledby="adriatica-hero-names"
-        >
-          <Motion.div
-            className="adriatica-hero-paper"
-            {...scrollReveal}
-          >
-            <img
-              className="adriatica-hero-paper-image"
-              src={adriaticaCoverImages.paper}
-              alt=""
-              width={960}
-              height={1344}
-              draggable={false}
-            />
-            <div className="adriatica-hero-copy">
-              <h1 id="adriatica-hero-names" className="adriatica-hero-names">
-                <span>{brideName}</span>
-                <span className="adriatica-hero-amp">&amp;</span>
-                <span>{groomName}</span>
-              </h1>
-              <p className="adriatica-hero-date">{displayDate}</p>
-              {adriatica.placeLine && (
-                <p className="adriatica-hero-place">{adriatica.placeLine}</p>
-              )}
-            </div>
-          </Motion.div>
-        </header>
-
-        <div className="adriatica-content">
-          {details.welcomeText && (
-            <Motion.section
-              className="adriatica-section adriatica-welcome"
-              {...scrollReveal}
+        {introReady && (
+          <>
+            <header
+              ref={cardRef}
+              id="adriatica-pismo"
+              className="adriatica-hero"
+              tabIndex={-1}
+              aria-labelledby="adriatica-hero-names"
             >
-              <h2>{copy.greeting}</h2>
-              <p className="adriatica-welcome-text">{details.welcomeText}</p>
-              <p className="adriatica-signature">
-                {`${brideName} ${copy.and} ${groomName}`}
-              </p>
-            </Motion.section>
-          )}
-
-          {events.length > 0 && (
-            <Motion.section
-              className="adriatica-section adriatica-schedule"
-              id="adriatica-program"
-              aria-labelledby="adriatica-program-title"
-              {...scrollReveal}
-            >
-              <div className="adriatica-program-paper">
-                <div className="adriatica-program-copy">
-                  <header className="adriatica-program-heading">
-                    <h2 id="adriatica-program-title">{copy.program}</h2>
-                    {displayDate && <p>{displayDate}</p>}
-                  </header>
-                  <ol className="adriatica-program-list" role="list">
-                    {events.map((event) => (
-                      <li
-                        className="adriatica-program-event"
-                        key={`${event.time}-${event.label}`}
-                      >
-                        <p className="adriatica-program-time">
-                          {/^[0-9]{2}:[0-9]{2}$/.test(event.time) ? (
-                            <time dateTime={event.time}>{event.time}</time>
-                          ) : (
-                            event.time
-                          )}
-                        </p>
-                        <h3>{event.label}</h3>
-                        {(event.location || event.pendingLocation) && (
-                          <p className="adriatica-program-note">
-                            {event.location || event.pendingLocation}
-                          </p>
-                        )}
-                        {event.description && (event !== boatEvent || !adriatica.transport) && (
-                          <p className="adriatica-program-note">{event.description}</p>
-                        )}
-                        {event.location && (
-                          <TravelLink href={event.mapLink}>{copy.location}</TravelLink>
-                        )}
-                        {event.journey && (
-                          <AdriaticaJourneyDetails journey={event.journey} copy={copy} />
-                        )}
-                      </li>
-                    ))}
-                  </ol>
+              <Motion.div
+                className="adriatica-hero-paper"
+                {...scrollReveal}
+              >
+                <img
+                  className="adriatica-hero-paper-image"
+                  src={adriaticaCoverImages.paper}
+                  alt=""
+                  width={960}
+                  height={1344}
+                  draggable={false}
+                />
+                <div className="adriatica-hero-copy">
+                  <h1 id="adriatica-hero-names" className="adriatica-hero-names">
+                    <span>{brideName}</span>
+                    <span className="adriatica-hero-amp">&amp;</span>
+                    <span>{groomName}</span>
+                  </h1>
+                  <p className="adriatica-hero-date">{displayDate}</p>
+                  {adriatica.placeLine && (
+                    <p className="adriatica-hero-place">{adriatica.placeLine}</p>
+                  )}
                 </div>
-              </div>
-            </Motion.section>
-          )}
+              </Motion.div>
+            </header>
 
-          {(details.locationName || venue) && (
-            <Motion.section
-              className="adriatica-section adriatica-venue"
-              aria-labelledby="adriatica-venue-title"
-              {...scrollReveal}
-            >
-              <div className="adriatica-venue-copy">
-                <h2 id="adriatica-venue-title">{copy.venue}</h2>
-                <p className="adriatica-venue-name">
-                  {details.locationName || venue}
-                </p>
-                {details.locationAddress && (
-                  <p className="adriatica-venue-address">
-                    {details.locationAddress}
+            <div className="adriatica-content">
+              {details.welcomeText && (
+                <Motion.section
+                  className="adriatica-section adriatica-welcome"
+                  {...scrollReveal}
+                >
+                  <h2>{copy.greeting}</h2>
+                  <p className="adriatica-welcome-text">{details.welcomeText}</p>
+                  <p className="adriatica-signature">
+                    {`${brideName} ${copy.and} ${groomName}`}
                   </p>
-                )}
-              </div>
-              {adriatica.artwork && (
-                <figure className="adriatica-venue-art">
+                </Motion.section>
+              )}
+
+              {events.length > 0 && (
+                <Motion.section
+                  className="adriatica-section adriatica-schedule"
+                  id="adriatica-program"
+                  aria-labelledby="adriatica-program-title"
+                  {...scrollReveal}
+                >
+                  <div className="adriatica-program-paper">
+                    <div className="adriatica-program-copy">
+                      <header className="adriatica-program-heading">
+                        <h2 id="adriatica-program-title">{copy.program}</h2>
+                        {displayDate && <p>{displayDate}</p>}
+                      </header>
+                      <ol className="adriatica-program-list" role="list">
+                        {events.map((event) => (
+                          <li
+                            className="adriatica-program-event"
+                            key={`${event.time}-${event.label}`}
+                          >
+                            <p className="adriatica-program-time">
+                              {/^[0-9]{2}:[0-9]{2}$/.test(event.time) ? (
+                                <time dateTime={event.time}>{event.time}</time>
+                              ) : (
+                                event.time
+                              )}
+                            </p>
+                            <h3>{event.label}</h3>
+                            {(event.location || event.pendingLocation) && (
+                              <p className="adriatica-program-note">
+                                {event.location || event.pendingLocation}
+                              </p>
+                            )}
+                            {event.description && (event !== boatEvent || !adriatica.transport) && (
+                              <p className="adriatica-program-note">{event.description}</p>
+                            )}
+                            {event.location && (
+                              <TravelLink href={event.mapLink}>{copy.location}</TravelLink>
+                            )}
+                            {event.journey && (
+                              <AdriaticaJourneyDetails journey={event.journey} copy={copy} />
+                            )}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                </Motion.section>
+              )}
+
+              {(details.locationName || venue) && (
+                <Motion.section
+                  className="adriatica-section adriatica-venue"
+                  aria-labelledby="adriatica-venue-title"
+                  {...scrollReveal}
+                >
+                  <div className="adriatica-venue-copy">
+                    <h2 id="adriatica-venue-title">{copy.venue}</h2>
+                    <p className="adriatica-venue-name">
+                      {details.locationName || venue}
+                    </p>
+                    {details.locationAddress && (
+                      <p className="adriatica-venue-address">
+                        {details.locationAddress}
+                      </p>
+                    )}
+                  </div>
+                  {adriatica.artwork && (
+                    <figure className="adriatica-venue-art">
+                      <img
+                        src={adriatica.artwork}
+                        alt={adriatica.artworkAlt || ""}
+                        width={1200}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                  )}
+                  {details.mapLink && (
+                    <a
+                      className="adriatica-venue-map"
+                      href={details.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <AdriaticaIcon name="pin" /> {copy.location}
+                    </a>
+                  )}
+                </Motion.section>
+              )}
+
+              <AdriaticaTransport
+                transport={adriatica.transport}
+                boatEvent={boatEvent}
+                scrollReveal={scrollReveal}
+                copy={copy}
+              />
+
+              {details.showDressCode && details.dressCodeNote && (
+                <Motion.section
+                  className="adriatica-section adriatica-attire"
+                  aria-labelledby="adriatica-attire-title"
+                  {...scrollReveal}
+                >
                   <img
-                    src={adriatica.artwork}
-                    alt={adriatica.artworkAlt || ""}
-                    width={1200}
-                    height={800}
+                    className="adriatica-attire-art"
+                    src="/images/adriatica-destination/odevanje-masna.webp"
+                    alt=""
+                    width={600}
+                    height={400}
                     loading="lazy"
                     decoding="async"
                   />
-                </figure>
+                  <h2 id="adriatica-attire-title">{details.dressCodeTitle || copy.attire}</h2>
+                  <p>{details.dressCodeNote}</p>
+                </Motion.section>
               )}
-              {details.mapLink && (
-                <a
-                  className="adriatica-venue-map"
-                  href={details.mapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <AdriaticaIcon name="pin" /> {copy.location}
-                </a>
-              )}
-            </Motion.section>
-          )}
 
-          <AdriaticaTransport
-            transport={adriatica.transport}
-            boatEvent={boatEvent}
-            scrollReveal={scrollReveal}
-            copy={copy}
-          />
+              <Motion.div {...scrollReveal}>
+                <AdriaticaRSVP
+                  slug={slug}
+                  options={details.rsvpOptions}
+                  closed={details.rsvpClosed}
+                  language={language}
+                />
+              </Motion.div>
+              <Motion.div {...scrollReveal}>
+                <AdriaticaCountdown
+                  brideName={brideName}
+                  groomName={groomName}
+                  details={details}
+                  language={language}
+                />
+              </Motion.div>
 
-          {details.showDressCode && details.dressCodeNote && (
-            <Motion.section
-              className="adriatica-section adriatica-attire"
-              aria-labelledby="adriatica-attire-title"
-              {...scrollReveal}
-            >
-              <img
-                className="adriatica-attire-art"
-                src="/images/adriatica-destination/odevanje-masna.webp"
-                alt=""
-                width={600}
-                height={400}
-                loading="lazy"
-                decoding="async"
-              />
-              <h2 id="adriatica-attire-title">{details.dressCodeTitle || copy.attire}</h2>
-              <p>{details.dressCodeNote}</p>
-            </Motion.section>
-          )}
+              <AdriaticaGuestGuide config={adriatica} scrollReveal={scrollReveal} copy={copy} />
 
-          <Motion.div {...scrollReveal}>
-            <AdriaticaRSVP
-              slug={slug}
-              options={details.rsvpOptions}
-              closed={details.rsvpClosed}
-              language={language}
-            />
-          </Motion.div>
-          <Motion.div {...scrollReveal}>
-            <AdriaticaCountdown
-              brideName={brideName}
-              groomName={groomName}
-              details={details}
-              language={language}
-            />
-          </Motion.div>
-
-          <AdriaticaGuestGuide config={adriatica} scrollReveal={scrollReveal} copy={copy} />
-
-          <Motion.footer className="adriatica-footer" {...scrollReveal}>
-            {slug === "valerija-marko" && (
-              <img
-                className="adriatica-footer-monogram"
-                src={adriaticaCoverImages.monogram}
-                alt=""
-                width={864}
-                height={1296}
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-            <p className="adriatica-footer-signature">
-              {brideName} <span>&amp;</span> {groomName}
-            </p>
-            {displayDate && <p className="adriatica-footer-date">{displayDate}</p>}
-          </Motion.footer>
-        </div>
+              <Motion.footer className="adriatica-footer" {...scrollReveal}>
+                {slug === "valerija-marko" && (
+                  <img
+                    className="adriatica-footer-monogram"
+                    src={adriaticaCoverImages.monogram}
+                    alt=""
+                    width={864}
+                    height={1296}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                <p className="adriatica-footer-signature">
+                  {brideName} <span>&amp;</span> {groomName}
+                </p>
+                {displayDate && <p className="adriatica-footer-date">{displayDate}</p>}
+              </Motion.footer>
+            </div>
+          </>
+        )}
       </main>
     </div>
   );

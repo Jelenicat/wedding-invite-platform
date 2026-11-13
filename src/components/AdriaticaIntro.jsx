@@ -5,6 +5,7 @@ import "../styles/adriatica-language.css";
 
 const imageDirectory = "/images/adriatica-destination";
 const openingDuration = 1440;
+const openingFallbackDuration = 1800;
 const languageChoices = [
   { value: "sr", label: "Srpski", lang: "sr-Latn" },
   { value: "de", label: "Deutsch", lang: "de" },
@@ -37,8 +38,10 @@ export default function AdriaticaIntro({
   slug,
   language = "sr",
   showLanguageSwitcher = false,
+  overCover = false,
   onLanguageChange,
   onStartMusic,
+  onReveal,
   onEnter,
 }) {
   const [opening, setOpening] = useState(false);
@@ -55,13 +58,17 @@ export default function AdriaticaIntro({
     typeof onLanguageChange === "function";
   const showLanguageChoice = canChooseLanguage && !languageChosen;
   const copy = language === "de" ? envelopeCopy.de : envelopeCopy.sr;
+  const Screen = overCover ? "div" : "main";
+  const className = overCover ? "adriatica-cover-intro" : "adriatica";
 
   useEffect(() => {
-    const monogram = new Image();
-    monogram.src = adriaticaCoverImages.monogram;
+    if (!overCover) {
+      const monogram = new Image();
+      monogram.src = adriaticaCoverImages.monogram;
+    }
 
     return () => window.clearTimeout(timer.current);
-  }, []);
+  }, [overCover]);
 
   useEffect(() => {
     if (!moveFocus.current) return;
@@ -76,6 +83,13 @@ export default function AdriaticaIntro({
     setLanguageChosen(true);
   };
 
+  const finishOpening = () => {
+    if (timer.current === null) return;
+    window.clearTimeout(timer.current);
+    timer.current = null;
+    onEnter();
+  };
+
   const openEnvelope = () => {
     if (openingRef.current) return;
     openingRef.current = true;
@@ -87,7 +101,10 @@ export default function AdriaticaIntro({
     }
 
     setOpening(true);
-    timer.current = window.setTimeout(onEnter, openingDuration);
+    timer.current = window.setTimeout(
+      finishOpening,
+      overCover ? openingFallbackDuration : openingDuration,
+    );
   };
 
   const initials = [brideName, groomName]
@@ -97,8 +114,8 @@ export default function AdriaticaIntro({
 
   if (showLanguageChoice) {
     return (
-      <div className="adriatica" lang="sr-Latn">
-        <main
+      <div className={className} lang="sr-Latn">
+        <Screen
           className="adriatica-language-screen"
           aria-labelledby="adriatica-language-title"
         >
@@ -136,26 +153,40 @@ export default function AdriaticaIntro({
               </div>
             </div>
           </div>
-        </main>
+        </Screen>
       </div>
     );
   }
 
   return (
-    <div className="adriatica" lang={language === "de" ? "de" : "sr-Latn"}>
-      <main
+    <div className={className} lang={language === "de" ? "de" : "sr-Latn"}>
+      <Screen
         className={`adriatica-envelope-screen${opening ? " adriatica-envelope-screen--opening" : ""}`}
       >
-        <img
-          className="adriatica-cover-image"
-          src={adriaticaCoverImages.background}
-          alt=""
-          width={1350}
-          height={900}
-          draggable={false}
-        />
+        {!overCover && (
+          <img
+            className="adriatica-cover-image"
+            src={adriaticaCoverImages.background}
+            alt=""
+            width={1350}
+            height={900}
+            draggable={false}
+          />
+        )}
         <div className="adriatica-screen-envelope" aria-hidden="true">
-          <span className="adriatica-screen-envelope-pocket" />
+          <span
+            className="adriatica-screen-envelope-pocket"
+            onAnimationStart={({ animationName }) => {
+              if (overCover && animationName === "adriatica-screen-lower-pocket") {
+                onReveal?.();
+              }
+            }}
+            onAnimationEnd={({ animationName }) => {
+              if (overCover && animationName === "adriatica-screen-lower-pocket") {
+                finishOpening();
+              }
+            }}
+          />
           <span className="adriatica-screen-envelope-flap" />
         </div>
 
@@ -176,7 +207,7 @@ export default function AdriaticaIntro({
             <span className="adriatica-screen-cue-detail">{copy.cueDetail}</span>
           </span>
         </button>
-      </main>
+      </Screen>
     </div>
   );
 }
