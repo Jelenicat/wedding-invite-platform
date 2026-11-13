@@ -6751,6 +6751,40 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+{
+  slug: "save-andjela-andrija-cinema",
+  type: "save-the-date",
+  template: "save-the-date-cinema",
+  script: "latin",
+
+  brideName: "Andjela",
+  groomName: "Andrija",
+  weddingDate: "12.09.2027.",
+  venue: "Hotel Izvor, Aranđelovac",
+  musicSrc: "/music/andjela-andrija.mp3",
+
+  details: {
+    ...createDetails({
+      date: "12.09.2027.",
+      dateISO: "2027-09-12",
+      venue: "Hotel Izvor, Aranđelovac",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+      defaultLanguage: "sr",
+      showLanguageSwitcher: true,
+      languages: ["sr", "de"],
+    }),
+
+    saveTheDate: {
+      videoSrc: "/videos/save-the-date/andjela-andrija-cinema.mp4",
+      videoPoster: "/images/save-the-date/andjela-andrija-cinema.webp",
+      videoPosition: "center center",
+      posterPosition: "50% 40%",
+      showCountdown: true,
+      showCalendarButton: true,
+    },
+  },
+},
+
 // =========================
 // Klijenti
 // =========================
