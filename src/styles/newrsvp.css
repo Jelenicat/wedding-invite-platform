@@ -4900,3 +4900,557 @@
   .aurea-card--frame-overlay .aurea-rsvp-choice-grid label { transition: none; }
 }
 
+
+
+/* ==========================================
+   SERGIJE — CHROME SILVER COUNTDOWN
+   Samo za sergije-18
+========================================== */
+
+/* SREBRNA ZVEZDICA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown svg.bno-icon,
+.bno-card[data-sergije-blue="true"]
+.bno-countdown svg.bno-icon path {
+  color: #e4e6e9 !important;
+  stroke: #e4e6e9 !important;
+  fill: none !important;
+}
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown svg.bno-icon {
+  filter: drop-shadow(
+    0 0 5px rgba(245,246,248,.32)
+  );
+}
+
+/* METALIK PISANI TEKST I POTPIS */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown
+:is(.bno-countdown-title, .bno-finale)
+.bno-script .bno-ink {
+  color: #d7dade !important;
+
+  background-image: linear-gradient(
+    108deg,
+    #62676e 0%,
+    #d9dce0 13%,
+    #ffffff 23%,
+    #777d85 38%,
+    #4e555d 48%,
+    #f5f6f8 57%,
+    #a4a9b0 73%,
+    #fdfefe 84%,
+    #747a82 100%
+  ) !important;
+
+  background-size: 170% 100% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  filter: drop-shadow(
+    0 1px 1px rgba(0,0,0,.55)
+  );
+
+  animation: sergijeChromeFlow
+    9s ease-in-out infinite alternate !important;
+}
+
+@keyframes sergijeChromeFlow {
+  from {
+    background-position: 100% 50%;
+  }
+
+  to {
+    background-position: 0% 50%;
+  }
+}
+
+/* BROJEVI — IZRAŽEN METALIK GRADIJENT */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-clock-window strong {
+  color: #d6d9dd !important;
+
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #c7ccd1 22%,
+    #5e666e 43%,
+    #fcfdff 57%,
+    #a4aab0 76%,
+    #e6e9ec 100%
+  ) !important;
+
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  filter: drop-shadow(
+    0 1px 1px rgba(0,0,0,.7)
+  );
+}
+
+/* SREBRNI RAMOVI BROJAČA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-clock-window {
+  border-color:
+    rgba(208,212,217,.58) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    inset 0 -1px 0 rgba(130,136,142,.08)
+    !important;
+}
+
+/* OSTALE SREBRNE OZNAKE */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-clock-unit > span,
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-finale > span {
+  color: #cbd0d5 !important;
+}
+
+/* DUGME — SJAJNIJA HROMIRANA IVICA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown
+.bno-calendar .bno-button-outline {
+  border: 1px solid transparent !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #101114,
+      #18191d
+    ) padding-box,
+
+    linear-gradient(
+      110deg,
+      #737981 0%,
+      #f9fafb 20%,
+      #5d656e 40%,
+      #f4f5f7 62%,
+      #838991 81%,
+      #e5e8eb 100%
+    ) border-box !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 13px 30px rgba(0,0,0,.3)
+    !important;
+}
+
+/* SREBRNA IKONICA KALENDARA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown
+.bno-calendar .bno-button-outline
+.bno-arrow path {
+  stroke: #e3e5e8 !important;
+}
+
+/* SMANJENE ANIMACIJE */
+
+@media (prefers-reduced-motion: reduce) {
+  .bno-card[data-sergije-blue="true"]
+  .bno-countdown
+  :is(.bno-countdown-title, .bno-finale)
+  .bno-script .bno-ink {
+    animation: none !important;
+    background-position: 50% 50% !important;
+  }
+}
+
+/* ========================================
+   SERGIJE — CHROME SILVER RSVP
+   Samo za sergije-18
+======================================== */
+
+/* METALIK NASLOVI I POTPIS SERGIJE */
+
+#bno-rsvp-sergije-18
+.bno-script .bno-ink {
+  color: #cbd0d5 !important;
+
+  background: linear-gradient(
+    112deg,
+    #767c84 0%,
+    #d4d9de 12%,
+    #ffffff 22%,
+    #9299a1 35%,
+    #606871 46%,
+    #f4f7fa 58%,
+    #a4abb3 73%,
+    #fcfdff 85%,
+    #858c95 100%
+  ) !important;
+
+  background-size: 175% 100% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  text-shadow: none !important;
+
+  filter: drop-shadow(
+    0 1px 1px rgba(0,0,0,.5)
+  );
+
+  animation: sergijeRsvpChromeShine
+    8s ease-in-out infinite alternate !important;
+}
+
+@keyframes sergijeRsvpChromeShine {
+  from { background-position: 100% 50%; }
+  to { background-position: 0% 50%; }
+}
+
+/* UKLANJA ROZE SENKU POTPISA */
+
+#bno-rsvp-sergije-18
+.bno-rsvp-signoff .bno-script,
+#bno-rsvp-sergije-18
+.bno-rsvp-signoff .bno-ink {
+  text-shadow: none !important;
+}
+
+/* SREBRNA LINIJA ISPOD NASLOVA */
+
+#bno-rsvp-sergije-18
+.bno-handline path {
+  stroke: #e0e5e9 !important;
+}
+
+/* SREBRNA ZVEZDICA */
+
+#bno-rsvp-sergije-18
+svg.bno-icon,
+#bno-rsvp-sergije-18
+svg.bno-icon path {
+  color: #e0e5e9 !important;
+  stroke: #e0e5e9 !important;
+}
+
+/* SITNI NATPISI */
+
+#bno-rsvp-sergije-18
+:is(.bno-kicker, .bno-field-label) {
+  color: #c7cdd4 !important;
+}
+
+#bno-rsvp-sergije-18
+.bno-rsvp-deadline {
+  color: #d3d8de !important;
+}
+
+/* POLJE ZA IME */
+
+#bno-rsvp-sergije-18
+.bno-name-field input {
+  border-color:
+    rgba(194,202,210,.48) !important;
+
+  background:
+    rgba(15,17,20,.72) !important;
+}
+
+#bno-rsvp-sergije-18
+.bno-name-field input:focus {
+  border-color: #dbe1e7 !important;
+
+  outline: 2px solid
+    rgba(219,225,231,.27);
+}
+
+/* DOLAZIM / NE MOGU */
+
+#bno-rsvp-sergije-18
+.bno-choice {
+  border-color:
+    rgba(194,202,210,.39) !important;
+
+  background:
+    rgba(255,255,255,.025) !important;
+}
+
+#bno-rsvp-sergije-18
+.bno-choice-selected {
+  border-color: #d4dae0 !important;
+
+  background: linear-gradient(
+    140deg,
+    rgba(232,237,241,.12),
+    rgba(107,118,128,.11)
+  ) !important;
+
+  box-shadow:
+    0 0 17px rgba(207,216,224,.12) !important;
+}
+
+/* KRUŽIĆI ZA IZBOR */
+
+#bno-rsvp-sergije-18
+.bno-choice-dot {
+  border-color: #c8d0d8 !important;
+}
+
+#bno-rsvp-sergije-18
+.bno-choice-selected .bno-choice-dot {
+  border-color: #f4f7f9 !important;
+  background: #d1d8de !important;
+}
+
+/* DUGME POŠALJI ODGOVOR */
+
+#bno-rsvp-sergije-18
+.bno-submit {
+  border: 1px solid transparent !important;
+
+  background:
+    linear-gradient(
+      130deg,
+      #101216 0%,
+      #1b1e24 55%,
+      #101216 100%
+    ) padding-box,
+
+    linear-gradient(
+      110deg,
+      #6c747e 0%,
+      #fdfefe 23%,
+      #727c86 44%,
+      #f1f4f7 65%,
+      #929ba4 83%,
+      #f2f5f7 100%
+    ) border-box !important;
+
+  color: #eff2f5 !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.075),
+    0 12px 28px rgba(0,0,0,.3),
+    0 0 15px rgba(210,220,230,.07)
+    !important;
+}
+
+/* TEKST I STRELICA DUGMETA */
+
+#bno-rsvp-sergije-18
+.bno-submit > span,
+#bno-rsvp-sergije-18
+.bno-submit .bno-arrow,
+#bno-rsvp-sergije-18
+.bno-submit .bno-arrow path {
+  color: #e6ebef !important;
+  stroke: #e6ebef !important;
+  -webkit-text-fill-color: #e6ebef !important;
+}
+
+/* MALI NATPIS IZNAD POTPISA */
+
+#bno-rsvp-sergije-18
+.bno-rsvp-signoff > span {
+  color: #c7cdd4 !important;
+}
+
+/* USPEŠNA POTVRDA */
+
+#bno-rsvp-sergije-18
+.bno-success-mark :is(circle, path) {
+  stroke: #e0e5ea !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bno-rsvp-sergije-18
+  .bno-script .bno-ink {
+    animation: none !important;
+    background-position: 50% 50% !important;
+  }
+}
+
+
+
+/* ==========================================
+   SERGIJE — UKLANJANJE ROZE OKVIRA
+   Samo za sergije-18
+========================================== */
+
+/* Izabrana opcija — srebrni okvir */
+
+#bno-rsvp-sergije-18
+.bno-choice-selected,
+#bno-rsvp-sergije-18
+.bno-choice:has(input:checked) {
+  border-color: #c9d0d6 !important;
+  outline-color: #c9d0d6 !important;
+
+  box-shadow:
+    0 0 0 1px rgba(201,208,214,.75),
+    0 0 16px rgba(201,208,214,.12),
+    inset 0 1px 0 rgba(255,255,255,.07)
+    !important;
+
+  background: linear-gradient(
+    145deg,
+    rgba(223,229,235,.11),
+    rgba(110,119,129,.09)
+  ) !important;
+}
+
+/* Ako spoljašnji okvir pravi pseudo-element */
+
+#bno-rsvp-sergije-18
+.bno-choice-selected::before,
+#bno-rsvp-sergije-18
+.bno-choice-selected::after {
+  border-color: #c9d0d6 !important;
+  outline-color: #c9d0d6 !important;
+  box-shadow: none !important;
+}
+
+/* Srebrni kružić izabrane opcije */
+
+#bno-rsvp-sergije-18
+.bno-choice-selected .bno-choice-dot {
+  border-color: #eef2f5 !important;
+  background-color: #c9d0d6 !important;
+  box-shadow: 0 0 5px rgba(230,235,240,.3) !important;
+}
+
+/* Fokus — bez roze boje */
+
+#bno-rsvp-sergije-18
+.bno-choice:focus-within {
+  outline-color: #d6dce2 !important;
+}
+
+/* Plus i minus — srebrni akcenti */
+
+#bno-rsvp-sergije-18
+.bno-stepper button {
+  border-color: rgba(201,208,214,.46) !important;
+  color: #e6eaee !important;
+}
+
+
+/* ==========================================
+   SERGIJE — CHROME SILVER CALENDAR BUTTON
+   Samo za sergije-18
+========================================== */
+
+/* DUGME SA HROMIRANOM IVICOM */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-calendar
+button.bno-button-outline {
+  border: 1px solid transparent !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #101115 0%,
+      #1c1f24 50%,
+      #101115 100%
+    ) padding-box,
+
+    linear-gradient(
+      110deg,
+      #59616a 0%,
+      #ffffff 18%,
+      #69727c 37%,
+      #eef3f7 55%,
+      #737d88 75%,
+      #ffffff 100%
+    ) border-box !important;
+
+  background-size: 100% 100%, 200% 100% !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.1),
+    0 10px 28px rgba(0,0,0,.3),
+    0 0 15px rgba(220,230,240,.12)
+    !important;
+
+  color: #edf1f5 !important;
+  text-shadow: none !important;
+
+  animation: sergijeCalendarChrome 9s
+    ease-in-out infinite alternate;
+}
+
+/* METALIK SREBRNI TEKST */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-calendar
+button.bno-button-outline > span {
+  color: #dce2e8 !important;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f2f5f8 23%,
+    #919ba6 53%,
+    #e9eef2 76%,
+    #c0c9d2 100%
+  ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  text-shadow: none !important;
+}
+
+/* SREBRNA IKONICA KALENDARA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-calendar
+button.bno-button-outline svg.bno-arrow,
+.bno-card[data-sergije-blue="true"]
+.bno-countdown .bno-calendar
+button.bno-button-outline svg.bno-arrow path {
+  color: #e5eaf0 !important;
+  stroke: #e5eaf0 !important;
+  fill: none !important;
+}
+
+/* POMERANJE METALNOG ODSJAJA */
+
+@keyframes sergijeCalendarChrome {
+  from {
+    background-position: 0 0, 100% 50%;
+  }
+
+  to {
+    background-position: 0 0, 0% 50%;
+  }
+}
+
+/* HOVER */
+
+@media (hover: hover) {
+  .bno-card[data-sergije-blue="true"]
+  .bno-countdown .bno-calendar
+  button.bno-button-outline:hover {
+    box-shadow:
+      0 0 22px rgba(220,230,240,.2),
+      0 14px 32px rgba(0,0,0,.35)
+      !important;
+  }
+}
+
+/* PRISTUPAČNOST */
+
+@media (prefers-reduced-motion: reduce) {
+  .bno-card[data-sergije-blue="true"]
+  .bno-countdown .bno-calendar
+  button.bno-button-outline {
+    animation: none !important;
+  }
+}

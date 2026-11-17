@@ -120,7 +120,8 @@ export default function BirthdayNoirIntro(props) {
     entered.current = true;
     onEnter?.();
   };
-  return <section className="bno bno-intro" data-script={c ? "cyrillic" : "latin"} lang={c ? "sr-Cyrl" : "sr-Latn"} aria-label={`${data.name} — ${data.age}. ${c ? "рођендан" : "rođendan"}`} style={{ "--bno-name-scale": data.nameScale }}>
+  
+  return <section className="bno bno-intro" data-script={c ? "cyrillic" : "latin"} lang={c ? "sr-Cyrl" : "sr-Latn"} aria-label={`${data.name} — ${data.age}. ${c ? "рођендан" : "rođendan"}`} style={{ "--bno-name-scale": data.nameScale }}data-sergije-blue={slug === "sergije-18" ? "true" : undefined}>
     <div className={`bno-cover ${opening ? "bno-opening" : ""}`}>
       <div className="bno-cover-backlight" aria-hidden="true" />
       {["left", "right"].map((side) => <motion.div key={side} className={`bno-curtain bno-curtain-${side}`} aria-hidden="true"

@@ -5688,3 +5688,4 @@ padding:
 .mcr-editorial .mcr-rsvp-section .mcr-text-link { color:#88745a; }
 @media(hover:hover) { .mcr-editorial .mcr-rsvp-section .mcr-submit-button:not(:disabled):hover { background:linear-gradient(120deg,#e8dcc5,#d6c19a); color:#68553d; } }
 @media(max-width:359px) { .mcr-editorial .mcr-rsvp-section { padding-inline:16px; } .mcr-editorial .mcr-rsvp-section .mcr-rsvp-panel { padding:32px 18px; } }
+

@@ -13270,6 +13270,91 @@ musicSrc: "/music/matej-18.mp3",
   },
 
 
+
+
+{
+  slug: "sergije-18",
+  type: "birthday",
+  template: "birthday-noir",
+  script: "latin",
+
+  brideName: "Sergije",
+
+  weddingDate: "09.01.2027.",
+  weddingTime: "18:00",
+  venue: "Kur salon, Banja Koviljača",
+ musicSrc: "/music/sergije-18.mp3",
+  introPreviewImage:
+    "/images/birthday-noir/noir-glasses.webp",
+
+  details: {
+    ...createDetails({
+      age: 18,
+
+      date: "09.01.2027.",
+      dateISO: "2027-01-09T18:00:00+01:00",
+
+      welcomeText:
+        "Pozivam vas da zajedno proslavimo moj 18. rođendan. Radujem se što ćemo ovo posebno veče ispuniti muzikom, smehom i nezaboravnim uspomenama.",
+
+      locationName: "Kur salon",
+      locationAddress: "Banja Koviljača",
+
+      mapLink:
+        "https://www.google.com/maps/search/?api=1&query=Kur+salon+Banja+Koviljaca",
+
+      rsvpText:
+        "Molim te da svoj dolazak potvrdiš do 01.01.2027.",
+
+      note:
+        "Molim te da svoj dolazak potvrdiš do 01.01.2027.",
+
+      showCalendarButton: true,
+      calendarDurationHours: 8,
+
+      showDressCode: false,
+
+      events: [],
+      rsvpClosed: false,
+    }),
+
+    rsvpDeadline: "01.01.2027.",
+    rsvpDeadlineISO: "2027-01-01",
+
+    rsvpMaxGuests: 8,
+
+    noir: {
+      coverImage:
+        "/images/birthday-noir/noir-glasses.webp",
+
+      coverPosition: "58% 55%",
+      coverCity: "BANJA KOVILJAČA",
+      introLine: "NOĆ ZA PAMĆENJE",
+
+      discoImage:
+        "/images/birthday-noir/noir-disco.webp",
+
+      heroTitle: "Slavimo",
+      heroScript: "zajedno.",
+
+      heroText:
+        "Jedno posebno veče. Ljudi koje volim. Uspomene koje ostaju.",
+
+      heroPosition: "35% 40%",
+
+      toastTitle: "Za trenutke",
+      toastScript: "koji ostaju.",
+
+      toastImage:
+        "/images/birthday-noir/noir-glasses.webp",
+
+      toastPosition: "50% 78%",
+    },
+  },
+},
+
+
+
   // =========================
   // BIRTHDAY TEMPLATES
   // =========================

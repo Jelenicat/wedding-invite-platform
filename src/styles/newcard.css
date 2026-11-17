@@ -11331,3 +11331,245 @@ html:has(.nwt.nwt-card) {
   .aurea-card--frame-overlay .aurea-note { animation: none; }
 }
 
+/* ==========================================
+   SERGIJE 18 — CHROME SILVER CARD
+   Samo za slug sergije-18
+========================================== */
+
+.bno-card[data-sergije-blue="true"] {
+  --sergije-silver: #d2d7dc;
+  --sergije-silver-soft: #c5ccd3;
+  --sergije-silver-light: #f6f8fa;
+  --sergije-silver-edge: rgba(210, 215, 220, 0.58);
+}
+
+/* PISANI NASLOVI — JAČI CHROME SILVER */
+
+.bno-card[data-sergije-blue="true"]
+:is(.bno-hero, .bno-welcome, .bno-event, .bno-toast)
+.bno-script .bno-ink {
+  color: #d4d9de !important;
+
+  background-image: linear-gradient(
+    110deg,
+    #59616b 0%,
+    #d6dbe0 12%,
+    #ffffff 24%,
+    #838d98 38%,
+    #505761 49%,
+    #f7f9fb 61%,
+    #a0a9b3 74%,
+    #ffffff 87%,
+    #6d7681 100%
+  ) !important;
+
+  background-size: 190% 100% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+
+  animation: sergijeCardChrome 9s ease-in-out infinite alternate !important;
+}
+
+@keyframes sergijeCardChrome {
+  from {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0% 50%;
+  }
+}
+
+/* SREBRNA LINIJA ISPOD PISANOG NASLOVA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-handline path {
+  stroke: #dde2e7 !important;
+}
+
+/* IKONICE */
+
+.bno-card[data-sergije-blue="true"]
+:is(.bno-welcome, .bno-event) svg.bno-icon,
+.bno-card[data-sergije-blue="true"]
+:is(.bno-welcome, .bno-event) svg.bno-icon path {
+  color: #dde2e7 !important;
+  stroke: #dde2e7 !important;
+  fill: none !important;
+}
+
+/* MANJI NASLOVI */
+
+.bno-card[data-sergije-blue="true"]
+:is(.bno-welcome, .bno-event)
+.bno-kicker {
+  color: #c8cfd6 !important;
+}
+
+/* TEKSTOVI */
+
+.bno-card[data-sergije-blue="true"]
+:is(
+  .bno-welcome-text,
+  .bno-welcome-note,
+  .bno-address,
+  .bno-hero-invite,
+  .bno-toast-copy p,
+  .bno-schedule-item p
+) {
+  color: #e2e7eb !important;
+}
+
+/* DEKORATIVNI DETALJI RASPOREDA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-schedule-dot {
+  background: #d8dde2 !important;
+  border-color: #f3f6f8 !important;
+  box-shadow: 0 0 8px rgba(233, 238, 242, 0.18);
+}
+
+.bno-card[data-sergije-blue="true"]
+.bno-schedule-time {
+  color: #d2d8de !important;
+}
+
+/* LINK LOKACIJA U RASPOREDU */
+
+.bno-card[data-sergije-blue="true"]
+.bno-text-link,
+.bno-card[data-sergije-blue="true"]
+.bno-text-link .bno-arrow,
+.bno-card[data-sergije-blue="true"]
+.bno-text-link .bno-arrow path {
+  color: #e1e6eb !important;
+  stroke: #e1e6eb !important;
+}
+
+/* DUGME ZA LOKACIJU — JAČI HROMIRANI OKVIR */
+
+.bno-card[data-sergije-blue="true"]
+.bno-event .bno-button-outline {
+  border: 1px solid transparent !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #101115 0%,
+      #1a1c21 50%,
+      #101115 100%
+    ) padding-box,
+    linear-gradient(
+      110deg,
+      #59616a 0%,
+      #f9fbfd 18%,
+      #737c86 38%,
+      #eef2f5 58%,
+      #68717b 77%,
+      #fafbfc 100%
+    ) border-box !important;
+
+  background-size:
+    100% 100%,
+    210% 100% !important;
+
+  background-position:
+    0 0,
+    100% 50% !important;
+
+  color: #e8edf2 !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 12px 30px rgba(0,0,0,.28),
+    0 0 18px rgba(220,230,240,.10) !important;
+
+  animation: sergijeCardButtonChrome 10s ease-in-out infinite alternate !important;
+}
+
+@keyframes sergijeCardButtonChrome {
+  from {
+    background-position: 0 0, 100% 50%;
+  }
+  to {
+    background-position: 0 0, 0% 50%;
+  }
+}
+
+.bno-card[data-sergije-blue="true"]
+.bno-event .bno-button-outline span {
+  color: #edf1f4 !important;
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e3e8ed 30%,
+    #9ba4ad 56%,
+    #f3f6f8 80%,
+    #c8d0d7 100%
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.bno-card[data-sergije-blue="true"]
+.bno-event .bno-button-outline .bno-arrow,
+.bno-card[data-sergije-blue="true"]
+.bno-event .bno-button-outline .bno-arrow path {
+  color: #e3e8ed !important;
+  stroke: #e3e8ed !important;
+}
+
+/* HERO FOOTER DATUM I STRELICA */
+
+.bno-card[data-sergije-blue="true"]
+.bno-hero-footer span,
+.bno-card[data-sergije-blue="true"]
+.bno-hero-footer .bno-arrow,
+.bno-card[data-sergije-blue="true"]
+.bno-hero-footer .bno-arrow path {
+  color: #d7dde2 !important;
+  stroke: #d7dde2 !important;
+}
+
+/* H3 I JAČI NASLOVI */
+
+.bno-card[data-sergije-blue="true"]
+:is(.bno-location h3, .bno-schedule-item h3) {
+  color: #f1f4f7 !important;
+}
+
+/* DISKRETAN HOVER */
+
+@media (hover: hover) {
+  .bno-card[data-sergije-blue="true"]
+  .bno-event .bno-button-outline:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.11),
+      0 0 24px rgba(230,238,248,.18),
+      0 14px 35px rgba(0,0,0,.3) !important;
+
+    filter: brightness(1.06);
+  }
+}
+
+/* SMANJENE ANIMACIJE */
+
+@media (prefers-reduced-motion: reduce) {
+  .bno-card[data-sergije-blue="true"]
+  :is(.bno-hero, .bno-welcome, .bno-event, .bno-toast)
+  .bno-script .bno-ink,
+
+  .bno-card[data-sergije-blue="true"]
+  .bno-event .bno-button-outline {
+    animation: none !important;
+  }
+
+  .bno-card[data-sergije-blue="true"]
+  :is(.bno-hero, .bno-welcome, .bno-event, .bno-toast)
+  .bno-script .bno-ink {
+    background-position: 50% 50% !important;
+  }
+}

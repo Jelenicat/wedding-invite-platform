@@ -894,8 +894,20 @@ function AdminPanel({ slug }) {
         return chunks;
       };
 
-      const guestsPerPage = 20;
-      const guestChunks = chunkArray(exportGuests, guestsPerPage);
+      // Za Adriatica RSVP-a svaki pojedinac ima svoj meni i alergije.
+      // Ostali slugovi i dalje koriste postojece grupne redove PDF-a.
+      const pdfGuests = usesIndividualGuests
+        ? exportGuests.flatMap((response) =>
+            getAdriaticaGuests(response).map((person) => ({
+              ...person,
+              createdAt: response.createdAt,
+              source: response.source,
+            }))
+          )
+        : exportGuests;
+
+      const guestsPerPage = usesIndividualGuests ? 10 : 20;
+      const guestChunks = chunkArray(pdfGuests, guestsPerPage);
       const totalPages = guestChunks.length;
 
       const pagesHtml = guestChunks
@@ -908,31 +920,47 @@ function AdminPanel({ slug }) {
                     ${pageIndex * guestsPerPage + rowIndex + 1}.
                   </td>
 
-                  <td class="col-name">
+                  <td class="col-name${usesIndividualGuests ? " col-name-individual" : ""}">
                     ${escapeHtml(guest.fullName || "")}
+                    ${
+                      usesIndividualGuests
+                        ? `<div class="guest-secondary">${
+                            guest.source === "admin" ? "Ručno dodat" : "RSVP forma"
+                          } · ${escapeHtml(formatDate(guest.createdAt) || "—")}</div>`
+                        : ""
+                    }
                   </td>
 
-             <td class="col-count">
-  ${Number(guest.guests) || 0}
-</td>
-
-${
-  hasFastingOption
-    ? `
-      <td class="col-fasting">
-        ${escapeHtml(getFastingLabel(guest.fasting) || "—")}
-      </td>
-    `
-    : ""
-}
-
-<td class="col-source">
-                    ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
+                  <td class="col-count">
+                    ${Number(guest.guests) || 0}
                   </td>
 
-                  <td class="col-date">
-                    ${escapeHtml(formatDate(guest.createdAt) || "—")}
-                  </td>
+                  ${
+                    usesIndividualGuests
+                      ? `
+                        <td class="col-menu">
+                          ${escapeHtml(ADRIATICA_MENUS.get(guest.menu) || "Nije unet")}
+                        </td>
+                        <td class="col-allergies">
+                          ${escapeHtml(guest.allergies || "Nisu navedene")}
+                        </td>
+                      `
+                      : `
+                        ${
+                          hasFastingOption
+                            ? `<td class="col-fasting">${escapeHtml(
+                                getFastingLabel(guest.fasting) || "—"
+                              )}</td>`
+                            : ""
+                        }
+                        <td class="col-source">
+                          ${guest.source === "admin" ? "Ručno dodat" : "RSVP forma"}
+                        </td>
+                        <td class="col-date">
+                          ${escapeHtml(formatDate(guest.createdAt) || "—")}
+                        </td>
+                      `
+                  }
                 </tr>
               `
             )
@@ -987,10 +1015,13 @@ ${
                         <tr>
                           <th>#</th>
                           <th>Ime i prezime</th>
-                  <th style="text-align:right;">Broj osoba</th>
-${hasFastingOption ? `<th>Post</th>` : ""}
-<th>Izvor</th>
-                          <th>Datum odgovora</th>
+                          <th style="text-align:right;">Broj osoba</th>
+                          ${
+                            usesIndividualGuests
+                              ? `<th>Meni</th><th>Alergije / napomene</th>`
+                              : `${hasFastingOption ? `<th>Post</th>` : ""}
+                                 <th>Izvor</th><th>Datum odgovora</th>`
+                          }
                         </tr>
                       </thead>
                       <tbody>
@@ -1186,6 +1217,31 @@ ${hasFastingOption ? `<th>Post</th>` : ""}
             .col-name {
               font-weight: 700;
               color: #6b5447;
+            }
+
+            .col-name-individual {
+              overflow-wrap: anywhere;
+            }
+
+            .guest-secondary {
+              margin-top: 4px;
+              font-size: 9px;
+              font-weight: 400;
+              color: #8b7364;
+              overflow-wrap: anywhere;
+            }
+
+            .col-menu {
+              width: 115px;
+              color: #6b5447;
+              overflow-wrap: anywhere;
+            }
+
+            .col-allergies {
+              width: 190px;
+              color: #7a675b;
+              white-space: pre-wrap;
+              overflow-wrap: anywhere;
             }
 
             .col-count {

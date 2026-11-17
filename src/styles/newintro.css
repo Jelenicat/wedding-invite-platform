@@ -5134,3 +5134,195 @@ html:has(.bb.bb-card) {
   .aurea-petals-intro__monogram,
   .aurea-petals-intro__caption { opacity: 1 !important; transform: none; filter: none; }
 }
+
+
+
+/* ==========================================
+   SERGIJE 18 — CHROME SILVER INTRO
+   Samo za sergije-18
+========================================== */
+
+/* BROJ 18 — IZRAŽEN METALIK GRADIJENT */
+
+.bno-intro[data-sergije-blue="true"]
+.bno-cover-age .bno-glyph {
+  color: #d1d6dc !important;
+
+  background-image: linear-gradient(
+    110deg,
+    #555d67 0%,
+    #d4d9de 13%,
+    #ffffff 25%,
+    #838c97 37%,
+    #4e5661 48%,
+    #f7f9fb 60%,
+    #a1aab4 73%,
+    #ffffff 85%,
+    #68727e 100%
+  ) !important;
+
+  background-size: 220% 100% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  filter:
+    drop-shadow(0 1px 1px rgba(0, 0, 0, .65))
+    drop-shadow(0 0 4px rgba(227, 233, 239, .18));
+
+  animation:
+    sergijeIntroChrome 9s ease-in-out
+    infinite alternate !important;
+}
+
+@keyframes sergijeIntroChrome {
+  from {
+    background-position: 100% 50%;
+  }
+
+  to {
+    background-position: 0% 50%;
+  }
+}
+
+/* GRAD ISPOD DATUMA */
+
+.bno-intro[data-sergije-blue="true"]
+.bno-cover-city {
+  color: #c8cfd6 !important;
+
+  text-shadow:
+    0 0 7px rgba(226, 233, 240, .24)
+    !important;
+}
+
+/* DUGME — HROMIRANI METALNI OKVIR */
+
+.bno-intro[data-sergije-blue="true"]
+.bno-cover-button {
+  border: 1px solid transparent !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #101115 0%,
+      #1a1c21 48%,
+      #101115 100%
+    ) padding-box,
+
+    linear-gradient(
+      110deg,
+      #5a636d 0%,
+      #f9fbfd 19%,
+      #737e89 39%,
+      #e8edf2 59%,
+      #69737e 78%,
+      #f7f9fb 100%
+    ) border-box !important;
+
+  background-size:
+    100% 100%,
+    210% 100% !important;
+
+  background-position:
+    0 0,
+    100% 50% !important;
+
+  color: #e4e9ee !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 12px 30px rgba(0,0,0,.3),
+    0 0 18px rgba(221,230,239,.10)
+    !important;
+
+  animation:
+    sergijeIntroChromeBorder 10s
+    ease-in-out infinite alternate !important;
+
+  transition:
+    box-shadow .35s ease,
+    filter .35s ease;
+}
+
+/* BLAG ODSJAJ DUŽ IVICE DUGMETA */
+
+@keyframes sergijeIntroChromeBorder {
+  from {
+    background-position: 0 0, 100% 50%;
+  }
+
+  to {
+    background-position: 0 0, 0% 50%;
+  }
+}
+
+/* TEKST DUGMETA — SREBRNI PRELIV */
+
+.bno-intro[data-sergije-blue="true"]
+.bno-cover-button > span {
+  color: #e8edf2 !important;
+
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e8ecf0 26%,
+    #929ca6 55%,
+    #eef2f5 78%,
+    #c6cdd4 100%
+  ) !important;
+
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* SREBRNA STRELICA */
+
+.bno-intro[data-sergije-blue="true"]
+.bno-cover-button .bno-arrow,
+.bno-intro[data-sergije-blue="true"]
+.bno-cover-button .bno-arrow path {
+  color: #e3e8ed !important;
+  stroke: #e3e8ed !important;
+}
+
+/* FOKUS DUGMETA */
+
+.bno-intro[data-sergije-blue="true"]
+.bno-cover-button:focus-visible {
+  outline: 2px solid #f4f7fa !important;
+  outline-offset: 4px !important;
+}
+
+/* ELEGANTAN HOVER */
+
+@media (hover: hover) {
+  .bno-intro[data-sergije-blue="true"]
+  .bno-cover-button:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.12),
+      0 14px 34px rgba(0,0,0,.32),
+      0 0 22px rgba(226,233,241,.23)
+      !important;
+
+    filter: brightness(1.07);
+  }
+}
+
+/* SMANJENE ANIMACIJE */
+
+@media (prefers-reduced-motion: reduce) {
+  .bno-intro[data-sergije-blue="true"]
+  .bno-cover-age .bno-glyph,
+
+  .bno-intro[data-sergije-blue="true"]
+  .bno-cover-button {
+    animation: none !important;
+  }
+
+  .bno-intro[data-sergije-blue="true"]
+  .bno-cover-age .bno-glyph {
+    background-position: 50% 50% !important;
+  }
+}
