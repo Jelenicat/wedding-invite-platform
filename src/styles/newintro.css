@@ -4879,3 +4879,258 @@ html:has(.bb.bb-card) {
   }
 }
 /* ADRIATICA – KRAJ */
+.aurea-petals-intro,
+.aurea-petals-intro *,
+.aurea-petals-intro *::before,
+.aurea-petals-intro *::after {
+  box-sizing: border-box;
+}
+
+.aurea-petals-intro {
+  --aurea-script: "Bickham Script Pro", "Edwardian Script ITC", "Great Vibes", cursive;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  color: #fff;
+  background: radial-gradient(ellipse 90% 68% at 50% 12%, #4a4c52 0%, #1b1d23 55%, #0a0b0f 100%);
+}
+
+.aurea-petals-intro__photo,
+.aurea-petals-intro__veil,
+.aurea-petals-intro__light,
+.aurea-petals-intro__petals,
+.aurea-petals-intro__ornament-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.aurea-petals-intro__photo {
+  z-index: 1;
+  background-image: var(--aurea-photo);
+  background-size: cover;
+  background-position: center 38%;
+  filter: none;
+  transform: scale(1.08);
+  opacity: 0;
+  transition: opacity 1.8s ease, transform 6s cubic-bezier(.14,.72,.2,1);
+}
+
+.aurea-petals-intro[data-phase="revealing"] .aurea-petals-intro__photo,
+.aurea-petals-intro[data-phase="ready"] .aurea-petals-intro__photo {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.aurea-petals-intro__veil {
+  z-index: 2;
+  background: none;
+  opacity: 0;
+}
+
+.aurea-petals-intro__light {
+  z-index: 3;
+  pointer-events: none;
+  background: none;
+  mix-blend-mode: normal;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+.aurea-petals-intro[data-phase="revealing"] .aurea-petals-intro__light,
+.aurea-petals-intro[data-phase="ready"] .aurea-petals-intro__light { opacity: .3; }
+
+.aurea-petals-intro__paper-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  background: #f4f1ec;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 650ms ease;
+}
+
+.aurea-petals-intro[data-phase="revealing"] .aurea-petals-intro__paper-cover,
+.aurea-petals-intro[data-phase="ready"] .aurea-petals-intro__paper-cover {
+  opacity: 0;
+}
+
+.aurea-petals-intro__petals {
+  z-index: 9;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurea-petals-intro__petal {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  display: block;
+  background-image: var(--aurea-petal-image);
+  background-repeat: no-repeat;
+  background-size: 200% 200%;
+  opacity: 1;
+  filter: drop-shadow(1px 3px 3px rgba(90, 80, 72, .13));
+  transform: translate3d(-50%, -50%, 0) rotate(var(--tilt));
+  transform-origin: center;
+}
+
+.aurea-petals-intro__petal.sprite-0 { background-position: 0 0; }
+.aurea-petals-intro__petal.sprite-1 { background-position: 100% 0; }
+.aurea-petals-intro__petal.sprite-2 { background-position: 0 100%; }
+.aurea-petals-intro__petal.sprite-3 { background-position: 100% 100%; }
+
+.aurea-petals-intro[data-phase="revealing"] .aurea-petals-intro__petal,
+.aurea-petals-intro[data-phase="ready"] .aurea-petals-intro__petal {
+  animation-name: aureaPetalReveal;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
+  animation-timing-function: cubic-bezier(.42,.05,.8,.7);
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+
+@keyframes aureaPetalReveal {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) rotate(var(--tilt));
+  }
+  74% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(calc(-50% + var(--drift)), calc(-50% + 125svh), 0)
+      rotate(var(--end-rotate));
+  }
+}
+
+.aurea-petals-intro__ornament-wrap {
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.aurea-petals-intro__ornament {
+  width: min(72vw, 380px);
+  aspect-ratio: 3 / 4.4;
+  background-image: var(--aurea-ornament-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0;
+  transform: translateY(16px) scale(.96);
+  filter: drop-shadow(0 4px 14px rgba(255,255,255,.15)) drop-shadow(0 12px 26px rgba(0,0,0,.18));
+  transition: opacity .95s ease, transform 1.2s ease;
+}
+
+.aurea-petals-intro[data-phase="revealing"] .aurea-petals-intro__ornament,
+.aurea-petals-intro[data-phase="ready"] .aurea-petals-intro__ornament {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.aurea-petals-intro__monogram {
+  position: absolute;
+  z-index: 6;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: baseline;
+  gap: .03em;
+  white-space: nowrap;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,.52), 0 0 26px rgba(215,226,239,.44), 0 3px 18px rgba(0,0,0,.32);
+  font: 400 clamp(108px, 24vw, 172px) / .92 var(--aurea-script);
+  opacity: 0;
+  filter: blur(14px);
+  transition: opacity 1s ease .35s, filter 1.2s ease .35s;
+}
+
+.aurea-petals-intro[data-phase="revealing"] .aurea-petals-intro__monogram,
+.aurea-petals-intro[data-phase="ready"] .aurea-petals-intro__monogram {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* AUREA — prozirno, elegantno dugme bez tamne ploce */
+.aurea-petals-intro__open {
+  position: absolute;
+  z-index: 12;
+  left: 50%;
+  bottom: max(8%, calc(env(safe-area-inset-bottom) + 24px));
+  transform: translateX(-50%);
+  white-space: nowrap;
+  min-width: min(76vw, 245px);
+  min-height: 50px;
+  padding: 13px 26px;
+
+  background: rgba(255, 253, 248, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 2px;
+  color: #fcfaf5;
+  font: 500 15px/1.35 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0.135em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(35, 38, 31, 0.48);
+
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  box-shadow: 0 5px 24px rgba(30, 30, 25, 0.06), inset 0 0 0 1px rgba(255,255,255,.08);
+  cursor: pointer;
+  animation: aureaPetalsButton .7s ease both;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.aurea-petals-intro__open:hover {
+  background: rgba(255, 253, 248, 0.25);
+  border-color: rgba(255,255,255,.98);
+  box-shadow: 0 7px 26px rgba(30,30,25,.10), inset 0 0 0 1px rgba(255,255,255,.15);
+}
+
+.aurea-petals-intro__open:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+@keyframes aureaPetalsButton {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.aurea-petals-intro .aurea-languages {
+  z-index: 13;
+  border-color: rgba(255,255,255,.4);
+  background: rgba(17,24,32,.84);
+}
+
+.aurea-petals-intro .aurea-languages button { color: #fff; }
+
+@media (max-width: 600px) {
+  .aurea-petals-intro__ornament { width: min(80vw, 340px); }
+  .aurea-petals-intro__monogram { font-size: clamp(96px, 22vw, 144px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurea-petals-intro__photo,
+  .aurea-petals-intro__ornament,
+  .aurea-petals-intro__monogram,
+  .aurea-petals-intro__caption {
+    transition: none;
+  }
+}
+
+/* Reduced motion: odmah prikazuje ornament, bez sloja latica. */
+@media (prefers-reduced-motion: reduce) {
+  .aurea-petals-intro__paper-cover,
+  .aurea-petals-intro__petals { display: none; }
+  .aurea-petals-intro__photo,
+  .aurea-petals-intro__ornament,
+  .aurea-petals-intro__monogram,
+  .aurea-petals-intro__caption { opacity: 1 !important; transform: none; filter: none; }
+}

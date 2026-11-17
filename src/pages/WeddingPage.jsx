@@ -105,6 +105,8 @@ import KeepsakeIntro from "../components/KeepsakeIntro";
 import KeepsakeInvitationCard from "../components/KeepsakeInvitationCard";
 import AdriaticaIntro from "../components/AdriaticaIntro.jsx";
 import AdriaticaInvitationCard from "../components/AdriaticaInvitationCard.jsx";
+import AureaIntro from "../components/AureaIntro";
+import AureaInvitationCard from "../components/AureaInvitationCard";
 
 
 import SaveTheDatePetals from "../components/SaveTheDatePetals";
@@ -475,6 +477,12 @@ const TEMPLATE_COMPONENTS = {
   Intro: AdriaticaIntro,
   Invitation: AdriaticaInvitationCard,
 },
+
+"aurea-glitter": {
+  Intro: AureaIntro,
+  Invitation: AureaInvitationCard,
+},
+
 
 };
 

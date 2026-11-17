@@ -4358,3 +4358,545 @@
 }
 
 /* ADRIATICA – KRAJ */
+/* Aurea | dodati na kraj src/styles/newrsvp.css */
+.aurea-card .aurea-rsvp {
+  position: relative;
+  padding: clamp(1.6rem, 5.6vw, 2.45rem) clamp(.8rem, 3.1vw, 1.5rem);
+  border: 1px solid #c9af9c84;
+  background: linear-gradient(#fffcf435, #fffcf435), var(--aurea-linen) center / 100% 100% no-repeat, #fbf5e9;
+  scroll-margin-block-start: 1rem;
+}
+
+.aurea-rsvp-text,
+.aurea-rsvp-deadline {
+  margin: .5rem 0 0;
+  color: var(--aurea-ink);
+  font-size: .88rem;
+}
+
+.aurea-rsvp-deadline strong {
+  display: inline-block;
+  color: var(--aurea-burgundy);
+  font-weight: 600;
+}
+
+.aurea-rsvp form { margin-top: 1.15rem; text-align: left; }
+
+.aurea-rsvp-fields,
+.aurea-rsvp-choices {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.aurea-rsvp-fields {
+  display: grid;
+  gap: .85rem;
+}
+
+.aurea-rsvp legend,
+.aurea-rsvp-field,
+.aurea-rsvp-guest label,
+.aurea-rsvp-stepper {
+  color: var(--aurea-ink);
+  font: 500 .86rem/1.32 var(--aurea-sans);
+}
+
+.aurea-rsvp-choices legend { padding: 0; }
+
+.aurea-rsvp-choice-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .39rem;
+  margin-top: .4rem;
+}
+
+.aurea-rsvp-choice-grid label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .27rem;
+  min-height: 45px;
+  padding: .44rem .46rem;
+  border: 1px solid #a9807788;
+  color: #533439;
+  background-color: #fffdf53d;
+  font: 500 .79rem/1.18 var(--aurea-sans);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.aurea-rsvp-choice-grid label:has(input:checked) {
+  border-color: #84374a;
+  color: #5e1d2e;
+  background-color: #c0919528;
+}
+
+.aurea-rsvp-choice-grid input {
+  margin: 0;
+  accent-color: var(--aurea-burgundy);
+}
+
+.aurea-rsvp-stepper,
+.aurea-rsvp-stepper > div {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.aurea-rsvp-stepper { justify-content: space-between; }
+
+.aurea-rsvp-stepper button {
+  width: 2.65rem;
+  min-height: 2.72rem;
+  padding: 0;
+  border: 1px solid #a9807788;
+  border-radius: 0;
+  background-color: #fffdf562;
+  color: var(--aurea-burgundy);
+  font: 500 1.3rem/1 var(--aurea-sans);
+  cursor: pointer;
+}
+
+.aurea-rsvp-stepper button:disabled { color: #745e58; opacity: .58; cursor: default; }
+.aurea-rsvp-stepper output { min-width: 1.15rem; text-align: center; }
+
+.aurea-rsvp-guest {
+  display: grid;
+  gap: .58rem;
+  min-width: 0;
+  margin: 0;
+  padding: .62rem .64rem .75rem;
+  border: 1px solid #af897d72;
+}
+
+.aurea-rsvp-guest legend { padding: 0 .34rem; color: var(--aurea-burgundy); }
+.aurea-rsvp-guest label, .aurea-rsvp-field { display: grid; gap: .28rem; min-width: 0; }
+
+.aurea-rsvp-guest input,
+.aurea-rsvp-field input,
+.aurea-rsvp select,
+.aurea-rsvp textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: .52rem .58rem;
+  border: 1px solid #ae8d828e;
+  border-radius: 0;
+  color: var(--aurea-ink);
+  background: #fffdf5ad;
+  font: 400 1rem/1.3 var(--aurea-sans);
+}
+
+.aurea-rsvp textarea { resize: vertical; }
+
+.aurea-rsvp .aurea-rsvp-submit {
+  width: 100%;
+  min-height: 47px;
+  margin-top: .14rem;
+  padding: .5rem .56rem;
+  border: 1px solid var(--aurea-burgundy);
+  border-radius: 0;
+  color: #fff7ee;
+  background: #581c2b;
+  font: 500 .75rem/1.4 var(--aurea-sans);
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  cursor: pointer;
+}
+
+.aurea-rsvp .aurea-rsvp-submit:hover { background: #6a2637; }
+.aurea-rsvp .aurea-rsvp-submit:disabled { cursor: wait; opacity: .69; }
+
+.aurea-rsvp-feedback {
+  margin: .8rem 0 0;
+  color: var(--aurea-burgundy);
+  font-size: .98rem;
+  text-align: center;
+}
+
+.aurea-rsvp-feedback p { margin: .35rem 0 0; color: var(--aurea-ink); }
+.aurea-rsvp-error { margin: 0; color: #821934; font-size: .86rem; }
+
+.aurea-countdown { padding-top: .2rem; }
+
+.aurea-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .17rem;
+  margin: .95rem 0 .63rem;
+}
+
+.aurea-countdown-grid div {
+  display: grid;
+  justify-items: center;
+  padding: .31rem .05rem;
+}
+
+.aurea-countdown-grid div + div { border-left: 1px solid var(--aurea-rule); }
+
+.aurea-countdown-grid dt {
+  color: var(--aurea-muted);
+  font: 400 .72rem/1.25 var(--aurea-sans);
+  overflow-wrap: anywhere;
+}
+
+.aurea-countdown-grid dd {
+  grid-row: 1;
+  margin: 0;
+  color: var(--aurea-burgundy);
+  font: 500 clamp(1.33rem, 4.5vw, 2.45rem)/1.06 var(--aurea-serif);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   AUREA — RSVP / BOTANICAL IVORY
+   Bez promena u Firebase logici. Samo Aurea / frame-overlay.
+   Dodati NA KRAJ src/styles/newrsvp.css.
+   ============================================================ */
+
+.aurea-card--frame-overlay .aurea-rsvp-stage {
+  padding: clamp(54px, 10vw, 84px) clamp(14px, 4.5vw, 28px) clamp(62px, 11vw, 90px);
+  background: #f7f3eb;
+  color: #51483d;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp {
+  --aurea-rsvp-olive: #66765e;
+  --aurea-rsvp-ink: #594d40;
+  --aurea-rsvp-light: #fffdf8;
+  --aurea-rsvp-border: rgba(127, 115, 95, .28);
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 510px;
+  margin: 0 auto;
+  padding: clamp(38px, 7vw, 57px) clamp(19px, 5.4vw, 44px) clamp(36px, 7vw, 55px);
+  border: 1px solid rgba(144, 128, 104, .26);
+  border-radius: 7px;
+  background: linear-gradient(146deg, rgba(255,255,255,.91) 0%, rgba(255,253,248,.84) 55%, rgba(250,246,238,.92) 100%);
+  box-shadow: 0 18px 48px rgba(90, 77, 55, .065), 0 2px 5px rgba(90, 77, 55, .025);
+  scroll-margin-block-start: 24px;
+  text-align: center;
+}
+
+/* Tanka utisnuta linija, bez dodatnih ornamenata ili zvezdica. */
+.aurea-card--frame-overlay .aurea-rsvp::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(158, 142, 118, .18);
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp > .aurea-script {
+  margin: 0 auto 4px;
+  color: #65735b;
+  font: 400 clamp(67px, 16vw, 88px)/.96 "Italianno", "Great Vibes", cursive;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.aurea-card--frame-overlay[data-script="cyrillic"] .aurea-rsvp > .aurea-script {
+  font-family: "Marck Script", "Segoe Script", cursive;
+  font-size: clamp(39px, 9.5vw, 59px);
+  line-height: 1.22;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-text {
+  max-width: 350px;
+  margin: 13px auto 0;
+  color: #776b5c;
+  font: 400 clamp(19px, 4.4vw, 22px)/1.46 "Cormorant Garamond", Georgia, serif;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-deadline {
+  max-width: 360px;
+  margin: 12px auto 28px;
+  color: #766e62;
+  font: 400 12px/1.85 "Jost", sans-serif;
+  letter-spacing: .015em;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-deadline strong {
+  display: inline;
+  color: #596951;
+  font-weight: 600;
+  white-space: normal;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp form {
+  margin: 23px 0 0;
+  text-align: left;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-fields {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choices {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choices legend,
+.aurea-card--frame-overlay .aurea-rsvp-stepper > span,
+.aurea-card--frame-overlay .aurea-rsvp-field,
+.aurea-card--frame-overlay .aurea-rsvp-guest label {
+  margin: 0;
+  padding: 0;
+  color: #62574a;
+  font: 500 12px/1.45 "Jost", sans-serif;
+  letter-spacing: .025em;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choice-grid label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 0;
+  min-height: 56px;
+  padding: 11px 8px;
+  border: 1px solid rgba(133, 123, 103, .35);
+  border-radius: 5px;
+  background: rgba(255,255,255,.52);
+  color: #5c5144;
+  cursor: pointer;
+  transition: background .22s ease, border-color .22s ease, box-shadow .22s ease;
+  font: 500 12px/1.3 "Jost", sans-serif;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choice-grid label:hover {
+  background: rgba(234,236,224,.5);
+  border-color: rgba(92,113,83,.56);
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choice-grid label:has(input:checked) {
+  color: #43533d;
+  border-color: #819073;
+  background: #edf0e7;
+  box-shadow: inset 0 0 0 1px rgba(110,129,96,.25);
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choice-grid label:has(input:focus-visible) {
+  outline: 2px solid #64765a;
+  outline-offset: 3px;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-choice-grid input {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: #697b60;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 65px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(131, 116, 94, .16);
+  border-bottom: 1px solid rgba(131, 116, 94, .16);
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-stepper > div {
+  display: inline-flex;
+  gap: 13px;
+  align-items: center;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-stepper button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
+  padding: 0;
+  border: 1px solid #c8c5b8;
+  border-radius: 50%;
+  background: #fffdfa;
+  color: #5a6c50;
+  font: 400 24px/1 "Jost", sans-serif;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-stepper button:hover:not(:disabled) {
+  background: #eef1e8;
+  border-color: #7d8f72;
+  transform: translateY(-1px);
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-stepper button:disabled {
+  color: #b6b3aa;
+  opacity: .58;
+  cursor: not-allowed;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-stepper output {
+  min-width: 20px;
+  color: #554a3e;
+  font: 500 26px/1 "Cormorant Garamond", Georgia, serif;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* Individualni gost ostaje poseban blok: ime / meni / alergije. */
+.aurea-card--frame-overlay .aurea-rsvp-guest {
+  display: grid;
+  gap: 15px;
+  min-width: 0;
+  margin: 0;
+  padding: 17px clamp(12px, 3.4vw, 19px) 20px;
+  border: 1px solid rgba(156, 142, 119, .25);
+  border-radius: 6px;
+  background: rgba(255, 253, 248, .66);
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-guest legend {
+  padding: 0 10px;
+  color: #627359;
+  font: 400 clamp(24px, 5vw, 29px)/1.1 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: .025em;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-guest label,
+.aurea-card--frame-overlay .aurea-rsvp-field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-guest input,
+.aurea-card--frame-overlay .aurea-rsvp-field input,
+.aurea-card--frame-overlay .aurea-rsvp select,
+.aurea-card--frame-overlay .aurea-rsvp textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 49px;
+  margin: 0;
+  padding: 12px 13px;
+  border: 1px solid rgba(143, 131, 109, .39);
+  border-radius: 5px;
+  outline: none;
+  background: #fffdf8;
+  color: #504638;
+  font: 400 16px/1.35 "Jost", sans-serif;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp :is(input,select,textarea):focus-visible {
+  border-color: #6d805f;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(111,132,99,.15);
+}
+
+.aurea-card--frame-overlay .aurea-rsvp :is(input,textarea)::placeholder {
+  color: #a9a093;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp textarea {
+  min-height: 98px;
+  resize: vertical;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp .aurea-rsvp-submit {
+  display: block;
+  width: 100%;
+  min-height: 53px;
+  margin: 2px 0 0;
+  padding: 13px 16px;
+  border: 1px solid #65765c;
+  border-radius: 5px;
+  background: #65765c;
+  color: #fffdf7;
+  font: 500 11px/1.5 "Jost", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .19em;
+  cursor: pointer;
+  box-shadow: 0 7px 17px rgba(65,82,55,.12);
+  transition: background .22s ease, border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp .aurea-rsvp-submit:hover:not(:disabled) {
+  background: #536549;
+  border-color: #536549;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(65,82,55,.15);
+}
+
+.aurea-card--frame-overlay .aurea-rsvp .aurea-rsvp-submit:disabled {
+  opacity: .6;
+  cursor: wait;
+  transform: none;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-feedback {
+  max-width: 370px;
+  margin: 22px auto 8px;
+  color: #627357;
+  font: 400 24px/1.3 "Cormorant Garamond", Georgia, serif;
+  text-align: center;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-feedback strong { font-weight: 500; }
+.aurea-card--frame-overlay .aurea-rsvp-feedback p {
+  margin: 12px 0 0;
+  color: #6e6355;
+  font: 400 13px/1.6 "Jost", sans-serif;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp-error {
+  margin: 0;
+  color: #943c3c;
+  font: 500 12px/1.5 "Jost", sans-serif;
+  text-align: center;
+}
+
+.aurea-card--frame-overlay .aurea-rsvp :is(button,input,select,textarea):focus-visible {
+  outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .aurea-card--frame-overlay .aurea-rsvp-stage { padding-inline: 10px; }
+  .aurea-card--frame-overlay .aurea-rsvp {
+    padding: 36px 17px 40px;
+  }
+  .aurea-card--frame-overlay .aurea-rsvp::before { inset: 7px; }
+  .aurea-card--frame-overlay .aurea-rsvp > .aurea-script {
+    font-size: clamp(57px, 16.5vw, 77px);
+  }
+  .aurea-card--frame-overlay .aurea-rsvp-guest { padding-inline: 12px; }
+  .aurea-card--frame-overlay .aurea-rsvp-choice-grid { gap: 8px; }
+  .aurea-card--frame-overlay .aurea-rsvp-choice-grid label { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card--frame-overlay .aurea-rsvp :is(button,input,select,textarea),
+  .aurea-card--frame-overlay .aurea-rsvp-choice-grid label { transition: none; }
+}
+

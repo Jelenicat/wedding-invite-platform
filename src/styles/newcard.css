@@ -9241,3 +9241,2093 @@ html:has(.nwt.nwt-card) {
     filter: blur(0) brightness(1.18) saturate(.92) drop-shadow(0 2px 5px #1619109c);
   }
 }
+
+/* AUREA BOTANICAL / INVITATION CARD
+ * Izolovan dizajn: sve je pod .aurea-card.
+ * Fontove ucitati na pocetku newcard.css (gotov spojeni fajl to vec radi).
+ */
+.aurea-card,
+.aurea-card *,
+.aurea-card *::before,
+.aurea-card *::after { box-sizing: border-box; }
+
+.aurea-card {
+  --aurea-burgundy: #66715b; /* legacy var, sada maslinasti ton */
+  --aurea-ink: #4b4036;
+  --aurea-muted: #776e61;
+  --aurea-rule: rgba(115,109,88,.26);
+  --aurea-paper: #f9f5eb;
+  --aurea-linen: url('/images/aurea/aurea-emboss.webp');
+  --aurea-sans: 'Jost', 'Montserrat', Arial, sans-serif;
+  --aurea-serif: 'Cormorant Garamond', 'Bodoni MT', Georgia, serif;
+  --aurea-hand: 'Great Vibes', 'Marck Script', 'Segoe Script', cursive;
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 0 48px;
+  overflow: clip;
+  color: var(--aurea-ink);
+  background:
+    radial-gradient(ellipse at 14% 22%,rgba(237,230,208,.64),transparent 58%),
+    radial-gradient(ellipse at 88% 66%,rgba(113,133,109,.29),transparent 60%),
+    #a8ae9e;
+  font: 400 14px/1.7 var(--aurea-sans);
+  text-align: center;
+  animation: aureaCardIn .85s cubic-bezier(.2,.7,.2,1) both;
+}
+.aurea-card:focus { outline: none; }
+.aurea-card::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(40deg, rgba(255,255,255,.018) 0 1px, transparent 1px 5px),
+    radial-gradient(circle at 0 6%, rgba(246,239,217,.27), transparent 35%);
+}
+.aurea-card :where(.aurea-cover,.aurea-welcome,.aurea-calendar-section,.aurea-venue,.aurea-program,.aurea-dress,.aurea-note,.aurea-contact,.aurea-travel,.aurea-signature) :where(h1,h2,h3,p,figure) { margin: 0; }
+.aurea-card :where(button,input,textarea,select) { font: inherit; }
+.aurea-card .aurea-languages { z-index: 50; top: max(.65rem, env(safe-area-inset-top)); }
+.aurea-card a:focus-visible,
+.aurea-card button:focus-visible,
+.aurea-card select:focus-visible,
+.aurea-card input:focus-visible,
+.aurea-card textarea:focus-visible {
+  outline: 2px solid #65795a;
+  outline-offset: 4px;
+}
+
+.aurea-spread {
+  position: relative;
+  display: block;
+  width: min(100%, 630px);
+  margin: 0 auto;
+  box-shadow: 0 30px 90px rgba(42,43,31,.15);
+}
+.aurea-column { min-width: 0; }
+.aurea-column--details { margin: 0; }
+
+/* Cover: fotografski luk + reljefni papir, bez prenaglasenog bordo tona. */
+.aurea-cover {
+  position: relative;
+  padding: 30px clamp(14px,3.3vw,26px) 0;
+  background:
+    linear-gradient(180deg,rgba(30,30,24,.08),transparent 55%),
+    #5f6756;
+}
+.aurea-envelope {
+  position: relative;
+  width: min(100%, 525px);
+  height: clamp(245px, 62vw, 345px);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 7px solid rgba(235,226,205,.45);
+  border-bottom: 0;
+  border-radius: 46% 46% 0 0 / 31% 31% 0 0;
+  box-shadow: inset 0 8px 18px rgba(30,31,25,.08);
+  background: #b7ae95;
+}
+.aurea-envelope::after {
+  content: '';
+  position: absolute;
+  inset: 3px 3px 0;
+  pointer-events: none;
+  border: 1px solid rgba(255,248,221,.48);
+  border-bottom: 0;
+  border-radius: inherit;
+}
+.aurea-envelope img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+  filter: saturate(.85) contrast(.98);
+}
+.aurea-cover-paper,
+.aurea-sheet {
+  position: relative;
+  background-color: var(--aurea-paper);
+}
+.aurea-cover-paper {
+  z-index: 1;
+  width: min(100%, 565px);
+  min-height: 355px;
+  margin: -60px auto 0;
+  padding: 56px clamp(16px,5vw,38px) 43px;
+  background-image:
+    linear-gradient(160deg,rgba(255,255,255,.77),rgba(255,255,255,.15) 62%,rgba(220,211,194,.12)),
+    var(--aurea-linen);
+  background-position: center;
+  background-size: cover, 100% 100%;
+  box-shadow: 0 -5px 20px rgba(44,36,27,.06), 0 14px 26px rgba(44,36,27,.13);
+}
+.aurea-cover-paper::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(138,130,112,.19);
+  pointer-events: none;
+}
+.aurea-small-caps,
+.aurea-mini-label {
+  color: #766452;
+  font: 500 10px/1.7 var(--aurea-sans);
+  letter-spacing: .3em;
+  text-transform: uppercase;
+}
+.aurea-cover-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 14px auto 1px;
+  color: #5c4439;
+  font: 500 calc(clamp(76px, 17.2vw, 119px) * var(--aurea-name-scale, 1))/.77 var(--aurea-serif);
+  letter-spacing: -.038em;
+  text-wrap: nowrap;
+}
+.aurea-cover-names > span:not(.aurea-cover-amp) {
+  max-width: 100%;
+  padding: 9px 0 13px;
+  overflow-wrap: anywhere;
+}
+.aurea-cover-names .aurea-cover-amp {
+  padding: 1px 0 2px;
+  color: #9b8671;
+  font: 400 .69em/1 var(--aurea-hand);
+  letter-spacing: 0;
+}
+.aurea-flourish {
+  display: block;
+  width: min(172px,52%);
+  height: auto;
+  margin: 13px auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  color: #aaa08d;
+  overflow: visible;
+}
+.aurea-flourish circle { fill: currentColor; stroke: none; }
+.aurea-cover-flourish { width: 126px; margin: 14px auto 16px; color: #ad9c88; }
+.aurea-cover-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: .8rem;
+  row-gap: .15rem;
+  color: #695448;
+  font: 500 11px/1.6 var(--aurea-sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.aurea-cover-date span + span::before { content: '✦'; margin-right: .8rem; font-size: .65em; color: #a39b83; }
+
+/* Handwriting: upadljiv, ali ne ugrozava citljivost ostatka. */
+.aurea-card .aurea-script {
+  color: #6b755e;
+  font: 400 clamp(52px, 11.4vw, 76px)/1.24 var(--aurea-hand);
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+.aurea-card[data-script='cyrillic'] .aurea-script {
+  font-family: 'Marck Script', 'Segoe Script', 'Times New Roman', cursive;
+  font-size: clamp(41px,9vw,57px);
+}
+.aurea-sheet { border: 0; }
+.aurea-letter {
+  margin: 0;
+  padding: 0;
+  background: #fcfaf4;
+}
+.aurea-letter > section { position: relative; }
+.aurea-welcome {
+  padding: clamp(70px,13vw,110px) clamp(26px,8vw,76px) clamp(73px,13vw,108px);
+  background:
+    radial-gradient(ellipse at 0 13%,rgba(219,211,190,.25),transparent 54%),
+    radial-gradient(ellipse at 100% 94%,rgba(211,210,189,.24),transparent 50%),
+    #fcfaf5;
+}
+.aurea-welcome .aurea-mini-label { margin-bottom: 10px; }
+.aurea-welcome .aurea-script { margin: 0 auto; }
+.aurea-welcome .aurea-flourish { margin: 12px auto 22px; }
+.aurea-card .aurea-welcome-copy {
+  max-width: 390px;
+  margin: 0 auto;
+  color: #675d52;
+  font: 400 clamp(20px,4.4vw,25px)/1.55 var(--aurea-serif);
+  white-space: pre-line;
+  text-wrap: pretty;
+}
+.aurea-calendar-section {
+  padding: 30px 28px 80px;
+  background: #f3eee4;
+}
+.aurea-calendar-section::before,
+.aurea-calendar-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 23px;
+  pointer-events: none;
+  background: radial-gradient(circle at 14px 0, transparent 13px, #f3eee4 13.7px) 0 0/28px 25px repeat-x;
+}
+.aurea-calendar-section::before { top: -21px; transform: rotate(180deg); }
+.aurea-calendar-section::after { bottom: -21px; z-index: 2; }
+.aurea-calendar-section > .aurea-script { margin: 0 auto 17px; }
+.aurea-calendar-paper { width: min(100%, 330px); margin: 0 auto; padding: 22px 15px 8px; }
+.aurea-month {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: #655c4d;
+  font: 400 13px/1.15 var(--aurea-serif);
+  font-variant-numeric: tabular-nums;
+}
+.aurea-month caption {
+  padding-bottom: 17px;
+  color: #5d6a53;
+  font: 600 19px/1.4 var(--aurea-serif);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.aurea-month :is(th,td) { height: 35px; padding: 0; text-align: center; }
+.aurea-month th {
+  color: #8b8376;
+  border-bottom: 1px solid rgba(108,105,85,.25);
+  font: 500 10px var(--aurea-sans);
+}
+.aurea-month-date {
+  position: relative;
+  z-index: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  color: #fffaf2;
+  font-weight: 600;
+}
+.aurea-month-date::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 2px 0 0;
+  border-radius: 50% 50% 48% 48%;
+  background: #788566;
+  transform: rotate(-12deg);
+}
+.aurea-month-date::after { display: none; }
+
+/* Location: borderless photo, minimal map action. */
+.aurea-venue {
+  padding: 86px clamp(24px,8vw,72px) 88px;
+  background: #fcfaf5;
+}
+.aurea-venue > .aurea-script { margin-bottom: 18px; }
+.aurea-venue-content { display: grid; gap: 18px; justify-items: center; }
+.aurea-venue-content--photo { grid-template-columns: minmax(0,1fr); }
+.aurea-venue-photo { width: min(100%,350px); margin: 0 auto; }
+.aurea-venue-photo img {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  aspect-ratio: 1/.94;
+  border-radius: 46% 46% 0 0 / 27% 27% 0 0;
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+  box-shadow: 0 7px 24px rgba(52,51,39,.09);
+}
+.aurea-venue-photo figcaption {
+  margin: 9px 0 0;
+  color: #8a8173;
+  font: 400 10px/1.5 var(--aurea-sans);
+  letter-spacing: .06em;
+}
+.aurea-venue-text { max-width: 430px; margin: 6px auto 0; }
+.aurea-venue-text p:first-child {
+  color: #5b503f;
+  font: 500 clamp(29px,6.6vw,39px)/1.1 var(--aurea-serif);
+  overflow-wrap: anywhere;
+}
+.aurea-venue-text p + p {
+  margin-top: 6px;
+  color: #817665;
+  font: 400 13px/1.6 var(--aurea-sans);
+}
+.aurea-card .aurea-link,
+.aurea-card .aurea-outline-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 9px 21px;
+  border: 1px solid #8e947d;
+  border-radius: 0;
+  color: #5b6853;
+  background: rgba(250,247,237,.25);
+  font: 500 10px/1.5 var(--aurea-sans);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: background .25s ease,color .25s ease,border-color .25s ease;
+}
+.aurea-card .aurea-link:hover,
+.aurea-card .aurea-outline-button:hover {
+  color: #fffaf3;
+  background: #64745d;
+  border-color: #64745d;
+}
+.aurea-diagonal-arrow { position: relative; display: inline-block; width: 11px; height: 11px; flex: none; }
+.aurea-diagonal-arrow::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 6px; height: 6px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+.aurea-diagonal-arrow::after {
+  content: '';
+  position: absolute;
+  left: 1px; bottom: 1px;
+  width: 13px; height: 1px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: left;
+}
+.aurea-travel { padding: 60px 40px; background:#f4f0e7; }
+.aurea-travel > div { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--aurea-rule); }
+.aurea-travel h3 { font: 500 25px/1.25 var(--aurea-serif); }
+.aurea-travel p { margin-top: 8px; }
+.aurea-travel small { display: block; }
+
+/* Program: mokka, izvor iz reference; cifre i svetli pisani naslov. */
+.aurea-program {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0;
+  padding: 88px clamp(28px,8.5vw,75px) 92px;
+  background:
+    radial-gradient(ellipse at 50% 5%,rgba(183,155,124,.13),transparent 50%),
+    #48423a;
+  color: #f6efe3;
+}
+.aurea-program::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .16;
+  pointer-events: none;
+  background: repeating-linear-gradient(30deg,rgba(254,249,233,.09) 0 1px,transparent 1px 8px);
+}
+.aurea-program-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 22px;
+  background: radial-gradient(circle at 14px 22px,#f3eee4 11px,transparent 12px) 0 0/28px 22px repeat-x;
+}
+.aurea-program .aurea-mini-label { color: #d6c7aa; font-size: 9px; }
+.aurea-program .aurea-script { margin: 7px auto 0; color: #f6e8d3; font-size: clamp(55px,11.5vw,79px); }
+.aurea-program .aurea-flourish { color: #c3b59b; width: 146px; margin: 6px auto 32px; }
+.aurea-timeline {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
+.aurea-timeline li {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 23px 0;
+  border-bottom: 1px solid rgba(235,220,196,.2);
+}
+.aurea-timeline li:last-child { border-bottom: 0; }
+.aurea-timeline-curve { display: none; }
+.aurea-timeline-text {
+  display: grid;
+  grid-template-columns: minmax(70px, .35fr) minmax(0,1fr);
+  gap: 17px;
+  align-items: start;
+  width: 100%;
+  color: inherit;
+}
+.aurea-event-time {
+  color: #ded0bb;
+  font: 400 clamp(28px,7vw,36px)/1.05 var(--aurea-serif);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.aurea-timeline h3 {
+  color: #fcf7eb;
+  font: 500 clamp(23px,5.4vw,31px)/1.08 var(--aurea-serif);
+  text-wrap: balance;
+}
+.aurea-timeline :is(p,a) {
+  display: block;
+  margin-top: 7px;
+  color: #d6cabb;
+  font: 400 12px/1.75 var(--aurea-sans);
+  overflow-wrap: anywhere;
+}
+.aurea-timeline a { text-decoration: underline; text-decoration-color: #c3b09580; text-underline-offset: 4px; }
+.aurea-timeline a:hover { color:#fff; }
+
+/* Dress code: maslinasto-zelena, bez agresivne bordo. */
+.aurea-dress {
+  position: relative;
+  overflow: hidden;
+  padding: 87px clamp(28px,8vw,75px) 90px;
+  background:
+    radial-gradient(ellipse at 50% 35%,rgba(255,255,255,.11),transparent 67%),
+    #7d8976;
+  color: #fffdf4;
+}
+.aurea-dress::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(246,238,220,.22);
+  pointer-events: none;
+}
+.aurea-dress-oval { display: block; max-width: 330px; margin: 0 auto 20px; }
+.aurea-dress .aurea-dress-oval .aurea-script { color: #fff8e8; font-size: clamp(64px,13vw,87px); }
+.aurea-dress p { max-width: 390px; margin: 12px auto 0; color: #f5f4e9; font: 400 14px/1.75 var(--aurea-sans); }
+.aurea-palette {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 29px auto 5px;
+  padding: 0;
+  list-style: none;
+}
+.aurea-palette li > span:first-child {
+  display: block;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  border: 3px solid rgba(248,244,232,.9);
+  box-shadow: 0 4px 10px rgba(32,38,30,.14);
+}
+.aurea-dress-role strong { font-weight: 600; color: inherit; }
+
+.aurea-note {
+  padding: 68px 36px 69px;
+  background: #f4f0e6;
+  border: 0;
+}
+.aurea-note::before, .aurea-note::after { content: '✦'; display: block; color: #8e927b; font: 18px var(--aurea-serif); }
+.aurea-note .aurea-script { margin: 4px 0; }
+.aurea-note p { max-width: 350px; margin: 9px auto 18px; font: 400 21px/1.4 var(--aurea-serif); color: #6b6256; }
+
+/* RSVP / countdown komponente ostaju postojece, zajedno sa Firebase logikom. */
+.aurea-rsvp-stage {
+  position: relative;
+  padding: 35px clamp(10px,4vw,24px) 28px;
+  background: #fbf8f0;
+  color: #4e483c;
+}
+.aurea-rsvp-stage > * { max-width: 100%; }
+.aurea-contact { padding: 35px 28px 45px; background: #f3eee3; }
+.aurea-contact p { margin: 10px 0 0; }
+.aurea-contact strong,.aurea-contact a { display: block; color: #586a50; }
+.aurea-countdown-stage { padding: 30px 15px 35px; background: #f9f6ef; }
+.aurea-countdown-stage > * { max-width: 100%; }
+.aurea-signature {
+  margin: 0;
+  padding: 58px 22px 67px;
+  background: #555047;
+  color: #f7f0e3;
+}
+.aurea-signature .aurea-flourish { color: #d5c7ab; }
+.aurea-signature .aurea-script {
+  max-width: 470px;
+  margin: 0 auto;
+  color: #f9ecda;
+  font-size: clamp(51px,11vw,73px);
+}
+.aurea-signature-names {
+  display: block;
+  margin-top: 15px;
+  color: #ddd2bd;
+  font: 500 10px/1.5 var(--aurea-sans);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.aurea-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Ulaz i postepeno pojavljivanje sekcija tokom skrolovanja. */
+@keyframes aureaCardIn {
+  from { opacity: .35; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.aurea-card.aurea-motion-enabled [data-aurea-reveal]:not(.aurea-is-visible) {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.aurea-card [data-aurea-reveal] {
+  transition: opacity .8s ease, transform .9s cubic-bezier(.22,1,.36,1);
+}
+.aurea-card [data-aurea-reveal].aurea-is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .aurea-spread { width: 100%; }
+  .aurea-cover { padding: 15px 10px 0; }
+  .aurea-envelope { height: clamp(210px,67vw,295px); border-width: 5px; }
+  .aurea-cover-paper { width: 100%; margin-top: -40px; padding: 49px 15px 38px; min-height: 315px; }
+  .aurea-cover-names { font-size: calc(clamp(65px,18vw,91px) * var(--aurea-name-scale, 1)); }
+  .aurea-small-caps { font-size: 9px; }
+  .aurea-cover-date { font-size: 10px; }
+  .aurea-venue { padding-inline: 23px; }
+  .aurea-program { padding-inline: clamp(26px,7vw,42px); }
+  .aurea-dress { padding-inline: 22px; }
+}
+@media (max-width: 360px) {
+  .aurea-cover-names { font-size: calc(62px * var(--aurea-name-scale, 1)); }
+  .aurea-timeline-text { grid-template-columns: 66px minmax(0,1fr); gap: 10px; }
+  .aurea-timeline h3 { font-size: 22px; }
+  .aurea-event-time { font-size: 26px; }
+  .aurea-card .aurea-script { font-size: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card { animation: none; }
+  .aurea-card [data-aurea-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ============================================================
+   AUREA FRAME COVER — DODAJ NA KRAJ newcard.css
+   Pozadina je samo fotografija; bez zelenog polja.
+   Koristi originalni PNG /images/aurea/okvir-jezik.png.
+   Sve selektore ogranicavamo na ovaj Aurea cover.
+   ============================================================ */
+
+.aurea-card--frame-overlay {
+  background: #f8f4ec;
+}
+.aurea-card--frame-overlay::before { display: none; }
+.aurea-card--frame-overlay .aurea-spread {
+  box-shadow: 0 12px 46px rgba(53, 45, 32, .12);
+}
+
+/* Slika ide preko CELOG hero ekrana, ne samo kroz gornji luk. */
+.aurea-card--frame-overlay .aurea-cover {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 620px;
+  height: 100svh;
+  max-height: 1040px;
+  margin: 0;
+  padding: clamp(22px, 4svh, 38px) 10px;
+  overflow: hidden;
+  background: #d3c7ae; /* samo fallback dok se fotografija ucitava */
+}
+.aurea-card--frame-overlay .aurea-cover::before,
+.aurea-card--frame-overlay .aurea-cover::after { content: none; }
+.aurea-card--frame-overlay .aurea-cover-landscape {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.aurea-card--frame-overlay .aurea-cover-landscape img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 48% center;
+  filter: none; /* nema grayscale, tamnog overlay-a ni zelenog tona */
+  transform: scale(1.035);
+  animation: aureaFrameLandscape 8s cubic-bezier(.22,.64,.18,1) both;
+}
+
+/* Reljefni nepravilni ram lezi PREKO fotografije. */
+.aurea-card--frame-overlay .aurea-cover-frame {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  width: min(91%, 515px, calc((100svh - 80px) * .732));
+  aspect-ratio: 1073 / 1466;
+  margin: 0 auto;
+  transform: translateY(0);
+  animation: aureaFrameArrive 1.3s cubic-bezier(.22,1,.36,1) both;
+  filter: drop-shadow(0 16px 24px rgba(64, 49, 32, .22));
+}
+.aurea-card--frame-overlay .aurea-cover-frame-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Sadrzaj se pozicionira UNUTAR praznog prostora rama. */
+.aurea-card--frame-overlay .aurea-cover-frame-content {
+  position: absolute;
+  z-index: 1;
+  top: 23%;
+  right: 13.5%;
+  bottom: 19%;
+  left: 13.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-align: center;
+  color: #755744;
+}
+.aurea-card--frame-overlay .aurea-cover-frame-content .aurea-small-caps {
+  flex: none;
+  max-width: 100%;
+  margin: 0 0 10px;
+  color: #806a52;
+  font: 500 clamp(7px,1.65vw,10px)/1.5 'Jost',sans-serif;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  white-space: normal;
+  text-wrap: balance;
+}
+
+/* IMENA SU PRAVI TEKST: menjaju se iz brideName/groomName po slugu. */
+.aurea-card--frame-overlay .aurea-cover-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  color: #835b3f;
+  font-family: 'Great Vibes', 'Italianno', 'Edwardian Script ITC', cursive;
+  font-size: calc(clamp(59px, 15.5vw, 100px) * var(--aurea-name-scale, 1));
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 rgba(255,255,255,.30);
+}
+.aurea-card--frame-overlay .aurea-cover-names > span:not(.aurea-cover-amp) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: .04em .07em .07em;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  overflow: visible;
+}
+.aurea-card--frame-overlay .aurea-cover-names .aurea-cover-amp {
+  display: block;
+  align-self: center;
+  margin: -.03em 0 -.12em;
+  padding: 0 .14em;
+  color: #a18466;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: .46em;
+  font-style: italic;
+  line-height: 1.08;
+}
+.aurea-card--frame-overlay[data-script='cyrillic'] .aurea-cover-names {
+  font-family: 'Marck Script', 'Segoe Script', cursive;
+  font-size: calc(clamp(51px, 13vw, 84px) * var(--aurea-name-scale, 1));
+}
+
+.aurea-card--frame-overlay .aurea-cover-flourish {
+  display: block;
+  flex: none;
+  width: min(112px, 43%);
+  height: auto;
+  margin: 2px auto 10px;
+  color: #ae997f;
+  opacity: .75;
+}
+.aurea-card--frame-overlay .aurea-cover-date {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 1px;
+  width: 100%;
+  margin: 0;
+  color: #765c45;
+  font: 500 clamp(7.5px,1.75vw,10px)/1.55 'Jost',sans-serif;
+  letter-spacing: .115em;
+  text-transform: uppercase;
+}
+.aurea-card--frame-overlay .aurea-cover-date span + span::before {
+  content: '✦';
+  margin-right: 8px;
+  color: #a18a6e;
+  font-size: .6em;
+}
+
+@keyframes aureaFrameLandscape {
+  from { transform: scale(1.085); }
+  to { transform: scale(1.035); }
+}
+@keyframes aureaFrameArrive {
+  from { opacity: 0; transform: translateY(18px) scale(.975); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 600px) {
+  .aurea-card--frame-overlay .aurea-cover {
+    min-height: 570px;
+    height: 100svh;
+    max-height: 920px;
+    padding: 18px 6px;
+  }
+  .aurea-card--frame-overlay .aurea-cover-frame {
+    width: min(95%, 450px, calc((100svh - 40px) * .732));
+  }
+  .aurea-card--frame-overlay .aurea-cover-frame-content {
+    top: 22%;
+    right: 12.5%;
+    bottom: 17.5%;
+    left: 12.5%;
+  }
+  .aurea-card--frame-overlay .aurea-cover-names {
+    font-size: calc(clamp(57px, 15vw, 80px) * var(--aurea-name-scale, 1));
+  }
+  .aurea-card--frame-overlay .aurea-cover-flourish {
+    margin-top: -2px;
+    margin-bottom: 7px;
+    width: 87px;
+  }
+}
+@media (max-width: 365px) {
+  .aurea-card--frame-overlay .aurea-cover-names {
+    font-size: calc(14.5vw * var(--aurea-name-scale, 1));
+  }
+  .aurea-card--frame-overlay .aurea-cover-frame-content .aurea-small-caps {
+    font-size: 7px;
+    letter-spacing: .13em;
+  }
+  .aurea-card--frame-overlay .aurea-cover-flourish { width: 74px; }
+  .aurea-card--frame-overlay .aurea-cover-date { font-size: 7px; letter-spacing: .07em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card--frame-overlay .aurea-cover-landscape img,
+  .aurea-card--frame-overlay .aurea-cover-frame {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Veliki, tanki, elegantni rukopisni font u reljefnom ramu. */
+.aurea-card--frame-overlay .aurea-cover-names {
+  width: 100%;
+  max-width: 100%;
+  gap: 0;
+  margin: 4px 0 0;
+  color: #80573c;
+  font-family: 'Italianno', 'Great Vibes', 'Edwardian Script ITC', cursive;
+  font-size: calc(clamp(83px, 24vw, 138px) * var(--aurea-name-scale, 1));
+  font-weight: 400;
+  line-height: .8;
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 rgba(255,255,255,.23);
+}
+
+.aurea-card--frame-overlay .aurea-cover-names > span:not(.aurea-cover-amp) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: .13em .045em .11em;
+  white-space: nowrap;
+  overflow: visible;
+  text-align: center;
+}
+
+.aurea-card--frame-overlay .aurea-cover-names .aurea-cover-amp {
+  font-family: 'Italianno', 'Great Vibes', cursive;
+  font-size: .46em;
+  line-height: .78;
+  font-weight: 400;
+  font-style: normal;
+  color: #a18160;
+  margin: -.03em 0 -.04em;
+  padding: 0;
+}
+
+/* Nema ukrasnog separatora između imena i datuma. */
+.aurea-card--frame-overlay .aurea-cover-flourish {
+  display: none !important;
+}
+
+.aurea-card--frame-overlay .aurea-cover-date {
+  margin-top: 14px;
+  letter-spacing: .13em;
+}
+
+.aurea-card--frame-overlay .aurea-cover-date span + span::before {
+  content: '·';
+  font-size: 1.1em;
+  margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .aurea-card--frame-overlay .aurea-cover-names {
+    font-size: calc(clamp(78px, 23vw, 118px) * var(--aurea-name-scale, 1));
+  }
+  .aurea-card--frame-overlay .aurea-cover-date {
+    margin-top: 11px;
+  }
+}
+
+@media (max-width: 365px) {
+  .aurea-card--frame-overlay .aurea-cover-names {
+    font-size: calc(22.8vw * var(--aurea-name-scale, 1));
+  }
+  .aurea-card--frame-overlay .aurea-cover-date {
+    margin-top: 8px;
+  }
+}
+
+/* Ćirilica koristi font koji je već predviđen za nju. */
+.aurea-card--frame-overlay[data-script='cyrillic'] .aurea-cover-names {
+  font-family: 'Marck Script', 'Segoe Script', cursive;
+  font-size: calc(clamp(51px, 13vw, 84px) * var(--aurea-name-scale, 1));
+  line-height: 1.02;
+}
+
+/* Svi rukopisni Aurea naslovi koriste isti Italianno kao Adriatica. */
+.aurea-card {
+  --aurea-hand: "Italianno", "Great Vibes", "Edwardian Script ITC", cursive;
+}
+.aurea-card .aurea-script {
+  font-family: var(--aurea-hand);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(70px, 16vw, 104px);
+  line-height: 0.96;
+  letter-spacing: 0;
+  text-transform: none;
+  text-wrap: balance;
+}
+.aurea-card--frame-overlay .aurea-cover-names,
+.aurea-card--frame-overlay .aurea-cover-names .aurea-cover-amp {
+  font-family: var(--aurea-hand);
+}
+/* Poseban font za cirilicu, Italianno ne podrzava cirilicna slova. */
+.aurea-card[data-script="cyrillic"] .aurea-script,
+.aurea-card--frame-overlay[data-script="cyrillic"] .aurea-cover-names {
+  font-family: "Marck Script", "Segoe Script", cursive;
+  line-height: 1.15;
+}
+
+/* Nema malog SVG ornamenta ispod 'Dragi nasi'. */
+.aurea-card .aurea-welcome .aurea-flourish { display: none; }
+.aurea-card .aurea-welcome .aurea-script { margin: 0 auto 20px; }
+
+/* FADE: gornja pejzazna fotografija prirodno nestaje u boji papira.
+   Nema tamnog overlay-a. Gradient je samo u donjoj zoni covera. */
+.aurea-card--frame-overlay .aurea-cover {
+  position: relative;
+  isolation: isolate;
+}
+.aurea-card--frame-overlay .aurea-cover::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(145px, 27svh, 290px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 250, 245, 0) 0%,
+    rgba(252, 250, 245, 0.10) 21%,
+    rgba(252, 250, 245, 0.50) 57%,
+    rgba(252, 250, 245, 0.88) 82%,
+    #fcfaf5 100%
+  );
+}
+.aurea-card--frame-overlay .aurea-letter {
+  margin-top: -1px;
+  background: #fcfaf5;
+}
+.aurea-card--frame-overlay .aurea-welcome {
+  background: #fcfaf5;
+}
+
+/* KALENDAR NA RELJEFNOM PAPIRU, umesto talasastih ukrasa gore/dole. */
+.aurea-card .aurea-calendar-section {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 6vw, 44px) 10px clamp(35px, 8vw, 70px);
+  background: #f5f0e7;
+  overflow: hidden;
+}
+.aurea-card .aurea-calendar-section::before,
+.aurea-card .aurea-calendar-section::after {
+  content: none !important;
+  display: none !important;
+}
+.aurea-card .aurea-calendar-embossed {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: min(100%, 465px);
+  aspect-ratio: 960 / 1344;
+  margin: 0 auto;
+  filter: drop-shadow(0 12px 18px rgba(85, 74, 58, .12));
+}
+.aurea-card .aurea-calendar-embossed__frame {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+}
+.aurea-card .aurea-calendar-embossed__content {
+  position: relative;
+  z-index: 1;
+  width: 74%;
+  height: 65%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(7px, 2vw, 16px);
+  padding: 0;
+  color: #64584a;
+}
+.aurea-card .aurea-calendar-embossed .aurea-script {
+  width: 100%;
+  margin: 0 auto;
+  color: #6a7561;
+  font-size: clamp(57px, 13vw, 81px);
+  line-height: .95;
+}
+.aurea-card .aurea-calendar-embossed .aurea-calendar-paper {
+  width: 100%;
+  max-width: 340px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month {
+  font-size: clamp(11px, 2.65vw, 14px);
+}
+.aurea-card .aurea-calendar-embossed .aurea-month caption {
+  padding-bottom: 10px;
+  font-size: clamp(15px, 3.5vw, 21px);
+  color: #655b4d;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month :is(th, td) {
+  height: clamp(26px, 6.3vw, 35px);
+}
+.aurea-card .aurea-calendar-embossed .aurea-month th {
+  font-size: clamp(8px, 1.85vw, 10px);
+}
+.aurea-card .aurea-calendar-embossed .aurea-month-date {
+  width: 27px;
+  height: 27px;
+}
+
+@media (max-width: 400px) {
+  .aurea-card .aurea-calendar-embossed { width: min(100%, 385px); }
+  .aurea-card .aurea-calendar-embossed__content { width: 76%; height: 66%; }
+  .aurea-card .aurea-calendar-embossed .aurea-script { font-size: clamp(53px, 13vw, 67px); }
+  .aurea-card .aurea-calendar-embossed .aurea-month :is(th,td) { height: clamp(24px, 6.2vw, 29px); }
+  .aurea-card .aurea-welcome .aurea-script { font-size: 75px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card--frame-overlay .aurea-cover::after { animation: none; }
+}
+
+/* Svi rukopisni Aurea naslovi koriste isti Italianno kao Adriatica. */
+.aurea-card {
+  --aurea-hand: "Italianno", "Great Vibes", "Edwardian Script ITC", cursive;
+}
+.aurea-card .aurea-script {
+  font-family: var(--aurea-hand);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(70px, 16vw, 104px);
+  line-height: 0.96;
+  letter-spacing: 0;
+  text-transform: none;
+  text-wrap: balance;
+}
+.aurea-card--frame-overlay .aurea-cover-names,
+.aurea-card--frame-overlay .aurea-cover-names .aurea-cover-amp {
+  font-family: var(--aurea-hand);
+}
+/* Poseban font za cirilicu, Italianno ne podrzava cirilicna slova. */
+.aurea-card[data-script="cyrillic"] .aurea-script,
+.aurea-card--frame-overlay[data-script="cyrillic"] .aurea-cover-names {
+  font-family: "Marck Script", "Segoe Script", cursive;
+  line-height: 1.15;
+}
+
+/* Nema malog SVG ornamenta ispod 'Dragi nasi'. */
+.aurea-card .aurea-welcome .aurea-flourish { display: none; }
+.aurea-card .aurea-welcome .aurea-script { margin: 0 auto 20px; }
+
+/* FADE: gornja pejzazna fotografija prirodno nestaje u boji papira.
+   Nema tamnog overlay-a. Gradient je samo u donjoj zoni covera. */
+.aurea-card--frame-overlay .aurea-cover {
+  position: relative;
+  isolation: isolate;
+}
+.aurea-card--frame-overlay .aurea-cover::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(145px, 27svh, 290px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 250, 245, 0) 0%,
+    rgba(252, 250, 245, 0.10) 21%,
+    rgba(252, 250, 245, 0.50) 57%,
+    rgba(252, 250, 245, 0.88) 82%,
+    #fcfaf5 100%
+  );
+}
+.aurea-card--frame-overlay .aurea-letter {
+  margin-top: -1px;
+  background: #fcfaf5;
+}
+.aurea-card--frame-overlay .aurea-welcome {
+  background: #fcfaf5;
+}
+
+/* KALENDAR — beli prostor oko reljefnog okvira.
+   Kompletan kalendar se nalazi u praznoj sredini slike; brojevi nisu bledi. */
+.aurea-card .aurea-calendar-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: clamp(15px, 3.5vw, 27px) 0 clamp(22px, 5vw, 40px);
+  overflow: visible;
+  background: #ffffff;
+}
+.aurea-card .aurea-calendar-section::before,
+.aurea-card .aurea-calendar-section::after {
+  content: none !important;
+  display: none !important;
+}
+/* Ram je transparentni WEBP; ne dodajemo pozadinski krem pravougaonik. */
+.aurea-card .aurea-calendar-embossed {
+  position: relative;
+  isolation: isolate;
+  flex: none;
+  width: min(100%, 465px);
+  aspect-ratio: 960 / 1344;
+  margin: 0 auto;
+  background: transparent;
+  filter: drop-shadow(0 12px 16px rgba(72, 64, 50, .09));
+}
+.aurea-card .aurea-calendar-embossed__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+.aurea-card .aurea-calendar-embossed__content {
+  position: absolute;
+  z-index: 1;
+  top: 22%;
+  bottom: 22%;
+  left: 14%;
+  right: 14%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3.3vw, 24px);
+  width: auto;
+  height: auto;
+  padding: 0;
+  color: #51483e;
+}
+.aurea-card .aurea-calendar-embossed .aurea-script {
+  flex: none;
+  width: 110%;
+  max-width: none;
+  margin: 0;
+  font-family: var(--aurea-hand);
+  font-size: clamp(57px, 12.5vw, 80px);
+  font-weight: 400;
+  line-height: 1.04;
+  color: #5b6c56;
+  white-space: nowrap;
+  text-align: center;
+}
+.aurea-card .aurea-calendar-embossed .aurea-calendar-paper {
+  flex: none;
+  width: 100%;
+  max-width: 350px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  color: #594b40;
+  font-family: var(--aurea-serif);
+  font-size: clamp(14px, 3.5vw, 16px);
+  font-weight: 500;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month caption {
+  padding: 0 0 clamp(12px, 2.9vw, 19px);
+  color: #624e3d;
+  font-family: var(--aurea-serif);
+  font-size: clamp(19px, 4.5vw, 24px);
+  font-weight: 600;
+  letter-spacing: .09em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month th,
+.aurea-card .aurea-calendar-embossed .aurea-month td {
+  height: clamp(31px, 8vw, 39px);
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  color: #54473c;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month th {
+  border-bottom: 1px solid rgba(103, 92, 74, .42);
+  color: #6b6257;
+  font: 500 clamp(10px, 2.4vw, 11px)/1.3 var(--aurea-sans);
+}
+.aurea-card .aurea-calendar-embossed .aurea-month-date {
+  display: inline-grid;
+  width: clamp(29px, 7.2vw, 34px);
+  height: clamp(29px, 7.2vw, 34px);
+  place-items: center;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: 700;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month-date::before {
+  inset: 0;
+  background: #69795e;
+  border-radius: 50%;
+  transform: none;
+}
+/* Mali telefoni: ceo mesec ostaje unutar unutrasnje linije rama. */
+@media (max-width: 400px) {
+  .aurea-card .aurea-calendar-embossed { width: 100%; }
+  .aurea-card .aurea-calendar-embossed__content {
+    left: 14.5%; right: 14.5%; top: 18%; bottom: 18%;
+    gap: 12px;
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-script {
+    font-size: clamp(52px, 13vw, 62px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month {
+    font-size: clamp(12px, 3.55vw, 14px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month caption {
+    padding-bottom: 10px;
+    font-size: clamp(16px, 4.35vw, 19px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month th,
+  .aurea-card .aurea-calendar-embossed .aurea-month td {
+    height: clamp(27px, 7.55vw, 32px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month-date {
+    width: 27px; height: 27px;
+  }
+  .aurea-card .aurea-welcome .aurea-script { font-size: 75px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card--frame-overlay .aurea-cover::after { animation: none; }
+}
+
+.aurea-card--frame-overlay .aurea-letter,
+.aurea-card--frame-overlay .aurea-welcome,
+.aurea-card--frame-overlay .aurea-calendar-section,
+.aurea-card--frame-overlay .aurea-venue {
+  background: #ffffff;
+}
+/* AUREA — bez vidljive linije izmedju fotografije i belog dela.
+   Dodaj NA KRAJ postojeceg Aurea-Calendar-Fade-Italianno.css.
+   Menja se samo cover prelaz. Ostale komponente ostaju iste. */
+
+/* Obe sekcije su identicno bele, ukljucujuci prostor ispod slike. */
+.aurea-card--frame-overlay .aurea-cover,
+.aurea-card--frame-overlay .aurea-cover-landscape,
+.aurea-card--frame-overlay .aurea-letter,
+.aurea-card--frame-overlay .aurea-welcome {
+  background-color: #ffffff;
+}
+
+/* Iskljuci stari beli overlay koji je zavrsavao vidljivom linijom. */
+.aurea-card--frame-overlay .aurea-cover::after {
+  content: none;
+  display: none;
+}
+
+/* Fade se sada primenjuje SAMO na fotografiju, ne preko ornamenta.
+   Poslednjih ~10% covera je potpuno belo, pa nema mesta na kom
+   se razlicite nijanse spajaju. Ne koristi grayscale ni tamni overlay. */
+.aurea-card--frame-overlay .aurea-cover-landscape img {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%,
+    rgba(0,0,0,.22) 84%,
+    transparent 91%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%,
+    rgba(0,0,0,.22) 84%,
+    transparent 91%,
+    transparent 100%
+  );
+}
+
+/* Preklop od 2px sprečava tanku liniju usled subpixel zaokruživanja. */
+.aurea-card--frame-overlay .aurea-letter {
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
+}
+
+/* ==============================================================
+   AUREA / IVORY — jedna nijansa kroz prelaz i svetle sekcije.
+   Isti ton iza fotografije, oko reljefnog rama i u "Dragi nasi".
+   Dodati na kraj Aurea-Calendar-Fade-Italianno.css.
+   Ne utice na RSVP / countdown, ni druge templejte.
+   ============================================================== */
+.aurea-card--frame-overlay {
+  --aurea-ivory-bg: #f7f3eb;
+  background-color: var(--aurea-ivory-bg);
+}
+
+.aurea-card--frame-overlay .aurea-spread,
+.aurea-card--frame-overlay .aurea-column--letter,
+.aurea-card--frame-overlay .aurea-cover,
+.aurea-card--frame-overlay .aurea-cover-landscape,
+.aurea-card--frame-overlay .aurea-letter,
+.aurea-card--frame-overlay .aurea-welcome,
+.aurea-card--frame-overlay .aurea-calendar-section,
+.aurea-card--frame-overlay .aurea-venue {
+  background: var(--aurea-ivory-bg);
+  background-color: var(--aurea-ivory-bg);
+}
+
+/* Fotografija se maskira do potpunog providnog kraja.
+   Ispod nje je ISTA ivory boja kao u sekciji "Dragi nasi". */
+.aurea-card--frame-overlay .aurea-cover::after {
+  content: none;
+  display: none;
+}
+.aurea-card--frame-overlay .aurea-cover-landscape img {
+  -webkit-mask-image: linear-gradient(to bottom,
+    #000 0%, #000 58%, rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%, rgba(0,0,0,.22) 84%,
+    transparent 91%, transparent 100%);
+  mask-image: linear-gradient(to bottom,
+    #000 0%, #000 58%, rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%, rgba(0,0,0,.22) 84%,
+    transparent 91%, transparent 100%);
+}
+
+/* Ram i kalendar zadrzavaju svoj prirodni reljef bez dodatne kutije. */
+.aurea-card--frame-overlay .aurea-calendar-embossed,
+.aurea-card--frame-overlay .aurea-calendar-paper {
+  background: transparent;
+}
+/* Svi rukopisni Aurea naslovi koriste isti Italianno kao Adriatica. */
+.aurea-card {
+  --aurea-hand: "Italianno", "Great Vibes", "Edwardian Script ITC", cursive;
+}
+.aurea-card .aurea-script {
+  font-family: var(--aurea-hand);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(70px, 16vw, 104px);
+  line-height: 0.96;
+  letter-spacing: 0;
+  text-transform: none;
+  text-wrap: balance;
+}
+.aurea-card--frame-overlay .aurea-cover-names,
+.aurea-card--frame-overlay .aurea-cover-names .aurea-cover-amp {
+  font-family: var(--aurea-hand);
+}
+/* Poseban font za cirilicu, Italianno ne podrzava cirilicna slova. */
+.aurea-card[data-script="cyrillic"] .aurea-script,
+.aurea-card--frame-overlay[data-script="cyrillic"] .aurea-cover-names {
+  font-family: "Marck Script", "Segoe Script", cursive;
+  line-height: 1.15;
+}
+
+/* Nema malog SVG ornamenta ispod 'Dragi nasi'. */
+.aurea-card .aurea-welcome .aurea-flourish { display: none; }
+.aurea-card .aurea-welcome .aurea-script { margin: 0 auto 20px; }
+
+/* FADE: gornja pejzazna fotografija prirodno nestaje u boji papira.
+   Nema tamnog overlay-a. Gradient je samo u donjoj zoni covera. */
+.aurea-card--frame-overlay .aurea-cover {
+  position: relative;
+  isolation: isolate;
+}
+.aurea-card--frame-overlay .aurea-cover::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(145px, 27svh, 290px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 250, 245, 0) 0%,
+    rgba(252, 250, 245, 0.10) 21%,
+    rgba(252, 250, 245, 0.50) 57%,
+    rgba(252, 250, 245, 0.88) 82%,
+    #fcfaf5 100%
+  );
+}
+.aurea-card--frame-overlay .aurea-letter {
+  margin-top: -1px;
+  background: #fcfaf5;
+}
+.aurea-card--frame-overlay .aurea-welcome {
+  background: #fcfaf5;
+}
+
+/* KALENDAR — beli prostor oko reljefnog okvira.
+   Kompletan kalendar se nalazi u praznoj sredini slike; brojevi nisu bledi. */
+.aurea-card .aurea-calendar-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: clamp(15px, 3.5vw, 27px) 0 clamp(22px, 5vw, 40px);
+  overflow: visible;
+  background: #ffffff;
+}
+.aurea-card .aurea-calendar-section::before,
+.aurea-card .aurea-calendar-section::after {
+  content: none !important;
+  display: none !important;
+}
+/* Ram je transparentni WEBP; ne dodajemo pozadinski krem pravougaonik. */
+.aurea-card .aurea-calendar-embossed {
+  position: relative;
+  isolation: isolate;
+  flex: none;
+  width: min(100%, 465px);
+  aspect-ratio: 960 / 1344;
+  margin: 0 auto;
+  background: transparent;
+  filter: drop-shadow(0 12px 16px rgba(72, 64, 50, .09));
+}
+.aurea-card .aurea-calendar-embossed__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+.aurea-card .aurea-calendar-embossed__content {
+  position: absolute;
+  z-index: 1;
+  top: 22%;
+  bottom: 22%;
+  left: 14%;
+  right: 14%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3.3vw, 24px);
+  width: auto;
+  height: auto;
+  padding: 0;
+  color: #51483e;
+}
+.aurea-card .aurea-calendar-embossed .aurea-script {
+  flex: none;
+  width: 110%;
+  max-width: none;
+  margin: 0;
+  font-family: var(--aurea-hand);
+  font-size: clamp(57px, 12.5vw, 80px);
+  font-weight: 400;
+  line-height: 1.04;
+  color: #5b6c56;
+  white-space: nowrap;
+  text-align: center;
+}
+.aurea-card .aurea-calendar-embossed .aurea-calendar-paper {
+  flex: none;
+  width: 100%;
+  max-width: 350px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  color: #594b40;
+  font-family: var(--aurea-serif);
+  font-size: clamp(14px, 3.5vw, 16px);
+  font-weight: 500;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month caption {
+  padding: 0 0 clamp(12px, 2.9vw, 19px);
+  color: #624e3d;
+  font-family: var(--aurea-serif);
+  font-size: clamp(19px, 4.5vw, 24px);
+  font-weight: 600;
+  letter-spacing: .09em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month th,
+.aurea-card .aurea-calendar-embossed .aurea-month td {
+  height: clamp(31px, 8vw, 39px);
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  color: #54473c;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month th {
+  border-bottom: 1px solid rgba(103, 92, 74, .42);
+  color: #6b6257;
+  font: 500 clamp(10px, 2.4vw, 11px)/1.3 var(--aurea-sans);
+}
+.aurea-card .aurea-calendar-embossed .aurea-month-date {
+  display: inline-grid;
+  width: clamp(29px, 7.2vw, 34px);
+  height: clamp(29px, 7.2vw, 34px);
+  place-items: center;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: 700;
+}
+.aurea-card .aurea-calendar-embossed .aurea-month-date::before {
+  inset: 0;
+  background: #69795e;
+  border-radius: 50%;
+  transform: none;
+}
+/* Mali telefoni: ceo mesec ostaje unutar unutrasnje linije rama. */
+@media (max-width: 400px) {
+  .aurea-card .aurea-calendar-embossed { width: 100%; }
+  .aurea-card .aurea-calendar-embossed__content {
+    left: 14.5%; right: 14.5%; top: 18%; bottom: 18%;
+    gap: 12px;
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-script {
+    font-size: clamp(52px, 13vw, 62px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month {
+    font-size: clamp(12px, 3.55vw, 14px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month caption {
+    padding-bottom: 10px;
+    font-size: clamp(16px, 4.35vw, 19px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month th,
+  .aurea-card .aurea-calendar-embossed .aurea-month td {
+    height: clamp(27px, 7.55vw, 32px);
+  }
+  .aurea-card .aurea-calendar-embossed .aurea-month-date {
+    width: 27px; height: 27px;
+  }
+  .aurea-card .aurea-welcome .aurea-script { font-size: 75px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card--frame-overlay .aurea-cover::after { animation: none; }
+}
+
+
+/* AUREA — potpuno ujednacena bela podloga uz reljefni kalendar.
+   Ista #ffffff nijansa iznad, oko i ispod rama, bez krem traka.
+   Ovo ne boji sam reljefni PNG/WEBP i ne utice na ostale sablone. */
+.aurea-card--frame-overlay,
+.aurea-card--frame-overlay .aurea-spread,
+.aurea-card--frame-overlay .aurea-column--letter,
+.aurea-card--frame-overlay .aurea-letter,
+.aurea-card--frame-overlay .aurea-welcome,
+.aurea-card--frame-overlay .aurea-calendar-section,
+.aurea-card--frame-overlay .aurea-venue {
+  background: #ffffff;
+  background-color: #ffffff;
+}
+
+/* Gornja fotografija se stapa u istu belu boju. */
+.aurea-card--frame-overlay .aurea-cover::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.10) 21%,
+    rgba(255,255,255,.50) 57%,
+    rgba(255,255,255,.88) 82%,
+    #ffffff 100%
+  );
+}
+
+/* Iznad / ispod rama nema odvojenog pozadinskog panela. */
+.aurea-card--frame-overlay .aurea-calendar-section {
+  box-shadow: none;
+  border: none;
+}
+.aurea-card--frame-overlay .aurea-calendar-embossed,
+.aurea-card--frame-overlay .aurea-calendar-paper {
+  background: transparent;
+}
+
+
+/* AUREA — bez vidljive linije izmedju fotografije i belog dela.
+   Dodaj NA KRAJ postojeceg Aurea-Calendar-Fade-Italianno.css.
+   Menja se samo cover prelaz. Ostale komponente ostaju iste. */
+
+/* Obe sekcije su identicno bele, ukljucujuci prostor ispod slike. */
+.aurea-card--frame-overlay .aurea-cover,
+.aurea-card--frame-overlay .aurea-cover-landscape,
+.aurea-card--frame-overlay .aurea-letter,
+.aurea-card--frame-overlay .aurea-welcome {
+  background-color: #ffffff;
+}
+
+/* Iskljuci stari beli overlay koji je zavrsavao vidljivom linijom. */
+.aurea-card--frame-overlay .aurea-cover::after {
+  content: none;
+  display: none;
+}
+
+/* Fade se sada primenjuje SAMO na fotografiju, ne preko ornamenta.
+   Poslednjih ~10% covera je potpuno belo, pa nema mesta na kom
+   se razlicite nijanse spajaju. Ne koristi grayscale ni tamni overlay. */
+.aurea-card--frame-overlay .aurea-cover-landscape img {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%,
+    rgba(0,0,0,.22) 84%,
+    transparent 91%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%,
+    rgba(0,0,0,.22) 84%,
+    transparent 91%,
+    transparent 100%
+  );
+}
+
+/* Preklop od 2px sprečava tanku liniju usled subpixel zaokruživanja. */
+.aurea-card--frame-overlay .aurea-letter {
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
+}
+
+/* ==============================================================
+   AUREA / IVORY — jedna nijansa kroz prelaz i svetle sekcije.
+   Isti ton iza fotografije, oko reljefnog rama i u "Dragi nasi".
+   Dodati na kraj Aurea-Calendar-Fade-Italianno.css.
+   Ne utice na RSVP / countdown, ni druge templejte.
+   ============================================================== */
+.aurea-card--frame-overlay {
+  --aurea-ivory-bg: #f7f3eb;
+  background-color: var(--aurea-ivory-bg);
+}
+
+.aurea-card--frame-overlay .aurea-spread,
+.aurea-card--frame-overlay .aurea-column--letter,
+.aurea-card--frame-overlay .aurea-cover,
+.aurea-card--frame-overlay .aurea-cover-landscape,
+.aurea-card--frame-overlay .aurea-letter,
+.aurea-card--frame-overlay .aurea-welcome,
+.aurea-card--frame-overlay .aurea-calendar-section,
+.aurea-card--frame-overlay .aurea-venue {
+  background: var(--aurea-ivory-bg);
+  background-color: var(--aurea-ivory-bg);
+}
+
+/* Fotografija se maskira do potpunog providnog kraja.
+   Ispod nje je ISTA ivory boja kao u sekciji "Dragi nasi". */
+.aurea-card--frame-overlay .aurea-cover::after {
+  content: none;
+  display: none;
+}
+.aurea-card--frame-overlay .aurea-cover-landscape img {
+  -webkit-mask-image: linear-gradient(to bottom,
+    #000 0%, #000 58%, rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%, rgba(0,0,0,.22) 84%,
+    transparent 91%, transparent 100%);
+  mask-image: linear-gradient(to bottom,
+    #000 0%, #000 58%, rgba(0,0,0,.93) 64%,
+    rgba(0,0,0,.66) 74%, rgba(0,0,0,.22) 84%,
+    transparent 91%, transparent 100%);
+}
+
+/* Ram i kalendar zadrzavaju svoj prirodni reljef bez dodatne kutije. */
+.aurea-card--frame-overlay .aurea-calendar-embossed,
+.aurea-card--frame-overlay .aurea-calendar-paper {
+  background: transparent;
+}
+
+/* ===========================================================
+   AUREA: PROGRAM DANA — CVETNA RELJEFNA POZADINA
+   Ucitaj posle newcard.css i ostalih Aurea dodataka.
+   Menja SAMO .aurea-program; ne menja RSVP, intro, kalendar.
+   Postavi /public/images/aurea/aurea-program-botanical.webp
+   =========================================================== */
+
+.aurea-card--frame-overlay .aurea-program.aurea-program--floral {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: clamp(730px, 94svh, 950px);
+  margin: 0;
+  padding: clamp(158px, 19svh, 196px) clamp(43px, 12%, 80px)
+           clamp(153px, 17svh, 180px);
+  overflow: hidden;
+  background-color: #d4cbbb;
+  background-image: var(--aurea-program-image);
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  color: #4c4438;
+}
+
+/* Bez prethodne dijagonalne teksture, polukruznih ivica ili ornamenata. */
+.aurea-card--frame-overlay .aurea-program--floral .aurea-program-top,
+.aurea-card--frame-overlay .aurea-program--floral .aurea-flourish {
+  display: none !important;
+}
+
+/* Samo veoma meko osvetljenje CENTRALNOG dela, da slova ostanu
+   citljiva i na delovima gde je reljef izrazeniji. Bez bele kutije. */
+.aurea-card--frame-overlay .aurea-program.aurea-program--floral::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 61% 62% at 50% 50%,
+    rgba(251, 247, 236, .49) 0%,
+    rgba(251, 247, 236, .32) 50%,
+    rgba(251, 247, 236, .00) 100%
+  );
+}
+.aurea-card--frame-overlay .aurea-program.aurea-program--floral::after {
+  content: none !important;
+}
+
+.aurea-card--frame-overlay .aurea-program--floral > .aurea-script,
+.aurea-card--frame-overlay .aurea-program--floral > .aurea-timeline {
+  position: relative;
+  z-index: 1;
+}
+
+.aurea-card--frame-overlay .aurea-program--floral > .aurea-script {
+  width: 100%;
+  margin: 0 auto clamp(21px, 5vw, 32px);
+  color: #56634c;
+  font-family: "Italianno", "Great Vibes", cursive;
+  font-size: clamp(58px, 15vw, 96px);
+  font-weight: 400;
+  line-height: .92;
+  text-align: center;
+  letter-spacing: -.015em;
+  white-space: nowrap;
+  transform: scaleX(.92);
+  text-shadow: 0 1px 0 rgba(255, 251, 241, .32);
+}
+
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline {
+  display: block;
+  width: 100%;
+  max-width: 285px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline li {
+  position: relative;
+  margin: 0;
+  padding: clamp(16px, 3vw, 22px) 0;
+  border: 0;
+  border-bottom: 1px solid rgba(99, 88, 71, .22);
+  background: transparent;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline li:first-child {
+  padding-top: 0;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  color: #453d34;
+  text-align: center;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-event-time {
+  color: #67574b;
+  font: 500 clamp(26px, 6.5vw, 33px)/1.08 var(--aurea-serif, Georgia, serif);
+  letter-spacing: -.015em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline h3 {
+  margin: 0;
+  color: #4f453a;
+  font: 500 clamp(23px, 5.4vw, 28px)/1.12 var(--aurea-serif, Georgia, serif);
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline :is(p, a) {
+  display: block;
+  margin: 6px 0 0;
+  color: #64594e;
+  font: 400 clamp(11px, 2.7vw, 12px)/1.6 var(--aurea-sans, Arial, sans-serif);
+  text-shadow: 0 1px 0 rgba(250, 246, 236, .38);
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline a {
+  color: #5f654c;
+  text-decoration: underline;
+  text-decoration-color: rgba(95, 101, 76, .65);
+  text-underline-offset: 4px;
+  transition: color .2s;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-timeline a:hover {
+  color: #333e2c;
+}
+.aurea-card--frame-overlay .aurea-program--floral .aurea-diagonal-arrow {
+  color: currentColor;
+}
+
+@media (max-width: 430px) {
+  .aurea-card--frame-overlay .aurea-program.aurea-program--floral {
+    min-height: 740px;
+    padding: 159px clamp(33px, 9vw, 43px) 145px;
+  }
+  .aurea-card--frame-overlay .aurea-program--floral > .aurea-script {
+    font-size: clamp(56px, 15vw, 72px);
+    margin-bottom: 24px;
+  }
+  .aurea-card--frame-overlay .aurea-program--floral .aurea-timeline-text {
+    gap: 4px;
+  }
+}
+@media (max-width: 360px) {
+  .aurea-card--frame-overlay .aurea-program.aurea-program--floral {
+    min-height: 715px;
+    padding: 151px 28px 142px;
+  }
+  .aurea-card--frame-overlay .aurea-program--floral .aurea-timeline-text {
+    gap: 4px;
+  }
+  .aurea-card--frame-overlay .aurea-program--floral .aurea-timeline h3 {
+    font-size: 23px;
+  }
+  .aurea-card--frame-overlay .aurea-program--floral .aurea-event-time {
+    font-size: 26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card--frame-overlay .aurea-program--floral {
+    animation: none;
+  }
+}
+
+
+
+/* ===============================================================
+   AUREA — DRESS CODE + MALA NAPOMENA / IVORY LETTERPRESS
+   Dodati na KRAJ src/styles/Aurea-Calendar-Fade-Italianno.css
+   Izolovano na Aurea; ne menja druge sablone niti funkcionalnost.
+   =============================================================== */
+
+.aurea-card--frame-overlay .aurea-dress,
+.aurea-card--frame-overlay .aurea-note {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background-color: #f7f3eb;
+  color: #5f5548;
+  text-align: center;
+}
+
+/* Jedinstvena podloga, nezna tekstura papira umesto zelenog bloka. */
+.aurea-card--frame-overlay .aurea-dress {
+  padding: clamp(78px, 15vw, 112px) clamp(24px, 8vw, 68px) 88px;
+  background-image:
+    radial-gradient(ellipse 68% 45% at 50% 4%, rgba(226, 214, 193, .30), transparent 95%),
+    linear-gradient(115deg, rgba(255,255,255,.20), transparent 48%, rgba(221,208,186,.09));
+  overflow: hidden;
+}
+
+/* Suptilno utisnut unutrasnji okvir — bez upadljivog pravougaonika. */
+.aurea-card--frame-overlay .aurea-dress::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 29px;
+  right: clamp(18px, 5.4vw, 32px);
+  bottom: 19px;
+  left: clamp(18px, 5.4vw, 32px);
+  border: 1px solid rgba(171, 150, 117, .28);
+  border-bottom: 1px solid rgba(171, 150, 117, .28);
+  border-radius: 45% 45% 18px 18px / 8% 8% 18px 18px;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.85), 0 0 0 1px rgba(255,255,255,.18);
+  pointer-events: none;
+}
+
+.aurea-card--frame-overlay .aurea-dress-oval {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto 8px;
+}
+
+.aurea-card--frame-overlay .aurea-dress .aurea-dress-oval .aurea-script {
+  margin: 0 auto;
+  color: #68735e;
+  font-family: 'Italianno', 'Great Vibes', cursive;
+  font-size: clamp(66px, 16vw, 104px);
+  font-weight: 400;
+  line-height: 1.07;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .46);
+}
+
+.aurea-card--frame-overlay .aurea-dress p {
+  max-width: 360px;
+  margin: 0 auto;
+  color: #736456;
+  font: 400 clamp(20px, 4.8vw, 25px)/1.45 'Cormorant Garamond', Georgia, serif;
+  text-wrap: pretty;
+}
+
+.aurea-card--frame-overlay .aurea-dress .aurea-palette {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(12px, 3.4vw, 22px);
+  width: 100%;
+  max-width: 355px;
+  margin: clamp(31px, 7vw, 42px) auto 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.aurea-card--frame-overlay .aurea-dress .aurea-palette li {
+  display: flex;
+  flex: 0 1 96px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.aurea-card--frame-overlay .aurea-dress .aurea-palette li > span:first-child {
+  display: block;
+  flex: none;
+  width: clamp(42px, 11vw, 54px);
+  height: clamp(42px, 11vw, 54px);
+  border: 4px solid #f7f1e6;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px rgba(126, 111, 88, .37),
+    0 5px 12px rgba(55,45,36,.13),
+    inset 0 1px 4px rgba(255,255,255,.25);
+}
+
+/* Prethodno nevidljivi nazivi boja sada su diskretno citljivi. */
+.aurea-card--frame-overlay .aurea-dress .aurea-palette li > .aurea-visually-hidden {
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  color: #796d5e;
+  font: 500 clamp(9px, 2.3vw, 11px)/1.4 'Jost', Arial, sans-serif;
+  letter-spacing: .035em;
+  text-wrap: balance;
+  text-align: center;
+}
+
+.aurea-card--frame-overlay .aurea-dress .aurea-dress-role {
+  margin-top: 14px;
+  font-size: clamp(17px, 4.2vw, 22px);
+}
+.aurea-card--frame-overlay .aurea-dress .aurea-dress-role strong {
+  color: #68735e;
+  font-weight: 600;
+}
+
+/* Mala napomena: nastavak istog papira, bez zeleno/krem preseka. */
+.aurea-card--frame-overlay .aurea-note {
+  padding: 55px clamp(26px, 9vw, 80px) clamp(88px, 15vw, 112px);
+  background: #f7f3eb;
+}
+
+/* Uklanjamo obe zvezdice iz prethodnog dizajna. */
+.aurea-card--frame-overlay .aurea-note::before,
+.aurea-card--frame-overlay .aurea-note::after {
+  content: none !important;
+  display: none !important;
+}
+
+.aurea-card--frame-overlay .aurea-note .aurea-script {
+  max-width: 100%;
+  margin: 0 auto 8px;
+  color: #68735e;
+  font-family: 'Italianno', 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(64px, 15vw, 99px);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.aurea-card--frame-overlay .aurea-note p {
+  max-width: 355px;
+  margin: 0 auto;
+  color: #6c5b4f;
+  font: 400 clamp(22px, 5.3vw, 28px)/1.38 'Cormorant Garamond', Georgia, serif;
+  text-wrap: pretty;
+}
+
+@media (max-width: 385px) {
+  .aurea-card--frame-overlay .aurea-dress {
+    padding-inline: 26px;
+  }
+  .aurea-card--frame-overlay .aurea-dress .aurea-palette { gap: 8px; }
+  .aurea-card--frame-overlay .aurea-note { padding-inline: 25px; }
+  .aurea-card--frame-overlay .aurea-dress .aurea-dress-oval .aurea-script { font-size: clamp(65px, 15.4vw, 70px); }
+  .aurea-card--frame-overlay .aurea-note .aurea-script { font-size: clamp(61px, 14.8vw, 77px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurea-card--frame-overlay .aurea-dress,
+  .aurea-card--frame-overlay .aurea-note { animation: none; }
+}
+

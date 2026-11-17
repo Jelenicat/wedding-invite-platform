@@ -6785,6 +6785,224 @@ musicSrc: "/music/mina-dragan.mp3",
   },
 },
 
+
+
+{
+  slug: "aurea-demo",
+  type: "wedding",
+  template: "aurea-glitter",
+  script: "latin",
+
+  brideName: "Gordana",
+  groomName: "Milan",
+
+  weddingDate: "18. septembar 2027.",
+  weddingTime: "16:00",
+  venue: "Hotel Izvor, Aranđelovac",
+
+  musicSrc: "/music/mina-dragan.mp3",
+
+  details: {
+    date: "18. septembar 2027.",
+    dateISO: "2027-09-18T16:00:00+02:00",
+
+    venue: "Hotel Izvor, Aranđelovac",
+    locationName: "Hotel Izvor",
+    locationAddress: "Aranđelovac, Srbija",
+
+    showLocationButton: true,
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+
+    welcomeText:
+      "Venčavamo se i voleli bismo da taj dan provedemo sa vama. Čekamo vas da zajedno nazdravimo i zaigramo.",
+
+    /* ==========================
+       PROGRAM DANA
+    ========================== */
+
+    events: [
+      {
+        time: "16:00",
+        label: "Doček gostiju",
+        location: "Hotel Izvor, Aranđelovac",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Hotel+Izvor+Arandjelovac",
+      },
+      {
+        time: "17:00",
+        label: "Građansko venčanje",
+        description:
+          "U bašti hotela izgovaramo naše „da”.",
+      },
+      {
+        time: "18:30",
+        label: "Večera i slavlje",
+        description:
+          "Zdravica i prvi ples u sali hotela.",
+      },
+    ],
+
+    /* ==========================
+       DRESS CODE
+    ========================== */
+
+    showDressCode: true,
+
+    dressCodeNote:
+      "Svečano i elegantno. Ako želite, detalje možete uskladiti sa paletom proslave.",
+
+    dressCodePalette: [
+      { color: "#581c2b", label: "Duboki bordo" },
+      { color: "#514442", label: "Tamna moka" },
+      { color: "#88917c", label: "Zagasita maslina" },
+    ],
+
+    /* ==========================
+       RSVP - STANDARDNI
+    ========================== */
+
+    rsvpClosed: false,
+
+    rsvpOptions: {
+      maxGuests: 8,
+
+      individualGuests: false,
+      individualMenus: false,
+      showGuestAllergies: false,
+
+      fasting: false,
+
+      deadlineLabel: "5. septembra 2027.",
+      closesAt: "2027-09-06T00:00:00+02:00",
+    },
+
+    /* ==========================
+       KALENDAR
+    ========================== */
+
+    showCalendarButton: true,
+    calendarDurationHours: 8,
+
+    /* ==========================
+       AUREA - PERSONALIZACIJA
+    ========================== */
+
+    aurea: {
+      // Fotografija u intro sekciji
+      introImage:
+        "/images/aurea/aurea-couple-bw.webp",
+
+      // Guste bele latice
+      petalImageSrc:
+        "/images/save-the-date/white-rose-petals.webp",
+
+      // Ornament sa inicijalima G i M
+      ornamentImage:
+        "/images/aurea/ornaments/gordana-milan.png",
+
+      // Fotografija iza prve kartice
+      coverBackgroundImage:
+        "/images/aurea/aurea-landscape.webp",
+
+      // Reljefni okvir prve kartice
+      coverFrameImage:
+        "/images/aurea/okvir-jezik.png",
+
+      // Pozadinska slika programa dana
+      programBackgroundImage:
+        "/images/aurea/aurea-program-botanical.webp",
+
+      // Ilustracija lokacije
+      locationImage:
+        "/images/aurea/aurea-venue.webp",
+
+      locationAlt:
+        "Ilustracija ulaza u vilu",
+
+      locationCaption:
+        "Ilustracija ambijenta",
+
+      // Mala napomena
+      notes: [
+        "Najlepši poklon biće da ovaj dan provedemo zajedno.",
+      ],
+    },
+
+    /* ==========================
+       JEZICI
+    ========================== */
+
+    showLanguageSwitcher: true,
+    defaultLanguage: "sr",
+
+    languages: ["sr", "en"],
+
+    languageLabels: {
+      sr: "SR",
+      en: "EN",
+    },
+
+    translations: {
+      en: {
+        weddingDate: "September 18, 2027",
+
+        details: {
+          date: "September 18, 2027",
+          locationAddress: "Aranđelovac, Serbia",
+
+          welcomeText:
+            "We’re getting married and would love to spend the day with you. Join us for a toast and a dance.",
+
+          events: [
+            {
+              label: "Welcome drinks",
+            },
+            {
+              label: "Wedding ceremony",
+              description:
+                "Join us in the hotel garden as we say “I do”.",
+            },
+            {
+              label: "Dinner and celebration",
+              description:
+                "A toast and our first dance in the ballroom.",
+            },
+          ],
+
+          dressCodeNote:
+            "Formal attire. If you like, choose an accent from our wedding palette.",
+
+          dressCodePalette: [
+            { label: "Deep burgundy" },
+            { label: "Dark mocha" },
+            { label: "Muted olive" },
+          ],
+
+          rsvpOptions: {
+            deadlineLabel: "September 5, 2027",
+          },
+
+          aurea: {
+            locationAlt:
+              "Illustration of the venue entrance",
+
+            locationCaption:
+              "Venue illustration",
+
+            notes: [
+              "The best gift is spending this day together.",
+            ],
+          },
+        },
+      },
+    },
+  },
+},
+
+
+
+
 // =========================
 // Klijenti
 // =========================
