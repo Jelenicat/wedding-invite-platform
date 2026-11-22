@@ -122,7 +122,6 @@ export default function SaveTheDatePhotoAlbum({
   const {
     bridePhoto,
     groomPhoto,
-    brideSnapshot,
     togetherPhoto,
     portraitFrame,
     landscapeFrame,
@@ -285,9 +284,6 @@ export default function SaveTheDatePhotoAlbum({
               <figcaption>{copy.childhood}</figcaption>
               <div className="std-photo-album__memory-prints">
                 <AlbumPrint className="std-photo-album__together" format="landscape" frame={landscapeFrame} src={togetherPhoto} alt={copy.togetherPhoto} lazy />
-                {brideSnapshot && (
-                  <AlbumPrint className="std-photo-album__snapshot" format="portrait" frame={portraitFrame} src={brideSnapshot} alt={`${brideName} ${copy.childhoodPortrait}`} lazy />
-                )}
               </div>
             </figure>
 
