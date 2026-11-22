@@ -7002,6 +7002,178 @@ musicSrc: "/music/mina-dragan.mp3",
 
 
 
+// Dodaj ovaj objekat unutar niza demoWedding i odvoji ga zarezom od prethodnog elementa.
+{
+  slug: "arijel-demo",
+  type: "birthday",
+  template: "birthday-ariel",
+  script: "latin",
+  childName: "Mila",
+  brideName: "Mila",
+  groomName: "",
+  weddingDate: "19. jun 2027.",
+  weddingTime: "16:00",
+  venue: "Restoran Primer",
+  introPreviewImage: "/images/birthday-ariel/shell-closed.webp",
+  details: {
+    ...createDetails({
+      date: "19. jun 2027.",
+      dateISO: "2027-06-19T16:00:00+02:00",
+      welcomeText: "Na kraju koralne staze čeka nas Milina prva svećica. Dođite da je zajedno ugasimo.",
+      locationName: "Restoran Primer",
+      locationAddress: "Beograd",
+      showLocationButton: true,
+      locationButtonText: "Otvori lokaciju",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Beograd",
+      events: [
+        { time: "16:00", title: "Okupljanje u laguni" },
+        { time: "17:00", title: "Igra i druženje" },
+        { time: "18:00", title: "Torta i prva svećica" },
+      ],
+    }),
+    age: 1,
+    rsvpText: "Molimo vas da potvrdite dolazak do 10. juna 2027.",
+    rsvpClosed: false,
+    rsvpMaxGuests: 8,
+    showCalendarButton: true,
+    calendarTitle: "Mila — prvi rođendan",
+    calendarDurationHours: 4,
+    ariel: {},
+  },
+},
+
+{
+  slug: "luka-prvi-rodjendan",
+  type: "birthday",
+  template: "birthday-little-universe",
+  script: "latin", // "cyrillic" za ćirilicu
+
+  childName: "Luka",
+  brideName: "Luka", // zadržano zbog kompatibilnosti sa postojećim projektom
+  groomName: "",
+  weddingDate: "12. jun 2027.",
+  weddingTime: "13:00",
+  venue: "Restoran Primer",
+  musicSrc: "/music/eva-1.mp3", // postojeća putanja iz dostavljenog demoWedding
+  introPreviewImage: "/images/birthday-little-universe/little-world.webp",
+
+  details: {
+    ...createDetails({
+      age: 1,
+      date: "12. jun 2027.",
+      dateISO: "2027-06-12T13:00:00+02:00",
+      welcomeText:
+        "Pre godinu dana u naš život stigao je jedan mali dečak i doneo čitav svemir ljubavi. Pozivamo vas da zajedno proslavimo njegov prvi rođendan i stvorimo uspomene koje će rasti s njim.",
+      locationName: "Restoran Primer",
+      locationAddress: "Beograd",
+      showLocationButton: true,
+      locationButtonText: "Pokaži mi put",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Beograd",
+      showDressCode: true,
+      dressCodeTitle: "Najlepši osmeh",
+      dressCodeNote: "Sve ostalo prepuštamo vama. Važno nam je samo da ste tu.",
+      dressCodePalette: ["#29465c", "#c5a56a", "#f9f4e8"],
+      events: [
+        { time: "13:00", title: "Prvi zagrljaji", description: "Okupljamo se i počinjemo naše malo slavlje." },
+        { time: "14:00", title: "Veliki mali ručak", description: "Za stolom sa ljudima koje najviše volimo." },
+        { time: "16:00", title: "Moja prva svećica", description: "Torta, jedna velika želja i uspomena za zauvek." },
+      ],
+    }),
+
+    // Ova podešavanja ostaju POSLE createDetails, da ih helper ne izostavi.
+    age: 1,
+    rsvpText: "Potvrdite dolazak do 1. juna 2027.",
+    rsvpClosed: false,
+    rsvpMaxGuests: 8, // ukupan broj osoba u jednoj prijavi, uključujući potpisnika
+    showCalendarButton: true,
+    calendarDurationHours: 5,
+    calendarTitle: "Luka — prvi rođendan",
+    calendarDescription: "Jedna godina. Čitav svemir ljubavi. Vidimo se na proslavi!",
+
+    littleUniverse: {
+      name: "Luka",
+      parents: "Mama i tata",
+      heroKicker: "POZIVNICA ZA PRVI ROĐENDAN",
+      showMilestones: true,
+      showCandle: true,
+      showQuickRSVP: true,
+      showMessageField: false,
+      wishIntro: "Zamisli mu jednu lepu želju. Pa dodirni svećicu.",
+      wishThanks: "Neka raste srećno, voljeno i radoznalo.",
+
+      milestones: [
+        {
+          label: "Moj dolazak",
+          date: "12. JUN 2026.",
+          title: "Kad je sve počelo.",
+          text: "Jednog dana stigao je neko sasvim mali i naš svet je postao beskrajno veliki.",
+          // image: "/images/luka/rodjenje.webp",
+          // imageAlt: "Lukina prva fotografija",
+        },
+        {
+          label: "Prvi osmeh",
+          date: "JEDNO MALO ČUDO",
+          title: "Najsjajnija zvezdica.",
+          text: "Jedan osmeh bio je dovoljan da nam i najobičniji dan zasija kao čitavo nebo.",
+        },
+        {
+          label: "Mala otkrića",
+          date: "MOJE AVANTURE",
+          title: "Svet na dohvat ruke.",
+          text: "Male ruke, velika radoznalost. Svaki novi dan doneo nam je još jedan razlog za radost.",
+        },
+        {
+          label: "Prva svećica",
+          date: "12. JUN 2027.",
+          title: "Sada slavimo zajedno.",
+          text: "Prva godina je proletela. Za sledeću avanturu nedostajete nam samo vi.",
+        },
+      ],
+    },
+  },
+},
+
+// Dodaj ovaj objekat unutar niza demoWedding. Odvoji ga zarezom od prethodnog elementa.
+{
+  slug: "knjiga-o-dzungli-demo",
+  type: "birthday",
+  template: "birthday-jungle-book",
+  script: "latin",
+  childName: "Leo",
+  brideName: "Leo",
+  groomName: "",
+  weddingDate: "12. jun 2027.",
+  weddingTime: "13:00",
+  venue: "Restoran Primer",
+  introPreviewImage: "/images/birthday-jungle-book/book-closed.webp",
+  details: {
+    ...createDetails({
+      date: "12. jun 2027.",
+      dateISO: "2027-06-12T13:00:00+02:00",
+      welcomeText: "Pridružite nam se da proslavimo prvu godinu našeg malog istraživača.",
+      locationName: "Restoran Primer",
+      locationAddress: "Beograd",
+      showLocationButton: true,
+      locationButtonText: "Otvori lokaciju",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Beograd",
+      events: [
+        { time: "13:00", title: "Okupljanje istraživača" },
+        { time: "14:00", title: "Zajednički ručak" },
+        { time: "16:00", title: "Prva svećica" },
+      ],
+    }),
+    age: 1,
+    rsvpText: "Potvrdite dolazak do 1. juna 2027.",
+    rsvpClosed: false,
+    rsvpMaxGuests: 8,
+    showCalendarButton: true,
+    calendarTitle: "Leo — prvi rođendan",
+    calendarDurationHours: 5,
+    jungleBook: {},
+  },
+},
+
+
 
 // =========================
 // Klijenti

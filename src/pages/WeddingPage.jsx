@@ -148,6 +148,12 @@ import BirthdayRedSatinIntro from "../components/BirthdayRedSatinIntro";
 import BirthdayRedSatinInvitationCard from "../components/BirthdayRedSatinInvitationCard";
 import BirthdayCreamIntro from "../components/BirthdayCreamIntro";
 import BirthdayCreamInvitationCard from "../components/BirthdayCreamInvitationCard";
+import BirthdayArielIntro from "../components/BirthdayArielIntro";
+import BirthdayArielInvitationCard from "../components/BirthdayArielInvitationCard";
+import BirthdayLittleUniverseIntro from "../components/BirthdayLittleUniverseIntro";
+import BirthdayLittleUniverseInvitationCard from "../components/BirthdayLittleUniverseInvitationCard";
+import BirthdayJungleBookIntro from "../components/BirthdayJungleBookIntro";
+import BirthdayJungleBookInvitationCard from "../components/BirthdayJungleBookInvitationCard";
 import WeddingBaptismSilkIntro from "../components/WeddingBaptismSilkIntro";
 
 import demoWedding from "../data/demoWedding";
@@ -483,6 +489,20 @@ const TEMPLATE_COMPONENTS = {
   Invitation: AureaInvitationCard,
 },
 
+"birthday-ariel": {
+  Intro: BirthdayArielIntro,
+  Invitation: BirthdayArielInvitationCard,
+},
+
+"birthday-little-universe": {
+  Intro: BirthdayLittleUniverseIntro,
+  Invitation: BirthdayLittleUniverseInvitationCard,
+},
+
+"birthday-jungle-book": {
+  Intro: BirthdayJungleBookIntro,
+  Invitation: BirthdayJungleBookInvitationCard,
+},
 
 };
 
