@@ -6,7 +6,10 @@ export const JUNGLE_ART = {
   closed: "/images/birthday-jungle-book/book-closed.webp",
   open: "/images/birthday-jungle-book/book-open.webp",
   prologue: "/images/birthday-jungle-book/jungle-prologue.webp",
-  clearing: "/images/birthday-jungle-book/party-clearing.webp",
+  clearing: "/images/birthday-jungle-book/lantern-garden.webp",
+  butterfly: "/images/birthday-jungle-book/golden-butterfly.webp",
+  sunlight: "/images/birthday-jungle-book/forest-sunlight.webp",
+  watch: "/images/birthday-jungle-book/forest-pocket-watch.webp",
   paw: "/images/birthday-jungle-book/page-paw.webp",
   river: "/images/birthday-jungle-book/page-river.webp",
   canopy: "/images/birthday-jungle-book/page-canopy.webp",
@@ -57,6 +60,8 @@ export default function BirthdayJungleBookIntro(props) {
   const prefersReducedMotion = useReducedMotion();
   const timer = useRef(null);
   const [opening, setOpening] = useState(false);
+  const prologueImage = config.prologueImage || JUNGLE_ART.prologue;
+  const handoff = prologueImage === JUNGLE_ART.prologue && !prefersReducedMotion;
 
   useEffect(() => {
     window.clearTimeout(timer.current);
@@ -65,12 +70,16 @@ export default function BirthdayJungleBookIntro(props) {
     return () => window.clearTimeout(timer.current);
   }, [props.slug]);
 
+  useEffect(() => {
+    const prologue = new Image();
+    prologue.fetchPriority = "low";
+    prologue.src = prologueImage;
+  }, [prologueImage]);
+
   const openBook = () => {
     if (timer.current !== null) return;
     setOpening(true);
-    timer.current = window.setTimeout(() => props.onEnter?.(), prefersReducedMotion ? 0 : 1050);
-    const prologue = new Image();
-    prologue.src = config.prologueImage || JUNGLE_ART.prologue;
+    timer.current = window.setTimeout(() => props.onEnter?.(), prefersReducedMotion ? 0 : handoff ? 1460 : 1050);
     try {
       Promise.resolve(props.onStartMusic?.()).catch(() => {});
     } catch {
@@ -79,7 +88,7 @@ export default function BirthdayJungleBookIntro(props) {
   };
 
   return (
-    <section className="jb jb-intro" lang={language} data-script={script} data-opening={opening}>
+    <section className="jb jb-intro" lang={language} data-script={script} data-opening={opening} data-handoff={handoff}>
       <div className="jb-cover-stage">
         <img className="jb-cover-photo" src={JUNGLE_ART.closed} alt="" fetchPriority="high" />
         <img className="jb-cover-photo jb-open-photo" src={JUNGLE_ART.open} alt="" fetchPriority="low" />
@@ -100,6 +109,12 @@ export default function BirthdayJungleBookIntro(props) {
           <span>{text("Otvori knjigu", "Отвори књигу")}</span>
         </button>
       </div>
+      {handoff && (
+        <div className="jb-opening-overlay" aria-hidden="true">
+          <img className="jb-opening-light" src={JUNGLE_ART.sunlight} alt="" fetchPriority="low" />
+          <img className="jb-opening-butterfly" src={JUNGLE_ART.butterfly} alt="" fetchPriority="low" />
+        </div>
+      )}
       <span className="jb-visually-hidden" role="status">
         {opening && text("Knjiga se otvara.", "Књига се отвара.")}
       </span>

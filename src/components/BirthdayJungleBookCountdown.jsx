@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { addToCalendar } from "../utils/calendar";
-import { JungleMark, jungleData } from "./BirthdayJungleBookIntro";
+import { JUNGLE_ART, JungleMark, jungleData } from "./BirthdayJungleBookIntro";
 import "../styles/newcard.css";
 
 function splitTime(seconds) {
@@ -11,6 +11,30 @@ function splitTime(seconds) {
     Math.floor(seconds / 60) % 60,
     seconds % 60,
   ];
+}
+
+function WatchLight({ section }) {
+  const { scrollYProgress } = useScroll({ target: section, offset: ["start 0.95", "start 0.28"] });
+  const opacity = useTransform(scrollYProgress, [0, 0.26, 0.72, 1], [0.05, 0.17, 0.87, 0.43]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.74, 1.45]);
+
+  return <motion.span className="jb-watch-light" style={{ opacity, scale }} />;
+}
+
+function JungleClock({ values, units, label }) {
+  const [days, ...shortUnits] = values;
+  return (
+    <div className="jb-clock" role="timer" aria-live="off" aria-label={label}>
+      <div className="jb-clock-days"><strong>{String(days).padStart(2, "0")}</strong><span>{units[0]}</span></div>
+      <div className="jb-clock-units">
+        {shortUnits.map((value, index) => (
+          <div className="jb-clock-unit" key={units[index + 1]}>
+            <strong key={value}>{String(value).padStart(2, "0")}</strong><span>{units[index + 1]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function BirthdayJungleBookCountdown(props) {
@@ -25,6 +49,7 @@ export default function BirthdayJungleBookCountdown(props) {
   const pendingCalendar = useRef(false);
   const section = useRef(null);
   const inView = useInView(section, { amount: "some" });
+  const reduced = useReducedMotion();
   const title = useId();
   const seconds = Math.max(0, Math.ceil((timestamp - now) / 1000));
   const units = text(["Dana", "Sati", "Minuta", "Sekundi"], ["Дана", "Сати", "Минута", "Секунди"]);
@@ -77,29 +102,31 @@ export default function BirthdayJungleBookCountdown(props) {
   };
 
   if (!clockEnabled && !calendarEnabled) return null;
+  const started = hasDate && seconds === 0;
 
   return (
     <section className="jb-countdown" ref={section} aria-labelledby={title}>
-      <div className="jb-content">
-        <JungleMark type="leaf" className="jb-section-mark" />
-        <h2 id={title}>{hasDate && seconds === 0
-          ? text("Avantura je počela", "Авантура је почела")
-          : text("Još malo do proslave", "Још мало до прославе")}</h2>
-        {clockEnabled && hasDate && seconds > 0 && (
-          <div className="jb-clock" role="timer" aria-live="off" aria-label={text("Vreme do proslave", "Време до прославе")}>
-            {splitTime(seconds).map((value, index) => (
-              <div key={units[index]}><strong>{String(value).padStart(2, "0")}</strong><span>{units[index]}</span></div>
-            ))}
-          </div>
-        )}
-        {clockEnabled && !hasDate && <p>{text("Datum proslave stiže uskoro.", "Датум прославе стиже ускоро.")}</p>}
-        {calendarEnabled && (
-          <button type="button" className="jb-button" onClick={saveDate} disabled={calendarStatus === "saving"}>
-            <JungleMark type="compass" />
-            {calendarStatus === "saving" ? text("Otvaramo kalendar…", "Отварамо календар…") : text("Sačuvaj datum", "Сачувај датум")}
-          </button>
-        )}
-        {calendarStatus === "error" && <p className="jb-calendar-error" role="alert">{text("Kalendar nije otvoren. Pokušajte ponovo.", "Календар није отворен. Покушајте поново.")}</p>}
+      <div className="jb-time-scene">
+        <div className="jb-time-art" aria-hidden="true">
+          <img src={JUNGLE_ART.watch} alt="" width={1200} height={800} loading="lazy" decoding="async" />
+          {!reduced && <WatchLight section={section} />}
+        </div>
+        <div className="jb-content jb-time-body">
+          <h2 id={title}>
+            {started ? text("Avantura", "Авантура") : text("Još malo", "Још мало")} <span className="jb-script">{started ? text("je počela", "је почела") : text("do proslave", "до прославе")}</span>
+          </h2>
+          {clockEnabled && hasDate && seconds > 0 && (
+            <JungleClock values={splitTime(seconds)} units={units} label={text("Vreme do proslave", "Време до прославе")} />
+          )}
+          {clockEnabled && !hasDate && <p>{text("Datum proslave stiže uskoro.", "Датум прославе стиже ускоро.")}</p>}
+          {calendarEnabled && (
+            <button type="button" className="jb-button jb-calendar" onClick={saveDate} disabled={calendarStatus === "saving"}>
+              <JungleMark type="compass" />
+              {calendarStatus === "saving" ? text("Otvaramo kalendar…", "Отварамо календар…") : text("Sačuvaj datum", "Сачувај датум")}
+            </button>
+          )}
+          {calendarStatus === "error" && <p className="jb-calendar-error" role="alert">{text("Kalendar nije otvoren. Pokušajte ponovo.", "Календар није отворен. Покушајте поново.")}</p>}
+        </div>
       </div>
     </section>
   );

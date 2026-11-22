@@ -83,9 +83,8 @@ export default function BirthdayJungleBookRSVP(props) {
   return (
     <section className="jb-rsvp" id={id || "jb-rsvp-" + (slug || "event")} tabIndex={-1} aria-labelledby={uid + "-title"}>
       <div className="jb-content">
-        <JungleMark type="leaf" className="jb-section-mark" />
         <p className="jb-eyebrow">{text("Potvrda dolaska", "Потврда доласка")}</p>
-        <h2 id={uid + "-title"}>{text("Slavimo", "Славимо")} <span className="jb-script">{text("zajedno", "заједно")}</span></h2>
+        <h2 id={uid + "-title"}>{text("Čuvamo vam", "Чувамо вам")} <span className="jb-script">{text("mesto", "место")}</span></h2>
         {details.rsvpText && <p className="jb-rsvp-deadline">{details.rsvpText}</p>}
 
         {closed ? (

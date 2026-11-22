@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { JUNGLE_ART, JungleMark, jungleData } from "./BirthdayJungleBookIntro";
 import BirthdayJungleBookRSVP from "./BirthdayJungleBookRSVP";
 import BirthdayJungleBookCountdown from "./BirthdayJungleBookCountdown";
@@ -37,8 +37,64 @@ function storyChapters(text) {
   ];
 }
 
-function JungleStory({ id, data }) {
+const flightStops = [0, 0.24, 0.48, 0.72, 1];
+
+const trails = {
+  paw: { x: ["10%", "25%", "44%", "63%", "88%"], y: ["70%", "55%", "45%", "28%", "19%"] },
+  river: { x: ["12%", "28%", "47%", "65%", "89%"], y: ["62%", "66%", "56%", "38%", "31%"] },
+  canopy: { x: ["9%", "27%", "49%", "71%", "94%"], y: ["66%", "57%", "43%", "29%", "23%"] },
+  clearing: { x: ["11%", "25%", "43%", "61%", "78%"], y: ["58%", "47%", "32%", "23%", "16%"] },
+};
+
+function ForestTrail({ stage, route }) {
+  const { scrollYProgress } = useScroll({ target: stage, offset: ["center 0.94", "center 0.13"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 130, damping: 29, mass: 0.62 });
+  const x = useTransform(progress, flightStops, route.x);
+  const y = useTransform(progress, flightStops, route.y);
+  const wingSize = useTransform(progress, flightStops, [1.25, 1.08, 0.89, 0.6, 0.34]);
+  const wingTurn = useTransform(progress, flightStops, [-19, 1, -12, 9, -18]);
+  const visible = useTransform(progress, [0, 0.12, 0.25, 0.68, 0.91], [0, 0.62, 0.98, 0.95, 0]);
+  const light = useTransform(progress, [0, 0.35, 0.67, 1], [0.02, 0.33, 0.18, 0.04]);
+  const drift = useTransform(progress, [0, 1], ["8%", "-12%"]);
+
+  return (
+    <div className="jb-forest-trail" aria-hidden="true">
+      <motion.img className="jb-scene-light" src={JUNGLE_ART.sunlight} alt="" style={{ x: drift, opacity: light }} />
+      <motion.span className="jb-trail-flight" style={{ x, y, opacity: visible }}>
+        <motion.img src={JUNGLE_ART.butterfly} alt="" style={{ scale: wingSize, rotate: wingTurn }} />
+      </motion.span>
+    </div>
+  );
+}
+
+function JungleChapter({ chapter, defaultChapter, route, reduced }) {
+  const stage = useRef(null);
+  const defaultImage = chapter.image === defaultChapter.image;
+
+  return (
+    <figure className="jb-chapter" data-story-scene={defaultImage}>
+      <div className="jb-scene" ref={stage}>
+        <img
+          src={chapter.image}
+          alt={chapter.alt}
+          width={defaultImage ? 1160 : undefined}
+          height={defaultImage ? 870 : undefined}
+          loading="lazy"
+          decoding="async"
+        />
+        {defaultImage && !reduced && <ForestTrail stage={stage} route={route} />}
+      </div>
+      <figcaption className="jb-chapter-caption">
+        <h3>{chapter.title}</h3>
+        <p>{chapter.memory}</p>
+      </figcaption>
+    </figure>
+  );
+}
+
+function JungleStory({ id, data, reduced }) {
   const { text, details, config } = data;
+  const routes = [trails.paw, trails.river, trails.canopy];
 
   return (
     <section className="jb-story" aria-labelledby={id}>
@@ -47,86 +103,86 @@ function JungleStory({ id, data }) {
         {details.welcomeText && <p className="jb-section-copy">{details.welcomeText}</p>}
       </header>
 
-      {storyChapters(text).map((defaultChapter, index) => {
-        const chapter = { ...defaultChapter, ...config.chapters?.[index] };
-        const defaultImage = chapter.image === defaultChapter.image;
-        return (
-          <figure className="jb-chapter" key={defaultChapter.title}>
-            <div className="jb-scene">
-              <img
-                src={chapter.image}
-                alt={chapter.alt}
-                width={defaultImage ? 1160 : undefined}
-                height={defaultImage ? 870 : undefined}
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption className="jb-chapter-caption">
-              <h3>{chapter.title}</h3>
-              <p>{chapter.memory}</p>
-            </figcaption>
-          </figure>
-        );
-      })}
+      {storyChapters(text).map((defaultChapter, index) => (
+        <JungleChapter
+          key={defaultChapter.title}
+          defaultChapter={defaultChapter}
+          chapter={{ ...defaultChapter, ...config.chapters?.[index] }}
+          route={routes[index]}
+          reduced={reduced}
+        />
+      ))}
     </section>
   );
 }
 
-function JungleCelebration({ id, rsvpId, data, goTo }) {
+function JungleCelebration({ id, rsvpId, data, goTo, reduced }) {
   const { text, details, config, date, dateISO, time, venue, address } = data;
+  const clearing = config.mapImage || JUNGLE_ART.clearing;
+  const forestGarden = clearing === JUNGLE_ART.clearing;
+  const dateParts = typeof date === "string" ? date.trim().match(/^(\d{1,2}\.)\s+(.+)$/u) : null;
   const mapLink = details.mapLink || details.locationButtonLink
     || (venue || address ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent([venue, address].filter(Boolean).join(", ")) : "");
   const showLocation = mapLink && details.showLocationButton !== false;
   const showRSVP = config.showQuickRSVP !== false && !details.rsvpClosed;
   const events = Array.isArray(details.events) ? details.events : [];
+  const stage = useRef(null);
 
   return (
-    <section className="jb-party" aria-labelledby={id}>
-      <div className="jb-scene jb-party-scene">
+    <section className="jb-party" aria-labelledby={id} data-forest-garden={forestGarden}>
+      <div className="jb-scene jb-party-scene" ref={stage}>
         <img
-          src={config.mapImage || JUNGLE_ART.clearing}
-          alt=""
-          width={config.mapImage ? undefined : 1160}
-          height={config.mapImage ? undefined : 870}
+          src={clearing}
+          alt={forestGarden ? text("Na proplanku između paprati i fenjera čeka rođendanska torta.", "На пропланку између папрати и фењера чека рођенданска торта.") : ""}
+          width={forestGarden ? 1000 : undefined}
+          height={forestGarden ? 1500 : undefined}
           loading="lazy"
           decoding="async"
         />
+        {forestGarden && !reduced && <ForestTrail stage={stage} route={trails.clearing} />}
       </div>
 
       <div className="jb-content jb-party-content">
-        <h2 id={id} tabIndex={-1}>{text("Vidimo se", "Видимо се")} <span className="jb-script">{text("na proslavi", "на прослави")}</span></h2>
+        <h2 id={id} tabIndex={-1}>{text("Vidimo se", "Видимо се")} <span className="jb-script">{text("na proplanku", "на пропланку")}</span></h2>
 
         {(date || time || venue || address) && (
-          <div className="jb-event-details">
+          <dl className="jb-event-details">
             {(date || time) && (
               <div>
-                <p className="jb-eyebrow">{text("Datum i vreme", "Датум и време")}</p>
-                {date && <time dateTime={dateISO || undefined}>{date}</time>}
-                {time && <p>{text("Početak u", "Почетак у")} {time}</p>}
+                <dt className="jb-eyebrow">{text("Datum i vreme", "Датум и време")}</dt>
+                <dd>
+                  {date && (
+                    <time dateTime={dateISO || undefined}>
+                      {dateParts ? <><span className="jb-event-day">{dateParts[1]}</span>{" "}<span>{dateParts[2]}</span></> : date}
+                    </time>
+                  )}
+                  {time && <p>{text("Početak u", "Почетак у")} <strong>{time}</strong></p>}
+                </dd>
               </div>
             )}
             {(venue || address) && (
               <div>
-                <p className="jb-eyebrow">{text("Mesto", "Место")}</p>
-                {venue && <strong>{venue}</strong>}
-                {address && <p>{address}</p>}
+                <dt className="jb-eyebrow">{text("Mesto proslave", "Место прославе")}</dt>
+                <dd>
+                  {venue && <p className="jb-event-venue">{venue}</p>}
+                  {address && <p>{address}</p>}
+                </dd>
               </div>
             )}
-          </div>
+          </dl>
         )}
 
         {(showLocation || showRSVP) && (
           <div className="jb-location-actions">
+            {showRSVP && (
+              <a className="jb-button jb-reply" href={"#" + rsvpId} onClick={(event) => { event.preventDefault(); goTo(rsvpId); }}>
+                {text("Potvrdi dolazak", "Потврди долазак")}
+              </a>
+            )}
             {showLocation && (
               <a className="jb-button jb-directions" href={mapLink} target="_blank" rel="noopener noreferrer">
                 <JungleMark type="compass" />
                 {details.locationButtonText || text("Otvori lokaciju", "Отвори локацију")}
-              </a>
-            )}
-            {showRSVP && (
-              <a className="jb-button" href={"#" + rsvpId} onClick={(event) => { event.preventDefault(); goTo(rsvpId); }}>
-                {text("Potvrdi dolazak", "Потврди долазак")}
               </a>
             )}
           </div>
@@ -169,6 +225,8 @@ export default function BirthdayJungleBookInvitationCard(props) {
   const rsvpId = "jb-rsvp-" + (props.slug || "event");
   const article = useRef(null);
   const reduced = useReducedMotion();
+  const prologueImage = config.prologueImage || JUNGLE_ART.prologue;
+  const handoff = prologueImage === JUNGLE_ART.prologue && !reduced;
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -186,13 +244,19 @@ export default function BirthdayJungleBookInvitationCard(props) {
 
   return (
     <article className="jb jb-card" ref={article} tabIndex={-1} data-script={script} lang={language}>
-      <header className="jb-prologue">
-        <img className="jb-prologue-art" src={config.prologueImage || JUNGLE_ART.prologue} alt="" fetchPriority="high" />
+      <header className="jb-prologue" data-handoff={handoff}>
+        <img className="jb-prologue-art" src={prologueImage} alt="" fetchPriority="high" />
+        {handoff && (
+          <div className="jb-prologue-overlay" aria-hidden="true">
+            <img className="jb-prologue-light" src={JUNGLE_ART.sunlight} alt="" />
+            <img className="jb-prologue-butterfly" src={JUNGLE_ART.butterfly} alt="" />
+          </div>
+        )}
         <motion.div
           className="jb-prologue-title"
           initial={reduced ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : .65 }}
+          transition={{ duration: reduced ? 0 : 0.65, delay: handoff ? 0.36 : 0 }}
         >
           <p className="jb-eyebrow">{text("Pozivnica za", "Позивница за")} {age}. {text("rođendan", "рођендан")}</p>
           <h1 className="jb-script" data-long-name={name.length > 13}>{name}</h1>
@@ -204,8 +268,8 @@ export default function BirthdayJungleBookInvitationCard(props) {
         </motion.div>
       </header>
 
-      <JungleStory id={storyId} data={data} />
-      <JungleCelebration id={partyId} rsvpId={rsvpId} data={data} goTo={goTo} />
+      <JungleStory id={storyId} data={data} reduced={reduced} />
+      <JungleCelebration id={partyId} rsvpId={rsvpId} data={data} goTo={goTo} reduced={reduced} />
       <BirthdayJungleBookCountdown {...props} />
       <BirthdayJungleBookRSVP {...props} key={props.slug || "rsvp"} id={rsvpId} />
 

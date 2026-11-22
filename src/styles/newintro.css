@@ -6010,6 +6010,8 @@ html:has(.bb.bb-card) {
   --jb-gold: #e8c587;
   --jb-ink: #2b3b26;
   --jb-line: #c7a77364;
+  --jb-handoff-y: min(47svh, 408px);
+  --jb-handoff-wing: clamp(32px, 10vw, 54px);
   font: 400 17px/1.55 var(--jb-font);
   color: var(--jb-cream);
   text-align: center;
@@ -6178,6 +6180,63 @@ html:has(.bb.bb-card) {
 .jb[data-opening="true"] .jb-cover-leaf { transform: rotateY(-101deg); opacity: 0; }
 .jb[data-opening="true"] :is(.jb-cover-leaf > img, .jb-open-photo) { opacity: 1; }
 .jb[data-opening="true"] .jb-book-seal { opacity: 0; pointer-events: none; }
+.jb .jb-opening-overlay {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+.jb .jb-opening-overlay::before {
+  position: absolute;
+  inset: 0;
+  background: var(--jb-deep);
+  content: "";
+  opacity: 0;
+}
+.jb .jb-opening-light {
+  position: absolute;
+  left: 50%;
+  top: var(--jb-handoff-y);
+  width: clamp(515px, 146vw, 1140px);
+  max-width: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+.jb :is(.jb-opening-butterfly, .jb-prologue-butterfly) {
+  position: absolute;
+  width: var(--jb-handoff-wing);
+  height: auto;
+  opacity: 0;
+  filter: drop-shadow(0 0 13px #ffcc7885);
+}
+.jb[data-opening="true"][data-handoff="true"] .jb-cover-stage {
+  transform-origin: 57% 52%;
+  animation: jb-book-dive 1.46s cubic-bezier(.3, .55, .33, 1) both;
+}
+.jb[data-opening="true"] .jb-opening-overlay::before { animation: jb-turn-into-forest 1.46s ease both; }
+.jb[data-opening="true"] .jb-opening-light { animation: jb-page-light 1.46s ease both; }
+.jb[data-opening="true"] .jb-opening-butterfly { animation: jb-butterfly-rise 1.04s .42s ease both; }
+
+@keyframes jb-book-dive {
+  0%, 31% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.32); }
+}
+@keyframes jb-turn-into-forest {
+  0%, 44% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes jb-page-light {
+  0%, 28% { transform: translate(-38%, -32%) rotate(-12deg) scale(.68); opacity: 0; }
+  62% { transform: translate(-47%, -48%) rotate(-3deg) scale(1.08); opacity: .66; }
+  100% { transform: translate(-51%, -49%) rotate(6deg) scale(1.2); opacity: .39; }
+}
+@keyframes jb-butterfly-rise {
+  0% { top: 59%; left: 55%; opacity: 0; transform: translate(-50%, -50%) rotate(-20deg) scale(.37); }
+  32% { opacity: 1; }
+  58% { top: 37%; left: 43%; transform: translate(-50%, -50%) rotate(-36deg) scale(1.52); }
+  100% { top: var(--jb-handoff-y); left: 52%; opacity: 1; transform: translate(-50%, -50%) rotate(-11deg) scale(1); }
+}
 
 @media (min-aspect-ratio: 2 / 3) {
   .jb .jb-cover-stage {
