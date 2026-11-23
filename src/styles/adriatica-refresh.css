@@ -1,0 +1,452 @@
+/* ADRIATICA — prvobitna tipografija, Italianno za pisane delove i nežni ram.
+   Poseban fajl; postojeći newintro/newcard/newrsvp.css ostaju u projektu. */
+@font-face {
+  font-family: "Adriatica Italianno";
+  src: url("/fonts/adriatica/italianno-regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.adriatica.adriatica-soft,
+.adriatica-cover-intro.adriatica-soft {
+  --adriatica-script: "Adriatica Italianno", "BSA Script", cursive;
+}
+.adriatica.adriatica-soft .adriatica-couple-photo {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  width: min(100%, 430px);
+  margin: 0 auto clamp(58px, 10vw, 88px);
+}
+.adriatica.adriatica-soft .adriatica-couple-photo > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 48% 48% 0 0 / 35% 35% 0 0;
+}
+.adriatica.adriatica-soft .adriatica-couple-photo figcaption {
+  max-width: 28ch;
+  padding-inline: 12px;
+  color: #647153;
+  font: 400 clamp(2.15rem, 8vw, 2.8rem)/1.25 var(--adriatica-script);
+  text-align: center;
+  text-wrap: balance;
+}
+.adriatica.adriatica-soft .adriatica-couple-photo--wide {
+  width: min(100%, 640px);
+}
+.adriatica.adriatica-soft .adriatica-couple-photo--wide > img {
+  aspect-ratio: 2048 / 1362;
+  border-radius: 0;
+}
+@media (max-width: 599px) {
+  .adriatica.adriatica-soft .adriatica-couple-photo--wide {
+    width: min(100%, 430px);
+  }
+  .adriatica.adriatica-soft .adriatica-couple-photo--wide > img {
+    aspect-ratio: 4 / 5;
+    border-radius: 48% 48% 0 0 / 35% 35% 0 0;
+  }
+}
+
+/* Nežni ram se produžava sa sadržajem, uz očuvane gornje i donje ornamente. */
+.adriatica.adriatica-soft .adriatica-program-paper {
+  --adriatica-program-cream: #69705b;
+  --adriatica-program-note-ink: #6e705e;
+  width: min(100%, 560px);
+  color: var(--adriatica-program-cream);
+  background: transparent;
+  text-align: center;
+}
+.adriatica.adriatica-soft .adriatica-program-paper::before {
+  inset: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-image: url("/images/adriatica-destination/program-nezni-ram.webp") 13%
+    15% 13% 15% fill / 17cqi 13.5cqi 17cqi 13.5cqi stretch;
+  border-image-outset: 0;
+  background: none;
+  filter: none;
+}
+.adriatica.adriatica-soft .adriatica-program-copy {
+  gap: 30px;
+  padding: clamp(72px, 22cqi, 110px) 12.5cqi clamp(70px, 21cqi, 106px);
+}
+.adriatica.adriatica-soft .adriatica-program-heading {
+  gap: 9px;
+  text-align: center;
+}
+.adriatica.adriatica-soft .adriatica-program-heading .adriatica-program-kicker {
+  color: #6c7659;
+  font: 400 clamp(1.6rem, 7cqi, 2rem)/1.2 var(--adriatica-script);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.adriatica.adriatica-soft .adriatica-program-list {
+  position: relative;
+  gap: 34px;
+  isolation: isolate;
+}
+.adriatica.adriatica-soft .adriatica-program-list::before {
+  content: none;
+}
+.adriatica.adriatica-soft .adriatica-program-event {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.adriatica.adriatica-soft
+  .adriatica-program-event
+  + .adriatica-program-event::before {
+  content: none;
+}
+.adriatica.adriatica-soft .adriatica-program-icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  color: #6d7959;
+  background: transparent;
+}
+.adriatica.adriatica-soft .adriatica-program-icon :is(img, svg) {
+  display: block;
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+/* SVG maske čuvaju postojeće oblike i daju svim ikonicama istu boju. */
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img) {
+  background-color: #6e7959;
+  -webkit-mask-image: var(--adriatica-schedule-glyph);
+  mask-image: var(--adriatica-schedule-glyph);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 68px 68px;
+  mask-size: 68px 68px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-mode: alpha;
+}
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img) > img {
+  opacity: 0;
+}
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img[src$="/adriatica-chapel.svg"]) {
+  --adriatica-schedule-glyph: url("/icons/adriatica-chapel.svg");
+}
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img[src$="/adriatica-boat.svg"]) {
+  --adriatica-schedule-glyph: url("/icons/adriatica-boat.svg");
+}
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img[src$="/adriatica-glass.svg"]) {
+  --adriatica-schedule-glyph: url("/icons/adriatica-glass.svg");
+}
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img[src$="/adriatica-rings.svg"]) {
+  --adriatica-schedule-glyph: url("/icons/adriatica-rings.svg");
+}
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img[src$="/adriatica-dinner.svg"]) {
+  --adriatica-schedule-glyph: url("/icons/adriatica-dinner.svg");
+}
+.adriatica.adriatica-soft .adriatica-program-icon:has(> img[src$="/adriatica-party.svg"]) {
+  --adriatica-schedule-glyph: url("/icons/adriatica-party.svg");
+}
+.adriatica.adriatica-soft .adriatica-program-event-copy {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+.adriatica.adriatica-soft .adriatica-program-time {
+  margin: 0;
+  font-family: var(--adriatica-script);
+  line-height: 1.05;
+}
+.adriatica.adriatica-soft .adriatica-program-time > time {
+  display: block;
+  line-height: 1.05;
+}
+.adriatica.adriatica-soft .adriatica-program-time span {
+  font-size: 0.55em;
+  letter-spacing: 0;
+}
+.adriatica.adriatica-soft .adriatica-program-event h3 {
+  text-align: center;
+}
+.adriatica.adriatica-soft .adriatica-program-note {
+  max-width: 30ch;
+  margin-inline: auto;
+  text-align: center;
+}
+.adriatica.adriatica-soft .adriatica-program-address {
+  color: var(--adriatica-program-note-ink);
+  font: 400 clamp(0.9rem, 3.8cqi, 1.02rem)/1.55 var(--adriatica-serif);
+  white-space: pre-line;
+}
+.adriatica.adriatica-soft .adriatica-schedule .adriatica-text-link {
+  justify-content: center;
+  min-height: 44px;
+  margin-inline: auto;
+  padding-block: 8px;
+  text-align: center;
+}
+.adriatica.adriatica-soft
+  .adriatica-schedule
+  .adriatica-text-link:focus-visible {
+  outline-color: var(--adriatica-program-cream);
+}
+.adriatica.adriatica-soft .adriatica-flight-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  width: min(100%, 570px);
+  margin: 30px auto 0;
+  padding: 22px 0;
+  border-block: 1px solid #a7b08f66;
+  color: var(--adriatica-letter-detail-ink, #70654d);
+  text-align: center;
+}
+.adriatica.adriatica-soft .adriatica-flight-note > svg {
+  display: none;
+}
+.adriatica.adriatica-soft .adriatica-flight-note p {
+  font: 400 clamp(0.9rem, 3.6vw, 1rem)/1.85 var(--adriatica-sans);
+}
+.adriatica.adriatica-soft .adriatica-flight-note strong {
+  font-weight: 600;
+}
+.adriatica.adriatica-soft .adriatica-travel .adriatica-travel-details p {
+  max-width: 48ch;
+  margin: 15px auto 0;
+}
+.adriatica.adriatica-soft .adriatica-travel .adriatica-travel-art {
+  width: min(100%, 490px);
+  height: auto;
+  margin: 0 auto 26px;
+  mix-blend-mode: normal;
+}
+/* Akvareli lokacija i broda koriste istu paletu. */
+.adriatica.adriatica-soft .adriatica-venue-art > img,
+.adriatica.adriatica-soft .adriatica-travel .adriatica-travel-art {
+  filter: saturate(0.6) contrast(0.95) brightness(1.04);
+  opacity: 0.93;
+  mix-blend-mode: normal;
+}
+.adriatica-venue--paired + .adriatica-venue--paired {
+  padding-block-start: clamp(14px, 4vw, 28px);
+}
+.adriatica-venue--paired .adriatica-venue-address {
+  max-width: 32ch;
+  text-wrap: balance;
+}
+.adriatica-venue--paired .adriatica-venue-map:focus-visible {
+  outline: 2px solid #6e7959;
+  outline-offset: 4px;
+}
+.adriatica.adriatica-soft .adriatica-travel .adriatica-boarding-note {
+  font-weight: 500;
+}
+.adriatica.adriatica-soft .adriatica-clock {
+  background: none;
+}
+@media (max-width: 359px) {
+  .adriatica.adriatica-soft .adriatica-program-copy {
+    padding-inline: 12.5cqi;
+  }
+  .adriatica.adriatica-soft .adriatica-program-event {
+    gap: 6px;
+  }
+  .adriatica.adriatica-soft .adriatica-flight-note {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Uvodni tekst preporuka — samo tipografija i razmaci pasusa. */
+.adriatica.adriatica-soft .adriatica-local-guide .adriatica-section-heading > p {
+  width: 100%;
+  max-width: 42ch;
+  margin: 8px auto 18px;
+  padding: 0;
+  color: #7a6d58;
+  font: 400 clamp(0.9rem, 3.6vw, 0.98rem)/1.85 var(--adriatica-sans);
+  letter-spacing: 0.005em;
+  text-align: center;
+  text-wrap: pretty;
+  white-space: pre-line;
+}
+
+/* Valerija i Marko · akvareli iznad naslova o prevozu */
+.wedding-page--adriatica
+  :is([aria-labelledby="adriatica-taxi-title"], [aria-labelledby="adriatica-car-rental-title"])
+  > .adriatica-section-heading::before {
+  content: "";
+  display: block;
+  max-inline-size: 100%;
+  margin-block: -1rem 0.25rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-taxi-title"]
+  > .adriatica-section-heading::before {
+  inline-size: clamp(13rem, 64vw, 18.75rem);
+  aspect-ratio: 3 / 1;
+  background-image: url("/images/adriatica-destination/boka-obalni-put-akvarel.webp");
+  opacity: 0.77;
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"]
+  > .adriatica-section-heading::before {
+  inline-size: clamp(10rem, 48vw, 13.5rem);
+  aspect-ratio: 20 / 9;
+  background-image: url("/images/adriatica-destination/automobil-akvarel.webp");
+  opacity: 0.86;
+}
+
+/* Valerija i Marko · okvir fotografije i podloga odbrojavanja */
+.wedding-page--adriatica .adriatica-soft .adriatica-couple-photo {
+  row-gap: 28px;
+}
+
+.wedding-page--adriatica .adriatica-couple-photo > img {
+  box-shadow:
+    0 0 0 4px #f8f4eb,
+    0 0 0 5px #ac9877,
+    0 0 0 8px #f8f4eb,
+    0 0 0 9px #cdbd9f;
+}
+
+.wedding-page--adriatica .adriatica.adriatica-soft .adriatica-clock {
+  background-image: radial-gradient(
+    ellipse closest-side,
+    #eadbc38a,
+    #f1e7d360 56%,
+    transparent
+  );
+}
+
+/* Valerija i Marko · Iznajmljivanje automobila */
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] {
+  container: adriatica-rental / inline-size;
+  background: radial-gradient(ellipse 50% 49% at 50% 48%, #b5bc9c2e, transparent);
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] > .adriatica-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 12px;
+  max-inline-size: 34rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] > .adriatica-section-heading::after {
+  content: none;
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] > .adriatica-section-heading::before {
+  grid-area: 1 / 1;
+  z-index: 1;
+  place-self: end center;
+  margin: 0 0 -3px;
+}
+
+.wedding-page--adriatica #adriatica-car-rental-title {
+  max-inline-size: 100%;
+  margin: 7px 0 0;
+  color: #61543f;
+  font: 500 clamp(2rem, 7vw, 2.65rem)/1.1 var(--adriatica-serif);
+  text-wrap: balance;
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] .adriatica-section-heading > p {
+  max-inline-size: 36ch;
+  margin: 0;
+  color: #604f40;
+  font: 400 clamp(0.96rem, 3.5vw, 1rem)/1.65 var(--adriatica-sans);
+  text-wrap: pretty;
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] .adriatica-section-heading > p + p {
+  max-inline-size: 38ch;
+  color: #56614b;
+  font: italic 500 clamp(1.1rem, 4.4vw, 1.22rem)/1.4 var(--adriatica-serif);
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] .adriatica-booking-link {
+  min-block-size: 46px;
+  max-inline-size: 100%;
+  margin-top: 6px;
+  padding: 10px clamp(16px, 5vw, 27px);
+  border: 1px solid #54604a;
+  border-radius: 2px;
+  background-color: #59664f;
+  box-shadow: inset 0 0 0 2px #59664f, inset 0 0 0 3px #c7c6a7;
+  color: #fffcf1;
+  text-align: center;
+  font: 600 1.09rem/1.25 var(--adriatica-serif);
+}
+
+.wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] .adriatica-booking-link:focus-visible {
+  outline: 2px solid #526146;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] .adriatica-booking-link:hover {
+    background-color: #495640;
+    color: #fffcf1;
+  }
+}
+
+@container adriatica-rental (min-width: 42rem) {
+  .wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] > .adriatica-section-heading {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    justify-items: start;
+    column-gap: clamp(24px, 5cqi, 48px);
+    max-inline-size: 48rem;
+    text-align: start;
+  }
+
+  .wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] > .adriatica-section-heading > * {
+    grid-column: 2;
+  }
+
+  .wedding-page--adriatica [aria-labelledby="adriatica-car-rental-title"] > .adriatica-section-heading::before {
+    grid-row: 1 / span 4;
+    place-self: center;
+    margin: 0;
+    transform: translateY(2.15rem);
+  }
+
+  .wedding-page--adriatica #adriatica-car-rental-title {
+    margin: 0;
+  }
+}
+
+/* Valerija i Marko · Uvod u preporuke restorana i beach clubova */
+.wedding-page--adriatica #adriatica-guide-title + .adriatica-guide-lead {
+  max-inline-size: 33ch;
+  margin: 3px auto 0;
+  color: #5f694f;
+  font: italic 500 clamp(1.18rem, 4.6vw, 1.38rem)/1.35 var(--adriatica-serif);
+  letter-spacing: normal;
+  text-wrap: balance;
+}
+
+.wedding-page--adriatica .adriatica-local-guide .adriatica-section-heading > .adriatica-guide-lead + p {
+  max-inline-size: 39ch;
+  margin: 0 auto 4px;
+  color: #685c4b;
+  font-size: clamp(0.95rem, 3.65vw, 1rem);
+  line-height: 1.62;
+}

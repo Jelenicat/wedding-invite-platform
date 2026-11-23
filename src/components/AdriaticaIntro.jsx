@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import "../styles/newintro.css";
 import "../styles/adriatica-language.css";
+import "../styles/adriatica-refresh.css";
 
 const imageDirectory = "/images/adriatica-destination";
 const openingDuration = 1440;
@@ -59,7 +60,9 @@ export default function AdriaticaIntro({
   const showLanguageChoice = canChooseLanguage && !languageChosen;
   const copy = language === "de" ? envelopeCopy.de : envelopeCopy.sr;
   const Screen = overCover ? "div" : "main";
-  const className = overCover ? "adriatica-cover-intro" : "adriatica";
+  const className = overCover
+    ? "adriatica-cover-intro adriatica-soft"
+    : "adriatica adriatica-soft";
 
   useEffect(() => {
     if (!overCover) {
@@ -130,7 +133,10 @@ export default function AdriaticaIntro({
               draggable={false}
             />
             <div className="adriatica-language-content">
-              <h1 id="adriatica-language-title" className="adriatica-language-title">
+              <h1
+                id="adriatica-language-title"
+                className="adriatica-language-title"
+              >
                 Izaberite jezik
                 <span lang="de">Sprache wählen</span>
               </h1>
@@ -177,12 +183,18 @@ export default function AdriaticaIntro({
           <span
             className="adriatica-screen-envelope-pocket"
             onAnimationStart={({ animationName }) => {
-              if (overCover && animationName === "adriatica-screen-lower-pocket") {
+              if (
+                overCover &&
+                animationName === "adriatica-screen-lower-pocket"
+              ) {
                 onReveal?.();
               }
             }}
             onAnimationEnd={({ animationName }) => {
-              if (overCover && animationName === "adriatica-screen-lower-pocket") {
+              if (
+                overCover &&
+                animationName === "adriatica-screen-lower-pocket"
+              ) {
                 finishOpening();
               }
             }}
@@ -199,12 +211,18 @@ export default function AdriaticaIntro({
           aria-disabled={opening}
         >
           <span className="adriatica-screen-seal" aria-hidden="true">
-            <img src={`${imageDirectory}/bronzani-pecat.webp`} alt="" draggable={false} />
+            <img
+              src={`${imageDirectory}/bronzani-pecat.webp`}
+              alt=""
+              draggable={false}
+            />
             <span>{initials}</span>
           </span>
           <span className="adriatica-screen-cue" aria-hidden="true">
             <span className="adriatica-screen-cue-script">{copy.cue}</span>
-            <span className="adriatica-screen-cue-detail">{copy.cueDetail}</span>
+            <span className="adriatica-screen-cue-detail">
+              {copy.cueDetail}
+            </span>
           </span>
         </button>
       </Screen>
