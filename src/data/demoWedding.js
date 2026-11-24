@@ -13199,7 +13199,7 @@ musicSrc: "/music/matej-18.mp3",
   "weddingDate": "12. jun 2027.",
   "weddingTime": "13:00",
   "venue": "Restoran Adriatica, Kamenari, Crna Gora",
-  "musicSrc": "/music/jovana-oliver.mp3",
+  "musicSrc": "/music/valerija-marko.mp3",
   "details": {
     "defaultLanguage": "sr",
     "showLanguageSwitcher": true,
