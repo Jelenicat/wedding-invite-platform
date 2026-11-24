@@ -33,6 +33,8 @@ const invitationCopy = {
     carRental: "Iznajmljivanje automobila",
     viewRentalCars: "Pogledaj ponudu vozila",
     weddingTransfer: "Transfer na dan venčanja",
+    weddingTransferRoute: "Kotor – Restoran Adriatica",
+    weddingTransferMeetingPoint: "Glavna marina u Kotoru, preko puta Starog grada",
     viewProgram: "Pogledaj program",
     flights: "Informacije o letovima",
     stay: "Vaš boravak u Crnoj Gori",
@@ -68,6 +70,8 @@ const invitationCopy = {
     carRental: "Mietwagen",
     viewRentalCars: "Mietwagen ansehen",
     weddingTransfer: "Transfer am Hochzeitstag",
+    weddingTransferRoute: "Kotor – Restaurant Adriatica",
+    weddingTransferMeetingPoint: "Hauptmarina in Kotor, gegenüber der Altstadt",
     viewProgram: "Zum Hochzeitsablauf",
     flights: "Fluginformationen",
     stay: "Euer Aufenthalt in Montenegro",
@@ -79,6 +83,7 @@ const invitationCopy = {
     categories: {
       Restorani: "Restaurants",
       "Klubovi na plaži": "Beachclubs",
+      Plaže: "Strände",
     },
   },
 };
@@ -140,20 +145,66 @@ function AdriaticaJourneyDetails({ journey, copy, inTransferSection = false }) {
   );
 }
 
+function AdriaticaCouplePhoto({ photo, names, scrollReveal }) {
+  if (!photo?.src?.trim()) return null;
+
+  const portrait = (
+    <img
+      className={photo.frameSrc ? "adriatica-portrait-image" : undefined}
+      src={photo.src}
+      alt={photo.alt || names}
+      width={photo.width || 1200}
+      height={photo.height || 1500}
+      loading="lazy"
+      decoding="async"
+      style={{ objectPosition: photo.position || "50% 50%" }}
+    />
+  );
+  const wide = !photo.frameSrc && photo.layout === "landscape";
+
+  return (
+    <Motion.figure
+      className={`adriatica-couple-photo${wide ? " adriatica-couple-photo--wide" : ""}`}
+      {...scrollReveal}
+    >
+      {photo.frameSrc ? (
+        <div className="adriatica-framed-portrait">
+          {portrait}
+          <img
+            className="adriatica-portrait-frame"
+            src={photo.frameSrc}
+            alt=""
+            width={1080}
+            height={1350}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ) : portrait}
+      {photo.caption && <figcaption>{photo.caption}</figcaption>}
+    </Motion.figure>
+  );
+}
+
 function AdriaticaVenue({
+  id,
   headingId,
   heading,
   name,
   address,
   artwork,
   artworkAlt,
+  artworkWidth = 1200,
+  artworkHeight = 800,
   mapLink,
   paired = false,
   copy,
   scrollReveal,
+  children,
 }) {
   return (
     <Motion.section
+      id={id}
       className={`adriatica-section adriatica-venue${paired ? " adriatica-venue--paired" : ""}`}
       aria-labelledby={headingId}
       {...scrollReveal}
@@ -168,8 +219,8 @@ function AdriaticaVenue({
           <img
             src={artwork}
             alt={artworkAlt || ""}
-            width={1200}
-            height={800}
+            width={artworkWidth}
+            height={artworkHeight}
             loading="lazy"
             decoding="async"
           />
@@ -186,6 +237,7 @@ function AdriaticaVenue({
           {!paired && <AdriaticaIcon name="pin" />} {copy.location}
         </a>
       )}
+      {children}
     </Motion.section>
   );
 }
@@ -224,6 +276,7 @@ export default function AdriaticaInvitationCard({
       : adriatica.couplePhoto;
   const events = details.events || [];
   const boatEvent = events.find((event) => event.journey);
+  const arrivalAfterCountdown = slug === "valerija-marko";
   const journeyInTransport =
     adriatica.transport && boatEvent?.scheduleSummary ? boatEvent : undefined;
   const churchEvent =
@@ -372,31 +425,11 @@ export default function AdriaticaInvitationCard({
                 </Motion.section>
               )}
 
-              {couplePhoto?.src?.trim() && (
-                <Motion.figure
-                  className={`adriatica-couple-photo${couplePhoto.layout === "landscape" ? " adriatica-couple-photo--wide" : ""}`}
-                  {...scrollReveal}
-                >
-                  <img
-                    src={couplePhoto.src}
-                    alt={
-                      couplePhoto.alt ||
-                      `${brideName} ${copy.and} ${groomName}`
-                    }
-                    width={couplePhoto.width || 1200}
-                    height={couplePhoto.height || 1500}
-                    loading="lazy"
-                    decoding="async"
-                    style={{
-                      objectPosition:
-                        couplePhoto.position || "50% 50%",
-                    }}
-                  />
-                  {couplePhoto.caption && (
-                    <figcaption>{couplePhoto.caption}</figcaption>
-                  )}
-                </Motion.figure>
-              )}
+              <AdriaticaCouplePhoto
+                photo={couplePhoto}
+                names={`${brideName} ${copy.and} ${groomName}`}
+                scrollReveal={scrollReveal}
+              />
 
               {events.length > 0 && (
                 <Motion.section
@@ -508,6 +541,7 @@ export default function AdriaticaInvitationCard({
               <AdriaticaTransport
                 transport={adriatica.transport}
                 boatEvent={boatEvent}
+                section={arrivalAfterCountdown ? "wedding" : "all"}
                 scrollReveal={scrollReveal}
                 copy={copy}
               />
@@ -529,6 +563,14 @@ export default function AdriaticaInvitationCard({
                 />
               </Motion.div>
 
+              {arrivalAfterCountdown && (
+                <AdriaticaTransport
+                  transport={adriatica.transport}
+                  section="arrival"
+                  scrollReveal={scrollReveal}
+                  copy={copy}
+                />
+              )}
               <AdriaticaGuestGuide
                 config={adriatica}
                 scrollReveal={scrollReveal}
@@ -693,8 +735,144 @@ function AdriaticaContactLinks({ phone, whatsapp, name }) {
   );
 }
 
-function AdriaticaTransport({ transport, boatEvent, scrollReveal, copy }) {
+function AdriaticaTransport({
+  transport,
+  boatEvent,
+  section = "all",
+  scrollReveal,
+  copy,
+}) {
   if (!transport) return null;
+
+  const weddingOnly = section === "wedding";
+  const venueLayout = weddingOnly && Boolean(transport.weddingTransferRoute);
+  const boatArtwork =
+    transport.boatArtwork || "/images/adriatica-destination/brod-akvarel.webp";
+  const programLink = (
+    <a
+      className={
+        venueLayout
+          ? "adriatica-venue-map"
+          : "adriatica-text-link adriatica-travel-program-link"
+      }
+      href="#adriatica-program"
+    >
+      {copy.viewProgram} <AdriaticaIcon name="arrow" />
+    </a>
+  );
+
+  if (venueLayout && boatEvent) {
+    const journey = boatEvent.journey;
+    const meetingPoint =
+      journey?.boarding ||
+      (boatEvent.scheduleSummary || boatEvent.description)?.replace(/\.$/, "");
+
+    return (
+      <AdriaticaVenue
+        id="adriatica-wedding-transfer"
+        headingId="adriatica-wedding-transfer-title"
+        heading={copy.weddingTransfer}
+        name={transport.weddingTransferRoute}
+        address={meetingPoint}
+        artwork={boatArtwork}
+        artworkAlt={transport.boatArtworkAlt}
+        artworkWidth={1440}
+        artworkHeight={720}
+        mapLink={journey?.boarding ? journey.boardingMapLink : undefined}
+        paired
+        copy={copy}
+        scrollReveal={scrollReveal}
+      >
+        {programLink}
+      </AdriaticaVenue>
+    );
+  }
+
+  const boatTransferArtwork = (
+    <img
+      className="adriatica-travel-art"
+      src={boatArtwork}
+      alt={transport.boatArtworkAlt || ""}
+      width={1800}
+      height={900}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+  const TransferHeading = weddingOnly ? "h2" : "h3";
+  const boatTransfer = section !== "arrival" && boatEvent && (
+    <div>
+      {!weddingOnly && boatTransferArtwork}
+      {weddingOnly ? (
+        <>
+          <div className="adriatica-venue adriatica-transfer-typography">
+            <div className="adriatica-venue-copy">
+              <h2 id="adriatica-wedding-transfer-title">
+                {copy.weddingTransfer}
+              </h2>
+              <p className="adriatica-venue-name">
+                {transport.weddingTransferRoute || copy.weddingTransferRoute}
+              </p>
+              <p className="adriatica-venue-address">
+                {boatEvent.journey?.boarding || copy.weddingTransferMeetingPoint}
+              </p>
+            </div>
+            {boatTransferArtwork}
+            {!boatEvent.journey?.boarding && boatEvent.journey?.pendingBoarding && (
+              <p className="adriatica-venue-address adriatica-transfer-pending">
+                {boatEvent.journey.pendingBoarding}
+              </p>
+            )}
+          </div>
+          {boatEvent.scheduleSummary && boatEvent.journey?.boarding && (
+            <TravelLink href={boatEvent.journey.boardingMapLink}>
+              {copy.boardingMap}
+            </TravelLink>
+          )}
+        </>
+      ) : (
+        <>
+          <TransferHeading>{copy.weddingTransfer}</TransferHeading>
+          {transport.weddingTransferNote && (
+            <p>{transport.weddingTransferNote}</p>
+          )}
+          <p>{boatEvent.description}</p>
+          {boatEvent.scheduleSummary ? (
+            <AdriaticaJourneyDetails
+              journey={boatEvent.journey}
+              copy={copy}
+              inTransferSection
+            />
+          ) : boatEvent.journey?.pendingBoarding && (
+            <p className="adriatica-boarding-note">
+              {boatEvent.journey.pendingBoarding}
+            </p>
+          )}
+        </>
+      )}
+      {programLink}
+    </div>
+  );
+
+  if (weddingOnly) {
+    return boatTransfer && (
+      <Motion.section
+        className="adriatica-section adriatica-travel"
+        id="adriatica-wedding-transfer"
+        aria-labelledby="adriatica-wedding-transfer-title"
+        {...scrollReveal}
+      >
+        <div className="adriatica-travel-details">{boatTransfer}</div>
+      </Motion.section>
+    );
+  }
+
+  const airportTransfer = transport.transfers || transport.pendingTransfers;
+  const flights = (transport.flights || []).filter((flight) => flight.name);
+  const showDetails = section === "all" || Boolean(airportTransfer || flights.length);
+  if (!showDetails && !transport.airports?.length && !transport.flightNote) {
+    return null;
+  }
 
   return (
     <Motion.section
@@ -737,58 +915,20 @@ function AdriaticaTransport({ transport, boatEvent, scrollReveal, copy }) {
           </p>
         </aside>
       )}
-      <div className="adriatica-travel-details">
-        {(transport.transfers || transport.pendingTransfers) && (
-          <div>
-            <h3>{copy.airportTransfer}</h3>
-            <p>{transport.transfers || transport.pendingTransfers}</p>
-          </div>
-        )}
-        {boatEvent && (
-          <div>
-            <img
-              className="adriatica-travel-art"
-              src={
-                transport.boatArtwork ||
-                "/images/adriatica-destination/brod-akvarel.webp"
-              }
-              alt=""
-              width={1800}
-              height={900}
-              loading="lazy"
-              decoding="async"
-            />
-            <h3>{copy.weddingTransfer}</h3>
-            {transport.weddingTransferNote && (
-              <p>{transport.weddingTransferNote}</p>
-            )}
-            <p>{boatEvent.description}</p>
-            {boatEvent.scheduleSummary ? (
-              <AdriaticaJourneyDetails
-                journey={boatEvent.journey}
-                copy={copy}
-                inTransferSection
-              />
-            ) : boatEvent.journey?.pendingBoarding && (
-              <p className="adriatica-boarding-note">
-                {boatEvent.journey.pendingBoarding}
-              </p>
-            )}
-            <a
-              className="adriatica-text-link adriatica-travel-program-link"
-              href="#adriatica-program"
-            >
-              {copy.viewProgram} <AdriaticaIcon name="arrow" />
-            </a>
-          </div>
-        )}
-        {transport.flights?.some((flight) => flight.name) && (
-          <div>
-            <h3>{copy.flights}</h3>
-            <ul className="adriatica-travel-links">
-              {transport.flights
-                .filter((flight) => flight.name)
-                .map((flight) => (
+      {showDetails && (
+        <div className="adriatica-travel-details">
+          {airportTransfer && (
+            <div>
+              <h3>{copy.airportTransfer}</h3>
+              <p>{airportTransfer}</p>
+            </div>
+          )}
+          {boatTransfer}
+          {flights.length > 0 && (
+            <div>
+              <h3>{copy.flights}</h3>
+              <ul className="adriatica-travel-links">
+                {flights.map((flight) => (
                   <li key={flight.name}>
                     {flight.url ? (
                       <TravelLink href={flight.url}>{flight.name}</TravelLink>
@@ -798,10 +938,11 @@ function AdriaticaTransport({ transport, boatEvent, scrollReveal, copy }) {
                     {flight.description && <p>{flight.description}</p>}
                   </li>
                 ))}
-            </ul>
-          </div>
-        )}
-      </div>
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
     </Motion.section>
   );
 }
@@ -863,7 +1004,7 @@ function AdriaticaGuestGuide({ config, scrollReveal, copy }) {
           {...scrollReveal}
         >
           <div className="adriatica-section-heading">
-            <h2 id="adriatica-guide-title">{copy.guide}</h2>
+            <h2 id="adriatica-guide-title">{guide.title || copy.guide}</h2>
             {guide.lead && <p className="adriatica-guide-lead">{guide.lead}</p>}
             {guide.intro && <p>{guide.intro}</p>}
           </div>

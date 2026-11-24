@@ -42,6 +42,32 @@
   aspect-ratio: 2048 / 1362;
   border-radius: 0;
 }
+
+/* Otvor u reljefnom ramu je blago pomeren ulevo. Fotografija zalazi ispod oboda. */
+.adriatica .adriatica-framed-portrait {
+  position: relative;
+  width: 100%;
+}
+
+.adriatica .adriatica-portrait-image {
+  position: absolute;
+  left: 19%;
+  top: 20.7%;
+  width: 60.45%;
+  height: 58.65%;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.adriatica .adriatica-portrait-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
 @media (max-width: 599px) {
   .adriatica.adriatica-soft .adriatica-couple-photo--wide {
     width: min(100%, 430px);
@@ -433,7 +459,7 @@
   }
 }
 
-/* Valerija i Marko · Uvod u preporuke restorana i beach clubova */
+/* Valerija i Marko · Uvod u preporuke restorana i plaža */
 .wedding-page--adriatica #adriatica-guide-title + .adriatica-guide-lead {
   max-inline-size: 33ch;
   margin: 3px auto 0;
@@ -449,4 +475,82 @@
   color: #685c4b;
   font-size: clamp(0.95rem, 3.65vw, 1rem);
   line-height: 1.62;
+}
+
+/* Valerija i Marko · Samostalni odeljak za transfer brodom */
+.wedding-page--adriatica #adriatica-wedding-transfer::before {
+  content: none;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer > .adriatica-travel-details {
+  margin-top: 0;
+}
+
+.wedding-page--adriatica .adriatica-travel #adriatica-wedding-transfer-title {
+  margin: 0 auto 13px;
+  color: var(--adriatica-letter-detail-ink, #70654d);
+  font: 500 clamp(1.56rem, 5.7vw, 1.95rem)/1.25 var(--adriatica-serif);
+  text-wrap: balance;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer .adriatica-venue-art {
+  width: min(calc(100% - 24px), 490px);
+}
+
+/* Valerija i Marko · tipografija transfera, tekst iznad akvarela. */
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography {
+  display: contents;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography .adriatica-venue-copy {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography #adriatica-wedding-transfer-title {
+  margin: 0;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography .adriatica-venue-name {
+  margin: 0;
+  color: var(--adriatica-letter-detail-ink, #70654d);
+  font: 400 clamp(2rem, 8vw, 2.6rem)/1.12 var(--adriatica-script);
+  letter-spacing: normal;
+  text-transform: none;
+  text-wrap: balance;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography .adriatica-venue-address {
+  max-width: 32ch;
+  margin: 0;
+  color: var(--adriatica-letter-detail-ink, #70654d);
+  font: 400 clamp(0.72rem, 3vw, 0.82rem)/1.65 var(--adriatica-sans);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography .adriatica-transfer-pending {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* Transfer: naslov, ruta i marina iznad broda; napomena ispod. */
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography .adriatica-venue-copy {
+  margin-bottom: 24px;
+}
+
+.wedding-page--adriatica #adriatica-wedding-transfer
+  .adriatica-transfer-typography .adriatica-transfer-pending {
+  margin-inline: auto;
 }

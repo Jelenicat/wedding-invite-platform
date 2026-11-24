@@ -13324,7 +13324,8 @@ musicSrc: "/music/matej-18.mp3",
         "flights": [],
         "flightNote": "Za goste koji putuju iz Ciriha, letovi uglavnom uključuju kratko presedanje u Beogradu. Molimo vas da prilikom rezervacije pažljivo proverite vreme i trajanje putovanja.",
         "weddingTransferNote": "Nakon crkvenog venčanja, do restorana Adriatica u Kamenarima putujemo zajedno brodom kroz Boku Kotorsku.",
-        "boatArtwork": "/images/adriatica-destination/brod-akvarel.webp"
+        "boatArtwork": "/images/adriatica-destination/brod-valerija-marko-akvarel.webp",
+        "boatArtworkAlt": "Akvarel belog putničkog broda s plavim trupom u Boki Kotorskoj"
       },
       "accommodation": {
         "bookingLink": "https://www.booking.com/",
@@ -13364,6 +13365,7 @@ musicSrc: "/music/matej-18.mp3",
         ]
       },
       "guide": {
+        "title": "Restorani i plaže",
         "lead": "Voleli bismo da Boku upoznate bez žurbe.",
         "intro": "Za dane pre i posle našeg venčanja izdvojili smo nekoliko restorana za ručak uz more ili večeru s pogledom na zaliv. Tu su i naši predlozi za opušteno popodne na plaži.",
         "places": [
@@ -13400,35 +13402,36 @@ musicSrc: "/music/matej-18.mp3",
           },
           {
             "name": "Tapasake Portonovi",
-            "category": "Klubovi na plaži",
+            "category": "Plaže",
             "location": "Portonovi · Herceg Novi"
           },
           {
             "name": "Limoneto",
-            "category": "Klubovi na plaži",
+            "category": "Plaže",
             "location": "Đurići · Herceg Novi",
             "mapLink": "https://www.google.com/maps/search/?api=1&query=Limoneto%20Restaurant%20%26%20Beach%2C%20%C4%90uri%C4%87i%2C%20Crna%20Gora"
           },
           {
             "name": "Monte Palm",
-            "category": "Klubovi na plaži",
+            "category": "Plaže",
             "location": "Bogišići · Tivat",
             "mapLink": "https://www.google.com/maps/search/?api=1&query=Monte%20Palm%20Beach%2C%20Bogi%C5%A1i%C4%87i%2C%20Tivat%2C%20Crna%20Gora"
           },
           {
             "name": "Galija",
-            "category": "Klubovi na plaži",
+            "category": "Plaže",
             "location": "Sveti Stefan",
             "mapLink": "https://www.google.com/maps/search/?api=1&query=Galija%20Beach%2C%20Sveti%20Stefan%2C%20Crna%20Gora"
           },
           {
-            "name": "Ribarsko Selo",
-            "category": "Klubovi na plaži",
-            "location": "Žanjice · Luštica"
+            "name": "Waikiki Beach",
+            "category": "Plaže",
+            "location": "Donja Lastva · Tivat",
+            "mapLink": "https://www.google.com/maps/search/?api=1&query=Waikiki%20Beach%20Resort%2C%20Donja%20Lastva%2C%20Tivat%2C%20Montenegro"
           },
           {
             "name": "Almara Beach",
-            "category": "Klubovi na plaži",
+            "category": "Plaže",
             "location": "Oblatno · Luštica",
             "mapLink": "https://www.google.com/maps/search/?api=1&query=Almara%20Beach%20Club%2C%20Oblatno%2C%20Lu%C5%A1tica%2C%20Crna%20Gora"
           }
@@ -13444,6 +13447,7 @@ musicSrc: "/music/matej-18.mp3",
       "couplePhoto": {
         "src": "/images/adriatica-destination/valerija-marko-fotografija.png",
         "alt": "Valerija i Marko",
+        "frameSrc": "/images/adriatica-destination/ovalni-ram-slonovaca.webp",
         "position": "50% 50%",
         "caption": "Jedva čekamo da ovaj dan podelimo sa vama."
       }
@@ -13536,11 +13540,13 @@ musicSrc: "/music/matej-18.mp3",
                 "bookingNote": "Nach der Anzahlung erhaltet ihr per E-Mail die Buchungsbestätigung und die Kontaktdaten eurer Autovermietung."
               },
               "flightNote": "Für Gäste, die ab Zürich reisen, beinhalten die Flüge in der Regel einen kurzen Zwischenstopp in Belgrad. Bitte prüft bei der Buchung die Flugzeiten und die gesamte Reisedauer sorgfältig.",
+              "boatArtworkAlt": "Aquarell des weißen Ausflugsboots mit blauem Rumpf in der Bucht von Kotor",
               "weddingTransferNote": "Nach der kirchlichen Trauung fahren wir gemeinsam mit dem Boot durch die Bucht von Kotor zum Restaurant Adriatica in Kamenari."
             },
             "guide": {
+              "title": "Restaurants und Strände",
               "lead": "Wir hoffen, ihr könnt die Bucht von Kotor in aller Ruhe entdecken.",
-              "intro": "Vielleicht habt ihr vor oder nach unserer Hochzeit Lust auf ein Mittagessen am Meer, ein Abendessen mit Blick auf die Bucht oder einen entspannten Nachmittag am Strand. Dafür haben wir ein paar Restaurants und Beachclubs für euch ausgesucht."
+              "intro": "Vielleicht habt ihr vor oder nach unserer Hochzeit Lust auf ein Mittagessen am Meer, ein Abendessen mit Blick auf die Bucht oder einen entspannten Nachmittag am Strand. Dafür haben wir ein paar Restaurants und Strände für euch ausgesucht."
             },
             "contacts": [
               {
@@ -13560,7 +13566,6 @@ musicSrc: "/music/matej-18.mp3",
     }
   }
 },
-
 
 
 {
