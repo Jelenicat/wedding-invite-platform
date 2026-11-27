@@ -54,6 +54,65 @@ function BirthdaySplitIntro({
     !musicStarted &&
     typeof onStartMusic === "function";
 
+  // HANA-2: potpuno izolovan intro. Ostali slugovi koriste stari kod.
+  if (slug === "hana-2") {
+    return (
+      <section className="hana2-couture" aria-label={`Pozivnica — ${name}`}>
+        <div className="hana2-couture-photos">
+          {validImages.length > 0 && (
+            <div className="hana2-couture-track">
+              {[0, 1].map((copy) => (
+                <div
+                  className="hana2-couture-photo-group"
+                  key={copy}
+                  aria-hidden={copy === 1 ? true : undefined}
+                >
+                  {validImages.map((img, index) => (
+                    <div className="hana2-couture-photo" key={`${img}-${index}`}>
+                      <img
+                        src={img}
+                        alt={copy === 0 ? `${name} — fotografija ${index + 1}` : ""}
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="hana2-couture-panel">
+          <div className="hana2-couture-paper">
+            <div className="hana2-couture-frame" aria-hidden="true" />
+            <div className="hana2-couture-copy">
+              <div className="hana2-couture-age" aria-label="Prvi rođendan">
+                <span className="hana2-couture-number" aria-hidden="true">1</span>
+                <span className="hana2-couture-one" aria-hidden="true">One</span>
+              </div>
+              
+              <h1 className="hana2-couture-name">{name}</h1>
+              <p className="hana2-couture-subtitle">
+                slavi svoj prvi rođendan<br />i krštenje
+              </p>
+              <button
+                type="button"
+                className="hana2-couture-button"
+                onClick={onEnter}
+              >
+                Pogledaj pozivnicu
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       className={[

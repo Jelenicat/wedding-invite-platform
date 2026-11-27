@@ -135,7 +135,9 @@ function BirthdaySplitRSVP({
         : details?.rsvpSubtitle || text.subtitle;
 
   const slugClass = slug
-    ? `birthday-split-rsvp-${slug}`
+    ? `birthday-split-rsvp-${slug}${
+        slug === "hana-2" ? " birthday-split-rsvp-hana-1" : ""
+      }`
     : "";
 
   const [formData, setFormData] = useState({
@@ -424,7 +426,8 @@ function BirthdaySplitRSVP({
   slug !== "eva-1" &&
   slug !== "lara-1" &&
   slug !== "relja" &&
-  slug !== "hana-1" && (
+  slug !== "hana-1" &&
+  slug !== "hana-2" && (
     <div className="birthday-split-rsvp-note">
       {details.note}
     </div>

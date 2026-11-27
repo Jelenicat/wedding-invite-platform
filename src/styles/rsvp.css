@@ -20964,3 +20964,1005 @@ margin-bottom: 2px;
   font-feature-settings: "lnum" 1, "onum" 0, "tnum" 1;
   line-height: 1.5;
 }
+
+/* =====================================================
+   HANA-2 — RSVP / DUSTY ROSE GLASS
+===================================================== */
+
+.birthday-split-rsvp-hana-2 {
+  --hana-rsvp-text: #926273;
+  --hana-rsvp-dark: #805365;
+  --hana-rsvp-muted: #a07889;
+  --hana-rsvp-border: #dec0ce;
+
+  padding: 50px 0 35px;
+}
+
+/* GLAVNA KARTICA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-wrap {
+  width: 82%;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  padding: 48px 22px 30px;
+
+  background: rgba(255, 249, 252, 0.68);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 30px;
+
+  box-shadow: 0 15px 45px rgba(146, 98, 115, 0.08);
+  overflow: visible;
+}
+
+/* AKVARELNA MAŠNICA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-card::before {
+  content: "";
+
+  position: absolute;
+  top: -32px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 100px;
+  height: 70px;
+
+  background: url("/images/hana-2/bow.png")
+    center / contain no-repeat;
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* RSVP NATPIS */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-kicker {
+  color: var(--hana-rsvp-muted);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 4px;
+
+  margin-bottom: 12px;
+}
+
+/* NASLOV */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(27px, 7vw, 34px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.15;
+
+  color: var(--hana-rsvp-text);
+  margin: 0 0 12px;
+}
+
+/* TEKST ISPOD NASLOVA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: var(--hana-rsvp-muted);
+  margin: 0 0 28px;
+}
+
+/* FORMA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-form {
+  gap: 20px;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field label,
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-choice-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--hana-rsvp-text);
+}
+
+/* INPUT POLJA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field input {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid #e4cbd6;
+  border-radius: 13px;
+
+  padding: 14px 13px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: var(--hana-rsvp-dark);
+
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field input::placeholder {
+  color: #b49aa5;
+  opacity: 1;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field input:focus {
+  outline: none;
+  border-color: #bd8ba0;
+  background: rgba(255, 255, 255, 0.8);
+
+  box-shadow: 0 0 0 3px rgba(189, 139, 160, 0.10);
+}
+
+/* DA LI DOLAZITE */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-choice-label {
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+/* DVE OPCIJE JEDNA PORED DRUGE */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* DUGMAD DOLAZIM / NE DOLAZIM */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 104px;
+  height: auto;
+
+  padding: 12px 7px;
+
+  background: rgba(255, 255, 255, 0.40);
+  border: 1px solid #e3c9d4;
+  border-radius: 16px;
+
+  box-shadow: none;
+  text-align: center;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* SRCE IZNAD OPCIJE */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card::before {
+  content: "♡";
+
+  display: block;
+  position: static;
+
+  color: #bb8a9f;
+  font-size: 25px;
+  line-height: 1;
+  margin-bottom: 6px;
+
+  background: none;
+  border: none;
+  transform: none;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card:nth-child(2)::before {
+  content: "×";
+  font-size: 23px;
+}
+
+/* NASLOVI OPCIJA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--hana-rsvp-dark);
+  line-height: 1.15;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+
+  color: var(--hana-rsvp-muted);
+  margin-top: 5px;
+}
+
+/* ODABRANA OPCIJA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active {
+  background: linear-gradient(
+    145deg,
+    #f9eaf0,
+    #efd5e0
+  );
+
+  border-color: #bd8ba0;
+  box-shadow: 0 4px 14px rgba(146, 98, 115, 0.08);
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active:first-child::before {
+  content: "♥";
+  color: #b77e95;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card:hover {
+  border-color: #bd8ba0;
+}
+
+/* POŠALJI POTVRDU */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-button {
+  width: 100%;
+  min-height: 50px;
+
+  padding: 12px 18px;
+  margin-top: 7px;
+
+  background: linear-gradient(
+    145deg,
+    #fff7fa,
+    #efd3df
+  );
+
+  border: 1px solid #cda3b4;
+  border-radius: 40px;
+
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.75),
+    0 5px 18px rgba(146, 98, 115, 0.08);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-style: italic;
+  font-weight: 600;
+
+  text-transform: none;
+  letter-spacing: 0.3px;
+
+  color: var(--hana-rsvp-dark);
+
+  transition: all 0.3s ease;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-button:hover:not(:disabled) {
+  background: #efd3df;
+  transform: translateY(-2px);
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* POTVRDA USPEŠNOG SLANJA */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-success h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--hana-rsvp-text);
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-success p {
+  color: var(--hana-rsvp-muted);
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-confetti {
+  background: #d6a8bc;
+}
+
+/* MANJI EKRANI */
+
+@media (max-width: 380px) {
+  .birthday-split-rsvp-hana-2
+  .birthday-split-rsvp-wrap {
+    width: 86%;
+  }
+
+  .birthday-split-rsvp-hana-2
+  .birthday-split-rsvp-card {
+    padding: 45px 15px 25px;
+  }
+
+  .birthday-split-rsvp-hana-2
+  .birthday-split-choice-title {
+    font-size: 19px;
+  }
+
+  .birthday-split-rsvp-hana-2
+  .birthday-split-choice-text {
+    font-size: 13px;
+  }
+}
+
+/* =====================================================
+   HANA-2 — MINIMAL LUXURY RSVP
+===================================================== */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-card {
+  background: rgba(255, 250, 252, 0.65);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+
+  padding: 52px 24px 32px;
+  box-shadow: 0 10px 35px rgba(146, 98, 115, 0.05);
+}
+
+/* Manja mašnica */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-card::before {
+  width: 90px;
+  height: 64px;
+  top: -31px;
+}
+
+/* Uklanjamo RSVP natpis */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-kicker {
+  display: none;
+}
+
+/* Naslov */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 500;
+  color: #805365;
+  margin-bottom: 14px;
+}
+
+/* Uvodni tekst */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-subtitle {
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #926273;
+  margin-bottom: 25px;
+}
+
+/* Forma */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Ime i prezime */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field label {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #805365;
+  margin-bottom: 8px;
+}
+
+/* Input bez pravougaonog okvira */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #cfa8ba;
+  border-radius: 0;
+  box-shadow: none;
+
+  padding: 12px 4px;
+  text-align: center;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: #805365;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field input:focus {
+  background: transparent;
+  border-bottom-color: #926273;
+  box-shadow: none;
+  outline: none;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-field input::placeholder {
+  color: #ad8b9b;
+}
+
+/* Da li dolazite */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-choice-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  font-style: italic;
+  font-weight: 500;
+  color: #805365;
+
+  text-align: center;
+  margin: 0 0 14px;
+}
+
+/* Opcije bez boxeva */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card,
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 65px;
+  padding: 8px 4px;
+  gap: 10px;
+  transform: none;
+}
+
+/* Diskretni kružići za odabir */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card::before,
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card:nth-child(2)::before,
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active:first-child::before {
+  content: "";
+
+  display: block;
+  position: static;
+
+  width: 17px;
+  height: 17px;
+  box-sizing: border-box;
+
+  border: 1px solid #bd8ba0;
+  border-radius: 50%;
+
+  background: transparent;
+  margin: 0;
+  transform: none;
+
+  transition: background 0.25s ease;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active::before,
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active:first-child::before {
+  background: #a8758b;
+  box-shadow: inset 0 0 0 4px #fff5f9;
+}
+
+/* Uklanjamo dodatne oznake */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card::after {
+  display: none;
+}
+
+/* Dolazim / Ne dolazim */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #805365;
+  line-height: 1.2;
+}
+
+/* Uklanjamo nepotrebne opise ispod opcija */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-text {
+  display: none;
+}
+
+/* Elegantno mat dugme */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-button {
+  width: 85%;
+  max-width: 260px;
+  align-self: center;
+
+  position: relative;
+  min-height: 49px;
+  padding: 12px 16px;
+  margin-top: 4px;
+
+  background: #936277;
+  color: #fff9fc;
+
+  border: 1px solid #936277;
+  border-radius: 10px;
+
+  box-shadow: none;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 500;
+  font-style: italic;
+
+  letter-spacing: 0.3px;
+  text-transform: none;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Fini unutrašnji obrub dugmeta */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-button::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+
+  pointer-events: none;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-button:hover:not(:disabled) {
+  background: #805365;
+  transform: translateY(-2px);
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card:focus-visible,
+.birthday-split-rsvp-hana-2
+.birthday-split-rsvp-button:focus-visible {
+  outline: 2px solid #926273;
+  outline-offset: 4px;
+}
+
+@media (max-width: 380px) {
+  .birthday-split-rsvp-hana-2
+  .birthday-split-rsvp-card {
+    padding: 48px 16px 26px;
+  }
+
+  .birthday-split-rsvp-hana-2
+  .birthday-split-rsvp-title {
+    font-size: 29px;
+  }
+
+  .birthday-split-rsvp-hana-2
+  .birthday-split-choice-title {
+    font-size: 20px;
+  }
+}
+
+/* HANA-2 — boja odabrane RSVP opcije */
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active {
+  background: transparent !important;
+  color: #805365 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active
+.birthday-split-choice-title {
+  color: #805365 !important;
+  font-weight: 600;
+}
+
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card:hover
+.birthday-split-choice-title {
+  color: #805365 !important;
+}
+
+/* Popunjen kružić odabrane opcije */
+.birthday-split-rsvp-hana-2
+.birthday-split-choice-card.is-active::before {
+  background: #a8758b !important;
+  border-color: #a8758b !important;
+  box-shadow: inset 0 0 0 4px #fff5f9;
+}
+
+/* =====================================================
+   HANA-2 — ELEGANT COUNTDOWN
+===================================================== */
+
+.birthday-split-countdown-hana-2 {
+  padding: 20px 0 45px;
+}
+
+/* GLAVNA KARTICA */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-card {
+  width: 82%;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 35px 22px 32px;
+  box-sizing: border-box;
+
+  background: rgba(255, 250, 252, 0.65);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+
+  box-shadow: 0 10px 35px rgba(146, 98, 115, 0.05);
+}
+
+/* UKLANJANJE COUNTDOWN NATPISA */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-kicker {
+  display: none;
+}
+
+/* NASLOV */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(26px, 6.5vw, 32px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.2;
+
+  color: #805365;
+  margin: 0 0 16px;
+}
+
+/* TEKST ISPOD NASLOVA */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #926273;
+  margin: 0 0 28px;
+}
+
+/* ODBROJAVANJE U JEDNOM REDU */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  width: 100%;
+  gap: 0;
+  margin: 0 auto 32px;
+}
+
+/* UKLANJANJE POJEDINAČNIH BOXEVA */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-unit {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 0;
+  padding: 12px 2px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  gap: 8px;
+}
+
+/* DISKRETNE LINIJE IZMEĐU BROJEVA */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-unit:not(:last-child)::after {
+  content: "";
+  position: absolute;
+
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #d9b5c5,
+    transparent
+  );
+}
+
+/* BROJEVI */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 8vw, 42px);
+  font-weight: 500;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1;
+
+  color: #926273;
+}
+
+/* DANI, SATI, MINUTI, SEKUNDE */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(9px, 2.5vw, 11px);
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  color: #926273;
+}
+
+/* DODAJ U KALENDAR */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-calendar-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 85%;
+  max-width: 260px;
+  min-height: 49px;
+
+  margin: 0 auto;
+  padding: 12px 16px;
+  gap: 10px;
+  box-sizing: border-box;
+
+  background: #936277;
+  border: 1px solid #936277;
+  border-radius: 10px;
+  box-shadow: none;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+
+  text-transform: none;
+  letter-spacing: 0.3px;
+
+  color: #fff9fc;
+
+  transition: background 0.3s ease;
+}
+
+/* UNUTRAŠNJI OBRUB DUGMETA */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-calendar-button::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+
+  pointer-events: none;
+}
+
+/* IKONICA KALENDARA */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-calendar-icon {
+  display: inline-flex;
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: #fff9fc;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-calendar-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-calendar-button:hover {
+  background: #805365;
+  color: #fff9fc;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-calendar-button:focus-visible {
+  outline: 2px solid #926273;
+  outline-offset: 4px;
+}
+
+/* KADA SE ODBROJAVANJE ZAVRŠI */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-finished {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-style: italic;
+  color: #926273;
+  margin: 20px 0;
+}
+
+/* MANJI MOBILNI EKRANI */
+
+@media (max-width: 380px) {
+  .birthday-split-countdown-hana-2
+  .birthday-split-countdown-card {
+    width: 86%;
+    padding: 30px 14px 25px;
+  }
+
+  .birthday-split-countdown-hana-2
+  .birthday-split-countdown-number {
+    font-size: 30px;
+  }
+
+  .birthday-split-countdown-hana-2
+  .birthday-split-countdown-label {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* HANA-2 — završno sređivanje odbrojavanja */
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-unit {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  padding: 8px 2px;
+  gap: 5px;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-unit::before {
+  display: none !important;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-number {
+  font-size: clamp(32px, 8vw, 43px);
+  font-weight: 500;
+  line-height: 1;
+  color: #805365;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-label {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: #926273;
+  margin: 0;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-grid {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 25px;
+}
+
+.birthday-split-countdown-hana-2
+.birthday-split-countdown-subtitle {
+  margin-bottom: 22px;
+}

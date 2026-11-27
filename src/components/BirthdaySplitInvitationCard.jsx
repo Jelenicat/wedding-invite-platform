@@ -40,7 +40,7 @@ function BirthdaySplitInvitationCard({
     slug === "relja";
 
   const isHanaSlug =
-    slug === "hana-1";
+    slug === "hana-1" || slug === "hana-2";
 
   /*
    * Lara, Relja i Hana koriste isti CARD stil.
@@ -217,6 +217,190 @@ function BirthdaySplitInvitationCard({
       displayedVenue || ""
     )}`;
 
+  // Poseban dizajn isključivo za hana-2.
+  // Ostali slugovi nastavljaju kroz postojeći return ispod.
+  if (slug === "hana-2") {
+    const monthNames = [
+      "Januar", "Februar", "Mart", "April", "Maj", "Jun",
+      "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar",
+    ];
+    const weekdayNames = [
+      "Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota",
+    ];
+    const monthName = hasValidEventDate ? monthNames[eventMonth - 1] : month;
+    const weekday = hasValidEventDate
+      ? weekdayNames[new Date(Date.UTC(eventYear, eventMonth - 1, eventDay)).getUTCDay()]
+      : "";
+    const events = Array.isArray(details?.events) ? details.events : [];
+    const reveal = {
+      initial: { opacity: 0, y: 14 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true, amount: 0.12 },
+      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+    };
+
+    return (
+      <div className="hana2-shared-page">
+        {/* Jedan video za celu unutrašnjost — samo hana-2 */}
+        <div className="hana2-shared-video" aria-hidden="true">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={backgroundImage || undefined}
+          >
+            <source src={videoPath} type="video/mp4" />
+          </video>
+        </div>
+        <div className="hana2-shared-content">
+          <section className="hana2-day" lang="sr-Latn">
+            <motion.article className="hana2-day-paper" {...reveal}>
+              <img className="hana2-day-bow" src="/images/hana-2/bow.png" alt="" aria-hidden="true" />
+              <header className="hana2-day-header">
+                <p className="hana2-day-eyebrow">Dva razloga za radost</p>
+                <h1 className="hana2-day-name">{name}</h1>
+                <p className="hana2-day-subtitle">
+                  slavi svoj prvi rođendan<br />i krštenje
+                </p>
+              </header>
+
+              <motion.div className="hana2-day-calendar" {...reveal}>
+                <div className="hana2-day-month">
+                  {monthName} {hasValidEventDate ? eventYear : ""}
+                </div>
+                <div className="hana2-day-weekdays" aria-hidden="true">
+                  {calendarDays.map((d) => <span key={d}>{d}</span>)}
+                </div>
+                <div className="hana2-day-dates" aria-label={`Kalendar: ${monthName} ${eventYear || ""}`}>
+                  {calendarDates.map((d, index) => {
+                    const active = d !== null && d === activeCalendarDay;
+                    return (
+                      <span
+                        key={index}
+                        className={`hana2-day-date${active ? " is-selected" : ""}`}
+                        aria-label={active ? `${d}. ${monthName}, dan proslave` : undefined}
+                      >
+                        {active && (
+                          <svg viewBox="0 0 40 40" aria-hidden="true">
+                            <path d="M20 35 C16 31 3 23 3 13 C3 3 15 1 20 10 C25 1 37 3 37 13 C37 23 24 31 20 35Z" />
+                          </svg>
+                        )}
+                        <span>{d ?? ""}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+                <div className="hana2-day-date-caption">
+                  {weekday}{weekday && " · "}{hasValidEventDate ? `${String(eventDay).padStart(2, "0")}.${String(eventMonth).padStart(2, "0")}.${eventYear}.` : displayedDate}
+                </div>
+              </motion.div>
+
+              <motion.div className="hana2-day-program" {...reveal}>
+                <h2>Naš poseban dan</h2>
+                {events.map((event, index) => {
+                  const isChurch =
+                    event.icon === "church" || /kr[šs]tenje/i.test(event.label || "");
+                  const href = event.mapLink || (event.location
+                    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`
+                    : "");
+
+                  return (
+                    <div className="hana2-event-row" key={`${event.label}-${index}`}>
+                      <div className="hana2-event-icon-wrap" aria-hidden="true">
+                        {isChurch ? (
+                          <img
+                            className="hana2-event-icon hana2-event-church"
+                            src="/images/hana-2/crkva.svg"
+                            alt=""
+                          />
+                        ) : (
+                          <svg
+                            className="hana2-event-icon"
+                            viewBox="0 0 64 64"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.4"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            {/* Torta na dva sprata, sa talasastim prelivom */}
+                            <path d="M20 23C13 25 11 29 16 32C23 38 43 38 50 32C55 28 51 24 47 23" />
+                            <path d="M14 29v12c0 4 8 8 19 8s19-4 19-8V29" />
+                            <path d="M14 38C9 40 6 43 6 47v7c0 5 12 8 26 8s26-3 26-8v-7c0-4-2-7-6-9" />
+                            <path d="M6 47c5 6 10-2 16 2s7 5 13 1 10-3 15 0 6-2 8-3" />
+                            {[24, 34, 44].map((x) => (
+                              <g key={x}>
+                                <rect x={x - 1.6} y="12" width="3.2" height="10" rx=".5" />
+                                <path d={`M${x} 10c-5 0-3-4 0-7 3 3 5 7 0 7Z`} />
+                              </g>
+                            ))}
+                          </svg>
+                        )}
+                      </div>
+                      <div className="hana2-event-main">
+                        <div className="hana2-event-topline">
+                          <h3 className="hana2-event-title">{event.label}</h3>
+                          {event.time && (
+                            <span className="hana2-event-time">{event.time} h</span>
+                          )}
+                        </div>
+                        {event.location && (
+                          <p className="hana2-event-location">{event.location}</p>
+                        )}
+                        {href && (
+                          <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hana2-event-link"
+                          >
+                            Pogledaj lokaciju <span aria-hidden="true">↗</span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </motion.div>
+
+              <motion.footer className="hana2-day-footer" {...reveal}>
+                {details?.welcomeText && <p className="hana2-day-welcome">{details.welcomeText}</p>}
+                {details?.rsvpDeadline ? (
+                  <div className="hana2-day-deadline">
+                    <span>Molimo vas da potvrdite dolazak do</span>
+                    <strong>{details.rsvpDeadline}</strong>
+                  </div>
+                ) : details?.note ? (
+                  <p className="hana2-day-deadline">{details.note}</p>
+                ) : null}
+              </motion.footer>
+            </motion.article>
+          </section>
+
+          <BirthdaySplitRSVP
+            slug={slug}
+            eventType="birthday"
+            brideName={brideName}
+            details={details}
+            backgroundImage={backgroundImage}
+            script={activeScript}
+          />
+          <BirthdaySplitCountdown
+            slug={slug}
+            targetDate={details?.dateISO}
+            backgroundImage={backgroundImage}
+            script={activeScript}
+            brideName={brideName}
+            venue={displayedVenue}
+            details={details}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* =====================================================
@@ -225,6 +409,10 @@ function BirthdaySplitInvitationCard({
 
       <section
         className={`birthday-video-invitation birthday-video-${slug} ${
+          slug === "hana-2"
+            ? "birthday-video-hana-1"
+            : ""
+        } ${
           usesLaraCardStyle
             ? "birthday-video-lara-1"
             : ""

@@ -13650,6 +13650,83 @@ musicSrc: "/music/matej-18.mp3",
 },
 
 
+{
+  slug: "hana-2",
+  type: "birthday",
+  template: "birthday-split",
+  script: "latin",
+
+  brideName: "Hana",
+
+  backgroundImage: "/images/hana-1-bg.jpg",
+  musicSrc: "/music/hana-2.mp3",
+  videoSrc: "/videos/eva-1.mp4",
+
+  weddingDate: "30.01.2027.",
+  weddingTime: "11:00",
+  venue: "Lav Saal, 3400 Klosterneuburg",
+
+  details: {
+    date: "30 JAN 2027",
+    dateISO: "2027-01-30T11:00:00+01:00",
+
+    venue: "Lav Saal, 3400 Klosterneuburg",
+
+    events: [
+      {
+        label: "Krštenje",
+        time: "11:00",
+        icon: "church",
+        location: "Crkva Svetog Save",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Serbisch+Orthodoxe+Kirche+Heiliger+Sava+1030+Wien",
+      },
+      {
+        label: "Proslava",
+        time: "14:00",
+        icon: "cake",
+        location: "Lav Sala",
+        mapLink:
+          "https://www.google.com/maps/search/?api=1&query=Lav+Saal+3400+Klosterneuburg+Austria",
+      },
+    ],
+
+    sliderImages: [
+      "/images/hana-2-1.jpg",
+      "/images/hana-2-2.jpg",
+      "/images/hana-2-3.jpg",
+      "/images/hana-2-4.jpg",
+      "/images/hana-2-5.jpg",
+      "/images/hana-2-6.jpg",
+      "/images/hana-2-7.jpg",
+      "/images/hana-2-8.jpg",
+      "/images/hana-2-9.jpg",
+      "/images/hana-2-10.jpg",
+      "/images/hana-2-11.jpg",
+      "/images/hana-2-12.jpg",
+    ],
+
+    welcomeText: "Radujemo se vašem dolasku!",
+
+    note:
+      "Molimo vas da svoje prisustvo potvrdite do 15.01.2027.",
+
+    rsvpDeadline: "15.01.2027.",
+    rsvpDeadlineISO: "2027-01-15",
+
+    showDressCode: false,
+
+    calendarTitle: "Hana — prvi rođendan i krštenje",
+
+    calendarDescription:
+      "Krštenje u 11:00 — Crkva Svetog Save, 1030 Beč.\nProslava u 14:00 — Lav Saal, 3400 Klosterneuburg.",
+
+    calendarLocation: "Crkva Svetog Save, 1030 Beč",
+    calendarDurationHours: 6,
+    showCalendarButton: true,
+  },
+},
+
 
   // =========================
   // BIRTHDAY TEMPLATES

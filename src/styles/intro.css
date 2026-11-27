@@ -14632,3 +14632,468 @@ body,
   pointer-events: none;
 }
 
+/* HANA-2 | full-height watercolor couture — only this slug */
+.hana2-couture {
+  --h2-ink: #795048;
+  --h2-gold: #b48b60;
+  --h2-art: url('/images/hana-2/hana-2-intro-art.png');
+  position: relative;
+  display: grid;
+  grid-template-columns: 41% minmax(0, 1fr);
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 480px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f9eee7;
+}
+.hana2-couture *, .hana2-couture *::before, .hana2-couture *::after { box-sizing: border-box; }
+.hana2-couture .hana2-couture-photos {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #e9ddd3;
+  padding: 0 3px;
+  border-right: 3px solid #fff7ed;
+  z-index: 1;
+}
+.hana2-couture .hana2-couture-track {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  animation: hana2-couture-scroll 38s linear infinite;
+  will-change: transform;
+}
+.hana2-couture .hana2-couture-photo-group {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 3px;
+}
+.hana2-couture .hana2-couture-photo {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 34vh;
+  height: 34svh;
+  min-height: 150px;
+  overflow: hidden;
+}
+.hana2-couture .hana2-couture-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 43%;
+}
+.hana2-couture .hana2-couture-panel {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  background: radial-gradient(ellipse at center, #fff0e9 0%, #f7dfda 63%, #f9eee6 100%);
+}
+/* No miniature invitation / no outer striped wallpaper. */
+.hana2-couture .hana2-couture-paper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  background: transparent;
+  display: grid;
+  place-items: center;
+}
+/* The bow and carousel use separate crops of the existing artwork.
+   This keeps the illustrations proportional, even on narrow phones. */
+.hana2-couture .hana2-couture-paper::before,
+.hana2-couture .hana2-couture-paper::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 46svh, 530px);
+  background-image: var(--h2-art);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+.hana2-couture .hana2-couture-paper::before {
+  top: 0;
+  height: min(27%, 62cqw);
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(#000 0 67%, transparent 100%);
+  mask-image: linear-gradient(#000 0 67%, transparent 100%);
+}
+.hana2-couture .hana2-couture-paper::after {
+  bottom: 0;
+  height: min(30%, 77cqw);
+  background-position: center bottom;
+  -webkit-mask-image: linear-gradient(transparent 0%, #000 24% 100%);
+  mask-image: linear-gradient(transparent 0%, #000 24% 100%);
+}
+.hana2-couture .hana2-couture-frame {
+  position: absolute;
+  top: 9%;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 510px);
+  border: 1px solid #bf927b65;
+  outline: 3px double #fffcf3bd;
+  outline-offset: 4px;
+  border-radius: 48% / 16%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hana2-couture .hana2-couture-copy {
+  position: relative;
+  z-index: 2;
+  width: min(84%, 470px);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(8px, 3cqw, 18px);
+  color: var(--h2-ink);
+  margin-top: -2svh;
+  animation: hana2-couture-copy 1.1s .15s ease-out both;
+}
+.hana2-couture .hana2-couture-age {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: clamp(64px, min(35cqw, 12svh), 120px);
+  flex-shrink: 0;
+}
+.hana2-couture .hana2-couture-number {
+  font: 500 clamp(85px, min(47cqw, 15svh), 158px)/.83 'Cormorant Garamond', Georgia, serif;
+  color: #be9670;
+  opacity: .52;
+}
+.hana2-couture .hana2-couture-one {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  transform: translate(-50%, -50%);
+  font: 400 clamp(35px, min(23cqw, 7svh), 68px)/1 'Great Vibes', cursive;
+  color: #795048;
+  text-shadow: 0 1px #fff4e9;
+}
+.hana2-couture .hana2-couture-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 46%;
+  color: #b48b60;
+  font-size: 13px;
+  line-height: 1;
+}
+.hana2-couture .hana2-couture-divider::before,
+.hana2-couture .hana2-couture-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: #b48b6070;
+}
+.hana2-couture .hana2-couture-name {
+  margin: 0;
+  padding: 0 .12em;
+  font: 400 clamp(46px, min(32cqw, 11svh), 115px)/1 'Great Vibes', cursive;
+  letter-spacing: 0;
+  color: #80534b;
+  text-shadow: 0 1px #fff8ef;
+}
+.hana2-couture .hana2-couture-subtitle {
+  margin: 0;
+  font: italic 500 clamp(15px, min(7.2cqw, 3.2svh), 26px)/1.22 'Cormorant Garamond', Georgia, serif;
+  color: var(--h2-ink);
+}
+.hana2-couture .hana2-couture-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  max-width: 100%;
+  min-height: 44px;
+  margin-top: clamp(8px, 3cqw, 16px);
+  padding: 10px clamp(12px, 5cqw, 26px);
+  border: 1px solid #c19b87;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fffaf3, #fae5de);
+  color: #795048;
+  box-shadow: inset 0 0 0 3px #fff8ef, 0 5px 16px #a36a5520;
+  font: 600 clamp(10px, 4.6cqw, 14px)/1.25 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.hana2-couture .hana2-couture-button svg { width: 14px; height: 14px; flex-shrink: 0; }
+.hana2-couture .hana2-couture-button:focus-visible { outline: 2px solid #80534b; outline-offset: 3px; }
+@media (hover: hover) {
+  .hana2-couture .hana2-couture-button:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 3px #fff8ef, 0 8px 22px #a36a5535; }
+  .hana2-couture .hana2-couture-photos:hover .hana2-couture-track { animation-play-state: paused; }
+}
+@keyframes hana2-couture-scroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes hana2-couture-copy { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 600px) {
+  .hana2-couture { grid-template-columns: 41% minmax(0, 1fr); }
+  .hana2-couture .hana2-couture-photos { padding-inline: 2px; border-right-width: 2px; }
+  .hana2-couture .hana2-couture-paper::before, .hana2-couture .hana2-couture-paper::after { width: 100%; }
+  .hana2-couture .hana2-couture-frame { width: 88%; }
+}
+@media (max-height: 650px) {
+  .hana2-couture .hana2-couture-copy { gap: 6px; }
+  .hana2-couture .hana2-couture-age { height: 55px; }
+  .hana2-couture .hana2-couture-number { font-size: 80px; }
+  .hana2-couture .hana2-couture-name { font-size: clamp(44px, 28cqw, 68px); }
+  .hana2-couture .hana2-couture-button { margin-top: 3px; }
+  .hana2-couture .hana2-couture-paper::before { height: min(22%, 62cqw); }
+  .hana2-couture .hana2-couture-paper::after { height: min(25%, 77cqw); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hana2-couture .hana2-couture-track, .hana2-couture .hana2-couture-copy { animation: none; }
+  .hana2-couture .hana2-couture-button { transition: none; }
+}
+
+/* HANA-2 — usklađivanje boja */
+.hana2-couture {
+  --h2-art: url('/images/hana-2/hana-2-intro-art.png');
+  background: #fcf5f7;
+}
+
+.hana2-couture .hana2-couture-panel {
+  background: radial-gradient(
+    ellipse at center,
+    #fdf7f8 0%,
+    #f8e6eb 65%,
+    #fcf5f7 100%
+  );
+}
+
+.hana2-couture .hana2-couture-frame {
+  border-color: #dcb6c080;
+  outline-color: #ffffffcc;
+}
+
+/* HANA-2 — animacija One */
+
+.hana2-couture .hana2-couture-one {
+  animation: hana2OneFloat 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes hana2OneFloat {
+  0%, 100% {
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    transform: translate(-50%, calc(-50% - 10px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hana2-couture .hana2-couture-one {
+    animation: none;
+  }
+}
+
+/* HANA-2 — elegantniji razmaci */
+
+.hana2-couture .hana2-couture-copy {
+  gap: 18px;
+}
+
+.hana2-couture .hana2-couture-age {
+  margin-bottom: 14px;
+}
+
+.hana2-couture .hana2-couture-name {
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+.hana2-couture .hana2-couture-subtitle {
+  line-height: 1.55;
+  margin-top: 5px;
+}
+
+.hana2-couture .hana2-couture-button {
+  margin-top: 14px;
+}
+
+/* Manji ekrani */
+@media (max-height: 650px) {
+  .hana2-couture .hana2-couture-copy {
+    gap: 10px;
+  }
+
+  .hana2-couture .hana2-couture-age {
+    margin-bottom: 6px;
+  }
+
+  .hana2-couture .hana2-couture-button {
+    margin-top: 8px;
+  }
+}
+
+/* HANA-2 — Soft Dusty Rose palette */
+
+.hana2-couture .hana2-couture-one {
+  color: #926273;
+}
+
+.hana2-couture .hana2-couture-number {
+  color: #d9b1c0;
+}
+
+.hana2-couture .hana2-couture-name {
+  color: #926273;
+}
+
+.hana2-couture .hana2-couture-subtitle {
+  color: #997681;
+}
+
+.hana2-couture .hana2-couture-button {
+  color: #926273;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #fff0f5
+  );
+  border-color: #dab6c4;
+  box-shadow:
+    inset 0 0 0 3px #ffffffb3,
+    0 5px 18px rgba(146, 98, 115, 0.10);
+}
+
+/* HANA-2 — Romantic Ribbon Button */
+
+.hana2-couture .hana2-couture-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+
+  padding: 20px 5px 12px;
+  margin-top: 18px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 500;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.3px;
+
+  color: #926273;
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+}
+
+/* Nežna mašnica iznad teksta */
+.hana2-couture .hana2-couture-button::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 42px;
+  height: 28px;
+
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 50'%3E%3Cg fill='%23e8c8d5' fill-opacity='.35' stroke='%23b7899b' stroke-width='1.2'%3E%3Cpath d='M40 20 C20 -5 0 2 8 20 C14 32 31 27 40 20 C60 -5 80 2 72 20 C66 32 49 27 40 20Z'/%3E%3Cpath d='M38 23 Q29 38 19 43 M42 23 Q51 38 61 43' fill='none'/%3E%3Crect x='36' y='16' width='8' height='10' rx='3'/%3E%3C/g%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+/* Tanka linija ispod teksta */
+.hana2-couture .hana2-couture-button::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 90%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #c99eaf,
+    transparent
+  );
+
+  transition: width 0.4s ease;
+}
+
+.hana2-couture .hana2-couture-button:hover {
+  color: #754657;
+}
+
+.hana2-couture .hana2-couture-button:hover::after {
+  width: 100%;
+}
+
+.hana2-couture .hana2-couture-button:focus-visible {
+  outline: 1px solid #926273;
+  outline-offset: 5px;
+}
+
+/* Uklanjanje postojeće strelice ako je u span ili SVG elementu */
+.hana2-couture .hana2-couture-button > span:last-child:not(:first-child),
+.hana2-couture .hana2-couture-button > svg {
+  display: none;
+}
+
+/* HANA-2 — akvarelna mašnica iznad dugmeta */
+
+.hana2-couture .hana2-couture-button::before {
+  background: url("/images/hana-2/bow.png")
+    center / contain no-repeat;
+
+  width: 65px;
+  height: 45px;
+  top: -30px;
+}
+
+.hana2-couture .hana2-couture-button {
+  margin-top: 28px;
+}
+/* HANA-2 — završni detalji */
+
+.hana2-couture .hana2-couture-button::before {
+  width: 75px;
+  height: 52px;
+  top: -37px;
+}
+
+.hana2-couture .hana2-couture-button {
+  color: #875568;
+  font-weight: 600;
+}
+.hana2-couture .hana2-couture-number {
+  color: #cda3b4;
+}
+
+.hana2-couture .hana2-couture-subtitle {
+  color: #926273;
+}

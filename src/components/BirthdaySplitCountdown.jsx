@@ -182,6 +182,7 @@ function BirthdaySplitCountdown({
       text.calendarDescription;
 
     const eventLocation =
+      details?.calendarLocation ||
       details?.venue ||
       venue ||
       "";
@@ -238,7 +239,11 @@ function BirthdaySplitCountdown({
   };
 
   const slugClass = slug
-    ? `birthday-split-countdown-${slug}`
+    ? `birthday-split-countdown-${slug}${
+        slug === "hana-2"
+          ? " birthday-split-countdown-hana-1"
+          : ""
+      }`
     : "";
 
   return (
