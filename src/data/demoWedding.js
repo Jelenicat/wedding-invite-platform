@@ -13685,7 +13685,7 @@ musicSrc: "/music/matej-18.mp3",
         label: "Proslava",
         time: "14:00",
         icon: "cake",
-        location: "Lav Sala",
+        location: "Lav Saal",
         mapLink:
           "https://www.google.com/maps/search/?api=1&query=Lav+Saal+3400+Klosterneuburg+Austria",
       },
