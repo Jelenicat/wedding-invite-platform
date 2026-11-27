@@ -30859,4 +30859,20 @@ font-family: "Italianno", cursive;
   background: none !important;
 }
 
+/* HANA-2 — strelica za lokaciju */
+
+.hana2-day .hana2-map-arrow {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: inherit;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.hana2-day .hana2-event-link:hover .hana2-map-arrow {
+  transform: translate(2px, -2px);
+}
+
 

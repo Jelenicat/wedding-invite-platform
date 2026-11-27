@@ -356,7 +356,20 @@ function BirthdaySplitInvitationCard({
                             rel="noopener noreferrer"
                             className="hana2-event-link"
                           >
-                            Pogledaj lokaciju <span aria-hidden="true">↗</span>
+                            Pogledaj lokaciju <svg
+  className="hana2-map-arrow"
+  viewBox="0 0 24 24"
+  fill="none"
+  aria-hidden="true"
+>
+  <path
+    d="M7 17L17 7M7 7H17V17"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+</svg>
                           </a>
                         )}
                       </div>
